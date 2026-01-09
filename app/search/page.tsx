@@ -53,13 +53,13 @@ function SearchContent() {
   const totalResults = filteredResults.calculators.length + filteredResults.blogPosts.length;
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] dark:bg-[#020617] py-16">
+    <div className="min-h-screen bg-[#f8fafc] py-16">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#1e293b] dark:text-[#f1f5f9] mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#1e293b] mb-4">
             Search
           </h1>
-          <p className="text-lg text-[#64748b] dark:text-[#94a3b8]">
+          <p className="text-lg text-[#64748b]">
             Find calculators and articles
           </p>
         </div>
@@ -71,11 +71,11 @@ function SearchContent() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search calculators, articles..."
-              className="flex-1 px-4 py-3 text-base border-2 border-[#e2e8f0] dark:border-[#334155] rounded-lg bg-white dark:bg-[#1e293b] text-[#1e293b] dark:text-[#f1f5f9] focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:border-transparent min-h-[44px]"
+              className="flex-1 px-4 py-3 text-base border-2 border-[#e2e8f0] rounded-lg bg-white text-[#1e293b] focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:border-transparent min-h-[44px]"
             />
             <button
               type="submit"
-              className="px-6 py-3 bg-[#2563eb] dark:bg-[#60a5fa] text-white rounded-lg font-semibold hover:bg-[#1d4ed8] dark:hover:bg-[#3b82f6] transition-colors min-h-[44px]"
+              className="px-6 py-3 bg-[#2563eb] text-white rounded-lg font-semibold hover:bg-[#1d4ed8] transition-colors min-h-[44px]"
             >
               Search
             </button>
@@ -84,7 +84,7 @@ function SearchContent() {
 
         {searchQuery.trim() && (
           <div className="mb-6">
-            <p className="text-[#64748b] dark:text-[#94a3b8]">
+            <p className="text-[#64748b]">
               {totalResults === 0
                 ? "No results found"
                 : `Found ${totalResults} result${totalResults !== 1 ? "s" : ""}`}
@@ -94,7 +94,7 @@ function SearchContent() {
 
         {filteredResults.calculators.length > 0 && (
           <div className="mb-12">
-            <h2 className="text-2xl font-bold text-[#1e293b] dark:text-[#f1f5f9] mb-6">
+            <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
               Calculators
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -102,12 +102,12 @@ function SearchContent() {
                 <Link
                   key={calc.id}
                   href={`/calculators/${calc.category}/${calc.slug}`}
-                  className="block p-4 rounded-lg border-2 border-[#e2e8f0] dark:border-[#334155] hover:border-[#2563eb] dark:hover:border-[#60a5fa] transition-colors bg-white dark:bg-[#1e293b]"
+                  className="block p-4 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors bg-white"
                 >
-                  <h3 className="font-semibold text-[#1e293b] dark:text-[#f1f5f9] mb-2">
+                  <h3 className="font-semibold text-[#1e293b] mb-2">
                     {calc.name}
                   </h3>
-                  <p className="text-sm text-[#64748b] dark:text-[#94a3b8] line-clamp-2">
+                  <p className="text-sm text-[#64748b] line-clamp-2">
                     {calc.description}
                   </p>
                 </Link>
@@ -118,7 +118,7 @@ function SearchContent() {
 
         {filteredResults.blogPosts.length > 0 && (
           <div>
-            <h2 className="text-2xl font-bold text-[#1e293b] dark:text-[#f1f5f9] mb-6">
+            <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
               Articles
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -126,17 +126,17 @@ function SearchContent() {
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="block p-4 rounded-lg border-2 border-[#e2e8f0] dark:border-[#334155] hover:border-[#2563eb] dark:hover:border-[#60a5fa] transition-colors bg-white dark:bg-[#1e293b]"
+                  className="block p-4 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors bg-white"
                 >
                   <div className="mb-3">
-                    <span className="inline-block px-3 py-1 text-xs font-semibold text-[#2563eb] dark:text-[#60a5fa] bg-[#eff6ff] dark:bg-[#1e3a8a] rounded-full">
+                    <span className="inline-block px-3 py-1 text-xs font-semibold text-[#2563eb] bg-[#eff6ff] rounded-full">
                       {post.category}
                     </span>
                   </div>
-                  <h3 className="font-semibold text-[#1e293b] dark:text-[#f1f5f9] mb-2">
+                  <h3 className="font-semibold text-[#1e293b] mb-2">
                     {post.title}
                   </h3>
-                  <p className="text-sm text-[#64748b] dark:text-[#94a3b8] line-clamp-2">
+                  <p className="text-sm text-[#64748b] line-clamp-2">
                     {post.description}
                   </p>
                 </Link>
@@ -147,14 +147,14 @@ function SearchContent() {
 
         {searchQuery.trim() && totalResults === 0 && (
           <div className="text-center py-12">
-            <p className="text-lg text-[#64748b] dark:text-[#94a3b8] mb-4">
+            <p className="text-lg text-[#64748b] mb-4">
               No results found for &quot;{searchQuery}&quot;
             </p>
-            <p className="text-sm text-[#64748b] dark:text-[#94a3b8]">
+            <p className="text-sm text-[#64748b]">
               Try different keywords or browse our{" "}
               <Link
                 href="/calculators"
-                className="text-[#2563eb] dark:text-[#60a5fa] hover:underline"
+                className="text-[#2563eb] hover:underline"
               >
                 calculators
               </Link>
@@ -164,19 +164,19 @@ function SearchContent() {
 
         {!searchQuery.trim() && (
           <div className="text-center py-12">
-            <p className="text-lg text-[#64748b] dark:text-[#94a3b8] mb-4">
+            <p className="text-lg text-[#64748b] mb-4">
               Enter a search term to find calculators and articles
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 href="/calculators"
-                className="px-6 py-3 bg-[#2563eb] dark:bg-[#60a5fa] text-white rounded-lg font-semibold hover:bg-[#1d4ed8] dark:hover:bg-[#3b82f6] transition-colors"
+                className="px-6 py-3 bg-[#2563eb] text-white rounded-lg font-semibold hover:bg-[#1d4ed8] transition-colors"
               >
                 Browse All Calculators
               </Link>
               <Link
                 href="/blog"
-                className="px-6 py-3 bg-white dark:bg-[#1e293b] text-[#2563eb] dark:text-[#60a5fa] border-2 border-[#2563eb] dark:border-[#60a5fa] rounded-lg font-semibold hover:bg-[#eff6ff] dark:hover:bg-[#1e3a8a] transition-colors"
+                className="px-6 py-3 bg-white text-[#2563eb] border-2 border-[#2563eb] rounded-lg font-semibold hover:bg-[#eff6ff] transition-colors"
               >
                 View All Articles
               </Link>
@@ -191,13 +191,13 @@ function SearchContent() {
 export default function SearchPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-[#f8fafc] dark:bg-[#020617] py-16">
+      <div className="min-h-screen bg-[#f8fafc] py-16">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-[#1e293b] dark:text-[#f1f5f9] mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-[#1e293b] mb-4">
               Search
             </h1>
-            <p className="text-lg text-[#64748b] dark:text-[#94a3b8]">
+            <p className="text-lg text-[#64748b]">
               Loading...
             </p>
           </div>

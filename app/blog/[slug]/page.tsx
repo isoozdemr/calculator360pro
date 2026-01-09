@@ -36,17 +36,17 @@ export default async function BlogPostPage({ params }: PageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] dark:bg-[#020617] py-16">
+    <div className="min-h-screen bg-[#f8fafc] py-16">
       <div className="container mx-auto px-4 max-w-4xl">
-        <article className="bg-white dark:bg-[#1e293b] rounded-lg border-2 border-[#e2e8f0] dark:border-[#334155] p-8">
+        <article className="bg-white rounded-lg border-2 border-[#e2e8f0] p-8">
           <div className="mb-6">
-            <span className="inline-block px-3 py-1 text-xs font-semibold text-[#2563eb] dark:text-[#60a5fa] bg-[#eff6ff] dark:bg-[#1e3a8a] rounded-full mb-4">
+            <span className="inline-block px-3 py-1 text-xs font-semibold text-[#2563eb] bg-[#eff6ff] rounded-full mb-4">
               {post.category}
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-[#1e293b] dark:text-[#f1f5f9] mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-[#1e293b] mb-4">
               {post.title}
             </h1>
-            <div className="flex items-center gap-4 text-sm text-[#64748b] dark:text-[#94a3b8]">
+            <div className="flex items-center gap-4 text-sm text-[#64748b]">
               <span>By {post.author}</span>
               <span>•</span>
               <span>{new Date(post.date).toLocaleDateString()}</span>
@@ -54,7 +54,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
 
           <div
-            className="prose prose-slate dark:prose-invert max-w-none"
+            className="prose prose-slate max-w-none"
             dangerouslySetInnerHTML={{
               __html: post.content
                 .split("\n")

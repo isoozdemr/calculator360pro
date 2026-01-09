@@ -70,7 +70,7 @@ export function AgeCalculator() {
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-6">
-      <div className="bg-white dark:bg-[#1e293b] rounded-lg border-2 border-[#e2e8f0] dark:border-[#334155] p-6 space-y-6">
+      <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6 space-y-6">
         <div className="space-y-4">
           <Input
             label="Birth Date"
@@ -97,8 +97,8 @@ export function AgeCalculator() {
         </div>
 
         {age !== null && (
-          <div className="result-container bg-[#f0fdf4] dark:bg-[#064e3b] border-2 border-[#10b981] rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-[#1e293b] dark:text-[#f1f5f9] mb-4">
+          <div className="result-container bg-[#f0fdf4] border-2 border-[#10b981] rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-[#1e293b] mb-4">
               Your Age
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -106,7 +106,7 @@ export function AgeCalculator() {
                 <p className="text-3xl font-bold text-[#10b981] font-mono">
                   {age.years}
                 </p>
-                <p className="text-sm text-[#64748b] dark:text-[#94a3b8] mt-1">
+                <p className="text-sm text-[#64748b] mt-1">
                   Years
                 </p>
               </div>
@@ -114,7 +114,7 @@ export function AgeCalculator() {
                 <p className="text-3xl font-bold text-[#10b981] font-mono">
                   {age.months}
                 </p>
-                <p className="text-sm text-[#64748b] dark:text-[#94a3b8] mt-1">
+                <p className="text-sm text-[#64748b] mt-1">
                   Months
                 </p>
               </div>
@@ -122,7 +122,7 @@ export function AgeCalculator() {
                 <p className="text-3xl font-bold text-[#10b981] font-mono">
                   {age.weeks}
                 </p>
-                <p className="text-sm text-[#64748b] dark:text-[#94a3b8] mt-1">
+                <p className="text-sm text-[#64748b] mt-1">
                   Weeks
                 </p>
               </div>
@@ -130,7 +130,7 @@ export function AgeCalculator() {
                 <p className="text-3xl font-bold text-[#10b981] font-mono">
                   {age.days}
                 </p>
-                <p className="text-sm text-[#64748b] dark:text-[#94a3b8] mt-1">
+                <p className="text-sm text-[#64748b] mt-1">
                   Days
                 </p>
               </div>

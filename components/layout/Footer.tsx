@@ -6,7 +6,7 @@ import { CALCULATOR_CATEGORIES } from "@/lib/constants";
 export function Footer() {
 
   return (
-    <footer className="bg-[#1e293b] dark:bg-[#020617] text-[#f1f5f9] mt-16">
+    <footer className="bg-[#1e293b] text-[#f1f5f9] mt-16">
       <div className="container mx-auto px-4 py-12 max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>

@@ -97,7 +97,7 @@ export function PercentageCalculator() {
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-6">
-      <div className="bg-white dark:bg-[#1e293b] rounded-lg border-2 border-[#e2e8f0] dark:border-[#334155] p-6 space-y-6">
+      <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6 space-y-6">
         <div className="space-y-4">
           <div className="flex gap-2 flex-wrap">
             <button
@@ -105,7 +105,7 @@ export function PercentageCalculator() {
               className={`px-4 py-2 rounded-lg font-medium transition-colors min-h-[44px] ${
                 calculationType === "of"
                   ? "bg-[#2563eb] text-white"
-                  : "bg-[#f1f5f9] dark:bg-[#334155] text-[#1e293b] dark:text-[#f1f5f9]"
+                  : "bg-[#f1f5f9] text-[#1e293b]"
               }`}
             >
               Percentage Of
@@ -115,7 +115,7 @@ export function PercentageCalculator() {
               className={`px-4 py-2 rounded-lg font-medium transition-colors min-h-[44px] ${
                 calculationType === "increase"
                   ? "bg-[#2563eb] text-white"
-                  : "bg-[#f1f5f9] dark:bg-[#334155] text-[#1e293b] dark:text-[#f1f5f9]"
+                  : "bg-[#f1f5f9] text-[#1e293b]"
               }`}
             >
               Percentage Increase
@@ -125,7 +125,7 @@ export function PercentageCalculator() {
               className={`px-4 py-2 rounded-lg font-medium transition-colors min-h-[44px] ${
                 calculationType === "decrease"
                   ? "bg-[#2563eb] text-white"
-                  : "bg-[#f1f5f9] dark:bg-[#334155] text-[#1e293b] dark:text-[#f1f5f9]"
+                  : "bg-[#f1f5f9] text-[#1e293b]"
               }`}
             >
               Percentage Decrease
@@ -212,8 +212,8 @@ export function PercentageCalculator() {
         </div>
 
         {result !== null && (
-          <div className="result-container bg-[#f0fdf4] dark:bg-[#064e3b] border-2 border-[#10b981] rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-[#1e293b] dark:text-[#f1f5f9] mb-2">
+          <div className="result-container bg-[#f0fdf4] border-2 border-[#10b981] rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-[#1e293b] mb-2">
               Result
             </h3>
             <p className="text-3xl font-bold text-[#10b981] font-mono">
@@ -222,7 +222,7 @@ export function PercentageCalculator() {
                 : `${result.toFixed(2)}%`}
             </p>
             {calculationType === "of" && (
-              <p className="text-sm text-[#64748b] dark:text-[#94a3b8] mt-2">
+              <p className="text-sm text-[#64748b] mt-2">
                 {percentage}% of {value} = {result.toFixed(2)}
               </p>
             )}

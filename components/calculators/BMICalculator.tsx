@@ -102,7 +102,7 @@ export function BMICalculator() {
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-6">
-      <div className="bg-white dark:bg-[#1e293b] rounded-lg border-2 border-[#e2e8f0] dark:border-[#334155] p-6 space-y-6">
+      <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6 space-y-6">
         <div className="space-y-4">
           <div className="flex gap-2">
             <button
@@ -110,7 +110,7 @@ export function BMICalculator() {
               className={`px-4 py-2 rounded-lg font-medium transition-colors min-h-[44px] ${
                 unit === "metric"
                   ? "bg-[#2563eb] text-white"
-                  : "bg-[#f1f5f9] dark:bg-[#334155] text-[#1e293b] dark:text-[#f1f5f9]"
+                  : "bg-[#f1f5f9] text-[#1e293b]"
               }`}
             >
               Metric (kg, cm)
@@ -120,7 +120,7 @@ export function BMICalculator() {
               className={`px-4 py-2 rounded-lg font-medium transition-colors min-h-[44px] ${
                 unit === "imperial"
                   ? "bg-[#2563eb] text-white"
-                  : "bg-[#f1f5f9] dark:bg-[#334155] text-[#1e293b] dark:text-[#f1f5f9]"
+                  : "bg-[#f1f5f9] text-[#1e293b]"
               }`}
             >
               Imperial (lbs, ft'in)
@@ -179,21 +179,21 @@ export function BMICalculator() {
         </div>
 
         {bmi !== null && (
-          <div className="result-container bg-[#f0fdf4] dark:bg-[#064e3b] border-2 border-[#10b981] rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-[#1e293b] dark:text-[#f1f5f9] mb-2">
+          <div className="result-container bg-[#f0fdf4] border-2 border-[#10b981] rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-[#1e293b] mb-2">
               Your BMI
             </h3>
             <p className="text-4xl font-bold text-[#10b981] font-mono mb-2">
               {bmi.toFixed(1)}
             </p>
-            <p className="text-lg font-semibold text-[#1e293b] dark:text-[#f1f5f9]">
+            <p className="text-lg font-semibold text-[#1e293b]">
               {category}
             </p>
             <div className="mt-4 pt-4 border-t border-[#10b981]/30">
-              <p className="text-sm text-[#64748b] dark:text-[#94a3b8]">
+              <p className="text-sm text-[#64748b]">
                 BMI Categories:
               </p>
-              <ul className="text-xs text-[#64748b] dark:text-[#94a3b8] mt-2 space-y-1">
+              <ul className="text-xs text-[#64748b] mt-2 space-y-1">
                 <li>Underweight: &lt; 18.5</li>
                 <li>Normal weight: 18.5 - 24.9</li>
                 <li>Overweight: 25 - 29.9</li>

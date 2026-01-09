@@ -107,9 +107,9 @@ export function ScientificCalculator() {
 
   return (
     <div className="w-full max-w-2xl mx-auto">
-      <div className="bg-white dark:bg-[#1e293b] rounded-lg border-2 border-[#e2e8f0] dark:border-[#334155] p-6">
+      <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
         <div className="space-y-4">
-          <div className="bg-[#0f172a] dark:bg-[#020617] rounded-lg p-4 min-h-[80px] flex items-center justify-end">
+          <div className="bg-[#0f172a] rounded-lg p-4 min-h-[80px] flex items-center justify-end">
             <div className="text-right">
               <p className="text-3xl font-mono text-white font-bold break-all">
                 {display}

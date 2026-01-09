@@ -137,7 +137,7 @@ export function GPACalculator() {
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-6">
-      <div className="bg-white dark:bg-[#1e293b] rounded-lg border-2 border-[#e2e8f0] dark:border-[#334155] p-6 space-y-6">
+      <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6 space-y-6">
         <div className="space-y-4">
           <div className="flex gap-2">
             <button
@@ -145,7 +145,7 @@ export function GPACalculator() {
               className={`px-4 py-2 rounded-lg font-medium transition-colors min-h-[44px] ${
                 scale === "4.0"
                   ? "bg-[#2563eb] text-white"
-                  : "bg-[#f1f5f9] dark:bg-[#334155] text-[#1e293b] dark:text-[#f1f5f9]"
+                  : "bg-[#f1f5f9] text-[#1e293b]"
               }`}
             >
               4.0 Scale
@@ -155,7 +155,7 @@ export function GPACalculator() {
               className={`px-4 py-2 rounded-lg font-medium transition-colors min-h-[44px] ${
                 scale === "5.0"
                   ? "bg-[#2563eb] text-white"
-                  : "bg-[#f1f5f9] dark:bg-[#334155] text-[#1e293b] dark:text-[#f1f5f9]"
+                  : "bg-[#f1f5f9] text-[#1e293b]"
               }`}
             >
               5.0 Scale
@@ -183,10 +183,10 @@ export function GPACalculator() {
                           setErrors({ ...errors, [index]: { ...errors[index], name: courseErrors.name } });
                         }
                       }}
-                      className={`w-full px-4 py-2.5 border-2 rounded-lg bg-white dark:bg-[#1e293b] text-[#1e293b] dark:text-[#f1f5f9] min-h-[44px] ${
+                      className={`w-full px-4 py-2.5 border-2 rounded-lg bg-white text-[#1e293b] min-h-[44px] ${
                         errors[index]?.name
                           ? "border-[#ef4444] focus:ring-[#ef4444]"
-                          : "border-[#e2e8f0] dark:border-[#334155]"
+                          : "border-[#e2e8f0]"
                       }`}
                     />
                     <div className="min-h-[20px] mt-1.5">
@@ -211,10 +211,10 @@ export function GPACalculator() {
                           setErrors({ ...errors, [index]: { ...errors[index], grade: courseErrors.grade } });
                         }
                       }}
-                      className={`w-full px-4 py-2.5 border-2 rounded-lg bg-white dark:bg-[#1e293b] text-[#1e293b] dark:text-[#f1f5f9] min-h-[44px] ${
+                      className={`w-full px-4 py-2.5 border-2 rounded-lg bg-white text-[#1e293b] min-h-[44px] ${
                         errors[index]?.grade
                           ? "border-[#ef4444] focus:ring-[#ef4444]"
-                          : "border-[#e2e8f0] dark:border-[#334155]"
+                          : "border-[#e2e8f0]"
                       }`}
                     >
                       <option value="">Select Grade</option>
@@ -251,10 +251,10 @@ export function GPACalculator() {
                       step="0.5"
                       min="0.5"
                       max="10"
-                      className={`w-full px-4 py-2.5 border-2 rounded-lg bg-white dark:bg-[#1e293b] text-[#1e293b] dark:text-[#f1f5f9] min-h-[44px] ${
+                      className={`w-full px-4 py-2.5 border-2 rounded-lg bg-white text-[#1e293b] min-h-[44px] ${
                         errors[index]?.credits
                           ? "border-[#ef4444] focus:ring-[#ef4444]"
-                          : "border-[#e2e8f0] dark:border-[#334155]"
+                          : "border-[#e2e8f0]"
                       }`}
                     />
                     <div className="min-h-[20px] mt-1.5">
@@ -264,7 +264,7 @@ export function GPACalculator() {
                         </p>
                       )}
                       {!errors[index]?.credits && (
-                        <p className="text-[11px] text-[#64748b] dark:text-[#94a3b8] leading-tight">
+                        <p className="text-[11px] text-[#64748b] leading-tight">
                           Enter credits (0.5-10)
                         </p>
                       )}
@@ -302,14 +302,14 @@ export function GPACalculator() {
         </div>
 
         {gpa !== null && (
-          <div className="result-container bg-[#f0fdf4] dark:bg-[#064e3b] border-2 border-[#10b981] rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-[#1e293b] dark:text-[#f1f5f9] mb-2">
+          <div className="result-container bg-[#f0fdf4] border-2 border-[#10b981] rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-[#1e293b] mb-2">
               Your GPA
             </h3>
             <p className="text-4xl font-bold text-[#10b981] font-mono">
               {gpa.toFixed(2)}
             </p>
-            <p className="text-sm text-[#64748b] dark:text-[#94a3b8] mt-2">
+            <p className="text-sm text-[#64748b] mt-2">
               Based on {scale} scale
             </p>
           </div>

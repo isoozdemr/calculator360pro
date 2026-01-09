@@ -78,13 +78,13 @@ export default async function CategoryPage({ params }: PageProps) {
   const calculators = getCalculatorsByCategory(category as any);
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] dark:bg-[#020617] py-16">
+    <div className="min-h-screen bg-[#f8fafc] py-16">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#1e293b] dark:text-[#f1f5f9] mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#1e293b] mb-4">
             {categoryInfo.name} Calculators
           </h1>
-          <p className="text-lg text-[#64748b] dark:text-[#94a3b8] max-w-3xl">
+          <p className="text-lg text-[#64748b] max-w-3xl">
             {categoryInfo.description}
           </p>
         </div>
@@ -94,12 +94,12 @@ export default async function CategoryPage({ params }: PageProps) {
             <Link
               key={calculator.id}
               href={`/calculators/${calculator.category}/${calculator.slug}`}
-              className="block p-6 bg-white dark:bg-[#1e293b] rounded-lg border-2 border-[#e2e8f0] dark:border-[#334155] hover:border-[#2563eb] dark:hover:border-[#60a5fa] transition-colors"
+              className="block p-6 bg-white rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors"
             >
-              <h2 className="text-xl font-bold text-[#1e293b] dark:text-[#f1f5f9] mb-3">
+              <h2 className="text-xl font-bold text-[#1e293b] mb-3">
                 {calculator.name}
               </h2>
-              <p className="text-[#64748b] dark:text-[#94a3b8] line-clamp-3">
+              <p className="text-[#64748b] line-clamp-3">
                 {calculator.description}
               </p>
             </Link>

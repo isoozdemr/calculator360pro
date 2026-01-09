@@ -86,10 +86,10 @@ export function SalaryCalculator() {
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-6">
-      <div className="bg-white dark:bg-[#1e293b] rounded-lg border-2 border-[#e2e8f0] dark:border-[#334155] p-6 space-y-6">
+      <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6 space-y-6">
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-[#1e293b] dark:text-[#f1f5f9] mb-1.5">
+            <label className="block text-sm font-medium text-[#1e293b] mb-1.5">
               Pay Frequency
             </label>
             <div className="flex gap-2">
@@ -98,7 +98,7 @@ export function SalaryCalculator() {
                 className={`px-4 py-2 rounded-lg font-medium transition-colors min-h-[44px] ${
                   payFrequency === "annual"
                     ? "bg-[#2563eb] text-white"
-                    : "bg-[#f1f5f9] dark:bg-[#334155] text-[#1e293b] dark:text-[#f1f5f9]"
+                    : "bg-[#f1f5f9] text-[#1e293b]"
                 }`}
               >
                 Annual
@@ -108,7 +108,7 @@ export function SalaryCalculator() {
                 className={`px-4 py-2 rounded-lg font-medium transition-colors min-h-[44px] ${
                   payFrequency === "monthly"
                     ? "bg-[#2563eb] text-white"
-                    : "bg-[#f1f5f9] dark:bg-[#334155] text-[#1e293b] dark:text-[#f1f5f9]"
+                    : "bg-[#f1f5f9] text-[#1e293b]"
                 }`}
               >
                 Monthly
@@ -118,7 +118,7 @@ export function SalaryCalculator() {
                 className={`px-4 py-2 rounded-lg font-medium transition-colors min-h-[44px] ${
                   payFrequency === "hourly"
                     ? "bg-[#2563eb] text-white"
-                    : "bg-[#f1f5f9] dark:bg-[#334155] text-[#1e293b] dark:text-[#f1f5f9]"
+                    : "bg-[#f1f5f9] text-[#1e293b]"
                 }`}
               >
                 Hourly
@@ -190,38 +190,38 @@ export function SalaryCalculator() {
         </div>
 
         {result && (
-          <div className="result-container bg-[#f0fdf4] dark:bg-[#064e3b] border-2 border-[#10b981] rounded-lg p-6 space-y-4">
-            <h3 className="text-lg font-semibold text-[#1e293b] dark:text-[#f1f5f9]">
+          <div className="result-container bg-[#f0fdf4] border-2 border-[#10b981] rounded-lg p-6 space-y-4">
+            <h3 className="text-lg font-semibold text-[#1e293b]">
               Salary Breakdown
             </h3>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-sm text-[#64748b] dark:text-[#94a3b8]">Annual</p>
+                <p className="text-sm text-[#64748b]">Annual</p>
                 <p className="text-xl font-bold text-[#10b981] font-mono">
                   ${result.annual.toFixed(2)}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-[#64748b] dark:text-[#94a3b8]">Monthly</p>
+                <p className="text-sm text-[#64748b]">Monthly</p>
                 <p className="text-xl font-bold text-[#10b981] font-mono">
                   ${result.monthly.toFixed(2)}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-[#64748b] dark:text-[#94a3b8]">Weekly</p>
+                <p className="text-sm text-[#64748b]">Weekly</p>
                 <p className="text-xl font-bold text-[#10b981] font-mono">
                   ${result.weekly.toFixed(2)}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-[#64748b] dark:text-[#94a3b8]">Hourly</p>
+                <p className="text-sm text-[#64748b]">Hourly</p>
                 <p className="text-xl font-bold text-[#10b981] font-mono">
                   ${result.hourly.toFixed(2)}
                 </p>
               </div>
             </div>
             <div className="pt-4 border-t border-[#10b981]/30">
-              <p className="text-sm text-[#64748b] dark:text-[#94a3b8]">
+              <p className="text-sm text-[#64748b]">
                 Estimated Take-Home (after ~20% taxes)
               </p>
               <p className="text-2xl font-bold text-[#10b981] font-mono">

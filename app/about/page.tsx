@@ -43,19 +43,19 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-[#f8fafc] dark:bg-[#020617] py-16">
+    <div className="min-h-screen bg-[#f8fafc] py-16">
       <div className="container mx-auto px-4 max-w-4xl">
-        <div className="bg-white dark:bg-[#1e293b] rounded-lg border-2 border-[#e2e8f0] dark:border-[#334155] p-8">
-          <h1 className="text-4xl font-bold text-[#1e293b] dark:text-[#f1f5f9] mb-8">
+        <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-8">
+          <h1 className="text-4xl font-bold text-[#1e293b] mb-8">
             About Calculator360Pro
           </h1>
 
-          <div className="prose prose-slate dark:prose-invert max-w-none">
+          <div className="prose prose-slate max-w-none">
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-[#1e293b] dark:text-[#f1f5f9] mb-4">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
                 Our Mission
               </h2>
-              <p className="text-[#64748b] dark:text-[#94a3b8] leading-relaxed mb-4">
+              <p className="text-[#64748b] leading-relaxed mb-4">
                 Calculator360Pro is dedicated to providing free, accurate, and
                 easy-to-use online calculators for everyone. Whether you need to
                 calculate mortgage payments, determine your BMI, compute your GPA, or
@@ -64,14 +64,14 @@ export default function AboutPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-[#1e293b] dark:text-[#f1f5f9] mb-4">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
                 What We Offer
               </h2>
-              <p className="text-[#64748b] dark:text-[#94a3b8] leading-relaxed mb-4">
+              <p className="text-[#64748b] leading-relaxed mb-4">
                 Our platform features a wide range of calculators across multiple
                 categories:
               </p>
-              <ul className="list-disc list-inside text-[#64748b] dark:text-[#94a3b8] mb-4 space-y-2">
+              <ul className="list-disc list-inside text-[#64748b] mb-4 space-y-2">
                 <li>
                   <strong>Finance Calculators:</strong> Mortgage, loan, interest, tax,
                   and salary calculators
@@ -96,13 +96,13 @@ export default function AboutPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-[#1e293b] dark:text-[#f1f5f9] mb-4">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
                 Our Commitment
               </h2>
-              <p className="text-[#64748b] dark:text-[#94a3b8] leading-relaxed mb-4">
+              <p className="text-[#64748b] leading-relaxed mb-4">
                 We are committed to:
               </p>
-              <ul className="list-disc list-inside text-[#64748b] dark:text-[#94a3b8] mb-4 space-y-2">
+              <ul className="list-disc list-inside text-[#64748b] mb-4 space-y-2">
                 <li>Providing accurate and reliable calculations</li>
                 <li>Maintaining a fast and user-friendly interface</li>
                 <li>Ensuring privacy and data security</li>
@@ -112,10 +112,10 @@ export default function AboutPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-[#1e293b] dark:text-[#f1f5f9] mb-4">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
                 Contact Us
               </h2>
-              <p className="text-[#64748b] dark:text-[#94a3b8] leading-relaxed">
+              <p className="text-[#64748b] leading-relaxed">
                 If you have any questions, suggestions, or feedback, please don't
                 hesitate to contact us at: contact@calculator360pro.com
               </p>

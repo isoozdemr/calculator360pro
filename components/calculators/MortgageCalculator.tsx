@@ -77,7 +77,7 @@ export function MortgageCalculator() {
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-6">
-      <div className="bg-white dark:bg-[#1e293b] rounded-lg border-2 border-[#e2e8f0] dark:border-[#334155] p-6 space-y-6">
+      <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6 space-y-6">
         <div className="space-y-4">
           <Input
             label="Loan Amount ($)"
@@ -139,13 +139,13 @@ export function MortgageCalculator() {
         </div>
 
         {result && (
-          <div className="result-container bg-[#f0fdf4] dark:bg-[#064e3b] border-2 border-[#10b981] rounded-lg p-6 space-y-4">
-            <h3 className="text-lg font-semibold text-[#1e293b] dark:text-[#f1f5f9]">
+          <div className="result-container bg-[#f0fdf4] border-2 border-[#10b981] rounded-lg p-6 space-y-4">
+            <h3 className="text-lg font-semibold text-[#1e293b]">
               Results
             </h3>
             <div className="space-y-3">
               <div>
-                <p className="text-sm text-[#64748b] dark:text-[#94a3b8]">
+                <p className="text-sm text-[#64748b]">
                   Monthly Payment
                 </p>
                 <p className="text-3xl font-bold text-[#10b981] font-mono">
@@ -153,7 +153,7 @@ export function MortgageCalculator() {
                 </p>
               </div>
               <div>
-                <p className="text-sm text-[#64748b] dark:text-[#94a3b8]">
+                <p className="text-sm text-[#64748b]">
                   Total Interest
                 </p>
                 <p className="text-2xl font-bold text-[#10b981] font-mono">
@@ -161,7 +161,7 @@ export function MortgageCalculator() {
                 </p>
               </div>
               <div>
-                <p className="text-sm text-[#64748b] dark:text-[#94a3b8]">
+                <p className="text-sm text-[#64748b]">
                   Total Payment
                 </p>
                 <p className="text-2xl font-bold text-[#10b981] font-mono">

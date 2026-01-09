@@ -43,7 +43,7 @@ export function Navigation() {
   };
 
   return (
-    <nav className="bg-white dark:bg-[#1e293b] border-b-2 border-[#e2e8f0] dark:border-[#334155] sticky top-0 z-50">
+    <nav className="bg-white border-b-2 border-[#e2e8f0] sticky top-0 z-50">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center">
@@ -59,7 +59,7 @@ export function Navigation() {
           <div className="hidden md:flex items-center space-x-6">
             <Link
               href="/"
-              className="text-[#1e293b] dark:text-[#f1f5f9] hover:text-[#2563eb] dark:hover:text-[#60a5fa] font-medium transition-colors"
+              className="text-[#1e293b] hover:text-[#2563eb] font-medium transition-colors"
             >
               Home
             </Link>
@@ -71,7 +71,7 @@ export function Navigation() {
               onMouseLeave={handleMouseLeave}
             >
               <button
-                className="text-[#1e293b] dark:text-[#f1f5f9] hover:text-[#2563eb] dark:hover:text-[#60a5fa] font-medium transition-colors flex items-center"
+                className="text-[#1e293b] hover:text-[#2563eb] font-medium transition-colors flex items-center"
               >
                 Calculators
                 <svg
@@ -92,7 +92,7 @@ export function Navigation() {
               </button>
               {openDropdown === "calculators" && (
                 <div
-                  className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[800px] max-w-[calc(100vw-2rem)] bg-white dark:bg-[#1e293b] border-2 border-[#e2e8f0] dark:border-[#334155] rounded-lg shadow-xl p-6 overflow-x-hidden"
+                  className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[800px] max-w-[calc(100vw-2rem)] bg-white border-2 border-[#e2e8f0] rounded-lg shadow-xl p-6 overflow-x-hidden"
                   onMouseEnter={handleDropdownMouseEnter}
                   onMouseLeave={handleDropdownMouseLeave}
                 >
@@ -103,7 +103,7 @@ export function Navigation() {
                         <div key={category.slug} className="space-y-3 min-w-0">
                           <Link
                             href={`/calculators/${category.slug}`}
-                            className="block font-bold text-base text-[#1e293b] dark:text-[#f1f5f9] hover:text-[#2563eb] dark:hover:text-[#60a5fa] transition-colors mb-3 pb-2 border-b border-[#e2e8f0] dark:border-[#334155]"
+                            className="block font-bold text-base text-[#1e293b] hover:text-[#2563eb] transition-colors mb-3 pb-2 border-b border-[#e2e8f0]"
                           >
                             {category.name}
                           </Link>
@@ -112,7 +112,7 @@ export function Navigation() {
                               <li key={calc.id}>
                                 <Link
                                   href={`/calculators/${calc.category}/${calc.slug}`}
-                                  className="block text-sm text-[#64748b] dark:text-[#94a3b8] hover:text-[#2563eb] dark:hover:text-[#60a5fa] transition-colors py-1 leading-relaxed"
+                                  className="block text-sm text-[#64748b] hover:text-[#2563eb] transition-colors py-1 leading-relaxed"
                                 >
                                   {calc.name}
                                 </Link>
@@ -122,7 +122,7 @@ export function Navigation() {
                           {categoryCalculators.length > 6 && (
                             <Link
                               href={`/calculators/${category.slug}`}
-                              className="block text-xs font-semibold text-[#2563eb] dark:text-[#60a5fa] hover:underline mt-3"
+                              className="block text-xs font-semibold text-[#2563eb] hover:underline mt-3"
                             >
                               +{categoryCalculators.length - 6} more →
                             </Link>
@@ -131,10 +131,10 @@ export function Navigation() {
                       );
                     })}
                   </div>
-                  <div className="mt-6 pt-4 border-t border-[#e2e8f0] dark:border-[#334155]">
+                  <div className="mt-6 pt-4 border-t border-[#e2e8f0]">
                     <Link
                       href="/calculators"
-                      className="block text-center text-sm font-semibold text-[#2563eb] dark:text-[#60a5fa] hover:underline"
+                      className="block text-center text-sm font-semibold text-[#2563eb] hover:underline"
                     >
                       View All Calculators →
                     </Link>
@@ -145,13 +145,13 @@ export function Navigation() {
 
             <Link
               href="/blog"
-              className="text-[#1e293b] dark:text-[#f1f5f9] hover:text-[#2563eb] dark:hover:text-[#60a5fa] font-medium transition-colors"
+              className="text-[#1e293b] hover:text-[#2563eb] font-medium transition-colors"
             >
               Blog
             </Link>
             <Link
               href="/about"
-              className="text-[#1e293b] dark:text-[#f1f5f9] hover:text-[#2563eb] dark:hover:text-[#60a5fa] font-medium transition-colors"
+              className="text-[#1e293b] hover:text-[#2563eb] font-medium transition-colors"
             >
               About
             </Link>
@@ -159,7 +159,7 @@ export function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-[#1e293b] dark:text-[#f1f5f9]"
+            className="md:hidden text-[#1e293b]"
             onClick={() => setOpenDropdown(openDropdown === "mobile" ? null : "mobile")}
             aria-label="Toggle menu"
           >
@@ -190,18 +190,18 @@ export function Navigation() {
 
         {/* Mobile Menu */}
         {openDropdown === "mobile" && (
-          <div className="md:hidden py-4 border-t border-[#e2e8f0] dark:border-[#334155]">
+          <div className="md:hidden py-4 border-t border-[#e2e8f0]">
             <div className="space-y-4">
               <Link
                 href="/"
-                className="block text-[#1e293b] dark:text-[#f1f5f9] hover:text-[#2563eb] dark:hover:text-[#60a5fa] font-medium"
+                className="block text-[#1e293b] hover:text-[#2563eb] font-medium"
                 onClick={() => setOpenDropdown(null)}
               >
                 Home
               </Link>
               <Link
                 href="/calculators"
-                className="block text-[#1e293b] dark:text-[#f1f5f9] hover:text-[#2563eb] dark:hover:text-[#60a5fa] font-medium"
+                className="block text-[#1e293b] hover:text-[#2563eb] font-medium"
                 onClick={() => setOpenDropdown(null)}
               >
                 All Calculators
@@ -210,7 +210,7 @@ export function Navigation() {
                 <div key={category.slug} className="pl-4">
                   <Link
                     href={`/calculators/${category.slug}`}
-                    className="block text-[#64748b] dark:text-[#94a3b8] hover:text-[#2563eb] dark:hover:text-[#60a5fa] font-medium mb-2"
+                    className="block text-[#64748b] hover:text-[#2563eb] font-medium mb-2"
                     onClick={() => setOpenDropdown(null)}
                   >
                     {category.name}
@@ -220,7 +220,7 @@ export function Navigation() {
                       <li key={calc.id}>
                         <Link
                           href={`/calculators/${calc.category}/${calc.slug}`}
-                          className="block text-sm text-[#64748b] dark:text-[#94a3b8] hover:text-[#2563eb] dark:hover:text-[#60a5fa]"
+                          className="block text-sm text-[#64748b] hover:text-[#2563eb]"
                           onClick={() => setOpenDropdown(null)}
                         >
                           {calc.name}
@@ -232,14 +232,14 @@ export function Navigation() {
               ))}
               <Link
                 href="/blog"
-                className="block text-[#1e293b] dark:text-[#f1f5f9] hover:text-[#2563eb] dark:hover:text-[#60a5fa] font-medium"
+                className="block text-[#1e293b] hover:text-[#2563eb] font-medium"
                 onClick={() => setOpenDropdown(null)}
               >
                 Blog
               </Link>
               <Link
                 href="/about"
-                className="block text-[#1e293b] dark:text-[#f1f5f9] hover:text-[#2563eb] dark:hover:text-[#60a5fa] font-medium"
+                className="block text-[#1e293b] hover:text-[#2563eb] font-medium"
                 onClick={() => setOpenDropdown(null)}
               >
                 About

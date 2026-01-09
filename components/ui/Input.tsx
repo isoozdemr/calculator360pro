@@ -20,7 +20,7 @@ export function Input({ label, error, helperText, className, id, ...props }: Inp
       {label && (
         <label
           htmlFor={inputId}
-          className="block text-sm font-medium text-[#1e293b] dark:text-[#f1f5f9] mb-1.5"
+          className="block text-sm font-medium text-[#1e293b] mb-1.5"
         >
           {label}
         </label>
@@ -29,7 +29,7 @@ export function Input({ label, error, helperText, className, id, ...props }: Inp
         id={inputId}
         className={cn(
           "w-full px-4 py-2.5 text-base border-2 border-[#e2e8f0] rounded-lg",
-          "bg-white dark:bg-[#1e293b] text-[#1e293b] dark:text-[#f1f5f9]",
+          "bg-white text-[#1e293b]",
           "focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:border-transparent",
           "disabled:opacity-50 disabled:cursor-not-allowed",
           "min-h-[44px]",
@@ -43,7 +43,7 @@ export function Input({ label, error, helperText, className, id, ...props }: Inp
       {/* Reserve space for error/helper text to prevent CLS - always render container with min-height */}
       <div className="min-h-[20px] mt-1.5">
         {helperText && !error && (
-          <p id={helperId} className="text-[11px] text-[#64748b] dark:text-[#94a3b8] leading-tight">
+          <p id={helperId} className="text-[11px] text-[#64748b] leading-tight">
             {helperText}
           </p>
         )}

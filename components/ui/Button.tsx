@@ -22,7 +22,7 @@ export function Button({
     secondary:
       "bg-[#10b981] text-white hover:bg-[#059669] active:bg-[#047857]",
     outline:
-      "border-2 border-[#e2e8f0] text-[#1e293b] hover:bg-[#f1f5f9] dark:border-[#334155] dark:text-[#f1f5f9] dark:hover:bg-[#1e293b]",
+      "border-2 border-[#e2e8f0] text-[#1e293b] hover:bg-[#f1f5f9]",
   };
 
   const sizes = {
