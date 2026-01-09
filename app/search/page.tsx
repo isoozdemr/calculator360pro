@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { getAllCalculators } from "@/lib/calculators/definitions";
 import { getAllBlogPosts } from "@/lib/blog/posts";
 
-export default function SearchPage() {
+function SearchContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState(searchParams.get("q") || "");
@@ -188,3 +188,23 @@ export default function SearchPage() {
   );
 }
 
+export default function SearchPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-[#f8fafc] dark:bg-[#020617] py-16">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="mb-8">
+            <h1 className="text-4xl md:text-5xl font-bold text-[#1e293b] dark:text-[#f1f5f9] mb-4">
+              Search
+            </h1>
+            <p className="text-lg text-[#64748b] dark:text-[#94a3b8]">
+              Loading...
+            </p>
+          </div>
+        </div>
+      </div>
+    }>
+      <SearchContent />
+    </Suspense>
+  );
+}
