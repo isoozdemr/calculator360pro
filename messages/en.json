@@ -1,0 +1,36 @@
+{
+  "common": {
+    "siteName": "Calculator360Pro",
+    "siteDescription": "Free online calculators for finance, health, education, and more",
+    "calculate": "Calculate",
+    "reset": "Reset",
+    "result": "Result",
+    "results": "Results",
+    "learnMore": "Learn More",
+    "relatedCalculators": "Related Calculators",
+    "categories": "Categories"
+  },
+  "nav": {
+    "home": "Home",
+    "calculators": "Calculators",
+    "blog": "Blog",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "categories": {
+    "finance": "Finance",
+    "health": "Health",
+    "education": "Education",
+    "math": "Math",
+    "dateTime": "Date & Time"
+  },
+  "footer": {
+    "description": "Calculator360Pro provides free, accurate calculators for everyday needs.",
+    "links": "Quick Links",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "copyright": "© 2024 Calculator360Pro. All rights reserved."
+  }
+}
+

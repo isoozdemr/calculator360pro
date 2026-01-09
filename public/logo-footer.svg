@@ -1,0 +1,50 @@
+<svg width="360" height="60" viewBox="0 0 360 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Calculator Icon (from favicon) - Dark version for footer -->
+  <g transform="translate(8, 14)">
+    <!-- Icon background with gradient -->
+    <defs>
+      <linearGradient id="iconGradientFooter" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+      </linearGradient>
+    </defs>
+    
+    <!-- Icon background -->
+    <rect x="0" y="0" width="32" height="32" rx="6" fill="url(#iconGradientFooter)"/>
+    
+    <!-- Calculator body - Black for visibility on dark background -->
+    <rect x="6" y="6" width="20" height="20" rx="3" fill="#1e293b"/>
+    
+    <!-- Calculator screen - Light blue for visibility -->
+    <rect x="9" y="9" width="14" height="3" rx="1" fill="#60a5fa"/>
+    
+    <!-- Calculator buttons - Gray for visibility -->
+    <rect x="9" y="14" width="3" height="3" rx="0.5" fill="#94a3b8"/>
+    <rect x="13" y="14" width="3" height="3" rx="0.5" fill="#94a3b8"/>
+    <rect x="17" y="14" width="3" height="3" rx="0.5" fill="#94a3b8"/>
+    <rect x="21" y="14" width="3" height="3" rx="0.5" fill="#60a5fa"/>
+    
+    <rect x="9" y="18" width="3" height="3" rx="0.5" fill="#94a3b8"/>
+    <rect x="13" y="18" width="3" height="3" rx="0.5" fill="#94a3b8"/>
+    <rect x="17" y="18" width="3" height="3" rx="0.5" fill="#94a3b8"/>
+    <rect x="21" y="18" width="3" height="3" rx="0.5" fill="#60a5fa"/>
+    
+    <rect x="9" y="22" width="3" height="3" rx="0.5" fill="#94a3b8"/>
+    <rect x="13" y="22" width="3" height="3" rx="0.5" fill="#94a3b8"/>
+    <rect x="17" y="22" width="3" height="3" rx="0.5" fill="#94a3b8"/>
+    <rect x="21" y="22" width="3" height="3" rx="0.5" fill="#60a5fa"/>
+  </g>
+  
+  <!-- Text with white gradient for dark background -->
+  <defs>
+    <linearGradient id="textGradientFooter" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f1f5f9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <text x="48" y="42" font-family="Arial, sans-serif" font-size="26" font-weight="900" fill="url(#textGradientFooter)" letter-spacing="-0.5" textLength="280">
+    Calculator360Pro
+  </text>
+</svg>
+
