@@ -92,15 +92,15 @@ export function Navigation() {
               </button>
               {openDropdown === "calculators" && (
                 <div
-                  className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[800px] max-w-[calc(100vw-2rem)] bg-white dark:bg-[#1e293b] border-2 border-[#e2e8f0] dark:border-[#334155] rounded-lg shadow-xl p-6"
+                  className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[800px] max-w-[calc(100vw-2rem)] bg-white dark:bg-[#1e293b] border-2 border-[#e2e8f0] dark:border-[#334155] rounded-lg shadow-xl p-6 overflow-x-hidden"
                   onMouseEnter={handleDropdownMouseEnter}
                   onMouseLeave={handleDropdownMouseLeave}
                 >
-                  <div className="grid grid-cols-5 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-full">
                     {categories.map((category) => {
                       const categoryCalculators = getCategoryCalculators(category.slug);
                       return (
-                        <div key={category.slug} className="space-y-3">
+                        <div key={category.slug} className="space-y-3 min-w-0">
                           <Link
                             href={`/calculators/${category.slug}`}
                             className="block font-bold text-base text-[#1e293b] dark:text-[#f1f5f9] hover:text-[#2563eb] dark:hover:text-[#60a5fa] transition-colors mb-3 pb-2 border-b border-[#e2e8f0] dark:border-[#334155]"
