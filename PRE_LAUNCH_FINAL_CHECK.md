@@ -250,9 +250,10 @@
 - [ ] Google Rich Results Test ile schema validation
 - [ ] Lighthouse audit (Performance, SEO, Accessibility)
 - [ ] Cross-browser test (Chrome, Firefox, Safari, Edge)
-- [ ] Mobile responsiveness test
+- [x] Mobile responsiveness test ✅ (Yatay scroll sorunu düzeltildi)
 - [ ] Tüm calculator'ların çalıştığını test et
 - [ ] Form validation'ların çalıştığını test et
+- [x] Dark mode devre dışı bırakıldı (light mode only) ✅
 
 ### 3. Google Services Setup
 - [ ] Google Search Console'a site ekle
@@ -268,11 +269,13 @@
 3. ✅ **Meta Tags** - Tüm sayfalarda mevcut ve optimize
 4. ✅ **Schema Markup** - Tüm gerekli schema'lar mevcut
 5. ✅ **SEO Content** - Tüm calculator'larda 2000+ karakter
-6. ✅ **Navigation** - Hover dropdown, responsive
+6. ✅ **Navigation** - Hover dropdown, responsive (mobil: 1 col, desktop: 5 col)
 7. ✅ **Assets** - Logo, favicon, OG image mevcut
 8. ✅ **Performance** - Next.js optimizasyonları aktif
 9. ✅ **Security** - Security headers mevcut
 10. ✅ **Error Handling** - 404 sayfası mevcut
+11. ✅ **Mobile Optimization** - Yatay scroll sorunu düzeltildi, overflow-x hidden
+12. ✅ **Theme** - Dark mode devre dışı, light mode only
 
 ---
 
@@ -316,4 +319,32 @@
 **Son Güncelleme:** 2026-01-09  
 **Hazırlayan:** AI Assistant  
 **Durum:** ✅ Canlıya hazır (environment variables ve testler gerekli)
+
+---
+
+## ✅ SON YAPILAN DÜZELTMELER (2026-01-09)
+
+### Mobile & Responsive Fixes
+- ✅ **Mobil yatay scroll sorunu düzeltildi**
+  - `html` ve `body` elementlerine `overflow-x: hidden` eklendi
+  - `max-width: 100vw` eklendi
+  - Navigation dropdown'a `overflow-x-hidden` eklendi
+- ✅ **Navigation dropdown responsive yapıldı**
+  - Mobil: 1 sütun (`grid-cols-1`)
+  - Tablet: 2-3 sütun (`sm:grid-cols-2 md:grid-cols-3`)
+  - Desktop: 5 sütun (`lg:grid-cols-5`)
+  - `min-w-0` eklendi taşma sorunlarını önlemek için
+
+### Theme Fixes
+- ✅ **Dark mode devre dışı bırakıldı**
+  - `@media (prefers-color-scheme: dark)` CSS kuralı devre dışı bırakıldı
+  - `html` elementine `color-scheme: light` eklendi
+  - Site her zaman light mode'da görünecek
+
+**Değiştirilen Dosyalar:**
+- `app/globals.css` - Dark mode devre dışı, overflow kontrolleri
+- `app/layout.tsx` - HTML elementine `overflow-x-hidden` class'ı
+- `components/layout/Navigation.tsx` - Responsive grid yapısı
+
+**Commit:** `737209f` - "Fix mobile horizontal scroll and disable dark mode"
 

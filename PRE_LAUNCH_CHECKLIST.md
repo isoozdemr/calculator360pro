@@ -164,14 +164,16 @@ NEXT_PUBLIC_ADSENSE_SLOT_SIDEBAR=1234567892
 - [ ] Form validations çalışıyor mu test et
 - [ ] Navigation linkleri çalışıyor mu test et
 - [ ] 404 sayfası çalışıyor mu test et
-- [ ] Dark mode çalışıyor mu test et
+- [x] Dark mode devre dışı bırakıldı (light mode only) ✅
 
 ### Performance Tests
 - [ ] Lighthouse score kontrol et
 - [ ] Core Web Vitals kontrol et
-- [ ] CLS sorunları var mı kontrol et ✅ (Düzeltildi)
+- [x] CLS sorunları var mı kontrol et ✅ (Düzeltildi)
 - [ ] LCP optimizasyonu kontrol et
 - [ ] INP optimizasyonu kontrol et
+- [x] Mobil yatay scroll sorunu düzeltildi ✅ (overflow-x hidden eklendi)
+- [x] Navigation dropdown responsive yapıldı ✅ (1-5 columns based on screen size)
 
 ## 📝 NOTLAR
 
@@ -180,6 +182,9 @@ NEXT_PUBLIC_ADSENSE_SLOT_SIDEBAR=1234567892
 - Tüm calculator'lar 2000+ karakter içeriğe sahip ✅
 - Form validation'lar çalışıyor ✅
 - CLS sorunları düzeltildi ✅
+- Dark mode devre dışı bırakıldı - site her zaman light mode'da görünecek ✅
+- Mobil yatay scroll sorunu düzeltildi (html/body overflow-x hidden) ✅
+- Navigation dropdown responsive yapıldı (mobil: 1 col, tablet: 2-3 col, desktop: 5 col) ✅
 
 ## 🚀 CANLIYA ÇIKMADAN ÖNCE SON KONTROL
 
