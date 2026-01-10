@@ -61,16 +61,53 @@ Math/
 
 ## URL & Slug Conventions
 
+### ⚠️ CRITICAL: URL Structure is IMMUTABLE
+
+**URL structure MUST NEVER change once established. Changing URLs breaks SEO, external links, and user bookmarks.**
+
+**See [URL_STANDARDS.md](../URL_STANDARDS.md) for complete documentation.**
+
 ### URL Structure
 
-**Pattern:** `/calculators/{category}/{slug}`
+**Pattern:** `/calculators/{category-slug}/{calculator-slug}`
 
 **Examples:**
 - `/calculators/finance/mortgage-calculator`
 - `/calculators/health/bmi-calculator`
 - `/calculators/education/gpa-calculator`
 - `/calculators/math/percentage-calculator`
-- `/calculators/date-time/age-calculator`
+- `/calculators/date-time/age-calculator` ✅ (NOT `/calculators/dateTime/age-calculator`)
+
+### ⚠️ CRITICAL: Category Key vs Category Slug
+
+**IMPORTANT DISTINCTION:**
+
+1. **Category Key (Internal):**
+   - Format: `camelCase` (e.g., `dateTime`, `finance`, `health`)
+   - Used in: Code, TypeScript types, calculator definitions
+   - Location: `CALCULATOR_CATEGORIES` object keys
+
+2. **Category Slug (URL):**
+   - Format: `kebab-case` (e.g., `date-time`, `finance`, `health`)
+   - Used in: All URLs, links, navigation, sitemap
+   - Location: `CALCULATOR_CATEGORIES[].slug` property
+
+**⚠️ MANDATORY: Always use helper functions:**
+```typescript
+import { getCategorySlugByKey, getCategoryKeyBySlug } from "@/lib/constants";
+
+// Convert key to slug for URLs
+const url = `/calculators/${getCategorySlugByKey(calculator.category)}/${calculator.slug}`;
+
+// Convert slug to key for filtering
+const categoryKey = getCategoryKeyBySlug(urlSlug);
+```
+
+**❌ NEVER do this:**
+```typescript
+// WRONG - Using category key directly in URL
+const url = `/calculators/${calculator.category}/${calculator.slug}`;
+```
 
 ### Slug Rules
 
@@ -79,31 +116,35 @@ Math/
 3. **Keywords:** Include primary keyword
 4. **Uniqueness:** Must be unique across all calculators
 5. **SEO:** Descriptive, user-friendly
+6. **Stability:** Once set, NEVER change
 
 **Good Examples:**
 - `mortgage-calculator`
 - `bmi-calculator`
 - `compound-interest-calculator`
 - `percentage-increase-calculator`
+- `date-time` (category slug)
 
 **Bad Examples:**
 - `calc1`, `calc2` (not descriptive)
 - `mortgage_calculator` (underscores)
-- `MortgageCalculator` (camelCase)
+- `MortgageCalculator` (camelCase - use for keys, not URLs)
 - `mortgage-calc` (abbreviation loses keyword)
+- `dateTime` (camelCase - use for keys, not URLs)
 
 ### Category Slug Rules
 
 1. **Format:** Single word or kebab-case
 2. **Consistency:** Match category name
 3. **SEO:** Include primary category keyword
+4. **Stability:** Once set, NEVER change
 
 **Current Categories:**
-- `finance`
-- `health`
-- `education`
-- `math`
-- `date-time`
+- `finance` (key: `finance`, slug: `finance`)
+- `health` (key: `health`, slug: `health`)
+- `education` (key: `education`, slug: `education`)
+- `math` (key: `math`, slug: `math`)
+- `date-time` (key: `dateTime`, slug: `date-time`) ⚠️ Note the difference!
 
 ## Internal Linking Strategy
 
@@ -222,18 +263,47 @@ Homepage
 
 ### Content Depth Requirements
 
+**🎯 PRIMARY GOALS:**
+- **Google SEO:** Achieve top 10 rankings in Google organic search results
+- **AdSense Compliance:** Follow all Google AdSense policies and guidelines
+- **Organic Search:** Maximize organic traffic through deep SEO optimization
+- **Keyword Optimization:** Target the most searched keywords naturally throughout content
+
 **Per Calculator:**
-- Minimum 300 words of unique content
+- **⚠️ MANDATORY: Minimum 2000+ words** of unique, comprehensive, deep SEO-optimized content
+- **Deep SEO Optimization:** Content must be optimized for Google's ranking algorithms
+- **AdSense Compliant:** Content must follow all Google AdSense policies
+- **High-Volume Keywords:** Content must include the most searched keywords
+- **Top 10 Ranking Goal:** Content must be designed to rank in Google's top 10 search results
 - FAQ section (3-5 questions)
 - How-to guide or explanation
 - Related calculators section
 - Schema markup
 
 **Per Category:**
-- Category description (200+ words)
+- **⚠️ MANDATORY: Minimum 2000+ words** of unique, comprehensive, deep SEO-optimized content (REQUIRED for all category pages)
+- **Deep SEO Optimization:** Content must be optimized for Google's ranking algorithms
+- **AdSense Compliant:** Content must follow all Google AdSense policies
+- **High-Volume Keywords:** Content must include the most searched keywords
+- **Top 10 Ranking Goal:** Content must be designed to rank in Google's top 10 search results
+- Category description (comprehensive, 2000+ words)
 - Category-specific tips/guides
 - Featured calculators section
 - Category FAQ (if applicable)
+- Detailed use cases and real-world examples
+- Why choose our calculators section
+- Best practices and tips
+
+**⚠️ MANDATORY CATEGORY PAGE CONTENT REQUIREMENT:**
+- **All category pages (existing and new) MUST have minimum 2000+ words** of unique, comprehensive, deep SEO-optimized content
+- **Deep SEO Optimization:** Content must be optimized for Google's ranking algorithms with natural keyword integration
+- **AdSense Compliance:** Content must follow all Google AdSense policies and guidelines
+- **High-Volume Keywords:** Content must include the most searched keywords related to the category topic
+- **Organic Search Focus:** Content structure and optimization must target organic search visibility
+- **Top 10 Ranking Goal:** Content must be designed to rank in Google's top 10 search results
+- Content must be deep, comprehensive, and provide genuine value
+- Content must follow the same quality standards as calculator pages (DEEP & COMPREHENSIVE, UNIQUE & ORIGINAL, RANKING-OPTIMIZED, USER-FIRST, E-E-A-T signals)
+- This requirement applies to ALL category pages without exception
 
 ## Expansion System
 
@@ -263,12 +333,20 @@ Homepage
 **Checklist:**
 - [ ] Calculator component created
 - [ ] Calculator definition added to `definitions.ts`
+  - [ ] Category uses KEY (camelCase), not slug
+  - [ ] Slug uses kebab-case
 - [ ] Page route created (if needed)
 - [ ] Schema markup implemented
 - [ ] Internal links updated
+  - [ ] ⚠️ All links use `getCategorySlugByKey()` helper function
+  - [ ] No direct `calculator.category` in URLs
 - [ ] Content written
 - [ ] SEO optimization
 - [ ] Testing
+  - [ ] All category links work (Navigation, Footer, Homepage)
+  - [ ] Calculator appears in correct category page
+  - [ ] No 404 errors
+  - [ ] URLs use correct slugs (kebab-case)
 
 #### Step 4: Launch
 
@@ -301,11 +379,26 @@ Homepage
 
 #### Thin Content Prevention
 
-**Minimum Requirements:**
-- 300+ words of unique content
+**Minimum Requirements (Calculators):**
+- **⚠️ MANDATORY: Minimum 2000+ words** of unique, comprehensive, deep SEO-optimized content
+- **Deep SEO Optimization:** Optimized for Google's ranking algorithms
+- **AdSense Compliant:** Follows all Google AdSense policies
+- **High-Volume Keywords:** Includes the most searched keywords
+- **Top 10 Ranking Goal:** Designed to rank in Google's top 10 search results
 - 3+ FAQ items
 - Calculator explanation/guide
 - Related calculators section
+
+**Minimum Requirements (Category Pages):**
+- **⚠️ MANDATORY: Minimum 2000+ words** of unique, comprehensive, deep SEO-optimized content
+- **Deep SEO Optimization:** Optimized for Google's ranking algorithms
+- **AdSense Compliant:** Follows all Google AdSense policies
+- **High-Volume Keywords:** Includes the most searched keywords
+- **Top 10 Ranking Goal:** Designed to rank in Google's top 10 search results
+- Category description (comprehensive)
+- Category-specific tips/guides
+- Featured calculators section
+- Use cases and examples
 
 **Quality Checks:**
 - Readability score

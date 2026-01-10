@@ -89,12 +89,20 @@ export function Footer() {
                   Terms of Service
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="hover:text-white transition-colors"
+                >
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-[#334155] pt-8 text-center text-sm text-[#94a3b8]">
-          <p>© 2024 Calculator360Pro. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Calculator360Pro. All rights reserved.</p>
         </div>
       </div>
     </footer>

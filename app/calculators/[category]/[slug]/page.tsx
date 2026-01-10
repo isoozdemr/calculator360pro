@@ -3,6 +3,7 @@ import { getCalculator } from "@/lib/calculators/definitions";
 import { generateCalculatorMetadata } from "@/components/SEO/MetaTags";
 import { SchemaMarkup } from "@/components/SEO/SchemaMarkup";
 import { CalculatorPage } from "@/components/calculators/CalculatorPage";
+import { getCategorySlugByKey } from "@/lib/constants";
 
 interface PageProps {
   params: Promise<{
@@ -13,10 +14,11 @@ interface PageProps {
 
 export async function generateStaticParams() {
   const { getAllCalculators } = await import("@/lib/calculators/definitions");
+  const { getCategorySlugByKey } = await import("@/lib/constants");
   const calculators = getAllCalculators();
   
   return calculators.map((calc) => ({
-    category: calc.category,
+    category: getCategorySlugByKey(calc.category),
     slug: calc.slug,
   }));
 }

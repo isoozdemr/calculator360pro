@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { getAllCalculators } from "@/lib/calculators/definitions";
 import { getAllBlogPosts } from "@/lib/blog/posts";
+import { getCategorySlugByKey } from "@/lib/constants";
 
 function SearchContent() {
   const searchParams = useSearchParams();
@@ -101,7 +102,7 @@ function SearchContent() {
               {filteredResults.calculators.map((calc) => (
                 <Link
                   key={calc.id}
-                  href={`/calculators/${calc.category}/${calc.slug}`}
+                  href={`/calculators/${getCategorySlugByKey(calc.category)}/${calc.slug}`}
                   className="block p-4 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors bg-white"
                 >
                   <h3 className="font-semibold text-[#1e293b] mb-2">

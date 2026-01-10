@@ -98,3 +98,14 @@ html {
 .consent-banner {
   animation: slideUp 0.3s ease-out;
 }
+
+/* Prose link styling to match site theme */
+.prose a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.prose a:hover {
+  text-decoration: underline;
+}

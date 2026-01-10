@@ -1,12 +1,12 @@
 import { Metadata } from "next";
 import { CalculatorDefinition } from "@/lib/calculators/definitions";
 import { BlogPost } from "@/lib/blog/posts";
-import { SITE_URL } from "@/lib/constants";
+import { SITE_URL, getCategorySlugByKey } from "@/lib/constants";
 
 export function generateCalculatorMetadata(
   calculator: CalculatorDefinition
 ): Metadata {
-  const url = `${SITE_URL}/calculators/${calculator.category}/${calculator.slug}`;
+  const url = `${SITE_URL}/calculators/${getCategorySlugByKey(calculator.category)}/${calculator.slug}`;
 
   return {
     title: `${calculator.name} - Free Online Calculator`,

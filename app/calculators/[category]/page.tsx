@@ -2,7 +2,8 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
 import { getCalculatorsByCategory } from "@/lib/calculators/definitions";
-import { CALCULATOR_CATEGORIES, SITE_URL } from "@/lib/constants";
+import { CALCULATOR_CATEGORIES, SITE_URL, getCategoryKeyBySlug, getCategorySlugByKey } from "@/lib/constants";
+import { CATEGORY_CONTENT } from "@/lib/categories/content";
 
 interface PageProps {
   params: Promise<{
@@ -69,13 +70,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function CategoryPage({ params }: PageProps) {
   const { category } = await params;
-  const categoryInfo = CALCULATOR_CATEGORIES[category as keyof typeof CALCULATOR_CATEGORIES];
-
-  if (!categoryInfo) {
+  const categoryKey = getCategoryKeyBySlug(category);
+  
+  if (!categoryKey) {
     notFound();
   }
 
-  const calculators = getCalculatorsByCategory(category as any);
+  const categoryInfo = CALCULATOR_CATEGORIES[categoryKey];
+  const calculators = getCalculatorsByCategory(categoryKey);
 
   return (
     <div className="min-h-screen bg-[#f8fafc] py-16">
@@ -93,7 +95,7 @@ export default async function CategoryPage({ params }: PageProps) {
           {calculators.map((calculator) => (
             <Link
               key={calculator.id}
-              href={`/calculators/${calculator.category}/${calculator.slug}`}
+              href={`/calculators/${getCategorySlugByKey(calculator.category)}/${calculator.slug}`}
               className="block p-6 bg-white rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors"
             >
               <h2 className="text-xl font-bold text-[#1e293b] mb-3">
@@ -105,6 +107,16 @@ export default async function CategoryPage({ params }: PageProps) {
             </Link>
           ))}
         </div>
+
+        {/* Category Content Section */}
+        {CATEGORY_CONTENT[category] && (
+          <div className="mt-12 bg-white rounded-lg border-2 border-[#e2e8f0] p-8">
+            <div
+              className="prose prose-slate max-w-none"
+              dangerouslySetInnerHTML={{ __html: CATEGORY_CONTENT[category] }}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

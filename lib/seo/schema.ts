@@ -1,5 +1,5 @@
 import { CalculatorDefinition } from "@/lib/calculators/definitions";
-import { SITE_URL } from "@/lib/constants";
+import { SITE_URL, getCategorySlugByKey } from "@/lib/constants";
 
 export function generateCalculatorSchema(calculator: CalculatorDefinition) {
   return {
@@ -7,7 +7,7 @@ export function generateCalculatorSchema(calculator: CalculatorDefinition) {
     "@type": "WebApplication",
     "name": calculator.name,
     "description": calculator.description,
-    "url": `${SITE_URL}/calculators/${calculator.category}/${calculator.slug}`,
+    "url": `${SITE_URL}/calculators/${getCategorySlugByKey(calculator.category)}/${calculator.slug}`,
     "applicationCategory": "UtilityApplication",
     "operatingSystem": "Web",
     "offers": {

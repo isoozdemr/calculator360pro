@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { getAllCalculators } from "@/lib/calculators/definitions";
-import { CALCULATOR_CATEGORIES, SITE_URL } from "@/lib/constants";
+import { CALCULATOR_CATEGORIES, SITE_URL, getCategoryKeyBySlug, getCategorySlugByKey } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "All Calculators",
@@ -63,9 +63,10 @@ export default function CalculatorsPage() {
         </div>
 
         {categories.map((category) => {
-          const categoryCalculators = calculators.filter(
-            (calc) => calc.category === category.slug
-          );
+          const categoryKey = getCategoryKeyBySlug(category.slug);
+          const categoryCalculators = categoryKey
+            ? calculators.filter((calc) => calc.category === categoryKey)
+            : [];
 
           if (categoryCalculators.length === 0) return null;
 
@@ -84,7 +85,7 @@ export default function CalculatorsPage() {
                 {categoryCalculators.map((calculator) => (
                   <Link
                     key={calculator.id}
-                    href={`/calculators/${calculator.category}/${calculator.slug}`}
+                    href={`/calculators/${getCategorySlugByKey(calculator.category)}/${calculator.slug}`}
                     className="block p-4 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors"
                   >
                     <h3 className="font-semibold text-[#1e293b] mb-2">

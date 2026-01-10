@@ -117,94 +117,132 @@ export function ScientificCalculator() {
             </div>
           </div>
 
-          <div className="grid grid-cols-5 gap-2">
-            {/* Scientific functions */}
-            {["sin", "cos", "tan", "log", "ln"].map((func) => (
-              <Button
-                key={func}
-                onClick={() => handleFunction(func)}
-                variant="outline"
-                size="sm"
-                className="text-xs"
-              >
-                {func}
-              </Button>
-            ))}
-            {["√", "x²", "1/x"].map((func) => (
-              <Button
-                key={func}
-                onClick={() => handleFunction(func)}
-                variant="outline"
-                size="sm"
-                className="text-xs"
-              >
-                {func}
-              </Button>
-            ))}
-            <Button onClick={clear} variant="outline" size="sm" className="col-span-2">
-              Clear
-            </Button>
+          <div className="space-y-2">
+            {/* Scientific Functions Row 1 */}
+            <div className="grid grid-cols-5 gap-2">
+              {["sin", "cos", "tan", "log", "ln"].map((func) => (
+                <Button
+                  key={func}
+                  onClick={() => handleFunction(func)}
+                  variant="outline"
+                  size="sm"
+                  className="text-xs font-medium"
+                >
+                  {func}
+                </Button>
+              ))}
+            </div>
 
-            {/* Numbers and operations */}
-            {[7, 8, 9, "÷"].map((item) => (
-              <Button
-                key={item}
-                onClick={() =>
-                  typeof item === "number"
-                    ? inputNumber(String(item))
-                    : performOperation(item)
-                }
-                variant={typeof item === "number" ? "outline" : "primary"}
-                size="sm"
+            {/* Scientific Functions Row 2 */}
+            <div className="grid grid-cols-5 gap-2">
+              {["√", "x²", "1/x"].map((func) => (
+                <Button
+                  key={func}
+                  onClick={() => handleFunction(func)}
+                  variant="outline"
+                  size="sm"
+                  className="text-xs font-medium"
+                >
+                  {func}
+                </Button>
+              ))}
+              <Button 
+                onClick={clear} 
+                variant="outline" 
+                size="sm" 
+                className="col-span-2 font-medium bg-[#fee2e2] hover:bg-[#fecaca] text-[#dc2626] border-[#fca5a5]"
               >
-                {item}
+                Clear
               </Button>
-            ))}
-            {[4, 5, 6, "×"].map((item) => (
+            </div>
+
+            {/* Main Calculator Layout - Standard Universal Layout */}
+            <div className="grid grid-cols-4 gap-2">
+              {/* Row 1: 7, 8, 9, ÷ */}
+              {[7, 8, 9, "÷"].map((item) => (
+                <Button
+                  key={item}
+                  onClick={() =>
+                    typeof item === "number"
+                      ? inputNumber(String(item))
+                      : performOperation(item)
+                  }
+                  variant={typeof item === "number" ? "outline" : "primary"}
+                  size="sm"
+                  className="font-medium"
+                >
+                  {item}
+                </Button>
+              ))}
+
+              {/* Row 2: 4, 5, 6, × */}
+              {[4, 5, 6, "×"].map((item) => (
+                <Button
+                  key={item}
+                  onClick={() =>
+                    typeof item === "number"
+                      ? inputNumber(String(item))
+                      : performOperation(item)
+                  }
+                  variant={typeof item === "number" ? "outline" : "primary"}
+                  size="sm"
+                  className="font-medium"
+                >
+                  {item}
+                </Button>
+              ))}
+
+              {/* Row 3: 1, 2, 3, - */}
+              {[1, 2, 3, "-"].map((item) => (
+                <Button
+                  key={item}
+                  onClick={() =>
+                    typeof item === "number"
+                      ? inputNumber(String(item))
+                      : performOperation(item)
+                  }
+                  variant={typeof item === "number" ? "outline" : "primary"}
+                  size="sm"
+                  className="font-medium"
+                >
+                  {item}
+                </Button>
+              ))}
+
+              {/* Row 4: 0, ., +, = (wide) */}
               <Button
-                key={item}
-                onClick={() =>
-                  typeof item === "number"
-                    ? inputNumber(String(item))
-                    : performOperation(item)
-                }
-                variant={typeof item === "number" ? "outline" : "primary"}
+                onClick={() => inputNumber("0")}
+                variant="outline"
                 size="sm"
+                className="font-medium"
               >
-                {item}
+                0
               </Button>
-            ))}
-            {[1, 2, 3, "-"].map((item) => (
               <Button
-                key={item}
-                onClick={() =>
-                  typeof item === "number"
-                    ? inputNumber(String(item))
-                    : performOperation(item)
-                }
-                variant={typeof item === "number" ? "outline" : "primary"}
+                onClick={inputDecimal}
+                variant="outline"
                 size="sm"
+                className="font-medium"
               >
-                {item}
+                .
               </Button>
-            ))}
-            {[0, ".", "=", "+"].map((item) => (
               <Button
-                key={item}
-                onClick={() =>
-                  typeof item === "number"
-                    ? inputNumber(String(item))
-                    : item === "."
-                    ? inputDecimal()
-                    : performOperation(item)
-                }
-                variant={typeof item === "number" || item === "." ? "outline" : "primary"}
+                onClick={() => performOperation("+")}
+                variant="primary"
                 size="sm"
-                className={item === "=" ? "col-span-2" : ""}
+                className="font-medium"
               >
-                {item}
+                +
               </Button>
-            ))}
+              <Button
+                onClick={() => performOperation("=")}
+                variant="primary"
+                size="sm"
+                className="col-span-2 font-medium bg-[#2563eb] hover:bg-[#1d4ed8]"
+              >
+                =
+              </Button>
+            </div>
           </div>
         </div>
       </div>

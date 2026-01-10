@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { CalculatorDefinition } from "@/lib/calculators/definitions";
-import { CALCULATOR_CATEGORIES } from "@/lib/constants";
+import { CALCULATOR_CATEGORIES, getCategorySlugByKey } from "@/lib/constants";
 
 interface BreadcrumbsProps {
   calculator: CalculatorDefinition;
@@ -32,7 +32,7 @@ export function Breadcrumbs({ calculator }: BreadcrumbsProps) {
         <li>/</li>
         <li>
           <Link
-            href={`/calculators/${calculator.category}`}
+            href={`/calculators/${getCategorySlugByKey(calculator.category)}`}
             className="hover:text-[#2563eb] transition-colors"
           >
             {category.name}

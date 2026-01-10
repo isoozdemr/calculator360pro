@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { getAllCalculators } from "@/lib/calculators/definitions";
 import { getAllBlogPosts } from "@/lib/blog/posts";
-import { SITE_URL } from "@/lib/constants";
+import { SITE_URL, getCategorySlugByKey } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const calculators = getAllCalculators();
@@ -23,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Şimdilik sadece İngilizce URL'ler (locale prefix yok)
   const calculatorUrls: MetadataRoute.Sitemap = calculators.map((calc) => ({
-    url: `${SITE_URL}/calculators/${calc.category}/${calc.slug}`,
+    url: `${SITE_URL}/calculators/${getCategorySlugByKey(calc.category)}/${calc.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly",
     priority: 0.8,

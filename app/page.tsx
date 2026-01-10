@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { getAllCalculators } from "@/lib/calculators/definitions";
-import { CALCULATOR_CATEGORIES, SITE_URL } from "@/lib/constants";
+import { CALCULATOR_CATEGORIES, SITE_URL, getCategoryKeyBySlug, getCategorySlugByKey } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Calculator360Pro - Free Online Calculators",
@@ -55,9 +55,10 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {categories.map((category) => {
-            const categoryCalculators = calculators.filter(
-              (calc) => calc.category === category.slug
-            );
+            const categoryKey = getCategoryKeyBySlug(category.slug);
+            const categoryCalculators = categoryKey
+              ? calculators.filter((calc) => calc.category === categoryKey)
+              : [];
             return (
               <div
                 key={category.slug}
@@ -79,7 +80,7 @@ export default function HomePage() {
                   {categoryCalculators.slice(0, 3).map((calc) => (
                     <li key={calc.id}>
                       <Link
-                        href={`/calculators/${calc.category}/${calc.slug}`}
+                        href={`/calculators/${getCategorySlugByKey(calc.category)}/${calc.slug}`}
                         className="text-[#64748b] hover:text-[#2563eb] transition-colors"
                       >
                         {calc.name}
@@ -100,7 +101,7 @@ export default function HomePage() {
             {calculators.map((calculator) => (
               <Link
                 key={calculator.id}
-                href={`/calculators/${calculator.category}/${calculator.slug}`}
+                href={`/calculators/${getCategorySlugByKey(calculator.category)}/${calculator.slug}`}
                 className="block p-4 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors"
               >
                 <h3 className="font-semibold text-[#1e293b] mb-2">

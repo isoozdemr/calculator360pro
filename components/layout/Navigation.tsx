@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { CALCULATOR_CATEGORIES } from "@/lib/constants";
+import { CALCULATOR_CATEGORIES, getCategoryKeyBySlug, getCategorySlugByKey } from "@/lib/constants";
 import { getAllCalculators } from "@/lib/calculators/definitions";
 
 export function Navigation() {
@@ -14,7 +14,9 @@ export function Navigation() {
   const categories = Object.values(CALCULATOR_CATEGORIES);
 
   const getCategoryCalculators = (categorySlug: string) => {
-    return calculators.filter((calc) => calc.category === categorySlug);
+    const categoryKey = getCategoryKeyBySlug(categorySlug);
+    if (!categoryKey) return [];
+    return calculators.filter((calc) => calc.category === categoryKey);
   };
 
   const handleMouseEnter = () => {
@@ -111,7 +113,7 @@ export function Navigation() {
                             {categoryCalculators.slice(0, 6).map((calc) => (
                               <li key={calc.id}>
                                 <Link
-                                  href={`/calculators/${calc.category}/${calc.slug}`}
+                                  href={`/calculators/${getCategorySlugByKey(calc.category)}/${calc.slug}`}
                                   className="block text-sm text-[#64748b] hover:text-[#2563eb] transition-colors py-1 leading-relaxed"
                                 >
                                   {calc.name}
@@ -219,7 +221,7 @@ export function Navigation() {
                     {getCategoryCalculators(category.slug).slice(0, 5).map((calc) => (
                       <li key={calc.id}>
                         <Link
-                          href={`/calculators/${calc.category}/${calc.slug}`}
+                          href={`/calculators/${getCategorySlugByKey(calc.category)}/${calc.slug}`}
                           className="block text-sm text-[#64748b] hover:text-[#2563eb]"
                           onClick={() => setOpenDropdown(null)}
                         >

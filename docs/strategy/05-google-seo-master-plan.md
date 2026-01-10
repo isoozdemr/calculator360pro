@@ -112,9 +112,19 @@ Google SEO Master Plan, Calculator360Pro'nun organik arama sonuçlarında üst s
 
 ### Content Depth Requirements
 
-**Minimum Per Page:**
-- **⚠️ MANDATORY: Minimum 2000 characters** of unique, comprehensive content (REQUIRED for all calculators)
-- **1500-2000 words** recommended for optimal SEO performance
+**🎯 PRIMARY GOALS:**
+- **Google SEO:** Achieve top 10 rankings in Google organic search results
+- **AdSense Compliance:** Follow all Google AdSense policies and guidelines
+- **Organic Search:** Maximize organic traffic through deep SEO optimization
+- **Keyword Optimization:** Target the most searched keywords naturally throughout content
+
+**Minimum Per Calculator Page:**
+- **⚠️ MANDATORY: Minimum 2000+ words** of unique, comprehensive, deep SEO-optimized content (REQUIRED for all calculators)
+- **Deep SEO Optimization:** Content must be optimized for Google's ranking algorithms with natural keyword integration
+- **AdSense Compliant:** Content must follow Google AdSense policies (sufficient length, quality, user value)
+- **High-Volume Keywords:** Include the most searched keywords related to the calculator topic
+- **Organic Search Focus:** Content structure and optimization must target organic search visibility
+- **Top 10 Ranking Goal:** Content must be designed to rank in Google's top 10 search results
 - 3-5 FAQ items
 - Calculator explanation with formulas
 - Detailed use cases and real-world examples
@@ -123,14 +133,48 @@ Google SEO Master Plan, Calculator360Pro'nun organik arama sonuçlarında üst s
 - Tips and best practices
 - Common mistakes to avoid
 
-**⚠️ MANDATORY CONTENT REQUIREMENT:**
-- **All calculators (existing and new) MUST have minimum 2000 characters of unique content**
+**Minimum Per Category Page:**
+- **⚠️ MANDATORY: Minimum 2000+ words** of unique, comprehensive, deep SEO-optimized content (REQUIRED for all category pages)
+- **Deep SEO Optimization:** Content must be optimized for Google's ranking algorithms with natural keyword integration
+- **AdSense Compliant:** Content must follow Google AdSense policies (sufficient length, quality, user value)
+- **High-Volume Keywords:** Include the most searched keywords related to the category topic
+- **Organic Search Focus:** Content structure and optimization must target organic search visibility
+- **Top 10 Ranking Goal:** Content must be designed to rank in Google's top 10 search results
+- Category description (comprehensive, 2000+ words)
+- Category-specific tips/guides
+- Featured calculators section
+- Detailed use cases and real-world examples
+- Why choose our calculators section
+- Best practices and tips
+- Category FAQ (if applicable)
+
+**⚠️ MANDATORY CONTENT REQUIREMENT (Calculators):**
+- **All calculators (existing and new) MUST have minimum 2000+ words** of unique, comprehensive, deep SEO-optimized content
+- **Deep SEO Optimization:** Content must be optimized for Google's ranking algorithms
+- **AdSense Compliance:** Content must follow all Google AdSense policies and guidelines
+- **High-Volume Keywords:** Content must include the most searched keywords related to the calculator topic
+- **Organic Search Focus:** Content structure and optimization must target organic search visibility
+- **Top 10 Ranking Goal:** Content must be designed to rank in Google's top 10 search results
 - Content must be stored in `lib/calculators/content.ts` file
 - Content must be added to calculator definition in `lib/calculators/definitions.ts` using the `content` field
 - Content will be displayed on calculator pages below the calculator tool
 - This requirement applies to ALL calculators without exception
-- Existing calculators without 2000+ characters of content must be updated
+- Existing calculators without 2000+ words of content must be updated
 - New calculators cannot be added without meeting this requirement
+
+**⚠️ MANDATORY CONTENT REQUIREMENT (Category Pages):**
+- **All category pages (existing and new) MUST have minimum 2000+ words** of unique, comprehensive, deep SEO-optimized content
+- **Deep SEO Optimization:** Content must be optimized for Google's ranking algorithms
+- **AdSense Compliance:** Content must follow all Google AdSense policies and guidelines
+- **High-Volume Keywords:** Content must include the most searched keywords related to the category topic
+- **Organic Search Focus:** Content structure and optimization must target organic search visibility
+- **Top 10 Ranking Goal:** Content must be designed to rank in Google's top 10 search results
+- Content must be displayed on category pages below the calculator listing
+- Content must be deep, comprehensive, and provide genuine value
+- Content must follow the same quality standards as calculator pages
+- This requirement applies to ALL category pages without exception
+- Existing category pages without 2000+ words of content must be updated
+- Category pages must provide comprehensive information about the category, use cases, and calculator types
 
 **🎯 CRITICAL SEO CONTENT PRIORITIES (When Adding 2000+ Characters):**
 
@@ -151,14 +195,17 @@ Google SEO Master Plan, Calculator360Pro'nun organik arama sonuçlarında üst s
 - Unique writing style and voice
 - **Goal:** Content should stand out as unique and valuable compared to competitors
 
-**3. RANKING-OPTIMIZED CONTENT:**
-- Content must be designed to **rank higher than competitors** in search results
+**3. RANKING-OPTIMIZED CONTENT (Deep SEO Optimization):**
+- Content must be designed to **rank in Google's top 10 search results** (PRIMARY GOAL)
+- **Deep SEO Optimization:** Implement comprehensive on-page SEO techniques
+- **High-Volume Keywords:** Research and include the most searched keywords naturally throughout content
 - Target primary and secondary keywords naturally throughout content
 - Include semantic keywords and LSI terms related to the calculator
 - Answer user queries more comprehensively than top-ranking competitors
 - Provide better value, more detailed information, and clearer explanations
 - Include content that competitors don't have (unique insights, advanced topics)
-- **Goal:** Content should help us outrank competitors by being superior
+- **Organic Search Focus:** Optimize for organic search visibility and rankings
+- **Goal:** Content should help us achieve top 10 rankings in Google organic search results
 
 **4. USER-FIRST APPROACH:**
 - Content must prioritize **user value** over keyword density
@@ -178,12 +225,15 @@ Google SEO Master Plan, Calculator360Pro'nun organik arama sonuçlarında üst s
 **Content Quality Checklist (Before Publishing):**
 - [ ] Is this content deeper and more comprehensive than top 3 competitors?
 - [ ] Is this content 100% unique (not found anywhere else)?
-- [ ] Does this content help us outrank competitors?
+- [ ] Does this content help us achieve top 10 rankings in Google?
 - [ ] Does this content provide genuine value to users?
 - [ ] Does this content demonstrate E-E-A-T signals?
 - [ ] Is this content well-structured with proper headings?
-- [ ] Does this content include relevant keywords naturally?
-- [ ] Is this content at least 2000 characters?
+- [ ] Does this content include the most searched keywords naturally?
+- [ ] Is this content optimized for deep SEO (on-page optimization)?
+- [ ] Is this content AdSense compliant (follows all Google AdSense policies)?
+- [ ] Is this content focused on organic search visibility?
+- [ ] Is this content at least 2000+ words?
 
 **Quality Standards:**
 - Original content (not scraped, not paraphrased from competitors)
