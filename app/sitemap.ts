@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { getAllCalculators } from "@/lib/calculators/definitions";
 import { getAllBlogPosts } from "@/lib/blog/posts";
-import { SITE_URL, getCategorySlugByKey } from "@/lib/constants";
+import { SITE_URL, getCategorySlugByKey, CALCULATOR_CATEGORIES, CalculatorCategory } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const calculators = getAllCalculators();
@@ -21,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Şimdilik sadece İngilizce URL'ler (locale prefix yok)
+  // Calculator URLs - dynamically generated from all calculators
   const calculatorUrls: MetadataRoute.Sitemap = calculators.map((calc) => ({
     url: `${SITE_URL}/calculators/${getCategorySlugByKey(calc.category)}/${calc.slug}`,
     lastModified: new Date(),
@@ -29,39 +29,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  // Category pages
-  const categoryUrls: MetadataRoute.Sitemap = [
-    {
-      url: `${SITE_URL}/calculators/finance`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}/calculators/health`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}/calculators/education`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}/calculators/math`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}/calculators/date-time`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-  ];
+  // Category pages - dynamically generated from CALCULATOR_CATEGORIES
+  const categoryUrls: MetadataRoute.Sitemap = (Object.keys(CALCULATOR_CATEGORIES) as CalculatorCategory[]).map((categoryKey) => ({
+    url: `${SITE_URL}/calculators/${getCategorySlugByKey(categoryKey)}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.7,
+  }));
 
   // Blog post URLs
   const blogUrls: MetadataRoute.Sitemap = blogPosts.map((post) => ({
