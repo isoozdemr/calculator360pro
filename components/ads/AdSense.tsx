@@ -34,7 +34,7 @@ export function AdSense({
           ...style,
         }}
         data-ad-client={
-          process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "ca-pub-XXXXXXXXXXXXXXXX"
+          process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "ca-pub-2471021299627229"
         }
         data-ad-slot={adSlot}
         data-ad-format={adFormat}

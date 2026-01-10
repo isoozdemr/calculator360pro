@@ -5,6 +5,7 @@ import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/seo/sch
 import { Navigation } from "@/components/layout/Navigation";
 import { Footer } from "@/components/layout/Footer";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import { ConsentBanner } from "@/components/consent/ConsentBanner";
 import Script from "next/script";
 
 const inter = Inter({
@@ -102,9 +103,18 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        {/* Preconnect to Google services for faster script loading */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+        />
+        <meta
+          name="google-adsense-account"
+          content={process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "ca-pub-2471021299627229"}
         />
         <script
           type="application/ld+json"
@@ -122,15 +132,15 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >
+        <ConsentBanner />
         <GoogleAnalytics />
-        {process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID && (
-          <Script
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID}`}
-            crossOrigin="anonymous"
-            strategy="lazyOnload"
-          />
-        )}
+        <Script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "ca-pub-2471021299627229"}`}
+          crossOrigin="anonymous"
+          strategy="lazyOnload"
+          data-npa="1"
+        />
         <Navigation />
         {children}
         <Footer />

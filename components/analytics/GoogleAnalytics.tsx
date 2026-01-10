@@ -1,9 +1,23 @@
 "use client";
 
 import Script from "next/script";
+import { useEffect } from "react";
 
 export function GoogleAnalytics() {
   const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || "G-XXXXXXXXXX";
+
+  useEffect(() => {
+    // Check existing consent and update if needed
+    const consent = localStorage.getItem("cookie-consent");
+    if (consent && typeof window !== "undefined" && (window as any).gtag) {
+      if (consent === "granted") {
+        (window as any).gtag("consent", "update", {
+          analytics_storage: "granted",
+          ad_storage: "granted",
+        });
+      }
+    }
+  }, []);
 
   return (
     <>
