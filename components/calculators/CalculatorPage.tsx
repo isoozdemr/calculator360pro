@@ -10,6 +10,16 @@ import { LoanCalculator } from "./LoanCalculator";
 import { TaxCalculator } from "./TaxCalculator";
 import { SalaryCalculator } from "./SalaryCalculator";
 import { BodyFatCalculator } from "./BodyFatCalculator";
+import { CalorieCalculator } from "./CalorieCalculator";
+import { InvestmentCalculator } from "./InvestmentCalculator";
+import { CarLoanCalculator } from "./CarLoanCalculator";
+import { StudentLoanCalculator } from "./StudentLoanCalculator";
+import { CreditCardPayoffCalculator } from "./CreditCardPayoffCalculator";
+import { RetirementCalculator } from "./RetirementCalculator";
+import { SavingsCalculator } from "./SavingsCalculator";
+import { BudgetCalculator } from "./BudgetCalculator";
+import { TipCalculator } from "./TipCalculator";
+import { DiscountCalculator } from "./DiscountCalculator";
 import { AdAboveFold, AdBelowContent } from "@/components/ads/AdSense";
 import { getCalculator } from "@/lib/calculators/definitions";
 import { Breadcrumbs } from "@/components/SEO/Breadcrumbs";
@@ -34,6 +44,16 @@ const calculatorComponents: Record<
   "tax-calculator": TaxCalculator,
   "salary-calculator": SalaryCalculator,
   "body-fat-calculator": BodyFatCalculator,
+  "calorie-calculator": CalorieCalculator,
+  "investment-calculator": InvestmentCalculator,
+  "car-loan-calculator": CarLoanCalculator,
+  "student-loan-calculator": StudentLoanCalculator,
+  "credit-card-payoff-calculator": CreditCardPayoffCalculator,
+  "retirement-calculator": RetirementCalculator,
+  "savings-calculator": SavingsCalculator,
+  "budget-calculator": BudgetCalculator,
+  "tip-calculator": TipCalculator,
+  "discount-calculator": DiscountCalculator,
 };
 
 export function CalculatorPage({ calculator }: CalculatorPageProps) {

@@ -365,6 +365,16 @@ export function ExampleCalculator() {
 
 When creating a new calculator, ensure:
 
+- [ ] **⚠️ MANDATORY: Calculator has its own dedicated component**
+  - [ ] Every new calculator MUST have its own dedicated component
+  - [ ] Generic/fallback components cannot be used
+  - [ ] Component must be designed specifically for the calculator's unique formula and inputs
+- [ ] **⚠️ MANDATORY: Component works with the most current and accurate data**
+  - [ ] Formulas must be current and accurate (industry standard)
+  - [ ] Input validation must be in correct ranges
+  - [ ] Calculations must be mathematically correct
+  - [ ] Results must be reliable for user satisfaction
+  - [ ] Old or incorrect formulas cannot be used
 - [ ] All required fields are marked
 - [ ] All fields have appropriate validation rules
 - [ ] Error messages are clear and helpful

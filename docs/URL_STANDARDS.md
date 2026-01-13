@@ -151,11 +151,23 @@ When adding a new calculator:
    }
    ```
 
-2. **URLs are automatically generated correctly:**
+2. **⚠️ MANDATORY: Create calculator component:**
+   - **Every new calculator MUST have its own dedicated component**
+   - Generic/fallback components cannot be used
+   - Component must be designed specifically for the calculator's unique formula and inputs
+   - **⚠️ MANDATORY: Component must work with the most current and accurate data**
+     - Formulas must be current and accurate (industry standard)
+     - Input validation must be in correct ranges
+     - Calculations must be mathematically correct
+     - Results must be reliable for user satisfaction
+     - Old or incorrect formulas cannot be used
+   - Component must be registered in `components/calculators/CalculatorPage.tsx`
+
+3. **URLs are automatically generated correctly:**
    - Helper functions handle key → slug conversion
    - No manual URL construction needed
 
-3. **Verify calculator appears in:**
+4. **Verify calculator appears in:**
    - Category page (`/calculators/{category-slug}`)
    - Navigation dropdown
    - Homepage category section

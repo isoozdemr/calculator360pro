@@ -376,12 +376,16 @@ export default async function CalculatorPage({ params }) {
 
 ### Validation Checklist
 
+**⚠️ MANDATORY: All new calculators MUST have schema markup implemented and validated**
+
 **Per Calculator:**
-- [ ] WebApplication schema valid
-- [ ] FAQ schema valid (if FAQs present)
-- [ ] Breadcrumb schema valid
-- [ ] No schema errors in Rich Results Test
-- [ ] Schema matches visible content
+- [ ] **⚠️ MANDATORY: WebApplication schema implemented and valid**
+- [ ] **⚠️ MANDATORY: FAQ schema implemented and valid (if FAQs present)**
+- [ ] **⚠️ MANDATORY: Breadcrumb schema implemented and valid**
+- [ ] **⚠️ MANDATORY: No schema errors in Google Rich Results Test**
+- [ ] **⚠️ MANDATORY: Schema matches visible page content exactly**
+- [ ] Schema helps Google understand and display calculator in search results
+- [ ] Schema optimized to improve Google search rankings
 
 **Site-Wide:**
 - [ ] Organization schema on all pages

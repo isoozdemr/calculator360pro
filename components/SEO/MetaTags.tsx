@@ -8,16 +8,51 @@ export function generateCalculatorMetadata(
 ): Metadata {
   const url = `${SITE_URL}/calculators/${getCategorySlugByKey(calculator.category)}/${calculator.slug}`;
 
+  // Optimize title tag: Primary keyword at the beginning, 50-60 characters
+  const primaryKeyword = calculator.keywords[0] || calculator.name;
+  const secondaryKeyword = calculator.keywords[1] || "";
+  
+  // Build optimized title
+  let title = `Free ${calculator.name}`;
+  if (secondaryKeyword && title.length < 50) {
+    // Add secondary keyword if there's space
+    const withSecondary = `${title} - ${secondaryKeyword}`;
+    if (withSecondary.length <= 60) {
+      title = withSecondary;
+    }
+  }
+  title += " | Calculator360Pro";
+  
+  // Ensure title is 50-60 characters
+  if (title.length > 60) {
+    // Fallback to shorter format
+    title = `${calculator.name} - Free Calculator | Calculator360Pro`;
+    if (title.length > 60) {
+      // Even shorter fallback
+      title = `Free ${calculator.name} | Calculator360Pro`;
+    }
+  }
+  
+  // Validate meta description length (150-160 characters)
+  let metaDescription = calculator.metaDescription;
+  if (metaDescription.length < 150) {
+    // Meta description too short - log warning but keep original
+    console.warn(`Meta description for ${calculator.id} is too short: ${metaDescription.length} characters (minimum 150)`);
+  } else if (metaDescription.length > 160) {
+    // Truncate to 160 characters
+    metaDescription = metaDescription.substring(0, 157) + "...";
+  }
+
   return {
-    title: `${calculator.name} - Free Online Calculator`,
-    description: calculator.metaDescription,
+    title,
+    description: metaDescription,
     keywords: calculator.keywords.join(", "),
     alternates: {
       canonical: url,
     },
     openGraph: {
-      title: `${calculator.name} - Free Online Calculator`,
-      description: calculator.metaDescription,
+      title,
+      description: metaDescription,
       url,
       type: "website",
       siteName: "Calculator360Pro",
@@ -32,8 +67,8 @@ export function generateCalculatorMetadata(
     },
     twitter: {
       card: "summary_large_image",
-      title: `${calculator.name} - Free Online Calculator`,
-      description: calculator.metaDescription,
+      title,
+      description: metaDescription,
       images: [`${SITE_URL}/og-image.png`],
     },
     robots: {

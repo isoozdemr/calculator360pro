@@ -222,6 +222,17 @@ Google SEO Master Plan, Calculator360Pro'nun organik arama sonuçlarında üst s
 - Demonstrate **Trustworthiness:** Accurate information, clear disclaimers, honest limitations
 - **Goal:** Google should recognize our content as authoritative and trustworthy
 
+**⚠️ MANDATORY SEO & Schema Requirements (Before Publishing):**
+- [ ] **Schema Markup:** WebApplication, FAQPage, BreadcrumbList schemas implemented and validated
+- [ ] **Meta Tags:** Title (50-60 chars), meta description (150-160 chars), keywords optimized with high-volume keywords
+- [ ] **Google Hit Keywords:** Primary (10K+ monthly), secondary, long-tail, and semantic keywords researched and integrated naturally
+- [ ] **Content Uniqueness:** Content is 100% unique, passes plagiarism checks (0% duplicate content)
+- [ ] **Deep Content:** Content is deeper and more comprehensive than top 3 competitors
+- [ ] **Top 10 Ranking:** Content optimized to rank in Google's top 10 search results
+- [ ] **Schema Validation:** All schemas validated using Google Rich Results Test (no errors)
+- [ ] **Meta Tag Optimization:** Meta tags unique, compelling, keyword-optimized, and help improve Google rankings
+- [ ] **Non-Duplicate Content:** Content will not trigger Google's duplicate content detection
+
 **Content Quality Checklist (Before Publishing):**
 - [ ] Is this content deeper and more comprehensive than top 3 competitors?
 - [ ] Is this content 100% unique (not found anywhere else)?
@@ -234,6 +245,9 @@ Google SEO Master Plan, Calculator360Pro'nun organik arama sonuçlarında üst s
 - [ ] Is this content AdSense compliant (follows all Google AdSense policies)?
 - [ ] Is this content focused on organic search visibility?
 - [ ] Is this content at least 2000+ words?
+- [ ] Are schema markups implemented and validated?
+- [ ] Are meta tags optimized with high-volume keywords?
+- [ ] Will this content pass Google's duplicate content detection?
 
 **Quality Standards:**
 - Original content (not scraped, not paraphrased from competitors)
@@ -433,9 +447,17 @@ export const metadata = {
 
 **Meta Descriptions:**
 - Unique per page
-- 150-160 characters
-- Include primary keyword
+- **⚠️ MANDATORY: 150-160 characters (must be validated - not shorter, not longer)**
+- Include primary keyword naturally
 - Compelling call-to-action
+- Action-oriented language
+
+**Title Tags:**
+- **⚠️ MANDATORY: Primary keyword must be at the beginning**
+- **⚠️ MANDATORY: 50-60 characters (must be validated)**
+- Format: `Free [Primary Keyword] - [Secondary Keyword] | Calculator360Pro` or similar
+- Unique per page
+- Optimized for click-through rate
 
 ## E-E-A-T Signals
 

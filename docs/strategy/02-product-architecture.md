@@ -331,22 +331,79 @@ Homepage
 #### Step 3: Implementation
 
 **Checklist:**
-- [ ] Calculator component created
+- [ ] **⚠️ MANDATORY: Calculator component created**
+  - [ ] **Every new calculator MUST have its own dedicated component**
+  - [ ] Generic/fallback components cannot be used
+  - [ ] Component must be designed specifically for the calculator's unique formula and inputs
+  - [ ] **⚠️ MANDATORY: Component must work with the most current and accurate data**
+    - [ ] Formulas must be current and accurate (industry standard)
+    - [ ] Input validation must be in correct ranges
+    - [ ] Calculations must be mathematically correct
+    - [ ] Results must be reliable for user satisfaction
+    - [ ] Old or incorrect formulas cannot be used
+  - [ ] Component registered in `components/calculators/CalculatorPage.tsx`
 - [ ] Calculator definition added to `definitions.ts`
   - [ ] Category uses KEY (camelCase), not slug
   - [ ] Slug uses kebab-case
+  - [ ] Keywords array includes high-volume keywords (primary, secondary, semantic)
+  - [ ] Meta description optimized (150-160 chars, includes primary keyword)
 - [ ] Page route created (if needed)
-- [ ] Schema markup implemented
+- [ ] **⚠️ MANDATORY: Schema markup implemented and validated**
+  - [ ] WebApplication schema for calculator
+  - [ ] FAQPage schema (if FAQs present)
+  - [ ] BreadcrumbList schema
+  - [ ] Schema matches visible page content exactly
+  - [ ] Schema validated using Google Rich Results Test
+  - [ ] Schema helps Google understand and display calculator in search results
+- [ ] **⚠️ MANDATORY: Meta tags optimized for SEO**
+  - [ ] **Title tag:**
+    - [ ] Primary keyword is at the beginning
+    - [ ] 50-60 characters (validated)
+    - [ ] Format optimized (e.g., `Free [Primary Keyword] - [Secondary Keyword] | Calculator360Pro`)
+    - [ ] Unique for this calculator
+    - [ ] Optimized to rank in Google's top 10
+  - [ ] **Meta description:**
+    - [ ] 150-160 characters (validated - not shorter, not longer)
+    - [ ] Includes primary keyword naturally
+    - [ ] Compelling and action-oriented
+    - [ ] Unique for this calculator
+  - [ ] **Keywords:**
+    - [ ] High-volume keywords researched (10K+ monthly search volume)
+    - [ ] Primary keyword: Exact match calculator name
+    - [ ] Secondary keywords: Variations (min 3-5)
+    - [ ] Long-tail keywords: Specific use cases (min 2-3)
+    - [ ] Semantic keywords: LSI terms (min 2-3)
+    - [ ] Total minimum 6-8 keywords
+  - [ ] **Open Graph tags:** Generated and verified
+  - [ ] **Validation:** All meta tags validated before publishing
+- [ ] **⚠️ MANDATORY: Google hit keywords (high-volume keywords) optimized**
+  - [ ] Primary keywords researched (10K+ monthly search volume)
+  - [ ] Secondary keywords (variations and related terms) included
+  - [ ] Long-tail keywords (specific use cases) integrated
+  - [ ] Semantic keywords (LSI terms) naturally integrated
+  - [ ] Keywords integrated naturally throughout content (not keyword stuffing)
+  - [ ] Keywords help page rank higher in Google search results
+- [ ] **⚠️ MANDATORY: Deep, non-duplicate content created**
+  - [ ] **Content length:** Minimum 2000+ words (validated)
+  - [ ] **Content uniqueness:** 100% unique (not found anywhere else)
+  - [ ] **Plagiarism check:** 0% duplicate content (validated)
+  - [ ] **Content depth:** Deeper and more comprehensive than top 3 competitors
+  - [ ] **Content value:** Provides genuine value and solves real problems
+  - [ ] **E-E-A-T signals:** Demonstrates expertise, experience, authoritativeness, and trustworthiness
+  - [ ] **Original insights:** Includes original research and unique insights
+  - [ ] **Keyword integration:** High-volume keywords integrated naturally throughout
+  - [ ] **Structure:** Well-structured with H2, H3 headings, examples, tips, best practices
 - [ ] Internal links updated
   - [ ] ⚠️ All links use `getCategorySlugByKey()` helper function
   - [ ] No direct `calculator.category` in URLs
-- [ ] Content written
-- [ ] SEO optimization
+- [ ] Content written (2000+ words, deep SEO-optimized)
+- [ ] SEO optimization completed
 - [ ] Testing
   - [ ] All category links work (Navigation, Footer, Homepage)
   - [ ] Calculator appears in correct category page
   - [ ] No 404 errors
   - [ ] URLs use correct slugs (kebab-case)
+  - [ ] Calculator component produces accurate results
 
 #### Step 4: Launch
 

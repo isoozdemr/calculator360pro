@@ -162,9 +162,61 @@ calculator360pro/
 
 1. Add calculator definition to `lib/calculators/definitions.ts`
 2. **⚠️ MANDATORY: Add minimum 2000+ words of unique, deep SEO-optimized content** to `lib/calculators/content.ts` and reference it in the calculator definition using the `content` field
-3. Create calculator component in `components/calculators/`
-4. Register component in `components/calculators/CalculatorPage.tsx`
-5. Calculator will be automatically available
+3. **⚠️ MANDATORY: Create calculator component in `components/calculators/`**
+   - **Every new calculator MUST have its own dedicated component**
+   - Generic/fallback components cannot be used
+   - Component must be designed specifically for the calculator's unique formula and inputs
+   - **⚠️ MANDATORY: Components must work with the most current and accurate data**
+     - Formulas must be current and accurate (industry standard)
+     - Input validation must be in correct ranges
+     - Calculations must be mathematically correct
+     - Results must be reliable for user satisfaction
+     - Old or incorrect formulas cannot be used
+4. **⚠️ MANDATORY: Register component in `components/calculators/CalculatorPage.tsx`**
+5. **⚠️ MANDATORY: Implement Schema Markup (Structured Data)**
+   - WebApplication schema for calculator
+   - FAQPage schema (if FAQs present)
+   - BreadcrumbList schema
+   - Schema must match visible page content exactly
+   - Schema must be validated using Google Rich Results Test
+   - Schema helps Google understand and display calculator in search results
+6. **⚠️ MANDATORY: Optimize Meta Tags for SEO**
+   - **Title tag:**
+     - Primary keyword must be at the beginning
+     - 50-60 characters (must be validated)
+     - Format: `Free [Primary Keyword] - [Secondary Keyword] | Calculator360Pro` or similar
+     - Must be unique for each calculator
+     - Must be optimized to rank in Google's top 10
+   - **Meta description:**
+     - 150-160 characters (must be validated - not shorter, not longer)
+     - Must include primary keyword naturally
+     - Must be compelling and action-oriented
+     - Must be unique for each calculator
+   - **Keywords:**
+     - Must include high-volume keywords (10K+ monthly search volume researched)
+     - Primary keyword: Exact match calculator name
+     - Secondary keywords: Variations (min 3-5)
+     - Long-tail keywords: Specific use cases (min 2-3)
+     - Semantic keywords: LSI terms (min 2-3)
+     - Total minimum 6-8 keywords
+   - **Open Graph tags:** Automatically generated (verify they're correct)
+   - **Validation:** All meta tags must be validated before publishing
+7. **⚠️ MANDATORY: Optimize for Google Hit Keywords (High-Volume Keywords)**
+   - Research and include the most searched keywords (10K+ monthly search volume)
+   - Primary keywords: Exact match calculator name
+   - Secondary keywords: Variations and related terms
+   - Long-tail keywords: Specific use cases and questions
+   - Semantic keywords: LSI terms and related concepts
+   - Keywords must be integrated naturally throughout content
+   - Keywords must help page rank higher in Google search results
+8. **⚠️ MANDATORY: Create Deep, Non-Duplicate Content**
+   - Content must be 100% unique (not found anywhere else)
+   - Content must be deeper and more comprehensive than competitors
+   - Content must pass plagiarism checks (0% duplicate content)
+   - Content must provide genuine value and solve real problems
+   - Content must demonstrate expertise and authority
+   - Content must be original research and unique insights
+9. Calculator will be automatically available
 
 **🎯 PRIMARY GOALS:**
 - **Google SEO:** Achieve top 10 rankings in Google organic search results
@@ -194,6 +246,16 @@ When adding 2000+ words of content, ensure:
 7. **USER-FIRST:** Content must prioritize user value and solve real problems
 8. **E-E-A-T SIGNALS:** Content must demonstrate Expertise, Experience, Authoritativeness, and Trustworthiness
 
+**⚠️ MANDATORY SEO & Schema Requirements:**
+- [ ] **Schema Markup:** WebApplication, FAQPage, BreadcrumbList schemas implemented and validated
+- [ ] **Meta Tags:** Title, meta description, keywords optimized with high-volume keywords
+- [ ] **Google Keywords:** Primary, secondary, long-tail, and semantic keywords researched and integrated
+- [ ] **Content Uniqueness:** Content is 100% unique, passes plagiarism checks (0% duplicate)
+- [ ] **Deep Content:** Content is deeper and more comprehensive than top 3 competitors
+- [ ] **Top 10 Ranking:** Content optimized to rank in Google's top 10 search results
+- [ ] **Schema Validation:** All schemas validated using Google Rich Results Test
+- [ ] **Meta Tag Optimization:** Meta tags unique, compelling, and keyword-optimized
+
 **Content Quality Checklist:**
 - [ ] Is this content deeper and more comprehensive than top 3 competitors?
 - [ ] Is this content 100% unique (not found anywhere else)?
@@ -205,6 +267,9 @@ When adding 2000+ words of content, ensure:
 - [ ] Does this content provide genuine value to users?
 - [ ] Does this content demonstrate E-E-A-T signals?
 - [ ] Is this content at least 2000+ words?
+- [ ] Are schema markups implemented and validated?
+- [ ] Are meta tags optimized with high-volume keywords?
+- [ ] Will this content pass Google's duplicate content detection?
 
 See [05-google-seo-master-plan.md](docs/strategy/05-google-seo-master-plan.md) for detailed content requirements.
 
