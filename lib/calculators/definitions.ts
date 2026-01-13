@@ -36,7 +36,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "percentage formula",
     ],
     metaDescription:
-      "Free percentage calculator to calculate percentages, percentage increase/decrease, and percentage of a number. Fast, accurate, and easy to use for all your percentage calculations.",
+      "Free percentage calculator to calculate percentages, percentage increase/decrease, and percentage of a number. Fast, accurate, and easy to use for everyone.",
     faqs: [
       {
         question: "How do I calculate a percentage?",
@@ -114,7 +114,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "college GPA calculator",
     ],
     metaDescription:
-      "Free GPA calculator to calculate your Grade Point Average using the 4.0 scale or other grading systems. Perfect for students tracking academic performance and planning.",
+      "Free GPA calculator to calculate your Grade Point Average using the 4.0 scale or other grading systems. Perfect for students tracking academic performance.",
     faqs: [
       {
         question: "How is GPA calculated?",
@@ -153,7 +153,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "advanced calculator",
     ],
     metaDescription:
-      "Free online scientific calculator with trigonometric functions, logarithms, exponentials, and more. Perfect for students, professionals, and math enthusiasts solving complex equations.",
+      "Free online scientific calculator with trigonometric functions, logarithms, exponentials, and more. Perfect for students and professionals solving complex math.",
     faqs: [
       {
         question: "What functions does a scientific calculator have?",
@@ -192,7 +192,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "birthday calculator",
     ],
     metaDescription:
-      "Free age calculator to calculate your exact age in years, months, weeks, and days. Find out how many days you've been alive and calculate age differences between people easily.",
+      "Free age calculator to calculate your exact age in years, months, weeks, and days. Find out how many days you've been alive and calculate age differences.",
     faqs: [
       {
         question: "How do I calculate my exact age?",
@@ -231,7 +231,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "mortgage rate calculator",
     ],
     metaDescription:
-      "Free mortgage calculator to calculate monthly payments, total interest, and amortization schedule. Perfect for homebuyers planning their purchase and understanding loan costs.",
+      "Free mortgage calculator to calculate monthly payments, total interest, and amortization schedule. Perfect for homebuyers planning their home purchase.",
     faqs: [
       {
         question: "How is monthly mortgage payment calculated?",
@@ -270,7 +270,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "savings growth calculator",
     ],
     metaDescription:
-      "Free compound interest calculator to calculate investment growth and savings over time. See how your money grows with different compounding frequencies and plan your financial future.",
+      "Free compound interest calculator to calculate investment growth and savings over time. See how your money grows with different compounding frequencies.",
     faqs: [
       {
         question: "What is compound interest?",
@@ -309,7 +309,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "loan interest calculator",
     ],
     metaDescription:
-      "Free loan calculator to calculate monthly payments, total interest, and amortization schedule for personal, auto, and student loans. Plan your loan payments effectively.",
+      "Free loan calculator to calculate monthly payments, total interest, and amortization schedule for personal, auto, and student loans. Plan your payments.",
     faqs: [
       {
         question: "How do I calculate loan payments?",
@@ -387,7 +387,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "gross to net salary calculator",
     ],
     metaDescription:
-      "Free salary calculator to calculate take-home pay, net salary, and tax deductions. Convert between hourly, monthly, and annual salary with accurate calculations.",
+      "Free salary calculator to calculate take-home pay, net salary, and tax deductions. Convert between hourly, monthly, and annual salary with accurate results.",
     faqs: [
       {
         question: "How do I calculate take-home pay?",
@@ -426,7 +426,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "lean body mass calculator",
     ],
     metaDescription:
-      "Free body fat calculator using the US Navy method. Calculate your body fat percentage accurately based on your measurements and understand your body composition and health metrics.",
+      "Free body fat calculator using the US Navy method. Calculate your body fat percentage accurately based on your measurements and understand body composition.",
     faqs: [
       {
         question: "How is body fat percentage calculated?",
@@ -471,7 +471,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "metabolic rate calculator",
     ],
     metaDescription:
-      "Free calorie calculator to calculate your daily calorie needs, BMR, and TDEE. Understand how many calories you need to maintain, lose, or gain weight effectively.",
+      "Free calorie calculator to calculate your daily calorie needs, BMR, and TDEE. Understand how many calories you need to maintain, lose, or gain weight.",
     faqs: [
       {
         question: "How do I calculate my daily calorie needs?",
@@ -521,7 +521,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "investment compound calculator",
     ],
     metaDescription:
-      "Free investment calculator to calculate investment returns, future value, and growth potential. Plan your investment strategy and see how your money can grow over time.",
+      "Free investment calculator to calculate investment returns, future value, and growth potential. Plan your investment strategy and see how your money grows.",
     faqs: [
       {
         question: "How do I calculate investment returns?",
@@ -571,7 +571,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "car financing calculator",
     ],
     metaDescription:
-      "Free car loan calculator to calculate monthly payments, total interest, and amortization schedule. Compare different loan terms and rates to find the best auto loan for your budget.",
+      "Free car loan calculator to calculate monthly payments, total interest, and amortization schedule. Compare different loan terms and rates to find the best deal.",
     faqs: [
       {
         question: "How is a car loan payment calculated?",
@@ -621,7 +621,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "student loan payoff calculator",
     ],
     metaDescription:
-      "Free student loan calculator to calculate monthly payments, total interest, and repayment strategies. Compare different repayment plans and see how extra payments can save money and time.",
+      "Free student loan calculator to calculate monthly payments, total interest, and repayment strategies. Compare different repayment plans and save money.",
     faqs: [
       {
         question: "How are student loan payments calculated?",
@@ -671,7 +671,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "credit card balance calculator",
     ],
     metaDescription:
-      "Free credit card payoff calculator to calculate payoff time, total interest, and see how extra payments can accelerate debt payoff and save money on interest charges.",
+      "Free credit card payoff calculator to calculate payoff time, total interest, and see how extra payments can accelerate debt payoff and save you money.",
     faqs: [
       {
         question: "How long will it take to pay off my credit card?",
@@ -721,7 +721,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "retirement nest egg calculator",
     ],
     metaDescription:
-      "Free retirement calculator to calculate how much you need to save for retirement, estimate retirement income, and see if you're on track to meet your retirement goals and financial security.",
+      "Free retirement calculator to calculate how much you need to save for retirement, estimate retirement income, and see if you're on track to meet your goals.",
     faqs: [
       {
         question: "How much do I need to save for retirement?",
@@ -771,7 +771,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "savings plan calculator",
     ],
     metaDescription:
-      "Free savings calculator to calculate how much your savings will grow with compound interest. Plan your savings goals and see how regular contributions accelerate growth over time.",
+      "Free savings calculator to calculate how much your savings will grow with compound interest. Plan your savings goals and see how regular contributions help.",
     faqs: [
       {
         question: "How do I calculate savings growth?",
@@ -821,7 +821,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "budget tracker",
     ],
     metaDescription:
-      "Free budget calculator to create a comprehensive budget, track income and expenses, identify savings opportunities, and achieve your financial goals with smart budgeting strategies.",
+      "Free budget calculator to create a comprehensive budget, track income and expenses, identify savings opportunities, and achieve your financial goals today.",
     faqs: [
       {
         question: "How do I create a budget?",
@@ -871,7 +871,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "restaurant bill calculator",
     ],
     metaDescription:
-      "Free tip calculator to calculate tips quickly and accurately. Split bills, calculate different tip percentages, and determine the total amount to pay with ease and confidence.",
+      "Free tip calculator to calculate tips quickly and accurately. Split bills, calculate different tip percentages, and determine the total amount to pay.",
     faqs: [
       {
         question: "How do I calculate a tip?",
@@ -921,7 +921,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "price reduction calculator",
     ],
     metaDescription:
-      "Free discount calculator to calculate sale prices, discounts, and savings. Find the final price after discounts and make smart shopping decisions to maximize your savings.",
+      "Free discount calculator to calculate sale prices, discounts, and savings. Find the final price after discounts and make smart shopping decisions easily.",
     faqs: [
       {
         question: "How do I calculate a discount?",

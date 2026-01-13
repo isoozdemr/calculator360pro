@@ -182,7 +182,7 @@ export function Navigation() {
                   key={category.slug}
                   className="relative"
                   onMouseEnter={() => handleCategoryMouseEnter(category.slug)}
-                  onMouseLeave={() => handleCategoryMouseLeave(category.slug)}
+                  onMouseLeave={handleCategoryMouseLeave}
                 >
                   <button
                     className="text-[#1e293b] hover:text-[#2563eb] font-medium transition-colors flex items-center"
