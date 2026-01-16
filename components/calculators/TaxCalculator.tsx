@@ -5,18 +5,18 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { validateField, COMMON_RULES } from "@/lib/validation/rules";
 
-// Simplified US tax brackets for 2024 (single filer)
+// Simplified US tax brackets for 2026 (single filer)
 const TAX_BRACKETS = [
-  { min: 0, max: 11000, rate: 0.1 },
-  { min: 11000, max: 44725, rate: 0.12 },
-  { min: 44725, max: 95350, rate: 0.22 },
-  { min: 95350, max: 201050, rate: 0.24 },
-  { min: 201050, max: 243725, rate: 0.32 },
-  { min: 243725, max: 609350, rate: 0.35 },
-  { min: 609350, max: Infinity, rate: 0.37 },
+  { min: 0, max: 12400, rate: 0.1 },
+  { min: 12401, max: 50400, rate: 0.12 },
+  { min: 50401, max: 105700, rate: 0.22 },
+  { min: 105701, max: 201775, rate: 0.24 },
+  { min: 201776, max: 256225, rate: 0.32 },
+  { min: 256226, max: 640600, rate: 0.35 },
+  { min: 640601, max: Infinity, rate: 0.37 },
 ];
 
-const STANDARD_DEDUCTION = 14600; // 2024 single filer
+const STANDARD_DEDUCTION = 16100; // 2026 single filer
 
 export function TaxCalculator() {
   const [income, setIncome] = useState("");
@@ -145,7 +145,7 @@ export function TaxCalculator() {
             min="0"
           />
           <p className="text-sm text-[#64748b]">
-            Standard deduction for 2024: ${STANDARD_DEDUCTION.toLocaleString()}
+            Standard deduction for 2026: ${STANDARD_DEDUCTION.toLocaleString()}
           </p>
 
           <div className="flex gap-3">

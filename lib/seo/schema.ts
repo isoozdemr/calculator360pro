@@ -2,7 +2,7 @@ import { CalculatorDefinition } from "@/lib/calculators/definitions";
 import { SITE_URL, getCategorySlugByKey } from "@/lib/constants";
 
 export function generateCalculatorSchema(calculator: CalculatorDefinition) {
-  return {
+  const schema: any = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": calculator.name,
@@ -16,6 +16,21 @@ export function generateCalculatorSchema(calculator: CalculatorDefinition) {
       "priceCurrency": "USD",
     },
   };
+
+  // Add softwareVersion (recommended by Google for better rich results)
+  // Version can be updated when calculator features change
+  schema.softwareVersion = "1.0";
+
+  // Add browserRequirements (recommended for Web applications)
+  schema.browserRequirements = "Requires JavaScript. Requires HTML5.";
+
+  // Add permissions (recommended for Web applications)
+  schema.permissions = "No special permissions required.";
+
+  // Note: screenshot and featureList can be added in the future
+  // when we have screenshots and want to highlight specific features
+
+  return schema;
 }
 
 export function generateFAQSchema(calculator: CalculatorDefinition) {
@@ -32,6 +47,8 @@ export function generateFAQSchema(calculator: CalculatorDefinition) {
       "acceptedAnswer": {
         "@type": "Answer",
         "text": faq.answer,
+        // Note: HTML format can be added if needed in the future
+        // For now, plain text is sufficient and recommended for featured snippets
       },
     })),
   };
@@ -72,6 +89,8 @@ export function generateBreadcrumbSchema(
         "item": `${SITE_URL}/calculators/${categorySlug}/${calculatorSlug}`,
       },
     ],
+    // Note: numberOfItems is optional but recommended for better validation
+    // It's automatically inferred from itemListElement.length, but explicit is better
   };
 }
 

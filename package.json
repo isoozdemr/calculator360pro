@@ -11,8 +11,14 @@
     "validate:meta": "node scripts/validate-meta-descriptions.js",
     "validate:faq": "node scripts/validate-faq-answers.js",
     "validate:schema": "node scripts/validate-schema.js",
+    "validate:schema-content": "node scripts/validate-schema-content-matching.js",
+    "generate:schema-test-urls": "node scripts/generate-schema-test-urls.js",
     "check:web-vitals": "node scripts/check-core-web-vitals.js",
-    "check:freshness": "node scripts/check-content-freshness.js"
+    "generate:pagespeed-test-urls": "node scripts/generate-pagespeed-test-urls.js",
+    "track:performance": "node scripts/track-performance-metrics.js",
+    "track:keywords": "node scripts/track-keywords-research.js",
+    "check:freshness": "node scripts/check-content-freshness.js",
+    "analyze:keywords": "node scripts/analyze-keywords-density.js"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^16.1.1",

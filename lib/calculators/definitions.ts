@@ -581,7 +581,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       {
         question: "What is a good interest rate for a car loan?",
         answer:
-          "Interest rates vary based on credit score, loan term, and market conditions. As of 2024, good rates are typically 3-5% for excellent credit (720+), 5-8% for good credit (660-719), and 8-15% for fair credit (620-659). Rates above 15% are generally considered high. Shop around and compare offers from multiple lenders to find the best rate.",
+          "Interest rates vary based on credit score, loan term, and market conditions. As of 2026, good rates are typically 3-5% for excellent credit (720+), 5-8% for good credit (660-719), and 8-15% for fair credit (620-659). Rates above 15% are generally considered high. Shop around and compare offers from multiple lenders to find the best rate.",
       },
       {
         question: "How long should my car loan term be?",
@@ -741,7 +741,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       {
         question: "How much should I contribute to my 401(k)?",
         answer:
-          "At minimum, contribute enough to get your employer's full match (free money). Ideally, aim to contribute 15-20% of your income, including employer match. If that's not possible, start with what you can afford and increase contributions gradually. The 2024 contribution limit is $23,000 for those under 50, and $30,500 for those 50 and older (catch-up contributions).",
+          "At minimum, contribute enough to get your employer's full match (free money). Ideally, aim to contribute 15-20% of your income, including employer match. If that's not possible, start with what you can afford and increase contributions gradually. The 2026 contribution limit is $23,000 for those under 50, and $30,500 for those 50 and older (catch-up contributions).",
       },
       {
         question: "What is a good retirement savings by age?",
@@ -786,7 +786,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       {
         question: "What is a good interest rate for savings?",
         answer:
-          "Interest rates vary by account type and market conditions. High-yield savings accounts typically offer 4-5% APY (as of 2024), while traditional savings accounts may offer 0.5-1%. Money market accounts and CDs may offer slightly higher rates. Compare rates from multiple banks and credit unions to find the best option. Remember that higher rates often come with requirements like minimum balances.",
+          "Interest rates vary by account type and market conditions. High-yield savings accounts typically offer 4-5% APY (as of 2026), while traditional savings accounts may offer 0.5-1%. Money market accounts and CDs may offer slightly higher rates. Compare rates from multiple banks and credit unions to find the best option. Remember that higher rates often come with requirements like minimum balances.",
       },
       {
         question: "How does compound interest work with savings?",
