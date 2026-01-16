@@ -8,7 +8,11 @@
     "start": "next start",
     "lint": "eslint",
     "validate:content": "node scripts/validate-content-length.js",
-    "validate:meta": "node scripts/validate-meta-descriptions.js"
+    "validate:meta": "node scripts/validate-meta-descriptions.js",
+    "validate:faq": "node scripts/validate-faq-answers.js",
+    "validate:schema": "node scripts/validate-schema.js",
+    "check:web-vitals": "node scripts/check-core-web-vitals.js",
+    "check:freshness": "node scripts/check-content-freshness.js"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^16.1.1",

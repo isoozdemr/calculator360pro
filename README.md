@@ -57,11 +57,38 @@ npm run dev
 
 ## Environment Variables
 
-Create a `.env.local` file with the following variables:
+Create a `.env.local` file in the root directory with the following variables:
 
 ```env
+# Site Configuration
+NEXT_PUBLIC_SITE_URL=https://calculator360pro.com
+
+# Google Analytics 4
+# Get your Measurement ID from: https://analytics.google.com/
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+
+# Google Search Console Verification
+# Get your verification code from: https://search.google.com/search-console
+NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=
+
+# Google AdSense
+# Get your client ID from: https://www.google.com/adsense/
+NEXT_PUBLIC_ADSENSE_CLIENT_ID=ca-pub-XXXXXXXXXX
+
+# AdSense Ad Slots (Optional - uncomment when ready)
+# NEXT_PUBLIC_ADSENSE_SLOT_ABOVE_FOLD=1234567890
+# NEXT_PUBLIC_ADSENSE_SLOT_BELOW_CONTENT=1234567891
+# NEXT_PUBLIC_ADSENSE_SLOT_SIDEBAR=1234567892
+
+# Bundle Analyzer (Optional)
+# Set to "true" to enable bundle analysis: npm run build
+ANALYZE=false
 ```
+
+**Note:** All environment variables have default fallback values, so the app will work without them. However, for production, you should configure:
+- `NEXT_PUBLIC_SITE_URL`: Your production domain
+- `NEXT_PUBLIC_GA_ID`: Your Google Analytics Measurement ID
+- `NEXT_PUBLIC_ADSENSE_CLIENT_ID`: Your AdSense client ID (when approved)
 
 ## Building for Production
 

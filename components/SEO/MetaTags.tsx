@@ -8,9 +8,8 @@ export function generateCalculatorMetadata(
 ): Metadata {
   const url = `${SITE_URL}/calculators/${getCategorySlugByKey(calculator.category)}/${calculator.slug}`;
 
-  // Optimize title tag: Primary keyword at the beginning, 50-60 characters
-  const primaryKeyword = calculator.keywords[0] || calculator.name;
-  const secondaryKeyword = calculator.keywords[1] || "";
+      // Optimize title tag: Primary keyword at the beginning, 50-60 characters
+      const secondaryKeyword = calculator.keywords[1] || "";
   
   // Build optimized title
   let title = `Free ${calculator.name}`;

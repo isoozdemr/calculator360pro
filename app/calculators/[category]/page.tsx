@@ -2,8 +2,9 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
 import { getCalculatorsByCategory } from "@/lib/calculators/definitions";
-import { CALCULATOR_CATEGORIES, SITE_URL, getCategoryKeyBySlug, getCategorySlugByKey } from "@/lib/constants";
+import { CALCULATOR_CATEGORIES, SITE_URL, getCategoryKeyBySlug, getCategorySlugByKey, CalculatorCategory } from "@/lib/constants";
 import { CATEGORY_CONTENT } from "@/lib/categories/content";
+import { generateCategoryPageSchema } from "@/lib/seo/schema";
 
 interface PageProps {
   params: Promise<{
@@ -12,30 +13,81 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  return Object.keys(CALCULATOR_CATEGORIES).map((category) => ({
-    category,
+  return Object.values(CALCULATOR_CATEGORIES).map((categoryInfo) => ({
+    category: categoryInfo.slug,
   }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { category } = await params;
-  const categoryInfo = CALCULATOR_CATEGORIES[category as keyof typeof CALCULATOR_CATEGORIES];
-
-  if (!categoryInfo) {
+  const categoryKey = getCategoryKeyBySlug(category);
+  
+  if (!categoryKey) {
     return {};
   }
 
+  const categoryInfo = CALCULATOR_CATEGORIES[categoryKey];
+  const calculators = getCalculatorsByCategory(categoryKey);
   const url = `${SITE_URL}/calculators/${category}`;
 
+  // Generate optimized title (50-60 characters)
+  // Format: "Free {Category Name} Calculators - {Secondary Keyword} | Calculator360Pro"
+  const secondaryKeywords: Record<CalculatorCategory, string> = {
+    finance: "Mortgage, Loan & Investment Tools",
+    health: "BMI, Body Fat & Calorie Tools",
+    education: "GPA, Grade & Academic Tools",
+    math: "Scientific & Mathematical Tools",
+    dateTime: "Age, Date Difference & Time Tools",
+  };
+  
+  const secondaryKeyword = secondaryKeywords[categoryKey] || "Free Tools";
+  let title = `Free ${categoryInfo.name} Calculators - ${secondaryKeyword} | Calculator360Pro`;
+  
+  // Ensure title is 50-60 characters
+  if (title.length > 60) {
+    // Fallback to shorter format
+    title = `Free ${categoryInfo.name} Calculators | Calculator360Pro`;
+    if (title.length > 60) {
+      // Even shorter fallback
+      title = `${categoryInfo.name} Calculators | Calculator360Pro`;
+    }
+  }
+
+  // Generate optimized meta description (150-160 characters)
+  // Include top 3 calculator names
+  const topCalculators = calculators.slice(0, 3).map(c => c.name);
+  const calculatorList = topCalculators.length >= 3
+    ? `${topCalculators[0]}, ${topCalculators[1]}, and ${topCalculators[2]}`
+    : topCalculators.join(" and ");
+  
+  const categoryDescriptions: Record<CalculatorCategory, string> = {
+    finance: `Free ${categoryInfo.name.toLowerCase()} calculators including ${calculatorList} and more. Calculate loans, mortgages, investments, and financial metrics with our accurate, easy-to-use tools. No registration required.`,
+    health: `Free ${categoryInfo.name.toLowerCase()} calculators including ${calculatorList} and more. Calculate BMI, body fat, calories, and health metrics with our accurate, easy-to-use tools. No registration required.`,
+    education: `Free ${categoryInfo.name.toLowerCase()} calculators including ${calculatorList} and more. Calculate GPA, grades, percentages, and academic metrics with our accurate, easy-to-use tools. No registration required.`,
+    math: `Free ${categoryInfo.name.toLowerCase()} calculators including ${calculatorList} and more. Perform scientific calculations and mathematical operations with our accurate, easy-to-use tools. No registration required.`,
+    dateTime: `Free ${categoryInfo.name.toLowerCase()} calculators including ${calculatorList} and more. Calculate age, date differences, and time intervals with our accurate, easy-to-use tools. No registration required.`,
+  };
+  
+  let metaDescription = categoryDescriptions[categoryKey] || categoryInfo.description;
+  
+  // Validate and truncate meta description to 150-160 characters
+  if (metaDescription.length < 150) {
+    // If too short, add more context
+    metaDescription = `${metaDescription} Get instant results with our free online calculators.`;
+  } else if (metaDescription.length > 160) {
+    // Truncate to 160 characters
+    metaDescription = metaDescription.substring(0, 157) + "...";
+  }
+
   return {
-    title: `${categoryInfo.name} Calculators`,
-    description: categoryInfo.description,
+    title,
+    description: metaDescription,
     alternates: {
       canonical: url,
     },
     openGraph: {
-      title: `${categoryInfo.name} Calculators`,
-      description: categoryInfo.description,
+      title,
+      description: metaDescription,
       url,
       type: "website",
       siteName: "Calculator360Pro",
@@ -50,8 +102,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     twitter: {
       card: "summary_large_image",
-      title: `${categoryInfo.name} Calculators`,
-      description: categoryInfo.description,
+      title,
+      description: metaDescription,
       images: [`${SITE_URL}/og-image.png`],
     },
     robots: {
@@ -78,9 +130,24 @@ export default async function CategoryPage({ params }: PageProps) {
 
   const categoryInfo = CALCULATOR_CATEGORIES[categoryKey];
   const calculators = getCalculatorsByCategory(categoryKey);
+  
+  const categorySchema = generateCategoryPageSchema(
+    categoryInfo.name,
+    categoryInfo.slug,
+    calculators.map(calc => ({
+      name: calc.name,
+      slug: calc.slug,
+      category: calc.category,
+    }))
+  );
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] py-16">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(categorySchema) }}
+      />
+      <div className="min-h-screen bg-[#f8fafc] py-16">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-[#1e293b] mb-4">
@@ -119,6 +186,7 @@ export default async function CategoryPage({ params }: PageProps) {
         )}
       </div>
     </div>
+    </>
   );
 }
 

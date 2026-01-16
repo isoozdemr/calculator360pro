@@ -108,3 +108,30 @@ export function generateWebSiteSchema() {
   };
 }
 
+export function generateCategoryPageSchema(
+  categoryName: string,
+  categorySlug: string,
+  calculators: Array<{ name: string; slug: string; category: string }>
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": `${categoryName} Calculators`,
+    "description": `Free ${categoryName.toLowerCase()} calculators including ${calculators.slice(0, 3).map(c => c.name).join(", ")} and more.`,
+    "url": `${SITE_URL}/calculators/${categorySlug}`,
+    "mainEntity": {
+      "@type": "ItemList",
+      "numberOfItems": calculators.length,
+      "itemListElement": calculators.map((calc, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "WebApplication",
+          "name": calc.name,
+          "url": `${SITE_URL}/calculators/${getCategorySlugByKey(calc.category as any)}/${calc.slug}`,
+        },
+      })),
+    },
+  };
+}
+

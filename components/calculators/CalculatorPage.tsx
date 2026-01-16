@@ -21,8 +21,11 @@ import { BudgetCalculator } from "./BudgetCalculator";
 import { TipCalculator } from "./TipCalculator";
 import { DiscountCalculator } from "./DiscountCalculator";
 import { AdAboveFold, AdBelowContent } from "@/components/ads/AdSense";
-import { getCalculator } from "@/lib/calculators/definitions";
+import { getRelatedCalculators } from "@/lib/calculators/related";
 import { Breadcrumbs } from "@/components/SEO/Breadcrumbs";
+import { SocialShare } from "@/components/SEO/SocialShare";
+import { getCategorySlugByKey } from "@/lib/constants";
+import { optimizeFAQAnswer } from "@/lib/seo/featured-snippets";
 import Link from "next/link";
 
 interface CalculatorPageProps {
@@ -31,7 +34,7 @@ interface CalculatorPageProps {
 
 const calculatorComponents: Record<
   string,
-  React.ComponentType<{}>
+  React.ComponentType<Record<string, never>>
 > = {
   "percentage-calculator": PercentageCalculator,
   "bmi-calculator": BMICalculator,
@@ -60,9 +63,9 @@ export function CalculatorPage({ calculator }: CalculatorPageProps) {
   const CalculatorComponent =
     calculatorComponents[calculator.id] || PercentageCalculator;
 
-  const relatedCalculators = (calculator.relatedCalculators
-    ?.map((id) => getCalculator(id))
-    .filter((calc): calc is CalculatorDefinition => calc !== undefined) || []);
+  // Get related calculators using smart algorithm
+  // Combines manual relatedCalculators with algorithm-based suggestions
+  const relatedCalculators = getRelatedCalculators(calculator, 6);
 
   return (
     <div className="min-h-screen bg-[#f8fafc] py-8">
@@ -90,6 +93,11 @@ export function CalculatorPage({ calculator }: CalculatorPageProps) {
               className="prose prose-slate max-w-none"
               dangerouslySetInnerHTML={{ __html: calculator.content }}
             />
+            <SocialShare
+              url={`/calculators/${getCategorySlugByKey(calculator.category)}/${calculator.slug}`}
+              title={calculator.name}
+              description={calculator.metaDescription}
+            />
           </div>
         )}
 
@@ -102,7 +110,7 @@ export function CalculatorPage({ calculator }: CalculatorPageProps) {
               {relatedCalculators.map((related) => (
                 <Link
                   key={related.id}
-                  href={`/calculators/${related.category}/${related.slug}`}
+                  href={`/calculators/${getCategorySlugByKey(related.category)}/${related.slug}`}
                   className="block p-4 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors"
                 >
                   <h3 className="font-semibold text-[#1e293b] mb-2">
@@ -123,16 +131,21 @@ export function CalculatorPage({ calculator }: CalculatorPageProps) {
               Frequently Asked Questions
             </h2>
             <div className="space-y-6">
-              {calculator.faqs.map((faq, index) => (
-                <div key={index}>
-                  <h3 className="text-lg font-semibold text-[#1e293b] mb-2">
-                    {faq.question}
-                  </h3>
-                  <p className="text-[#64748b] leading-relaxed">
-                    {faq.answer}
-                  </p>
-                </div>
-              ))}
+              {calculator.faqs.map((faq, index) => {
+                // Optimize FAQ answer for featured snippets (40-60 words)
+                const optimizedAnswer = optimizeFAQAnswer(faq.answer, 50);
+                
+                return (
+                  <div key={index}>
+                    <h3 className="text-lg font-semibold text-[#1e293b] mb-2">
+                      {faq.question}
+                    </h3>
+                    <p className="text-[#64748b] leading-relaxed">
+                      {optimizedAnswer}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}
