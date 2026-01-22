@@ -940,14 +940,14 @@ function generateCalculatorContent(): Record<string, string> {
     <h3>How Income Tax Is Calculated</h3>
     <p>Income tax is calculated using a progressive bracket system. Your income is divided into portions, with each portion taxed at its corresponding bracket rate. This means you don't pay the same rate on all your income—only the income within each bracket is taxed at that bracket's rate. This progressive structure ensures that tax rates increase as income increases, but only on the additional income, not your entire income.</p>
 
-    <p>For example, if you're a single filer with $50,000 in taxable income for ${taxYearStr}, you don't pay 22% on all $50,000. Instead, you pay 10% on the first $12,400 ($1,240), 12% on income from $12,401 to $50,400 ($4,512), for a total tax of $5,752. This progressive structure means that even though your top bracket is 12%, your effective tax rate (total tax divided by total income) is only 11.5%.</p>
+    <p>For example, if you're a single filer with $50,000 in taxable income for ${taxYearStr}, you don't pay 22% on all $50,000. Instead, you pay 10% on the first $11,000 ($1,100), 12% on income from $11,001 to $44,725 ($4,047), and 22% on income from $44,726 to $50,000 ($1,160), for a total tax of $6,307. This progressive structure means that even though your top bracket is 22%, your effective tax rate (total tax divided by total income) is only 12.6%.</p>
 
     <p>Understanding this calculation is crucial because many people mistakenly believe that moving into a higher tax bracket means all their income is taxed at the higher rate. This is not true—only the income within the higher bracket is taxed at that rate. This means that earning more money will never result in taking home less money after taxes, which is a common misconception.</p>
 
     <h3>Understanding Tax Brackets</h3>
-    <p>Tax brackets are income ranges that determine the tax rate applied to income within that range. For ${taxYearStr}, federal tax brackets for single filers range from 10% for income up to $12,400 to 37% for income above $640,600. These brackets apply to taxable income after deductions, not gross income. Understanding this distinction is crucial for accurate tax calculations.</p>
+    <p>Tax brackets are income ranges that determine the tax rate applied to income within that range. For ${taxYearStr}, federal tax brackets for single filers range from 10% for income up to $11,000 to 37% for income above $578,125. These brackets apply to taxable income after deductions, not gross income. Understanding this distinction is crucial for accurate tax calculations.</p>
 
-    <p>For ${taxYearStr}, the federal tax brackets for single filers are: 10% up to $12,400, 12% from $12,401 to $50,400, 22% from $50,401 to $105,700, 24% from $105,701 to $201,775, 32% from $201,776 to $256,225, 35% from $256,226 to $640,600, and 37% above $640,600. Married couples filing jointly have different brackets that are roughly double the single filer brackets, providing a marriage benefit in the tax code.</p>
+    <p>For ${taxYearStr}, the federal tax brackets for single filers are: 10% up to $11,000, 12% from $11,001 to $44,725, 22% from $44,726 to $95,375, 24% from $95,376 to $182,050, 32% from $182,051 to $231,250, 35% from $231,251 to $578,125, and 37% above $578,125. Married couples filing jointly have different brackets that are roughly double the single filer brackets, providing a marriage benefit in the tax code.</p>
 
     <p>It's important to note that these brackets are adjusted annually for inflation, so they change each year. The brackets for ${taxYearStr} are higher than ${previousYearStr}, which means you can earn more before moving into higher brackets. This inflation adjustment helps prevent "bracket creep," where inflation pushes people into higher tax brackets even though their real purchasing power hasn't increased.</p>
 
@@ -959,7 +959,7 @@ function generateCalculatorContent(): Record<string, string> {
     <p>Understanding both rates is important. Your marginal rate helps you evaluate the tax impact of additional income or deductions, while your effective rate shows your overall tax burden. When people say "I'm in the 22% tax bracket," they're referring to their marginal rate, but their effective rate is typically much lower due to the progressive bracket system.</p>
 
     <h3>Deductions: Reducing Your Taxable Income</h3>
-    <p>The standard deduction is a fixed amount that reduces your taxable income without requiring itemization. For ${taxYearStr}, the standard deduction for single filers is $16,100, for married couples filing jointly is $32,200, and for heads of household is $24,150. The standard deduction is adjusted annually for inflation, and it's available to all taxpayers regardless of their actual expenses.</p>
+    <p>The standard deduction is a fixed amount that reduces your taxable income without requiring itemization. For ${taxYearStr}, the standard deduction for single filers is $14,600, for married couples filing jointly is $29,200, and for heads of household is $21,900. The standard deduction is adjusted annually for inflation, and it's available to all taxpayers regardless of their actual expenses.</p>
 
     <p>Itemized deductions allow you to deduct specific expenses if their total exceeds the standard deduction. Common itemized deductions include mortgage interest on loans up to $750,000 (or $375,000 for married filing separately), state and local taxes (SALT) limited to $10,000, charitable contributions up to certain limits, and medical expenses exceeding 7.5% of adjusted gross income. You can choose either the standard deduction or itemized deductions, whichever is larger, but not both.</p>
 
@@ -1030,10 +1030,10 @@ function generateCalculatorContent(): Record<string, string> {
 
     <h3>Practical Examples and Scenarios</h3>
     <h4>Example 1: Understanding Tax Brackets</h4>
-    <p>Sarah is a single filer with $60,000 in taxable income for ${taxYearStr}. She might think she pays 22% on all $60,000, but actually she pays: 10% on the first $12,400 ($1,240), 12% on $12,401 to $50,400 ($4,560), and 22% on $50,401 to $60,000 ($2,112), for a total of $7,912. Her effective tax rate is 13.2%, not 22%.</p>
+    <p>Sarah is a single filer with $60,000 in taxable income for ${taxYearStr}. She might think she pays 22% on all $60,000, but actually she pays: 10% on the first $11,000 ($1,100), 12% on $11,001 to $44,725 ($4,047), and 22% on $44,726 to $60,000 ($3,361), for a total of $8,508. Her effective tax rate is 14.2%, not 22%.</p>
 
     <h4>Example 2: Standard vs. Itemized Deductions</h4>
-    <p>Mike and his wife have $12,000 in mortgage interest, $8,000 in state and local taxes (limited to $10,000 for SALT), and $3,000 in charitable contributions, totaling $25,000 in itemized deductions. Since their standard deduction is $32,200, they're better off taking the standard deduction, saving them $7,200 in deductions compared to itemizing.</p>
+    <p>Mike and his wife have $12,000 in mortgage interest, $8,000 in state and local taxes (limited to $10,000 for SALT), and $3,000 in charitable contributions, totaling $25,000 in itemized deductions. Since their standard deduction is $29,200, they're better off taking the standard deduction, saving them $4,200 in deductions compared to itemizing.</p>
 
     <h4>Example 3: Impact of Retirement Contributions</h4>
     <p>Jennifer earns $75,000 and is in the 22% tax bracket. If she contributes $5,000 to her traditional 401(k), she reduces her taxable income to $70,000, saving $1,100 in taxes (22% of $5,000). Additionally, her employer matches 50% of her contributions up to 6%, providing an additional $2,250 in retirement savings. This makes retirement contributions one of the most tax-efficient ways to save.</p>

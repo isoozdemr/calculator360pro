@@ -48,17 +48,17 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       {
         question: "How do I calculate a percentage?",
         answer:
-          "To calculate a percentage, divide the part by the whole and multiply by 100. For example, if you have 25 out of 100, the percentage is (25/100) × 100 = 25%.",
+          "To calculate a percentage, divide the part by the whole and multiply by 100. For example, if you have 25 out of 100, the percentage is (25/100) × 100 = 25%. This formula works for any percentage calculation, whether you're calculating discounts, tips, test scores, or proportions. The result shows what portion of the whole the part represents.",
       },
       {
         question: "How do I calculate percentage increase?",
         answer:
-          "Percentage increase = [(New Value - Old Value) / Old Value] × 100. For example, if a price increases from $100 to $120, the percentage increase is [(120-100)/100] × 100 = 20%.",
+          "Percentage increase = [(New Value - Old Value) / Old Value] × 100. For example, if a price increases from $100 to $120, the percentage increase is [(120-100)/100] × 100 = 20%. This calculation helps you understand growth rates, price changes, and improvements over time. It's useful for tracking salary increases, investment returns, and sales growth.",
       },
       {
         question: "How do I calculate percentage decrease?",
         answer:
-          "Percentage decrease = [(Old Value - New Value) / Old Value] × 100. For example, if a price decreases from $100 to $80, the percentage decrease is [(100-80)/100] × 100 = 20%.",
+          "Percentage decrease = [(Old Value - New Value) / Old Value] × 100. For example, if a price decreases from $100 to $80, the percentage decrease is [(100-80)/100] × 100 = 20%. This formula helps you calculate discounts, depreciation, and reductions. It's commonly used for sale prices, weight loss tracking, and budget reductions.",
       },
     ],
     relatedCalculators: ["gpa-calculator", "grade-calculator"],
@@ -94,17 +94,17 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       {
         question: "What is BMI?",
         answer:
-          "BMI (Body Mass Index) is a measure of body fat based on height and weight. It's calculated by dividing weight in kilograms by height in meters squared (kg/m²).",
+          "BMI (Body Mass Index) is a measure of body fat based on height and weight. It's calculated by dividing weight in kilograms by height in meters squared (kg/m²). For imperial units, multiply weight in pounds by 703, then divide by height in inches squared. BMI provides a quick screening tool to assess weight status, though it doesn't directly measure body fat percentage.",
       },
       {
         question: "What is a healthy BMI range?",
         answer:
-          "A healthy BMI range is typically between 18.5 and 24.9. Below 18.5 is considered underweight, 25-29.9 is overweight, and 30 or above is considered obese.",
+          "A healthy BMI range is typically between 18.5 and 24.9. Below 18.5 is considered underweight, 25-29.9 is overweight, and 30 or above is considered obese. These ranges help assess health risks associated with weight. However, individual factors like muscle mass, age, and body composition should also be considered when evaluating health status.",
       },
       {
         question: "Is BMI accurate for everyone?",
         answer:
-          "BMI is a general indicator but may not be accurate for athletes with high muscle mass, elderly individuals, or children. Consult a healthcare professional for personalized advice.",
+          "BMI is a general indicator but may not be accurate for athletes with high muscle mass, elderly individuals, or children. Consult a healthcare professional for personalized advice. For example, a muscular athlete might have a high BMI despite low body fat. Similarly, older adults may have different body composition that affects BMI interpretation.",
       },
     ],
     relatedCalculators: ["body-fat-calculator", "calorie-calculator"],
@@ -139,17 +139,17 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       {
         question: "How is GPA calculated?",
         answer:
-          "GPA is calculated by dividing the total grade points earned by the total credit hours attempted. Each letter grade corresponds to a point value (A=4.0, B=3.0, C=2.0, D=1.0, F=0.0).",
+          "GPA is calculated by dividing the total grade points earned by the total credit hours attempted. Each letter grade corresponds to a point value (A=4.0, B=3.0, C=2.0, D=1.0, F=0.0). For example, if you earn an A in a 3-credit course, you get 12 grade points. Sum all grade points and divide by total credit hours to get your GPA.",
       },
       {
         question: "What is a good GPA?",
         answer:
-          "A good GPA depends on the context. Generally, a GPA of 3.0 or above is considered good, 3.5 or above is very good, and 3.7 or above is excellent for most colleges and universities.",
+          "A good GPA depends on the context. Generally, a GPA of 3.0 or above is considered good, 3.5 or above is very good, and 3.7 or above is excellent for most colleges and universities. Graduate programs often require 3.5 or higher, while some competitive programs may require 3.8 or above. High school GPAs are typically evaluated differently than college GPAs.",
       },
       {
         question: "Can I calculate weighted GPA?",
         answer:
-          "Yes, weighted GPA accounts for the difficulty of courses (AP, honors, etc.). These courses typically receive an extra point (A=5.0, B=4.0, etc.) in weighted GPA calculations.",
+          "Yes, weighted GPA accounts for the difficulty of courses (AP, honors, etc.). These courses typically receive an extra point (A=5.0, B=4.0, etc.) in weighted GPA calculations. This system rewards students for taking more challenging courses. Weighted GPA can exceed 4.0, making it useful for college admissions where course rigor matters.",
       },
     ],
     relatedCalculators: ["grade-calculator", "percentage-calculator"],
@@ -184,17 +184,17 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       {
         question: "What functions does a scientific calculator have?",
         answer:
-          "A scientific calculator includes trigonometric functions (sin, cos, tan), logarithms (log, ln), exponentials, square roots, powers, and various mathematical operations beyond basic arithmetic.",
+          "A scientific calculator includes trigonometric functions (sin, cos, tan), logarithms (log, ln), exponentials, square roots, powers, and various mathematical operations beyond basic arithmetic. It also handles inverse trigonometric functions, hyperbolic functions, and statistical calculations. These features make it essential for advanced mathematics, engineering, physics, and science courses where complex calculations are required.",
       },
       {
         question: "Can I use this calculator for exams?",
         answer:
-          "This calculator is suitable for practice and homework. For official exams, please check with your institution about allowed calculator types and policies.",
+          "This calculator is suitable for practice and homework. For official exams, please check with your institution about allowed calculator types and policies. Many standardized tests have specific rules about calculator usage, including which models are permitted. Always verify exam requirements beforehand to ensure compliance with testing regulations.",
       },
       {
         question: "Does this calculator support complex numbers?",
         answer:
-          "This calculator supports basic scientific functions. For complex number operations, you may need specialized mathematical software.",
+          "This calculator supports basic scientific functions. For complex number operations, you may need specialized mathematical software. Complex number calculations involve imaginary numbers and require specific algorithms. While this calculator handles real number operations excellently, advanced complex number work typically requires dedicated mathematical software or graphing calculators.",
       },
     ],
     relatedCalculators: ["percentage-calculator", "fraction-calculator"],
@@ -229,17 +229,17 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       {
         question: "How do I calculate my exact age?",
         answer:
-          "Your exact age is calculated by subtracting your birth date from the current date. The calculator accounts for leap years and different month lengths to give you an accurate result.",
+          "Your exact age is calculated by subtracting your birth date from the current date. The calculator accounts for leap years and different month lengths to give you an accurate result. For example, if you were born on March 15, 1990, and today is March 20, 2026, you're exactly 36 years and 5 days old. The calculation considers leap years and varying month lengths.",
       },
       {
         question: "Can I calculate age in different units?",
         answer:
-          "Yes, the age calculator can show your age in years, months, weeks, days, hours, and even minutes or seconds for precise calculations.",
+          "Yes, the age calculator can show your age in years, months, weeks, days, hours, and even minutes or seconds for precise calculations. This flexibility helps with various needs, from legal age verification to fun facts about your life. For instance, you can see how many days you've been alive or calculate your age in hours for a unique perspective.",
       },
       {
         question: "How do I calculate the age difference between two people?",
         answer:
-          "To calculate age difference, subtract the younger person's birth date from the older person's birth date. The calculator can show this difference in various time units.",
+          "To calculate age difference, subtract the younger person's birth date from the older person's birth date. The calculator can show this difference in various time units. For example, if one person was born in 1990 and another in 1995, the age difference is 5 years. This is useful for comparing ages, understanding generational gaps, or calculating relationships between birth dates.",
       },
     ],
     relatedCalculators: ["date-calculator"],
@@ -275,17 +275,17 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       {
         question: "How is monthly mortgage payment calculated?",
         answer:
-          "Monthly mortgage payment is calculated using the formula: M = P[r(1+r)^n]/[(1+r)^n-1], where P is principal, r is monthly interest rate, and n is number of payments.",
+          "Monthly mortgage payment is calculated using the formula: M = P[r(1+r)^n]/[(1+r)^n-1], where P is principal, r is monthly interest rate, and n is number of payments. For example, a $300,000 loan at 4% annual interest for 30 years results in a monthly payment of approximately $1,432. This formula accounts for both principal and interest.",
       },
       {
         question: "What is included in a mortgage payment?",
         answer:
-          "A mortgage payment typically includes principal (loan amount), interest, property taxes, homeowners insurance, and sometimes PMI (Private Mortgage Insurance).",
+          "A mortgage payment typically includes principal (loan amount), interest, property taxes, homeowners insurance, and sometimes PMI (Private Mortgage Insurance). Principal and interest make up the core payment, while taxes and insurance are often escrowed. PMI is required when the down payment is less than 20% and protects the lender if you default on the loan.",
       },
       {
         question: "How does down payment affect mortgage payments?",
         answer:
-          "A larger down payment reduces the principal amount, which lowers monthly payments and total interest paid over the life of the loan.",
+          "A larger down payment reduces the principal amount, which lowers monthly payments and total interest paid over the life of the loan. For example, a 20% down payment on a $300,000 home ($60,000) reduces the loan to $240,000, saving thousands in interest. Additionally, down payments of 20% or more eliminate PMI requirements, further reducing monthly costs.",
       },
     ],
     relatedCalculators: ["loan-calculator", "compound-interest-calculator"],
@@ -321,17 +321,17 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       {
         question: "What is compound interest?",
         answer:
-          "Compound interest is interest calculated on the initial principal and also on the accumulated interest from previous periods. It allows your investment to grow exponentially over time.",
+          "Compound interest is interest calculated on the initial principal and also on the accumulated interest from previous periods. It allows your investment to grow exponentially over time. For example, $1,000 invested at 5% annual interest becomes $1,050 after one year, then $1,102.50 after two years. This compounding effect accelerates wealth growth significantly over long periods.",
       },
       {
         question: "How often should interest compound?",
         answer:
-          "Interest can compound annually, semi-annually, quarterly, monthly, or daily. More frequent compounding results in higher returns, though the difference becomes smaller as frequency increases.",
+          "Interest can compound annually, semi-annually, quarterly, monthly, or daily. More frequent compounding results in higher returns, though the difference becomes smaller as frequency increases. For instance, monthly compounding typically yields slightly more than annual compounding. Most savings accounts compound daily, while investments may compound monthly or quarterly depending on the product type.",
       },
       {
         question: "What is the formula for compound interest?",
         answer:
-          "The formula is A = P(1 + r/n)^(nt), where A is the final amount, P is principal, r is annual interest rate, n is compounding frequency, and t is time in years.",
+          "The formula is A = P(1 + r/n)^(nt), where A is the final amount, P is principal, r is annual interest rate, n is compounding frequency, and t is time in years. For example, $10,000 at 5% annual interest compounded monthly for 10 years: A = 10000(1 + 0.05/12)^(12×10) = $16,470. This shows how principal, rate, frequency, and time affect final value.",
       },
     ],
     relatedCalculators: ["mortgage-calculator", "loan-calculator"],
@@ -366,17 +366,17 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       {
         question: "How do I calculate loan payments?",
         answer:
-          "Loan payments are calculated using the same formula as mortgages: M = P[r(1+r)^n]/[(1+r)^n-1], where P is loan amount, r is monthly interest rate, and n is number of payments.",
+          "Loan payments are calculated using the same formula as mortgages: M = P[r(1+r)^n]/[(1+r)^n-1], where P is loan amount, r is monthly interest rate, and n is number of payments. For example, a $20,000 loan at 6% annual interest for 5 years results in monthly payments of approximately $387. This ensures the loan is fully paid off by term end.",
       },
       {
         question: "What is the difference between secured and unsecured loans?",
         answer:
-          "Secured loans (like auto loans) are backed by collateral, typically offering lower interest rates. Unsecured loans (like personal loans) don't require collateral but may have higher rates.",
+          "Secured loans (like auto loans) are backed by collateral, typically offering lower interest rates. Unsecured loans (like personal loans) don't require collateral but may have higher rates. Secured loans use assets like cars or homes as security, reducing lender risk. Unsecured loans rely on creditworthiness alone, making them riskier for lenders and often more expensive for borrowers.",
       },
       {
         question: "How does loan term affect payments?",
         answer:
-          "Longer loan terms result in lower monthly payments but higher total interest paid. Shorter terms have higher monthly payments but lower total interest.",
+          "Longer loan terms result in lower monthly payments but higher total interest paid. Shorter terms have higher monthly payments but lower total interest. For example, a $20,000 loan at 6% interest costs $387/month for 5 years (total interest: $3,220) versus $333/month for 6 years (total interest: $3,976). Choose based on your monthly budget and long-term financial goals.",
       },
     ],
     relatedCalculators: ["mortgage-calculator", "compound-interest-calculator"],
@@ -411,17 +411,17 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       {
         question: "How is income tax calculated?",
         answer:
-          "Income tax is calculated using progressive tax brackets. Each portion of income is taxed at the corresponding bracket rate, with higher income taxed at higher rates.",
+          "Income tax is calculated using progressive tax brackets. Each portion of income is taxed at the corresponding bracket rate, with higher income taxed at higher rates. For 2026, the federal tax brackets range from 10% to 37%. For example, a single filer earning $50,000 pays 10% on income up to $11,000, 12% on income from $11,001 to $44,725, and 22% on the remainder.",
       },
       {
         question: "What is the difference between marginal and effective tax rate?",
         answer:
-          "Marginal tax rate is the rate on your last dollar of income. Effective tax rate is your total tax divided by total income, representing your average tax rate.",
+          "Marginal tax rate is the rate on your last dollar of income. Effective tax rate is your total tax divided by total income, representing your average tax rate. For example, if you're in the 22% tax bracket (marginal rate), your effective rate might be 15% after deductions and credits. The effective rate is always lower than the marginal rate.",
       },
       {
         question: "What deductions can reduce my taxable income?",
         answer:
-          "Common deductions include standard deduction, itemized deductions (mortgage interest, charitable contributions), retirement contributions, and health savings accounts.",
+          "Common deductions include standard deduction, itemized deductions (mortgage interest, charitable contributions), retirement contributions, and health savings accounts. For 2026, the standard deduction is $14,600 for single filers and $29,200 for married couples filing jointly. Itemized deductions may be more beneficial if they exceed the standard deduction, reducing your taxable income and overall tax liability.",
       },
     ],
     relatedCalculators: ["salary-calculator", "mortgage-calculator"],
@@ -456,17 +456,17 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       {
         question: "How do I calculate take-home pay?",
         answer:
-          "Take-home pay is gross salary minus federal tax, state tax, Social Security, Medicare, and other deductions like health insurance and retirement contributions.",
+          "Take-home pay is gross salary minus federal tax, state tax, Social Security, Medicare, and other deductions like health insurance and retirement contributions. For example, if your gross salary is $60,000, you might pay $8,000 in federal taxes, $3,000 in state taxes, $3,720 in Social Security, $870 in Medicare, and $2,000 in other deductions, leaving approximately $42,410 in take-home pay annually.",
       },
       {
         question: "What is the difference between gross and net salary?",
         answer:
-          "Gross salary is your total earnings before deductions. Net salary (take-home pay) is your earnings after all taxes and deductions have been subtracted.",
+          "Gross salary is your total earnings before deductions. Net salary (take-home pay) is your earnings after all taxes and deductions have been subtracted. For example, if your gross salary is $50,000, your net salary might be $38,000 after taxes and deductions. Understanding this difference helps you budget effectively and negotiate salaries based on take-home pay rather than gross income.",
       },
       {
         question: "How do I convert hourly wage to annual salary?",
         answer:
-          "Multiply hourly wage by hours worked per week, then by 52 weeks. For example, $20/hour × 40 hours/week × 52 weeks = $41,600 annually.",
+          "Multiply hourly wage by hours worked per week, then by 52 weeks. For example, $20/hour × 40 hours/week × 52 weeks = $41,600 annually. For part-time work, adjust the hours accordingly. If you work 30 hours per week at $20/hour, your annual salary would be $20 × 30 × 52 = $31,200. This helps compare job offers and plan budgets.",
       },
     ],
     relatedCalculators: ["tax-calculator", "percentage-calculator"],
@@ -506,12 +506,12 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       {
         question: "What is a healthy body fat percentage?",
         answer:
-          "For men, a healthy body fat percentage is typically 10-20%, with 6-13% considered athletic and 2-5% essential. For women, healthy ranges are 18-28%, with 14-20% considered athletic and 10-13% essential. These ranges vary based on age and individual factors.",
+          "For men, a healthy body fat percentage is typically 10-20%, with 6-13% considered athletic and 2-5% essential. For women, healthy ranges are 18-28%, with 14-20% considered athletic and 10-13% essential. These ranges vary based on age and individual factors. Generally, younger adults can maintain lower body fat percentages, while older adults may have slightly higher healthy ranges.",
       },
       {
         question: "Is the Navy body fat calculator accurate?",
         answer:
-          "The US Navy body fat calculator provides a good estimate (within 3-4% accuracy) for most people. However, accuracy can vary based on body type, age, and fitness level. For the most accurate measurement, consider DEXA scan or hydrostatic weighing.",
+          "The US Navy body fat calculator provides a good estimate (within 3-4% accuracy) for most people. However, accuracy can vary based on body type, age, and fitness level. For the most accurate measurement, consider DEXA scan or hydrostatic weighing. The Navy method is convenient and free, making it a practical choice for regular tracking, though professional methods offer higher precision.",
       },
       {
         question: "How do I measure my neck and waist for the calculator?",
@@ -770,12 +770,12 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       {
         question: "How long will it take to pay off my credit card?",
         answer:
-          "Payoff time depends on your balance, interest rate, and monthly payment. If you only make minimum payments, it can take decades and cost thousands in interest. Our calculator shows exactly how long it will take with your current payment and how extra payments can accelerate payoff. For example, paying just $50 more per month can save years of payments and thousands in interest.",
+          "Payoff time depends on your balance, interest rate, and monthly payment. If you only make minimum payments, it can take decades and cost thousands in interest. Our calculator shows how long it will take with your current payment and how extra payments can accelerate payoff. For example, paying just $50 more per month can save years and thousands in interest.",
       },
       {
         question: "How much interest will I pay on my credit card debt?",
         answer:
-          "Interest depends on your balance, APR, and how long you take to pay it off. Credit cards typically have high interest rates (15-25% or more), so interest can add up quickly. Our calculator shows your total interest cost and how extra payments can reduce it. Making only minimum payments can result in paying 2-3 times your original balance in interest over time.",
+          "Interest depends on your balance, APR, and how long you take to pay it off. Credit cards typically have high interest rates (15-25% or more), so interest can add up quickly. Our calculator shows your total interest cost and how extra payments can reduce it. Making only minimum payments can result in paying 2-3 times your original balance in interest.",
       },
       {
         question: "What is the best strategy to pay off credit card debt?",
@@ -831,12 +831,12 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       {
         question: "What is the 4% rule for retirement?",
         answer:
-          "The 4% rule suggests you can safely withdraw 4% of your retirement savings in the first year, then adjust for inflation each year. This rule is based on historical market data and assumes a 30-year retirement. For example, with $1 million saved, you could withdraw $40,000 in year one. However, this is a guideline—your actual withdrawal rate should consider your specific situation and market conditions.",
+          "The 4% rule suggests you can safely withdraw 4% of your retirement savings in the first year, then adjust for inflation each year. This rule is based on historical market data and assumes a 30-year retirement. For example, with $1 million saved, you could withdraw $40,000 in year one. However, this is a guideline—your actual withdrawal rate should consider your situation and market conditions.",
       },
       {
         question: "When should I start saving for retirement?",
         answer:
-          "The best time to start saving for retirement is as early as possible, ideally in your 20s. Starting early allows compound interest to work in your favor—someone who starts at 25 will need to save much less than someone who starts at 45 to reach the same goal. However, it's never too late to start. Even starting in your 40s or 50s can make a significant difference in your retirement security.",
+          "The best time to start saving for retirement is as early as possible, ideally in your 20s. Starting early allows compound interest to work in your favor—someone who starts at 25 will need to save much less than someone who starts at 45 to reach the same goal. However, it's never too late to start. Even beginning in your 40s or 50s can improve your retirement security.",
       },
       {
         question: "How much should I contribute to my 401(k)?",
@@ -887,7 +887,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       {
         question: "How much should I save each month?",
         answer:
-          "A common guideline is to save 20% of your income, but the exact amount depends on your goals, income, and expenses. Start with what you can afford and increase gradually. For emergency funds, aim for 3-6 months of expenses. For retirement, aim for 15-20% of income including employer matches. Our calculator helps you see how different monthly contributions affect your savings goals.",
+          "A common guideline is to save 20% of your income, but the exact amount depends on your goals, income, and expenses. Start with what you can afford and increase gradually. For emergency funds, aim for 3-6 months of expenses. For retirement, aim for 15-20% of income including employer matches. Our calculator shows how different contributions affect your savings goals.",
       },
       {
         question: "What is a good interest rate for savings?",
@@ -999,7 +999,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       {
         question: "What is a good tip percentage?",
         answer:
-          "Standard tip percentages vary by service type. For restaurants: 15% is standard, 18% for good service, 20% for excellent service, and 10-15% for poor service. For other services: 15-20% for food delivery, 10-15% for taxi/ride-share, 15-20% for hair salons, and $1-2 per drink at bars. Tips can vary by location and culture—when in doubt, 18-20% is generally safe for good service.",
+          "Standard tip percentages vary by service type. For restaurants: 15% is standard, 18% for good service, 20% for excellent service, and 10-15% for poor service. For other services: 15-20% for food delivery, 10-15% for taxi/ride-share, 15-20% for hair salons, and $1-2 per drink at bars. When in doubt, 18-20% is generally safe for good service.",
       },
       {
         question: "Should I tip on the total before or after tax?",
@@ -1065,12 +1065,12 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       {
         question: "How do I calculate multiple discounts?",
         answer:
-          "When you have multiple discounts (like 20% off, then an additional 10% off), apply them sequentially, not by adding percentages. For a $100 item: First discount (20%) = $80. Second discount (10% of $80) = $8. Final price = $80 - $8 = $72. Adding percentages (20% + 10% = 30%) would incorrectly give $70. Our calculator can handle multiple discounts correctly.",
+          "When you have multiple discounts (like 20% off, then an additional 10% off), apply them sequentially, not by adding percentages. For a $100 item: First discount (20%) = $80. Second discount (10% of $80) = $8. Final price = $80 - $8 = $72. Adding percentages (20% + 10% = 30%) would incorrectly give $70.",
       },
       {
         question: "Should I buy now or wait for a better discount?",
         answer:
-          "This depends on urgency, typical discount patterns, and price history. If you need the item immediately, buy it. If you can wait, research typical sale cycles (many items go on sale seasonally). Use our calculator to understand the actual savings—a 50% discount on a $200 item saves $100, while a 30% discount on a $50 item saves only $15. Consider the absolute savings, not just the percentage.",
+          "This depends on urgency, typical discount patterns, and price history. If you need the item immediately, buy it. If you can wait, research typical sale cycles (many items go on sale seasonally). Use our calculator to understand actual savings—a 50% discount on a $200 item saves $100, while a 30% discount on a $50 item saves only $15.",
       },
     ],
     relatedCalculators: ["percentage-calculator", "tip-calculator"],
