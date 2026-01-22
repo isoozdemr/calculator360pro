@@ -361,7 +361,7 @@ function generateCalculatorContent(): Record<string, string> {
     <h4>Athletes</h4>
     <p>For athletes and highly active individuals, BMI may not accurately reflect health status due to higher muscle mass. Muscle weighs more than fat, so athletes with significant muscle mass may have a high BMI despite having low body fat and excellent health. Body composition measurements like body fat percentage, DEXA scans, or bioelectrical impedance may be more appropriate for athletes.</p>
 
-    <p>If you're an athlete or highly active person with a BMI above 25, don't assume you're unhealthy. Consider other measures like body fat percentage, performance metrics, and overall health indicators. Many professional athletes have BMIs in the "overweight" or even "obese" range due to muscle mass, yet they're in excellent health.</p>
+    <p>If you're an athlete or highly active person with a BMI above 25, don't assume you're unhealthy. Consider other measures like <a href="/calculators/health/body-fat-calculator">body fat percentage</a>, performance metrics, and overall health indicators. Many professional athletes have BMIs in the "overweight" or even "obese" range due to muscle mass, yet they're in excellent health. For a detailed comparison of BMI vs body fat percentage, read our <a href="/blog/bmi-vs-body-fat-percentage-comparison">BMI vs Body Fat Percentage comparison guide</a>.</p>
 
     <h4>Pregnant Women</h4>
     <p>BMI calculations are not appropriate for pregnant women, as weight gain during pregnancy is expected and necessary for a healthy pregnancy. Healthcare providers use different guidelines for weight gain during pregnancy based on pre-pregnancy BMI. If you're pregnant, follow your healthcare provider's guidance rather than using standard BMI categories.</p>
@@ -382,7 +382,7 @@ function generateCalculatorContent(): Record<string, string> {
     <h4>For Those Needing to Lose Weight</h4>
     <p>If you're overweight or obese, focus on sustainable weight loss:</p>
     <ul>
-      <li>Create a moderate calorie deficit (500-750 calories per day)</li>
+      <li>Create a moderate calorie deficit (500-750 calories per day) - use our <a href="/calculators/health/calorie-calculator">calorie calculator</a> to determine your daily needs</li>
       <li>Focus on whole, nutrient-dense foods</li>
       <li>Increase physical activity gradually</li>
       <li>Include both cardiovascular and strength training</li>
@@ -416,6 +416,14 @@ function generateCalculatorContent(): Record<string, string> {
 
     <h4>Example 3: Tracking BMI Over Time</h4>
     <p>Jennifer calculated her BMI six months ago and got 28.5 (overweight). After making lifestyle changes including improved diet and regular exercise, her current BMI is 26.2 (still overweight but improved). While she's still in the overweight category, the trend is positive, and she's making progress toward a healthier weight.</p>
+
+    <h3>Related Calculators</h3>
+    <p>If you found our BMI calculator helpful, you might also be interested in:</p>
+    <ul>
+      <li><strong><a href="/calculators/health/body-fat-calculator">Body Fat Calculator</a></strong> - Get a more detailed body composition measurement</li>
+      <li><strong><a href="/calculators/health/calorie-calculator">Calorie Calculator</a></strong> - Calculate your daily calorie needs for weight management</li>
+    </ul>
+    <p>Explore more <a href="/calculators/health">health calculators</a> for comprehensive health tracking and planning.</p>
 
     <h3>Conclusion</h3>
     <p>BMI is a useful tool for assessing weight status, but it's just one piece of the health puzzle. While our BMI calculator provides a quick and easy way to determine your BMI, remember that true health involves many factors including diet, exercise, mental health, and genetics. Use BMI as a starting point for understanding your health, but always consult with healthcare professionals for personalized advice and comprehensive health assessments.</p>
@@ -1928,7 +1936,7 @@ function generateCalculatorContent(): Record<string, string> {
     <p>Cardio exercise burns calories and helps create the calorie deficit needed for fat loss. Combine cardio with strength training for optimal body composition improvements.</p>
 
     <h4>Proper Nutrition</h4>
-    <p>Nutrition is crucial for body fat management. Focus on whole foods, adequate protein (to preserve muscle during fat loss), appropriate calorie balance, and nutrient-dense foods. Avoid extreme diets that cause muscle loss along with fat loss.</p>
+    <p>Nutrition is crucial for body fat management. Focus on whole foods, adequate protein (to preserve muscle during fat loss), appropriate calorie balance using our <a href="/calculators/health/calorie-calculator">calorie calculator</a>, and nutrient-dense foods. Avoid extreme diets that cause muscle loss along with fat loss.</p>
 
     <h4>Consistency</h4>
     <p>Improving body fat percentage takes time and consistency. Sustainable changes to diet and exercise habits produce lasting results, while quick fixes often lead to rebound.</p>
@@ -1944,7 +1952,7 @@ function generateCalculatorContent(): Record<string, string> {
     <p>For the most accurate measurements, consider professional methods like DEXA scans, hydrostatic weighing, or BodPod, though these are more expensive and less accessible.</p>
 
     <h3>Body Fat vs. BMI</h3>
-    <p>While BMI is a useful screening tool, body fat percentage provides more accurate health assessment. BMI doesn't distinguish between muscle and fat, so a muscular athlete might have a high BMI but low body fat. Body fat percentage accounts for body composition, making it superior for fitness and health assessment.</p>
+    <p>While <a href="/calculators/health/bmi-calculator">BMI</a> is a useful screening tool, body fat percentage provides more accurate health assessment. BMI doesn't distinguish between muscle and fat, so a muscular athlete might have a high BMI but low body fat. Body fat percentage accounts for body composition, making it superior for fitness and health assessment. For a detailed comparison, read our <a href="/blog/bmi-vs-body-fat-percentage-comparison">BMI vs Body Fat Percentage comparison guide</a>.</p>
 
     <h3>Expert Guide to Using Our Free Body Fat Calculator</h3>
     <p>Our free body fat calculator, designed by experienced fitness professionals, uses the proven US Navy method for accurate estimation. Based on years of health and fitness expertise, here's how to use our body fat calculator effectively:</p>
