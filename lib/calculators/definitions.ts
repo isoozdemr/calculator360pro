@@ -1298,6 +1298,12 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "currency exchange calculator",
       "USD to EUR converter",
       "currency rate calculator",
+      "currency converter online free",
+      "exchange rate calculator online",
+      "free currency converter",
+      "currency converter real time",
+      "money converter online",
+      "forex calculator online",
     ],
     metaDescription:
       "Free currency converter with real-time exchange rates. Convert between USD, EUR, GBP, JPY, and 150+ currencies instantly. Accurate, up-to-date currency conversion for travel and business.",
