@@ -20,6 +20,11 @@ import { SavingsCalculator } from "./SavingsCalculator";
 import { BudgetCalculator } from "./BudgetCalculator";
 import { TipCalculator } from "./TipCalculator";
 import { DiscountCalculator } from "./DiscountCalculator";
+import { DateCalculator } from "./DateCalculator";
+import { UnitConverter } from "./UnitConverter";
+import { PregnancyCalculator } from "./PregnancyCalculator";
+import { HoursCalculator } from "./HoursCalculator";
+import { CurrencyConverter } from "./CurrencyConverter";
 import { AdAboveFold, AdBelowContent } from "@/components/ads/AdSense";
 import { getRelatedCalculators } from "@/lib/calculators/related";
 import { Breadcrumbs } from "@/components/SEO/Breadcrumbs";
@@ -57,6 +62,11 @@ const calculatorComponents: Record<
   "budget-calculator": BudgetCalculator,
   "tip-calculator": TipCalculator,
   "discount-calculator": DiscountCalculator,
+  "date-calculator": DateCalculator,
+  "unit-converter": UnitConverter,
+  "pregnancy-calculator": PregnancyCalculator,
+  "hours-calculator": HoursCalculator,
+  "currency-converter": CurrencyConverter,
 };
 
 export function CalculatorPage({ calculator }: CalculatorPageProps) {

@@ -952,6 +952,232 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
     relatedCalculators: ["percentage-calculator", "tip-calculator"],
     content: CALCULATOR_CONTENT["discount-calculator"],
   },
+  "date-calculator": {
+    id: "date-calculator",
+    name: "Date Calculator",
+    slug: "date-calculator",
+    category: "dateTime",
+    description:
+      "Calculate the number of days, weeks, months, and years between two dates. Perfect for planning events, tracking deadlines, and measuring time periods.",
+    keywords: [
+      "date calculator",
+      "days between dates",
+      "date difference calculator",
+      "calculate days between dates",
+      "date range calculator",
+      "days calculator",
+      "time between dates",
+      "date interval calculator",
+      "calendar calculator",
+    ],
+    metaDescription:
+      "Free date calculator to calculate the number of days, weeks, months, and years between two dates. Perfect for planning events, tracking deadlines, and measuring time periods accurately.",
+    faqs: [
+      {
+        question: "How do I calculate the number of days between two dates?",
+        answer:
+          "To calculate days between dates, subtract the earlier date from the later date. Our date calculator automatically handles leap years, different month lengths, and accounts for the exact number of days, including or excluding the start/end dates. Simply enter your two dates and the calculator will show you the difference in days, weeks, months, and years.",
+      },
+      {
+        question: "Does the date calculator account for leap years?",
+        answer:
+          "Yes, our date calculator automatically accounts for leap years. Leap years occur every 4 years (with some exceptions for century years), and February has 29 days instead of 28. The calculator correctly handles these variations to give you accurate day counts between any two dates, regardless of leap years.",
+      },
+      {
+        question: "Can I calculate business days or weekdays between dates?",
+        answer:
+          "Yes, our date calculator can calculate business days (weekdays) between two dates, excluding weekends. This is useful for calculating project timelines, delivery dates, and work schedules. The calculator can show you both total days and business days, helping you plan more accurately for work-related deadlines.",
+      },
+      {
+        question: "How accurate is the date calculator?",
+        answer:
+          "Our date calculator is highly accurate and accounts for all calendar complexities including leap years, different month lengths (28-31 days), and century year rules. The calculations are based on the Gregorian calendar, which is the standard calendar used worldwide. Results are precise to the day level.",
+      },
+    ],
+    relatedCalculators: ["age-calculator"],
+    content: CALCULATOR_CONTENT["date-calculator"],
+  },
+  "unit-converter": {
+    id: "unit-converter",
+    name: "Unit Converter",
+    slug: "unit-converter",
+    category: "math",
+    description:
+      "Convert between different units of length, weight, temperature, volume, and area. Free online unit converter for everyday conversions and calculations.",
+    keywords: [
+      "unit converter",
+      "unit conversion calculator",
+      "convert units",
+      "length converter",
+      "weight converter",
+      "temperature converter",
+      "volume converter",
+      "area converter",
+      "metric converter",
+      "imperial converter",
+    ],
+    metaDescription:
+      "Free unit converter to convert between length, weight, temperature, volume, and area units. Fast, accurate conversions for metric, imperial, and other measurement systems.",
+    faqs: [
+      {
+        question: "How do I convert between different units?",
+        answer:
+          "To convert between units, select the unit type (length, weight, temperature, etc.), enter the value you want to convert, choose the 'from' unit and 'to' unit, then click convert. Our unit converter automatically calculates the conversion using accurate conversion factors. For example, to convert 10 kilometers to miles, enter 10, select kilometers, select miles, and get 6.214 miles.",
+      },
+      {
+        question: "What units can I convert with the unit converter?",
+        answer:
+          "Our unit converter supports conversions for length (meters, kilometers, miles, feet, inches, yards), weight (kilograms, grams, pounds, ounces, tons), temperature (Celsius, Fahrenheit, Kelvin), volume (liters, milliliters, gallons, quarts, pints, cups), and area (square meters, square kilometers, square miles, acres, hectares). We cover both metric and imperial systems.",
+      },
+      {
+        question: "How accurate are the unit conversions?",
+        answer:
+          "Our unit converter uses precise conversion factors based on international standards. Length conversions use exact meter definitions, weight conversions use precise kilogram standards, and temperature conversions use standard formulas. All conversions are accurate to multiple decimal places, suitable for both everyday use and professional applications.",
+      },
+      {
+        question: "Can I convert between metric and imperial units?",
+        answer:
+          "Yes, our unit converter seamlessly converts between metric and imperial units. You can convert kilometers to miles, kilograms to pounds, Celsius to Fahrenheit, liters to gallons, and more. This is especially useful when working with international measurements or converting recipes, travel distances, or product specifications.",
+      },
+    ],
+    relatedCalculators: ["percentage-calculator", "scientific-calculator"],
+    content: CALCULATOR_CONTENT["unit-converter"],
+  },
+  "pregnancy-calculator": {
+    id: "pregnancy-calculator",
+    name: "Pregnancy Calculator",
+    slug: "pregnancy-calculator",
+    category: "health",
+    description:
+      "Calculate your due date, pregnancy week, and trimester based on your last menstrual period (LMP) or conception date. Track your pregnancy progress with our free pregnancy calculator.",
+    keywords: [
+      "pregnancy calculator",
+      "due date calculator",
+      "pregnancy week calculator",
+      "calculate due date",
+      "pregnancy calculator by LMP",
+      "gestational age calculator",
+      "pregnancy timeline calculator",
+      "baby due date calculator",
+      "pregnancy tracker",
+    ],
+    metaDescription:
+      "Free pregnancy calculator to calculate your due date, pregnancy week, and trimester. Track your pregnancy progress based on your last menstrual period or conception date with accurate results.",
+    faqs: [
+      {
+        question: "How do I calculate my due date?",
+        answer:
+          "To calculate your due date, enter your last menstrual period (LMP) date. The standard calculation adds 280 days (40 weeks) to your LMP date. Our pregnancy calculator uses this method, which is the most common approach used by healthcare providers. You can also calculate based on conception date by adding 266 days (38 weeks).",
+      },
+      {
+        question: "What is the difference between LMP and conception date?",
+        answer:
+          "LMP (Last Menstrual Period) is the first day of your last period before pregnancy, while conception date is when fertilization actually occurred. Pregnancy is typically calculated from LMP because it's easier to determine and adds about 2 weeks before actual conception. Our pregnancy calculator can work with either date, but LMP is the standard method used by doctors.",
+      },
+      {
+        question: "How accurate is the pregnancy calculator?",
+        answer:
+          "The pregnancy calculator provides an estimated due date based on standard calculations. However, actual delivery dates can vary. Only about 5% of babies are born exactly on their due date, with most births occurring within 2 weeks before or after. Your healthcare provider will use ultrasound measurements to refine the due date as your pregnancy progresses.",
+      },
+      {
+        question: "What are pregnancy trimesters?",
+        answer:
+          "Pregnancy is divided into three trimesters, each lasting about 13-14 weeks. The first trimester is weeks 1-13, the second trimester is weeks 14-27, and the third trimester is weeks 28-40+. Our pregnancy calculator shows which trimester you're in based on your current pregnancy week, helping you understand your pregnancy timeline and what to expect during each stage.",
+      },
+    ],
+    relatedCalculators: ["age-calculator", "bmi-calculator"],
+    content: CALCULATOR_CONTENT["pregnancy-calculator"],
+  },
+  "hours-calculator": {
+    id: "hours-calculator",
+    name: "Hours Calculator",
+    slug: "hours-calculator",
+    category: "dateTime",
+    description:
+      "Calculate total work hours, time card entries, and weekly hours. Perfect for tracking work time, calculating pay, and managing schedules.",
+    keywords: [
+      "hours calculator",
+      "time card calculator",
+      "work hours calculator",
+      "calculate hours worked",
+      "time calculator",
+      "hours worked calculator",
+      "weekly hours calculator",
+      "time tracking calculator",
+      "work time calculator",
+    ],
+    metaDescription:
+      "Free hours calculator to calculate total work hours, time card entries, and weekly hours. Track work time, calculate pay, and manage schedules with accurate time calculations.",
+    faqs: [
+      {
+        question: "How do I calculate total hours worked?",
+        answer:
+          "To calculate total hours worked, enter your clock-in and clock-out times for each day. Our hours calculator automatically calculates the difference, accounting for breaks if specified. For example, if you work from 9:00 AM to 5:00 PM with a 1-hour lunch break, you worked 7 hours. The calculator can sum multiple days to show weekly totals.",
+      },
+      {
+        question: "Can the hours calculator handle multiple shifts?",
+        answer:
+          "Yes, our hours calculator can handle multiple shifts per day. Enter each shift's start and end times, and the calculator will sum them to show your total daily hours. This is useful for split shifts, overtime calculations, or jobs with multiple work periods in a single day.",
+      },
+      {
+        question: "How do I calculate overtime with the hours calculator?",
+        answer:
+          "To calculate overtime, first determine your total hours worked for the week. In most places, overtime (typically 1.5x pay) starts after 40 hours per week. Our hours calculator shows your total weekly hours, making it easy to see how many regular hours and overtime hours you worked. Some calculators also allow you to enter hourly rates to calculate total pay.",
+      },
+      {
+        question: "Can I use the hours calculator for time card entries?",
+        answer:
+          "Yes, our hours calculator is perfect for time card entries. Enter your daily clock-in and clock-out times, and the calculator will show your total hours for each day and the week. You can also account for breaks, lunch periods, and different pay rates. This helps ensure accurate time tracking and payroll calculations.",
+      },
+    ],
+    relatedCalculators: ["date-calculator", "salary-calculator"],
+    content: CALCULATOR_CONTENT["hours-calculator"],
+  },
+  "currency-converter": {
+    id: "currency-converter",
+    name: "Currency Converter",
+    slug: "currency-converter",
+    category: "finance",
+    description:
+      "Convert between different currencies with real-time exchange rates. Free currency converter for USD, EUR, GBP, JPY, and 150+ other currencies.",
+    keywords: [
+      "currency converter",
+      "exchange rate calculator",
+      "currency calculator",
+      "convert currency",
+      "money converter",
+      "forex calculator",
+      "currency exchange calculator",
+      "USD to EUR converter",
+      "currency rate calculator",
+    ],
+    metaDescription:
+      "Free currency converter with real-time exchange rates. Convert between USD, EUR, GBP, JPY, and 150+ currencies instantly. Accurate, up-to-date currency conversion for travel and business.",
+    faqs: [
+      {
+        question: "How do I convert currency?",
+        answer:
+          "To convert currency, enter the amount you want to convert, select the 'from' currency (the currency you have), and select the 'to' currency (the currency you want). Our currency converter uses real-time exchange rates to calculate the converted amount instantly. For example, to convert 100 USD to EUR, enter 100, select USD, select EUR, and see the result.",
+      },
+      {
+        question: "Are the exchange rates real-time?",
+        answer:
+          "Our currency converter uses current exchange rates that are updated regularly. Exchange rates fluctuate throughout the day based on market conditions. For exact real-time rates, especially for large transactions, we recommend checking with your bank or financial institution, as rates can vary slightly between providers.",
+      },
+      {
+        question: "What currencies are supported?",
+        answer:
+          "Our currency converter supports major world currencies including USD (US Dollar), EUR (Euro), GBP (British Pound), JPY (Japanese Yen), CAD (Canadian Dollar), AUD (Australian Dollar), CHF (Swiss Franc), CNY (Chinese Yuan), INR (Indian Rupee), and 150+ other currencies. You can convert between any supported currencies.",
+      },
+      {
+        question: "How accurate are currency conversions?",
+        answer:
+          "Currency conversions are based on current market exchange rates and are accurate for general reference. However, actual exchange rates may vary when you exchange money at banks, currency exchange services, or use credit cards abroad, as these services typically add fees or use different rates. For precise amounts, especially for large transactions, check with your financial institution.",
+      },
+    ],
+    relatedCalculators: ["salary-calculator", "budget-calculator"],
+    content: CALCULATOR_CONTENT["currency-converter"],
+  },
 };
 
 export function getCalculator(id: string): CalculatorDefinition | undefined {
