@@ -1,262 +1,313 @@
-# Outreach Templates
+# Backlink Outreach Templates - Ready to Use
 
-**Status:** Active  
-**Last Updated:** 2026  
-**Priority:** Critical
+**Tarih:** Ocak 2026  
+**Öncelik:** Yüksek - Hemen kullanıma hazır şablonlar
 
-## Template 1: Calculator Directory Submission
+## 1. Calculator Directory Submission Templates
 
-**Subject:** Free [Calculator Name] Calculator Submission
+### Template A: General Directory Submission
+
+**Subject:** Free Calculator Submission - [Calculator Name]
 
 ```
-Hi [Name],
+Hi [Name/Team],
 
-I'm reaching out to share a free [Calculator Name] calculator that might be valuable for your directory.
+I'd like to submit our free [Calculator Name] calculator for inclusion in your directory.
 
-Calculator: [Calculator Name]
-URL: https://calculator360pro.com/calculators/[category]/[slug]
-Description: [Brief 2-3 sentence description]
+Calculator Details:
+- Name: [Calculator Name]
+- URL: https://calculator360pro.com/calculators/[category]/[slug]
+- Category: [Finance/Health/Education/Math]
+- Description: [2-3 sentence description]
 
 Key Features:
-- Free to use (no registration required)
-- Accurate calculations using industry-standard formulas
-- Mobile-friendly design
-- Fast and easy to use
-- Regularly updated and maintained
+✓ 100% Free - No registration required
+✓ Mobile-responsive design
+✓ Accurate, tested calculations
+✓ Clear explanations and formulas
+✓ Privacy-focused (no data collection)
 
-Example: [Provide a brief example of how the calculator works]
+Would you consider adding it to your directory?
 
-Would you consider adding it to your calculator directory?
+Best regards,
+Calculator360Pro Team
+contact@calculator360pro.com
+```
 
-Thank you for your consideration.
+### Template B: Financial Calculator Directory
+
+**Subject:** Free Mortgage/Loan Calculator for Your Directory
+
+```
+Hi [Name],
+
+I noticed your excellent finance calculator directory and wanted to share our free [Mortgage/Loan/Interest] Calculator.
+
+What makes our calculator different:
+- Real-time amortization schedule
+- Clear payment breakdowns
+- Mobile-optimized interface
+- No sign-up required
+
+URL: https://calculator360pro.com/calculators/finance/[slug]
+
+Our calculators are used by thousands of users monthly and we'd be honored to be included in your directory.
+
+Would you consider reviewing it for inclusion?
+
+Thanks,
+Calculator360Pro Team
+```
+
+## 2. Resource Page Outreach Templates
+
+### Template A: Generic Resource Page
+
+**Subject:** Valuable Addition to Your [Topic] Resource Page
+
+```
+Hi [Name],
+
+I came across your helpful [topic] resource page at [URL] while researching [topic].
+
+I noticed you include some calculator tools, and I'd like to suggest our free [Calculator Name] calculator:
+
+URL: https://calculator360pro.com/calculators/[category]/[slug]
+
+Why it might be valuable for your readers:
+- Free and accurate calculations
+- No registration or email required
+- Mobile-friendly interface
+- Detailed explanations included
+
+Would you consider adding it to your resources?
+
+Best,
+[Your Name]
+Calculator360Pro
+```
+
+### Template B: Educational Resource Page
+
+**Subject:** Free Educational Tool for [Institution/Site] Students
+
+```
+Hi [Name],
+
+As someone passionate about making education accessible, I wanted to share a free [Calculator Name] calculator that could help your students.
+
+Calculator URL: https://calculator360pro.com/calculators/[category]/[slug]
+
+Educational Benefits:
+- Shows step-by-step calculations
+- Includes formula explanations
+- Perfect for homework help
+- Works on any device
+
+Would this be a good fit for your student resources page?
+
+Thank you for considering,
+Calculator360Pro Team
+```
+
+## 3. Guest Post Pitch Templates
+
+### Template A: Personal Finance Blog
+
+**Subject:** Guest Post Idea - [Topic] Guide with Free Calculator
+
+```
+Hi [Name],
+
+I've been following [Blog Name] for a while and love your content on [specific topic].
+
+I'd like to propose a guest post:
+
+Title: "How to Calculate [Topic]: A Complete Guide with Free Calculator"
+
+What I'll cover:
+- Step-by-step calculation process
+- Common mistakes to avoid
+- Real-world examples
+- Free calculator tool link
+
+Benefits for your readers:
+- Actionable, practical advice
+- Free tool they can use immediately
+- Expert insights on [topic]
+
+Would this be a good fit for your blog?
+
+I'm happy to customize the topic based on your audience's interests.
+
+Thanks,
+[Your Name]
+Calculator360Pro
+```
+
+### Template B: Health/Fitness Blog
+
+**Subject:** Guest Post - Understanding [Health Metric] + Free Calculator
+
+```
+Hi [Name],
+
+I noticed your excellent content about [health topic] and thought your readers might enjoy a comprehensive guide about [health metric calculation].
+
+Proposed Article: "Understanding Your [BMI/Calorie Needs/Body Fat]: Complete Guide"
+
+What I'll include:
+- Clear explanations of the science
+- How to interpret your results
+- Actionable health tips
+- Link to our free calculator
+
+Word count: 1,500-2,000 words
+Unique, original content
+Properly researched with citations
+
+Would you be interested in this topic?
 
 Best regards,
 [Your Name]
-Calculator360Pro Team
-Email: contact@calculator360pro.com
-Website: https://calculator360pro.com
+Health Content Specialist
+Calculator360Pro
 ```
 
-## Template 2: Resource Page Outreach
+## 4. Broken Link Building Templates
 
-**Subject:** Resource Page Addition - Free [Calculator Name] Calculator
+### Template A: Broken Link Notification
+
+**Subject:** Quick Fix - Broken Link on Your [Topic] Page
 
 ```
 Hi [Name],
 
-I noticed your excellent resource page on [topic] at [URL]. I have a free [Calculator Name] calculator that might be a valuable addition for your readers/users.
+I was reading your great article on [topic] at [URL] when I noticed a broken link:
 
-Calculator: [Calculator Name]
+Broken Link: [broken URL]
+Anchor Text: [text of the link]
+
+If you're looking for a replacement, I have a free [Calculator Name] calculator that covers the same topic:
+
 URL: https://calculator360pro.com/calculators/[category]/[slug]
-Description: [Brief description of what the calculator does]
 
-Why it's valuable:
-- Free and accurate
-- Mobile-friendly
-- No registration required
-- Regularly updated
-- Fast and easy to use
+It's free, mobile-friendly, and regularly updated.
 
-Example use case: [Provide a brief example]
+Just wanted to help!
 
-Would you consider adding it to your resource page?
-
-Thank you,
+Best,
 [Your Name]
-Calculator360Pro Team
-Email: contact@calculator360pro.com
 ```
 
-## Template 3: Educational Institution Outreach
+## 5. HARO (Help a Reporter Out) Response Templates
 
-**Subject:** Free Educational Calculator for [Institution Name]
+### Template A: Calculator Expert Response
+
+**Subject:** [HARO Query Title] - Calculator Expert Response
 
 ```
-Hi [Name],
+Hi [Journalist Name],
 
-I'm reaching out to offer a free [Calculator Name] calculator that could benefit [Institution Name] students.
+I'm responding to your query about [topic].
 
-Calculator: [Calculator Name]
-URL: https://calculator360pro.com/calculators/[category]/[slug]
-Description: [Brief description]
+My Response:
+[Provide detailed, expert answer here - 2-3 paragraphs]
 
-Benefits for students:
-- Free educational tool
-- Accurate calculations using standard formulas
-- Mobile-friendly (works on phones and tablets)
-- No registration required
-- Helps with homework and assignments
+About Me:
+I'm [Your Name], founder of Calculator360Pro, where we develop free calculation tools for finance, health, and education. Our calculators are used by [X users monthly].
 
-Example: [Provide a brief example relevant to students]
+Relevant Link:
+For readers wanting to calculate their own [topic], we offer a free calculator: https://calculator360pro.com/calculators/[category]/[slug]
 
-Would you consider adding it to your student resource page?
+I'm available for follow-up questions at [email] or [phone].
 
 Best regards,
 [Your Name]
-Calculator360Pro Team
-Email: contact@calculator360pro.com
-Website: https://calculator360pro.com
+Founder, Calculator360Pro
 ```
 
-## Template 4: Blog Mention Outreach
+## 6. Reddit/Quora Response Templates
 
-**Subject:** Free Calculator for Your Readers - [Blog Name]
+### Template A: Helpful Answer with Calculator Link
+
+```
+Great question! Here's how to calculate [topic]:
+
+[Provide detailed, helpful answer - 3-4 paragraphs]
+
+Step-by-step:
+1. [Step 1]
+2. [Step 2]
+3. [Step 3]
+
+If you want to do this calculation automatically, there are free tools online. I like to use [Calculator360Pro's Calculator Name] (https://calculator360pro.com/calculators/[category]/[slug]) - it shows you the math and gives you a detailed breakdown.
+
+Hope this helps!
+```
+
+## 7. LinkedIn Connection + Outreach
+
+### Template A: Connection Request + Follow-up
+
+**Connection Message:**
+```
+Hi [Name], I noticed you work in [finance/education/health]. I'd love to connect and share insights about [topic].
+```
+
+**Follow-up Message (after connection):**
+```
+Thanks for connecting, [Name]!
+
+I noticed you're involved in [topic]. I recently published a free [Calculator Name] calculator that might interest you or your audience:
+
+https://calculator360pro.com/calculators/[category]/[slug]
+
+Would love to hear your feedback if you have a moment to check it out.
+
+Best,
+[Your Name]
+```
+
+## 8. Infographic Outreach
+
+### Template A: Infographic Share Request
+
+**Subject:** Free Infographic - [Topic] Calculations Explained
 
 ```
 Hi [Name],
 
-I enjoyed your post on [topic] at [URL]. I have a free [Calculator Name] calculator that might be valuable for your readers.
+I created an infographic that explains [topic] calculations visually:
 
-Calculator: [Calculator Name]
-URL: https://calculator360pro.com/calculators/[category]/[slug]
-Description: [Brief description]
+[Infographic Title]
+Preview: [Link to infographic]
+Full version: [Link]
 
-Why your readers will love it:
-- Free and accurate
-- Mobile-friendly
-- No registration required
-- Fast and easy to use
-- Complements your content on [topic]
+Given your coverage of [topic], I thought your audience might find it valuable.
 
-Example: [Provide a brief example relevant to the blog post]
+You're welcome to share it with attribution, or I can provide an embed code for your site.
 
-Would you consider mentioning it in a future post or adding it to your resources page?
+Let me know if you're interested!
 
-Thank you,
+Best,
 [Your Name]
-Calculator360Pro Team
-Email: contact@calculator360pro.com
+Calculator360Pro
 ```
 
-## Template 5: Broken Link Replacement
+## Tracking Spreadsheet Template
 
-**Subject:** Broken Link Replacement - [Site Name]
+| Date | Site | Contact | Template Used | Status | Follow-up Date | Result |
+|------|------|---------|---------------|--------|----------------|--------|
+| 1/15 | Example.com | john@example.com | Directory A | Sent | 1/22 | Pending |
 
-```
-Hi [Name],
+## Best Practices Checklist
 
-I noticed a broken link on your page [URL] pointing to [broken URL]. I have a free [Calculator Name] calculator that might be a good replacement.
-
-Calculator: [Calculator Name]
-URL: https://calculator360pro.com/calculators/[category]/[slug]
-Description: [Brief description]
-
-Why it's a good replacement:
-- Free and accurate
-- Mobile-friendly
-- No registration required
-- Regularly maintained (won't break)
-- Similar functionality to the broken link
-
-Would you consider replacing the broken link with this?
-
-Thank you,
-[Your Name]
-Calculator360Pro Team
-Email: contact@calculator360pro.com
-```
-
-## Template 6: Guest Post Pitch
-
-**Subject:** Guest Post Idea - [Topic] for [Blog Name]
-
-```
-Hi [Name],
-
-I'm a big fan of [Blog Name] and would love to contribute a guest post on [topic].
-
-Proposed Topic: "[Title]"
-Angle: [Brief description of the angle]
-
-The post would:
-- Provide valuable insights on [topic]
-- Include practical examples
-- Reference our free [Calculator Name] calculator (natural mention)
-- Be 1500-2000 words
-- Include original research/insights
-
-I've written for [other sites if applicable] and can provide writing samples.
-
-Would you be interested in this guest post?
-
-Thank you,
-[Your Name]
-Calculator360Pro Team
-Email: contact@calculator360pro.com
-```
-
-## Template 7: Follow-Up Email
-
-**Subject:** Follow-up: [Original Subject]
-
-```
-Hi [Name],
-
-I wanted to follow up on my previous email about [topic].
-
-[Brief reminder of what you offered]
-
-I understand you're busy, but I wanted to make sure you saw my message. If now's not a good time, I'm happy to follow up later.
-
-Thank you for your consideration.
-
-Best regards,
-[Your Name]
-Calculator360Pro Team
-```
-
-## Personalization Tips
-
-### Before Sending
-1. **Research the site**: Understand their content and audience
-2. **Find the right contact**: Use the correct name and email
-3. **Personalize the message**: Mention specific content or pages
-4. **Show value**: Explain why it's valuable for them
-5. **Be concise**: Keep emails short and to the point
-
-### Customization Points
-- Replace `[Name]` with actual contact name
-- Replace `[Calculator Name]` with specific calculator
-- Replace `[category]` and `[slug]` with actual values
-- Replace `[URL]` with actual page URL
-- Replace `[topic]` with relevant topic
-- Add specific examples relevant to the recipient
-
-## Best Practices
-
-1. **Subject Lines**: Clear and specific
-2. **Opening**: Personal and relevant
-3. **Value Proposition**: Clear benefits
-4. **Call to Action**: Specific request
-5. **Closing**: Professional and friendly
-6. **Follow-up**: Polite and patient
-
-## Follow-Up Schedule
-
-- **First email**: Day 1
-- **First follow-up**: Day 7 (if no response)
-- **Second follow-up**: Day 14 (if no response)
-- **Final follow-up**: Day 21 (if no response)
-- **Stop**: After 3 follow-ups
-
-## Tracking
-
-### Spreadsheet Columns
-- Recipient Name
-- Email Address
-- Site/Organization
-- Template Used
-- Date Sent
-- Follow-up Dates
-- Response Status
-- Notes
-
-## Notes
-
-- Always personalize emails
-- Keep messages concise
-- Focus on value for recipient
-- Be patient and polite
-- Track all outreach
-- Learn from responses
-
+- [ ] Personalize every email with recipient's name and specific site details
+- [ ] Reference specific content on their site you enjoyed
+- [ ] Keep emails concise (under 200 words)
+- [ ] Clear call-to-action (what do you want them to do?)
+- [ ] Professional signature
+- [ ] Follow up once after 7 days
+- [ ] Track all outreach in spreadsheet
+- [ ] Vary anchor text naturally

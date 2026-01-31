@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "analyze": "cross-env ANALYZE=true next build",
     "validate:content": "node scripts/validate-content-length.js",
     "validate:meta": "node scripts/validate-meta-descriptions.js",
     "validate:faq": "node scripts/validate-faq-answers.js",

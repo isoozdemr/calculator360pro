@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
   
+  // URL consistency - ensures no trailing slashes
+  trailingSlash: false,
+  
   // Image optimization
   images: {
     formats: ["image/webp", "image/avif"],
@@ -59,6 +62,26 @@ const nextConfig: NextConfig = {
           {
             key: "Cache-Control",
             value: "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+          },
+        ],
+      },
+      // Turkish pages cache headers
+      {
+        source: "/tr/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+          },
+        ],
+      },
+      // Sitemap caching
+      {
+        source: "/sitemap.xml",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=3600, s-maxage=86400",
           },
         ],
       },

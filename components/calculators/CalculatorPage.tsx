@@ -27,8 +27,11 @@ import { HoursCalculator } from "./HoursCalculator";
 import { CurrencyConverter } from "./CurrencyConverter";
 import { AdAboveFold, AdBelowContent } from "@/components/ads/AdSense";
 import { getRelatedCalculators } from "@/lib/calculators/related";
+import { getRelatedBlogPosts } from "@/lib/blog/related";
 import { Breadcrumbs } from "@/components/SEO/Breadcrumbs";
 import { SocialShare } from "@/components/SEO/SocialShare";
+import { StarRating } from "@/components/engagement/StarRating";
+import { CalculationHistory } from "@/components/engagement/CalculationHistory";
 import { getCategorySlugByKey } from "@/lib/constants";
 import { optimizeFAQAnswer } from "@/lib/seo/featured-snippets";
 import Link from "next/link";
@@ -76,6 +79,9 @@ export function CalculatorPage({ calculator }: CalculatorPageProps) {
   // Get related calculators using smart algorithm
   // Combines manual relatedCalculators with algorithm-based suggestions
   const relatedCalculators = getRelatedCalculators(calculator, 6);
+  
+  // Get related blog posts for internal linking
+  const relatedBlogPosts = getRelatedBlogPosts(calculator, 3);
 
   return (
     <div className="min-h-screen bg-[#f8fafc] py-8">
@@ -94,6 +100,12 @@ export function CalculatorPage({ calculator }: CalculatorPageProps) {
         <AdAboveFold />
 
         <CalculatorComponent />
+
+        {/* User Rating Component */}
+        <StarRating calculatorId={calculator.id} calculatorName={calculator.name} />
+
+        {/* Calculation History */}
+        <CalculationHistory calculatorId={calculator.id} maxItems={3} />
 
         <AdBelowContent />
 
@@ -128,6 +140,34 @@ export function CalculatorPage({ calculator }: CalculatorPageProps) {
                   </h3>
                   <p className="text-sm text-[#64748b] line-clamp-2">
                     {related.description}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Related Blog Posts Section - Internal Linking */}
+        {relatedBlogPosts.length > 0 && (
+          <div className="mt-12 bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+            <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
+              Related Articles
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {relatedBlogPosts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="block p-4 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors"
+                >
+                  <span className="inline-block px-2 py-1 text-xs font-semibold text-[#2563eb] bg-[#eff6ff] rounded-full mb-2">
+                    {post.category}
+                  </span>
+                  <h3 className="font-semibold text-[#1e293b] mb-2 line-clamp-2">
+                    {post.title}
+                  </h3>
+                  <p className="text-sm text-[#64748b] line-clamp-2">
+                    {post.description}
                   </p>
                 </Link>
               ))}

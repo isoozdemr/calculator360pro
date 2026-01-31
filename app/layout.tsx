@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/seo/schema";
-import { Navigation } from "@/components/layout/Navigation";
-import { Footer } from "@/components/layout/Footer";
+import { LayoutWrapper } from "@/components/layout/LayoutWrapper";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { ConsentBanner } from "@/components/consent/ConsentBanner";
 import Script from "next/script";
@@ -45,6 +44,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://calculator360pro.com"),
   alternates: {
     canonical: "/",
+    languages: {
+      "en": "https://calculator360pro.com",
+      "tr": "https://calculator360pro.com/tr",
+      "x-default": "https://calculator360pro.com",
+    },
   },
   openGraph: {
     type: "website",
@@ -141,9 +145,9 @@ export default function RootLayout({
           strategy="lazyOnload"
           data-npa="1"
         />
-        <Navigation />
-        {children}
-        <Footer />
+        <LayoutWrapper>
+          {children}
+        </LayoutWrapper>
       </body>
     </html>
   );

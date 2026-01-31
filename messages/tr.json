@@ -1,0 +1,81 @@
+{
+  "common": {
+    "siteName": "Calculator360Pro",
+    "siteDescription": "Finans, sağlık, eğitim ve daha fazlası için ücretsiz online hesap makineleri",
+    "calculate": "Hesapla",
+    "reset": "Sıfırla",
+    "result": "Sonuç",
+    "results": "Sonuçlar",
+    "learnMore": "Daha Fazla Bilgi",
+    "relatedCalculators": "İlgili Hesap Makineleri",
+    "categories": "Kategoriler"
+  },
+  "nav": {
+    "home": "Ana Sayfa",
+    "calculators": "Hesap Makineleri",
+    "blog": "Blog",
+    "about": "Hakkımızda",
+    "contact": "İletişim"
+  },
+  "categories": {
+    "finance": "Finans",
+    "health": "Sağlık",
+    "education": "Eğitim",
+    "math": "Matematik",
+    "dateTime": "Tarih & Zaman"
+  },
+  "footer": {
+    "description": "Calculator360Pro günlük ihtiyaçlarınız için ücretsiz ve doğru hesap makineleri sunar.",
+    "links": "Hızlı Bağlantılar",
+    "legal": "Yasal",
+    "privacy": "Gizlilik Politikası",
+    "terms": "Kullanım Şartları",
+    "copyright": "© 2026 Calculator360Pro. Tüm hakları saklıdır."
+  },
+  "calculators": {
+    "percentageCalculator": {
+      "name": "Yüzde Hesap Makinesi",
+      "description": "Yüzde hesaplama, yüzde artış/azalış ve bir sayının yüzdesini ücretsiz hesap makinemizle hesaplayın."
+    },
+    "bmiCalculator": {
+      "name": "BMI (Vücut Kitle İndeksi) Hesap Makinesi",
+      "description": "Metrik veya emperyal birimler kullanarak Vücut Kitle İndeksinizi (BMI) hesaplayın. Anında sonuç alın ve BMI kategorinizi öğrenin."
+    },
+    "mortgageCalculator": {
+      "name": "Mortgage Hesap Makinesi",
+      "description": "Aylık mortgage ödemenizi, toplam faizi ve amortisman planınızı hesaplayın. Ev alıcıları için mükemmel."
+    },
+    "gpaCalculator": {
+      "name": "GPA Hesap Makinesi",
+      "description": "4.0 ölçeği veya diğer not sistemlerini kullanarak Not Ortalamanızı (GPA) hesaplayın. Akademik performansınızı takip edin."
+    },
+    "ageCalculator": {
+      "name": "Yaş Hesap Makinesi",
+      "description": "Tam yaşınızı yıl, ay, hafta ve gün olarak hesaplayın. Kaç gündür yaşadığınızı öğrenin."
+    },
+    "compoundInterestCalculator": {
+      "name": "Bileşik Faiz Hesap Makinesi",
+      "description": "Yatırımlarınız ve birikimleriniz üzerindeki bileşik faizi hesaplayın. Paranızın zaman içinde nasıl büyüdüğünü görün."
+    },
+    "loanCalculator": {
+      "name": "Kredi Hesap Makinesi",
+      "description": "Bireysel, otomobil ve öğrenci kredileri için aylık ödeme, toplam faiz ve amortisman planını hesaplayın."
+    },
+    "taxCalculator": {
+      "name": "Vergi Hesap Makinesi",
+      "description": "Gelir verginizi, vergi dilimlerinizi ve efektif vergi oranınızı hesaplayın. Mevcut vergi yılı için vergi yükümlülüğünüzü tahmin edin."
+    },
+    "salaryCalculator": {
+      "name": "Maaş Hesap Makinesi",
+      "description": "Net maaşınızı, vergi kesintilerinizi hesaplayın. Saatlik, aylık ve yıllık maaş arasında dönüştürün."
+    },
+    "calorieCalculator": {
+      "name": "Kalori Hesap Makinesi",
+      "description": "Yaş, cinsiyet, kilo, boy ve aktivite seviyenize göre günlük kalori ihtiyacınızı hesaplayın."
+    }
+  },
+  "meta": {
+    "homeTitle": "Calculator360Pro - Ücretsiz Online Hesap Makineleri",
+    "homeDescription": "Finans, sağlık, eğitim, matematik ve daha fazlası için ücretsiz, doğru online hesap makineleri. Mortgage, BMI, GPA, yüzde ve yüzlerce diğer hesaplamayı yapın."
+  }
+}

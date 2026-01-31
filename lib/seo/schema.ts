@@ -1,4 +1,5 @@
 import { CalculatorDefinition } from "@/lib/calculators/definitions";
+import { BlogPost } from "@/lib/blog/posts";
 import { SITE_URL, getCategorySlugByKey } from "@/lib/constants";
 
 export function generateCalculatorSchema(calculator: CalculatorDefinition) {
@@ -94,6 +95,15 @@ export function generateBreadcrumbSchema(
   };
 }
 
+// Social media profile URLs for sameAs schema
+export const SOCIAL_MEDIA_PROFILES = {
+  twitter: "https://twitter.com/calculator360pro",
+  facebook: "https://www.facebook.com/calculator360pro",
+  linkedin: "https://www.linkedin.com/company/calculator360pro",
+  pinterest: "https://www.pinterest.com/calculator360pro",
+  youtube: "https://www.youtube.com/@calculator360pro",
+};
+
 export function generateOrganizationSchema() {
   return {
     "@context": "https://schema.org",
@@ -101,12 +111,21 @@ export function generateOrganizationSchema() {
     "name": "Calculator360Pro",
     "url": SITE_URL,
     "logo": `${SITE_URL}/logo.svg`,
-    "sameAs": [],
+    "sameAs": [
+      SOCIAL_MEDIA_PROFILES.twitter,
+      SOCIAL_MEDIA_PROFILES.facebook,
+      SOCIAL_MEDIA_PROFILES.linkedin,
+      SOCIAL_MEDIA_PROFILES.pinterest,
+      SOCIAL_MEDIA_PROFILES.youtube,
+    ],
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "Customer Service",
       "email": "contact@calculator360pro.com",
+      "availableLanguage": ["English", "Turkish"],
     },
+    "foundingDate": "2025",
+    "description": "Calculator360Pro provides free, accurate online calculators for finance, health, education, math, and everyday needs.",
   };
 }
 
@@ -154,3 +173,242 @@ export function generateCategoryPageSchema(
   };
 }
 
+/**
+ * Generate Article schema for blog posts
+ * This helps Google understand blog content and display rich results
+ */
+export function generateArticleSchema(post: BlogPost) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.description,
+    "image": `${SITE_URL}/og-image.png`,
+    "author": {
+      "@type": "Organization",
+      "name": post.author,
+      "url": SITE_URL,
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Calculator360Pro",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${SITE_URL}/logo.svg`,
+      },
+    },
+    "datePublished": post.date,
+    "dateModified": post.date,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/blog/${post.slug}`,
+    },
+    "url": `${SITE_URL}/blog/${post.slug}`,
+    "keywords": post.tags.join(", "),
+    "articleSection": post.category,
+    "inLanguage": "en-US",
+  };
+}
+
+/**
+ * Generate BreadcrumbList schema for blog posts
+ */
+export function generateBlogBreadcrumbSchema(post: BlogPost) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": SITE_URL,
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": `${SITE_URL}/blog`,
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": post.title,
+        "item": `${SITE_URL}/blog/${post.slug}`,
+      },
+    ],
+  };
+}
+
+// ==========================================
+// TURKISH SCHEMA FUNCTIONS
+// ==========================================
+
+/**
+ * Generate Turkish calculator schema
+ */
+export function generateTurkishCalculatorSchema(
+  name: string,
+  description: string,
+  slug: string,
+  categorySlug: string,
+  dateModified: string
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": name,
+    "description": description,
+    "url": `${SITE_URL}/tr/hesap-makineleri/${categorySlug}/${slug}`,
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web",
+    "inLanguage": "tr",
+    "dateModified": dateModified,
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "TRY",
+    },
+    "softwareVersion": "1.0",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "permissions": "No special permissions required.",
+    "about": {
+      "@type": "Thing",
+      "name": name,
+      "description": description,
+    },
+  };
+}
+
+/**
+ * Generate Turkish breadcrumb schema
+ */
+export function generateTurkishBreadcrumbSchema(
+  categoryName: string,
+  categorySlug: string,
+  calculatorName: string,
+  calculatorSlug: string
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Ana Sayfa",
+        "item": `${SITE_URL}/tr`,
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Hesap Makineleri",
+        "item": `${SITE_URL}/tr/hesap-makineleri`,
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": categoryName,
+        "item": `${SITE_URL}/tr/hesap-makineleri/${categorySlug}`,
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": calculatorName,
+        "item": `${SITE_URL}/tr/hesap-makineleri/${categorySlug}/${calculatorSlug}`,
+      },
+    ],
+  };
+}
+
+/**
+ * Generate Turkish FAQ schema
+ */
+export function generateTurkishFAQSchema(faqs: Array<{ question: string; answer: string }>) {
+  if (!faqs || faqs.length === 0) {
+    return null;
+  }
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "inLanguage": "tr",
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer,
+      },
+    })),
+  };
+}
+
+/**
+ * Generate Turkish HowTo schema
+ */
+export function generateTurkishHowToSchema(
+  name: string,
+  description: string,
+  steps: Array<{ name: string; text: string }>,
+  url: string
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": name,
+    "description": description,
+    "inLanguage": "tr",
+    "step": steps.map((step, index) => ({
+      "@type": "HowToStep",
+      "position": index + 1,
+      "name": step.name,
+      "text": step.text,
+      "url": `${url}#adim-${index + 1}`,
+    })),
+  };
+}
+
+/**
+ * Generate Turkish Article schema for blog posts
+ */
+export function generateTurkishArticleSchema(
+  title: string,
+  description: string,
+  slug: string,
+  date: string,
+  author: string,
+  tags: string[],
+  category: string
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "image": `${SITE_URL}/og-image.png`,
+    "author": {
+      "@type": "Organization",
+      "name": author,
+      "url": SITE_URL,
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Calculator360Pro",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${SITE_URL}/logo.svg`,
+      },
+    },
+    "datePublished": date,
+    "dateModified": date,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/tr/blog/${slug}`,
+    },
+    "url": `${SITE_URL}/tr/blog/${slug}`,
+    "keywords": tags.join(", "),
+    "articleSection": category,
+    "inLanguage": "tr-TR",
+  };
+}
