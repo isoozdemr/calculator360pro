@@ -1,0 +1,321 @@
+import { Metadata } from "next";
+import Link from "next/link";
+import { SITE_URL } from "@/lib/constants";
+import { TurkeyDiscountCalculator } from "@/components/calculators/tr/TurkeyDiscountCalculator";
+
+export const metadata: Metadata = {
+  title: "İndirim Hesap Makinesi - İndirim Hesaplama 2026 | Calculator360Pro",
+  description: "Ücretsiz indirim hesap makinesi. İndirimli fiyat, indirim tutarı ve tasarruf hesaplama. Alışverişte akıllı kararlar verin.",
+  keywords: [
+    "indirim hesaplama",
+    "indirim hesap makinesi",
+    "indirimli fiyat hesaplama",
+    "yüzde indirim hesaplama",
+    "tasarruf hesaplama",
+    "satış fiyatı hesaplama",
+    "indirim oranı hesaplama",
+    "ücretsiz indirim hesap makinesi",
+  ],
+  alternates: {
+    canonical: `${SITE_URL}/tr/hesap-makineleri/matematik/indirim-hesap-makinesi`,
+    languages: {
+      "en": `${SITE_URL}/calculators/finance/discount-calculator`,
+      "tr": `${SITE_URL}/tr/hesap-makineleri/matematik/indirim-hesap-makinesi`,
+    },
+  },
+  openGraph: {
+    title: "İndirim Hesap Makinesi | Calculator360Pro",
+    description: "Ücretsiz indirim hesap makinesi. İndirimli fiyat ve tasarruf hesaplama.",
+    url: `${SITE_URL}/tr/hesap-makineleri/matematik/indirim-hesap-makinesi`,
+    type: "website",
+    locale: "tr_TR",
+    siteName: "Calculator360Pro",
+  },
+};
+
+const faqs = [
+  {
+    question: "İndirim nasıl hesaplanır?",
+    answer: "İndirim hesaplama formülü: İndirim Tutarı = (Orijinal Fiyat × İndirim Yüzdesi) / 100. İndirimli Fiyat = Orijinal Fiyat - İndirim Tutarı. Örneğin, 100 TL'lik ürün %20 indirimle: İndirim = (100 × 20) / 100 = 20 TL, İndirimli Fiyat = 100 - 20 = 80 TL.",
+  },
+  {
+    question: "Yüzde indirim nasıl bulunur?",
+    answer: "Yüzde indirim bulmak için: ((Orijinal Fiyat - İndirimli Fiyat) / Orijinal Fiyat) × 100 formülü kullanılır. Örneğin, 100 TL'den 80 TL'ye düşen ürün: ((100-80)/100) × 100 = %20 indirim.",
+  },
+  {
+    question: "Çoklu indirim nasıl hesaplanır?",
+    answer: "Çoklu indirimler (örneğin %20 + %10) toplanmaz, sırayla uygulanır. İlk indirim uygulanır, sonra ikinci indirim yeni fiyat üzerinden hesaplanır. Örneğin, 100 TL ürün: İlk %20 = 80 TL, sonra %10 = 72 TL.",
+  },
+  {
+    question: "İndirimli fiyat ne zaman avantajlıdır?",
+    answer: "İndirimli fiyat, orijinal fiyatın altında olduğunda avantajlıdır. Ancak ihtiyacınız olmayan ürünler için indirim bile olsa gereksiz harcama yapmamaya dikkat edin. İndirim oranı yüksek olsa bile, gerçekten ihtiyacınız olan ürünleri tercih edin.",
+  },
+];
+
+export default function IndirimHesapMakinesiPage() {
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "İndirim Hesap Makinesi",
+    description: "İndirim hesaplama aracı - İndirimli fiyat, indirim tutarı ve tasarruf hesaplama",
+    url: `${SITE_URL}/tr/hesap-makineleri/matematik/indirim-hesap-makinesi`,
+    applicationCategory: "UtilityApplication",
+    operatingSystem: "Web",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "TRY"
+    },
+    inLanguage: "tr"
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      
+      <div className="min-h-screen bg-[#f8fafc]">
+        {/* Hero Section */}
+        <section className="bg-gradient-to-br from-[#1e293b] to-[#334155] text-white py-8">
+          <div className="container mx-auto px-4 max-w-4xl">
+            {/* Breadcrumb */}
+            <nav className="mb-6" aria-label="Breadcrumb">
+              <ol className="flex items-center space-x-2 text-sm text-[#94a3b8]">
+                <li>
+                  <Link href="/tr" className="hover:text-white transition-colors">
+                    Ana Sayfa
+                  </Link>
+                </li>
+                <li><span className="mx-2">/</span></li>
+                <li>
+                  <Link href="/tr/hesap-makineleri" className="hover:text-white transition-colors">
+                    Hesap Makineleri
+                  </Link>
+                </li>
+                <li><span className="mx-2">/</span></li>
+                <li>
+                  <Link href="/tr/hesap-makineleri/matematik" className="hover:text-white transition-colors">
+                    Matematik
+                  </Link>
+                </li>
+                <li><span className="mx-2">/</span></li>
+                <li className="text-white font-medium">İndirim Hesap Makinesi</li>
+              </ol>
+            </nav>
+
+            {/* Header */}
+            <div>
+              <h1 className="text-3xl md:text-4xl font-bold mb-3">
+                İndirim Hesap Makinesi
+              </h1>
+              <p className="text-lg text-[#94a3b8] max-w-2xl">
+                İndirimli fiyat, indirim tutarı ve tasarruf hesaplama. 
+                Alışverişte akıllı kararlar verin.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Calculator Section */}
+        <section className="py-8">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <TurkeyDiscountCalculator />
+          </div>
+        </section>
+
+        {/* How It Works Section */}
+        <section className="py-12 bg-white">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <h2 className="text-2xl font-bold text-[#1e293b] mb-8">
+              İndirim Nasıl Hesaplanır?
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              <div className="bg-[#f8fafc] rounded-xl p-6 border border-[#e2e8f0]">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-2xl font-bold text-[#2563eb]">
+                  1
+                </div>
+                <h3 className="font-bold text-[#1e293b] mb-2">Orijinal Fiyat</h3>
+                <p className="text-sm text-[#64748b]">
+                  İndirim öncesi orijinal fiyatı belirleyin.
+                </p>
+              </div>
+              <div className="bg-[#f8fafc] rounded-xl p-6 border border-[#e2e8f0]">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-2xl font-bold text-[#2563eb]">
+                  2
+                </div>
+                <h3 className="font-bold text-[#1e293b] mb-2">İndirim Yüzdesi</h3>
+                <p className="text-sm text-[#64748b]">
+                  Uygulanacak indirim yüzdesini girin.
+                </p>
+              </div>
+              <div className="bg-[#f8fafc] rounded-xl p-6 border border-[#e2e8f0]">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-2xl font-bold text-[#2563eb]">
+                  3
+                </div>
+                <h3 className="font-bold text-[#1e293b] mb-2">Sonuç</h3>
+                <p className="text-sm text-[#64748b]">
+                  İndirim tutarı ve indirimli fiyatı görün.
+                </p>
+              </div>
+            </div>
+
+            {/* Example Calculation */}
+            <div className="bg-[#f8fafc] rounded-xl p-6 border border-[#e2e8f0]">
+              <h3 className="font-bold text-[#1e293b] mb-4 flex items-center gap-2">
+                <span className="text-xl">📊</span>
+                Örnek Hesaplama: 500 TL Ürün %25 İndirim
+              </h3>
+              <div className="space-y-2 text-[#64748b]">
+                <p><strong className="text-[#1e293b]">Orijinal Fiyat:</strong> 500 TL</p>
+                <p><strong className="text-[#1e293b]">İndirim Yüzdesi:</strong> %25</p>
+                <p><strong className="text-[#1e293b]">İndirim Tutarı:</strong> 500 × 0.25 = 125 TL</p>
+                <p><strong className="text-[#1e293b]">İndirimli Fiyat:</strong> 500 - 125 = <span className="text-[#10b981] font-bold">375 TL</span></p>
+                <p><strong className="text-[#1e293b]">Tasarruf:</strong> 125 TL (%25)</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SEO Content */}
+        <section className="py-12 bg-[#f8fafc]">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <article className="prose prose-slate max-w-none">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
+                İndirim Hesaplama Rehberi
+              </h2>
+              
+              <p className="text-[#64748b] mb-6 leading-relaxed">
+                İndirim hesaplama, alışveriş yaparken en önemli becerilerden biridir. 
+                Doğru indirim hesaplaması yaparak hem para tasarrufu sağlayabilir hem de 
+                gereksiz harcamalardan kaçınabilirsiniz.
+              </p>
+
+              <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">
+                İndirim Hesaplama Formülleri
+              </h3>
+              <div className="bg-white rounded-lg p-6 mb-6 border border-[#e2e8f0]">
+                <ul className="space-y-3 text-[#64748b]">
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#2563eb] font-bold">1.</span>
+                    <div>
+                      <strong className="text-[#1e293b]">İndirim Tutarı:</strong> (Orijinal Fiyat × İndirim Yüzdesi) / 100
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#2563eb] font-bold">2.</span>
+                    <div>
+                      <strong className="text-[#1e293b]">İndirimli Fiyat:</strong> Orijinal Fiyat - İndirim Tutarı
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#2563eb] font-bold">3.</span>
+                    <div>
+                      <strong className="text-[#1e293b]">Yüzde İndirim Bulma:</strong> ((Orijinal - İndirimli) / Orijinal) × 100
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">
+                Alışveriş İpuçları
+              </h3>
+              <ul className="list-disc list-inside text-[#64748b] mb-4 space-y-2">
+                <li>İndirim oranı yüksek olsa bile, gerçekten ihtiyacınız olan ürünleri tercih edin</li>
+                <li>Çoklu indirimleri kontrol edin - bazen toplam indirim daha fazla olabilir</li>
+                <li>İndirimli fiyatı diğer mağazalarla karşılaştırın</li>
+                <li>Kampanya tarihlerini takip edin - sezon sonu indirimleri genellikle daha yüksektir</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-12 bg-white">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <h2 className="text-2xl font-bold text-[#1e293b] mb-8 text-center">
+              Sıkça Sorulan Sorular
+            </h2>
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
+                <div key={index} className="bg-[#f8fafc] rounded-lg p-6 border border-[#e2e8f0]">
+                  <h3 className="font-bold text-[#1e293b] mb-2 flex items-start gap-2">
+                    <span className="text-[#2563eb]">S:</span>
+                    {faq.question}
+                  </h3>
+                  <p className="text-[#64748b] leading-relaxed pl-6">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Related Calculators */}
+        <section className="py-12 bg-[#f8fafc]">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
+              İlgili Hesap Makineleri
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <Link 
+                href="/tr/hesap-makineleri/matematik/yuzde-hesap-makinesi"
+                className="bg-white p-6 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors group"
+              >
+                <div className="text-3xl mb-3">📊</div>
+                <h3 className="font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2">
+                  Yüzde Hesap Makinesi
+                </h3>
+                <p className="text-sm text-[#64748b]">
+                  Yüzde hesaplama ve oran bulma
+                </p>
+              </Link>
+              <Link 
+                href="/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi"
+                className="bg-white p-6 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors group"
+              >
+                <div className="text-3xl mb-3">🏠</div>
+                <h3 className="font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2">
+                  Konut Kredisi Hesap Makinesi
+                </h3>
+                <p className="text-sm text-[#64748b]">
+                  Ev kredisi taksit hesaplama
+                </p>
+              </Link>
+              <Link 
+                href="/tr/blog"
+                className="bg-white p-6 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors group"
+              >
+                <div className="text-3xl mb-3">📝</div>
+                <h3 className="font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2">
+                  Blog Yazıları
+                </h3>
+                <p className="text-sm text-[#64748b]">
+                  Hesaplama rehberleri ve ipuçları
+                </p>
+              </Link>
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
+  );
+}

@@ -435,6 +435,28 @@ export default function TurkeySalaryCalculatorPage() {
           </div>
         </section>
 
+        {/* Related Blog Post */}
+        <section className="py-12 bg-white">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
+              İlgili Blog Yazıları
+            </h2>
+            <div className="bg-[#f8fafc] rounded-lg border-2 border-[#e2e8f0] p-6 hover:border-[#2563eb] transition-colors">
+              <Link href="/tr/blog/brutten-nete-maas-hesaplama-sgk-agi-vergi" className="block">
+                <h3 className="text-xl font-bold text-[#1e293b] mb-2 hover:text-[#2563eb]">
+                  Brütten Nete Maaş Hesaplama: SGK, AGİ, Vergi Rehberi
+                </h3>
+                <p className="text-[#64748b] mb-4">
+                  Brüt maaştan net maaşa geçiş hesaplama rehberi. SGK kesintileri, gelir vergisi, damga vergisi, AGİ ve tüm kesintilerin detaylı açıklaması.
+                </p>
+                <span className="text-[#2563eb] font-medium text-sm hover:underline">
+                  Yazıyı Oku →
+                </span>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* Related Calculators */}
         <section className="py-12 bg-[#f8fafc]">
           <div className="container mx-auto px-4 max-w-4xl">

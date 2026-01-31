@@ -1,0 +1,326 @@
+import { Metadata } from "next";
+import Link from "next/link";
+import { SITE_URL } from "@/lib/constants";
+import { TurkeyDateCalculator } from "@/components/calculators/tr/TurkeyDateCalculator";
+
+export const metadata: Metadata = {
+  title: "Tarih Farkı Hesap Makinesi - İki Tarih Arası Hesaplama 2026 | Calculator360Pro",
+  description: "Ücretsiz tarih farkı hesap makinesi. İki tarih arasındaki gün, hafta, ay ve yıl farkını hesaplayın. İş günü hesaplama dahil.",
+  keywords: [
+    "tarih farkı hesaplama",
+    "tarih farkı hesap makinesi",
+    "iki tarih arası gün hesaplama",
+    "tarih aralığı hesaplama",
+    "gün sayısı hesaplama",
+    "iş günü hesaplama",
+    "tarih hesaplama",
+    "tarih farkı bulma",
+  ],
+  alternates: {
+    canonical: `${SITE_URL}/tr/hesap-makineleri/tarih-zaman/tarih-farki-hesap-makinesi`,
+    languages: {
+      "en": `${SITE_URL}/calculators/date-time/date-calculator`,
+      "tr": `${SITE_URL}/tr/hesap-makineleri/tarih-zaman/tarih-farki-hesap-makinesi`,
+    },
+  },
+  openGraph: {
+    title: "Tarih Farkı Hesap Makinesi | Calculator360Pro",
+    description: "Ücretsiz tarih farkı hesap makinesi. İki tarih arasındaki farkı hesaplayın.",
+    url: `${SITE_URL}/tr/hesap-makineleri/tarih-zaman/tarih-farki-hesap-makinesi`,
+    type: "website",
+    locale: "tr_TR",
+    siteName: "Calculator360Pro",
+  },
+};
+
+const faqs = [
+  {
+    question: "İki tarih arasındaki gün sayısı nasıl hesaplanır?",
+    answer: "İki tarih arasındaki gün sayısı, bitiş tarihinden başlangıç tarihini çıkararak hesaplanır. Artık yıllar ve farklı ay uzunlukları otomatik olarak hesaba katılır. Örneğin, 1 Ocak 2026 ile 31 Ocak 2026 arası 30 gündür.",
+  },
+  {
+    question: "İş günü nedir ve nasıl hesaplanır?",
+    answer: "İş günü, hafta sonları (Cumartesi ve Pazar) hariç olan günlerdir. İş günü hesaplama, proje planlaması, teslimat süreleri ve çalışma süreleri için önemlidir. Hafta içi günler (Pazartesi-Cuma) iş günü olarak sayılır.",
+  },
+  {
+    question: "Artık yıl tarih hesaplamasını etkiler mi?",
+    answer: "Evet, artık yıllar (Şubat ayının 29 gün olduğu yıllar) tarih hesaplamalarını etkiler. Hesap makinesi otomatik olarak artık yılları hesaba katar ve doğru gün sayısını verir. Artık yıllar her 4 yılda bir gelir (bazı istisnalar hariç).",
+  },
+  {
+    question: "Bitiş tarihi dahil edilmeli mi?",
+    answer: "Bitiş tarihinin dahil edilip edilmeyeceği, hesaplama amacınıza bağlıdır. Örneğin, bir proje 1 Ocak'ta başlayıp 31 Ocak'ta bitiyorsa, bitiş tarihini dahil ederseniz 31 gün, dahil etmezseniz 30 gün olur. Hesap makinesinde bu seçeneği işaretleyebilirsiniz.",
+  },
+];
+
+export default function TarihFarkiHesapMakinesiPage() {
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "Tarih Farkı Hesap Makinesi",
+    description: "İki tarih arasındaki farkı hesaplama aracı - Gün, hafta, ay, yıl ve iş günü hesaplama",
+    url: `${SITE_URL}/tr/hesap-makineleri/tarih-zaman/tarih-farki-hesap-makinesi`,
+    applicationCategory: "UtilityApplication",
+    operatingSystem: "Web",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "TRY"
+    },
+    inLanguage: "tr"
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      
+      <div className="min-h-screen bg-[#f8fafc]">
+        {/* Hero Section */}
+        <section className="bg-gradient-to-br from-[#1e293b] to-[#334155] text-white py-8">
+          <div className="container mx-auto px-4 max-w-4xl">
+            {/* Breadcrumb */}
+            <nav className="mb-6" aria-label="Breadcrumb">
+              <ol className="flex items-center space-x-2 text-sm text-[#94a3b8]">
+                <li>
+                  <Link href="/tr" className="hover:text-white transition-colors">
+                    Ana Sayfa
+                  </Link>
+                </li>
+                <li><span className="mx-2">/</span></li>
+                <li>
+                  <Link href="/tr/hesap-makineleri" className="hover:text-white transition-colors">
+                    Hesap Makineleri
+                  </Link>
+                </li>
+                <li><span className="mx-2">/</span></li>
+                <li>
+                  <Link href="/tr/hesap-makineleri/tarih-zaman" className="hover:text-white transition-colors">
+                    Tarih-Zaman
+                  </Link>
+                </li>
+                <li><span className="mx-2">/</span></li>
+                <li className="text-white font-medium">Tarih Farkı Hesap Makinesi</li>
+              </ol>
+            </nav>
+
+            {/* Header */}
+            <div>
+              <h1 className="text-3xl md:text-4xl font-bold mb-3">
+                Tarih Farkı Hesap Makinesi
+              </h1>
+              <p className="text-lg text-[#94a3b8] max-w-2xl">
+                İki tarih arasındaki gün, hafta, ay ve yıl farkını hesaplayın. 
+                İş günü hesaplama dahil.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Calculator Section */}
+        <section className="py-8">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <TurkeyDateCalculator />
+          </div>
+        </section>
+
+        {/* How It Works Section */}
+        <section className="py-12 bg-white">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <h2 className="text-2xl font-bold text-[#1e293b] mb-8">
+              Tarih Farkı Nasıl Hesaplanır?
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              <div className="bg-[#f8fafc] rounded-xl p-6 border border-[#e2e8f0]">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-2xl font-bold text-[#2563eb]">
+                  1
+                </div>
+                <h3 className="font-bold text-[#1e293b] mb-2">Başlangıç Tarihi</h3>
+                <p className="text-sm text-[#64748b]">
+                  İlk tarihi seçin veya girin.
+                </p>
+              </div>
+              <div className="bg-[#f8fafc] rounded-xl p-6 border border-[#e2e8f0]">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-2xl font-bold text-[#2563eb]">
+                  2
+                </div>
+                <h3 className="font-bold text-[#1e293b] mb-2">Bitiş Tarihi</h3>
+                <p className="text-sm text-[#64748b]">
+                  İkinci tarihi seçin veya girin.
+                </p>
+              </div>
+              <div className="bg-[#f8fafc] rounded-xl p-6 border border-[#e2e8f0]">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-2xl font-bold text-[#2563eb]">
+                  3
+                </div>
+                <h3 className="font-bold text-[#1e293b] mb-2">Sonuç</h3>
+                <p className="text-sm text-[#64748b]">
+                  Gün, hafta, ay, yıl ve iş günü farkını görün.
+                </p>
+              </div>
+            </div>
+
+            {/* Example Calculation */}
+            <div className="bg-[#f8fafc] rounded-xl p-6 border border-[#e2e8f0]">
+              <h3 className="font-bold text-[#1e293b] mb-4 flex items-center gap-2">
+                <span className="text-xl">📅</span>
+                Örnek: 1 Ocak 2026 - 31 Ocak 2026
+              </h3>
+              <div className="space-y-2 text-[#64748b]">
+                <p><strong className="text-[#1e293b]">Gün Farkı:</strong> 30 gün (bitiş dahil: 31 gün)</p>
+                <p><strong className="text-[#1e293b]">Hafta Farkı:</strong> 4 hafta</p>
+                <p><strong className="text-[#1e293b]">Ay Farkı:</strong> 1 ay</p>
+                <p><strong className="text-[#1e293b]">Yıl Farkı:</strong> 0 yıl</p>
+                <p><strong className="text-[#1e293b]">İş Günü:</strong> ~22 iş günü (hafta sonları hariç)</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SEO Content */}
+        <section className="py-12 bg-[#f8fafc]">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <article className="prose prose-slate max-w-none">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
+                Tarih Farkı Hesaplama Rehberi
+              </h2>
+              
+              <p className="text-[#64748b] mb-6 leading-relaxed">
+                Tarih farkı hesaplama, proje planlaması, teslimat süreleri, 
+                çalışma süreleri ve birçok işlem için önemlidir. İki tarih arasındaki 
+                farkı gün, hafta, ay ve yıl olarak hesaplayabilirsiniz.
+              </p>
+
+              <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">
+                Tarih Hesaplama Kullanım Alanları
+              </h3>
+              <div className="bg-white rounded-lg p-6 mb-6 border border-[#e2e8f0]">
+                <ul className="space-y-3 text-[#64748b]">
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#2563eb] font-bold">1.</span>
+                    <div>
+                      <strong className="text-[#1e293b]">Proje Planlaması:</strong> Proje sürelerini hesaplama
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#2563eb] font-bold">2.</span>
+                    <div>
+                      <strong className="text-[#1e293b]">Teslimat Süreleri:</strong> Sipariş ve teslimat tarihleri
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#2563eb] font-bold">3.</span>
+                    <div>
+                      <strong className="text-[#1e293b]">Çalışma Süreleri:</strong> İş günü hesaplama
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#2563eb] font-bold">4.</span>
+                    <div>
+                      <strong className="text-[#1e293b]">Etkinlik Planlama:</strong> Etkinlik tarihleri arası süre
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">
+                Artık Yıl Hesaplaması
+              </h3>
+              <p className="text-[#64748b] mb-4 leading-relaxed">
+                Artık yıllar (Şubat ayının 29 gün olduğu yıllar) tarih hesaplamalarını etkiler. 
+                Hesap makinesi otomatik olarak artık yılları hesaba katar. Artık yıllar her 4 yılda bir gelir, 
+                ancak yüzyıl yılları (100'ün katı) sadece 400'ün katı ise artık yıldır.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-12 bg-white">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <h2 className="text-2xl font-bold text-[#1e293b] mb-8 text-center">
+              Sıkça Sorulan Sorular
+            </h2>
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
+                <div key={index} className="bg-[#f8fafc] rounded-lg p-6 border border-[#e2e8f0]">
+                  <h3 className="font-bold text-[#1e293b] mb-2 flex items-start gap-2">
+                    <span className="text-[#2563eb]">S:</span>
+                    {faq.question}
+                  </h3>
+                  <p className="text-[#64748b] leading-relaxed pl-6">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Related Calculators */}
+        <section className="py-12 bg-[#f8fafc]">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
+              İlgili Hesap Makineleri
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <Link 
+                href="/tr/hesap-makineleri/tarih-zaman/yas-hesap-makinesi"
+                className="bg-white p-6 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors group"
+              >
+                <div className="text-3xl mb-3">🎂</div>
+                <h3 className="font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2">
+                  Yaş Hesap Makinesi
+                </h3>
+                <p className="text-sm text-[#64748b]">
+                  Doğum tarihinden yaş hesaplama
+                </p>
+              </Link>
+              <Link 
+                href="/tr/hesap-makineleri/matematik/yuzde-hesap-makinesi"
+                className="bg-white p-6 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors group"
+              >
+                <div className="text-3xl mb-3">📊</div>
+                <h3 className="font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2">
+                  Yüzde Hesap Makinesi
+                </h3>
+                <p className="text-sm text-[#64748b]">
+                  Yüzde hesaplama ve oran bulma
+                </p>
+              </Link>
+              <Link 
+                href="/tr/blog"
+                className="bg-white p-6 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors group"
+              >
+                <div className="text-3xl mb-3">📝</div>
+                <h3 className="font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2">
+                  Blog Yazıları
+                </h3>
+                <p className="text-sm text-[#64748b]">
+                  Hesaplama rehberleri ve ipuçları
+                </p>
+              </Link>
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
+  );
+}

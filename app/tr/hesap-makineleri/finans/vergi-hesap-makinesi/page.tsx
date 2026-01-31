@@ -496,6 +496,28 @@ export default function TurkeyTaxCalculatorPage() {
           </div>
         </section>
 
+        {/* Related Blog Post */}
+        <section className="py-12 bg-[#f8fafc]">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
+              İlgili Blog Yazıları
+            </h2>
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6 hover:border-[#2563eb] transition-colors">
+              <Link href="/tr/blog/2026-gelir-vergisi-dilimleri-hesaplama-rehberi" className="block">
+                <h3 className="text-xl font-bold text-[#1e293b] mb-2 hover:text-[#2563eb]">
+                  2026 Gelir Vergisi Dilimleri ve Hesaplama Rehberi
+                </h3>
+                <p className="text-[#64748b] mb-4">
+                  2026 yılı güncel gelir vergisi dilimleri, kümülatif vergi matrahı hesaplama ve efektif vergi oranı hakkında kapsamlı rehber.
+                </p>
+                <span className="text-[#2563eb] font-medium text-sm hover:underline">
+                  Yazıyı Oku →
+                </span>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* Related Calculators */}
         <section className="py-12 bg-white">
           <div className="container mx-auto px-4 max-w-4xl">

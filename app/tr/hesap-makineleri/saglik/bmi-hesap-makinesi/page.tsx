@@ -220,6 +220,24 @@ export default function BMIHesapMakinesiPage() {
               </div>
             </div>
 
+            {/* Related Blog Post */}
+            <div className="bg-[#f8fafc] rounded-lg border-2 border-[#e2e8f0] p-6 mb-6">
+              <h2 className="text-xl font-bold text-[#1e293b] mb-4">
+                İlgili Blog Yazıları
+              </h2>
+              <Link href="/tr/blog/bmi-nedir-ideal-kilo-nasil-hesaplanir" className="block hover:opacity-80 transition-opacity">
+                <h3 className="font-semibold text-[#1e293b] mb-2 hover:text-[#2563eb]">
+                  BMI Nedir? İdeal Kilo Nasıl Hesaplanır?
+                </h3>
+                <p className="text-sm text-[#64748b] mb-2">
+                  BMI (Vücut Kitle İndeksi) nedir, nasıl hesaplanır, ideal kilo aralığı nedir? BMI hesaplama ve sağlıklı kilo yönetimi rehberi.
+                </p>
+                <span className="text-[#2563eb] font-medium text-sm">
+                  Yazıyı Oku →
+                </span>
+              </Link>
+            </div>
+
             <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
                 BMI&apos;nin Sınırlamaları

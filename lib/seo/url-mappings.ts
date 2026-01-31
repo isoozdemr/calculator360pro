@@ -24,6 +24,7 @@ export const URL_MAPPINGS: Record<string, string> = {
   "/": "/tr",
   "/about": "/tr/hakkimizda",
   "/calculators": "/tr/hesap-makineleri",
+  "/blog": "/tr/blog",
   "/privacy-policy": "/tr/gizlilik-politikasi",
   "/terms-of-service": "/tr/kullanim-kosullari",
   
@@ -40,10 +41,14 @@ export const URL_MAPPINGS: Record<string, string> = {
   "/calculators/finance/mortgage-calculator": "/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi",
   "/calculators/finance/loan-calculator": "/tr/hesap-makineleri/finans/kredi-hesap-makinesi",
   "/calculators/finance/retirement-calculator": "/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi",
+  "/calculators/finance/compound-interest-calculator": "/tr/hesap-makineleri/finans/bilesik-faiz-hesap-makinesi",
+  "/calculators/finance/currency-converter": "/tr/hesap-makineleri/finans/doviz-cevirici",
+  "/calculators/finance/discount-calculator": "/tr/hesap-makineleri/matematik/indirim-hesap-makinesi",
   
   // Health Calculator pages
   "/calculators/health/bmi-calculator": "/tr/hesap-makineleri/saglik/bmi-hesap-makinesi",
   "/calculators/health/calorie-calculator": "/tr/hesap-makineleri/saglik/kalori-hesap-makinesi",
+  "/calculators/health/pregnancy-calculator": "/tr/hesap-makineleri/saglik/gebelik-hesap-makinesi",
   
   // Education Calculator pages
   "/calculators/education/gpa-calculator": "/tr/hesap-makineleri/egitim/not-ortalamasi-hesap-makinesi",
@@ -53,6 +58,7 @@ export const URL_MAPPINGS: Record<string, string> = {
   
   // Date-Time Calculator pages
   "/calculators/date-time/age-calculator": "/tr/hesap-makineleri/tarih-zaman/yas-hesap-makinesi",
+  "/calculators/date-time/date-calculator": "/tr/hesap-makineleri/tarih-zaman/tarih-farki-hesap-makinesi",
 };
 
 /**

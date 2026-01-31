@@ -163,6 +163,24 @@ export default function TurkeyMortgageCalculatorPage() {
             </p>
           </div>
 
+          {/* Related Blog Post */}
+          <div className="mt-12 bg-[#f8fafc] rounded-lg border-2 border-[#e2e8f0] p-6 mb-6">
+            <h3 className="text-xl font-bold text-[#1e293b] mb-4">
+              İlgili Blog Yazıları
+            </h3>
+            <Link href="/tr/blog/konut-kredisi-alirken-dikkat-edilecekler-2026" className="block hover:opacity-80 transition-opacity">
+              <h4 className="font-semibold text-[#1e293b] mb-2 hover:text-[#2563eb]">
+                Konut Kredisi Alırken Dikkat Edilecekler 2026
+              </h4>
+              <p className="text-sm text-[#64748b] mb-2">
+                Konut kredisi alırken dikkat edilmesi gerekenler, faiz oranları, masraflar ve ipotek işlemleri hakkında kapsamlı rehber.
+              </p>
+              <span className="text-[#2563eb] font-medium text-sm">
+                Yazıyı Oku →
+              </span>
+            </Link>
+          </div>
+
           {/* Related Calculators */}
           <div className="mt-12 bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
             <h3 className="text-xl font-bold text-[#1e293b] mb-4">
