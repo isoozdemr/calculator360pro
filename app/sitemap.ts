@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { getAllCalculators } from "@/lib/calculators/definitions";
 import { getAllBlogPosts } from "@/lib/blog/posts";
+import { getAllBlogPostsTR } from "@/lib/blog/posts-tr";
 import { SITE_URL, getCategorySlugByKey, CALCULATOR_CATEGORIES, CalculatorCategory } from "@/lib/constants";
 import { URL_MAPPINGS, REVERSE_URL_MAPPINGS } from "@/lib/seo/url-mappings";
 
@@ -11,11 +12,15 @@ const TURKISH_CALCULATORS = [
   { category: "finans", slug: "konut-kredisi-hesap-makinesi", enCategory: "finance", enSlug: "mortgage-calculator" },
   { category: "finans", slug: "kredi-hesap-makinesi", enCategory: "finance", enSlug: "loan-calculator" },
   { category: "finans", slug: "emeklilik-hesap-makinesi", enCategory: "finance", enSlug: "retirement-calculator" },
+  { category: "finans", slug: "doviz-cevirici", enCategory: "finance", enSlug: "currency-converter" },
   { category: "egitim", slug: "not-ortalamasi-hesap-makinesi", enCategory: "education", enSlug: "gpa-calculator" },
   { category: "saglik", slug: "bmi-hesap-makinesi", enCategory: "health", enSlug: "bmi-calculator" },
   { category: "saglik", slug: "kalori-hesap-makinesi", enCategory: "health", enSlug: "calorie-calculator" },
+  { category: "saglik", slug: "gebelik-hesap-makinesi", enCategory: "health", enSlug: "pregnancy-calculator" },
   { category: "matematik", slug: "yuzde-hesap-makinesi", enCategory: "math", enSlug: "percentage-calculator" },
+  { category: "matematik", slug: "indirim-hesap-makinesi", enCategory: "finance", enSlug: "discount-calculator" },
   { category: "tarih-zaman", slug: "yas-hesap-makinesi", enCategory: "date-time", enSlug: "age-calculator" },
+  { category: "tarih-zaman", slug: "tarih-farki-hesap-makinesi", enCategory: "date-time", enSlug: "date-calculator" },
 ];
 
 // Turkish category mappings
@@ -169,7 +174,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
 
   // ============================================
-  // BLOG POSTS (English only for now)
+  // BLOG POSTS (English and Turkish)
   // ============================================
   
   const blogUrls: MetadataRoute.Sitemap = blogPosts.map((post) => ({
@@ -177,6 +182,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(post.date),
     changeFrequency: "monthly" as const,
     priority: 0.6,
+  }));
+
+  // Turkish blog posts
+  const blogPostsTR = getAllBlogPostsTR();
+  const turkishBlogUrls: MetadataRoute.Sitemap = blogPostsTR.map((post) => ({
+    url: `${SITE_URL}/tr/blog/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+    alternates: {
+      languages: {
+        en: `${SITE_URL}/blog`,
+        tr: `${SITE_URL}/tr/blog/${post.slug}`,
+      },
+    },
   }));
 
   // ============================================
@@ -201,6 +221,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.6,
+      alternates: {
+        languages: {
+          en: `${SITE_URL}/blog`,
+          tr: `${SITE_URL}/tr/blog`,
+        },
+      },
     },
     {
       url: `${SITE_URL}/search`,
@@ -272,6 +298,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
       },
     },
+    {
+      url: `${SITE_URL}/tr/blog`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.6,
+      alternates: {
+        languages: {
+          en: `${SITE_URL}/blog`,
+          tr: `${SITE_URL}/tr/blog`,
+        },
+      },
+    },
   ];
 
   return [
@@ -281,6 +319,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...calculatorUrls,
     ...turkishCalculatorUrls,
     ...blogUrls,
+    ...turkishBlogUrls,
     ...otherUrls,
     ...turkishOtherUrls,
   ];
