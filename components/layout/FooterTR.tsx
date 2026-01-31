@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { getAllBlogPostsTR } from "@/lib/blog/posts-tr";
 
 // Social media icons
 const TwitterIcon = () => (
@@ -50,10 +51,12 @@ const TR_CATEGORIES = [
 ];
 
 export function FooterTR() {
+  const recentBlogPosts = getAllBlogPostsTR().slice(0, 5);
+
   return (
     <footer className="bg-[#1e293b] text-[#f1f5f9] mt-16">
       <div className="container mx-auto px-4 py-12 max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
           <div>
             <h3 className="text-xl font-bold mb-4">Calculator360Pro</h3>
             <p className="text-[#94a3b8] text-sm mb-4">
@@ -90,6 +93,11 @@ export function FooterTR() {
                 </Link>
               </li>
               <li>
+                <Link href="/tr/blog" className="hover:text-white transition-colors">
+                  Blog
+                </Link>
+              </li>
+              <li>
                 <Link href="/tr/hakkimizda" className="hover:text-white transition-colors">
                   Hakkımızda
                 </Link>
@@ -110,6 +118,31 @@ export function FooterTR() {
                   </Link>
                 </li>
               ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-4">Son Blog Yazıları</h4>
+            <ul className="space-y-2 text-sm text-[#94a3b8]">
+              {recentBlogPosts.length > 0 ? (
+                recentBlogPosts.map((post) => (
+                  <li key={post.slug}>
+                    <Link
+                      href={`/tr/blog/${post.slug}`}
+                      className="hover:text-white transition-colors line-clamp-2"
+                      title={post.title}
+                    >
+                      {post.title}
+                    </Link>
+                  </li>
+                ))
+              ) : (
+                <li>
+                  <Link href="/tr/blog" className="hover:text-white transition-colors">
+                    Blog Yazıları
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
 

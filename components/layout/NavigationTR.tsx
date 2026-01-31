@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { getAllBlogPostsTR } from "@/lib/blog/posts-tr";
 
 // Türkçe kategoriler ve hesap makineleri
 const TR_CATEGORIES = [
@@ -215,6 +216,12 @@ export function NavigationTR() {
             })}
 
             <Link
+              href="/tr/blog"
+              className="text-[#1e293b] hover:text-[#2563eb] font-medium transition-colors"
+            >
+              Blog
+            </Link>
+            <Link
               href="/tr/hakkimizda"
               className="text-[#1e293b] hover:text-[#2563eb] font-medium transition-colors"
             >
@@ -302,6 +309,13 @@ export function NavigationTR() {
                 );
               })}
 
+              <Link
+                href="/tr/blog"
+                className="block px-4 py-3 text-[#1e293b] hover:text-[#2563eb] hover:bg-[#f8fafc] font-medium"
+                onClick={closeMobileMenu}
+              >
+                Blog
+              </Link>
               <Link
                 href="/tr/hakkimizda"
                 className="block px-4 py-3 text-[#1e293b] hover:text-[#2563eb] hover:bg-[#f8fafc] font-medium"
