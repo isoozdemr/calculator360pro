@@ -258,5 +258,6 @@ export default function FinansalTerimlerSozluguPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

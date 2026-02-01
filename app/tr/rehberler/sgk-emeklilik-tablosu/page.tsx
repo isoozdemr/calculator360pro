@@ -307,5 +307,6 @@ export default function SGKEmeklilikTablosuPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
