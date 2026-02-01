@@ -54,12 +54,12 @@ async function getAccessToken(): Promise<string> {
 
   try {
     // Create JWT client for service account authentication
-    const jwtClient = new google.auth.JWT(
-      serviceAccountEmail,
-      null, // keyFile path (null because we're providing private key directly)
-      privateKey,
-      ["https://www.googleapis.com/auth/indexing"] // Required scope for Indexing API
-    );
+    // JWT constructor signature: new JWT(options) where options can include email, key, scopes
+    const jwtClient = new google.auth.JWT({
+      email: serviceAccountEmail,
+      key: privateKey,
+      scopes: ["https://www.googleapis.com/auth/indexing"], // Required scope for Indexing API
+    });
 
     // Authorize and get access token
     await jwtClient.authorize();

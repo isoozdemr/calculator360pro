@@ -83,10 +83,6 @@ export function generateCalculatorMetadata(
           alt: `${calculator.name} - Free Online Calculator`,
         },
       ],
-      // OpenGraph enhancements
-      ...(hasTranslation && trPath ? {
-        seeAlso: [`${SITE_URL}${trPath}`],
-      } : {}),
     },
     twitter: {
       card: "summary_large_image",
@@ -187,8 +183,6 @@ export function generateTurkishCalculatorMetadata(
           alt: `${name} - Ücretsiz Online Hesap Makinesi`,
         },
       ],
-      // OpenGraph enhancements
-      seeAlso: [enUrl],
     },
     twitter: {
       card: "summary_large_image",
