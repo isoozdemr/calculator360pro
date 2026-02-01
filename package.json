@@ -19,7 +19,8 @@
     "track:performance": "node scripts/track-performance-metrics.js",
     "track:keywords": "node scripts/track-keywords-research.js",
     "check:freshness": "node scripts/check-content-freshness.js",
-    "analyze:keywords": "node scripts/analyze-keywords-density.js"
+    "analyze:keywords": "node scripts/analyze-keywords-density.js",
+    "submit:urls": "tsx scripts/submit-all-urls-to-google.ts"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^16.1.1",
@@ -39,6 +40,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.1",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }
