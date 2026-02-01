@@ -71,10 +71,22 @@ async function getAccessToken(): Promise<string> {
     throw new Error("Invalid private key format: missing BEGIN PRIVATE KEY");
   }
   
-  // Log first 50 chars for debugging (remove in production if needed)
-  console.log("Private key starts with:", privateKey.substring(0, 50));
+  if (!privateKey.includes("END PRIVATE KEY")) {
+    throw new Error("Invalid private key format: missing END PRIVATE KEY");
+  }
+  
+  // Validate key structure
+  const keyLines = privateKey.split("\n");
+  if (keyLines.length < 3) {
+    throw new Error(`Invalid private key format: too few lines (${keyLines.length}). Expected multiline key.`);
+  }
 
   try {
+    // Validate key length (RSA private keys are typically 1600+ characters)
+    if (privateKey.length < 1500) {
+      throw new Error(`Private key seems too short: ${privateKey.length} characters. Expected 1600+ characters.`);
+    }
+    
     // Create JWT client for service account authentication
     // JWT constructor signature: new JWT(options) where options can include email, key, scopes
     const jwtClient = new google.auth.JWT({
