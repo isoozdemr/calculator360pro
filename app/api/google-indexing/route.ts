@@ -53,16 +53,26 @@ async function getAccessToken(): Promise<string> {
   }
 
   // Fix private key formatting for Vercel environment variables
+  // Remove any surrounding quotes (single, double, or escaped)
+  privateKey = privateKey.trim();
+  if ((privateKey.startsWith('"') && privateKey.endsWith('"')) || 
+      (privateKey.startsWith("'") && privateKey.endsWith("'"))) {
+    privateKey = privateKey.slice(1, -1);
+  }
+  
   // Replace escaped newlines with actual newlines
   privateKey = privateKey.replace(/\\n/g, "\n");
   
-  // Remove any surrounding quotes if present
-  privateKey = privateKey.replace(/^["']|["']$/g, "");
+  // Also handle cases where newlines might be literal strings
+  privateKey = privateKey.replace(/\\\\n/g, "\n");
   
   // Ensure proper formatting
   if (!privateKey.includes("BEGIN PRIVATE KEY")) {
     throw new Error("Invalid private key format: missing BEGIN PRIVATE KEY");
   }
+  
+  // Log first 50 chars for debugging (remove in production if needed)
+  console.log("Private key starts with:", privateKey.substring(0, 50));
 
   try {
     // Create JWT client for service account authentication
