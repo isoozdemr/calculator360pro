@@ -43,13 +43,25 @@ const GOOGLE_INDEXING_API_URL = "https://indexing.googleapis.com/v3/urlNotificat
  */
 async function getAccessToken(): Promise<string> {
   const serviceAccountEmail = process.env.GOOGLE_INDEXING_SERVICE_ACCOUNT_EMAIL;
-  const privateKey = process.env.GOOGLE_INDEXING_PRIVATE_KEY?.replace(/\\n/g, "\n");
+  let privateKey = process.env.GOOGLE_INDEXING_PRIVATE_KEY;
 
   if (!serviceAccountEmail || !privateKey) {
     throw new Error(
       "Google Indexing API credentials not configured. " +
       "Set GOOGLE_INDEXING_SERVICE_ACCOUNT_EMAIL and GOOGLE_INDEXING_PRIVATE_KEY environment variables."
     );
+  }
+
+  // Fix private key formatting for Vercel environment variables
+  // Replace escaped newlines with actual newlines
+  privateKey = privateKey.replace(/\\n/g, "\n");
+  
+  // Remove any surrounding quotes if present
+  privateKey = privateKey.replace(/^["']|["']$/g, "");
+  
+  // Ensure proper formatting
+  if (!privateKey.includes("BEGIN PRIVATE KEY")) {
+    throw new Error("Invalid private key format: missing BEGIN PRIVATE KEY");
   }
 
   try {
