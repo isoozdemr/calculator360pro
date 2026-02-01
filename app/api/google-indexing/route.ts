@@ -53,32 +53,51 @@ async function getAccessToken(): Promise<string> {
   }
 
   // Fix private key formatting for Vercel environment variables
-  // Remove any surrounding quotes (single, double, or escaped)
+  // Step 1: Remove any surrounding quotes (single, double, or escaped)
   privateKey = privateKey.trim();
   if ((privateKey.startsWith('"') && privateKey.endsWith('"')) || 
       (privateKey.startsWith("'") && privateKey.endsWith("'"))) {
-    privateKey = privateKey.slice(1, -1);
+    privateKey = privateKey.slice(1, -1).trim();
   }
   
-  // Replace escaped newlines with actual newlines
+  // Step 2: Replace escaped newlines with actual newlines
+  // Handle both \\n (double escaped) and \n (single escaped)
+  privateKey = privateKey.replace(/\\\\n/g, "\n");
   privateKey = privateKey.replace(/\\n/g, "\n");
   
-  // Also handle cases where newlines might be literal strings
-  privateKey = privateKey.replace(/\\\\n/g, "\n");
+  // Step 3: Clean up the key - remove any trailing/leading whitespace
+  privateKey = privateKey.trim();
   
-  // Ensure proper formatting
-  if (!privateKey.includes("BEGIN PRIVATE KEY")) {
-    throw new Error("Invalid private key format: missing BEGIN PRIVATE KEY");
+  // Step 4: Ensure proper PEM format
+  if (!privateKey.startsWith("-----BEGIN PRIVATE KEY-----")) {
+    throw new Error("Invalid private key format: must start with -----BEGIN PRIVATE KEY-----");
   }
   
-  if (!privateKey.includes("END PRIVATE KEY")) {
-    throw new Error("Invalid private key format: missing END PRIVATE KEY");
+  if (!privateKey.includes("-----END PRIVATE KEY-----")) {
+    throw new Error("Invalid private key format: must contain -----END PRIVATE KEY-----");
   }
   
-  // Validate key structure
-  const keyLines = privateKey.split("\n");
-  if (keyLines.length < 3) {
-    throw new Error(`Invalid private key format: too few lines (${keyLines.length}). Expected multiline key.`);
+  // Step 5: Ensure key ends properly (no trailing newlines after END)
+  // Remove any trailing newlines after END PRIVATE KEY
+  const endMarker = "-----END PRIVATE KEY-----";
+  const endIndex = privateKey.indexOf(endMarker);
+  if (endIndex === -1) {
+    throw new Error("Invalid private key format: END PRIVATE KEY marker not found");
+  }
+  
+  // Reconstruct key: everything up to and including END marker, no trailing newlines
+  privateKey = privateKey.substring(0, endIndex + endMarker.length);
+  
+  // Validate key structure - should have BEGIN, content, and END
+  const keyParts = privateKey.split("\n");
+  if (keyParts.length < 3) {
+    throw new Error(`Invalid private key format: too few lines (${keyParts.length}). Expected multiline PEM key.`);
+  }
+  
+  // Final validation: key should be valid PEM format
+  // Check that key has proper structure
+  if (!privateKey.includes("\n")) {
+    throw new Error("Invalid private key format: no newlines found. Key should be multiline.");
   }
 
   try {
