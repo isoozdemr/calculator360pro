@@ -1,4 +1,5 @@
 import { BlogPost, getAllBlogPosts } from "./posts";
+import { BlogPost as BlogPostTR, getAllBlogPostsTR } from "./posts-tr";
 import { CalculatorDefinition } from "@/lib/calculators/definitions";
 
 /**
@@ -112,4 +113,60 @@ export function getRelatedBlogPosts(
  */
 export function getRelatedCalculatorsForPost(post: BlogPost): string[] {
   return BLOG_CALCULATOR_MAPPINGS[post.slug] || [];
+}
+
+/**
+ * Get related Turkish blog posts for a blog post
+ * 
+ * @param currentPost - The current blog post to find related posts for
+ * @param maxResults - Maximum number of blog posts to return (default: 3)
+ * @returns Array of related blog posts
+ */
+export function getRelatedBlogPostsTR(
+  currentPost: BlogPostTR,
+  maxResults: number = 3
+): BlogPostTR[] {
+  const allPosts = getAllBlogPostsTR();
+  
+  // Filter out the current post
+  const otherPosts = allPosts.filter((post) => post.slug !== currentPost.slug);
+  
+  // Score posts based on relevance
+  const scoredPosts = otherPosts.map((post) => {
+    let score = 0;
+    
+    // High priority: Same category
+    if (post.category === currentPost.category) {
+      score += 10;
+    }
+    
+    // Medium priority: Common tags
+    const currentTags = currentPost.tags.map((t) => t.toLowerCase());
+    const postTags = post.tags.map((t) => t.toLowerCase());
+    const commonTags = currentTags.filter((tag) => postTags.includes(tag));
+    score += commonTags.length * 5;
+    
+    // Low priority: Keyword matches in title/description
+    const currentTitleWords = currentPost.title.toLowerCase().split(/\s+/);
+    const postTitleWords = post.title.toLowerCase().split(/\s+/);
+    const commonTitleWords = currentTitleWords.filter((word) => 
+      word.length > 3 && postTitleWords.includes(word)
+    );
+    score += commonTitleWords.length * 2;
+    
+    // Check description for keyword matches
+    const currentDescWords = currentPost.description.toLowerCase().split(/\s+/);
+    const postDescWords = post.description.toLowerCase().split(/\s+/);
+    const commonDescWords = currentDescWords.filter((word) => 
+      word.length > 3 && postDescWords.includes(word)
+    );
+    score += commonDescWords.length;
+    
+    return { post, score };
+  })
+  .filter((item) => item.score > 0)
+  .sort((a, b) => b.score - a.score)
+  .map((item) => item.post);
+  
+  return scoredPosts.slice(0, maxResults);
 }

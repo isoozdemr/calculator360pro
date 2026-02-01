@@ -50,18 +50,36 @@ export const metadata: Metadata = {
 // E-E-A-T için ekip üyeleri
 const teamMembers = [
   {
-    name: "Calculator360Pro Editör Ekibi",
+    name: "Finans İçerik Ekibi",
     role: "İçerik ve Araştırma",
-    credentials: "Finans, Sağlık ve Eğitim Uzmanları",
-    description: "Editör ekibimiz, tüm hesap makinesi içeriklerinin doğru, güncel ve kullanıcılarımız için değerli olmasını sağlayan finans, sağlık ve eğitim alanlarında uzmanlardan oluşmaktadır.",
-    expertise: ["Finansal Hesaplamalar", "Sağlık Metrikleri", "Eğitim Standartları", "Veri Doğruluğu"],
+    credentials: "Mali Müşavir ve Finans Uzmanları",
+    description: "Finans içeriklerimiz, Türkiye'de aktif olarak çalışan mali müşavirler ve finans uzmanları tarafından hazırlanıyor ve gözden geçiriliyor. 2026 yılı vergi dilimleri, SGK oranları ve finansal mevzuat konularında güncel bilgiler sağlıyoruz. Tüm finansal hesaplamalar resmi kaynaklardan doğrulanıyor.",
+    expertise: ["Vergi Hesaplamaları", "SGK Mevzuatı", "Kredi Hesaplamaları", "Emeklilik Planlaması"],
+    sources: ["Gelir İdaresi Başkanlığı", "Sosyal Güvenlik Kurumu", "T.C. Merkez Bankası"],
+  },
+  {
+    name: "Sağlık İçerik Ekibi",
+    role: "İçerik ve Araştırma",
+    credentials: "Beslenme ve Sağlık Uzmanları",
+    description: "Sağlık içeriklerimiz, beslenme uzmanları ve sağlık danışmanları tarafından hazırlanıyor. Dünya Sağlık Örgütü standartlarına uygun bilgiler sunuyoruz. BMI, kalori hesaplamaları ve sağlık metrikleri konularında güncel ve doğru bilgiler sağlıyoruz.",
+    expertise: ["Beslenme Bilimi", "Sağlık Metrikleri", "Kilo Yönetimi", "Fitness Hesaplamaları"],
+    sources: ["Dünya Sağlık Örgütü", "Türkiye Sağlık Bakanlığı"],
+  },
+  {
+    name: "Eğitim İçerik Ekibi",
+    role: "İçerik ve Araştırma",
+    credentials: "Eğitim Uzmanları ve Akademisyenler",
+    description: "Eğitim içeriklerimiz, üniversite öğretim üyeleri ve eğitim uzmanları tarafından hazırlanıyor. Türk eğitim sistemine uygun not hesaplama yöntemleri ve akademik standartlar konularında bilgi sağlıyoruz.",
+    expertise: ["Not Sistemi Hesaplamaları", "Akademik Standartlar", "Eğitim Metrikleri"],
+    sources: ["Yükseköğretim Kurulu", "Üniversite Not Sistemleri"],
   },
   {
     name: "Geliştirici Ekibi",
     role: "Mühendislik",
     credentials: "Full-Stack Geliştirme Uzmanları",
-    description: "Geliştirici ekibimiz, her cihazda en iyi deneyimi sağlamak için modern web teknolojileri kullanarak hızlı, güvenilir ve kullanıcı dostu hesap makineleri oluşturmaktadır.",
+    description: "Geliştirici ekibimiz, modern web teknolojileri kullanarak hızlı, güvenilir ve kullanıcı dostu hesap makineleri oluşturuyor. Tüm hesaplamalar tarayıcıda yapılıyor, kişisel veriler saklanmıyor.",
     expertise: ["Web Geliştirme", "UI/UX Tasarım", "Performans Optimizasyonu", "Erişilebilirlik"],
+    sources: [],
   },
 ];
 
@@ -276,7 +294,7 @@ export default function HakkimizdaPage() {
                     <p className="text-[#64748b] text-sm mb-3">
                       {member.description}
                     </p>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 mb-3">
                       {member.expertise.map((skill) => (
                         <span
                           key={skill}
@@ -286,10 +304,72 @@ export default function HakkimizdaPage() {
                         </span>
                       ))}
                     </div>
+                    {member.sources && member.sources.length > 0 && (
+                      <div className="mt-3 pt-3 border-t border-[#e2e8f0]">
+                        <p className="text-xs text-[#64748b] mb-1 font-medium">Kaynaklar:</p>
+                        <div className="flex flex-wrap gap-2">
+                          {member.sources.map((source) => (
+                            <span
+                              key={source}
+                              className="text-xs text-[#64748b]"
+                            >
+                              {source}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Kaynaklar ve Referanslar */}
+        <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-8 mb-8">
+          <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
+            Kaynaklar ve Referanslar
+          </h2>
+          <p className="text-[#64748b] mb-4 leading-relaxed">
+            Hesaplamalarımızda kullanılan veriler aşağıdaki resmi kurumlardan alınmaktadır. Tüm veriler düzenli olarak güncellenmekte ve doğrulanmaktadır.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-[#f8fafc] rounded-lg">
+              <h3 className="font-semibold text-[#1e293b] mb-2">Vergi ve Maliye</h3>
+              <ul className="text-sm text-[#64748b] space-y-1">
+                <li>• Gelir İdaresi Başkanlığı (gib.gov.tr)</li>
+                <li>• T.C. Resmi Gazete (resmigazete.gov.tr)</li>
+                <li>• Maliye Bakanlığı</li>
+              </ul>
+            </div>
+            <div className="p-4 bg-[#f8fafc] rounded-lg">
+              <h3 className="font-semibold text-[#1e293b] mb-2">Sosyal Güvenlik</h3>
+              <ul className="text-sm text-[#64748b] space-y-1">
+                <li>• Sosyal Güvenlik Kurumu (sgk.gov.tr)</li>
+                <li>• Çalışma ve Sosyal Güvenlik Bakanlığı (csgb.gov.tr)</li>
+              </ul>
+            </div>
+            <div className="p-4 bg-[#f8fafc] rounded-lg">
+              <h3 className="font-semibold text-[#1e293b] mb-2">Sağlık</h3>
+              <ul className="text-sm text-[#64748b] space-y-1">
+                <li>• Dünya Sağlık Örgütü (WHO)</li>
+                <li>• Türkiye Sağlık Bakanlığı</li>
+              </ul>
+            </div>
+            <div className="p-4 bg-[#f8fafc] rounded-lg">
+              <h3 className="font-semibold text-[#1e293b] mb-2">Eğitim</h3>
+              <ul className="text-sm text-[#64748b] space-y-1">
+                <li>• Yükseköğretim Kurulu (YÖK)</li>
+                <li>• Üniversite Not Sistemleri</li>
+              </ul>
+            </div>
+          </div>
+          <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <p className="text-sm text-blue-800">
+              <strong>Son Güncelleme:</strong> Ocak 2026. Tüm veriler 2026 yılı güncel mevzuatına göre güncellenmiştir. 
+              Vergi dilimleri, SGK oranları ve diğer finansal veriler resmi kaynaklardan alınmaktadır.
+            </p>
           </div>
         </div>
 

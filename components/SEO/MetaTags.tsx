@@ -83,6 +83,10 @@ export function generateCalculatorMetadata(
           alt: `${calculator.name} - Free Online Calculator`,
         },
       ],
+      // OpenGraph enhancements
+      ...(hasTranslation && trPath ? {
+        seeAlso: [`${SITE_URL}${trPath}`],
+      } : {}),
     },
     twitter: {
       card: "summary_large_image",
@@ -121,10 +125,12 @@ export function generateBlogPostMetadata(post: BlogPost): Metadata {
       url,
       type: "article",
       publishedTime: post.date,
+      modifiedTime: post.dateModified || post.date,
       authors: [post.author],
       tags: post.tags,
       siteName: "Calculator360Pro",
       locale: "en_US",
+      section: post.category,
     },
     twitter: {
       card: "summary_large_image",
@@ -181,6 +187,8 @@ export function generateTurkishCalculatorMetadata(
           alt: `${name} - Ücretsiz Online Hesap Makinesi`,
         },
       ],
+      // OpenGraph enhancements
+      seeAlso: [enUrl],
     },
     twitter: {
       card: "summary_large_image",

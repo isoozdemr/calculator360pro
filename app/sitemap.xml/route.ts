@@ -80,7 +80,7 @@ function generateSitemapXML(): string {
     <loc>${SITE_URL}/calculators/${categorySlug}</loc>
     <lastmod>${nowISO}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>`);
   });
 
@@ -91,7 +91,7 @@ function generateSitemapXML(): string {
     <loc>${SITE_URL}/tr/hesap-makineleri/${cat.tr}</loc>
     <lastmod>${nowISO}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>`);
   });
 
@@ -104,7 +104,7 @@ function generateSitemapXML(): string {
     <loc>${enPath}</loc>
     <lastmod>${nowISO}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>`);
   });
 
@@ -116,7 +116,7 @@ function generateSitemapXML(): string {
     <loc>${trPath}</loc>
     <lastmod>${nowISO}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>`);
   });
 
@@ -125,9 +125,9 @@ function generateSitemapXML(): string {
     urls.push(`
   <url>
     <loc>${SITE_URL}/blog/${post.slug}</loc>
-    <lastmod>${formatDate(new Date(post.date))}</lastmod>
+    <lastmod>${formatDate(new Date(post.dateModified || post.date))}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>`);
   });
 
@@ -136,9 +136,9 @@ function generateSitemapXML(): string {
     urls.push(`
   <url>
     <loc>${SITE_URL}/tr/blog/${post.slug}</loc>
-    <lastmod>${formatDate(new Date(post.date))}</lastmod>
+    <lastmod>${formatDate(new Date(post.dateModified || post.date))}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>`);
   });
 
@@ -197,6 +197,24 @@ function generateSitemapXML(): string {
     <lastmod>${nowISO}</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>${SITE_URL}/tr/rehberler/finansal-terimler-sozlugu</loc>
+    <lastmod>${nowISO}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>${SITE_URL}/tr/rehberler/vergi-takvimi-2026</loc>
+    <lastmod>${nowISO}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>${SITE_URL}/tr/rehberler/sgk-emeklilik-tablosu</loc>
+    <lastmod>${nowISO}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>`);
 
   return `<?xml version="1.0" encoding="UTF-8"?>

@@ -77,6 +77,32 @@ export default function TarihZamanKategorisiPage() {
           </div>
         </div>
 
+        {/* Açıklayıcı İçerik */}
+        <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-8 mb-8">
+          <div className="prose prose-slate max-w-none">
+            <p className="text-[#64748b] mb-4 leading-relaxed">
+              Tarih ve zaman hesaplamaları günlük hayatta sıkça karşımıza çıkıyor. Yaş hesaplama, 
+              tarih farkı bulma, doğum gününe kalan süre gibi hesaplamalar resmi işlemlerden 
+              kişisel planlamaya kadar geniş bir kullanım alanına sahip.
+            </p>
+            <p className="text-[#64748b] mb-4 leading-relaxed">
+              Yaş hesaplama, doğum tarihinden bugüne kadar geçen süreyi hesaplama işlemi. Yıl, ay, 
+              hafta, gün olarak detaylı hesaplama yapılabiliyor. Resmi işlemler için tam yaş bilgisi 
+              önemli. Emeklilik başvuruları, ehliyet yenileme gibi işlemlerde yaş bilgisi gerekli.
+            </p>
+            <p className="text-[#64748b] mb-4 leading-relaxed">
+              Tarih farkı hesaplama, iki tarih arasındaki süreyi bulma işlemi. Gün, hafta, ay, yıl 
+              olarak hesaplanabiliyor. Özel günlere kalan süreyi hesaplamak, planlama yapmak için 
+              faydalı. Doğum günü, yıldönümü, tatil gibi özel günlere kalan süreyi bilmek önemli.
+            </p>
+            <p className="text-[#64748b] mb-4 leading-relaxed">
+              Burç hesaplama, doğum tarihine göre burç belirleme işlemi. Türkiye'de yaygın olarak 
+              kullanılan burç sistemi, doğum tarihine göre belirleniyor. Burç bilgisi, yaş hesaplama 
+              ile birlikte gösterilebiliyor.
+            </p>
+          </div>
+        </div>
+
         {/* Calculator Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           {dateTimeCalculators.map((calculator) => (
@@ -104,6 +130,42 @@ export default function TarihZamanKategorisiPage() {
               </div>
             </Link>
           ))}
+        </div>
+
+        {/* FAQ Bölümü */}
+        <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-8 mb-8">
+          <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
+            Sıkça Sorulan Sorular
+          </h2>
+          <div className="space-y-4">
+            <div className="border-b border-[#e2e8f0] pb-4">
+              <h3 className="font-semibold text-[#1e293b] mb-2">
+                Yaş nasıl hesaplanır?
+              </h3>
+              <p className="text-[#64748b] text-sm leading-relaxed">
+                Yaş hesaplama için bugünün tarihinden doğum tarihini çıkarıyorsunuz. Yıl, ay, gün 
+                olarak detaylı hesaplama yapılabiliyor. Artık yıllar da dikkate alınıyor.
+              </p>
+            </div>
+            <div className="border-b border-[#e2e8f0] pb-4">
+              <h3 className="font-semibold text-[#1e293b] mb-2">
+                Tarih farkı nasıl hesaplanır?
+              </h3>
+              <p className="text-[#64748b] text-sm leading-relaxed">
+                Tarih farkı hesaplama için büyük tarihten küçük tarihi çıkarıyorsunuz. Sonuç gün, 
+                hafta, ay, yıl olarak gösterilebiliyor. Artık yıllar ve ay gün sayıları dikkate alınıyor.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-[#1e293b] mb-2">
+                Burç nasıl belirlenir?
+              </h3>
+              <p className="text-[#64748b] text-sm leading-relaxed">
+                Burç, doğum tarihine göre belirleniyor. Her burç belirli tarih aralığına sahip. 
+                Doğum tarihiniz hangi aralığa düşüyorsa o burç sizin burcunuz oluyor.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Info Section */}

@@ -116,6 +116,11 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
         />
+        {/* RSS Feed Auto-discovery */}
+        <link rel="alternate" type="application/rss+xml" title="Calculator360Pro Blog RSS Feed" href={`${process.env.NEXT_PUBLIC_SITE_URL || "https://calculator360pro.com"}/feed.xml`} />
+        {/* Critical Resource Preload */}
+        <link rel="preload" href="/og-image.png" as="image" fetchPriority="high" />
+        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style" />
         <meta
           name="google-adsense-account"
           content={process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "ca-pub-2471021299627229"}

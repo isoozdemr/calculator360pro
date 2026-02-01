@@ -5,6 +5,7 @@ export interface BlogPost {
   content: string;
   author: string;
   date: string;
+  dateModified?: string; // Optional: if not provided, uses date
   category: string;
   tags: string[];
 }
@@ -18,7 +19,7 @@ export const blogPostsTR: BlogPost[] = [
     content: `
 # 2026 Gelir Vergisi Dilimleri ve Hesaplama Rehberi
 
-Türkiye'de gelir vergisi, artan oranlı (kademeli) tarife sistemi ile hesaplanmaktadır. 2026 yılı için güncel vergi dilimleri ve hesaplama yöntemlerini bu rehberde bulabilirsiniz.
+Türkiye'de gelir vergisi, artan oranlı tarife sistemi ile hesaplanıyor. 2026 yılı için güncel vergi dilimleri ve hesaplama yöntemleri aşağıda.
 
 ## 2026 Yılı Gelir Vergisi Dilimleri
 
@@ -103,20 +104,11 @@ Ancak bazı durumlarda yıllık beyanname verilmesi gerekir:
 - Kira geliri elde edenler (istisna tutarını aşanlar)
 - Yurtdışı geliri olanlar
 
-## İpuçları ve Öneriler
+Vergi planlaması yaparken yıl başında hesaplamalarınızı gözden geçirmek faydalı olur. Eğitim ve sağlık harcamalarını belgelendirerek indirimlerden yararlanabilirsiniz. Bireysel Emeklilik Sistemi'ne katkı yaparak vergi avantajı sağlayabilirsiniz. Karmaşık durumlarda mali müşavir ile çalışmak önemli.
 
-1. **Vergi Planlaması**: Yıl başında vergi planlaması yapın
-2. **İndirimlerden Yararlanın**: Eğitim, sağlık harcamalarını belgelendirin
-3. **BES Katkısı**: Bireysel Emeklilik Sistemi'ne katkı yaparak vergi avantajı sağlayın
-4. **Mali Müşavir**: Karmaşık durumlarda mali müşavir ile çalışın
+Gelir vergisi hesaplama, kademeli sistem sayesinde adil bir yapıya sahip. Vergi matrahınızı ve efektif vergi oranınızı bilmek finansal planlama için önemli. [Vergi Hesap Makinemizi](/tr/hesap-makineleri/finans/vergi-hesap-makinesi) kullanarak hesaplamalarınızı kolaylaştırabilirsiniz. Maaş hesaplamalarınız için [Maaş Hesap Makinemizi](/tr/hesap-makineleri/finans/maas-hesap-makinesi) de kullanabilirsiniz. Detaylı bilgi için [Brütten Nete Maaş Hesaplama](/tr/blog/brutten-nete-maas-hesaplama-sgk-agi-vergi) yazımıza bakabilirsiniz. Finansal terimler hakkında daha fazla bilgi için [Finansal Terimler Sözlüğümüze](/tr/rehberler/finansal-terimler-sozlugu) göz atabilirsiniz.
 
-## Sonuç
-
-Gelir vergisi hesaplama, kademeli sistem sayesinde adil bir yapıya sahiptir. Vergi matrahınızı ve efektif vergi oranınızı bilmek, finansal planlamanız için önemlidir.
-
-Vergi hesaplamalarınızı kolaylaştırmak için [Vergi Hesap Makinemizi](/tr/hesap-makineleri/finans/vergi-hesap-makinesi) kullanabilirsiniz.
-
-**Önemli Not**: Bu rehber bilgilendirme amaçlıdır. Vergi planlaması ve beyanname işlemleri için mutlaka yetkili mali müşavir veya serbest muhasebeci ile görüşün. Vergi mevzuatı sık değişebilmektedir.
+Bu bilgiler genel bilgilendirme amaçlıdır. Vergi planlaması ve beyanname işlemleri için yetkili mali müşavir veya serbest muhasebeci ile görüşmeniz gerekir. Vergi mevzuatı sık değişebilir.
     `,
     author: "Calculator360Pro Ekibi",
     date: "2026-01-20",
@@ -131,7 +123,7 @@ Vergi hesaplamalarınızı kolaylaştırmak için [Vergi Hesap Makinemizi](/tr/h
     content: `
 # Brütten Nete Maaş Hesaplama: SGK, AGİ, Vergi Rehberi
 
-Brüt maaşınızdan net maaşınıza geçişte hangi kesintiler yapılır? Bu rehberde tüm kesintileri detaylı olarak açıklıyoruz.
+Brüt maaştan net maaşa geçişte hangi kesintiler yapılır? Tüm kesintiler aşağıda açıklanıyor.
 
 ## Brüt Maaş Nedir?
 
@@ -232,18 +224,13 @@ Asgari ücretliler gelir vergisinden ve damga vergisinden muaftır.
 - İşveren SGK Payı: 50.000 × 0.225 = 11.250 TL
 - **Toplam İşveren Maliyeti**: 50.000 + 11.250 = 61.250 TL
 
-## Maaş Hesaplama İpuçları
+Vergi hesaplaması yıl başından itibaren kümülatiftir. Yılın ilk aylarında düşük vergi diliminde olabilirsiniz, ancak yıl ilerledikçe toplam matrahınız artar ve üst vergi dilimlerine geçebilirsiniz. Bu nedenle aynı brüt maaşla yılın son aylarında net maaşınız düşebilir. [2026 Gelir Vergisi Dilimleri](/tr/blog/2026-gelir-vergisi-dilimleri-hesaplama-rehberi) yazımızda vergi dilimleri hakkında detaylı bilgi bulabilirsiniz.
 
-1. **Kümülatif Matrah**: Vergi hesaplaması yıl başından itibaren kümülatiftir
-2. **AGİ Kontrolü**: AGİ indirimi gelir vergisinden düşülür, negatif olamaz
-3. **Asgari Ücret Muafiyeti**: Asgari ücretliler vergi ödemez
-4. **Yıl Sonu Farkı**: Yılın son aylarında net maaş düşebilir (üst dilime geçiş)
+AGİ indirimi gelir vergisinden düşülür ve negatif olamaz. Asgari ücretliler gelir vergisinden ve damga vergisinden muaftır. [2026 Asgari Ücret](/tr/blog/2026-asgari-ucret-net-maas-hesaplama-sgk-kesintileri) yazımızda asgari ücret hesaplamaları hakkında bilgi bulabilirsiniz.
 
-## Sonuç
+Brütten nete maaş hesaplama SGK, vergi, damga vergisi ve AGİ gibi birçok faktörü içerir. [Maaş Hesap Makinemizi](/tr/hesap-makineleri/finans/maas-hesap-makinesi) kullanarak doğru hesaplama yapabilirsiniz. [Vergi Hesap Makinemiz](/tr/hesap-makineleri/finans/vergi-hesap-makinesi) ile de vergi hesaplamalarınızı yapabilirsiniz. Finansal terimler hakkında bilgi için [Finansal Terimler Sözlüğümüze](/tr/rehberler/finansal-terimler-sozlugu) bakabilirsiniz.
 
-Brütten nete maaş hesaplama, SGK, vergi, damga vergisi ve AGİ gibi birçok faktörü içerir. Doğru hesaplama için [Maaş Hesap Makinemizi](/tr/hesap-makineleri/finans/maas-hesap-makinesi) kullanabilirsiniz.
-
-**Önemli Not**: Bu rehber bilgilendirme amaçlıdır. Resmi hesaplamalar için işvereniniz veya mali müşaviriniz ile görüşün.
+Bu bilgiler genel bilgilendirme amaçlıdır. Resmi hesaplamalar için işvereniniz veya mali müşaviriniz ile görüşmeniz gerekir.
     `,
     author: "Calculator360Pro Ekibi",
     date: "2026-01-20",
@@ -258,7 +245,7 @@ Brütten nete maaş hesaplama, SGK, vergi, damga vergisi ve AGİ gibi birçok fa
     content: `
 # Konut Kredisi Alırken Dikkat Edilecekler 2026
 
-Ev almak, hayatınızın en önemli finansal kararlarından biridir. Konut kredisi alırken dikkat etmeniz gereken tüm detayları bu rehberde bulabilirsiniz.
+Ev almak hayatın en önemli finansal kararlarından biri. Konut kredisi alırken dikkat edilmesi gereken detaylar aşağıda.
 
 ## Konut Kredisi Nedir?
 
@@ -297,7 +284,7 @@ Aylık taksit, kredi tutarı, faiz oranı ve vadeye göre hesaplanır.
 **Örnek**: 1.000.000 TL kredi, %3 faiz, 10 yıl (120 ay)
 - Aylık taksit: yaklaşık 9.656 TL
 
-Detaylı hesaplama için [Konut Kredisi Hesap Makinemizi](/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi) kullanabilirsiniz.
+Detaylı hesaplama için [Konut Kredisi Hesap Makinemizi](/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi) kullanabilirsiniz. [Kredi Hesap Makinemiz](/tr/hesap-makineleri/finans/kredi-hesap-makinesi) ile de ihtiyaç kredisi hesaplamaları yapabilirsiniz.
 
 ## Kredi Masrafları
 
@@ -406,15 +393,9 @@ Kredi notunuz düşükse:
 - Daha düşük kredi tutarı
 - Daha yüksek peşinat istenebilir
 
-## Sonuç
+Konut kredisi alırken en az 3-5 bankadan teklif almak önemli. [Konut Kredisi Hesap Makinesi](/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi) ile taksitleri hesaplayabilir, masrafları ve peşinatı planlayabilirsiniz. Kredi notunuzu kontrol edip belgelerinizi hazırlamak süreci hızlandırır. [İhtiyaç Kredisi mi Konut Kredisi mi](/tr/blog/ihtiyac-kredisi-mi-konut-kredisi-mi-hangisi-daha-avantajli) yazımızda kredi türleri arasındaki farkları öğrenebilirsiniz. [Finans Kategorimizdeki](/tr/hesap-makineleri/finans) diğer hesap makinelerine de göz atabilirsiniz.
 
-Konut kredisi alırken:
-1. **Araştırın**: En az 3-5 bankadan teklif alın
-2. **Hesaplayın**: [Konut Kredisi Hesap Makinesi](/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi) ile taksitleri hesaplayın
-3. **Planlayın**: Masrafları ve peşinatı planlayın
-4. **Kontrol Edin**: Kredi notunuzu ve belgelerinizi hazırlayın
-
-**Önemli Not**: Bu rehber bilgilendirme amaçlıdır. Kredi başvurusu öncesi banka temsilcileri ile görüşün ve tüm şartları detaylı okuyun.
+Kredi başvurusu öncesi banka temsilcileri ile görüşmek ve tüm şartları detaylı okumak gerekiyor. Bu bilgiler genel bilgilendirme amaçlıdır.
     `,
     author: "Calculator360Pro Ekibi",
     date: "2026-01-20",
@@ -429,7 +410,7 @@ Konut kredisi alırken:
     content: `
 # EYT Nedir? Kimler Faydalanabilir?
 
-EYT (Erken Yaşlananlar Yasası), 1999 öncesi sigortalı olanların emeklilik şartlarını düzenleyen yasadır. Bu rehberde EYT kapsamında emeklilik şartlarını açıklıyoruz.
+EYT, 1999 öncesi sigortalı olanların emeklilik şartlarını düzenleyen yasa. EYT kapsamında emeklilik şartları aşağıda açıklanıyor.
 
 ## EYT Nedir?
 
@@ -526,7 +507,7 @@ Emeklilik maaşı şu faktörlere bağlıdır:
 3. **Prim Günü**: Toplam prim günü sayısı
 4. **Yaş**: Emeklilik yaşı
 
-Detaylı hesaplama için [Emeklilik Hesap Makinemizi](/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi) kullanabilirsiniz.
+Detaylı hesaplama için [Emeklilik Hesap Makinemizi](/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi) kullanabilirsiniz. [SGK Emeklilik Tablosu](/tr/rehberler/sgk-emeklilik-tablosu) sayfamızda emeklilik yaşı ve prim günü şartlarını görebilirsiniz.
 
 ## EYT ile İlgili Sık Sorulan Sorular
 
@@ -548,15 +529,9 @@ Evet, şartları tamamladığınızda emekli olabilirsiniz. Ancak emeklilik maa�
 
 Hayır, EYT kapsamına girdiyseniz, bu şartlardan yararlanırsınız.
 
-## Sonuç
+EYT, 1999 öncesi sigortalı olanlar için önemli bir avantaj. Emeklilik planlaması yaparken sigorta başlangıç tarihinizi öğrenmek ilk adım. [Emeklilik Hesap Makinesi](/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi) ile emeklilik tarihinizi hesaplayabilir, prim günü ve yaş şartlarını planlayabilirsiniz. [SGK Prim Günü Hesaplama](/tr/blog/sgk-prim-gunu-hesaplama-emeklilik-icin-kac-gun-gerekli) yazımızda prim günü hakkında detaylı bilgi bulabilirsiniz. [SGK Emeklilik Tablosu](/tr/rehberler/sgk-emeklilik-tablosu) sayfamızda emeklilik şartlarını görebilirsiniz. [Bireysel Emeklilik](/tr/blog/bireysel-emeklilik-bes-devlet-katkisi-nasil-hesaplanir) yazımızda BES hakkında bilgi edinebilirsiniz.
 
-EYT, 1999 öncesi sigortalı olanlar için önemli bir avantajdır. Emeklilik planlamanızı yaparken:
-
-1. **Kontrol Edin**: Sigorta başlangıç tarihinizi öğrenin
-2. **Hesaplayın**: [Emeklilik Hesap Makinesi](/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi) ile emeklilik tarihinizi hesaplayın
-3. **Planlayın**: Prim günü ve yaş şartlarını planlayın
-
-**Önemli Not**: Bu rehber bilgilendirme amaçlıdır. Resmi bilgi için SGK şubelerinden veya e-Devlet üzerinden bilgi alın.
+Resmi bilgi için SGK şubelerinden veya e-Devlet üzerinden bilgi almanız gerekir. Bu bilgiler genel bilgilendirme amaçlıdır.
     `,
     author: "Calculator360Pro Ekibi",
     date: "2026-01-20",
@@ -571,7 +546,7 @@ EYT, 1999 öncesi sigortalı olanlar için önemli bir avantajdır. Emeklilik pl
     content: `
 # BMI Nedir? İdeal Kilo Nasıl Hesaplanır?
 
-BMI (Body Mass Index - Vücut Kitle İndeksi), vücut ağırlığının boy uzunluğuna göre değerlendirilmesi için kullanılan bir ölçüttür. Bu rehberde BMI hesaplama ve ideal kilo konusunu detaylı olarak açıklıyoruz.
+BMI, vücut ağırlığının boy uzunluğuna göre değerlendirilmesi için kullanılan bir ölçüt. BMI hesaplama ve ideal kilo konusu aşağıda açıklanıyor.
 
 ## BMI Nedir?
 
@@ -702,25 +677,554 @@ Sağlık riskleri:
 - Uyku apnesi
 - Kanser riski artışı
 
-## BMI Hesaplama İpuçları
+BMI hesaplarken sabah aç karnına, hafif giysilerle ölçüm yapmak daha doğru sonuç verir. Ayda bir kez BMI'nizi kontrol etmek kilo takibi için faydalı. Gerçekçi kilo hedefleri koymak ve doktor veya diyetisyen ile çalışmak önemli. [Kalori Açığı ile Kilo Verme](/tr/blog/kalori-acigi-ile-kilo-verme-nasil-calisir) yazımızda sağlıklı kilo verme yöntemlerini öğrenebilirsiniz.
 
-1. **Doğru Ölçüm**: Sabah aç karnına, hafif giysilerle ölçün
-2. **Düzenli Takip**: Ayda bir kez BMI'nizi kontrol edin
-3. **Hedef Belirleme**: Gerçekçi kilo hedefleri koyun
-4. **Profesyonel Destek**: Doktor veya diyetisyen ile çalışın
+BMI sağlıklı kilo yönetimi için önemli bir araç ama tek başına yeterli değil. Vücut kompozisyonu, bel çevresi ve genel sağlık durumu da önemli. [BMI Hesap Makinemizi](/tr/hesap-makineleri/saglik/bmi-hesap-makinesi) kullanarak hesaplama yapabilirsiniz. [Kalori Hesap Makinemiz](/tr/hesap-makineleri/saglik/kalori-hesap-makinesi) ile günlük kalori ihtiyacınızı hesaplayabilirsiniz. [Sağlık Kategorimizdeki](/tr/hesap-makineleri/saglik) diğer hesap makinelerine göz atabilirsiniz.
 
-## Sonuç
-
-BMI, sağlıklı kilo yönetimi için önemli bir araçtır. Ancak tek başına yeterli değildir. Vücut kompozisyonu, bel çevresi ve genel sağlık durumu da önemlidir.
-
-BMI hesaplamanızı yapmak için [BMI Hesap Makinemizi](/tr/hesap-makineleri/saglik/bmi-hesap-makinesi) kullanabilirsiniz.
-
-**Önemli Not**: Bu rehber bilgilendirme amaçlıdır. Sağlık sorunları için mutlaka doktorunuza danışın.
+Sağlık sorunları için mutlaka doktorunuza danışmanız gerekir. Bu bilgiler genel bilgilendirme amaçlıdır.
     `,
     author: "Calculator360Pro Ekibi",
     date: "2026-01-20",
     category: "Sağlık",
     tags: ["bmi", "vücut kitle indeksi", "ideal kilo", "sağlık", "kilo yönetimi"],
+  },
+  {
+    slug: "2026-asgari-ucret-net-maas-hesaplama-sgk-kesintileri",
+    title: "2026 Asgari Ücret: Net Maaş Hesaplama ve SGK Kesintileri",
+    description:
+      "2026 yılı asgari ücret tutarı, net maaş hesaplama, SGK kesintileri ve asgari ücretlilerin vergi muafiyetleri hakkında detaylı bilgi.",
+    content: `
+# 2026 Asgari Ücret: Net Maaş Hesaplama ve SGK Kesintileri
+
+2026 yılında asgari ücret brüt 26.005,50 TL olarak belirlendi. Bu tutar, çalışanların eline geçen net maaştan farklı çünkü çeşitli kesintiler yapılıyor. Asgari ücretliler için özel durumlar var ve bunları anlamak önemli.
+
+Asgari ücret, işverenin çalışana ödediği brüt tutar. Bu tutardan SGK kesintileri yapılıyor ama gelir vergisi ve damga vergisi kesilmiyor. 2026 yılında asgari ücretliler bu vergilerden muaf.
+
+SGK kesintileri brüt maaş üzerinden hesaplanıyor. SGK işçi payı yüzde 14, işsizlik sigortası işçi payı yüzde 1. Toplamda yüzde 15 kesinti yapılıyor. 26.005,50 TL brüt maaş için SGK kesintisi 3.900,83 TL oluyor.
+
+Asgari ücretliler için gelir vergisi muafiyeti var. Bu, asgari ücretin üzerinde maaş alanlardan farklı bir durum. Asgari ücretin üzerinde maaş alanlar, sadece asgari ücreti aşan kısım için vergi ödüyorlar.
+
+Damga vergisi de asgari ücretliler için uygulanmıyor. Normalde brüt maaş üzerinden binde 7,59 oranında damga vergisi kesiliyor ama asgari ücretliler bu vergiden muaf.
+
+Net maaş hesaplaması şöyle yapılıyor: Brüt maaştan SGK kesintileri düşülüyor. Gelir vergisi ve damga vergisi kesilmiyor. Sonuç olarak 2026 yılında bekar bir çalışanın eline geçen net asgari ücret 22.104,67 TL.
+
+AGİ, asgari geçim indirimi, asgari ücretliler için de geçerli. Medeni durum ve çocuk sayısına göre AGİ tutarı değişiyor. Bekar çalışanlar için AGİ tutarı asgari ücretin yüzde 50'si üzerinden hesaplanan verginin yüzde 15'i kadar.
+
+Evli ve eşi çalışmayan çalışanlar için AGİ oranı yüzde 60. Çocuk sayısına göre de ek indirimler var. İlk iki çocuk için her biri yüzde 7,5, üçüncü ve sonraki çocuklar için her biri yüzde 10 ek indirim sağlıyor.
+
+Asgari ücret her yıl yeniden belirleniyor. Genellikle yıl sonunda Çalışma ve Sosyal Güvenlik Bakanlığı tarafından açıklanıyor. 2026 yılı için belirlenen tutar, 2025 yılına göre artış gösteriyor.
+
+İşveren açısından asgari ücret maliyeti daha yüksek. Brüt maaşın yanı sıra SGK işveren payı yüzde 20,5 ve işsizlik sigortası işveren payı yüzde 2 ekleniyor. Toplamda işveren maliyeti brüt maaşın yaklaşık yüzde 22,5 fazlası kadar.
+
+Asgari ücretliler için özel durumlar var. Örneğin, asgari ücretin üzerinde maaş alan bir çalışan, maaşını asgari ücrete düşürürse vergi avantajı elde edebilir. Ancak bu durumda SGK primleri de düşeceği için emeklilik maaşı etkilenebilir.
+
+Asgari ücret hesaplamaları için [Maaş Hesap Makinemizi](/tr/hesap-makineleri/finans/maas-hesap-makinesi) kullanabilirsiniz. Bu hesaplama aracı, SGK kesintilerini, AGİ'yi ve diğer tüm detayları gösteriyor. [Brütten Nete Maaş Hesaplama](/tr/blog/brutten-nete-maas-hesaplama-sgk-agi-vergi) yazımızda maaş hesaplama detaylarını öğrenebilirsiniz. [Finansal Terimler Sözlüğümüzde](/tr/rehberler/finansal-terimler-sozlugu) finansal terimler hakkında bilgi bulabilirsiniz.
+
+Asgari ücret konusunda güncel bilgiler için Çalışma ve Sosyal Güvenlik Bakanlığı'nın resmi web sitesini takip etmek önemli. Yıl içinde asgari ücret artışları olabilir ve bu durumda hesaplamalar güncellenir.
+
+Bu bilgiler genel bilgilendirme amaçlıdır. Resmi hesaplamalar için işvereniniz veya mali müşaviriniz ile görüşmeniz gerekir.
+    `,
+    author: "Calculator360Pro Ekibi",
+    date: "2026-01-25",
+    category: "Finans",
+    tags: ["asgari ücret", "net maaş", "sgk kesintileri", "2026 asgari ücret", "finans"],
+  },
+  {
+    slug: "ihtiyac-kredisi-mi-konut-kredisi-mi-hangisi-daha-avantajli",
+    title: "İhtiyaç Kredisi mi Konut Kredisi mi? Hangisi Daha Avantajlı?",
+    description:
+      "İhtiyaç kredisi ve konut kredisi arasındaki farklar, faiz oranları, masraflar ve hangi durumda hangisinin daha avantajlı olduğu hakkında karşılaştırma.",
+    content: `
+# İhtiyaç Kredisi mi Konut Kredisi mi? Hangisi Daha Avantajlı?
+
+Kredi ihtiyacı olduğunda iki seçenek var: ihtiyaç kredisi ve konut kredisi. Hangisini seçmek daha mantıklı? Bu sorunun cevabı, kredi kullanma amacınıza ve finansal durumunuza bağlı.
+
+İhtiyaç kredisi, genel ihtiyaçlar için kullanılan kısa vadeli kredi. Ev eşyası, tatil, eğitim gibi ihtiyaçlar için alınıyor. Konut kredisi ise sadece ev almak için kullanılan uzun vadeli kredi. Her ikisinin de kendine özgü avantajları ve dezavantajları var.
+
+Faiz oranları açısından konut kredisi genellikle daha düşük. 2026 yılında konut kredisi faiz oranları yüzde 2,5 ile 4,5 arasında değişiyor. İhtiyaç kredisi faiz oranları ise yüzde 3,5 ile 6 arasında. Bu fark, konut kredisinin ipotek güvencesi olmasından kaynaklanıyor.
+
+Vade süreleri de farklı. İhtiyaç kredisi genellikle 12 ile 60 ay arasında. Konut kredisi ise 5 ile 20 yıl arasında. Uzun vade, aylık taksitleri düşürüyor ama toplam faiz maliyetini artırıyor.
+
+Kredi tutarı limitleri de farklı. İhtiyaç kredisi için genellikle gelirinizin 10-12 katı kadar kredi alabilirsiniz. Konut kredisi için ise ev değerinin yüzde 80-90'ı kadar kredi alabilirsiniz. Konut kredisi için daha yüksek tutarlar mümkün.
+
+Masraflar açısından konut kredisi daha pahalı. Kredi değerleme raporu, tapu harcı, noter masrafları, DASK sigortası gibi ek masraflar var. İhtiyaç kredisi için genellikle sadece kredi masrafları ve sigorta var.
+
+KKDF ve BSMV gibi yasal kesintiler her iki kredi türünde de geçerli. İhtiyaç kredisi için KKDF yüzde 15, BSMV yüzde 10. Konut kredisi için de aynı oranlar uygulanıyor. Bu kesintiler toplam maliyeti artırıyor.
+
+Kredi notu her iki kredi türü için de önemli. Ancak konut kredisi için daha yüksek kredi notu isteniyor. İhtiyaç kredisi için orta seviye kredi notu yeterli olabiliyor. Kredi notunuz düşükse ihtiyaç kredisi daha kolay alınabilir.
+
+Kredi kullanma amacı önemli. Ev almak için konut kredisi şart. Diğer ihtiyaçlar için ihtiyaç kredisi kullanılabilir. Ancak bazen ihtiyaç kredisi ile ev almak da mümkün, ama bu durumda daha yüksek faiz ödeniyor.
+
+Erken ödeme durumunda her iki kredi türünde de avantajlar var. Toplam faiz maliyeti azalıyor, kredi süresi kısalıyor. Ancak bazı bankalar erken ödeme cezası alabiliyor, bu durumu kontrol etmek gerekiyor.
+
+Gizli masraflar konusunda dikkatli olmak lazım. Her iki kredi türünde de kredi sigortası, hayat sigortası, hesap işletim ücretleri gibi masraflar olabiliyor. Bu masrafları önceden öğrenmek toplam maliyeti hesaplamak için önemli.
+
+Hangi krediyi seçmeli? Eğer ev almak istiyorsanız konut kredisi tek seçenek. Daha düşük faiz oranı ve uzun vade avantajı var. Diğer ihtiyaçlar için ihtiyaç kredisi daha uygun. Daha hızlı onaylanıyor ve daha az masraf gerektiriyor.
+
+Kredi hesaplamaları için [Kredi Hesap Makinemizi](/tr/hesap-makineleri/finans/kredi-hesap-makinesi) ve [Konut Kredisi Hesap Makinemizi](/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi) kullanabilirsiniz. Bu araçlar, aylık taksitleri, toplam maliyeti ve KKDF, BSMV dahil tüm detayları gösteriyor. [Konut Kredisi Alırken Dikkat Edilecekler](/tr/blog/konut-kredisi-alirken-dikkat-edilecekler-2026) yazımızda konut kredisi hakkında detaylı bilgi bulabilirsiniz. [Finans Kategorimizdeki](/tr/hesap-makineleri/finans) diğer hesap makinelerine göz atabilirsiniz.
+
+Kredi başvurusu öncesi en az 3-5 bankadan teklif almak önemli. Her bankanın faiz oranları ve masrafları farklı. Karşılaştırma yaparak en uygun seçeneği bulabilirsiniz.
+
+Bu bilgiler genel bilgilendirme amaçlıdır. Kredi başvurusu öncesi banka temsilcileri ile görüşmek ve tüm şartları detaylı okumak gerekiyor.
+    `,
+    author: "Calculator360Pro Ekibi",
+    date: "2026-01-25",
+    category: "Finans",
+    tags: ["ihtiyaç kredisi", "konut kredisi", "kredi karşılaştırma", "faiz oranları", "finans"],
+  },
+  {
+    slug: "bireysel-emeklilik-bes-devlet-katkisi-nasil-hesaplanir",
+    title: "Bireysel Emeklilik (BES): Devlet Katkısı Nasıl Hesaplanır?",
+    description:
+      "Bireysel Emeklilik Sistemi nedir, devlet katkısı nasıl hesaplanır, BES avantajları ve emeklilik planlaması hakkında detaylı bilgi.",
+    content: `
+# Bireysel Emeklilik (BES): Devlet Katkısı Nasıl Hesaplanır?
+
+Bireysel Emeklilik Sistemi, çalışanların emeklilik için birikim yapmasını sağlayan bir sistem. Sistemin en önemli avantajı devlet katkısı. Devlet, yaptığınız katkıların belirli bir oranını size geri veriyor.
+
+BES'e katılmak için bir emeklilik şirketi ile sözleşme yapmanız gerekiyor. Aylık veya dönemsel olarak katkı yapıyorsunuz. Bu katkılar yatırım fonlarına yatırılıyor ve zamanla değer kazanıyor.
+
+Devlet katkısı, yaptığınız katkıların yüzde 25'i kadar. Yani 1000 TL katkı yaparsanız, devlet 250 TL ekliyor. Toplamda hesabınıza 1250 TL yatıyor. Bu katkı, yıllık 30.000 TL'ye kadar katkı için geçerli.
+
+Yıllık katkı limiti 2026 yılında 30.000 TL. Bu tutarın üzerinde katkı yaparsanız, devlet katkısı sadece 30.000 TL üzerinden hesaplanıyor. Örneğin 40.000 TL katkı yaparsanız, devlet katkısı 7.500 TL oluyor.
+
+Devlet katkısı hesaplaması şöyle yapılıyor: Aylık katkılarınızın toplamı alınıyor. Bu toplamın yüzde 25'i devlet katkısı olarak hesabınıza ekleniyor. Hesaplama yıllık bazda yapılıyor.
+
+BES katkıları vergiden düşülebiliyor. Gelir vergisi matrahından düşülüyor, bu da vergi tasarrufu sağlıyor. Yıllık 30.000 TL'ye kadar katkı vergiden düşülebiliyor. Bu, yüksek gelirli çalışanlar için önemli bir avantaj.
+
+BES'ten çekim yapmak için belirli şartlar var. En az 10 yıl katkı yapmış olmanız ve 56 yaşını doldurmuş olmanız gerekiyor. Bu şartları sağlamazsanız çekim yapabilirsiniz ama devlet katkısını geri ödemeniz gerekiyor.
+
+BES katkıları yatırım fonlarına yatırılıyor. Bu fonların getirisi değişken. Bazen yüksek getiri, bazen düşük getiri olabiliyor. Uzun vadede genellikle pozitif getiri sağlıyor ama garantisi yok.
+
+Emeklilik şirketleri farklı yatırım seçenekleri sunuyor. Düşük riskli, orta riskli, yüksek riskli fonlar var. Risk toleransınıza göre seçim yapabilirsiniz. Genç çalışanlar için yüksek riskli fonlar, yaşlı çalışanlar için düşük riskli fonlar öneriliyor.
+
+BES katkıları zorunlu değil, isteğe bağlı. İstediğiniz zaman katkı yapabilir, istediğiniz zaman durdurabilirsiniz. Ancak devlet katkısından yararlanmak için düzenli katkı yapmak önemli.
+
+BES hesabınızı takip etmek için emeklilik şirketinin web sitesini veya mobil uygulamasını kullanabilirsiniz. Katkılarınızı, devlet katkısını, yatırım getirisini görebilirsiniz.
+
+BES ile SGK emekliliği birbirinden bağımsız. BES'ten emekli olmak SGK emekliliğinizi etkilemiyor. Her ikisinden de ayrı ayrı emekli maaşı alabilirsiniz. Bu, emeklilik gelirinizi artırıyor.
+
+BES katkıları için otomatik ödeme talimatı verebilirsiniz. Maaşınızdan otomatik kesinti yapılır, böylece unutma riski olmaz. Düzenli katkı yapmak devlet katkısından maksimum yararlanmak için önemli.
+
+BES hesaplamaları için [Emeklilik Hesap Makinemizi](/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi) kullanabilirsiniz. Bu araç, BES katkılarınızı, devlet katkısını ve emeklilik birikiminizi hesaplıyor. [EYT Nedir](/tr/blog/eyt-nedir-kimler-faydalanabilir) yazımızda EYT hakkında bilgi edinebilirsiniz. [SGK Emeklilik Tablosu](/tr/rehberler/sgk-emeklilik-tablosu) sayfamızda emeklilik şartlarını görebilirsiniz. [Finans Kategorimizdeki](/tr/hesap-makineleri/finans) diğer hesap makinelerine göz atabilirsiniz.
+
+BES konusunda detaylı bilgi için emeklilik şirketleri ile görüşebilirsiniz. Her şirketin farklı ürünleri ve avantajları var. Karşılaştırma yaparak en uygun seçeneği bulabilirsiniz.
+
+Bu bilgiler genel bilgilendirme amaçlıdır. BES katkıları ve yatırım kararları için emeklilik şirketleri ile görüşmeniz ve yatırım danışmanlığı almanız önerilir.
+    `,
+    author: "Calculator360Pro Ekibi",
+    date: "2026-01-26",
+    category: "Finans",
+    tags: ["bes", "bireysel emeklilik", "devlet katkısı", "emeklilik planlama", "finans"],
+  },
+  {
+    slug: "aylik-butce-nasil-planlanir-tasarruf-yontemleri",
+    title: "Aylık Bütçe Nasıl Planlanır? Tasarruf Yöntemleri",
+    description:
+      "Aylık bütçe planlama, gelir-gider takibi, tasarruf yöntemleri ve finansal planlama hakkında pratik ipuçları ve öneriler.",
+    content: `
+# Aylık Bütçe Nasıl Planlanır? Tasarruf Yöntemleri
+
+Aylık bütçe planlamak, finansal sağlık için temel. Gelir ve giderlerinizi takip etmek, tasarruf yapmak ve gelecek için plan yapmak için bütçe şart. Başlangıçta zor görünebilir ama birkaç basit adımla başlayabilirsiniz.
+
+İlk adım, gelirinizi belirlemek. Maaşınız, ek gelirler, kira geliri gibi tüm gelir kaynaklarınızı toplayın. Net maaşınızı kullanın, brüt değil. Çünkü elinize geçen para net maaş.
+
+Giderlerinizi kategorilere ayırın. Sabit giderler: kira, faturalar, kredi taksitleri. Değişken giderler: yemek, ulaşım, eğlence. Acil durumlar için de bir kategori ekleyin. Bu kategoriler bütçenizi düzenlemenize yardımcı olur.
+
+Gelir ve giderlerinizi karşılaştırın. Geliriniz giderlerinizden fazlaysa tasarruf yapabilirsiniz. Giderleriniz gelirinizden fazlaysa bütçe açığı var demektir. Bu durumda giderlerinizi azaltmanız veya gelirinizi artırmanız gerekiyor.
+
+Tasarruf için önce küçük giderleri azaltın. Kahve, yemek dışarıda, gereksiz abonelikler gibi. Bu küçük giderler birikince büyük tutarlara ulaşabiliyor. Aylık 500 TL tasarruf yılda 6.000 TL demek.
+
+Gelir-gider takibi için bir defter veya uygulama kullanabilirsiniz. Her gideri kaydedin, böylece nereye para harcadığınızı görürsünüz. Bir ay sonra harcamalarınızı analiz edin, gereksiz olanları belirleyin.
+
+Acil durum fonu oluşturun. En az 3-6 aylık giderlerinizi karşılayacak kadar para biriktirin. Bu fon, beklenmedik durumlarda size güvence sağlar. İşsizlik, sağlık sorunları gibi durumlarda bu fondan yararlanabilirsiniz.
+
+Kredi kartı kullanımını kontrol edin. Kredi kartı borçları yüksek faiz oranları nedeniyle bütçenizi zorlayabilir. Mümkünse nakit ödeme yapın veya kredi kartı borcunu tam ödeyin. Sadece asgari ödeme yapmak borcu artırır.
+
+Faturaları zamanında ödeyin. Gecikme ücretleri ve faizler bütçenizi olumsuz etkiler. Otomatik ödeme talimatı vererek faturaları zamanında ödeyebilirsiniz. Bu, gecikme ücretlerinden kaçınmanızı sağlar.
+
+Alışveriş yaparken liste hazırlayın. Plansız alışveriş gereksiz harcamalara yol açar. İhtiyacınız olanları listeleyin, sadece bunları alın. İndirimler sizi cezbetmesin, gerçekten ihtiyacınız varsa alın.
+
+Yemek bütçesini kontrol edin. Dışarıda yemek pahalı. Evde yemek yapmak hem sağlıklı hem ekonomik. Haftalık menü planlayın, alışveriş listesi hazırlayın. Toplu alışveriş yaparak indirimlerden yararlanın.
+
+Ulaşım giderlerini azaltın. Toplu taşıma kullanın, yakın mesafeler için yürüyün veya bisiklet kullanın. Araba kullanıyorsanız yakıt tasarrufu için hız limitlerine uyun, gereksiz yolculuklardan kaçının.
+
+Eğlence bütçesini sınırlayın. Sinema, konser, restoran gibi aktiviteler pahalı olabilir. Ücretsiz veya ucuz alternatifler bulun. Parklarda yürüyüş, evde film izleme, kütüphane gibi seçenekler var.
+
+Gelir artırma yollarını düşünün. Ek iş, freelance çalışma, kira geliri gibi. Boş zamanlarınızı değerlendirerek ek gelir elde edebilirsiniz. Bu, bütçenizi rahatlatır ve tasarruf yapmanızı kolaylaştırır.
+
+Bütçe planlaması için [Maaş Hesap Makinemizi](/tr/hesap-makineleri/finans/maas-hesap-makinesi) kullanarak net maaşınızı hesaplayabilirsiniz. Bu, bütçe planlamanızın temelini oluşturur. [Finansal Okuryazarlık](/tr/blog/finansal-okuryazarlik-temel-kavramlar-ve-pratik-ipuclari) yazımızda finansal planlama hakkında daha fazla bilgi bulabilirsiniz. [Finans Kategorimizdeki](/tr/hesap-makineleri/finans) hesap makinelerine göz atabilirsiniz.
+
+Bütçe planlaması sabır ve disiplin gerektirir. İlk aylarda zorlanabilirsiniz ama zamanla alışırsınız. Küçük adımlarla başlayın, başarılarınızı kutlayın. Her ay biraz daha iyiye gideceksiniz.
+
+Bu bilgiler genel bilgilendirme amaçlıdır. Finansal planlama için mali müşavir veya finansal danışman ile görüşmeniz önerilir.
+    `,
+    author: "Calculator360Pro Ekibi",
+    date: "2026-01-26",
+    category: "Finans",
+    tags: ["bütçe planlama", "tasarruf", "gelir gider takibi", "finansal planlama", "finans"],
+  },
+  {
+    slug: "sgk-prim-gunu-hesaplama-emeklilik-icin-kac-gun-gerekli",
+    title: "SGK Prim Günü Hesaplama: Emeklilik İçin Kaç Gün Gerekli?",
+    description:
+      "SGK prim günü nedir, nasıl hesaplanır, emeklilik için kaç prim günü gerekli ve prim günü eksikliği durumunda ne yapılır hakkında bilgi.",
+    content: `
+# SGK Prim Günü Hesaplama: Emeklilik İçin Kaç Gün Gerekli?
+
+SGK prim günü, emeklilik için en önemli şartlardan biri. Prim günü sayınız, emeklilik yaşınız ve sigortalılık sürenizle birlikte emeklilik hakkınızı belirliyor. Prim günü hesaplaması karmaşık görünebilir ama temel mantığı anlamak önemli.
+
+Prim günü, sigortalı olarak çalıştığınız her gün için bir gün sayılıyor. Aylık çalışma genellikle 30 gün olarak hesaplanıyor. Yani bir ay çalıştığınızda 30 prim günü kazanıyorsunuz. Yıl boyunca çalışırsanız 360 prim günü kazanıyorsunuz.
+
+Emeklilik için gereken prim günü sayısı, sigorta başlangıç tarihinize göre değişiyor. 8 Eylül 1999 öncesi sigortalı olanlar için 5.000 prim günü yeterli. 1999 sonrası sigortalı olanlar için 7.200 prim günü gerekiyor.
+
+Prim günü hesaplaması için SGK kayıtlarınızı kontrol etmeniz gerekiyor. e-Devlet üzerinden SGK prim günü sorgulama yapabilirsiniz. SGK şubelerinden veya mobil uygulamadan da bilgi alabilirsiniz.
+
+Prim günü eksikliği durumunda ne yapılır? Eksik prim günlerinizi tamamlamak için birkaç seçenek var. En yaygın yöntem, eksik günleri ödemek. SGK'ya başvurarak eksik prim günlerinizi ödeyebilirsiniz.
+
+Eksik prim ödemesi için güncel prim tutarını ödemeniz gerekiyor. Bu tutar, asgari ücret üzerinden hesaplanıyor. 2026 yılı için bir günlük prim tutarı yaklaşık 867 TL. Yani 100 gün eksik priminiz varsa, yaklaşık 86.700 TL ödemeniz gerekiyor.
+
+Prim günü eksikliği için başka bir seçenek, geçici işsizlik ödeneği almak. İşsiz kaldığınızda işsizlik ödeneği alırsanız, bu süre prim günü olarak sayılıyor. Ancak bu süre sınırlı, genellikle 6-10 ay arası.
+
+Askerlik süresi de prim günü olarak sayılıyor. Askerlik yaptığınız süre prim günü olarak ekleniyor. Bu, erkek çalışanlar için önemli bir avantaj. Askerlik süresi genellikle 6-12 ay arası değişiyor.
+
+Doğum izni süresi de prim günü olarak sayılıyor. Kadın çalışanlar için doğum izni süresi prim günü olarak ekleniyor. Bu, kadın çalışanlar için önemli bir avantaj. Doğum izni süresi genellikle 16 hafta.
+
+Prim günü hesaplaması için çalışma sürelerinizi toplamanız gerekiyor. Her işyerinde çalıştığınız süre ayrı ayrı hesaplanıyor. Tüm çalışma sürelerinizi toplayarak toplam prim gününüzü bulabilirsiniz.
+
+Prim günü eksikliği durumunda emeklilik ertelenebiliyor. Prim günü şartını tamamlamak için daha fazla çalışmanız gerekiyor. Bu durumda emeklilik yaşınız geldiğinde bile emekli olamayabilirsiniz.
+
+Prim günü hesaplaması için [Emeklilik Hesap Makinemizi](/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi) kullanabilirsiniz. Bu araç, prim günü sayınızı, emeklilik yaşınızı ve emeklilik tarihinizi hesaplıyor. [EYT Nedir](/tr/blog/eyt-nedir-kimler-faydalanabilir) yazımızda EYT kapsamında emeklilik şartlarını öğrenebilirsiniz. [SGK Emeklilik Tablosu](/tr/rehberler/sgk-emeklilik-tablosu) sayfamızda emeklilik yaşı ve prim günü şartlarını görebilirsiniz. [Finans Kategorimizdeki](/tr/hesap-makineleri/finans) diğer hesap makinelerine göz atabilirsiniz.
+
+Prim günü takibi için düzenli kontrol yapmak önemli. Yılda bir kez SGK kayıtlarınızı kontrol edin, prim günü sayınızı görün. Eksiklik varsa erken müdahale edin, böylece emeklilik planlamanızı yapabilirsiniz.
+
+Prim günü eksikliği için ödeme yaparken dikkatli olun. Önce SGK ile görüşün, eksik prim günü sayınızı doğrulayın. Ödeme yapmadan önce tüm seçenekleri değerlendirin. Bazen beklemek daha mantıklı olabilir.
+
+Bu bilgiler genel bilgilendirme amaçlıdır. Prim günü hesaplaması ve emeklilik planlaması için SGK şubelerinden veya e-Devlet üzerinden resmi bilgi almanız gerekir.
+    `,
+    author: "Calculator360Pro Ekibi",
+    date: "2026-01-27",
+    category: "Finans",
+    tags: ["sgk prim günü", "emeklilik", "prim günü hesaplama", "sgk", "finans"],
+  },
+  {
+    slug: "kalori-acigi-ile-kilo-verme-nasil-calisir",
+    title: "Kalori Açığı ile Kilo Verme: Nasıl Çalışır?",
+    description:
+      "Kalori açığı nedir, nasıl oluşturulur, kilo verme için günlük kalori ihtiyacı hesaplama ve sağlıklı kilo verme yöntemleri hakkında bilgi.",
+    content: `
+# Kalori Açığı ile Kilo Verme: Nasıl Çalışır?
+
+Kilo vermek için kalori açığı oluşturmak gerekiyor. Bu, vücudun ihtiyaç duyduğundan daha az kalori almak anlamına geliyor. Vücut, eksik kalan kaloriyi depolanmış yağlardan karşılıyor ve böylece kilo veriyorsunuz.
+
+Kalori açığı oluşturmak için önce günlük kalori ihtiyacınızı bilmeniz gerekiyor. Bu, bazal metabolizma hızınız ve günlük aktivite seviyenize bağlı. Bazal metabolizma hızı, vücudun dinlenme halindeyken harcadığı kalori. Günlük aktivite seviyesi ise hareketliliğinize göre değişiyor.
+
+Günlük kalori ihtiyacınızı hesaplamak için BMR ve TDEE kavramlarını anlamak önemli. BMR, bazal metabolizma hızı. TDEE ise toplam günlük enerji harcaması. TDEE, BMR'nin aktivite seviyesiyle çarpılmasıyla bulunuyor.
+
+Kalori açığı oluşturmak için günlük kalori ihtiyacınızdan 500-1000 kalori daha az yemelisiniz. Bu, haftada 0,5-1 kg kilo vermenizi sağlıyor. Daha fazla açık oluşturmak hızlı kilo verme sağlar ama sağlıksız olabilir.
+
+Kilo verme için önerilen kalori açığı günlük 500-750 kalori. Bu, haftada 0,5-0,75 kg kilo verme anlamına geliyor. Daha hızlı kilo vermek istiyorsanız 1000 kalori açık oluşturabilirsiniz ama bu, uzman kontrolünde olmalı.
+
+Kalori açığı oluşturmanın iki yolu var: Daha az yemek veya daha fazla hareket etmek. İdeal olanı ikisini birlikte yapmak. Hem kalori alımınızı azaltın hem de aktivite seviyenizi artırın.
+
+Kalori saymak başlangıçta zor görünebilir ama zamanla alışırsınız. Yiyeceklerin kalori değerlerini öğrenin, porsiyon kontrolü yapın. Uygulamalar ve web siteleri kalori takibi için yardımcı olabilir.
+
+Kalori açığı oluştururken besin değerlerini de dikkate alın. Sadece kalori saymak yeterli değil, sağlıklı besinler seçin. Protein, lif, vitamin ve mineraller önemli. Düşük kalorili ama besleyici yiyecekler tercih edin.
+
+Protein alımı kilo verme sürecinde önemli. Protein, tokluk hissi veriyor ve kas kütlesini koruyor. Kilo verirken kas kaybı olmaması için yeterli protein almak gerekiyor. Günlük protein ihtiyacı kişiden kişiye değişiyor ama genellikle vücut ağırlığının kilogramı başına 1,5-2 gram öneriliyor.
+
+Lifli besinler de tokluk hissi veriyor ve sindirimi yavaşlatıyor. Sebze, meyve, tam tahıl gibi lifli besinler kalori açığı oluştururken yardımcı oluyor. Ayrıca bağırsak sağlığı için de önemli.
+
+Su içmek kilo verme sürecinde kritik. Su, metabolizmayı hızlandırıyor ve tokluk hissi veriyor. Günlük 2-3 litre su içmek öneriliyor. Yemeklerden önce su içmek porsiyon kontrolüne yardımcı oluyor.
+
+Egzersiz, kalori açığı oluşturmanın diğer yolu. Kardiyovasküler egzersizler kalori yakıyor. Yürüyüş, koşu, bisiklet gibi aktiviteler günlük kalori harcamanızı artırıyor. Haftada 150-300 dakika orta yoğunlukta egzersiz öneriliyor.
+
+Kuvvet antrenmanı da önemli. Kas kütlesini koruyor ve metabolizmayı hızlandırıyor. Daha fazla kas, daha fazla kalori yakımı demek. Haftada 2-3 kez kuvvet antrenmanı yapmak yeterli.
+
+Kalori açığı oluştururken sabırlı olmak gerekiyor. Kilo verme süreci zaman alıyor. Haftada 0,5-1 kg kilo vermek sağlıklı bir hız. Daha hızlı kilo vermek sağlık sorunlarına yol açabilir.
+
+Plato dönemleri normal. Kilo verme sürecinde bazen kilo verme durur. Bu, vücudun adaptasyon süreci. Sabırlı olun, planınıza devam edin. Zamanla tekrar kilo vermeye başlarsınız.
+
+Kalori açığı hesaplaması için [Kalori Hesap Makinemizi](/tr/hesap-makineleri/saglik/kalori-hesap-makinesi) kullanabilirsiniz. Bu araç, günlük kalori ihtiyacınızı, BMR ve TDEE değerlerinizi hesaplıyor. [Günlük Kalori İhtiyacı](/tr/blog/gunluk-kalori-ihtiyaci-bmr-ve-tdee-nedir) yazımızda BMR ve TDEE hakkında detaylı bilgi bulabilirsiniz. [BMI Hesap Makinemiz](/tr/hesap-makineleri/saglik/bmi-hesap-makinesi) ile vücut kitle indeksinizi hesaplayabilirsiniz. [Sağlık Kategorimizdeki](/tr/hesap-makineleri/saglik) diğer hesap makinelerine göz atabilirsiniz.
+
+Kilo verme sürecinde doktor veya diyetisyen kontrolü önemli. Özellikle kronik hastalığınız varsa veya çok fazla kilo vermek istiyorsanız uzman desteği alın. Sağlıklı kilo verme için doğru planlama şart.
+
+Bu bilgiler genel bilgilendirme amaçlıdır. Kilo verme ve beslenme planlaması için doktor veya diyetisyen ile görüşmeniz önerilir.
+    `,
+    author: "Calculator360Pro Ekibi",
+    date: "2026-01-27",
+    category: "Sağlık",
+    tags: ["kalori açığı", "kilo verme", "beslenme", "sağlık", "diyet"],
+  },
+  {
+    slug: "gunluk-kalori-ihtiyaci-bmr-ve-tdee-nedir",
+    title: "Günlük Kalori İhtiyacı: BMR ve TDEE Nedir?",
+    description:
+      "Bazal metabolizma hızı (BMR) ve toplam günlük enerji harcaması (TDEE) nedir, nasıl hesaplanır ve günlük kalori ihtiyacı belirleme hakkında bilgi.",
+    content: `
+# Günlük Kalori İhtiyacı: BMR ve TDEE Nedir?
+
+Günlük kalori ihtiyacınızı bilmek, sağlıklı beslenme ve kilo yönetimi için temel. Bu ihtiyaç, BMR ve TDEE kavramlarıyla hesaplanıyor. Bu kavramları anlamak, beslenme planlamanızı kolaylaştırıyor.
+
+BMR, bazal metabolizma hızı. Vücudun dinlenme halindeyken harcadığı minimum kalori. Yani hiçbir şey yapmadan, sadece nefes alıp vererek, kalp atışı gibi temel fonksiyonlar için harcanan kalori. Bu, günlük kalori harcamanızın büyük bir kısmını oluşturuyor.
+
+BMR hesaplaması için yaş, cinsiyet, boy ve kilo kullanılıyor. Erkekler genellikle kadınlardan daha yüksek BMR'ye sahip. Yaş ilerledikçe BMR düşüyor. Kas kütlesi arttıkça BMR artıyor. Bu nedenle kuvvet antrenmanı önemli.
+
+TDEE, toplam günlük enerji harcaması. BMR'nin aktivite seviyesiyle çarpılmasıyla bulunuyor. Yani günlük hareketliliğinizi de hesaba katan toplam kalori ihtiyacı. Bu, gerçek kalori ihtiyacınızı gösteriyor.
+
+Aktivite seviyeleri genellikle beş kategoriye ayrılıyor. Hareketsiz: günlük aktivite yok, sadece temel hareketler. Hafif aktif: haftada 1-3 gün hafif egzersiz. Orta aktif: haftada 3-5 gün orta yoğunlukta egzersiz. Çok aktif: haftada 6-7 gün yoğun egzersiz. Aşırı aktif: günlük fiziksel iş veya çok yoğun egzersiz.
+
+TDEE hesaplaması için BMR'nizi aktivite katsayısıyla çarpıyorsunuz. Hareketsiz için 1,2, hafif aktif için 1,375, orta aktif için 1,55, çok aktif için 1,725, aşırı aktif için 1,9 katsayısı kullanılıyor.
+
+Günlük kalori ihtiyacınızı bilmek, beslenme planlamanızı kolaylaştırıyor. Kilo vermek istiyorsanız TDEE'nizden 500-750 kalori daha az yemelisiniz. Kilo almak istiyorsanız TDEE'nizden 300-500 kalori daha fazla yemelisiniz. Kilo korumak istiyorsanız TDEE'nize yakın kalori almalısınız.
+
+BMR ve TDEE hesaplamaları tahmini değerler. Gerçek değerler kişiden kişiye değişiyor. Metabolizma hızı, hormonlar, genetik faktörler etkiliyor. Hesaplamalar başlangıç noktası, gerçek değerleri gözlemleyerek öğreniyorsunuz.
+
+Kalori ihtiyacınızı belirlerken makro besin dağılımını da dikkate alın. Protein, karbonhidrat ve yağ oranları önemli. Genellikle kalorilerin yüzde 40-50'si karbonhidrat, yüzde 25-35'i protein, yüzde 20-30'u yağ olarak öneriliyor. Bu oranlar kişisel ihtiyaçlara göre değişebiliyor.
+
+Protein ihtiyacı aktivite seviyesine göre değişiyor. Sedanter yaşam için vücut ağırlığının kilogramı başına 1-1,2 gram protein yeterli. Aktif yaşam için 1,5-2 gram, çok aktif yaşam için 2-2,5 gram öneriliyor. Protein, kas kütlesini korumak ve tokluk hissi için önemli.
+
+Karbonhidrat ihtiyacı da aktivite seviyesine bağlı. Yüksek aktivite seviyesinde daha fazla karbonhidrat gerekli. Düşük aktivite seviyesinde karbonhidrat alımını azaltmak kilo yönetimi için faydalı olabilir. Kompleks karbonhidratlar tercih edilmeli.
+
+Yağ alımı da önemli. Sağlıklı yağlar hormon üretimi, vitamin emilimi için gerekli. Günlük kalorilerin en az yüzde 20'si yağdan gelmeli. Zeytinyağı, avokado, kuruyemiş gibi sağlıklı yağlar tercih edilmeli.
+
+BMR ve TDEE hesaplamaları için [Kalori Hesap Makinemizi](/tr/hesap-makineleri/saglik/kalori-hesap-makinesi) kullanabilirsiniz. Bu araç, BMR, TDEE ve makro besin önerilerini hesaplıyor. [Kalori Açığı ile Kilo Verme](/tr/blog/kalori-acigi-ile-kilo-verme-nasil-calisir) yazımızda kalori açığı hakkında bilgi edinebilirsiniz. [BMI Hesap Makinemiz](/tr/hesap-makineleri/saglik/bmi-hesap-makinesi) ile vücut kitle indeksinizi hesaplayabilirsiniz. [Sağlık Kategorimizdeki](/tr/hesap-makineleri/saglik) diğer hesap makinelerine göz atabilirsiniz.
+
+Kalori ihtiyacınız zamanla değişebilir. Kilo verdiğinizde BMR düşer, bu nedenle kalori ihtiyacınız azalır. Kilo aldığınızda BMR artar, kalori ihtiyacınız artar. Aktivite seviyeniz değiştiğinde TDEE değişir. Düzenli olarak hesaplamaları güncelleyin.
+
+Bu bilgiler genel bilgilendirme amaçlıdır. Beslenme planlaması için diyetisyen veya beslenme uzmanı ile görüşmeniz önerilir.
+    `,
+    author: "Calculator360Pro Ekibi",
+    date: "2026-01-28",
+    category: "Sağlık",
+    tags: ["bmr", "tdee", "kalori ihtiyacı", "beslenme", "sağlık"],
+  },
+  {
+    slug: "universite-not-ortalamasi-nasil-yukseltilir",
+    title: "Üniversite Not Ortalaması Nasıl Yükseltilir?",
+    description:
+      "Üniversite not ortalaması yükseltme yöntemleri, GANO ve AGNO hesaplama, not sistemi ve akademik başarı için pratik ipuçları.",
+    content: `
+# Üniversite Not Ortalaması Nasıl Yükseltilir?
+
+Not ortalaması, üniversite hayatında önemli bir gösterge. Yüksek not ortalaması, mezuniyet sonrası iş bulma, yüksek lisans başvuruları ve burs başvuruları için avantaj sağlıyor. Not ortalamasını yükseltmek için sistematik bir yaklaşım gerekiyor.
+
+Not ortalaması hesaplaması için önce sisteminizi anlamanız gerekiyor. Türk üniversitelerinde genellikle 4'lük not sistemi kullanılıyor. AA, BA, BB, CB, CC, DC, DD, FD, FF harf notları var. Her harf notunun sayısal karşılığı var.
+
+GANO, genel ağırlıklı not ortalaması. AKTS kredileri dikkate alınarak hesaplanıyor. Her dersin notu, o dersin AKTS kredisiyle çarpılıyor. Tüm derslerin toplamı, toplam AKTS kredisine bölünüyor. Bu, ağırlıklı ortalama veriyor.
+
+AGNO, ağırlıksız genel not ortalaması. AKTS kredileri dikkate alınmadan hesaplanıyor. Tüm ders notlarının toplamı, ders sayısına bölünüyor. Bu, basit ortalama veriyor. Çoğu üniversitede GANO kullanılıyor.
+
+Not ortalamasını yükseltmek için ders seçiminde dikkatli olmak önemli. Kolay dersler seçmek yerine, ilgi alanınıza uygun ve başarılı olabileceğiniz dersler seçin. Ders programınızı dengeli oluşturun, çok fazla zor dersi aynı dönemde almayın.
+
+Derslere düzenli katılım önemli. Devamsızlık yapmak not ortalamasını olumsuz etkiliyor. Derslere katılmak, konuları anlamak ve soru sormak başarıyı artırıyor. Öğretim üyeleriyle iletişim kurmak da faydalı.
+
+Ders çalışma yöntemlerinizi geliştirin. Pasif okuma yerine aktif öğrenme teknikleri kullanın. Not tutmak, özet çıkarmak, soru çözmek, grup çalışması yapmak etkili yöntemler. Her ders için farklı çalışma stratejisi geliştirin.
+
+Vize ve final sınavlarına hazırlanırken zaman planlaması yapın. Sınav tarihlerini önceden öğrenin, çalışma programı oluşturun. Son güne bırakmayın, düzenli çalışın. Geçmiş sınav sorularını inceleyin, sınav formatını öğrenin.
+
+Ödev ve projeleri zamanında teslim edin. Gecikme cezaları not ortalamasını düşürüyor. Ödevleri kaliteli yapın, kaynak kullanın, intihal yapmayın. Öğretim üyelerinin geri bildirimlerini dikkate alın.
+
+Ders notlarını düzenli tutun. Ders sonrası notları gözden geçirin, eksikleri tamamlayın. Dönem sonunda tüm notları bir araya getirin, özet çıkarın. Bu, sınavlara hazırlanmayı kolaylaştırıyor.
+
+Akademik destek kaynaklarını kullanın. Kütüphane, öğrenci danışmanlık merkezi, öğretim üyesi ofis saatleri gibi kaynaklar var. Zorlandığınız konularda yardım alın. Grup çalışmalarına katılın, arkadaşlarınızla bilgi paylaşın.
+
+Not ortalamasını yükseltmek için düşük notlu dersleri tekrar alabilirsiniz. Çoğu üniversitede ders tekrarı mümkün. Düşük notlu dersleri tekrar alarak not ortalamasını yükseltebilirsiniz. Ancak bu, zaman ve maliyet gerektiriyor.
+
+Yaz okulu fırsatlarını değerlendirin. Yaz okulunda ders alarak not ortalamasını yükseltebilirsiniz. Yaz okulu genellikle daha az yoğun, bu da daha iyi not alma şansı veriyor. Ayrıca ders yükünü azaltarak normal dönemde daha iyi performans gösterebilirsiniz.
+
+Not ortalaması hesaplaması için [Not Ortalaması Hesap Makinemizi](/tr/hesap-makineleri/egitim/not-ortalamasi-hesap-makinesi) kullanabilirsiniz. Bu araç, GANO ve AGNO hesaplamalarını yapıyor, farklı senaryoları test edebiliyorsunuz. [GANO ve AGNO Arasındaki Farklar](/tr/blog/gano-ve-agno-arasindaki-farklar-hangi-sistem-kullaniliyor) yazımızda not sistemi hakkında detaylı bilgi bulabilirsiniz. [Eğitim Kategorimizdeki](/tr/hesap-makineleri/egitim) diğer hesap makinelerine göz atabilirsiniz.
+
+Motivasyonu korumak önemli. Not ortalamasını yükseltmek zaman alıyor. Sabırlı olun, küçük ilerlemeleri kutlayın. Başarısızlıklardan ders çıkarın, stratejinizi gözden geçirin. Destek sisteminizi güçlendirin, aile ve arkadaşlardan yardım alın.
+
+Bu bilgiler genel bilgilendirme amaçlıdır. Üniversite not sistemi ve akademik başarı için üniversitenizin öğrenci işleri veya akademik danışmanlık birimi ile görüşmeniz önerilir.
+    `,
+    author: "Calculator360Pro Ekibi",
+    date: "2026-01-28",
+    category: "Eğitim",
+    tags: ["not ortalaması", "gano", "agno", "üniversite", "eğitim"],
+  },
+  {
+    slug: "gano-ve-agno-arasindaki-farklar-hangi-sistem-kullaniliyor",
+    title: "GANO ve AGNO Arasındaki Farklar: Hangi Sistem Kullanılıyor?",
+    description:
+      "GANO ve AGNO nedir, aralarındaki farklar, hangi üniversitelerde hangi sistem kullanılıyor ve not ortalaması hesaplama yöntemleri hakkında bilgi.",
+    content: `
+# GANO ve AGNO Arasındaki Farklar: Hangi Sistem Kullanılıyor?
+
+Üniversite not ortalaması hesaplamasında iki sistem var: GANO ve AGNO. Bu iki sistem arasındaki farkları anlamak, not ortalamanızı doğru hesaplamak için önemli. Her üniversite farklı sistem kullanabiliyor.
+
+GANO, genel ağırlıklı not ortalaması. AKTS kredileri dikkate alınarak hesaplanıyor. Her dersin notu, o dersin AKTS kredisiyle çarpılıyor. Tüm derslerin çarpımları toplanıyor, toplam AKTS kredisine bölünüyor. Bu, ağırlıklı ortalama veriyor.
+
+AGNO, ağırlıksız genel not ortalaması. AKTS kredileri dikkate alınmadan hesaplanıyor. Tüm ders notlarının toplamı, ders sayısına bölünüyor. Bu, basit aritmetik ortalama veriyor. Her ders eşit ağırlıkta sayılıyor.
+
+GANO hesaplamasında AKTS kredisi yüksek dersler daha fazla ağırlık taşıyor. Örneğin, 6 AKTS'lik bir ders 3 AKTS'lik bir dersten iki kat daha fazla etkiliyor. Bu, ders yükünü dikkate alan adil bir sistem.
+
+AGNO hesaplamasında tüm dersler eşit ağırlıkta. AKTS kredisi yüksek veya düşük fark etmiyor, her ders aynı şekilde sayılıyor. Bu, basit ama bazen adil olmayan bir sistem.
+
+Çoğu Türk üniversitesi GANO sistemini kullanıyor. Bu, Avrupa Kredi Transfer Sistemi ile uyumlu. AKTS, ders yükünü gösteren bir sistem. Yüksek AKTS'li dersler daha fazla çalışma gerektiriyor, bu nedenle not ortalamasında daha fazla ağırlık taşıması mantıklı.
+
+Bazı üniversiteler AGNO sistemini kullanıyor. Bu genellikle eski sistem veya özel durumlar için. AGNO, hesaplama açısından daha basit ama ders yükünü dikkate almıyor.
+
+GANO hesaplaması örnek: 6 AKTS'lik bir dersten AA, 3 AKTS'lik bir dersten BB aldığınızı düşünün. AA 4.0, BB 3.0. GANO = (6 × 4.0 + 3 × 3.0) / (6 + 3) = (24 + 9) / 9 = 3.67.
+
+AGNO hesaplaması aynı örnek: AGNO = (4.0 + 3.0) / 2 = 3.5. GANO daha yüksek çünkü yüksek AKTS'li dersin notu daha fazla ağırlık taşıyor.
+
+Hangi sistem kullanılıyor, üniversitenizin öğrenci işleri veya akademik danışmanlık biriminden öğrenebilirsiniz. Genellikle transkript belgelerinde sistem belirtiliyor. Öğrenci bilgi sisteminde de görülebiliyor.
+
+Not ortalaması hesaplarken hangi sistemin kullanıldığını bilmek önemli. Yanlış sistemle hesaplama yaparsanız yanlış sonuç alırsınız. Özellikle yüksek lisans başvuruları veya iş başvuruları için doğru not ortalaması önemli.
+
+GANO sisteminde düşük AKTS'li derslerden düşük not almak daha az etkiliyor. Yüksek AKTS'li derslerden yüksek not almak daha fazla etkili. Bu nedenle yüksek AKTS'li derslere daha fazla önem vermek mantıklı.
+
+AGNO sisteminde tüm dersler eşit ağırlıkta. Düşük AKTS'li bir dersten düşük not almak, yüksek AKTS'li bir dersten düşük not almakla aynı etkiye sahip. Bu, bazen adil görünmeyebilir.
+
+Not ortalaması hesaplaması için [Not Ortalaması Hesap Makinemizi](/tr/hesap-makineleri/egitim/not-ortalamasi-hesap-makinesi) kullanabilirsiniz. Bu araç, hem GANO hem AGNO hesaplamalarını yapıyor, karşılaştırma yapabiliyorsunuz. [Üniversite Not Ortalaması Nasıl Yükseltilir](/tr/blog/universite-not-ortalamasi-nasil-yukseltilir) yazımızda not ortalaması yükseltme yöntemlerini öğrenebilirsiniz. [Eğitim Kategorimizdeki](/tr/hesap-makineleri/egitim) diğer hesap makinelerine göz atabilirsiniz.
+
+Bazı üniversiteler her iki sistemi de kullanıyor. Transkript belgelerinde hem GANO hem AGNO gösteriliyor. Bu durumda hangi sistemin resmi olarak kullanıldığını öğrenmek önemli.
+
+Not ortalaması hesaplarken başarısız dersler de dikkate alınıyor. FF notu genellikle 0.0 olarak hesaplanıyor. Bu, not ortalamasını düşürüyor. Başarısız dersleri tekrar alarak not ortalamasını yükseltebilirsiniz.
+
+Bu bilgiler genel bilgilendirme amaçlıdır. Üniversite not sistemi için üniversitenizin öğrenci işleri veya akademik danışmanlık birimi ile görüşmeniz önerilir.
+    `,
+    author: "Calculator360Pro Ekibi",
+    date: "2026-01-29",
+    category: "Eğitim",
+    tags: ["gano", "agno", "not ortalaması", "akts", "eğitim"],
+  },
+  {
+    slug: "online-hesap-makineleri-nasil-kullanilir",
+    title: "Online Hesap Makineleri Nasıl Kullanılır?",
+    description:
+      "Online hesap makineleri kullanım rehberi, doğru hesaplama yapma, hesap makinesi seçimi ve yaygın hatalardan kaçınma hakkında pratik bilgiler.",
+    content: `
+# Online Hesap Makineleri Nasıl Kullanılır?
+
+Online hesap makineleri, günlük hayatta sıkça kullanılan pratik araçlar. Maaş hesaplama, vergi hesaplama, kredi hesaplama gibi işlemler için kullanılıyor. Doğru kullanım, doğru sonuçlar almak için önemli.
+
+Hesap makinesi seçerken ihtiyacınıza uygun olanı bulun. Finansal hesaplamalar için finans kategorisindeki hesap makinelerini, sağlık hesaplamaları için sağlık kategorisindeki hesap makinelerini kullanın. Her hesap makinesi belirli bir amaç için tasarlanmış.
+
+Hesap makinesi kullanmadan önce gerekli bilgileri hazırlayın. Örneğin, maaş hesaplama için brüt maaş, medeni durum, çocuk sayısı gibi bilgiler gerekiyor. Bu bilgileri önceden hazırlamak, hesaplamayı hızlandırıyor.
+
+Girdi alanlarını dikkatli doldurun. Yanlış bilgi girmek yanlış sonuç veriyor. Özellikle sayısal değerlerde virgül ve nokta kullanımına dikkat edin. Türkçe sistemlerde genellikle virgül ondalık ayırıcı olarak kullanılıyor.
+
+Hesap makinesi sonuçlarını kontrol edin. Mantıklı görünmeyen sonuçlar için girdilerinizi tekrar kontrol edin. Bazen küçük bir hata büyük farklara yol açabiliyor. Özellikle finansal hesaplamalarda dikkatli olun.
+
+Hesap makineleri genellikle güncel verilerle çalışıyor. Vergi dilimleri, SGK oranları, asgari ücret gibi değerler güncel tutuluyor. Ancak yine de sonuçları resmi kaynaklarla karşılaştırmak faydalı.
+
+Mobil cihazlarda hesap makineleri kullanırken ekran boyutuna dikkat edin. Bazı hesap makineleri mobil uyumlu, bazıları değil. Mobil uyumlu olanları tercih edin, böylece her yerden erişebilirsiniz.
+
+Hesap makinesi sonuçlarını kaydedin. Özellikle önemli hesaplamalarda sonuçları not alın veya ekran görüntüsü alın. Daha sonra karşılaştırma yapmak veya referans olarak kullanmak için faydalı.
+
+Hesap makineleri genellikle bilgilendirme amaçlı. Resmi hesaplamalar için yetkili kurumlarla görüşmek gerekiyor. Örneğin, vergi hesaplamaları için mali müşavir, emeklilik hesaplamaları için SGK ile görüşmek önemli.
+
+Hesap makinesi kullanırken gizliliğe dikkat edin. Kişisel bilgilerinizi girerken güvenli bağlantı kullanın. HTTPS protokolü kullanan siteleri tercih edin. Kişisel bilgilerinizin saklanmadığından emin olun.
+
+Hesap makineleri sürekli güncelleniyor. Yeni özellikler ekleniyor, hatalar düzeltiliyor. En güncel versiyonu kullanmak için sayfayı yenileyin veya tarayıcı önbelleğini temizleyin.
+
+Hesap makinesi sonuçlarını anlamak için açıklamaları okuyun. Çoğu hesap makinesi sonuçların nasıl hesaplandığını açıklıyor. Bu açıklamalar, hesaplamayı anlamanıza yardımcı oluyor.
+
+Hesap makineleri arasında karşılaştırma yapabilirsiniz. Farklı hesap makineleri kullanarak aynı hesaplamayı yapın, sonuçları karşılaştırın. Bu, doğruluğu kontrol etmek için faydalı.
+
+Hesap makinesi kullanımında sorun yaşarsanız yardım bölümlerini kontrol edin. Çoğu hesap makinesi sık sorulan sorular bölümü içeriyor. Bu bölümler, yaygın sorunları ve çözümlerini açıklıyor.
+
+Hesap makinelerimizi kullanarak [Maaş Hesap Makinesi](/tr/hesap-makineleri/finans/maas-hesap-makinesi), [Vergi Hesap Makinesi](/tr/hesap-makineleri/finans/vergi-hesap-makinesi), [Kredi Hesap Makinesi](/tr/hesap-makineleri/finans/kredi-hesap-makinesi) gibi hesaplamalar yapabilirsiniz. [Finansal Okuryazarlık](/tr/blog/finansal-okuryazarlik-temel-kavramlar-ve-pratik-ipuclari) yazımızda finansal kavramlar hakkında bilgi edinebilirsiniz. [Finans Kategorimizdeki](/tr/hesap-makineleri/finans) tüm hesap makinelerine göz atabilirsiniz.
+
+Bu bilgiler genel bilgilendirme amaçlıdır. Resmi hesaplamalar için yetkili kurumlarla görüşmeniz önerilir.
+    `,
+    author: "Calculator360Pro Ekibi",
+    date: "2026-01-29",
+    category: "Genel",
+    tags: ["hesap makinesi", "online araçlar", "hesaplama", "kullanım rehberi"],
+  },
+  {
+    slug: "finansal-okuryazarlik-temel-kavramlar-ve-pratik-ipuclari",
+    title: "Finansal Okuryazarlık: Temel Kavramlar ve Pratik İpuçları",
+    description:
+      "Finansal okuryazarlık nedir, temel finansal kavramlar, bütçe yönetimi, tasarruf ve yatırım stratejileri hakkında pratik bilgiler ve ipuçları.",
+    content: `
+# Finansal Okuryazarlık: Temel Kavramlar ve Pratik İpuçları
+
+Finansal okuryazarlık, para yönetimi konusunda bilgi sahibi olmak anlamına geliyor. Gelir, gider, tasarruf, yatırım gibi kavramları anlamak, finansal kararlar almak için önemli. Finansal okuryazarlık, günlük hayatta sıkça karşılaştığımız finansal durumlarla başa çıkmamıza yardımcı oluyor.
+
+Gelir, elinize geçen para. Maaş, kira geliri, yatırım getirisi gibi kaynaklardan gelen para. Gelirinizi bilmek, bütçe planlaması için temel. Net gelirinizi kullanın, brüt değil. Çünkü harcayabileceğiniz para net gelir.
+
+Gider, harcadığınız para. Kira, faturalar, yemek, ulaşım gibi ihtiyaçlar için harcanan para. Giderlerinizi kategorilere ayırmak, kontrol etmek için faydalı. Sabit giderler ve değişken giderler olarak ayırabilirsiniz.
+
+Bütçe, gelir ve giderlerin planlanması. Aylık bütçe yapmak, finansal kontrol için önemli. Geliriniz giderlerinizden fazla olmalı, böylece tasarruf yapabilirsiniz. Bütçe açığı varsa giderlerinizi azaltmanız veya gelirinizi artırmanız gerekiyor.
+
+Tasarruf, gelirin giderlerden fazla olan kısmı. Tasarruf yapmak, gelecek için para biriktirmek anlamına geliyor. Acil durum fonu, emeklilik, büyük alımlar için tasarruf yapılabilir. Tasarruf oranı genellikle gelirin yüzde 10-20'si olarak öneriliyor.
+
+Yatırım, tasarrufun değer kazanması için kullanılması. Banka mevduatı, hisse senedi, tahvil, emlak gibi yatırım araçları var. Her yatırım aracının risk ve getiri profili farklı. Risk toleransınıza göre yatırım yapın.
+
+Faiz, borç veya yatırım için ödenen veya alınan para. Borç alırken faiz ödersiniz, yatırım yaparken faiz alırsınız. Faiz oranları, finansal kararlarınızı etkiliyor. Yüksek faizli borçlardan kaçının, düşük faizli yatırımları değerlendirin.
+
+Enflasyon, fiyatların genel seviyesinin artması. Enflasyon, paranın satın alma gücünü azaltıyor. Yani aynı parayla daha az mal alabiliyorsunuz. Enflasyon oranı, yatırım getirilerinizi değerlendirirken dikkate alınmalı.
+
+Kredi, gelecekteki gelirle bugün harcama yapmak. Kredi kullanırken faiz ve masrafları dikkate alın. Toplam maliyeti hesaplayın, sadece aylık taksitlere bakmayın. Gereksiz kredi kullanımından kaçının.
+
+Sigorta, beklenmedik durumlara karşı koruma. Sağlık sigortası, hayat sigortası, kasko sigortası gibi türler var. Sigorta, finansal güvenlik için önemli. İhtiyacınıza uygun sigorta poliçeleri seçin.
+
+Emeklilik planlaması, gelecek için hazırlık. SGK emekliliği ve BES gibi seçenekler var. Erken yaşta emeklilik planlaması yapmak, rahat bir emeklilik için önemli. Emeklilik yaşınızı ve prim gününüzü bilin.
+
+Vergi, gelir ve harcamalar üzerinden alınan kamu geliri. Gelir vergisi, KDV, özel tüketim vergisi gibi türler var. Vergi planlaması yapmak, vergi yükünüzü azaltabilir. Yasal indirimlerden yararlanın.
+
+Finansal okuryazarlık için temel kavramları öğrenmek önemli. Ancak uygulama da gerekli. Bütçe yapın, tasarruf yapın, yatırım yapın. Küçük adımlarla başlayın, zamanla bilginizi artırın.
+
+Finansal hesaplamalar için hesap makinelerimizi kullanabilirsiniz. [Maaş Hesap Makinesi](/tr/hesap-makineleri/finans/maas-hesap-makinesi), [Vergi Hesap Makinesi](/tr/hesap-makineleri/finans/vergi-hesap-makinesi), [Emeklilik Hesap Makinesi](/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi) gibi araçlar finansal planlamanıza yardımcı oluyor. [Aylık Bütçe Planlama](/tr/blog/aylik-butce-nasil-planlanir-tasarruf-yontemleri) yazımızda bütçe planlama hakkında bilgi edinebilirsiniz. [Finansal Terimler Sözlüğümüzde](/tr/rehberler/finansal-terimler-sozlugu) finansal terimler hakkında bilgi bulabilirsiniz. [Finans Kategorimizdeki](/tr/hesap-makineleri/finans) tüm hesap makinelerine göz atabilirsiniz.
+
+Finansal okuryazarlık sürekli öğrenme gerektiriyor. Finansal haberleri takip edin, kitaplar okuyun, kurslara katılın. Bilginizi güncel tutun, böylece doğru kararlar alabilirsiniz.
+
+Bu bilgiler genel bilgilendirme amaçlıdır. Finansal planlama için mali müşavir veya finansal danışman ile görüşmeniz önerilir.
+    `,
+    author: "Calculator360Pro Ekibi",
+    date: "2026-01-30",
+    category: "Finans",
+    tags: ["finansal okuryazarlık", "bütçe", "tasarruf", "yatırım", "finans"],
+  },
+  {
+    slug: "saglikli-beslenme-who-onerileri-ve-turk-mutfagi",
+    title: "Sağlıklı Beslenme: WHO Önerileri ve Türk Mutfağı",
+    description:
+      "Dünya Sağlık Örgütü beslenme önerileri, sağlıklı beslenme tabağı, Türk mutfağında sağlıklı seçenekler ve pratik beslenme ipuçları.",
+    content: `
+# Sağlıklı Beslenme: WHO Önerileri ve Türk Mutfağı
+
+Sağlıklı beslenme, genel sağlık için temel. Dünya Sağlık Örgütü, sağlıklı beslenme için çeşitli öneriler sunuyor. Bu öneriler, Türk mutfağına da uyarlanabiliyor. Geleneksel Türk mutfağı, sağlıklı beslenme için zengin seçenekler sunuyor.
+
+WHO önerilerine göre günlük beslenmede sebze ve meyveler önemli. Günde en az 400 gram sebze ve meyve tüketilmesi öneriliyor. Bu, yaklaşık 5 porsiyon anlamına geliyor. Türk mutfağında sebze yemekleri, salatalar, meyveler bol miktarda var.
+
+Tam tahıllar da önemli. Ekmek, bulgur, yulaf gibi tam tahıllar lif açısından zengin. Türk mutfağında tam buğday ekmeği, bulgur pilavı gibi seçenekler var. Beyaz ekmek yerine tam buğday ekmeği tercih edin.
+
+Protein kaynakları dengeli olmalı. Et, balık, tavuk, baklagiller, yumurta gibi kaynaklar var. Türk mutfağında kuru fasulye, nohut, mercimek gibi baklagiller yaygın. Haftada en az 2-3 kez baklagil tüketmek öneriliyor.
+
+Sağlıklı yağlar da gerekli. Zeytinyağı, Türk mutfağının temel yağı. Zeytinyağı, kalp sağlığı için faydalı. Yemeklerde zeytinyağı kullanın, kızartma yerine haşlama, buğulama gibi yöntemleri tercih edin.
+
+Şeker ve tuz tüketimini sınırlayın. WHO, günlük şeker tüketiminin toplam kalorinin yüzde 10'unu geçmemesini öneriyor. Tuz tüketimi de günde 5 gramı geçmemeli. Türk mutfağında şekerli tatlılar yaygın, bunları sınırlayın.
+
+İşlenmiş gıdalardan kaçının. Hazır yemekler, paketli gıdalar genellikle yüksek tuz, şeker ve yağ içeriyor. Taze, doğal gıdaları tercih edin. Türk mutfağında taze sebze ve meyveler bol, bunları kullanın.
+
+Su tüketimi önemli. Günlük 2-3 litre su içmek öneriliyor. Çay, kahve gibi içecekler su yerine geçmiyor. Türk çayı kültürü var ama su tüketimini de unutmayın.
+
+Porsiyon kontrolü yapın. Türk mutfağında porsiyonlar genellikle büyük. Küçük porsiyonlar tercih edin, ikinci porsiyondan kaçının. Doyduğunuzu hissettiğinizde yemeyi bırakın.
+
+Yemek saatlerini düzenleyin. Düzenli yemek saatleri metabolizmayı düzenliyor. Kahvaltı, öğle yemeği, akşam yemeği düzenli olsun. Gece yemeklerinden kaçının, akşam yemeğini erken yiyin.
+
+Pişirme yöntemlerini değiştirin. Kızartma yerine haşlama, buğulama, fırınlama gibi yöntemleri kullanın. Türk mutfağında zeytinyağlı yemekler var, bunları tercih edin. Kızartma yapıyorsanız az yağ kullanın.
+
+Beslenme çeşitliliği önemli. Tek tip beslenmek yerine çeşitli besinler tüketin. Türk mutfağı zengin, farklı yemekler deneyin. Her gün aynı şeyleri yemek yerine çeşitlilik sağlayın.
+
+Mevsimsel beslenme de önemli. Mevsiminde yetişen sebze ve meyveler daha taze ve besleyici. Türkiye'de her mevsim farklı sebze ve meyveler var, bunları tercih edin.
+
+Beslenme planlaması yapın. Haftalık menü planlayın, alışveriş listesi hazırlayın. Bu, sağlıklı seçimler yapmanıza yardımcı oluyor. Plansız alışveriş gereksiz ve sağlıksız gıdalar almanıza yol açabilir.
+
+Kalori ihtiyacınızı bilin. Günlük kalori ihtiyacınız aktivite seviyenize göre değişiyor. [Kalori Hesap Makinemizi](/tr/hesap-makineleri/saglik/kalori-hesap-makinesi) kullanarak günlük kalori ihtiyacınızı hesaplayabilirsiniz. [Günlük Kalori İhtiyacı](/tr/blog/gunluk-kalori-ihtiyaci-bmr-ve-tdee-nedir) yazımızda BMR ve TDEE hakkında detaylı bilgi bulabilirsiniz. [BMI Hesap Makinemiz](/tr/hesap-makineleri/saglik/bmi-hesap-makinesi) ile vücut kitle indeksinizi hesaplayabilirsiniz. [Sağlık Kategorimizdeki](/tr/hesap-makineleri/saglik) diğer hesap makinelerine göz atabilirsiniz.
+
+Bu bilgiler genel bilgilendirme amaçlıdır. Beslenme planlaması için diyetisyen veya beslenme uzmanı ile görüşmeniz önerilir.
+    `,
+    author: "Calculator360Pro Ekibi",
+    date: "2026-01-30",
+    category: "Sağlık",
+    tags: ["sağlıklı beslenme", "who önerileri", "türk mutfağı", "beslenme", "sağlık"],
   },
 ];
 

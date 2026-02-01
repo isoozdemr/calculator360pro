@@ -133,6 +133,10 @@ export default function TurkishLayout({
   // Navigation ve Footer, LayoutWrapper tarafından pathname'e göre otomatik eklenir
   return (
     <>
+      <head>
+        {/* RSS Feed Auto-discovery */}
+        <link rel="alternate" type="application/rss+xml" title="Calculator360Pro Blog RSS Feed (Türkçe)" href={`${process.env.NEXT_PUBLIC_SITE_URL || "https://calculator360pro.com"}/tr/feed.xml`} />
+      </head>
       <TurkishSchemaScripts />
       {children}
     </>

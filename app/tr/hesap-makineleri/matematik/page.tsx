@@ -77,6 +77,32 @@ export default function MatematikKategorisiPage() {
           </div>
         </div>
 
+        {/* Açıklayıcı İçerik */}
+        <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-8 mb-8">
+          <div className="prose prose-slate max-w-none">
+            <p className="text-[#64748b] mb-4 leading-relaxed">
+              Matematik hesaplamaları günlük hayatın birçok alanında karşımıza çıkıyor. Yüzde hesaplama, 
+              indirim hesaplama, artış oranı bulma gibi işlemler alışverişten iş yaşamına kadar geniş bir 
+              kullanım alanına sahip.
+            </p>
+            <p className="text-[#64748b] mb-4 leading-relaxed">
+              Yüzde hesaplama, bir sayının başka bir sayının yüzde kaçı olduğunu bulma işlemi. Örneğin, 
+              100 TL'nin yüzde 20'si 20 TL. Yüzde hesaplama, indirim hesaplama, faiz hesaplama, vergi 
+              hesaplama gibi birçok alanda kullanılıyor.
+            </p>
+            <p className="text-[#64748b] mb-4 leading-relaxed">
+              Artış ve azalış oranları da yüzde hesaplama ile bulunuyor. Bir değerin önceki değere göre 
+              yüzde kaç arttığını veya azaldığını hesaplamak için yüzde formülü kullanılıyor. Bu, fiyat 
+              değişimlerini, büyüme oranlarını anlamak için önemli.
+            </p>
+            <p className="text-[#64748b] mb-4 leading-relaxed">
+              Matematik hesap makinelerimiz, günlük hayatta sıkça ihtiyaç duyulan hesaplamaları kolaylaştırıyor. 
+              Tüm hesaplamalar doğru formüller kullanılarak yapılıyor. Sonuçlar anında gösteriliyor, detaylı 
+              açıklamalar sunuluyor.
+            </p>
+          </div>
+        </div>
+
         {/* Calculator Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           {mathCalculators.map((calculator) => (
@@ -104,6 +130,42 @@ export default function MatematikKategorisiPage() {
               </div>
             </Link>
           ))}
+        </div>
+
+        {/* FAQ Bölümü */}
+        <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-8 mb-8">
+          <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
+            Sıkça Sorulan Sorular
+          </h2>
+          <div className="space-y-4">
+            <div className="border-b border-[#e2e8f0] pb-4">
+              <h3 className="font-semibold text-[#1e293b] mb-2">
+                Yüzde nasıl hesaplanır?
+              </h3>
+              <p className="text-[#64748b] text-sm leading-relaxed">
+                Yüzde hesaplama için sayıyı 100'e bölüp yüzde oranıyla çarpıyorsunuz. Örneğin 1000 TL'nin 
+                yüzde 15'i = 1000 × 15 / 100 = 150 TL. Veya daha basit: 1000 × 0.15 = 150 TL.
+              </p>
+            </div>
+            <div className="border-b border-[#e2e8f0] pb-4">
+              <h3 className="font-semibold text-[#1e293b] mb-2">
+                İndirim hesaplama nasıl yapılır?
+              </h3>
+              <p className="text-[#64748b] text-sm leading-relaxed">
+                İndirim hesaplama için önce indirim tutarını buluyorsunuz, sonra orijinal fiyattan çıkarıyorsunuz. 
+                Örneğin 500 TL'lik ürün yüzde 20 indirimli ise: İndirim = 500 × 0.20 = 100 TL, İndirimli fiyat = 500 - 100 = 400 TL.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-[#1e293b] mb-2">
+                Artış oranı nasıl hesaplanır?
+              </h3>
+              <p className="text-[#64748b] text-sm leading-relaxed">
+                Artış oranı için yeni değerden eski değeri çıkarıp eski değere bölüyorsunuz, sonra 100 ile çarpıyorsunuz. 
+                Örneğin 100 TL'den 120 TL'ye çıkmışsa: (120 - 100) / 100 × 100 = yüzde 20 artış.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Info Section */}

@@ -5,6 +5,8 @@ import { getBlogPostTR, getAllBlogPostsTR } from "@/lib/blog/posts-tr";
 import { SITE_URL } from "@/lib/constants";
 import { getCalculator } from "@/lib/calculators/definitions";
 import { getCategorySlugByKey } from "@/lib/constants";
+import { generateTurkishArticleSchema } from "@/lib/seo/schema";
+import { getRelatedBlogPostsTR } from "@/lib/blog/related";
 
 interface PageProps {
   params: Promise<{
@@ -30,6 +32,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${post.title} | Calculator360Pro`,
     description: post.description,
+    keywords: post.tags,
+    robots: {
+      index: true,
+      follow: true,
+    },
     alternates: {
       canonical: `${SITE_URL}/tr/blog/${slug}`,
       languages: {
@@ -45,8 +52,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: "article",
       siteName: "Calculator360Pro",
       publishedTime: post.date,
+      modifiedTime: post.dateModified || post.date,
       authors: [post.author],
       tags: post.tags,
+      section: post.category,
+      images: [
+        {
+          url: `${SITE_URL}/og-image.png`,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
@@ -131,8 +148,57 @@ export default async function BlogPostPageTR({ params }: PageProps) {
 
   const htmlContent = convertContentToHTML(post.content);
 
+  // Generate schemas
+  const articleSchema = generateTurkishArticleSchema(
+    post.title,
+    post.description,
+    post.slug,
+    post.date,
+    post.author,
+    post.tags,
+    post.category,
+    post.dateModified
+  );
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Ana Sayfa",
+        "item": `${SITE_URL}/tr`,
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": `${SITE_URL}/tr/blog`,
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": post.title,
+        "item": `${SITE_URL}/tr/blog/${post.slug}`,
+      },
+    ],
+  };
+
+  // Get related blog posts
+  const relatedPosts = getRelatedBlogPostsTR(post, 3);
+
   return (
     <>
+      {/* Schema Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="min-h-screen bg-[#f8fafc] py-16">
         <div className="container mx-auto px-4 max-w-4xl">
           {/* Breadcrumb Navigation */}
@@ -203,6 +269,31 @@ export default async function BlogPostPageTR({ params }: PageProps) {
               </div>
             )}
           </article>
+
+          {/* Related Blog Posts Section */}
+          {relatedPosts.length > 0 && (
+            <div className="mt-8 bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-xl font-bold text-[#1e293b] mb-4">
+                İlgili Blog Yazıları
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {relatedPosts.map((relatedPost) => (
+                  <Link
+                    key={relatedPost.slug}
+                    href={`/tr/blog/${relatedPost.slug}`}
+                    className="block p-4 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors"
+                  >
+                    <h3 className="font-semibold text-[#1e293b] mb-2">
+                      {relatedPost.title}
+                    </h3>
+                    <p className="text-sm text-[#64748b] line-clamp-2">
+                      {relatedPost.description}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Related Calculators Section - Internal Linking */}
           {relatedCalculators.length > 0 && (
