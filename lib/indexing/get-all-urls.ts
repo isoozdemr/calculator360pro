@@ -10,6 +10,11 @@ const TURKISH_CALCULATORS = [
   { category: "finans", slug: "konut-kredisi-hesap-makinesi", enCategory: "finance", enSlug: "mortgage-calculator" },
   { category: "finans", slug: "kredi-hesap-makinesi", enCategory: "finance", enSlug: "loan-calculator" },
   { category: "finans", slug: "emeklilik-hesap-makinesi", enCategory: "finance", enSlug: "retirement-calculator" },
+  { category: "finans", slug: "bilesik-faiz-hesap-makinesi", enCategory: "finance", enSlug: "compound-interest-calculator" },
+  { category: "finans", slug: "yatirim-hesap-makinesi", enCategory: "finance", enSlug: "investment-calculator" },
+  { category: "finans", slug: "birikim-hesap-makinesi", enCategory: "finance", enSlug: "savings-calculator" },
+  { category: "finans", slug: "butce-hesap-makinesi", enCategory: "finance", enSlug: "budget-calculator" },
+  { category: "finans", slug: "tasit-kredisi-hesap-makinesi", enCategory: "finance", enSlug: "car-loan-calculator" },
   { category: "finans", slug: "doviz-cevirici", enCategory: "finance", enSlug: "currency-converter" },
   { category: "egitim", slug: "not-ortalamasi-hesap-makinesi", enCategory: "education", enSlug: "gpa-calculator" },
   { category: "saglik", slug: "bmi-hesap-makinesi", enCategory: "health", enSlug: "bmi-calculator" },
@@ -19,6 +24,13 @@ const TURKISH_CALCULATORS = [
   { category: "matematik", slug: "indirim-hesap-makinesi", enCategory: "finance", enSlug: "discount-calculator" },
   { category: "tarih-zaman", slug: "yas-hesap-makinesi", enCategory: "date-time", enSlug: "age-calculator" },
   { category: "tarih-zaman", slug: "tarih-farki-hesap-makinesi", enCategory: "date-time", enSlug: "date-calculator" },
+  { category: "matematik", slug: "bilimsel-hesap-makinesi", enCategory: "math", enSlug: "scientific-calculator" },
+  { category: "matematik", slug: "birim-cevirici", enCategory: "math", enSlug: "unit-converter" },
+  { category: "tarih-zaman", slug: "saat-hesap-makinesi", enCategory: "date-time", enSlug: "hours-calculator" },
+  { category: "saglik", slug: "vucut-yag-orani-hesap-makinesi", enCategory: "health", enSlug: "body-fat-calculator" },
+  { category: "finans", slug: "ogrenim-kredisi-hesap-makinesi", enCategory: "finance", enSlug: "student-loan-calculator" },
+  { category: "finans", slug: "kredi-karti-borc-hesap-makinesi", enCategory: "finance", enSlug: "credit-card-payoff-calculator" },
+  { category: "finans", slug: "bahsis-hesap-makinesi", enCategory: "finance", enSlug: "tip-calculator" },
 ];
 
 // Turkish category mappings
@@ -80,9 +92,11 @@ export function getAllIndexableUrls(): string[] {
 
   // Static pages
   urls.push("/about");
+  urls.push("/contact");
   urls.push("/privacy-policy");
   urls.push("/terms-of-service");
   urls.push("/tr/hakkimizda");
+  urls.push("/tr/iletisim");
   urls.push("/tr/gizlilik-politikasi");
   urls.push("/tr/kullanim-kosullari");
 
@@ -90,6 +104,13 @@ export function getAllIndexableUrls(): string[] {
   urls.push("/tr/rehberler/finansal-terimler-sozlugu");
   urls.push("/tr/rehberler/vergi-takvimi-2026");
   urls.push("/tr/rehberler/sgk-emeklilik-tablosu");
+  urls.push("/tr/rehberler/kredi-notu-nasil-yukseltilir");
+  urls.push("/tr/rehberler/vergi-indirimleri-rehberi-2026");
+  urls.push("/tr/rehberler/yatirim-baslangic-rehberi-2026");
+
+  // Guide pages (English)
+  urls.push("/guides/financial-terms-glossary");
+  urls.push("/guides/tax-calendar-2026-usa");
 
   // Blog listing pages
   urls.push("/blog");

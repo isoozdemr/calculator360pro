@@ -3,8 +3,8 @@ import Link from "next/link";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
-  title: "Tüm Hesap Makineleri 2026 | Vergi, Maaş, Kredi, BMI | Calculator360Pro",
-  description: "Türkiye'ye özel tüm ücretsiz hesap makineleri. 2026 güncel vergi hesaplama, maaş hesaplama, kredi hesaplama, emeklilik hesaplama, BMI hesaplama, kalori hesaplama, not ortalaması hesaplama araçları.",
+  title: "Tüm Hesap Makineleri 2026 | Vergi, Maaş, Kredi",
+  description: "2026 güncel vergi, maaş, kredi, BMI, kalori ve daha fazlası. Ücretsiz - anında hesaplayın. Hemen deneyin!",
   keywords: [
     "hesap makinesi",
     "online hesap makinesi",

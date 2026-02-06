@@ -2,11 +2,12 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getAllBlogPosts } from "@/lib/blog/posts";
 import { SITE_URL } from "@/lib/constants";
+import { generateBlogListSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
-  title: "Blog - Calculator Guides and Tips",
+  title: "Blog - Calculator Guides & Tips 2026",
   description:
-    "Learn how to use calculators effectively with our comprehensive guides. Tips, tutorials, and expert advice on financial, health, and educational calculations.",
+    "Expert guides on mortgage, BMI, tax, GPA & more. Learn to calculate like a pro. Free tips & tutorials - read now!",
   alternates: {
     canonical: `${SITE_URL}/blog`,
   },
@@ -48,8 +49,18 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   const posts = getAllBlogPosts();
+  const blogListSchema = generateBlogListSchema(
+    posts.map((p) => ({ title: p.title, slug: p.slug, date: p.date })),
+    `${SITE_URL}/blog`,
+    "en"
+  );
 
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListSchema) }}
+      />
     <div className="min-h-screen bg-[#f8fafc] py-16">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="mb-12">
@@ -89,6 +100,7 @@ export default function BlogPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

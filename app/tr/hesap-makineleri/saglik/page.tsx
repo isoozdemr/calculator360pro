@@ -39,10 +39,22 @@ const healthCalculators = [
     icon: "⚖️",
   },
   {
+    name: "Vücut Yağ Oranı Hesap Makinesi",
+    description: "Vücut yağ yüzdesi tahmini. BMI'dan daha anlamlı vücut kompozisyonu göstergesi.",
+    slug: "vucut-yag-orani-hesap-makinesi",
+    icon: "📊",
+  },
+  {
     name: "Kalori Hesap Makinesi",
     description: "Günlük kalori ihtiyacınızı hesaplayın. BMH, TDEE ve makro besin önerileri ile birlikte.",
     slug: "kalori-hesap-makinesi",
     icon: "🔥",
+  },
+  {
+    name: "Gebelik Hesap Makinesi",
+    description: "Doğum tarihi tahmini ve gebelik haftası hesaplama.",
+    slug: "gebelik-hesap-makinesi",
+    icon: "👶",
   },
 ];
 

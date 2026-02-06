@@ -3,14 +3,19 @@ import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "About Us - Our Mission & Team",
-  description: "Learn about Calculator360Pro - Free online calculators built by experts. Meet our team and discover our mission to make calculations accessible to everyone.",
+  title: "About Us - Mission & Team | Calculator360Pro",
+  description: "Meet the team behind Calculator360Pro. Free, accurate calculators built by experts. Discover our mission - try our tools today!",
   alternates: {
     canonical: `${SITE_URL}/about`,
+    languages: {
+      "en": `${SITE_URL}/about`,
+      "tr": `${SITE_URL}/tr/hakkimizda`,
+      "x-default": `${SITE_URL}/about`,
+    },
   },
   openGraph: {
-    title: "About Us - Calculator360Pro",
-    description: "Learn about Calculator360Pro - Free online calculators built by experts. Meet our team and discover our mission.",
+    title: "About Us - Mission & Team | Calculator360Pro",
+    description: "Meet the team. Free calculators by experts. Discover our mission - try our tools today!",
     url: `${SITE_URL}/about`,
     type: "website",
     siteName: "Calculator360Pro",

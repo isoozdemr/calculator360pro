@@ -37,6 +37,24 @@ const mathCalculators = [
     slug: "yuzde-hesap-makinesi",
     icon: "%",
   },
+  {
+    name: "İndirim Hesap Makinesi",
+    description: "İndirimli fiyat, yüzde indirim ve tasarruf hesaplama. Alışverişte anında sonuç.",
+    slug: "indirim-hesap-makinesi",
+    icon: "🏷️",
+  },
+  {
+    name: "Bilimsel Hesap Makinesi",
+    description: "Trigonometri, logaritma, üs ve kök işlemleri. Öğrenciler ve mühendisler için.",
+    slug: "bilimsel-hesap-makinesi",
+    icon: "🔬",
+  },
+  {
+    name: "Birim Çevirici",
+    description: "Uzunluk, ağırlık, hacim, alan ve sıcaklık birim dönüşümleri.",
+    slug: "birim-cevirici",
+    icon: "📐",
+  },
 ];
 
 export default function MatematikKategorisiPage() {

@@ -111,6 +111,18 @@ $body = @{
 } | ConvertTo-Json
 ```
 
+## 🔐 Ortam Değişkenleri (Environment Variables)
+
+Aşağıdaki değişkenler Google Indexing API için gereklidir (Vercel / .env):
+
+| Değişken | Açıklama |
+|----------|----------|
+| `GOOGLE_INDEXING_SERVICE_ACCOUNT_EMAIL` | Google Cloud Service Account e-posta adresi |
+| `GOOGLE_INDEXING_PRIVATE_KEY` | Service Account JSON anahtar dosyasındaki `private_key` (PEM formatında; satır sonları `\n` olarak escape edilebilir) |
+| `GOOGLE_INDEXING_API_SECRET` | Tek URL / bulk endpoint'lerini korumak için kullanılan API anahtarı; isteklerde `x-api-key` header'ında gönderilir |
+
+Not: Bulk endpoint (`/api/google-indexing/bulk`) kendi auth mekanizmasını kullanıyorsa aynı veya ayrı bir secret kullanılabilir. Tek URL endpoint'i (`POST /api/google-indexing`) `x-api-key` ile korunur.
+
 ## 🔌 API Endpoint'leri
 
 ### 1. Bulk Submission Endpoint
@@ -325,6 +337,14 @@ $headers = @{ "Content-Type" = "application/json"; "x-api-key" = "calculator360p
 $body = @{ url = "/tr/blog/yeni-yazi-slug" } | ConvertTo-Json
 Invoke-RestMethod -Uri "https://calculator360pro.com/api/google-indexing" -Method POST -Headers $headers -Body $body
 ```
+
+## 🚀 Deploy Sonrası (Opsiyonel CI Adımı)
+
+Yeni bir deploy'dan sonra indekslemeyi hızlandırmak için:
+
+- **Tüm sayfalar:** `POST /api/google-indexing/bulk` ile `{ "type": "all" }` (ilk kurulum veya büyük güncelleme sonrası).
+- **Sadece yeni içerik:** `{ "type": "new", "days": 7 }` ile son 7 günün blog / yeni sayfalarını gönderin.
+- CI/CD pipeline'a (GitHub Actions, Vercel deploy hook vb.) deploy başarılı olduktan sonra bu endpoint'i çağıran bir adım eklenebilir.
 
 ## 🎯 Sonuç
 

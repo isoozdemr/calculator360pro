@@ -4,8 +4,8 @@ import { SITE_URL } from "@/lib/constants";
 import { TurkeyDateCalculator } from "@/components/calculators/tr/TurkeyDateCalculator";
 
 export const metadata: Metadata = {
-  title: "Tarih Farkı Hesap Makinesi - İki Tarih Arası Hesaplama 2026 | Calculator360Pro",
-  description: "Ücretsiz tarih farkı hesap makinesi. İki tarih arasındaki gün, hafta, ay ve yıl farkını hesaplayın. İş günü hesaplama dahil.",
+  title: "Tarih Farkı Hesap Makinesi 2026 - Gün/Ay Hesapla",
+  description: "İki tarih arası gün, hafta, ay ve iş günü anında! Proje ve teslimat süreleri için ücretsiz. Hemen hesaplayın.",
   keywords: [
     "tarih farkı hesaplama",
     "tarih farkı hesap makinesi",
@@ -49,6 +49,14 @@ const faqs = [
   {
     question: "Bitiş tarihi dahil edilmeli mi?",
     answer: "Bitiş tarihinin dahil edilip edilmeyeceği, hesaplama amacınıza bağlıdır. Örneğin, bir proje 1 Ocak'ta başlayıp 31 Ocak'ta bitiyorsa, bitiş tarihini dahil ederseniz 31 gün, dahil etmezseniz 30 gün olur. Hesap makinesinde bu seçeneği işaretleyebilirsiniz.",
+  },
+  {
+    question: "Resmi tatiller iş gününe dahil mi?",
+    answer: "Bu hesap makinesi sadece hafta sonlarını (Cumartesi-Pazar) iş gününden çıkarır. Resmi tatilleri (bayram, 1 Ocak vb.) kendiniz çıkararak gerçek iş günü sayısını hesaplayabilirsiniz.",
+  },
+  {
+    question: "Ay farkı neden yaklaşık gösterilir?",
+    answer: "Aylar farklı gün sayısına sahip olduğu için (28-31) ay farkı tam sayı olmayabilir. Gün ve hafta farkı kesin, ay farkı referans içindir.",
   },
 ];
 
@@ -249,6 +257,25 @@ export default function TarihFarkiHesapMakinesiPage() {
                 Artık yıllar (Şubat ayının 29 gün olduğu yıllar) tarih hesaplamalarını etkiler. 
                 Hesap makinesi otomatik olarak artık yılları hesaba katar. Artık yıllar her 4 yılda bir gelir, 
                 ancak yüzyıl yılları (100'ün katı) sadece 400'ün katı ise artık yıldır.
+              </p>
+
+              <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">
+                Proje ve Teslimat Süreleri
+              </h3>
+              <p className="text-[#64748b] mb-4 leading-relaxed">
+                İş günü hesaplama, teslimat vaatleri, sözleşme süreleri ve proje planlamasında kritiktir. 
+                Hafta sonları ve resmi tatilleri çıkararak gerçek iş günü sayısını bilmek, gerçekçi 
+                deadline koymanıza yardımcı olur. İş günü seçeneğimiz Cumartesi-Pazar hariç günleri sayar; 
+                resmi tatilleri kendiniz çıkarabilirsiniz.
+              </p>
+
+              <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">
+                İlgili Hesaplamalar
+              </h3>
+              <p className="text-[#64748b] mb-4 leading-relaxed">
+                Doğum tarihinizden bugüne kadar geçen süreyi (yaşınızı) yıl, ay ve gün olarak hesaplamak 
+                için <Link href="/tr/hesap-makineleri/tarih-zaman/yas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Yaş Hesap Makinesi</Link> aracımızı kullanabilirsiniz. 
+                Gebelik süresi ve doğum tarihi için <Link href="/tr/hesap-makineleri/saglik/gebelik-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Gebelik Hesap Makinesi</Link> sayfamıza göz atın.
               </p>
             </article>
           </div>

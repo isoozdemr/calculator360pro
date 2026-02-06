@@ -3,8 +3,8 @@ import Link from "next/link";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
-  title: "Online Hesap Makinesi 2026 | Vergi, Maaş, Kredi Hesaplama | Calculator360Pro",
-  description: "Türkiye'ye özel ücretsiz online hesap makineleri. 2026 güncel vergi dilimleri, SGK kesintileri, asgari ücret, konut kredisi, emeklilik yaşı hesaplama. Brüt net maaş hesaplama, KKDF, BSMV dahil kredi hesaplama araçları.",
+  title: "Ücretsiz Hesap Makinesi 2026 | Vergi, Maaş, Kredi",
+  description: "2026 güncel vergi dilimleri, SGK kesintileri ve asgari ücretle anında hesaplayın! Ücretsiz vergi, maaş, kredi, BMI hesap makineleri. Hemen deneyin!",
   keywords: [
     "hesap makinesi",
     "online hesap makinesi",
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Online Hesap Makinesi 2026 | Vergi, Maaş, Kredi Hesaplama",
-    description: "Türkiye'ye özel ücretsiz online hesap makineleri. 2026 güncel vergi dilimleri, SGK kesintileri ile doğru hesaplamalar.",
+    title: "Ücretsiz Hesap Makinesi 2026 | Vergi, Maaş, Kredi",
+    description: "2026 güncel vergi, SGK ve asgari ücret hesaplama. Anında sonuç. Hemen deneyin!",
     locale: "tr_TR",
     type: "website",
   },

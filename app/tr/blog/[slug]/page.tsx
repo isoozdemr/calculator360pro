@@ -5,8 +5,9 @@ import { getBlogPostTR, getAllBlogPostsTR } from "@/lib/blog/posts-tr";
 import { SITE_URL } from "@/lib/constants";
 import { getCalculator } from "@/lib/calculators/definitions";
 import { getCategorySlugByKey } from "@/lib/constants";
-import { generateTurkishArticleSchema } from "@/lib/seo/schema";
+import { generateTurkishArticleSchema, generateFAQPageSchema } from "@/lib/seo/schema";
 import { getRelatedBlogPostsTR } from "@/lib/blog/related";
+import { getEnBlogSlugForTr } from "@/lib/blog/slug-mappings";
 
 interface PageProps {
   params: Promise<{
@@ -29,6 +30,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {};
   }
 
+  const trUrl = `${SITE_URL}/tr/blog/${slug}`;
+  const enSlug = getEnBlogSlugForTr(slug);
+  const alternates: Metadata["alternates"] = {
+    canonical: trUrl,
+    languages: {
+      tr: trUrl,
+      "x-default": enSlug ? `${SITE_URL}/blog/${enSlug}` : trUrl,
+    },
+  };
+  if (enSlug) {
+    alternates.languages!["en"] = `${SITE_URL}/blog/${enSlug}`;
+  }
+
   return {
     title: `${post.title} | Calculator360Pro`,
     description: post.description,
@@ -37,13 +51,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       index: true,
       follow: true,
     },
-    alternates: {
-      canonical: `${SITE_URL}/tr/blog/${slug}`,
-      languages: {
-        "en": `${SITE_URL}/blog`,
-        "tr": `${SITE_URL}/tr/blog/${slug}`,
-      },
-    },
+    alternates,
     openGraph: {
       title: post.title,
       description: post.description,
@@ -81,7 +89,7 @@ export default async function BlogPostPageTR({ params }: PageProps) {
     notFound();
   }
 
-  // Related calculators based on tags
+  // Related calculators: tag-based + slug fallback so every post has at least 3 calculator links
   const relatedCalculatorIds: string[] = [];
   if (post.tags.includes("vergi hesaplama") || post.tags.includes("gelir vergisi")) {
     relatedCalculatorIds.push("tax-calculator");
@@ -98,11 +106,45 @@ export default async function BlogPostPageTR({ params }: PageProps) {
   if (post.tags.includes("bmi") || post.tags.includes("vücut kitle indeksi")) {
     relatedCalculatorIds.push("bmi-calculator");
   }
+  if (post.tags.includes("kredi") || post.tags.includes("ihtiyaç kredisi")) {
+    relatedCalculatorIds.push("loan-calculator");
+  }
+  if (post.tags.includes("kalori") || post.tags.includes("beslenme")) {
+    relatedCalculatorIds.push("calorie-calculator");
+  }
+  if (post.tags.includes("not ortalaması") || post.tags.includes("gano")) {
+    relatedCalculatorIds.push("gpa-calculator");
+  }
+  if (post.tags.includes("yüzde") || post.tags.includes("oran")) {
+    relatedCalculatorIds.push("percentage-calculator");
+  }
+  if (post.tags.includes("birikim") || post.tags.includes("tasarruf")) {
+    relatedCalculatorIds.push("savings-calculator");
+  }
+  if (post.tags.includes("bütçe")) {
+    relatedCalculatorIds.push("budget-calculator");
+  }
+  if (post.tags.includes("bileşik faiz") || post.tags.includes("yatırım")) {
+    relatedCalculatorIds.push("compound-interest-calculator");
+    relatedCalculatorIds.push("investment-calculator");
+  }
+  if (post.tags.includes("döviz") || post.tags.includes("kur")) {
+    relatedCalculatorIds.push("currency-converter");
+  }
+  if (post.tags.includes("gebelik") || post.tags.includes("hamilelik")) {
+    relatedCalculatorIds.push("pregnancy-calculator");
+  }
+  if (post.tags.includes("yaş") || post.tags.includes("doğum")) {
+    relatedCalculatorIds.push("age-calculator");
+  }
 
-  const relatedCalculators = relatedCalculatorIds
+  const fallbackIds = ["tax-calculator", "salary-calculator", "loan-calculator", "bmi-calculator", "percentage-calculator"];
+  const idsToUse = relatedCalculatorIds.length >= 3 ? relatedCalculatorIds : [...relatedCalculatorIds, ...fallbackIds.filter((id) => !relatedCalculatorIds.includes(id))];
+
+  const relatedCalculators = idsToUse
     .map((id) => getCalculator(id))
     .filter((calc): calc is NonNullable<typeof calc> => calc !== undefined)
-    .slice(0, 3);
+    .slice(0, 6);
 
   // Convert markdown-like content to HTML
   const convertContentToHTML = (content: string): string => {
@@ -187,6 +229,7 @@ export default async function BlogPostPageTR({ params }: PageProps) {
 
   // Get related blog posts
   const relatedPosts = getRelatedBlogPostsTR(post, 3);
+  const faqSchema = post.faqs?.length ? generateFAQPageSchema(post.faqs) : null;
 
   return (
     <>
@@ -199,6 +242,12 @@ export default async function BlogPostPageTR({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       <div className="min-h-screen bg-[#f8fafc] py-16">
         <div className="container mx-auto px-4 max-w-4xl">
           {/* Breadcrumb Navigation */}
@@ -251,6 +300,23 @@ export default async function BlogPostPageTR({ params }: PageProps) {
               className="prose prose-slate max-w-none"
               dangerouslySetInnerHTML={{ __html: htmlContent }}
             />
+
+            {/* FAQ Section (when faqs provided) */}
+            {post.faqs && post.faqs.length > 0 && (
+              <div className="mt-8 pt-6 border-t border-[#e2e8f0]" itemScope itemType="https://schema.org/FAQPage">
+                <h2 className="text-xl font-bold text-[#1e293b] mb-4">Sıkça Sorulan Sorular</h2>
+                <ul className="space-y-4">
+                  {post.faqs.map((faq, i) => (
+                    <li key={i} itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                      <h3 className="font-semibold text-[#1e293b]" itemProp="name">{faq.question}</h3>
+                      <p className="text-[#64748b] mt-1" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                        <span itemProp="text">{faq.answer}</span>
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {/* Tags Section */}
             {post.tags && post.tags.length > 0 && (
@@ -317,8 +383,22 @@ export default async function BlogPostPageTR({ params }: PageProps) {
                     "tax-calculator": "vergi-hesap-makinesi",
                     "salary-calculator": "maas-hesap-makinesi",
                     "mortgage-calculator": "konut-kredisi-hesap-makinesi",
+                    "loan-calculator": "kredi-hesap-makinesi",
                     "retirement-calculator": "emeklilik-hesap-makinesi",
+                    "compound-interest-calculator": "bilesik-faiz-hesap-makinesi",
+                    "investment-calculator": "yatirim-hesap-makinesi",
+                    "savings-calculator": "birikim-hesap-makinesi",
+                    "budget-calculator": "butce-hesap-makinesi",
+                    "car-loan-calculator": "tasit-kredisi-hesap-makinesi",
+                    "currency-converter": "doviz-cevirici",
                     "bmi-calculator": "bmi-hesap-makinesi",
+                    "calorie-calculator": "kalori-hesap-makinesi",
+                    "pregnancy-calculator": "gebelik-hesap-makinesi",
+                    "gpa-calculator": "not-ortalamasi-hesap-makinesi",
+                    "percentage-calculator": "yuzde-hesap-makinesi",
+                    "discount-calculator": "indirim-hesap-makinesi",
+                    "age-calculator": "yas-hesap-makinesi",
+                    "date-calculator": "tarih-farki-hesap-makinesi",
                   };
                   const trPath = `/tr/hesap-makineleri/${categoryMap[calc.category] || calc.category}/${slugMap[calc.id] || calc.slug}`;
                   

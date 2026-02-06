@@ -180,6 +180,21 @@ export default function TurkeyGPACalculatorPage() {
               <li>2.5-2.99 → C / Lower Second (İkinci Sınıf Alt)</li>
               <li>2.0-2.49 → D / Third Class (Üçüncü Sınıf)</li>
             </ul>
+
+            <h3>GANO ve AGNO Farkı</h3>
+            <p>
+              GANO (Genel Ağırlıklı Not Ortalaması) tüm dönemlerdeki dersleri kapsar. 
+              AGNO (Ağırlıklı Genel Not Ortalaması) bazı üniversitelerde aynı kavram için kullanılır; 
+              bazılarında ise sadece başarılı derslerin ortalamasını ifade eder. Üniversitenizin 
+              öğretim ve sınav yönetmeliğini kontrol edin. Detaylı karşılaştırma için 
+              <Link href="/tr/blog/gano-ve-agno-arasindaki-farklar-hangi-sistem-kullaniliyor" className="text-[#2563eb] hover:underline font-medium mx-1">GANO ve AGNO Arasındaki Farklar</Link> 
+              blog yazımızı okuyabilirsiniz.
+            </p>
+
+            <h3>Sıkça Sorulan Sorular</h3>
+            <p><strong>Not ortalaması nasıl yükseltilir?</strong> Yüksek kredili derslere odaklanın, düşük notlu dersleri tekrar alın (imkan varsa), seçmeli derslerde stratejik olun. <Link href="/tr/blog/universite-not-ortalamasi-nasil-yukseltilir" className="text-[#2563eb] hover:underline font-medium">Üniversite Not Ortalaması Nasıl Yükseltilir?</Link> yazımızda daha fazla ipucu bulabilirsiniz.</p>
+            <p><strong>Mezuniyet için minimum GANO kaç?</strong> YÖK standardında lisans için genellikle 2.0 (CC ortalaması) gerekir; bazı programlar daha yüksek talep eder.</p>
+            <p><strong>Yurt dışı yüksek lisans için GANO yeterli mi?</strong> Çoğu program 3.0 ve üzeri ister; prestijli okullar 3.5+ bekleyebilir. ALES/YÖKDİL gibi sınavlar da değerlendirmeye alınır.</p>
           </div>
 
           {/* Related Calculators */}
@@ -201,6 +216,13 @@ export default function TurkeyGPACalculatorPage() {
               >
                 <h4 className="font-semibold text-[#1e293b]">Emeklilik Hesap Makinesi</h4>
                 <p className="text-sm text-[#64748b]">Mezuniyet sonrası emeklilik planlaması</p>
+              </Link>
+              <Link 
+                href="/tr/blog"
+                className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors"
+              >
+                <h4 className="font-semibold text-[#1e293b]">Blog - Eğitim Rehberleri</h4>
+                <p className="text-sm text-[#64748b]">GANO, AGNO ve not sistemi yazıları</p>
               </Link>
             </div>
           </div>

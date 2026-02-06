@@ -22,7 +22,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${SITE_URL}/tr/rehberler/vergi-takvimi-2026`,
     languages: {
-      "tr": `${SITE_URL}/tr/rehberler/vergi-takvimi-2026`,
+      en: `${SITE_URL}/guides/tax-calendar-2026-usa`,
+      tr: `${SITE_URL}/tr/rehberler/vergi-takvimi-2026`,
+      "x-default": `${SITE_URL}/guides/tax-calendar-2026-usa`,
     },
   },
   openGraph: {

@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: "%s | Calculator360Pro",
   },
   description:
-    "Free, accurate online calculators for finance, health, education, math, and more. Calculate mortgage, BMI, GPA, percentage, and hundreds of other calculations.",
+    "Calculate mortgage, BMI, taxes & more with free online tools. Trusted results in seconds. Try Calculator360Pro now!",
   keywords: [
     "calculator",
     "online calculator",
@@ -55,23 +55,23 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://calculator360pro.com",
     siteName: "Calculator360Pro",
-    title: "Calculator360Pro - Free Online Calculators",
+    title: "Calculator360Pro - Free Online Calculators 2026",
     description:
-      "Free, accurate online calculators for finance, health, education, math, and more.",
+      "Calculate mortgage, BMI, taxes & more in seconds. Free, accurate tools. Try now!",
     images: [
       {
         url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://calculator360pro.com"}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "Calculator360Pro - Free Online Calculators",
+        alt: "Calculator360Pro - Free Online Calculators 2026",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Calculator360Pro - Free Online Calculators",
+    title: "Calculator360Pro - Free Online Calculators 2026",
     description:
-      "Free, accurate online calculators for finance, health, education, math, and more.",
+      "Calculate mortgage, BMI, taxes & more in seconds. Free, accurate tools. Try now!",
     images: [`${process.env.NEXT_PUBLIC_SITE_URL || "https://calculator360pro.com"}/og-image.png`],
   },
   robots: {

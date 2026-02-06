@@ -22,7 +22,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${SITE_URL}/tr/rehberler/finansal-terimler-sozlugu`,
     languages: {
-      "tr": `${SITE_URL}/tr/rehberler/finansal-terimler-sozlugu`,
+      en: `${SITE_URL}/guides/financial-terms-glossary`,
+      tr: `${SITE_URL}/tr/rehberler/finansal-terimler-sozlugu`,
+      "x-default": `${SITE_URL}/guides/financial-terms-glossary`,
     },
   },
   openGraph: {

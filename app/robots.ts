@@ -7,13 +7,13 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/admin/", "/_next/"],
+        disallow: ["/api/", "/admin/", "/_next/", "/embed"],
       },
       // Googlebot specific rules for better crawling
       {
         userAgent: "Googlebot",
         allow: "/",
-        disallow: ["/api/", "/admin/"],
+        disallow: ["/api/", "/admin/", "/embed"],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

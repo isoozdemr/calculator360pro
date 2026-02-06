@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   description: "Privacy Policy for Calculator360Pro",
   alternates: {
     canonical: `${SITE_URL}/privacy-policy`,
+    languages: {
+      "en": `${SITE_URL}/privacy-policy`,
+      "tr": `${SITE_URL}/tr/gizlilik-politikasi`,
+      "x-default": `${SITE_URL}/privacy-policy`,
+    },
   },
   openGraph: {
     title: "Privacy Policy - Calculator360Pro",

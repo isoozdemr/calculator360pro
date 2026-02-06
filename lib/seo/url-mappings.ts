@@ -27,6 +27,7 @@ export const URL_MAPPINGS: Record<string, string> = {
   "/blog": "/tr/blog",
   "/privacy-policy": "/tr/gizlilik-politikasi",
   "/terms-of-service": "/tr/kullanim-kosullari",
+  "/contact": "/tr/iletisim",
   
   // Category pages
   "/calculators/finance": "/tr/hesap-makineleri/finans",
@@ -42,13 +43,24 @@ export const URL_MAPPINGS: Record<string, string> = {
   "/calculators/finance/loan-calculator": "/tr/hesap-makineleri/finans/kredi-hesap-makinesi",
   "/calculators/finance/retirement-calculator": "/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi",
   "/calculators/finance/compound-interest-calculator": "/tr/hesap-makineleri/finans/bilesik-faiz-hesap-makinesi",
+  "/calculators/finance/investment-calculator": "/tr/hesap-makineleri/finans/yatirim-hesap-makinesi",
+  "/calculators/finance/savings-calculator": "/tr/hesap-makineleri/finans/birikim-hesap-makinesi",
+  "/calculators/finance/budget-calculator": "/tr/hesap-makineleri/finans/butce-hesap-makinesi",
+  "/calculators/finance/car-loan-calculator": "/tr/hesap-makineleri/finans/tasit-kredisi-hesap-makinesi",
+  "/calculators/math/scientific-calculator": "/tr/hesap-makineleri/matematik/bilimsel-hesap-makinesi",
+  "/calculators/date-time/hours-calculator": "/tr/hesap-makineleri/tarih-zaman/saat-hesap-makinesi",
+  "/calculators/math/unit-converter": "/tr/hesap-makineleri/matematik/birim-cevirici",
   "/calculators/finance/currency-converter": "/tr/hesap-makineleri/finans/doviz-cevirici",
   "/calculators/finance/discount-calculator": "/tr/hesap-makineleri/matematik/indirim-hesap-makinesi",
   
   // Health Calculator pages
   "/calculators/health/bmi-calculator": "/tr/hesap-makineleri/saglik/bmi-hesap-makinesi",
+  "/calculators/health/body-fat-calculator": "/tr/hesap-makineleri/saglik/vucut-yag-orani-hesap-makinesi",
   "/calculators/health/calorie-calculator": "/tr/hesap-makineleri/saglik/kalori-hesap-makinesi",
   "/calculators/health/pregnancy-calculator": "/tr/hesap-makineleri/saglik/gebelik-hesap-makinesi",
+  "/calculators/finance/student-loan-calculator": "/tr/hesap-makineleri/finans/ogrenim-kredisi-hesap-makinesi",
+  "/calculators/finance/credit-card-payoff-calculator": "/tr/hesap-makineleri/finans/kredi-karti-borc-hesap-makinesi",
+  "/calculators/finance/tip-calculator": "/tr/hesap-makineleri/finans/bahsis-hesap-makinesi",
   
   // Education Calculator pages
   "/calculators/education/gpa-calculator": "/tr/hesap-makineleri/egitim/not-ortalamasi-hesap-makinesi",
@@ -59,6 +71,10 @@ export const URL_MAPPINGS: Record<string, string> = {
   // Date-Time Calculator pages
   "/calculators/date-time/age-calculator": "/tr/hesap-makineleri/tarih-zaman/yas-hesap-makinesi",
   "/calculators/date-time/date-calculator": "/tr/hesap-makineleri/tarih-zaman/tarih-farki-hesap-makinesi",
+
+  // Guide pages (EN–TR pairs)
+  "/guides/financial-terms-glossary": "/tr/rehberler/finansal-terimler-sozlugu",
+  "/guides/tax-calendar-2026-usa": "/tr/rehberler/vergi-takvimi-2026",
 };
 
 /**

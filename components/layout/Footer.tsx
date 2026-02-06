@@ -105,6 +105,14 @@ export function Footer() {
                   About
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="hover:text-white transition-colors"
+                >
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -145,7 +153,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/about"
+                  href="/contact"
                   className="hover:text-white transition-colors"
                 >
                   Contact
@@ -155,6 +163,9 @@ export function Footer() {
           </div>
         </div>
 
+        <div className="border-t border-[#334155] pt-6 mt-6 text-center text-sm text-[#94a3b8]">
+          <p className="mb-2">Stay updated: <Link href="/contact" className="text-[#2563eb] hover:underline">Contact us</Link> for feedback or to join our newsletter when available.</p>
+        </div>
         <div className="border-t border-[#334155] pt-8 text-center text-sm text-[#94a3b8]">
           <p>© {new Date().getFullYear()} Calculator360Pro. All rights reserved.</p>
         </div>

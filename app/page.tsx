@@ -4,16 +4,16 @@ import { getAllCalculators } from "@/lib/calculators/definitions";
 import { CALCULATOR_CATEGORIES, SITE_URL, getCategoryKeyBySlug, getCategorySlugByKey } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Calculator360Pro - Free Online Calculators",
+  title: "Free Online Calculators 2026 | Mortgage, BMI, Tax",
   description:
-    "Free, accurate online calculators for finance, health, education, math, and more. Calculate mortgage, BMI, GPA, percentage, and hundreds of other calculations.",
+    "Calculate mortgage, BMI, taxes & more with free online tools. Trusted by millions. Accurate results in seconds - try Calculator360Pro now!",
   alternates: {
     canonical: SITE_URL,
   },
   openGraph: {
-    title: "Calculator360Pro - Free Online Calculators",
+    title: "Free Online Calculators 2026 | Mortgage, BMI, Tax",
     description:
-      "Free, accurate online calculators for finance, health, education, math, and more.",
+      "Calculate mortgage, BMI, taxes & more in seconds. Free, accurate. Try Calculator360Pro now!",
     url: SITE_URL,
     type: "website",
     siteName: "Calculator360Pro",
@@ -28,9 +28,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Calculator360Pro - Free Online Calculators",
+    title: "Free Online Calculators 2026 | Mortgage, BMI, Tax",
     description:
-      "Free, accurate online calculators for finance, health, education, math, and more.",
+      "Calculate mortgage, BMI, taxes & more in seconds. Free tools. Try now!",
     images: [`${SITE_URL}/og-image.png`],
   },
 };

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getAllBlogPostsTR } from "@/lib/blog/posts-tr";
 import { SITE_URL } from "@/lib/constants";
+import { generateBlogListSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: "Blog - Hesap Makinesi Rehberleri ve İpuçları | Calculator360Pro",
@@ -53,8 +54,18 @@ export const metadata: Metadata = {
 
 export default function BlogPageTR() {
   const posts = getAllBlogPostsTR();
+  const blogListSchema = generateBlogListSchema(
+    posts.map((p) => ({ title: p.title, slug: p.slug, date: p.date })),
+    `${SITE_URL}/tr/blog`,
+    "tr"
+  );
 
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListSchema) }}
+      />
     <div className="min-h-screen bg-[#f8fafc] py-16">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="mb-12">
@@ -94,5 +105,6 @@ export default function BlogPageTR() {
         </div>
       </div>
     </div>
+    </>
   );
 }

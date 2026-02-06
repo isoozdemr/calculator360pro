@@ -2,10 +2,10 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
 import { getBlogPost, getAllBlogPosts } from "@/lib/blog/posts";
-import { getRelatedCalculatorsForPost } from "@/lib/blog/related";
+import { getRelatedCalculatorsForPost, getRelatedBlogPostsForPost } from "@/lib/blog/related";
 import { getCalculator } from "@/lib/calculators/definitions";
 import { generateBlogPostMetadata } from "@/components/SEO/MetaTags";
-import { generateArticleSchema, generateBlogBreadcrumbSchema } from "@/lib/seo/schema";
+import { generateArticleSchema, generateBlogBreadcrumbSchema, generateFAQPageSchema } from "@/lib/seo/schema";
 import { getCategorySlugByKey } from "@/lib/constants";
 
 interface PageProps {
@@ -42,13 +42,15 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   const articleSchema = generateArticleSchema(post);
   const breadcrumbSchema = generateBlogBreadcrumbSchema(post);
+  const faqSchema = post.faqs?.length ? generateFAQPageSchema(post.faqs) : null;
   
-  // Get related calculators for internal linking
+  // Get related calculators and related blog posts for internal linking
   const relatedCalculatorIds = getRelatedCalculatorsForPost(post);
   const relatedCalculators = relatedCalculatorIds
     .map((id) => getCalculator(id))
     .filter((calc): calc is NonNullable<typeof calc> => calc !== undefined)
     .slice(0, 3);
+  const relatedBlogPosts = getRelatedBlogPostsForPost(post, 4);
 
   return (
     <>
@@ -62,6 +64,12 @@ export default async function BlogPostPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       
       <div className="min-h-screen bg-[#f8fafc] py-16">
         <div className="container mx-auto px-4 max-w-4xl">
@@ -138,6 +146,23 @@ export default async function BlogPostPage({ params }: PageProps) {
               }}
             />
 
+            {/* FAQ Section (when faqs provided) */}
+            {post.faqs && post.faqs.length > 0 && (
+              <div className="mt-8 pt-6 border-t border-[#e2e8f0]" itemScope itemType="https://schema.org/FAQPage">
+                <h2 className="text-xl font-bold text-[#1e293b] mb-4">Frequently Asked Questions</h2>
+                <ul className="space-y-4">
+                  {post.faqs.map((faq, i) => (
+                    <li key={i} itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                      <h3 className="font-semibold text-[#1e293b]" itemProp="name">{faq.question}</h3>
+                      <p className="text-[#64748b] mt-1" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                        <span itemProp="text">{faq.answer}</span>
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             {/* Tags Section */}
             {post.tags && post.tags.length > 0 && (
               <div className="mt-8 pt-6 border-t border-[#e2e8f0]">
@@ -155,6 +180,31 @@ export default async function BlogPostPage({ params }: PageProps) {
               </div>
             )}
           </article>
+
+          {/* Related Blog Posts Section - Internal Linking */}
+          {relatedBlogPosts.length > 0 && (
+            <div className="mt-8 bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-xl font-bold text-[#1e293b] mb-4">
+                Related Blog Posts
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {relatedBlogPosts.map((relatedPost) => (
+                  <Link
+                    key={relatedPost.slug}
+                    href={`/blog/${relatedPost.slug}`}
+                    className="block p-4 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors"
+                  >
+                    <h3 className="font-semibold text-[#1e293b] mb-2">
+                      {relatedPost.title}
+                    </h3>
+                    <p className="text-sm text-[#64748b] line-clamp-2">
+                      {relatedPost.description}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Related Calculators Section - Internal Linking */}
           {relatedCalculators.length > 0 && (

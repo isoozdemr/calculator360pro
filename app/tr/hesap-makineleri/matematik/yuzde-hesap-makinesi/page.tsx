@@ -4,8 +4,8 @@ import { SITE_URL } from "@/lib/constants";
 import { TurkeyPercentageCalculator } from "@/components/calculators/tr/TurkeyPercentageCalculator";
 
 export const metadata: Metadata = {
-  title: "Yüzde Hesap Makinesi - Yüzde Hesaplama 2026",
-  description: "Ücretsiz yüzde hesap makinesi. Yüzde hesaplama, artış/azalış oranı bulma, indirim hesaplama. Kolay kullanım, anında sonuç.",
+  title: "Yüzde Hesap Makinesi 2026 - Anında Hesapla",
+  description: "Yüzde, artış/azalış ve indirim hesaplama. Anında sonuç. Ücretsiz - vergi, maaş, KDV için hemen kullanın!",
   keywords: [
     "yüzde hesaplama",
     "yüzde hesap makinesi",
@@ -51,36 +51,24 @@ function generatePercentageSchema() {
   };
 }
 
+const yuzdeFaqs = [
+  { q: "Bir sayının yüzdesi nasıl hesaplanır?", a: "Bir sayının yüzdesini hesaplamak için: (Sayı × Yüzde) / 100 formülü kullanılır. Örneğin, 200'ün %25'i = (200 × 25) / 100 = 50." },
+  { q: "Artış oranı nasıl hesaplanır?", a: "Artış oranı formülü: ((Yeni Değer - Eski Değer) / Eski Değer) × 100. Örneğin, 100'den 120'ye artış = ((120-100)/100) × 100 = %20 artış." },
+  { q: "Bir sayı diğerinin yüzde kaçıdır nasıl bulunur?", a: "Formül: (Parça Değer / Toplam Değer) × 100. Örneğin, 25 sayısı 100'ün yüzde kaçıdır = (25/100) × 100 = %25." },
+  { q: "KDV dahil fiyattan KDV nasıl hesaplanır?", a: "KDV dahil fiyattan KDV'yi çıkarmak için: Net = Brüt / (1 + KDV oranı). %20 KDV için: 120 TL'den 100 TL net, 20 TL KDV." },
+  { q: "Yüzde puan ile yüzde farkı nedir?", a: "Yüzde puan mutlak farktır (örn. %10'dan %12'ye = 2 puan). Yüzde farkı oransal artıştır: ((12-10)/10)×100 = %20 artış." },
+  { q: "İki yüzde artış/azalış neden toplanmaz?", a: "Çünkü her işlem farklı taban üzerinden uygulanır. %20 artış sonra %10 azalış, toplam %10 artış değildir; 100→120→108 olur." },
+];
+
 function generateFAQSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Bir sayının yüzdesi nasıl hesaplanır?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Bir sayının yüzdesini hesaplamak için: (Sayı × Yüzde) / 100 formülü kullanılır. Örneğin, 200'ün %25'i = (200 × 25) / 100 = 50"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Artış oranı nasıl hesaplanır?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Artış oranı formülü: ((Yeni Değer - Eski Değer) / Eski Değer) × 100. Örneğin, 100'den 120'ye artış = ((120-100)/100) × 100 = %20 artış"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Bir sayı diğerinin yüzde kaçıdır nasıl bulunur?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Formül: (Parça Değer / Toplam Değer) × 100. Örneğin, 25 sayısı 100'ün yüzde kaçıdır = (25/100) × 100 = %25"
-        }
-      }
-    ]
+    "mainEntity": yuzdeFaqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+    })),
   };
 }
 
@@ -267,6 +255,55 @@ export default function YuzdeHesapMakinesiPage() {
                   </tbody>
                 </table>
               </div>
+            </div>
+
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
+                Finansta Yüzde Kullanımı
+              </h2>
+              <p className="text-[#64748b] mb-4">
+                Vergi dilimleri, maaş zamları, kredi faizleri ve yatırım getirileri yüzde ile ifade edilir. 
+                2026 gelir vergisi dilimlerini hesaplamak için <Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Vergi Hesap Makinesi</Link>, 
+                brüt-net maaş için <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Maaş Hesap Makinesi</Link> aracımızı kullanabilirsiniz. 
+                İndirimli fiyat hesaplarken <Link href="/tr/hesap-makineleri/matematik/indirim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">İndirim Hesap Makinesi</Link> de yüzde hesaplamalarınızı kolaylaştırır.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
+                Yüzde Hesaplamada Sık Yapılan Hatalar
+              </h2>
+              <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-4">
+                <li><strong>Artış/azalışta taban karışıklığı:</strong> %20 artış sonrası %20 azalş aynı değere dönmez (örn. 100 → 120 → 96). Taban her seferinde değişir.</li>
+                <li><strong>Çoklu indirimleri toplamak:</strong> %20 + %10 indirim, %30 indirim değildir; sırayla uygulanır (100 → 80 → 72).</li>
+                <li><strong>Yüzde puan vs yüzde:</strong> Faiz oranı %10&apos;dan %12&apos;ye çıktığında 2 puan artış, %20 oransal artıştır (12/10 - 1).</li>
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
+                Sıkça Sorulan Sorular
+              </h2>
+              <div className="space-y-4 mb-8">
+                {yuzdeFaqs.map((faq, i) => (
+                  <div key={i} className="border-b border-[#e2e8f0] pb-4 last:border-0">
+                    <h3 className="font-semibold text-[#1e293b] mb-2">{faq.q}</h3>
+                    <p className="text-[#64748b] text-sm">{faq.a}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
+                Uzman İpuçları
+              </h2>
+              <p className="text-[#64748b] mb-4">
+                Alışverişte indirimleri karşılaştırırken indirimli fiyatı değil, orijinal fiyat üzerinden yüzdeyi düşünün. 
+                Maaş görüşmelerinde brüt artış oranı ile net artış oranı farklıdır; vergi dilimi değişebilir. 
+                Yatırım getirilerinde yıllık yüzde getiri (APR) ile bileşik getiriyi ayırt edin. 
+                Daha fazla finansal hesaplama için <Link href="/tr/blog/finansal-okuryazarlik-temel-kavramlar-ve-pratik-ipuclari" className="text-[#2563eb] hover:underline font-medium">Finansal Okuryazarlık</Link> blog yazımıza göz atın.
+              </p>
             </div>
           </div>
         </div>

@@ -4,8 +4,8 @@ import { SITE_URL } from "@/lib/constants";
 import { TurkeyPregnancyCalculator } from "@/components/calculators/tr/TurkeyPregnancyCalculator";
 
 export const metadata: Metadata = {
-  title: "Gebelik Hesap Makinesi - Doğum Tarihi Hesaplama 2026 | Calculator360Pro",
-  description: "Ücretsiz gebelik hesap makinesi. Son adet tarihinden doğum tarihi, gebelik haftası ve trimester hesaplama. Hamilelik takibi için ideal.",
+  title: "Gebelik Hesap Makinesi 2026 - Doğum Tarihi Hesapla",
+  description: "Son adet tarihinden doğum tarihi ve gebelik haftası anında! Trimester bilgisi. Ücretsiz hamilelik takibi - hemen deneyin.",
   keywords: [
     "gebelik hesaplama",
     "doğum tarihi hesaplama",
@@ -49,6 +49,14 @@ const faqs = [
   {
     question: "Doğum tarihi ne kadar doğrudur?",
     answer: "Doğum tarihleri tahminidir. Bebeklerin sadece yaklaşık %5'i tam tahmini tarihte doğar. Çoğu doğum, tahmini tarihten 2 hafta önce veya sonra gerçekleşir. Ultrason ölçümleri ile daha doğru bir tahmin yapılabilir.",
+  },
+  {
+    question: "Adet düzensizliği doğum tarihini etkiler mi?",
+    answer: "Evet. Düzensiz adet görenlerde son adet tarihi yanıltıcı olabilir. İlk trimester ultrason (CRL) ölçümü ile daha doğru tahmin yapılır. Doktorunuz her iki yöntemi birlikte değerlendirir.",
+  },
+  {
+    question: "Tüp bebek gebeliğinde hesaplama farklı mı?",
+    answer: "Tüp bebekte transfer tarihi veya yumurta toplama tarihi baz alınır; son adet tarihi farklı hesaplanır. Bu durumda hesaplamayı merkeziniz veya doktorunuz yapar.",
   },
 ];
 
@@ -243,6 +251,33 @@ export default function GebelikHesapMakinesiPage() {
                   </li>
                 </ul>
               </div>
+
+              <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">
+                Gebelik Takvimi ve Hafta Hafta Gelişim
+              </h3>
+              <p className="text-[#64748b] mb-4 leading-relaxed">
+                İlk trimester (0–13. hafta) embriyo ve organ gelişimi, ikinci trimester (14–27. hafta) 
+                fetal büyüme ve hareket, üçüncü trimester (28–40. hafta) hızlı kilo alımı ve doğum 
+                hazırlığı dönemidir. Hafta bilgisi, doğum öncesi kontrollerinizi planlamanıza yardımcı olur.
+              </p>
+
+              <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">
+                Ultrason ile Hesaplama Farkı
+              </h3>
+              <p className="text-[#64748b] mb-4 leading-relaxed">
+                Son adet tarihi (SAT) ile hesaplanan doğum tarihi, düzenli adet görenlerde güvenilirdir. 
+                Adet düzensizliği veya ovülasyon gecikmesi varsa ultrason ölçümleri (özellikle ilk trimester 
+                CRL ölçümü) daha doğru tahmin verebilir. Doktorunuz her iki yöntemi birlikte değerlendirir.
+              </p>
+
+              <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">
+                İlgili Hesaplamalar
+              </h3>
+              <p className="text-[#64748b] mb-4 leading-relaxed">
+                Hamilelik süresince sağlıklı kilo aralığınızı takip etmek için <Link href="/tr/hesap-makineleri/saglik/bmi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">BMI Hesap Makinesi</Link>, 
+                günlük kalori ihtiyacınız için <Link href="/tr/hesap-makineleri/saglik/kalori-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Kalori Hesap Makinesi</Link> aracımızı kullanabilirsiniz. 
+                İki tarih arası gün sayısı hesaplamak için <Link href="/tr/hesap-makineleri/tarih-zaman/tarih-farki-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Tarih Farkı Hesap Makinesi</Link> sayfamıza göz atın.
+              </p>
 
               <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mt-8">
                 <p className="text-sm text-blue-800">

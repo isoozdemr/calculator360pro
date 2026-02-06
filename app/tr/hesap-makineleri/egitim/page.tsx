@@ -6,6 +6,10 @@ export const metadata: Metadata = {
   description: "Türkiye üniversite not sistemi ile GANO hesaplama. 4'lük ve 100'lük not sistemi dönüşümü. YÖK standardı hesap makinesi.",
   alternates: {
     canonical: "https://calculator360pro.com/tr/hesap-makineleri/egitim",
+    languages: {
+      "en": "https://calculator360pro.com/calculators/education",
+      "tr": "https://calculator360pro.com/tr/hesap-makineleri/egitim",
+    },
   },
 };
 

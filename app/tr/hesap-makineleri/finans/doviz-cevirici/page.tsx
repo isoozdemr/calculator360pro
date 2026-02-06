@@ -4,8 +4,8 @@ import { SITE_URL } from "@/lib/constants";
 import { TurkeyCurrencyConverter } from "@/components/calculators/tr/TurkeyCurrencyConverter";
 
 export const metadata: Metadata = {
-  title: "Döviz Çevirici - Döviz Kuru Hesaplama 2026 | Calculator360Pro",
-  description: "Ücretsiz döviz çevirici. USD, EUR, GBP, TRY ve 150+ para birimi arasında anında döviz çevirisi. Güncel döviz kurları ile hesaplama.",
+  title: "Döviz Çevirici 2026 - USD, EUR, TRY Anında",
+  description: "USD, EUR, GBP, TRY ve 150+ para birimi arasında anında çeviri! Güncel kurlar. Ücretsiz - seyahat ve yatırım için hemen kullanın.",
   keywords: [
     "döviz çevirici",
     "döviz kuru hesaplama",
@@ -49,6 +49,14 @@ const faqs = [
   {
     question: "Döviz çevirisi ücretsiz mi?",
     answer: "Evet, bu döviz çevirici tamamen ücretsizdir. Ancak gerçek döviz işlemleri yaparken bankalar ve döviz büroları komisyon alabilir. Bu komisyonlar çeviri sonucuna dahil değildir.",
+  },
+  {
+    question: "Alış ve satış kuru farkı nedir?",
+    answer: "Bankalar ve döviz büfeleri alış (siz satarken) ve satış (siz alırken) kuru uygular. Aradaki fark kur marjıdır. Çeviricide gösterilen tek kur ortalama/referans değeridir.",
+  },
+  {
+    question: "Seyahat için döviz ne zaman alınmalı?",
+    answer: "Kurlar dalgalı olduğu için tek bir ideal zaman yoktur. Birkaç hafta kurları takip edip ortalama bir seviyede alım yapmak ve acil ihtiyaç dışında panik alımı yapmamak mantıklıdır.",
   },
 ];
 
@@ -253,6 +261,29 @@ export default function DovizCeviriciPage() {
                 <li>Merkez bankası politikaları</li>
                 <li>Uluslararası ticaret dengesi</li>
                 <li>Piyasa spekülasyonları</li>
+              </ul>
+
+              <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">
+                Türkiye&apos;de Döviz ve Kur Farkları
+              </h3>
+              <p className="text-[#64748b] mb-4 leading-relaxed">
+                Türkiye&apos;de USD, EUR ve diğer para birimleri günlük hayatta sık kullanılır. 
+                Bankalar alış ve satış kuru uygular; aradaki fark kur marjıdır. Döviz alırken 
+                satış kuru, satarken alış kuru baz alınır. Seyahat ve online alışveriş için 
+                güncel kurları takip etmek bütçe planlamanıza yardımcı olur. Yatırım ve 
+                birikim hesaplamalarında <Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Vergi Hesap Makinesi</Link> ve 
+                maaş planlaması için <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Maaş Hesap Makinesi</Link> araçlarımızı da kullanabilirsiniz.
+              </p>
+
+              <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">
+                Döviz Çevirisi Ne Zaman Kullanılır?
+              </h3>
+              <ul className="list-disc list-inside text-[#64748b] mb-4 space-y-2">
+                <li>Seyahat öncesi bütçe planlaması ve günlük harcama tahmini</li>
+                <li>Yurt dışından online alışverişte TL karşılığını görmek</li>
+                <li>Uluslararası maaş veya faturaları TRY&apos;ye çevirmek</li>
+                <li>Yatırım getirilerini yerel para biriminde değerlendirmek</li>
+                <li>İş seyahatleri ve gider raporları için kur hesaplama</li>
               </ul>
 
               <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mt-8">

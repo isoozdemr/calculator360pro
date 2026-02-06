@@ -8,6 +8,8 @@ export interface BlogPost {
   dateModified?: string; // Optional: if not provided, uses date
   category: string;
   tags: string[];
+  /** Optional FAQs for FAQPage schema and on-page FAQ block */
+  faqs?: Array<{ question: string; answer: string }>;
 }
 
 export const blogPostsTR: BlogPost[] = [
@@ -114,6 +116,16 @@ Bu bilgiler genel bilgilendirme amaçlıdır. Vergi planlaması ve beyanname iş
     date: "2026-01-20",
     category: "Finans",
     tags: ["gelir vergisi", "vergi hesaplama", "2026 vergi dilimleri", "vergi matrahı", "finans"],
+    faqs: [
+      {
+        question: "2026 gelir vergisi dilimleri nelerdir?",
+        answer: "2026 yılında 0-110.000 TL için %15, 110.001-230.000 TL için %20, 230.001-870.000 TL için %27, 870.001-3.000.000 TL için %35, 3.000.001 TL ve üzeri için %40 oranları uygulanır. Vergi matrahınız kademeli olarak bu dilimlere göre hesaplanır.",
+      },
+      {
+        question: "Vergi matrahı nasıl hesaplanır?",
+        answer: "Vergi matrahı = Brüt gelir - SGK kesintileri. SGK işçi payı %14 ve işsizlik sigortası işçi payı %1 olmak üzere toplam %15 kesinti brüt maaştan düşülerek vergi matrahı bulunur.",
+      },
+    ],
   },
   {
     slug: "brutten-nete-maas-hesaplama-sgk-agi-vergi",
@@ -1225,6 +1237,124 @@ Bu bilgiler genel bilgilendirme amaçlıdır. Beslenme planlaması için diyetis
     date: "2026-01-30",
     category: "Sağlık",
     tags: ["sağlıklı beslenme", "who önerileri", "türk mutfağı", "beslenme", "sağlık"],
+  },
+  {
+    slug: "2026-bilesik-faiz-hesaplama-rehberi",
+    title: "2026 Bileşik Faiz Hesaplama Rehberi",
+    description: "Bileşik faiz nedir, formülü nasıl uygulanır? Mevduat ve yatırımda bileşik faiz örnekleri. Ücretsiz bileşik faiz hesap makinesi ile hesaplayın.",
+    content: `
+# 2026 Bileşik Faiz Hesaplama Rehberi
+
+Bileşik faiz, paranızın hem ana para hem de birikmiş faiz üzerinden getiri kazanmasıdır. Basit faizden farklı olarak "faizin faizi" etkisiyle uzun vadede önemli fark yaratır.
+
+## Bileşik Faiz Formülü
+
+Temel formül: **A = P(1 + r/n)^(nt)**
+
+- **A**: Gelecek değer
+- **P**: Ana para (başlangıç yatırımı)
+- **r**: Yıllık nominal faiz oranı (ondalık; %10 = 0,10)
+- **n**: Yılda bileşikleşme sayısı (aylık = 12, günlük = 365)
+- **t**: Yıl cinsinden süre
+
+Örnek: 10.000 TL, yıllık %12 faiz, aylık bileşikleşme, 5 yıl. A = 10000(1 + 0,12/12)^(12*5) = 18.166,97 TL.
+
+## Bileşik vs Basit Faiz
+
+Aynı oran ve sürede bileşik faiz her zaman daha yüksek getiri verir. Vade uzadıkça fark büyür. Kısa vadede fark küçük kalabilir.
+
+## 72 Kuralı
+
+Paranızın ikiye katlanması için gereken yıl: **72 / yıllık faiz oranı**. Örneğin %8 faizde 72/8 = 9 yıl. Tahmini bir kuraldır.
+
+## Türkiye'de Uygulama
+
+Bankalar vadeli mevduatta genelde aylık veya günlük bileşik faiz uygular. Sözleşmede bileşikleşme sıklığı yazar. [Bileşik Faiz Hesap Makinemizi](/tr/hesap-makineleri/finans/bilesik-faiz-hesap-makinesi) ile farklı senaryoları deneyebilirsiniz. [Yatırım Hesap Makinesi](/tr/hesap-makineleri/finans/yatirim-hesap-makinesi) ve [Birikim Hesap Makinesi](/tr/hesap-makineleri/finans/birikim-hesap-makinesi) ile planlama yapabilirsiniz. [2026 Gelir Vergisi Rehberi](/tr/blog/2026-gelir-vergisi-dilimleri-hesaplama-rehberi) ve [Brütten Nete Maaş](/tr/blog/brutten-nete-maas-hesaplama-sgk-agi-vergi) yazılarımıza da göz atın.
+    `,
+    author: "Calculator360Pro Ekibi",
+    date: "2026-02-01",
+    category: "Finans",
+    tags: ["bileşik faiz", "faiz hesaplama", "yatırım", "birikim", "2026"],
+  },
+  {
+    slug: "yatirim-araclari-karsilastirmasi-2026",
+    title: "Yatırım Araçları Karşılaştırması 2026",
+    description: "Mevduat, hisse senedi, tahvil, BES ve diğer yatırım araçları. Getiri ve risk karşılaştırması. Yatırım hesap makinesi ile hesaplayın.",
+    content: `
+# Yatırım Araçları Karşılaştırması 2026
+
+Yatırım yaparken getiri, risk ve likidite dengesi önemli. Bu rehberde yaygın yatırım araçlarını karşılaştırıyoruz.
+
+## Mevduat (Vadeli Hesap)
+
+Bankalarda vadeli mevduat, düşük risk ve garantili getiri sunar. Faiz oranları TCMB politikasına göre değişir. Likidite: vade sonunda veya erken çekimde ceza ile.
+
+## Hisse Senedi
+
+Şirketlere ortaklık; getiri temettü ve fiyat artışından gelir. Risk yüksek, likidite genelde iyi. Uzun vade ile risk azaltılabilir.
+
+## Tahvil / Bono
+
+Devlet veya şirket borçlanma senetleri. Sabit kupon (faiz) ve anapara geri ödemesi. Risk mevduata göre daha yüksek, getiri de genelde daha yüksek.
+
+## BES (Bireysel Emeklilik)
+
+Uzun vadeli birikim; devlet katkısı ve vergi avantajı var. [Emeklilik Hesap Makinesi](/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi) ile BES ve yaş hesaplaması yapabilirsiniz.
+
+## Karşılaştırma Özeti
+
+| Araç        | Getiri potansiyeli | Risk   | Likidite |
+|------------|--------------------|--------|----------|
+| Mevduat    | Düşük-orta         | Düşük  | Orta     |
+| Hisse      | Yüksek             | Yüksek | İyi      |
+| Tahvil     | Orta               | Orta   | Orta     |
+| BES        | Orta-yüksek        | Orta   | Düşük    |
+
+[Yatırım Hesap Makinemiz](/tr/hesap-makineleri/finans/yatirim-hesap-makinesi) ile getiri senaryolarını, [Bileşik Faiz Hesap Makinesi](/tr/hesap-makineleri/finans/bilesik-faiz-hesap-makinesi) ile bileşik getiriyi hesaplayabilirsiniz. [Birikim Hesap Makinesi](/tr/hesap-makineleri/finans/birikim-hesap-makinesi) hedef birikim için aylık tasarruf gösterir. [2026 Bileşik Faiz Rehberi](/tr/blog/2026-bilesik-faiz-hesaplama-rehberi) ve [Finansal Terimler Sözlüğü](/tr/rehberler/finansal-terimler-sozlugu) ile bilginizi pekiştirin.
+    `,
+    author: "Calculator360Pro Ekibi",
+    date: "2026-02-01",
+    category: "Finans",
+    tags: ["yatırım", "mevduat", "BES", "getiri", "2026"],
+  },
+  {
+    slug: "turkiyede-tasit-kredisi-rehberi-2026",
+    title: "Türkiye'de Taşıt Kredisi Rehberi 2026",
+    description: "Taşıt kredisi şartları, faiz oranları, aylık taksit hesaplama. Erken ödeme ve masraflar. Ücretsiz taşıt kredisi hesap makinesi.",
+    content: `
+# Türkiye'de Taşıt Kredisi Rehberi 2026
+
+Taşıt kredisi, araç alımında kullanılan tüketici kredisidir. Bankalar ve finansman şirketleri taşıt kredisi veriyor.
+
+## Taşıt Kredisi Şartları
+
+Genelde 12–48 ay vade, sabit veya değişken faiz. Peşinat oranı bankaya göre değişir; %20–30 yaygın. Araç rehin alınır.
+
+## Aylık Taksit Nasıl Hesaplanır?
+
+Standart kredi formülü (amortisman) uygulanır: Ana para, faiz oranı ve vadeye göre eşit taksitler hesaplanır. [Taşıt Kredisi Hesap Makinemizi](/tr/hesap-makineleri/finans/tasit-kredisi-hesap-makinesi) ile aylık taksit ve toplam maliyeti anında görebilirsiniz.
+
+## Erken Ödeme
+
+Erken ödeme ile toplam faiz düşer. Sözleşmede erken ödeme cezası olup olmadığını kontrol edin. [Kredi Hesap Makinesi](/tr/hesap-makineleri/finans/kredi-hesap-makinesi) ile genel kredi hesaplaması yapabilirsiniz.
+
+## Masraflar
+
+Dosya masrafı, ekspertiz, kasko (bazen zorunlu) gibi ek maliyetler olabilir. Bütçe yaparken bunları da hesaba katın. [Bütçe Hesap Makinesi](/tr/hesap-makineleri/finans/butce-hesap-makinesi) ile aylık bütçenizi planlayın.
+
+## İpuçları
+
+1. Birden fazla bankadan teklif alın.
+2. Toplam maliyeti (faiz + masraflar) karşılaştırın.
+3. Erken ödeme koşullarını okuyun.
+4. Aylık taksidin bütçenize uygun olduğundan emin olun.
+
+[Konut Kredisi Alırken Dikkat Edilecekler](/tr/blog/konut-kredisi-alirken-dikkat-edilecekler-2026) ve [Finansal Terimler Sözlüğü](/tr/rehberler/finansal-terimler-sozlugu) ile ilgili diğer yazılarımıza bakabilirsiniz.
+    `,
+    author: "Calculator360Pro Ekibi",
+    date: "2026-02-01",
+    category: "Finans",
+    tags: ["taşıt kredisi", "araç kredisi", "kredi", "2026"],
   },
 ];
 

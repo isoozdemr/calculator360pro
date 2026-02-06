@@ -1,0 +1,63 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+export function NotFoundContent() {
+  const pathname = usePathname();
+  const isTR = pathname?.startsWith("/tr");
+
+  if (isTR) {
+    return (
+      <div className="min-h-screen bg-[#f8fafc] flex items-center justify-center px-4">
+        <div className="text-center max-w-2xl">
+          <h1 className="text-6xl md:text-8xl font-bold text-[#2563eb] mb-4">404</h1>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#1e293b] mb-4">Sayfa Bulunamadı</h2>
+          <p className="text-lg text-[#64748b] mb-8">
+            Aradığınız sayfa mevcut değil veya taşınmış olabilir.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/tr"
+              className="px-6 py-3 bg-[#2563eb] text-white rounded-lg font-semibold hover:bg-[#1d4ed8] transition-colors"
+            >
+              Ana Sayfaya Dön
+            </Link>
+            <Link
+              href="/tr/hesap-makineleri"
+              className="px-6 py-3 bg-white text-[#2563eb] border-2 border-[#2563eb] rounded-lg font-semibold hover:bg-[#eff6ff] transition-colors"
+            >
+              Hesap Makineleri
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-[#f8fafc] flex items-center justify-center px-4">
+      <div className="text-center max-w-2xl">
+        <h1 className="text-6xl md:text-8xl font-bold text-[#2563eb] mb-4">404</h1>
+        <h2 className="text-3xl md:text-4xl font-bold text-[#1e293b] mb-4">Page Not Found</h2>
+        <p className="text-lg text-[#64748b] mb-8">
+          The page you are looking for doesn&apos;t exist or has been moved.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link
+            href="/"
+            className="px-6 py-3 bg-[#2563eb] text-white rounded-lg font-semibold hover:bg-[#1d4ed8] transition-colors"
+          >
+            Go to Homepage
+          </Link>
+          <Link
+            href="/calculators"
+            className="px-6 py-3 bg-white text-[#2563eb] border-2 border-[#2563eb] rounded-lg font-semibold hover:bg-[#eff6ff] transition-colors"
+          >
+            Browse Calculators
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}

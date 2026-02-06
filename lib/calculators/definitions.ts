@@ -41,9 +41,10 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "percentage difference calculator",
       "find percentage",
       "work out percentage",
+      "free online percentage calculator",
     ],
     metaDescription:
-      "Free percentage calculator to calculate percentages, percentage increase/decrease, and percentage of a number. Fast, accurate, and easy to use for everyone.",
+      "Free online percentage calculator. Calculate percent, increase/decrease, and percentage of a number. No sign-up, instant results. Fast and accurate for everyone.",
     faqs: [
       {
         question: "How do I calculate a percentage?",
@@ -87,9 +88,10 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "BMI calculator lbs",
       "ideal BMI calculator",
       "free BMI calculator",
+      "free online BMI calculator 2026",
     ],
     metaDescription:
-      "Free BMI calculator to calculate your Body Mass Index using metric or imperial units. Get instant results and understand your BMI category and health status.",
+      "Free online BMI calculator. Get instant results for Body Mass Index (metric or imperial). No sign-up. Understand your BMI category and health status.",
     faqs: [
       {
         question: "What is BMI?",
@@ -268,9 +270,10 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "mortgage payoff calculator",
       "refinance calculator",
       "free mortgage calculator",
+      "free online mortgage calculator 2026",
     ],
     metaDescription:
-      "Free mortgage calculator to calculate monthly payments, total interest, and amortization schedule. Perfect for homebuyers planning their home purchase.",
+      "Free online mortgage calculator. Instant results for monthly payments, total interest, and amortization. No sign-up. Perfect for 2026 homebuyers.",
     faqs: [
       {
         question: "How is monthly mortgage payment calculated?",
@@ -406,7 +409,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "tax return calculator",
     ],
     metaDescription:
-      "Free tax calculator to calculate income tax, tax brackets, and effective tax rate. Estimate your tax liability for the current tax year and plan accordingly.",
+      "Free 2026 tax calculator. Calculate income tax, tax brackets, and effective rate. No sign-up, instant results. Estimate liability and plan your tax year.",
     faqs: [
       {
         question: "How is income tax calculated?",
@@ -449,9 +452,10 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "salary to hourly calculator",
       "free salary calculator",
       "monthly salary calculator",
+      "free online salary calculator 2026",
     ],
     metaDescription:
-      "Free salary calculator to calculate take-home pay, net salary, and tax deductions. Convert between hourly, monthly, and annual salary with accurate results.",
+      "Free 2026 salary calculator. Calculate take-home pay, net salary, and tax deductions online. No sign-up. Hourly, monthly, and annual. Instant results.",
     faqs: [
       {
         question: "How do I calculate take-home pay?",

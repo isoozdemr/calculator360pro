@@ -4,9 +4,9 @@ import { getAllCalculators } from "@/lib/calculators/definitions";
 import { CALCULATOR_CATEGORIES, SITE_URL, getCategoryKeyBySlug, getCategorySlugByKey } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "All Calculators",
+  title: "All Calculators 2026 - Finance, Health, Math",
   description:
-    "Browse all free online calculators on Calculator360Pro. Find calculators for finance, health, education, math, and more.",
+    "Browse 30+ free calculators: mortgage, BMI, tax, GPA, percentage & more. Accurate results in seconds. Try Calculator360Pro now!",
   alternates: {
     canonical: `${SITE_URL}/calculators`,
   },

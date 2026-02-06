@@ -33,6 +33,8 @@ const BLOG_CALCULATOR_MAPPINGS: Record<string, string[]> = {
   "salary-negotiation-tips": ["salary-calculator", "tax-calculator", "budget-calculator"],
   "unit-conversion-guide": ["unit-converter", "scientific-calculator"],
   "best-mortgage-calculators-comparison": ["mortgage-calculator", "loan-calculator", "compound-interest-calculator"],
+  "compound-interest-calculator-wealth-building": ["compound-interest-calculator", "investment-calculator", "savings-calculator", "retirement-calculator"],
+  "mortgage-vs-rent-calculator-2026": ["mortgage-calculator", "budget-calculator", "loan-calculator"],
 };
 
 /**
@@ -113,6 +115,50 @@ export function getRelatedBlogPosts(
  */
 export function getRelatedCalculatorsForPost(post: BlogPost): string[] {
   return BLOG_CALCULATOR_MAPPINGS[post.slug] || [];
+}
+
+/**
+ * Get related English blog posts for internal linking
+ * Uses category, tags, and title/description similarity (same logic as TR).
+ *
+ * @param currentPost - The current blog post
+ * @param maxResults - Maximum number of related posts to return (default: 4)
+ * @returns Array of related English blog posts
+ */
+export function getRelatedBlogPostsForPost(
+  currentPost: BlogPost,
+  maxResults: number = 4
+): BlogPost[] {
+  const allPosts = getAllBlogPosts();
+  const otherPosts = allPosts.filter((post) => post.slug !== currentPost.slug);
+  if (otherPosts.length === 0) return [];
+
+  const scoredPosts = otherPosts.map((post) => {
+    let score = 0;
+    if (post.category === currentPost.category) score += 10;
+    const currentTags = currentPost.tags.map((t) => t.toLowerCase());
+    const postTags = post.tags.map((t) => t.toLowerCase());
+    const commonTags = currentTags.filter((tag) => postTags.includes(tag));
+    score += commonTags.length * 5;
+    const currentTitleWords = currentPost.title.toLowerCase().split(/\s+/);
+    const postTitleWords = post.title.toLowerCase().split(/\s+/);
+    const commonTitleWords = currentTitleWords.filter((word) =>
+      word.length > 3 && postTitleWords.includes(word)
+    );
+    score += commonTitleWords.length * 2;
+    const currentDescWords = currentPost.description.toLowerCase().split(/\s+/);
+    const postDescWords = post.description.toLowerCase().split(/\s+/);
+    const commonDescWords = currentDescWords.filter((word) =>
+      word.length > 3 && postDescWords.includes(word)
+    );
+    score += commonDescWords.length;
+    return { post, score };
+  })
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .map((item) => item.post);
+
+  return scoredPosts.slice(0, maxResults);
 }
 
 /**

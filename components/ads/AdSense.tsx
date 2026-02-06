@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * AdSense components. When enabling ads (uncommenting blocks below),
+ * keep the "Advertisement" label for AdSense policy compliance (2026).
+ */
 import { useEffect } from "react";
 
 interface AdSenseProps {

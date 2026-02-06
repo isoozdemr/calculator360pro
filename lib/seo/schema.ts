@@ -2,14 +2,24 @@ import { CalculatorDefinition } from "@/lib/calculators/definitions";
 import { BlogPost } from "@/lib/blog/posts";
 import { SITE_URL, getCategorySlugByKey } from "@/lib/constants";
 
+const FINANCE_APPLICATION_CATEGORY = "FinanceApplication";
+const HEALTH_APPLICATION_CATEGORY = "HealthApplication";
+
 export function generateCalculatorSchema(calculator: CalculatorDefinition) {
+  const categorySlug = getCategorySlugByKey(calculator.category);
+  const url = `${SITE_URL}/calculators/${categorySlug}/${calculator.slug}`;
   const schema: any = {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
+    "@type": "SoftwareApplication",
     "name": calculator.name,
     "description": calculator.description,
-    "url": `${SITE_URL}/calculators/${getCategorySlugByKey(calculator.category)}/${calculator.slug}`,
-    "applicationCategory": "UtilityApplication",
+    "url": url,
+    "applicationCategory":
+      calculator.category === "finance"
+        ? FINANCE_APPLICATION_CATEGORY
+        : calculator.category === "health"
+          ? HEALTH_APPLICATION_CATEGORY
+          : "UtilityApplication",
     "operatingSystem": "Web",
     "offers": {
       "@type": "Offer",
@@ -17,6 +27,14 @@ export function generateCalculatorSchema(calculator: CalculatorDefinition) {
       "priceCurrency": "USD",
     },
   };
+  if (calculator.category === "finance") {
+    schema.about = {
+      "@type": "FinancialProduct",
+      "name": calculator.name,
+      "description": calculator.description,
+      "url": url,
+    };
+  }
 
   // Add softwareVersion (recommended by Google for better rich results)
   // Version can be updated when calculator features change
@@ -37,14 +55,7 @@ export function generateCalculatorSchema(calculator: CalculatorDefinition) {
     "Accurate results",
   ];
 
-  // Add aggregateRating if available (can be enhanced with real user reviews later)
-  schema.aggregateRating = {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "reviewCount": "1250",
-    "bestRating": "5",
-    "worstRating": "1",
-  };
+  // aggregateRating omitted until real user reviews are collected (see generateAggregateRatingSchema)
 
   // Note: screenshot can be added in the future when we have screenshots
 
@@ -229,25 +240,57 @@ export function generateCategoryPageSchema(
   categorySlug: string,
   calculators: Array<{ name: string; slug: string; category: string }>
 ) {
+  const itemList = {
+    "@type": "ItemList" as const,
+    "numberOfItems": calculators.length,
+    "itemListElement": calculators.map((calc, index) => ({
+      "@type": "ListItem" as const,
+      "position": index + 1,
+      "item": {
+        "@type": "SoftwareApplication" as const,
+        "name": calc.name,
+        "url": `${SITE_URL}/calculators/${getCategorySlugByKey(calc.category as any)}/${calc.slug}`,
+      },
+    })),
+  };
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": `${categoryName} Calculators`,
     "description": `Free ${categoryName.toLowerCase()} calculators including ${calculators.slice(0, 3).map(c => c.name).join(", ")} and more.`,
     "url": `${SITE_URL}/calculators/${categorySlug}`,
-    "mainEntity": {
-      "@type": "ItemList",
-      "numberOfItems": calculators.length,
-      "itemListElement": calculators.map((calc, index) => ({
-        "@type": "ListItem",
-        "position": index + 1,
-        "item": {
-          "@type": "WebApplication",
-          "name": calc.name,
-          "url": `${SITE_URL}/calculators/${getCategorySlugByKey(calc.category as any)}/${calc.slug}`,
-        },
-      })),
-    },
+    "mainEntity": itemList,
+  };
+}
+
+/**
+ * Generate FAQPage schema from a list of Q&A (for blog, guides, etc.)
+ */
+export function generateFAQPageSchema(faqs: Array<{ question: string; answer: string }>) {
+  if (!faqs?.length) return null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer,
+      },
+    })),
+  };
+}
+
+/**
+ * Generate SpeakableSpecification for voice search (Article, WebPage)
+ * cssSelector targets the content that can be read aloud
+ */
+export function generateSpeakableSchema(cssSelectors: string[]) {
+  if (!cssSelectors?.length) return undefined;
+  return {
+    "@type": "SpeakableSpecification" as const,
+    cssSelector: cssSelectors,
   };
 }
 
@@ -256,7 +299,7 @@ export function generateCategoryPageSchema(
  * This helps Google understand blog content and display rich results
  */
 export function generateArticleSchema(post: BlogPost) {
-  return {
+  const article: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": post.title,
@@ -286,6 +329,9 @@ export function generateArticleSchema(post: BlogPost) {
     "articleSection": post.category,
     "inLanguage": "en-US",
   };
+  const speakable = generateSpeakableSchema([".prose p", ".prose h2", ".prose h3"]);
+  if (speakable) article.speakable = speakable;
+  return article;
 }
 
 /**
@@ -318,43 +364,94 @@ export function generateBlogBreadcrumbSchema(post: BlogPost) {
   };
 }
 
+/**
+ * Generate CollectionPage + ItemList schema for blog listing pages (/blog, /tr/blog)
+ */
+export function generateBlogListSchema(
+  posts: Array<{ title: string; slug: string; date: string }>,
+  baseUrl: string,
+  language: "en" | "tr"
+) {
+  const itemList = {
+    "@type": "ItemList" as const,
+    "numberOfItems": posts.length,
+    "itemListElement": posts.map((post, index) => ({
+      "@type": "ListItem" as const,
+      "position": index + 1,
+      "item": {
+        "@type": "Article" as const,
+        "name": post.title,
+        "url": `${baseUrl}/${post.slug}`,
+        "datePublished": post.date,
+      },
+    })),
+  };
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": language === "en" ? "Blog - Calculator Guides & Tips" : "Blog - Hesap Makinesi Rehberleri",
+    "url": baseUrl,
+    "inLanguage": language === "en" ? "en-US" : "tr-TR",
+    "mainEntity": itemList,
+  };
+}
+
 // ==========================================
 // TURKISH SCHEMA FUNCTIONS
 // ==========================================
 
 /**
- * Generate Turkish calculator schema
+ * Generate Turkish calculator schema (SoftwareApplication + optional FinancialProduct/health)
  */
 export function generateTurkishCalculatorSchema(
   name: string,
   description: string,
   slug: string,
   categorySlug: string,
-  dateModified: string
+  dateModified: string,
+  category?: "finance" | "health"
 ) {
-  return {
+  const url = `${SITE_URL}/tr/hesap-makineleri/${categorySlug}/${slug}`;
+  const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
+    "@type": "SoftwareApplication",
     "name": name,
     "description": description,
-    "url": `${SITE_URL}/tr/hesap-makineleri/${categorySlug}/${slug}`,
-    "applicationCategory": "UtilityApplication",
+    "url": url,
+    "applicationCategory":
+      category === "finance" ? "FinanceApplication" : category === "health" ? "HealthApplication" : "UtilityApplication",
     "operatingSystem": "Web",
     "inLanguage": "tr",
     "dateModified": dateModified,
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "TRY",
-    },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "TRY" },
     "softwareVersion": "1.0",
     "browserRequirements": "Requires JavaScript. Requires HTML5.",
     "permissions": "No special permissions required.",
     "about": {
-      "@type": "Thing",
+      "@type": category === "finance" ? "FinancialProduct" : "Thing",
       "name": name,
       "description": description,
     },
+  };
+  return schema;
+}
+
+/**
+ * Generate MedicalWebPage schema for health calculator pages (optional second block)
+ */
+export function generateMedicalWebPageSchema(
+  name: string,
+  description: string,
+  url: string
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": name,
+    "description": description,
+    "url": url,
+    "inLanguage": "tr",
+    "maintainer": { "@type": "Organization", "name": "Calculator360Pro", "url": SITE_URL },
   };
 }
 
@@ -460,7 +557,7 @@ export function generateTurkishArticleSchema(
   category: string,
   dateModified?: string
 ) {
-  return {
+  const article: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": title,
@@ -490,4 +587,7 @@ export function generateTurkishArticleSchema(
     "articleSection": category,
     "inLanguage": "tr-TR",
   };
+  const speakable = generateSpeakableSchema([".prose p", ".prose h2", ".prose h3"]);
+  if (speakable) article.speakable = speakable;
+  return article;
 }

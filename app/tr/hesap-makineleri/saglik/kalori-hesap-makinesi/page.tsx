@@ -4,8 +4,8 @@ import { SITE_URL } from "@/lib/constants";
 import { TurkeyCalorieCalculator } from "@/components/calculators/tr/TurkeyCalorieCalculator";
 
 export const metadata: Metadata = {
-  title: "Kalori Hesap Makinesi - Günlük Kalori İhtiyacı 2026",
-  description: "Ücretsiz kalori hesap makinesi. Günlük kalori ihtiyacınızı, BMH ve TDEE değerlerinizi hesaplayın. Türkiye Beslenme Rehberi'ne uygun makro besin önerileri.",
+  title: "Kalori Hesap Makinesi 2026 - BMH ve TDEE Hesapla",
+  description: "Günlük kalori ihtiyacınızı anında hesaplayın! BMH, TDEE ve makro önerileri. Kilo verme/alma için ücretsiz - deneyin.",
   keywords: [
     "kalori hesaplama",
     "günlük kalori ihtiyacı",
@@ -52,36 +52,24 @@ function generateCalorieSchema() {
   };
 }
 
+const kaloriFaqs = [
+  { q: "Günlük kalori ihtiyacı nasıl hesaplanır?", a: "Günlük kalori ihtiyacı, Bazal Metabolizma Hızı (BMH) ile aktivite faktörünün çarpılmasıyla hesaplanır. BMH için Mifflin-St Jeor denklemi kullanılır: Erkek (10×kilo)+(6.25×boy)-(5×yaş)+5, Kadın aynı formül -161." },
+  { q: "Kilo vermek için günde kaç kalori almalıyım?", a: "Sağlıklı kilo vermek için günlük ihtiyacınızın 500 kalori altında kalmanız önerilir; haftada ~0,5 kg kayıp. Kadınlar 1200, erkekler 1500 kalorinin altına düşmemeli." },
+  { q: "BMH (Bazal Metabolizma Hızı) nedir?", a: "BMH, vücudun dinlenme halinde temel yaşamsal fonksiyonlar için harcadığı enerjidir. Solunum, kalp atışı, hücre yenilenmesi bu enerjiye dahildir." },
+  { q: "TDEE ile BMH farkı nedir?", a: "BMH sadece dinlenme metabolizmasıdır. TDEE (Toplam Günlük Enerji Harcaması) BMH + günlük aktivite ve egzersizle harcanan kalorilerin toplamıdır." },
+  { q: "Makro besin dağılımı nasıl olmalı?", a: "Türkiye Beslenme Rehberi'ne göre kabaca: protein %15-20, karbonhidrat %45-55, yağ %25-30. Hedef ve sağlık durumuna göre diyetisyen ile kişiselleştirilebilir." },
+  { q: "Kalori açığı ne kadar güvenli?", a: "Günde 500 kalori açığı çoğu yetişkin için güvenli kabul edilir. Daha büyük açıklar besin eksikliği ve metabolizma yavaşlaması riski taşır; uzman kontrolü önerilir." },
+];
+
 function generateFAQSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Günlük kalori ihtiyacı nasıl hesaplanır?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Günlük kalori ihtiyacı, Bazal Metabolizma Hızı (BMH) ile aktivite faktörünün çarpılmasıyla hesaplanır. BMH için en doğru formül Mifflin-St Jeor denklemidir: Erkek: (10 × kilo) + (6.25 × boy) - (5 × yaş) + 5, Kadın: (10 × kilo) + (6.25 × boy) - (5 × yaş) - 161"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Kilo vermek için günde kaç kalori almalıyım?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sağlıklı kilo vermek için günlük kalori ihtiyacınızın 500 kalori altında kalmanız önerilir. Bu şekilde haftada yaklaşık 0.5 kg verebilirsiniz. Ancak günlük 1200 kalorinin (kadınlar) veya 1500 kalorinin (erkekler) altına düşmemelisiniz."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "BMH (Bazal Metabolizma Hızı) nedir?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "BMH, vücudunuzun hiç hareket etmeden, sadece temel yaşamsal fonksiyonları sürdürmek için harcadığı enerji miktarıdır. Solunum, kalp atışı, hücre yenilenmesi gibi işlemler bu enerjiye dahildir."
-        }
-      }
-    ]
+    "mainEntity": kaloriFaqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+    })),
   };
 }
 
@@ -211,6 +199,20 @@ export default function KaloriHesapMakinesiPage() {
 
             <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
+                Sıkça Sorulan Sorular
+              </h2>
+              <div className="space-y-4 mb-8">
+                {kaloriFaqs.map((faq, i) => (
+                  <div key={i} className="border-b border-[#e2e8f0] pb-4 last:border-0">
+                    <h3 className="font-semibold text-[#1e293b] mb-2">{faq.q}</h3>
+                    <p className="text-[#64748b] text-sm">{faq.a}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
                 Makro Besinler
               </h2>
               <p className="text-[#64748b] mb-4">
@@ -244,6 +246,32 @@ export default function KaloriHesapMakinesiPage() {
 
             <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
+                Kilo Verme ve Kilo Alma Hedefleri
+              </h2>
+              <p className="text-[#64748b] mb-4">
+                Sağlıklı kilo vermek için günlük ihtiyacınızın yaklaşık 500 kalori altında beslenmek 
+                haftada 0,5 kg kayba denk gelir. Kilo almak için 300–500 kalori fazla almanız önerilir. 
+                Günlük 1200 kalorinin (kadınlar) veya 1500 kalorinin (erkekler) altına düşmeyin; 
+                metabolizma yavaşlayabilir ve besin eksikliği riski artar. Kalori açığı ile kilo verme 
+                mantığını detaylı anlamak için <Link href="/tr/blog/kalori-acigi-ile-kilo-verme-nasil-calisir" className="text-[#2563eb] hover:underline font-medium">Kalori Açığı ile Kilo Verme</Link> ve 
+                <Link href="/tr/blog/gunluk-kalori-ihtiyaci-bmr-ve-tdee-nedir" className="text-[#2563eb] hover:underline font-medium"> Günlük Kalori İhtiyacı: BMR ve TDEE</Link> yazılarımızı okuyabilirsiniz.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
+                Türk Mutfağında Kalori Örnekleri
+              </h2>
+              <p className="text-[#64748b] mb-4">
+                Ortalama porsiyonlar (yaklaşık): mercimek çorba 150–200 kcal, döner dürüm 400–600 kcal, 
+                zeytinyağlı yemek 200–300 kcal, börek 250–400 kcal, simit 250 kcal, ayran 60 kcal. 
+                Porsiyon büyüklüğü ve tarife göre değişir; etiket ve uygulamalarla takip edebilirsiniz. 
+                Sağlıklı beslenme rehberi için <Link href="/tr/blog/saglikli-beslenme-who-onerileri-ve-turk-mutfagi" className="text-[#2563eb] hover:underline font-medium">Sağlıklı Beslenme: WHO Önerileri ve Türk Mutfağı</Link> yazımıza bakın.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
                 Sağlıklı Beslenme Önerileri
               </h2>
               <ul className="list-disc list-inside text-[#64748b] space-y-2">
@@ -255,6 +283,9 @@ export default function KaloriHesapMakinesiPage() {
                 <li>Şekerli içecekler ve işlenmiş gıdalardan kaçının</li>
                 <li>Öğün atlamayın, düzenli beslenin</li>
               </ul>
+              <p className="mt-4 text-[#64748b]">
+                Vücut kitle indeksinizi takip etmek için <Link href="/tr/hesap-makineleri/saglik/bmi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">BMI Hesap Makinesi</Link> aracımızı kullanabilirsiniz.
+              </p>
               <p className="mt-4 text-sm text-[#64748b] bg-yellow-50 p-4 rounded-lg">
                 <strong>Önemli:</strong> Bu hesaplama genel bir tahmin sağlar. 
                 Kişisel beslenme planı için bir diyetisyene danışmanızı öneririz.

@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   description: "Terms of Service for Calculator360Pro",
   alternates: {
     canonical: `${SITE_URL}/terms-of-service`,
+    languages: {
+      "en": `${SITE_URL}/terms-of-service`,
+      "tr": `${SITE_URL}/tr/kullanim-kosullari`,
+      "x-default": `${SITE_URL}/terms-of-service`,
+    },
   },
   openGraph: {
     title: "Terms of Service - Calculator360Pro",

@@ -8,14 +8,16 @@ export interface BlogPost {
   dateModified?: string; // Optional: if not provided, uses date
   category: string;
   tags: string[];
+  /** Optional FAQs for FAQPage schema and on-page FAQ block */
+  faqs?: Array<{ question: string; answer: string }>;
 }
 
 export const blogPosts: BlogPost[] = [
   {
     slug: "how-to-calculate-mortgage-payment",
-    title: "How to Calculate Mortgage Payment: A Complete Guide",
+    title: "How to Calculate Mortgage Payment: A Complete Guide (2026)",
     description:
-      "Learn how to calculate your monthly mortgage payment, understand amortization, and make informed home buying decisions.",
+      "Learn how to calculate monthly mortgage payment and amortization for 2026. Step-by-step guide for homebuyers. Use our free mortgage calculator.",
     content: `
 # How to Calculate Mortgage Payment: A Complete Guide
 
@@ -78,6 +80,16 @@ Understanding mortgage calculations empowers you to make better financial decisi
     date: "2026-01-09",
     category: "Finance",
     tags: ["mortgage", "home buying", "finance", "calculators"],
+    faqs: [
+      {
+        question: "How do I calculate my monthly mortgage payment?",
+        answer: "Use the formula M = P[r(1+r)^n]/[(1+r)^n-1], where P is principal, r is monthly interest rate (annual rate ÷ 12), and n is number of payments (term in years × 12). Or use our free mortgage calculator for instant results.",
+      },
+      {
+        question: "What is included in a typical mortgage payment?",
+        answer: "A full mortgage payment usually includes principal, interest, property taxes, homeowners insurance, and sometimes PMI (private mortgage insurance) if your down payment is less than 20%.",
+      },
+    ],
   },
   {
     slug: "understanding-bmi-calculator",
@@ -543,9 +555,9 @@ Understanding loan calculations and using loan calculators effectively helps you
   },
   {
     slug: "tax-calculator-guide",
-    title: "Tax Calculator Guide: How to Calculate Your Income Tax",
+    title: "Tax Calculator Guide: How to Calculate Your Income Tax (2026)",
     description:
-      "Learn how to use a tax calculator to estimate your income tax, understand tax brackets, and plan for tax season with our comprehensive guide.",
+      "Learn how to use a 2026 tax calculator to estimate income tax, understand tax brackets, and plan for tax season. Free guide with step-by-step examples.",
     content: `
 # Tax Calculator Guide: How to Calculate Your Income Tax
 
@@ -710,9 +722,9 @@ Understanding income tax calculations and using tax calculators effectively help
   },
   {
     slug: "salary-calculator-guide",
-    title: "Salary Calculator Guide: How to Calculate Take-Home Pay",
+    title: "Salary Calculator Guide: How to Calculate Take-Home Pay (2026)",
     description:
-      "Learn how to use a salary calculator to calculate your take-home pay, understand tax deductions, and convert between hourly, monthly, and annual salary.",
+      "Use a 2026 salary calculator to find take-home pay, tax deductions, and convert hourly to annual. Free guide with examples for budgeting and offers.",
     content: `
 # Salary Calculator Guide: How to Calculate Take-Home Pay
 
@@ -2821,6 +2833,72 @@ Choosing the best mortgage calculator depends on your specific needs, from quick
     date: "2026-01-16",
     category: "Finance",
     tags: ["mortgage calculator", "mortgage comparison", "home buying", "finance", "calculators"],
+  },
+  {
+    slug: "compound-interest-calculator-wealth-building",
+    title: "How to Use Compound Interest Calculator for Wealth Building",
+    description: "Use compound interest to grow wealth. Formula, examples, and strategies. Free compound interest and investment calculators.",
+    content: `
+# How to Use Compound Interest Calculator for Wealth Building
+
+Compound interest is often called the eighth wonder of the world: your money earns returns, and those returns earn returns. Over time, this creates significant growth.
+
+## Why Compound Interest Matters
+
+With simple interest, you earn only on the principal. With compound interest, you earn on principal plus accumulated interest. The longer the time and the higher the rate, the larger the gap.
+
+## The Formula
+
+A = P(1 + r/n)^(nt). P = principal, r = annual rate (decimal), n = compounding frequency per year, t = years. Example: $10,000 at 6% annual, compounded monthly for 10 years gives A = 10000(1 + 0.06/12)^120 ≈ $18,194.
+
+## Strategies for Wealth Building
+
+1. Start early: time in the market beats timing the market.
+2. Reinvest dividends and interest when possible.
+3. Use tax-advantaged accounts (IRA, 401k) to compound without drag.
+4. Increase savings rate over time.
+
+Use our [Compound Interest Calculator](/calculators/finance/compound-interest-calculator) to model different scenarios. The [Investment Calculator](/calculators/finance/investment-calculator) and [Savings Calculator](/calculators/finance/savings-calculator) help with regular contributions. Read our [Compound Interest Explained](/blog/compound-interest-explained) and [Retirement Planning Guide](/blog/retirement-planning-guide) for more.
+    `,
+    author: "Calculator360Pro Team",
+    date: "2026-02-01",
+    category: "Finance",
+    tags: ["compound interest", "wealth building", "investment", "savings", "calculator"],
+  },
+  {
+    slug: "mortgage-vs-rent-calculator-2026",
+    title: "Mortgage vs Rent Calculator: 2026 Analysis",
+    description: "Should you buy or rent? Compare monthly costs, long-term equity, and flexibility. Use our mortgage and budget calculators.",
+    content: `
+# Mortgage vs Rent Calculator: 2026 Analysis
+
+Deciding between buying a home and renting depends on monthly cost, long-term wealth, and lifestyle. Calculators help compare scenarios.
+
+## Monthly Cost Comparison
+
+Rent: one monthly payment, often including some utilities. Mortgage: principal, interest, property tax, insurance, and possibly PMI. Maintenance and HOA add to ownership cost. Use our [Mortgage Calculator](/calculators/finance/mortgage-calculator) to get a monthly payment estimate.
+
+## Long-Term Equity
+
+Buying builds equity as you pay down the loan and if the property appreciates. Renting leaves no equity but frees capital for other investments. The "breakeven" period varies by market and rates.
+
+## Flexibility
+
+Renting offers mobility; buying ties you to a location and selling costs. Job or family changes can make flexibility valuable.
+
+## Using Calculators
+
+1. Enter your target home price, down payment, rate, and term in the [Mortgage Calculator](/calculators/finance/mortgage-calculator).
+2. Add taxes, insurance, and maintenance for total ownership cost.
+3. Compare to your current or expected rent.
+4. Use the [Budget Calculator](/calculators/finance/budget-calculator) to see how each option fits your budget.
+
+For more, see [How to Calculate Mortgage Payment](/blog/how-to-calculate-mortgage-payment) and [Budget Planning 101](/blog/budget-planning-101).
+    `,
+    author: "Calculator360Pro Team",
+    date: "2026-02-01",
+    category: "Finance",
+    tags: ["mortgage", "rent", "buy vs rent", "2026", "calculator"],
   },
 ];
 

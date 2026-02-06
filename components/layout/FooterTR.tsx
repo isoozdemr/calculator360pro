@@ -160,7 +160,7 @@ export function FooterTR() {
                 </Link>
               </li>
               <li>
-                <Link href="/tr/hakkimizda" className="hover:text-white transition-colors">
+                <Link href="/tr/iletisim" className="hover:text-white transition-colors">
                   İletişim
                 </Link>
               </li>

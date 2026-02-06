@@ -31,6 +31,7 @@ import { getRelatedBlogPosts } from "@/lib/blog/related";
 import { Breadcrumbs } from "@/components/SEO/Breadcrumbs";
 import { SocialShare } from "@/components/SEO/SocialShare";
 import { StarRating } from "@/components/engagement/StarRating";
+import { PrintPdfButton } from "@/components/engagement/PrintPdfButton";
 import { CalculationHistory } from "@/components/engagement/CalculationHistory";
 import { getCategorySlugByKey } from "@/lib/constants";
 import { optimizeFAQAnswer } from "@/lib/seo/featured-snippets";
@@ -115,11 +116,21 @@ export function CalculatorPage({ calculator }: CalculatorPageProps) {
               className="prose prose-slate max-w-none"
               dangerouslySetInnerHTML={{ __html: calculator.content }}
             />
-            <SocialShare
-              url={`/calculators/${getCategorySlugByKey(calculator.category)}/${calculator.slug}`}
-              title={calculator.name}
-              description={calculator.metaDescription}
-            />
+            <div className="flex flex-wrap gap-3 mt-4">
+              <PrintPdfButton />
+              <SocialShare
+                url={`/calculators/${getCategorySlugByKey(calculator.category)}/${calculator.slug}`}
+                title={calculator.name}
+                description={calculator.metaDescription}
+              />
+            </div>
+            <p className="text-sm text-[#64748b] mt-3">
+              Embed this calculator: use{" "}
+              <code className="bg-[#f1f5f9] px-1 rounded">
+                https://calculator360pro.com/embed/calculators/{getCategorySlugByKey(calculator.category)}/{calculator.slug}
+              </code>{" "}
+              in an iframe.
+            </p>
           </div>
         )}
 

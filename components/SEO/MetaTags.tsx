@@ -3,6 +3,7 @@ import { CalculatorDefinition } from "@/lib/calculators/definitions";
 import { BlogPost } from "@/lib/blog/posts";
 import { SITE_URL, getCategorySlugByKey } from "@/lib/constants";
 import { URL_MAPPINGS } from "@/lib/seo/url-mappings";
+import { getTrBlogSlugForEn } from "@/lib/blog/slug-mappings";
 
 export function generateCalculatorMetadata(
   calculator: CalculatorDefinition
@@ -106,15 +107,24 @@ export function generateCalculatorMetadata(
 
 export function generateBlogPostMetadata(post: BlogPost): Metadata {
   const url = `${SITE_URL}/blog/${post.slug}`;
+  const trSlug = getTrBlogSlugForEn(post.slug);
+  const alternates: Metadata["alternates"] = {
+    canonical: url,
+    languages: {
+      en: url,
+      "x-default": url,
+    },
+  };
+  if (trSlug) {
+    alternates.languages!.tr = `${SITE_URL}/tr/blog/${trSlug}`;
+  }
 
   return {
     title: `${post.title} | Calculator360Pro Blog`,
     description: post.description,
     keywords: post.tags.join(", "),
     authors: [{ name: post.author }],
-    alternates: {
-      canonical: url,
-    },
+    alternates,
     openGraph: {
       title: post.title,
       description: post.description,

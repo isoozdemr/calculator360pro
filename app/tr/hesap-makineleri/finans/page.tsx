@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://calculator360pro.com/tr/hesap-makineleri/finans",
     languages: {
+      "en": "https://calculator360pro.com/calculators/finance",
       "tr": "https://calculator360pro.com/tr/hesap-makineleri/finans",
     },
   },
@@ -46,6 +47,60 @@ const calculators = [
     slug: "emeklilik-hesap-makinesi",
     description: "SGK emeklilik yaşı, prim gün sayısı ve BES hesaplama",
     icon: "🏖️",
+  },
+  {
+    name: "Bileşik Faiz Hesap Makinesi",
+    slug: "bilesik-faiz-hesap-makinesi",
+    description: "Bileşik faiz ile yatırım ve birikim getirisi hesaplama",
+    icon: "📈",
+  },
+  {
+    name: "Yatırım Hesap Makinesi",
+    slug: "yatirim-hesap-makinesi",
+    description: "Yatırım getirisi ve aylık yatırım planı hesaplama",
+    icon: "💹",
+  },
+  {
+    name: "Birikim Hesap Makinesi",
+    slug: "birikim-hesap-makinesi",
+    description: "Hedef birikim için aylık tasarruf hesaplama",
+    icon: "🐷",
+  },
+  {
+    name: "Bütçe Hesap Makinesi",
+    slug: "butce-hesap-makinesi",
+    description: "Gelir-gider dengesi ve bütçe planlama",
+    icon: "📊",
+  },
+  {
+    name: "Taşıt Kredisi Hesap Makinesi",
+    slug: "tasit-kredisi-hesap-makinesi",
+    description: "Araç kredisi aylık taksit ve toplam maliyet hesaplama",
+    icon: "🚗",
+  },
+  {
+    name: "Döviz Çevirici",
+    slug: "doviz-cevirici",
+    description: "USD, EUR, TRY ve 150+ para birimi çevirisi",
+    icon: "💱",
+  },
+  {
+    name: "Öğrenim Kredisi Hesap Makinesi",
+    slug: "ogrenim-kredisi-hesap-makinesi",
+    description: "Öğrenim kredisi aylık taksit ve toplam faiz hesaplama",
+    icon: "🎓",
+  },
+  {
+    name: "Kredi Kartı Borç Hesap Makinesi",
+    slug: "kredi-karti-borc-hesap-makinesi",
+    description: "Kredi kartı borcunu ne zaman bitirirsiniz? Aylık ödeme ve faiz",
+    icon: "💳",
+  },
+  {
+    name: "Bahşiş Hesap Makinesi",
+    slug: "bahsis-hesap-makinesi",
+    description: "Restoran bahşiş ve kişi başı ücret hesaplama",
+    icon: "🍽️",
   },
 ];
 
@@ -287,6 +342,39 @@ export default function FinanceCalculatorsPage() {
               </h3>
               <p className="text-sm text-[#64748b]">
                 Emeklilik yaşı, prim günü ve emeklilik şartları
+              </p>
+            </Link>
+            <Link
+              href="/tr/rehberler/kredi-notu-nasil-yukseltilir"
+              className="block p-4 bg-[#f8fafc] rounded-lg border border-[#e2e8f0] hover:border-[#2563eb] transition-colors"
+            >
+              <h3 className="font-semibold text-[#1e293b] mb-2">
+                Kredi Notu Nasıl Yükseltilir?
+              </h3>
+              <p className="text-sm text-[#64748b]">
+                Findeks kredi notu ve yükseltme ipuçları
+              </p>
+            </Link>
+            <Link
+              href="/tr/rehberler/vergi-indirimleri-rehberi-2026"
+              className="block p-4 bg-[#f8fafc] rounded-lg border border-[#e2e8f0] hover:border-[#2563eb] transition-colors"
+            >
+              <h3 className="font-semibold text-[#1e293b] mb-2">
+                2026 Vergi İndirimleri Rehberi
+              </h3>
+              <p className="text-sm text-[#64748b]">
+                Eğitim, sağlık, BES ve bağış indirimleri
+              </p>
+            </Link>
+            <Link
+              href="/tr/rehberler/yatirim-baslangic-rehberi-2026"
+              className="block p-4 bg-[#f8fafc] rounded-lg border border-[#e2e8f0] hover:border-[#2563eb] transition-colors"
+            >
+              <h3 className="font-semibold text-[#1e293b] mb-2">
+                Yatırım Başlangıç Rehberi 2026
+              </h3>
+              <p className="text-sm text-[#64748b]">
+                Yatırıma nereden başlanır, adımlar ve araçlar
               </p>
             </Link>
           </div>

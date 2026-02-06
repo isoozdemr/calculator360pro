@@ -14,20 +14,26 @@ interface LayoutWrapperProps {
 export function LayoutWrapper({ children }: LayoutWrapperProps) {
   const pathname = usePathname();
   const isTurkish = pathname.startsWith("/tr");
+  const isEmbed = pathname.startsWith("/embed");
+
+  if (isEmbed) {
+    return <>{children}</>;
+  }
 
   return (
     <>
-      {/* Language Banner - only show on English pages for Turkish users */}
-      {!isTurkish && <LanguageBanner targetLocale="tr" />}
-      
-      {/* Navigation */}
-      {isTurkish ? <NavigationTR /> : <Navigation />}
-      
+      <div className="no-print">
+        {/* Language Banner - only show on English pages for Turkish users */}
+        {!isTurkish && <LanguageBanner targetLocale="tr" />}
+        {/* Navigation */}
+        {isTurkish ? <NavigationTR /> : <Navigation />}
+      </div>
       {/* Main Content */}
       {children}
-      
-      {/* Footer */}
-      {isTurkish ? <FooterTR /> : <Footer />}
+      <div className="no-print">
+        {/* Footer */}
+        {isTurkish ? <FooterTR /> : <Footer />}
+      </div>
     </>
   );
 }

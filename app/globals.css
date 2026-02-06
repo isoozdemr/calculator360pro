@@ -109,3 +109,10 @@ html {
 .prose a:hover {
   text-decoration: underline;
 }
+
+/* Print / Save as PDF: hide nav and footer */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}

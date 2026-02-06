@@ -4,8 +4,8 @@ import { SITE_URL } from "@/lib/constants";
 import { TurkeyBMICalculator } from "@/components/calculators/tr/TurkeyBMICalculator";
 
 export const metadata: Metadata = {
-  title: "BMI Hesap Makinesi - Vücut Kitle İndeksi Hesaplama 2026",
-  description: "Ücretsiz BMI (Vücut Kitle İndeksi) hesap makinesi. Kilonuz ve boyunuzla BMI değerinizi hesaplayın. WHO standartlarına uygun kategoriler ve Türkiye'ye özel sağlık bilgileri.",
+  title: "BMI Hesap Makinesi 2026 - İdeal Kilo Hesapla",
+  description: "Kilonuz ve boyunuzla BMI değerinizi saniyede hesaplayın! WHO kategorileri, ideal kilo aralığı. Ücretsiz - hemen deneyin.",
   keywords: [
     "bmi hesaplama",
     "vücut kitle indeksi",
@@ -51,36 +51,24 @@ function generateBMISchema() {
   };
 }
 
+const bmiFaqs = [
+  { q: "BMI nedir?", a: "BMI (Body Mass Index - Vücut Kitle İndeksi), kilo ve boy kullanılarak hesaplanan bir değerdir. Formül: BMI = Kilo (kg) / Boy² (m²). WHO tarafından kabul edilen standart kategorilere göre değerlendirilir." },
+  { q: "Normal BMI aralığı nedir?", a: "WHO standartlarına göre normal BMI aralığı 18.5 ile 24.9 arasındadır. 18.5'in altı zayıf, 25-29.9 arası fazla kilolu, 30 ve üzeri obez olarak değerlendirilir." },
+  { q: "Türkiye'de obezite oranı nedir?", a: "T.C. Sağlık Bakanlığı verilerine göre Türkiye'de yetişkin nüfusunun yaklaşık %30'u obez kategorisindedir. Bu oran Avrupa ortalamasının üzerindedir." },
+  { q: "Çocuklar için BMI nasıl yorumlanır?", a: "Çocuklarda BMI yaş ve cinsiyete göre persentil (yüzdelik dilim) tabloları ile değerlendirilir. Yetişkin kategorileri kullanılmaz. Yorumlama için çocuk doktoruna danışın." },
+  { q: "BMI sporcular için güvenilir mi?", a: "Kas kütlesi yüksek sporcularda BMI yanıltıcı olabilir; vücut yağ oranı ölçümü daha anlamlıdır. Bel çevresi ve kan değerleri ile birlikte değerlendirilmesi önerilir." },
+  { q: "İdeal kilo nasıl hesaplanır?", a: "İdeal kilo için hedef BMI 22 kabul edilir: İdeal kilo = 22 × Boy² (m²). Örneğin 1,70 m boy için yaklaşık 63,6 kg. Kişiye göre 18,5–24,9 aralığında değişebilir." },
+];
+
 function generateFAQSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "BMI nedir?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "BMI (Body Mass Index - Vücut Kitle İndeksi), kilo ve boy kullanılarak hesaplanan bir değerdir. Formül: BMI = Kilo (kg) / Boy² (m²). WHO tarafından kabul edilen standart kategorilere göre değerlendirilir."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Normal BMI aralığı nedir?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "WHO standartlarına göre normal BMI aralığı 18.5 ile 24.9 arasındadır. 18.5'in altı zayıf, 25-29.9 arası fazla kilolu, 30 ve üzeri obez olarak değerlendirilir."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Türkiye'de obezite oranı nedir?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "T.C. Sağlık Bakanlığı verilerine göre Türkiye'de yetişkin nüfusunun yaklaşık %30'u obez kategorisindedir. Bu oran Avrupa ortalamasının üzerindedir."
-        }
-      }
-    ]
+    "mainEntity": bmiFaqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+    })),
   };
 }
 
@@ -220,6 +208,21 @@ export default function BMIHesapMakinesiPage() {
               </div>
             </div>
 
+            {/* FAQ Section */}
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6 mb-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
+                Sıkça Sorulan Sorular
+              </h2>
+              <div className="space-y-4">
+                {bmiFaqs.map((faq, i) => (
+                  <div key={i} className="border-b border-[#e2e8f0] pb-4 last:border-0">
+                    <h3 className="font-semibold text-[#1e293b] mb-2">{faq.q}</h3>
+                    <p className="text-[#64748b] text-sm">{faq.a}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             {/* Related Blog Post */}
             <div className="bg-[#f8fafc] rounded-lg border-2 border-[#e2e8f0] p-6 mb-6">
               <h2 className="text-xl font-bold text-[#1e293b] mb-4">
@@ -236,6 +239,70 @@ export default function BMIHesapMakinesiPage() {
                   Yazıyı Oku →
                 </span>
               </Link>
+            </div>
+
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
+                BMI ve Sağlık Riskleri
+              </h2>
+              <p className="text-[#64748b] mb-4">
+                Yüksek BMI değerleri (25 ve üzeri) kalp hastalığı, tip 2 diyabet, yüksek tansiyon, 
+                uyku apnesi ve eklem problemleri riskini artırır. Düşük BMI (18.5 altı) ise 
+                bağışıklık zayıflığı, kemik erimesi ve yetersiz beslenme ile ilişkilendirilir. 
+                T.C. Sağlık Bakanlığı verilerine göre Türkiye&apos;de yetişkin obezite oranı 
+                son yıllarda artış göstermektedir; bu nedenle düzenli BMI takibi önemlidir.
+              </p>
+              <p className="text-[#64748b] mb-4">
+                İdeal kilo aralığınızı bilmek, hem kilo verme hem kilo alma hedeflerinizi 
+                sağlıklı sınırlar içinde tutmanıza yardımcı olur. Günlük kalori ihtiyacınızı 
+                hesaplamak için <Link href="/tr/hesap-makineleri/saglik/kalori-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Kalori Hesap Makinesi</Link> aracımızı 
+                kullanabilirsiniz.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
+                Çocuklar ve Ergenler İçin BMI
+              </h2>
+              <p className="text-[#64748b] mb-4">
+                Yetişkin BMI kategorileri 18 yaş altı için doğrudan uygulanmaz. Çocuklarda ve 
+                ergenlerde BMI, yaş ve cinsiyete göre yüzdelik dilimler (persentil) ile 
+                değerlendirilir. Sağlık Bakanlığı ve WHO çocuk büyüme eğrilerini referans alır. 
+                Çocuğunuzun BMI&apos;sini hesapladıktan sonra yorumlama için bir çocuk doktoruna 
+                veya aile hekiminize danışmanız önerilir.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
+                Gerçek Hayat Örnekleri
+              </h2>
+              <p className="text-[#64748b] mb-4">
+                Örnek 1: Boyu 170 cm, kilosu 75 kg olan bir kişi için BMI = 75 / (1,7 × 1,7) = 25,95 
+                (fazla kilolu kategorisi). Sağlıklı aralığa (18,5–24,9) girmek için yaklaşık 
+                72 kg civarına inmesi önerilir. Örnek 2: 165 cm, 55 kg → BMI = 20,2 (normal). 
+                Bu değer ideal aralıkta kabul edilir.
+              </p>
+              <p className="text-[#64748b] mb-4">
+                Sporcularda kas kütlesi fazla olduğundan BMI yüksek çıkabilir; bu durumda 
+                vücut yağ oranı ölçümü daha anlamlıdır. Yaşlı bireylerde ise kas kaybı 
+                nedeniyle BMI normal çıksa bile kas zayıflığı olabilir.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
+                Uzman İpuçları
+              </h2>
+              <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-4">
+                <li>BMI&apos;nizi 3–6 ayda bir aynı tartı ve mezura ile ölçün; sabah aç karnına ölçüm daha tutarlıdır.</li>
+                <li>Bel çevrenizi de takip edin: erkeklerde 94 cm, kadınlarda 80 cm üzeri risk artışı gösterebilir.</li>
+                <li>Kilo verme hedeflerinde haftada 0,5–1 kg kayıp sağlıklı kabul edilir; ani diyetlerden kaçının.</li>
+                <li>Düzenli fiziksel aktivite ve dengeli beslenme, BMI&apos;yi sağlıklı aralıkta tutmanın temelidir.</li>
+              </ul>
+              <p className="text-[#64748b]">
+                Detaylı rehber için <Link href="/tr/blog/saglikli-beslenme-who-onerileri-ve-turk-mutfagi" className="text-[#2563eb] hover:underline font-medium">Sağlıklı Beslenme: WHO Önerileri ve Türk Mutfağı</Link> yazımızı okuyabilirsiniz.
+              </p>
             </div>
 
             <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">

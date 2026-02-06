@@ -4,8 +4,8 @@ import { SITE_URL } from "@/lib/constants";
 import { TurkeyDiscountCalculator } from "@/components/calculators/tr/TurkeyDiscountCalculator";
 
 export const metadata: Metadata = {
-  title: "İndirim Hesap Makinesi - İndirim Hesaplama 2026 | Calculator360Pro",
-  description: "Ücretsiz indirim hesap makinesi. İndirimli fiyat, indirim tutarı ve tasarruf hesaplama. Alışverişte akıllı kararlar verin.",
+  title: "İndirim Hesap Makinesi 2026 - Tasarruf Hesapla",
+  description: "İndirimli fiyat ve tasarruf anında! Yüzde indirimden son fiyata. Ücretsiz - alışverişte akıllı karar verin.",
   keywords: [
     "indirim hesaplama",
     "indirim hesap makinesi",
@@ -49,6 +49,14 @@ const faqs = [
   {
     question: "İndirimli fiyat ne zaman avantajlıdır?",
     answer: "İndirimli fiyat, orijinal fiyatın altında olduğunda avantajlıdır. Ancak ihtiyacınız olmayan ürünler için indirim bile olsa gereksiz harcama yapmamaya dikkat edin. İndirim oranı yüksek olsa bile, gerçekten ihtiyacınız olan ürünleri tercih edin.",
+  },
+  {
+    question: "KDV dahil indirimli fiyat nasıl hesaplanır?",
+    answer: "Önce indirim uygulayın, sonra KDV ekleyin veya KDV dahil fiyattan indirimi düşünün. Örnek: 100 TL + %20 KDV = 120 TL. %10 indirim: 120 × 0,9 = 108 TL indirimli KDV dahil fiyat.",
+  },
+  {
+    question: "En iyi indirim dönemleri ne zaman?",
+    answer: "Sezon sonu, Black Friday, bayram kampanyaları ve yıl sonu indirimleri genelde daha yüksek oranlıdır. Fiyat geçmişini takip ederek gerçek indirimi değerlendirin.",
   },
 ];
 
@@ -245,6 +253,37 @@ export default function IndirimHesapMakinesiPage() {
                 <li>İndirimli fiyatı diğer mağazalarla karşılaştırın</li>
                 <li>Kampanya tarihlerini takip edin - sezon sonu indirimleri genellikle daha yüksektir</li>
               </ul>
+
+              <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">
+                KDV ve İndirim
+              </h3>
+              <p className="text-[#64748b] mb-4 leading-relaxed">
+                Türkiye&apos;de birçok ürün %18 veya %20 KDV&apos;ye tabidir. İndirimli fiyat hesaplarken KDV&apos;nin 
+                indirim öncesi mi sonrası mı uygulandığını kontrol edin. Çoğu mağaza indirimli fiyat üzerinden 
+                KDV hesaplar. Vergi hesaplamaları için <Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Vergi Hesap Makinesi</Link> aracımızı kullanabilirsiniz.
+              </p>
+
+              <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">
+                İndirim Stratejileri ve Tasarruf
+              </h3>
+              <p className="text-[#64748b] mb-4 leading-relaxed">
+                Black Friday, sezon sonu ve bayram kampanyalarında indirim oranları yüksek olabilir. 
+                Ancak &quot;önce fiyatı yükseltip sonra indirim&quot; taktiğine dikkat edin; gerçek tasarrufu 
+                anlamak için benzer ürünlerin piyasa fiyatını karşılaştırın. Yüzde hesaplama için 
+                <Link href="/tr/hesap-makineleri/matematik/yuzde-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium"> Yüzde Hesap Makinesi</Link> ile 
+                indirim oranını ve son fiyatı anında bulabilirsiniz. Bütçe planlaması yaparken 
+                <Link href="/tr/blog/aylik-butce-nasil-planlanir-tasarruf-yontemleri" className="text-[#2563eb] hover:underline font-medium"> Aylık Bütçe Nasıl Planlanır?</Link> yazımızdan faydalanın.
+              </p>
+
+              <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">
+                Gerçek Hayat Örnekleri
+              </h3>
+              <p className="text-[#64748b] mb-4 leading-relaxed">
+                1.500 TL&apos;lik bir üründe %25 indirim: İndirim tutarı 375 TL, ödeyeceğiniz 1.125 TL. 
+                3.000 TL&apos;lik konut kredisi masraflarında %10 indirim kampanyası: 300 TL tasarruf. 
+                Toplu alımlarda &quot;2 al 1 öde&quot; kampanyası aslında yaklaşık %33 indirime denk gelir; 
+                birim fiyatı hesaplayarak diğer indirimlerle karşılaştırabilirsiniz.
+              </p>
             </article>
           </div>
         </section>

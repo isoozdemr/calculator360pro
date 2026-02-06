@@ -4,8 +4,8 @@ import { SITE_URL } from "@/lib/constants";
 import { TurkeyAgeCalculator } from "@/components/calculators/tr/TurkeyAgeCalculator";
 
 export const metadata: Metadata = {
-  title: "Yaş Hesap Makinesi - Yaş Hesaplama 2026",
-  description: "Ücretsiz yaş hesap makinesi. Doğum tarihinizden yaşınızı yıl, ay, hafta ve gün olarak hesaplayın. Burç bilgisi ve doğum günü detayları ile.",
+  title: "Yaş Hesap Makinesi 2026 - Doğum Tarihinden Hesapla",
+  description: "Doğum tarihinizden yaşınızı anında hesaplayın! Yıl, ay, gün, burç. Ehliyet ve emeklilik yaşı için ücretsiz - deneyin.",
   keywords: [
     "yaş hesaplama",
     "yaş hesap makinesi",
@@ -51,36 +51,24 @@ function generateAgeSchema() {
   };
 }
 
+const yasFaqs = [
+  { q: "Yaş nasıl hesaplanır?", a: "Yaş hesaplama, doğum tarihinizden bugünkü tarihe kadar geçen sürenin yıl, ay ve gün olarak hesaplanmasıdır. Resmi işlemlerde doğum yılından bugünkü yıl çıkarılır, ancak doğum günü henüz geçmediyse 1 yıl eksiltilir." },
+  { q: "Türkiye'de ehliyet almak için yaş sınırı nedir?", a: "Türkiye'de B sınıfı (otomobil) ehliyet alabilmek için 18 yaşını doldurmuş olmak gerekir. A1 motosiklet ehliyeti için 16 yaş, A2 için 18 yaş, A sınıfsız için 24 yaş şartı aranır." },
+  { q: "Türkiye'de evlilik yaşı nedir?", a: "Türk Medeni Kanunu'na göre evlilik yaşı 18'dir. Ancak hakim kararı ve yasal temsilcinin izni ile 17 yaşında evlenilebilir." },
+  { q: "Emeklilik yaşı nasıl hesaplanır?", a: "Emeklilik yaşı doğum yılına ve sigorta başlangıcına göre değişir. 1999 sonrası için 58-65 yaş aralığı uygulanır. SGK emeklilik tablosundan tam yaşınızı öğrenebilirsiniz." },
+  { q: "Oy kullanma yaşı kaçtır?", a: "Türkiye'de seçimlerde oy kullanabilmek için 18 yaşını doldurmuş olmak gerekir. Yaş, seçim günü itibarıyla hesaplanır." },
+  { q: "65 yaş kartı nedir?", a: "65 yaşını doldurmuş vatandaşlar belediyelerden ücretsiz ulaşım kartı alabilir. Yaş doğum tarihine göre resmi olarak hesaplanır." },
+];
+
 function generateFAQSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Yaş nasıl hesaplanır?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yaş hesaplama, doğum tarihinizden bugünkü tarihe kadar geçen sürenin yıl, ay ve gün olarak hesaplanmasıdır. Resmi işlemlerde doğum yılından bugünkü yıl çıkarılır, ancak doğum günü henüz geçmediyse 1 yıl eksiltilir."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Türkiye'de ehliyet almak için yaş sınırı nedir?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Türkiye'de B sınıfı (otomobil) ehliyet alabilmek için 18 yaşını doldurmuş olmak gerekir. A1 motosiklet ehliyeti için 16 yaş, A2 için 18 yaş, A sınıfsız için 24 yaş şartı aranır."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Türkiye'de evlilik yaşı nedir?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Türk Medeni Kanunu'na göre evlilik yaşı 18'dir. Ancak hakim kararı ve yasal temsilcinin izni ile 17 yaşında evlenilebilir."
-        }
-      }
-    ]
+    "mainEntity": yasFaqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+    })),
   };
 }
 
@@ -233,6 +221,56 @@ export default function YasHesapMakinesiPage() {
                   </div>
                 ))}
               </div>
+            </div>
+
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
+                Resmi İşlemlerde Yaş Hesaplama
+              </h2>
+              <p className="text-[#64748b] mb-4">
+                Nüfus müdürlükleri ve resmi kurumlar yaşı doğum yılına göre hesaplar; doğum günü 
+                geçmeden bir yıl eksiltilir. Örneğin 15 Mart 2008 doğumlu biri, 10 Mart 2026&apos;da 
+                17 yaşında sayılır; 16 Mart 2026&apos;da 18 yaşını doldurur. Emeklilik yaşı hesaplamak 
+                için <Link href="/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Emeklilik Hesap Makinesi</Link> ve 
+                <Link href="/tr/rehberler/sgk-emeklilik-tablosu" className="text-[#2563eb] hover:underline font-medium"> SGK Emeklilik Tablosu</Link> rehberimizi kullanabilirsiniz.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
+                İki Tarih Arası Süre Hesaplama
+              </h2>
+              <p className="text-[#64748b] mb-4">
+                Yaşınızı gün, ay ve yıl olarak görmenin yanı sıra iki tarih arasındaki toplam gün 
+                sayısını da bilmek isteyebilirsiniz. Örneğin ehliyet almak için 18 yaşını 
+                doldurduğunuz günü hesaplamak veya bir etkinliğe kalan günü bulmak için 
+                <Link href="/tr/hesap-makineleri/tarih-zaman/tarih-farki-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium"> Tarih Farkı Hesap Makinesi</Link> aracımızı kullanabilirsiniz.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
+                Sıkça Sorulan Sorular
+              </h2>
+              <div className="space-y-4 mb-8">
+                {yasFaqs.map((faq, i) => (
+                  <div key={i} className="border-b border-[#e2e8f0] pb-4 last:border-0">
+                    <h3 className="font-semibold text-[#1e293b] mb-2">{faq.q}</h3>
+                    <p className="text-[#64748b] text-sm">{faq.a}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
+                Uzman İpuçları
+              </h2>
+              <ul className="list-disc list-inside text-[#64748b] space-y-2">
+                <li>Uluslararası başvurularda doğum tarihinizi GG/AA/YYYY formatında yazın; karışıklığı önler.</li>
+                <li>Yaş sınırı gerektiren işlemlerde (ehliyet, oy, evlilik) tam yaşınızı doğum gününüzden itibaren dikkate alın.</li>
+                <li>Emeklilik ve SGK prim günü hesaplamaları için <Link href="/tr/blog/sgk-prim-gunu-hesaplama-emeklilik-icin-kac-gun-gerekli" className="text-[#2563eb] hover:underline font-medium">SGK Prim Günü Hesaplama</Link> yazımıza bakın.</li>
+              </ul>
             </div>
           </div>
         </div>

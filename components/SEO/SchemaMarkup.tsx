@@ -3,9 +3,10 @@ import {
   generateCalculatorSchema,
   generateFAQSchema,
   generateBreadcrumbSchema,
+  generateMedicalWebPageSchema,
 } from "@/lib/seo/schema";
 import { generateHowToSchema } from "@/lib/seo/howto-schema";
-import { CALCULATOR_CATEGORIES } from "@/lib/constants";
+import { CALCULATOR_CATEGORIES, SITE_URL } from "@/lib/constants";
 
 interface SchemaMarkupProps {
   calculator: CalculatorDefinition;
@@ -25,13 +26,22 @@ export function SchemaMarkup({ calculator }: SchemaMarkupProps) {
     calculator.slug
   );
 
+  const calculatorUrl = `${SITE_URL}/calculators/${categorySlug}/${calculator.slug}`;
+  const medicalSchema = calculator.category === "health" ? generateMedicalWebPageSchema(calculator.name, calculator.description, calculatorUrl) : null;
+
   return (
     <>
-      {/* WebApplication Schema */}
+      {/* SoftwareApplication Schema (with FinancialProduct about for finance) */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(calculatorSchema) }}
       />
+      {medicalSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalSchema) }}
+        />
+      )}
       {/* FAQ Schema for rich results */}
       {faqSchema && (
         <script
