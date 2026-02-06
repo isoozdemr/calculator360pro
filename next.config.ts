@@ -75,10 +75,14 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // Sitemap caching
+      // Sitemap caching and Content-Type so browsers render as XML
       {
         source: "/sitemap.xml",
         headers: [
+          {
+            key: "Content-Type",
+            value: "application/xml; charset=utf-8",
+          },
           {
             key: "Cache-Control",
             value: "public, max-age=3600, s-maxage=86400",
