@@ -5,15 +5,24 @@ import { SITE_URL } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Finans Hesap Makineleri | Vergi, Maaş, Kredi Hesaplama",
   description: "Türkiye'ye özel finans hesap makineleri. Vergi hesaplama, maaş hesaplama, konut kredisi, tüketici kredisi ve emeklilik hesaplama araçları.",
+  keywords: [
+    "finans hesap makineleri",
+    "vergi hesaplama",
+    "maaş hesaplama",
+    "konut kredisi hesaplama",
+    "kredi hesaplama",
+    "emeklilik hesaplama",
+    "BES hesaplama",
+  ],
   robots: {
     index: true,
     follow: true,
   },
   alternates: {
-    canonical: "https://calculator360pro.com/tr/hesap-makineleri/finans",
+    canonical: `${SITE_URL}/tr/hesap-makineleri/finans`,
     languages: {
-      "en": "https://calculator360pro.com/calculators/finance",
-      "tr": "https://calculator360pro.com/tr/hesap-makineleri/finans",
+      en: `${SITE_URL}/calculators/finance`,
+      tr: `${SITE_URL}/tr/hesap-makineleri/finans`,
     },
   },
 };

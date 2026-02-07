@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { TurkeyCarLoanCalculator } from "@/components/calculators/tr";
 
@@ -84,6 +85,30 @@ export default function TasitKredisiHesapMakinesiPage() {
           <TurkeyCarLoanCalculator />
           <div className="mt-12 space-y-8">
             <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Taşıt Kredisi Nedir?</h2>
+              <p className="text-[#64748b] mb-4">
+                Taşıt kredisi, araç (otomobil, motosiklet vb.) satın almak için bankalardan 
+                çekilen tüketici kredisidir. Konut kredisinden farklı olarak taşıt kredilerinde 
+                <strong> KKDF ve BSMV</strong> uygulanır; bu nedenle nominal faizin üzerinde 
+                efektif maliyet oluşur. Bu hesap makinesi aylık taksit ve toplam geri ödeme 
+                tutarını hesaplar.
+              </p>
+              <p className="text-[#64748b] mb-4">
+                <Link href="/tr/hesap-makineleri/finans/kredi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Kredi hesap makinesi</Link> ile 
+                ihtiyaç kredisi maliyetini, <Link href="/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">konut kredisi hesap makinesi</Link> ile 
+                ev kredisi taksitini karşılaştırabilirsiniz.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">İpuçları ve Öneriler</h2>
+              <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-4">
+                <li>Efektif faiz oranına bakın; KKDF ve BSMV dahil toplam maliyeti bu araç ile hesaplayın.</li>
+                <li>Peşinatı artırmak taksit ve toplam faizi düşürür. <Link href="/tr/hesap-makineleri/finans/birikim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Birikim hesap makinesi</Link> ile peşinat hedefi koyun.</li>
+                <li>Aylık taksidin gelirinizin %20–25&apos;ini geçmemesine dikkat edin. <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Maaş hesap makinesi</Link> ve <Link href="/tr/hesap-makineleri/finans/butce-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">bütçe hesap makinesi</Link> kullanın.</li>
+                <li>Erken kapatma koşullarını sözleşmede kontrol edin.</li>
+              </ul>
+            </div>
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Taşıt Kredisi ve Türkiye Mevzuatı</h2>
               <p className="text-[#64748b] mb-4">
                 Taşıt kredilerinde bankalar KKDF ve BSMV uygular. Efektif faiz oranı reklam faizinden yüksektir. 
@@ -103,23 +128,7 @@ export default function TasitKredisiHesapMakinesiPage() {
                 ))}
               </div>
             </div>
-            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
-              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">İlgili Hesap Makineleri</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <Link href="/tr/hesap-makineleri/finans/kredi-hesap-makinesi" className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors">
-                  <h4 className="font-semibold text-[#1e293b]">Kredi Hesap Makinesi</h4>
-                  <p className="text-sm text-[#64748b]">İhtiyaç kredisi KKDF/BSMV</p>
-                </Link>
-                <Link href="/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi" className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors">
-                  <h4 className="font-semibold text-[#1e293b]">Konut Kredisi Hesap Makinesi</h4>
-                  <p className="text-sm text-[#64748b]">Mortgage hesaplama</p>
-                </Link>
-                <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors">
-                  <h4 className="font-semibold text-[#1e293b]">Maaş Hesap Makinesi</h4>
-                  <p className="text-sm text-[#64748b]">Taksit ödeme kapasitesi</p>
-                </Link>
-              </div>
-            </div>
+            <RelatedCalculatorsTR categorySlug="finans" currentSlug="tasit-kredisi-hesap-makinesi" maxResults={6} />
           </div>
         </div>
       </div>

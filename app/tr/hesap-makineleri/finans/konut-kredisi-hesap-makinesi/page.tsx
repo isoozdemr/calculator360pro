@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 import { TurkeyMortgageCalculator } from "@/components/calculators/tr/TurkeyMortgageCalculator";
+import { SITE_URL } from "@/lib/constants";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 import Link from "next/link";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 
 export const metadata: Metadata = {
@@ -18,10 +20,10 @@ export const metadata: Metadata = {
     "mortgage calculator türkiye",
   ],
   alternates: {
-    canonical: "https://calculator360pro.com/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi",
+    canonical: `${SITE_URL}/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi`,
     languages: {
-      "en": "https://calculator360pro.com/calculators/finance/mortgage-calculator",
-      "tr": "https://calculator360pro.com/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi",
+      en: `${SITE_URL}/calculators/finance/mortgage-calculator`,
+      tr: `${SITE_URL}/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi`,
     },
   },
   openGraph: {
@@ -105,8 +107,59 @@ export default function TurkeyMortgageCalculatorPage() {
 
           {/* SEO Content */}
           <div className="mt-12 prose prose-slate max-w-none">
-            <h2>Türkiye&apos;de Konut Kredisi Rehberi 2026</h2>
-            <p>
+            <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Konut Kredisi Nedir?</h2>
+            <p className="text-[#64748b] leading-relaxed mb-4">
+              Konut kredisi (mortgage), satın alacağınız konutun bedelini karşılamak üzere bankalardan 
+              çekilen, uzun vadeli ve genellikle konutun ipoteği ile güvence altına alınan bir kredi türüdür. 
+              Türkiye&apos;de konut kredileri, Tüketici Kredisi ve Konut Kredisi mevzuatına tabidir; 
+              konut kredilerinde KKDF ve BSMV uygulanmadığı için tüketici veya taşıt kredisine göre 
+              daha düşük maliyetlidir. Kredi tutarı, konut değerinin belirli bir oranı (genelde en fazla %80) 
+              ile sınırlıdır; kalan kısım peşinat olarak ödenir.
+            </p>
+            <p className="text-[#64748b] leading-relaxed mb-6">
+              Aylık taksitler, anapara ve faizin birlikte ödendiği <strong>eşit taksitli (annuite)</strong> 
+              yapıda hesaplanır. Vade uzadıkça aylık taksit düşer ancak toplam faiz maliyeti artar. 
+              <Link href="/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium"> Konut kredisi hesap makinesi</Link> ile 
+              farklı vade ve faiz oranlarını deneyerek bütçenize uygun senaryoyu bulabilirsiniz.
+            </p>
+
+            <h2 className="text-2xl font-bold text-[#1e293b] mt-8 mb-4">Konut Kredisi Nasıl Hesaplanır?</h2>
+            <p className="text-[#64748b] leading-relaxed mb-4">
+              Aylık taksit, kalan anapara üzerinden uygulanan aylık faiz oranı ve anapara taksiti 
+              ile hesaplanır. Formül: <strong>Aylık Taksit = Kredi Tutarı × [i(1+i)^n] / [(1+i)^n − 1]</strong> 
+              burada i aylık faiz oranı, n toplam taksit sayısıdır. İlk aylarda taksidin büyük kısmı 
+              faiz, son aylara doğru anapara payı artar. Bu sayfadaki hesap makinesi bu formülü 
+              kullanarak aylık taksit, toplam geri ödeme ve isteğe bağlı tapu harcı dahil maliyeti 
+              gösterir. Faiz oranını bankanızın teklifine göre girmeniz yeterlidir.
+            </p>
+            <p className="text-[#64748b] leading-relaxed mb-6">
+              Peşinat ne kadar yüksek olursa kredi tutarı ve dolayısıyla faiz yükü o kadar azalır. 
+              <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium"> Maaş hesap makinesi</Link> ile 
+              elinize geçen net maaşı, <Link href="/tr/hesap-makineleri/finans/butce-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">bütçe hesap makinesi</Link> ile 
+              aylık taksit kapasitenizi değerlendirebilirsiniz.
+            </p>
+
+            <h2 className="text-2xl font-bold text-[#1e293b] mt-8 mb-4">2026 Güncel Faiz ve Tapu Oranları</h2>
+            <p className="text-[#64748b] leading-relaxed mb-4">
+              2026 yılında konut kredisi faiz oranları bankalara ve vadeye göre değişir; TCMB 
+              politika faizi ve piyasa koşulları oranları etkiler. Faiz oranını bu hesap makinesine 
+              girerek güncel tekliflere yakın senaryoları test edebilirsiniz. Tapu harcı oranı 
+              konut alım satımında toplam %4&apos;tür (alıcı ve satıcı payları genelde %2+%2); 
+              tek taraf ödemesinde alıcı %4 ödeyebilir. KKDF ve BSMV konut kredisinde %0&apos;dır; 
+              bu da konut kredisini ihtiyaç kredisinden daha avantajlı kılar.
+            </p>
+
+            <h2 className="text-2xl font-bold text-[#1e293b] mt-8 mb-4">İpuçları ve Öneriler</h2>
+            <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-6">
+              <li><strong>Peşinatı artırın:</strong> Mümkünse %20&apos;nin üzerinde peşinat vererek kredi tutarını ve toplam faizi düşürün. <Link href="/tr/hesap-makineleri/finans/birikim-hesap-makinesi" className="text-[#2563eb] hover:underline">Birikim hesap makinesi</Link> ile hedef peşinat için aylık tasarruf planı yapabilirsiniz.</li>
+              <li><strong>Taksit/gelir oranı:</strong> Aylık taksidin, hanenizin net gelirinin %40&apos;ını geçmemesine dikkat edin. <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline">Maaş hesap makinesi</Link> ile net gelirinizi hesaplayın.</li>
+              <li><strong>Vade seçimi:</strong> Uzun vade aylık taksiti düşürür ama toplam faiz artar. Kısa vade tercih edebiliyorsanız toplam maliyet düşer.</li>
+              <li><strong>Erken ödeme:</strong> Sözleşmedeki erken kapatma koşullarını okuyun; cezai şart varsa ileride erken kapatma planınızı buna göre yapın.</li>
+              <li><strong>Vergi ve BES:</strong> Gelir vergisi diliminizi <Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline">vergi hesap makinesi</Link> ile kontrol edebilir; emeklilik birikimi için <Link href="/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi" className="text-[#2563eb] hover:underline">BES devlet katkısı hesap makinesi</Link> kullanabilirsiniz.</li>
+            </ul>
+
+            <h2 className="text-2xl font-bold text-[#1e293b] mt-8 mb-4">Türkiye&apos;de Konut Kredisi Rehberi 2026</h2>
+            <p className="text-[#64748b] leading-relaxed mb-4">
               Konut kredisi (mortgage), ev satın almak için bankalardan alınan uzun vadeli 
               bir kredi türüdür. Türkiye&apos;de konut kredileri genellikle 1-20 yıl vade ile 
               sunulmaktadır.
@@ -198,27 +251,8 @@ export default function TurkeyMortgageCalculatorPage() {
             </Link>
           </div>
 
-          {/* Related Calculators */}
-          <div className="mt-12 bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
-            <h3 className="text-xl font-bold text-[#1e293b] mb-4">
-              İlgili Hesap Makineleri
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Link 
-                href="/tr/hesap-makineleri/finans/kredi-hesap-makinesi"
-                className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors"
-              >
-                <h4 className="font-semibold text-[#1e293b]">Kredi Hesap Makinesi</h4>
-                <p className="text-sm text-[#64748b]">İhtiyaç ve taşıt kredisi hesaplama</p>
-              </Link>
-              <Link 
-                href="/tr/hesap-makineleri/finans/maas-hesap-makinesi"
-                className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors"
-              >
-                <h4 className="font-semibold text-[#1e293b]">Maaş Hesap Makinesi</h4>
-                <p className="text-sm text-[#64748b]">Kredi ödeme kapasitesi için maaş hesaplama</p>
-              </Link>
-            </div>
+          <div className="mt-12">
+            <RelatedCalculatorsTR categorySlug="finans" currentSlug="konut-kredisi-hesap-makinesi" maxResults={6} />
           </div>
         </div>
       </div>

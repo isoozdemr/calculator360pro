@@ -1,10 +1,12 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { generateSimpleBreadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: "Gizlilik Politikası",
   description: "Calculator360Pro Gizlilik Politikası - Kişisel verilerinizin nasıl toplandığı, kullanıldığı ve korunduğu hakkında bilgi.",
+  keywords: ["gizlilik politikası", "gizlilik", "veri koruma", "Calculator360Pro gizlilik", "çerez politikası"],
   alternates: {
     canonical: `${SITE_URL}/tr/gizlilik-politikasi`,
     languages: {
@@ -33,12 +35,18 @@ export const metadata: Metadata = {
   },
 };
 
+const gizlilikBreadcrumbSchema = generateSimpleBreadcrumbSchema([
+  { name: "Ana Sayfa", path: "/tr" },
+  { name: "Gizlilik Politikası", path: "/tr/gizlilik-politikasi" },
+]);
+
 export default function GizlilikPolitikasiPage() {
   return (
     <div className="min-h-screen bg-[#f8fafc] py-16">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(gizlilikBreadcrumbSchema) }} />
       <div className="container mx-auto px-4 max-w-4xl">
         {/* Breadcrumb */}
-        <nav className="mb-6 text-sm">
+        <nav className="mb-6 text-sm" aria-label="Breadcrumb">
           <ol className="flex items-center space-x-2 text-[#64748b]">
             <li>
               <Link href="/tr" className="hover:text-[#2563eb]">

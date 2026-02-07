@@ -61,6 +61,7 @@ export const URL_MAPPINGS: Record<string, string> = {
   "/calculators/finance/student-loan-calculator": "/tr/hesap-makineleri/finans/ogrenim-kredisi-hesap-makinesi",
   "/calculators/finance/credit-card-payoff-calculator": "/tr/hesap-makineleri/finans/kredi-karti-borc-hesap-makinesi",
   "/calculators/finance/tip-calculator": "/tr/hesap-makineleri/finans/bahsis-hesap-makinesi",
+  "/calculators/finance/inflation-purchasing-power-calculator": "/tr/hesap-makineleri/finans/enflasyon-alim-gucu-hesap-makinesi",
   
   // Education Calculator pages
   "/calculators/education/gpa-calculator": "/tr/hesap-makineleri/egitim/not-ortalamasi-hesap-makinesi",

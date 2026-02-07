@@ -365,6 +365,25 @@ export function generateBlogBreadcrumbSchema(post: BlogPost) {
 }
 
 /**
+ * Generate BreadcrumbList schema for generic pages (guides, calculators list, etc.)
+ * @param items - Array of { name, path } where path is relative to site root (e.g. "/guides", "/guides/financial-terms-glossary")
+ */
+export function generateSimpleBreadcrumbSchema(
+  items: Array<{ name: string; path: string }>
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: `${SITE_URL}${item.path.startsWith("/") ? item.path : `/${item.path}`}`,
+    })),
+  };
+}
+
+/**
  * Generate CollectionPage + ItemList schema for blog listing pages (/blog, /tr/blog)
  */
 export function generateBlogListSchema(

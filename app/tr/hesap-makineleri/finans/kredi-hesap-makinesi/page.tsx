@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { TurkeyLoanCalculator } from "@/components/calculators/tr/TurkeyLoanCalculator";
 import { DATA_VERSION, CONSUMER_LOAN_FEES_2026 } from "@/lib/data/turkey-2026-data";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { generateTurkishHowToSchema, generateTurkishBreadcrumbSchema } from "@/lib/seo/schema";
 import { SITE_URL } from "@/lib/constants";
 import Link from "next/link";
@@ -20,10 +21,10 @@ export const metadata: Metadata = {
     "kredi hesap makinesi 2026",
   ],
   alternates: {
-    canonical: "https://calculator360pro.com/tr/hesap-makineleri/finans/kredi-hesap-makinesi",
+    canonical: `${SITE_URL}/tr/hesap-makineleri/finans/kredi-hesap-makinesi`,
     languages: {
-      "en": "https://calculator360pro.com/calculators/finance/loan-calculator",
-      "tr": "https://calculator360pro.com/tr/hesap-makineleri/finans/kredi-hesap-makinesi",
+      en: `${SITE_URL}/calculators/finance/loan-calculator`,
+      tr: `${SITE_URL}/tr/hesap-makineleri/finans/kredi-hesap-makinesi`,
     },
   },
   openGraph: {
@@ -116,8 +117,33 @@ export default function TurkeyLoanCalculatorPage() {
 
           {/* SEO Content */}
           <div className="mt-12 prose prose-slate max-w-none">
-            <h2>Türkiye&apos;de Tüketici Kredileri 2026</h2>
-            <p>
+            <h2 className="text-2xl font-bold text-[#1e293b] mb-4">İhtiyaç Kredisi (Tüketici Kredisi) Nedir?</h2>
+            <p className="text-[#64748b] leading-relaxed mb-4">
+              İhtiyaç kredisi, kişisel veya ailevi ihtiyaçlarınızı karşılamak için bankalardan 
+              aldığınız, genellikle 12–60 ay vadeli tüketici kredisidir. Taşıt ve eğitim kredisi 
+              de tüketici kredisi kapsamındadır; konut kredisi ise ayrı bir rejimle KKDF/BSMV 
+              muafiyetine sahiptir. Tüketici kredilerinde faiz üzerinden <strong>KKDF</strong> (Kaynak 
+              Kullanımı Destekleme Fonu) ve <strong>BSMV</strong> (Banka ve Sigorta Muameleleri Vergisi) 
+              uygulanır; bu yüzden bankanın söylediği nominal faiz oranının üzerinde bir efektif 
+              maliyet oluşur. <Link href="/tr/hesap-makineleri/finans/kredi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Kredi hesap makinesi</Link> ile 
+              KKDF ve BSMV dahil aylık taksit ve toplam maliyeti hesaplayabilirsiniz.
+            </p>
+            <p className="text-[#64748b] leading-relaxed mb-6">
+              Konut alımı için <Link href="/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">konut kredisi hesap makinesi</Link>, 
+              aylık ödeme kapasitenizi görmek için <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">maaş hesap makinesi</Link> ve 
+              <Link href="/tr/hesap-makineleri/finans/butce-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">bütçe hesap makinesi</Link> kullanabilirsiniz.
+            </p>
+
+            <h2 className="text-2xl font-bold text-[#1e293b] mt-8 mb-4">İpuçları ve Öneriler</h2>
+            <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-6">
+              <li><strong>Efektif faize bakın:</strong> Nominal faiz + KKDF + BSMV ile gerçek maliyeti bu hesap makinesinde görün.</li>
+              <li><strong>Kısa vade tercih edin:</strong> Vade kısaldıkça toplam faiz düşer; aylık taksit bütçenizi zorlamayacak en kısa vadeyi seçin.</li>
+              <li><strong>Konut için konut kredisi:</strong> Ev alacaksanız konut kredisi KKDF/BSMV&apos;den muaftır; <Link href="/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi" className="text-[#2563eb] hover:underline">konut kredisi hesap makinesi</Link> ile karşılaştırın.</li>
+              <li><strong>Vergi ve BES:</strong> <Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline">Vergi hesap makinesi</Link> ile diliminizi, <Link href="/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi" className="text-[#2563eb] hover:underline">BES devlet katkısı hesap makinesi</Link> ile birikim senaryonuzu değerlendirin.</li>
+            </ul>
+
+            <h2 className="text-2xl font-bold text-[#1e293b] mt-8 mb-4">Türkiye&apos;de Tüketici Kredileri 2026</h2>
+            <p className="text-[#64748b] leading-relaxed mb-4">
               Tüketici kredileri, kişisel ihtiyaçlar için bankalardan alınan kredilerdir. 
               Türkiye&apos;de bu krediler üzerinden KKDF ve BSMV gibi ek vergiler alınmaktadır.
             </p>
@@ -194,27 +220,8 @@ export default function TurkeyLoanCalculatorPage() {
             </p>
           </div>
 
-          {/* Related Calculators */}
-          <div className="mt-12 bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
-            <h3 className="text-xl font-bold text-[#1e293b] mb-4">
-              İlgili Hesap Makineleri
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Link 
-                href="/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi"
-                className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors"
-              >
-                <h4 className="font-semibold text-[#1e293b]">Konut Kredisi Hesap Makinesi</h4>
-                <p className="text-sm text-[#64748b]">Mortgage ve ev kredisi hesaplama</p>
-              </Link>
-              <Link 
-                href="/tr/hesap-makineleri/finans/maas-hesap-makinesi"
-                className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors"
-              >
-                <h4 className="font-semibold text-[#1e293b]">Maaş Hesap Makinesi</h4>
-                <p className="text-sm text-[#64748b]">Ödeme kapasitesi için net maaş hesaplama</p>
-              </Link>
-            </div>
+          <div className="mt-12">
+            <RelatedCalculatorsTR categorySlug="finans" currentSlug="kredi-hesap-makinesi" maxResults={6} />
           </div>
         </div>
       </div>

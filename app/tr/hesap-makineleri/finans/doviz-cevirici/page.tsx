@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { TurkeyCurrencyConverter } from "@/components/calculators/tr/TurkeyCurrencyConverter";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
@@ -192,6 +193,22 @@ export default function DovizCeviriciPage() {
           <div className="container mx-auto px-4 max-w-4xl">
             <article className="prose prose-slate max-w-none">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
+                Döviz Çevirici Nedir?
+              </h2>
+              <p className="text-[#64748b] mb-6 leading-relaxed">
+                Döviz çevirici, bir para birimindeki tutarı başka bir para birimine (örn. USD → TRY) 
+                anında çeviren araçtır. Döviz kuru, piyasa koşullarına göre sürekli değişir; bu araç 
+                referans kurlarla tahmini çeviri yapar. Seyahat, online alışveriş ve yatırım 
+                planlaması için kullanılır. Gerçek işlemlerde banka/döviz bürosu kurları ve 
+                komisyonlar geçerlidir.
+              </p>
+              <p className="text-[#64748b] mb-6 leading-relaxed">
+                Enflasyon ve alım gücü: <Link href="/tr/hesap-makineleri/finans/enflasyon-alim-gucu-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">enflasyon hesap makinesi</Link>, 
+                yatırım getirisi: <Link href="/tr/hesap-makineleri/finans/yatirim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">yatırım hesap makinesi</Link>, 
+                birikim: <Link href="/tr/hesap-makineleri/finans/birikim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">birikim hesap makinesi</Link>.
+              </p>
+
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
                 Döviz Çevirici Rehberi
               </h2>
               
@@ -270,6 +287,16 @@ export default function DovizCeviriciPage() {
                 <li>İş seyahatleri ve gider raporları için kur hesaplama</li>
               </ul>
 
+              <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">
+                İpuçları ve İlgili Araçlar
+              </h3>
+              <ul className="list-disc list-inside text-[#64748b] mb-4 space-y-2">
+                <li>Kurlar dalgalı; panik alım yerine bir süre takip edip ortalama seviyede işlem yapın.</li>
+                <li>Alış–satış farkı (kur marjı) bankaya göre değişir; gerçek işlem öncesi güncel kurları kontrol edin.</li>
+                <li><Link href="/tr/hesap-makineleri/finans/butce-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Bütçe hesap makinesi</Link> ile seyahat harcamalarını, <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">maaş hesap makinesi</Link> ile gelirinizi planlayın.</li>
+                <li>Döviz geliri vergiye tabi olabilir: <Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">vergi hesap makinesi</Link>.</li>
+              </ul>
+
               <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mt-8">
                 <p className="text-sm text-blue-800">
                   <strong>Önemli Not:</strong> Bu hesap makinesindeki döviz kurları yaklaşık değerlerdir. 
@@ -301,50 +328,9 @@ export default function DovizCeviriciPage() {
           </div>
         </section>
 
-        {/* Related Calculators */}
         <section className="py-12 bg-[#f8fafc]">
           <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
-              İlgili Hesap Makineleri
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <Link 
-                href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi"
-                className="bg-white p-6 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors group"
-              >
-                <div className="text-3xl mb-3">💰</div>
-                <h3 className="font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2">
-                  Vergi Hesap Makinesi
-                </h3>
-                <p className="text-sm text-[#64748b]">
-                  Gelir vergisi hesaplama
-                </p>
-              </Link>
-              <Link 
-                href="/tr/hesap-makineleri/finans/maas-hesap-makinesi"
-                className="bg-white p-6 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors group"
-              >
-                <div className="text-3xl mb-3">💵</div>
-                <h3 className="font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2">
-                  Maaş Hesap Makinesi
-                </h3>
-                <p className="text-sm text-[#64748b]">
-                  Brüt-net maaş hesaplama
-                </p>
-              </Link>
-              <Link 
-                href="/tr/blog"
-                className="bg-white p-6 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors group"
-              >
-                <div className="text-3xl mb-3">📝</div>
-                <h3 className="font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2">
-                  Blog Yazıları
-                </h3>
-                <p className="text-sm text-[#64748b]">
-                  Finans rehberleri ve ipuçları
-                </p>
-              </Link>
-            </div>
+            <RelatedCalculatorsTR categorySlug="finans" currentSlug="doviz-cevirici" maxResults={6} />
           </div>
         </section>
       </div>

@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { TurkeyUnitConverter } from "@/components/calculators/tr";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
@@ -73,8 +74,32 @@ export default function BirimCeviriciPage() {
           <h1 className="text-3xl font-bold text-[#1e293b] mb-4">Birim Cevirici</h1>
           <p className="text-[#64748b] mb-8">Uzunluk, ağırlık, hacim ve diğer birim dönüşümleri.</p>
           <TurkeyUnitConverter />
-          <div className="mt-12 bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
-            <h2 className="text-xl font-bold text-[#1e293b] mb-4">Sıkça Sorulan Sorular</h2>
+          <div className="mt-12 space-y-8">
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Birim Çevirici Nedir?</h2>
+              <p className="text-[#64748b] mb-4">
+                Birim çevirici, farklı ölçüm sistemleri arasında (metrik, imperial) dönüşüm yapan araçtır. 
+                Uzunluk (metre–foot), ağırlık (kg–pound), hacim (litre–gallon), alan ve sıcaklık 
+                (Celsius–Fahrenheit) gibi kategorilerde tek ekranda hızlı çevirim yapılır. Günlük 
+                hayat, seyahat, tarif ve bilimsel hesaplamalarda kullanılır.
+              </p>
+              <p className="text-[#64748b]">
+                <Link href="/tr/hesap-makineleri/matematik/yuzde-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Yüzde hesap makinesi</Link>, 
+                <Link href="/tr/hesap-makineleri/matematik/bilimsel-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">bilimsel hesap makinesi</Link>, 
+                <Link href="/tr/hesap-makineleri/matematik/indirim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">indirim hesap makinesi</Link>.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">İpuçları ve İlgili Araçlar</h2>
+              <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-4">
+                <li>Metrik (SI): metre, kg, litre. Imperial: foot, pound, gallon (ABD/UK).</li>
+                <li>Tarif ve mutfak: hacim ve ağırlık çevirileri sık kullanılır.</li>
+                <li><Link href="/tr/hesap-makineleri/matematik/yuzde-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Yüzde hesap makinesi</Link> ile oran, <Link href="/tr/hesap-makineleri/finans/doviz-cevirici" className="text-[#2563eb] hover:underline font-medium">döviz çevirici</Link> ile para birimi dönüşümü.</li>
+                <li><Link href="/tr/hesap-makineleri/tarih-zaman/tarih-farki-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Tarih farkı hesap makinesi</Link> ile süre hesaplama.</li>
+              </ul>
+            </div>
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-xl font-bold text-[#1e293b] mb-4">Sıkça Sorulan Sorular</h2>
             {faqs.map((f, i) => (
               <div key={i} className="mb-4"><h3 className="font-semibold text-[#1e293b]">{f.question}</h3><p className="text-sm text-[#64748b]">{f.answer}</p></div>
             ))}
@@ -83,6 +108,10 @@ export default function BirimCeviriciPage() {
               <Link href="/tr/hesap-makineleri/matematik/bilimsel-hesap-makinesi" className="text-[#2563eb] hover:underline">Bilimsel Hesap Makinesi</Link>.
             </p>
           </div>
+          </div>
+          <section className="mt-12">
+            <RelatedCalculatorsTR categorySlug="matematik" currentSlug="birim-cevirici" maxResults={6} />
+          </section>
         </div>
       </div>
     </>

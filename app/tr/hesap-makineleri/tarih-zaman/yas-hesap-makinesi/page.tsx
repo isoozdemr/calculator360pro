@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { TurkeyAgeCalculator } from "@/components/calculators/tr/TurkeyAgeCalculator";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
@@ -249,6 +250,10 @@ export default function YasHesapMakinesiPage() {
                 <li>Emeklilik ve SGK prim günü hesaplamaları için <Link href="/tr/blog/sgk-prim-gunu-hesaplama-emeklilik-icin-kac-gun-gerekli" className="text-[#2563eb] hover:underline font-medium">SGK Prim Günü Hesaplama</Link> yazımıza bakın.</li>
               </ul>
             </div>
+
+            <section className="py-12 bg-[#f8fafc] mt-8">
+              <RelatedCalculatorsTR categorySlug="tarih-zaman" currentSlug="yas-hesap-makinesi" maxResults={6} />
+            </section>
           </div>
         </div>
       </div>

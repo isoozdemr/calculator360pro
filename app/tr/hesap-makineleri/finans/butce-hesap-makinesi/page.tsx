@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { TurkeyBudgetCalculator } from "@/components/calculators/tr";
 
@@ -85,13 +86,37 @@ export default function ButceHesapMakinesiPage() {
           <TurkeyBudgetCalculator />
           <div className="mt-12 space-y-8">
             <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
-              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Bütçe Planlama İpuçları</h2>
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Bütçe Nedir?</h2>
               <p className="text-[#64748b] mb-4">
-                <Link href="/tr/blog/aylik-butce-nasil-planlanir-tasarruf-yontemleri" className="text-[#2563eb] hover:underline font-medium">Aylık Bütçe Nasıl Planlanır?</Link> 
-                yazımızda tasarruf yöntemlerini anlattık. 
-                <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium mx-1">Maaş Hesap Makinesi</Link> 
-                ile net gelirinizi, <Link href="/tr/hesap-makineleri/finans/birikim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Birikim Hesap Makinesi</Link> ile hedef birikiminizi hesaplayabilirsiniz.
+                Bütçe, belirli bir dönemde (genelde aylık) gelirleriniz ile giderlerinizi 
+                dengeleyerek tasarruf veya borçlanma durumunuzu görmenizi sağlayan bir plandır. 
+                Gelir &gt; gider ise tasarruf, gider &gt; gelir ise açık oluşur. Bu hesap makinesi 
+                aylık gelir ve gider kalemlerinizi girerek bütçe dengesini ve tasarruf potansiyelini 
+                hesaplar.
               </p>
+              <p className="text-[#64748b] mb-4">
+                Net gelirinizi bilmek için <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">maaş hesap makinesi</Link>, 
+                hedef birikim için <Link href="/tr/hesap-makineleri/finans/birikim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">birikim hesap makinesi</Link> ve 
+                kredi taksiti planlaması için <Link href="/tr/hesap-makineleri/finans/kredi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">kredi hesap makinesi</Link> kullanabilirsiniz.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Bütçe Nasıl Hesaplanır?</h2>
+              <p className="text-[#64748b] mb-4">
+                Aylık toplam gelirinizi (maaş, yan gelir vb.) ve giderlerinizi (kira, faturalar, 
+                ulaşım, beslenme, kredi taksitleri vb.) girin. Hesap makinesi gelir − gider ile 
+                bütçe fazlası veya açığını gösterir. Düzenli takip ile hangi kalemlerde kısıntı 
+                yapabileceğinizi görebilirsiniz.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Bütçe Planlama İpuçları</h2>
+              <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-4">
+                <li><Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Maaş hesap makinesi</Link> ile net gelirinizi doğru girin; vergi ve SGK sonrası elinize geçen tutarı kullanın.</li>
+                <li>Giderleri kategorilere ayırın (konut, ulaşım, beslenme, kredi, tasarruf). <Link href="/tr/hesap-makineleri/finans/birikim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Birikim hesap makinesi</Link> ile hedefe ulaşmak için aylık tasarruf ihtiyacınızı hesaplayın.</li>
+                <li>Kredi taksitlerinizi <Link href="/tr/hesap-makineleri/finans/kredi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">kredi</Link> veya <Link href="/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">konut kredisi hesap makinesi</Link> ile kontrol edin.</li>
+                <li><Link href="/tr/blog/aylik-butce-nasil-planlanir-tasarruf-yontemleri" className="text-[#2563eb] hover:underline font-medium">Aylık Bütçe Nasıl Planlanır?</Link> yazımızda tasarruf yöntemlerini okuyun.</li>
+              </ul>
             </div>
             <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Sıkça Sorulan Sorular</h2>
@@ -104,23 +129,7 @@ export default function ButceHesapMakinesiPage() {
                 ))}
               </div>
             </div>
-            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
-              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">İlgili Hesap Makineleri</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors">
-                  <h4 className="font-semibold text-[#1e293b]">Maaş Hesap Makinesi</h4>
-                  <p className="text-sm text-[#64748b]">Net gelir hesaplama</p>
-                </Link>
-                <Link href="/tr/hesap-makineleri/finans/birikim-hesap-makinesi" className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors">
-                  <h4 className="font-semibold text-[#1e293b]">Birikim Hesap Makinesi</h4>
-                  <p className="text-sm text-[#64748b]">Hedef birikim</p>
-                </Link>
-                <Link href="/tr/hesap-makineleri/finans/kredi-hesap-makinesi" className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors">
-                  <h4 className="font-semibold text-[#1e293b]">Kredi Hesap Makinesi</h4>
-                  <p className="text-sm text-[#64748b]">Taksit ve borç planı</p>
-                </Link>
-              </div>
-            </div>
+            <RelatedCalculatorsTR categorySlug="finans" currentSlug="butce-hesap-makinesi" maxResults={6} />
           </div>
         </div>
       </div>

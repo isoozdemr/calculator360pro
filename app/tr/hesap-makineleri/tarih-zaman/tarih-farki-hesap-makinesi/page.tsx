@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { TurkeyDateCalculator } from "@/components/calculators/tr/TurkeyDateCalculator";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
@@ -193,6 +194,18 @@ export default function TarihFarkiHesapMakinesiPage() {
           <div className="container mx-auto px-4 max-w-4xl">
             <article className="prose prose-slate max-w-none">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
+                Tarih Farkı Nedir?
+              </h2>
+              <p className="text-[#64748b] mb-6 leading-relaxed">
+                Tarih farkı, iki tarih arasında geçen süreyi gün, hafta, ay veya yıl olarak ifade eder. 
+                Proje süreleri, teslimat tarihleri, çalışma süreleri ve iş günü hesaplamalarında kullanılır. 
+                Bu araç bitiş gününün dahil edilip edilmeyeceğini seçmenize ve iş günü (hafta sonları hariç) 
+                sayısını göstermenize olanak tanır. Doğum tarihinden yaş hesaplamak için 
+                <Link href="/tr/hesap-makineleri/tarih-zaman/yas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium mx-1">yaş hesap makinesi</Link>, 
+                çalışma saati toplamı için <Link href="/tr/hesap-makineleri/tarih-zaman/saat-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">saat hesap makinesi</Link> kullanabilirsiniz.
+              </p>
+
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
                 Tarih Farkı Hesaplama Rehberi
               </h2>
               
@@ -254,13 +267,15 @@ export default function TarihFarkiHesapMakinesiPage() {
               </p>
 
               <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">
-                İlgili Hesaplamalar
+                İpuçları ve İlgili Hesaplamalar
               </h3>
-              <p className="text-[#64748b] mb-4 leading-relaxed">
-                Doğum tarihinizden bugüne kadar geçen süreyi (yaşınızı) yıl, ay ve gün olarak hesaplamak 
-                için <Link href="/tr/hesap-makineleri/tarih-zaman/yas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Yaş Hesap Makinesi</Link> aracımızı kullanabilirsiniz. 
-                Gebelik süresi ve doğum tarihi için <Link href="/tr/hesap-makineleri/saglik/gebelik-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Gebelik Hesap Makinesi</Link> sayfamıza göz atın.
-              </p>
+              <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-4">
+                <li>Yaş hesaplama: <Link href="/tr/hesap-makineleri/tarih-zaman/yas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Yaş hesap makinesi</Link> ile doğum tarihinden bugüne süreyi görün.</li>
+                <li>Gebelik haftası ve doğum tarihi: <Link href="/tr/hesap-makineleri/saglik/gebelik-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Gebelik hesap makinesi</Link>.</li>
+                <li>Çalışma saati toplamı: <Link href="/tr/hesap-makineleri/tarih-zaman/saat-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Saat hesap makinesi</Link>.</li>
+                <li>Ücret hesaplama: <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Maaş hesap makinesi</Link> ile çalışma günü/saatine göre hesaplama yapın.</li>
+                <li>Emeklilik yaşı ve prim süresi: <Link href="/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Emeklilik hesap makinesi</Link>.</li>
+              </ul>
             </article>
           </div>
         </section>
@@ -285,50 +300,9 @@ export default function TarihFarkiHesapMakinesiPage() {
           </div>
         </section>
 
-        {/* Related Calculators */}
         <section className="py-12 bg-[#f8fafc]">
           <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
-              İlgili Hesap Makineleri
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <Link 
-                href="/tr/hesap-makineleri/tarih-zaman/yas-hesap-makinesi"
-                className="bg-white p-6 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors group"
-              >
-                <div className="text-3xl mb-3">🎂</div>
-                <h3 className="font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2">
-                  Yaş Hesap Makinesi
-                </h3>
-                <p className="text-sm text-[#64748b]">
-                  Doğum tarihinden yaş hesaplama
-                </p>
-              </Link>
-              <Link 
-                href="/tr/hesap-makineleri/matematik/yuzde-hesap-makinesi"
-                className="bg-white p-6 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors group"
-              >
-                <div className="text-3xl mb-3">📊</div>
-                <h3 className="font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2">
-                  Yüzde Hesap Makinesi
-                </h3>
-                <p className="text-sm text-[#64748b]">
-                  Yüzde hesaplama ve oran bulma
-                </p>
-              </Link>
-              <Link 
-                href="/tr/blog"
-                className="bg-white p-6 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors group"
-              >
-                <div className="text-3xl mb-3">📝</div>
-                <h3 className="font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2">
-                  Blog Yazıları
-                </h3>
-                <p className="text-sm text-[#64748b]">
-                  Hesaplama rehberleri ve ipuçları
-                </p>
-              </Link>
-            </div>
+            <RelatedCalculatorsTR categorySlug="tarih-zaman" currentSlug="tarih-farki-hesap-makinesi" maxResults={6} />
           </div>
         </section>
       </div>

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { DATA_VERSION, BES_2026 } from "@/lib/data/turkey-2026-data";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { BESStateContributionCalculator } from "@/components/calculators/tr/BESStateContributionCalculator";
 
@@ -20,8 +21,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${SITE_URL}/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi`,
     languages: {
-      en: `${SITE_URL}/calculators/finance/retirement-calculator`,
       tr: `${SITE_URL}/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi`,
+      "x-default": `${SITE_URL}/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi`,
     },
   },
   openGraph: {
@@ -226,6 +227,30 @@ export default function BESDevletKatkisiHesapMakinesiPage() {
                 Mevduat faizi vergiye tabidir ve devlet katkısı yoktur. BES&apos;te ise %25 devlet katkısı ve vergi indirimi vardır; getiri de fon performansına bağlıdır. Kısa vadeli ihtiyaçlar için mevduat, uzun vadeli emeklilik birikimi için BES genelde daha mantıklıdır. <Link href="/tr/hesap-makineleri/finans/birikim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Birikim hesap makinesi</Link> ile mevduat senaryolarını, bu araç ile BES senaryolarını karşılaştırabilirsiniz.
               </p>
 
+              <h2 className="text-2xl font-bold text-[#1e293b] mt-10 mb-4">
+                2026 BES Güncel Oranlar ve Limitler
+              </h2>
+              <p className="text-[#64748b] mb-4 leading-relaxed">
+                2026 yılında BES devlet katkısı oranı %25 olup, yıllık devlet katkısı üst limiti 20.000 TL&apos;dir. 
+                Yani yıllık 80.000 TL&apos;ye kadar yaptığınız katkının tamamı %25 devlet katkısı alır; 
+                80.000 TL üzeri katkılar devlet katkısına tabi değildir. Tam devlet katkısına hak kazanmak için 
+                en az 10 yıl sistemde kalmanız ve 56 yaşını doldurmanız gerekir. Erken çekimlerde devlet katkısı 
+                kademeli olarak geri alınır (3 yıl %15, 6 yıl %35, 10 yıl %60 oranında hak ediş). Vergi indirimi 
+                limitleri her yıl bütçe kanunu ile güncellenebilir; güncel limitler için BES şirketiniz veya 
+                mali müşavirinizle kontrol edin.
+              </p>
+
+              <h2 className="text-2xl font-bold text-[#1e293b] mt-10 mb-4">
+                İpuçları ve Öneriler
+              </h2>
+              <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-4">
+                <li><strong>Devlet katkısı tavanına yaklaşın:</strong> Bütçeniz elveriyorsa yıllık 80.000 TL katkı (ayda ~6.667 TL) ile tam devlet katkısı (20.000 TL) alırsınız. <Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Vergi hesap makinesi</Link> ile BES indirimi sonrası vergi tasarrufunuzu tahmin edin.</li>
+                <li><strong>Uzun vade düşünün:</strong> BES en az 10 yıl kalındığında tam devlet katkısına hak kazandırır; kısa vadede ihtiyaç duyacağınız parayı BES&apos;e yatırmayın.</li>
+                <li><strong>SGK ile birlikte planlayın:</strong> SGK emeklilik yaşı ve prim günü bilgisi için <Link href="/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Emeklilik hesap makinesi</Link> ve <Link href="/tr/rehberler/sgk-emeklilik-tablosu" className="text-[#2563eb] hover:underline font-medium">SGK Emeklilik Tablosu</Link> rehberini kullanın.</li>
+                <li><strong>Getiri varsayımı:</strong> Bu hesap makinesinde beklenen yıllık getiri oranını kendiniz girebilirsiniz; geçmiş performans garanti değildir, makul bir oran (ör. %8–12) ile senaryo kurun.</li>
+                <li><strong>Birikim ve yatırım karşılaştırması:</strong> <Link href="/tr/hesap-makineleri/finans/yatirim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Yatırım hesap makinesi</Link> ve <Link href="/tr/hesap-makineleri/finans/birikim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">birikim hesap makinesi</Link> ile diğer tasarruf seçeneklerini karşılaştırabilirsiniz.</li>
+              </ul>
+
               <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">
                 İlgili Araçlar ve Rehberler
               </h3>
@@ -265,6 +290,12 @@ export default function BESDevletKatkisiHesapMakinesiPage() {
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        <section className="py-12 bg-[#f8fafc] border-t border-[#e2e8f0]">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <RelatedCalculatorsTR categorySlug="finans" currentSlug="bes-devlet-katkisi-hesap-makinesi" maxResults={6} />
           </div>
         </section>
       </div>

@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 import { TurkeyGPACalculator } from "@/components/calculators/tr/TurkeyGPACalculator";
+import { SITE_URL } from "@/lib/constants";
 import { DATA_VERSION, GPA_INFO } from "@/lib/data/turkey-2026-data";
 import Link from "next/link";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 
 export const metadata: Metadata = {
@@ -19,10 +21,10 @@ export const metadata: Metadata = {
     "YÖK not sistemi",
   ],
   alternates: {
-    canonical: "https://calculator360pro.com/tr/hesap-makineleri/egitim/not-ortalamasi-hesap-makinesi",
+    canonical: `${SITE_URL}/tr/hesap-makineleri/egitim/not-ortalamasi-hesap-makinesi`,
     languages: {
-      "en": "https://calculator360pro.com/calculators/education/gpa-calculator",
-      "tr": "https://calculator360pro.com/tr/hesap-makineleri/egitim/not-ortalamasi-hesap-makinesi",
+      en: `${SITE_URL}/calculators/education/gpa-calculator`,
+      tr: `${SITE_URL}/tr/hesap-makineleri/egitim/not-ortalamasi-hesap-makinesi`,
     },
   },
   openGraph: {
@@ -197,40 +199,28 @@ export default function TurkeyGPACalculatorPage() {
               blog yazımızı okuyabilirsiniz.
             </p>
 
+            <h3>İpuçları ve İlgili Araçlar</h3>
+            <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-4">
+              <li>Öğrenim kredisi taksitini planlamak için <Link href="/tr/hesap-makineleri/finans/ogrenim-kredisi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">öğrenim kredisi hesap makinesi</Link>.</li>
+              <li>Yüzde ve oran hesapları: <Link href="/tr/hesap-makineleri/matematik/yuzde-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">yüzde hesap makinesi</Link>, <Link href="/tr/hesap-makineleri/matematik/indirim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">indirim hesap makinesi</Link>.</li>
+              <li>Bütçe ve gelir planlaması: <Link href="/tr/hesap-makineleri/finans/butce-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">bütçe hesap makinesi</Link>, <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">maaş hesap makinesi</Link>.</li>
+              <li>Kredi ve vergi: <Link href="/tr/hesap-makineleri/finans/kredi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">kredi hesap makinesi</Link>, <Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">vergi hesap makinesi</Link>.</li>
+            </ul>
+
             <h3>Sıkça Sorulan Sorular</h3>
             <p><strong>Not ortalaması nasıl yükseltilir?</strong> Yüksek kredili derslere odaklanın, düşük notlu dersleri tekrar alın (imkan varsa), seçmeli derslerde stratejik olun. <Link href="/tr/blog/universite-not-ortalamasi-nasil-yukseltilir" className="text-[#2563eb] hover:underline font-medium">Üniversite Not Ortalaması Nasıl Yükseltilir?</Link> yazımızda daha fazla ipucu bulabilirsiniz.</p>
             <p><strong>Mezuniyet için minimum GANO kaç?</strong> YÖK standardında lisans için genellikle 2.0 (CC ortalaması) gerekir; bazı programlar daha yüksek talep eder.</p>
             <p><strong>Yurt dışı yüksek lisans için GANO yeterli mi?</strong> Çoğu program 3.0 ve üzeri ister; prestijli okullar 3.5+ bekleyebilir. ALES/YÖKDİL gibi sınavlar da değerlendirmeye alınır.</p>
           </div>
 
-          {/* Related Calculators */}
-          <div className="mt-12 bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
-            <h3 className="text-xl font-bold text-[#1e293b] mb-4">
-              İlgili Hesap Makineleri
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Link 
-                href="/tr/hesap-makineleri/finans/kredi-hesap-makinesi"
-                className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors"
-              >
-                <h4 className="font-semibold text-[#1e293b]">Eğitim Kredisi Hesaplama</h4>
-                <p className="text-sm text-[#64748b]">Öğrenci kredisi hesap makinesi</p>
-              </Link>
-              <Link 
-                href="/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi"
-                className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors"
-              >
-                <h4 className="font-semibold text-[#1e293b]">Emeklilik Hesap Makinesi</h4>
-                <p className="text-sm text-[#64748b]">Mezuniyet sonrası emeklilik planlaması</p>
-              </Link>
-              <Link 
-                href="/tr/blog"
-                className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors"
-              >
-                <h4 className="font-semibold text-[#1e293b]">Blog - Eğitim Rehberleri</h4>
-                <p className="text-sm text-[#64748b]">GANO, AGNO ve not sistemi yazıları</p>
-              </Link>
-            </div>
+          <div className="mt-12">
+            <RelatedCalculatorsTR categorySlug="egitim" currentSlug="not-ortalamasi-hesap-makinesi" maxResults={6} />
+          </div>
+          <div className="mt-6 p-4 bg-[#f8fafc] rounded-lg">
+            <h3 className="font-bold text-[#1e293b] mb-2">İlgili Blog</h3>
+            <Link href="/tr/blog/universite-not-ortalamasi-nasil-yukseltilir" className="text-[#2563eb] hover:underline">Üniversite Not Ortalaması Nasıl Yükseltilir?</Link>
+            {" · "}
+            <Link href="/tr/blog" className="text-[#2563eb] hover:underline">Tüm Rehberler</Link>
           </div>
         </div>
       </div>

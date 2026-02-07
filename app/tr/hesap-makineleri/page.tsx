@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/constants";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
@@ -26,10 +27,10 @@ export const metadata: Metadata = {
     "yaş hesaplama",
   ],
   alternates: {
-    canonical: "https://calculator360pro.com/tr/hesap-makineleri",
+    canonical: `${SITE_URL}/tr/hesap-makineleri`,
     languages: {
-      "en": "https://calculator360pro.com/calculators",
-      "tr": "https://calculator360pro.com/tr/hesap-makineleri",
+      en: `${SITE_URL}/calculators`,
+      tr: `${SITE_URL}/tr/hesap-makineleri`,
     },
   },
   openGraph: {

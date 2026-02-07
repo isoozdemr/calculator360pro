@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { TurkeyHoursCalculator } from "@/components/calculators/tr";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
@@ -73,16 +74,42 @@ export default function SaatHesapMakinesiPage() {
           <h1 className="text-3xl font-bold text-[#1e293b] mb-4">Saat Hesap Makinesi</h1>
           <p className="text-[#64748b] mb-8">Çalışma süresi ve toplam saat hesaplama.</p>
           <TurkeyHoursCalculator />
-          <div className="mt-12 bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
-            <h2 className="text-xl font-bold text-[#1e293b] mb-4">SSS</h2>
-            {faqs.map((f, i) => (
-              <div key={i} className="mb-4"><h3 className="font-semibold text-[#1e293b]">{f.question}</h3><p className="text-sm text-[#64748b]">{f.answer}</p></div>
-            ))}
-            <p className="mt-4 text-[#64748b]">
-              <Link href="/tr/hesap-makineleri/tarih-zaman/tarih-farki-hesap-makinesi" className="text-[#2563eb] hover:underline">Tarih Farkı</Link>,{" "}
-              <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline">Maaş Hesap Makinesi</Link>.
-            </p>
+          <div className="mt-12 space-y-8">
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Saat (Çalışma Süresi) Hesaplama Nedir?</h2>
+              <p className="text-[#64748b] mb-4">
+                Çalışma süresi hesaplama, başlangıç ve bitiş saatleri arasında geçen toplam saati 
+                bulmanıza yarar. Part-time veya fazla mesai toplamları, proje süreleri ve ücretlendirme 
+                için sık kullanılır. Bu araç günlük toplam çalışma saatini hesaplar.
+              </p>
+              <p className="text-[#64748b]">
+                İki tarih arası gün sayısı için <Link href="/tr/hesap-makineleri/tarih-zaman/tarih-farki-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">tarih farkı hesap makinesi</Link>, 
+                doğum tarihinden yaş için <Link href="/tr/hesap-makineleri/tarih-zaman/yas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">yaş hesap makinesi</Link> kullanabilirsiniz.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">İpuçları ve İlgili Araçlar</h2>
+              <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-4">
+                <li>Mola sürelerini çıkararak net çalışma saatini hesaplayın.</li>
+                <li>Ücret hesaplama: <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">maaş hesap makinesi</Link> ile aylık maaş ve vergi.</li>
+                <li>İş günü sayısı: <Link href="/tr/hesap-makineleri/tarih-zaman/tarih-farki-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">tarih farkı hesap makinesi</Link> iş günü seçeneği.</li>
+                <li>Vergi dilimi: <Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">vergi hesap makinesi</Link>.</li>
+              </ul>
+            </div>
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-xl font-bold text-[#1e293b] mb-4">Sıkça Sorulan Sorular</h2>
+              {faqs.map((f, i) => (
+                <div key={i} className="mb-4"><h3 className="font-semibold text-[#1e293b]">{f.question}</h3><p className="text-sm text-[#64748b]">{f.answer}</p></div>
+              ))}
+              <p className="mt-4 text-[#64748b]">
+                <Link href="/tr/hesap-makineleri/tarih-zaman/tarih-farki-hesap-makinesi" className="text-[#2563eb] hover:underline">Tarih Farkı</Link>,{" "}
+                <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline">Maaş Hesap Makinesi</Link>.
+              </p>
+            </div>
           </div>
+          <section className="mt-12">
+            <RelatedCalculatorsTR categorySlug="tarih-zaman" currentSlug="saat-hesap-makinesi" maxResults={6} />
+          </section>
         </div>
       </div>
     </>

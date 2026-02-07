@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { SITE_URL } from "@/lib/constants";
 import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/seo/schema";
 import { LayoutWrapper } from "@/components/layout/LayoutWrapper";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
@@ -41,13 +42,13 @@ export const metadata: Metadata = {
   authors: [{ name: "Calculator360Pro" }],
   creator: "Calculator360Pro",
   publisher: "Calculator360Pro",
-  metadataBase: new URL("https://calculator360pro.com"),
+  metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: "/",
+    canonical: SITE_URL,
     languages: {
-      "en": "https://calculator360pro.com",
-      "tr": "https://calculator360pro.com/tr",
-      "x-default": "https://calculator360pro.com",
+      en: SITE_URL,
+      tr: `${SITE_URL}/tr`,
+      "x-default": SITE_URL,
     },
   },
   openGraph: {

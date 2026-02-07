@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { TurkeyInvestmentCalculator } from "@/components/calculators/tr";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
@@ -88,6 +89,20 @@ export default function YatirimHesapMakinesiPage() {
           <TurkeyInvestmentCalculator />
           <div className="mt-12 space-y-8">
             <section className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Yatırım Getirisi Nedir?</h2>
+              <p className="text-[#64748b] mb-4">
+                Yatırım getirisi, yatırdığınız sermayenin belirli bir süre sonunda ulaştığı değer ile 
+                başlangıç tutarı arasındaki farkın oranıdır. Bileşik getiri sayesinde kazanımlarınız da 
+                getiri üretir; bu nedenle uzun vade önemlidir. Bu hesap makinesi tek seferlik veya 
+                düzenli aylık yatırımlarınızın tahmini gelecek değerini ve getiri oranını hesaplar.
+              </p>
+              <p className="text-[#64748b] mb-4">
+                Reel getiri için enflasyonu dikkate alın: <Link href="/tr/hesap-makineleri/finans/enflasyon-alim-gucu-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Enflasyon ve alım gücü hesap makinesi</Link> ile 
+                paranızın değer kaybını, <Link href="/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">BES devlet katkısı hesap makinesi</Link> ile 
+                emeklilik birikim senaryonuzu değerlendirebilirsiniz.
+              </p>
+            </section>
+            <section className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Yatırım Hesap Makinesi Nasıl Kullanılır?</h2>
               <p className="text-[#64748b] mb-4">Bu araç ile tek seferlik veya düzenli aylık yatırımlarınızın gelecekteki değerini ve getiri oranını hesaplayabilirsiniz. Adımlar aşağıdaki gibidir.</p>
               <ol className="list-decimal list-inside space-y-2 text-[#64748b] mb-4">
@@ -117,10 +132,13 @@ export default function YatirimHesapMakinesiPage() {
               <p className="text-[#64748b]"><strong>Senaryo 3:</strong> 100.000 TL başlangıç + aylık 2.000 TL, %6 getiri, 15 yıl. Hem mevcut sermaye hem düzenli ekleme birlikte büyür; emeklilik birikimi planlamak için ideal bir örnek.</p>
             </section>
             <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
-              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Yatirim Getirisi</h2>
-              <p className="text-[#64748b] mb-4">
-                <Link href="/tr/hesap-makineleri/finans/bilesik-faiz-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Bileşik Faiz Hesap Makinesi</Link> ve <Link href="/tr/hesap-makineleri/finans/birikim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Birikim Hesap Makinesi</Link> ile karşılaştırın.
-              </p>
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">İpuçları ve Öneriler</h2>
+              <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-4">
+                <li>Uzun vade bileşik getiriyi artırır; emeklilik birikimi için erken başlayın. <Link href="/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">BES devlet katkısı hesap makinesi</Link> kullanın.</li>
+                <li>Reel getiri = nominal getiri − enflasyon. <Link href="/tr/hesap-makineleri/finans/enflasyon-alim-gucu-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Enflasyon ve alım gücü hesap makinesi</Link> ile alım gücünüzü takip edin.</li>
+                <li><Link href="/tr/hesap-makineleri/finans/bilesik-faiz-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Bileşik faiz hesap makinesi</Link> ve <Link href="/tr/hesap-makineleri/finans/birikim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">birikim hesap makinesi</Link> ile farklı senaryoları karşılaştırın.</li>
+                <li>Vergi sonrası getiri için <Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">vergi hesap makinesi</Link> ile diliminizi bilin.</li>
+              </ul>
             </div>
             <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Sıkça Sorulan Sorular</h2>
@@ -133,23 +151,7 @@ export default function YatirimHesapMakinesiPage() {
                 ))}
               </div>
             </div>
-            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
-              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">İlgili Hesap Makineleri</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <Link href="/tr/hesap-makineleri/finans/bilesik-faiz-hesap-makinesi" className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors">
-                  <h4 className="font-semibold text-[#1e293b]">Bileşik Faiz</h4>
-                  <p className="text-sm text-[#64748b]">Bileşik getiri</p>
-                </Link>
-                <Link href="/tr/hesap-makineleri/finans/birikim-hesap-makinesi" className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors">
-                  <h4 className="font-semibold text-[#1e293b]">Birikim</h4>
-                  <p className="text-sm text-[#64748b]">Hedef birikim</p>
-                </Link>
-                <Link href="/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi" className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors">
-                  <h4 className="font-semibold text-[#1e293b]">Emeklilik</h4>
-                  <p className="text-sm text-[#64748b]">Emeklilik planı</p>
-                </Link>
-              </div>
-            </div>
+            <RelatedCalculatorsTR categorySlug="finans" currentSlug="yatirim-hesap-makinesi" maxResults={6} />
           </div>
         </div>
       </div>

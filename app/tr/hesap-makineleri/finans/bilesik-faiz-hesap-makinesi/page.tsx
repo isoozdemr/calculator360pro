@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { TurkeyCompoundInterestCalculator } from "@/components/calculators/tr";
 
@@ -116,6 +117,15 @@ export default function BilesikFaizHesapMakinesiPage() {
               </p>
             </div>
             <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">İpuçları ve Öneriler</h2>
+              <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-4">
+                <li>Uzun vade bileşik getiriyi belirgin artırır; <Link href="/tr/hesap-makineleri/finans/yatirim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">yatırım hesap makinesi</Link> ile senaryo karşılaştırın.</li>
+                <li><Link href="/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">BES devlet katkısı hesap makinesi</Link> ile emeklilik birikiminde bileşik getiri + devlet katkısını görün.</li>
+                <li>Enflasyonu dikkate alın: <Link href="/tr/hesap-makineleri/finans/enflasyon-alim-gucu-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">enflasyon ve alım gücü hesap makinesi</Link> ile reel getiri tahmini yapın.</li>
+                <li><Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Vergi hesap makinesi</Link> ile faiz geliri vergisi diliminizi kontrol edin.</li>
+              </ul>
+            </div>
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Sıkça Sorulan Sorular</h2>
               <div className="space-y-4">
                 {faqs.map((faq, i) => (
@@ -126,23 +136,7 @@ export default function BilesikFaizHesapMakinesiPage() {
                 ))}
               </div>
             </div>
-            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
-              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">İlgili Hesap Makineleri</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <Link href="/tr/hesap-makineleri/finans/yatirim-hesap-makinesi" className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors">
-                  <h4 className="font-semibold text-[#1e293b]">Yatırım Hesap Makinesi</h4>
-                  <p className="text-sm text-[#64748b]">Yatırım getirisi hesaplama</p>
-                </Link>
-                <Link href="/tr/hesap-makineleri/finans/birikim-hesap-makinesi" className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors">
-                  <h4 className="font-semibold text-[#1e293b]">Birikim Hesap Makinesi</h4>
-                  <p className="text-sm text-[#64748b]">Düzenli birikim hesaplama</p>
-                </Link>
-                <Link href="/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi" className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors">
-                  <h4 className="font-semibold text-[#1e293b]">Emeklilik Hesap Makinesi</h4>
-                  <p className="text-sm text-[#64748b]">Emeklilik planlaması</p>
-                </Link>
-              </div>
-            </div>
+            <RelatedCalculatorsTR categorySlug="finans" currentSlug="bilesik-faiz-hesap-makinesi" maxResults={6} />
           </div>
         </div>
       </div>

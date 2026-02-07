@@ -166,6 +166,9 @@ export function getSitemapEntries(): MetadataRoute.Sitemap {
   urls.push({ url: fullUrl("/tr/blog"), lastModified: now, changeFrequency: "weekly", priority: 0.6 });
   urls.push({ url: fullUrl("/search"), lastModified: now, changeFrequency: "monthly", priority: 0.4 });
 
+  const guidesAlt = { en: "/guides", tr: "/tr/rehberler", "x-default": "/guides" };
+  urls.push(entry("/guides", now, "weekly", 0.6, guidesAlt));
+
   const privacyAlt = { en: "/privacy-policy", tr: "/tr/gizlilik-politikasi", "x-default": "/privacy-policy" };
   urls.push(entry("/privacy-policy", now, "yearly", 0.3, privacyAlt));
   urls.push(entry("/tr/gizlilik-politikasi", now, "yearly", 0.3, privacyAlt));

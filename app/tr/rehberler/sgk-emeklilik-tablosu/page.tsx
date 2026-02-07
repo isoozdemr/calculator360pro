@@ -22,7 +22,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${SITE_URL}/tr/rehberler/sgk-emeklilik-tablosu`,
     languages: {
-      "tr": `${SITE_URL}/tr/rehberler/sgk-emeklilik-tablosu`,
+      tr: `${SITE_URL}/tr/rehberler/sgk-emeklilik-tablosu`,
+      "x-default": `${SITE_URL}/tr/rehberler/sgk-emeklilik-tablosu`,
     },
   },
   openGraph: {

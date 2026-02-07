@@ -7,7 +7,13 @@ export const metadata: Metadata = {
   title: "Kredi Notu Nasıl Yükseltilir? | Calculator360Pro",
   description: "Findeks kredi notu nedir, nasıl yükselir? Kredi notu yükseltme ipuçları ve adımlar. Kredi ve bütçe hesaplama araçları.",
   keywords: ["kredi notu", "Findeks", "kredi notu yükseltme", "kredi notu nasıl yükselir", "Findeks sorgulama", "kredi başvurusu", "kredi notu ipuçları"],
-  alternates: { canonical: `${SITE_URL}/tr/rehberler/kredi-notu-nasil-yukseltilir`, languages: { tr: `${SITE_URL}/tr/rehberler/kredi-notu-nasil-yukseltilir` } },
+  alternates: {
+    canonical: `${SITE_URL}/tr/rehberler/kredi-notu-nasil-yukseltilir`,
+    languages: {
+      tr: `${SITE_URL}/tr/rehberler/kredi-notu-nasil-yukseltilir`,
+      "x-default": `${SITE_URL}/tr/rehberler/kredi-notu-nasil-yukseltilir`,
+    },
+  },
   openGraph: { title: "Kredi Notu Nasıl Yükseltilir?", url: `${SITE_URL}/tr/rehberler/kredi-notu-nasil-yukseltilir`, locale: "tr_TR", siteName: "Calculator360Pro" },
 };
 

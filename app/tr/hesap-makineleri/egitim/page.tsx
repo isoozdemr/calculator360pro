@@ -5,11 +5,21 @@ import { SITE_URL } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Eğitim Hesap Makineleri | Not Ortalaması Hesaplama",
   description: "Türkiye üniversite not sistemi ile GANO hesaplama. 4'lük ve 100'lük not sistemi dönüşümü. YÖK standardı hesap makinesi.",
+  keywords: [
+    "eğitim hesap makinesi",
+    "not ortalaması hesaplama",
+    "GANO hesaplama",
+    "üniversite not hesaplama",
+    "4'lük not sistemi",
+    "100'lük not sistemi",
+    "YÖK not hesaplama",
+    "transkript not ortalaması",
+  ],
   alternates: {
-    canonical: "https://calculator360pro.com/tr/hesap-makineleri/egitim",
+    canonical: `${SITE_URL}/tr/hesap-makineleri/egitim`,
     languages: {
-      "en": "https://calculator360pro.com/calculators/education",
-      "tr": "https://calculator360pro.com/tr/hesap-makineleri/egitim",
+      en: `${SITE_URL}/calculators/education`,
+      tr: `${SITE_URL}/tr/hesap-makineleri/egitim`,
     },
   },
 };

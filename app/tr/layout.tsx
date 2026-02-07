@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: {
@@ -21,17 +22,17 @@ export const metadata: Metadata = {
   creator: "Calculator360Pro",
   publisher: "Calculator360Pro",
   alternates: {
-    canonical: "/tr",
+    canonical: `${SITE_URL}/tr`,
     languages: {
-      "en": "https://calculator360pro.com",
-      "tr": "https://calculator360pro.com/tr",
-      "x-default": "https://calculator360pro.com",
+      en: SITE_URL,
+      tr: `${SITE_URL}/tr`,
+      "x-default": SITE_URL,
     },
   },
   openGraph: {
     type: "website",
     locale: "tr_TR",
-    url: "https://calculator360pro.com/tr",
+    url: `${SITE_URL}/tr`,
     siteName: "Calculator360Pro",
     title: "Calculator360Pro - Ücretsiz Online Hesap Makineleri",
     description:

@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { TurkeyDiscountCalculator } from "@/components/calculators/tr/TurkeyDiscountCalculator";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
@@ -193,13 +194,28 @@ export default function IndirimHesapMakinesiPage() {
           <div className="container mx-auto px-4 max-w-4xl">
             <article className="prose prose-slate max-w-none">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
+                İndirim Nedir?
+              </h2>
+              <p className="text-[#64748b] mb-6 leading-relaxed">
+                İndirim, bir ürün veya hizmetin orijinal fiyatından belirli bir yüzde veya tutar 
+                düşülerek satılmasıdır. Yüzde olarak ifade edilir (%10, %25 vb.). İndirimli fiyat = 
+                Orijinal fiyat − (Orijinal fiyat × İndirim yüzdesi / 100). Alışveriş, maaş zamları 
+                ve vergi indirimlerinde de yüzde hesaplama sık kullanılır; 
+                <Link href="/tr/hesap-makineleri/matematik/yuzde-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium mx-1">yüzde hesap makinesi</Link> ve 
+                <Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">vergi hesap makinesi</Link> ile 
+                karşılaştırma yapabilirsiniz.
+              </p>
+
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
                 İndirim Hesaplama Rehberi
               </h2>
               
               <p className="text-[#64748b] mb-6 leading-relaxed">
                 İndirim hesaplama, alışveriş yaparken en önemli becerilerden biridir. 
                 Doğru indirim hesaplaması yaparak hem para tasarrufu sağlayabilir hem de 
-                gereksiz harcamalardan kaçınabilirsiniz.
+                gereksiz harcamalardan kaçınabilirsiniz. Bütçe planlaması için 
+                <Link href="/tr/hesap-makineleri/finans/butce-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium"> bütçe hesap makinesi</Link> ve 
+                <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium"> maaş hesap makinesi</Link> araçlarımızdan faydalanın.
               </p>
 
               <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">
@@ -292,50 +308,9 @@ export default function IndirimHesapMakinesiPage() {
           </div>
         </section>
 
-        {/* Related Calculators */}
         <section className="py-12 bg-[#f8fafc]">
           <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
-              İlgili Hesap Makineleri
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <Link 
-                href="/tr/hesap-makineleri/matematik/yuzde-hesap-makinesi"
-                className="bg-white p-6 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors group"
-              >
-                <div className="text-3xl mb-3">📊</div>
-                <h3 className="font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2">
-                  Yüzde Hesap Makinesi
-                </h3>
-                <p className="text-sm text-[#64748b]">
-                  Yüzde hesaplama ve oran bulma
-                </p>
-              </Link>
-              <Link 
-                href="/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi"
-                className="bg-white p-6 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors group"
-              >
-                <div className="text-3xl mb-3">🏠</div>
-                <h3 className="font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2">
-                  Konut Kredisi Hesap Makinesi
-                </h3>
-                <p className="text-sm text-[#64748b]">
-                  Ev kredisi taksit hesaplama
-                </p>
-              </Link>
-              <Link 
-                href="/tr/blog"
-                className="bg-white p-6 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors group"
-              >
-                <div className="text-3xl mb-3">📝</div>
-                <h3 className="font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2">
-                  Blog Yazıları
-                </h3>
-                <p className="text-sm text-[#64748b]">
-                  Hesaplama rehberleri ve ipuçları
-                </p>
-              </Link>
-            </div>
+            <RelatedCalculatorsTR categorySlug="matematik" currentSlug="indirim-hesap-makinesi" maxResults={6} />
           </div>
         </section>
       </div>

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { TurkeySavingsCalculator } from "@/components/calculators/tr";
 
@@ -85,6 +86,48 @@ export default function BirikimHesapMakinesiPage() {
           <TurkeySavingsCalculator />
           <div className="mt-12 space-y-8">
             <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Birikim Nedir?</h2>
+              <p className="text-[#64748b] mb-4">
+                Birikim, belirli bir hedefe (acil fon, ev peşinatı, emeklilik vb.) ulaşmak için 
+                düzenli veya düzensiz olarak kenara koyduğunuz paradır. Düzenli aylık birikimde 
+                bileşik faiz sayesinde küçük tutarlar zamanla büyür. Bu hesap makinesi, hedef 
+                tutarı, vadeyi ve beklenen faiz oranını girerek <strong>aylık ne kadar birikim</strong> 
+                yapmanız gerektiğini hesaplar.
+              </p>
+              <p className="text-[#64748b] mb-4">
+                <Link href="/tr/hesap-makineleri/finans/bilesik-faiz-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Bileşik faiz hesap makinesi</Link> ile 
+                getiri tahmini, <Link href="/tr/hesap-makineleri/finans/enflasyon-alim-gucu-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">enflasyon ve alım gücü hesap makinesi</Link> ile 
+                birikiminizin reel değerini değerlendirebilirsiniz.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Birikim Nasıl Hesaplanır?</h2>
+              <p className="text-[#64748b] mb-4">
+                Hedef tutara ulaşmak için gerekli aylık birikim, hedef tutar, vade (yıl) ve 
+                beklenen yıllık faiz oranı kullanılarak formülle bulunur. Faiz oranı ne kadar 
+                yüksekse aylık ihtiyacınız o kadar düşer; vade uzadıkça aylık tutar azalır. 
+                Bu sayfadaki araç bu formülü uygulayarak size aylık birikim tutarını verir.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">2026 Güncel Birikim Önerileri</h2>
+              <p className="text-[#64748b] mb-4">
+                Mevduat faizleri ve enflasyon oranları yıla göre değişir. Birikim planı yaparken 
+                enflasyonu aşan getiri hedefleyin; <Link href="/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">BES</Link> devlet katkısı 
+                ile birikiminizi destekleyebilirsiniz. <Link href="/tr/hesap-makineleri/finans/butce-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Bütçe hesap makinesi</Link> ile 
+                aylık tasarruf kapasitenizi görün.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">İpuçları ve Öneriler</h2>
+              <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-4">
+                <li><strong>Otomatik transfer:</strong> Maaş günü aylık birikimi otomatik bir hesaba aktarın. <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Maaş hesap makinesi</Link> ile elinize geçen net tutarı bilin.</li>
+                <li><strong>Hedef belirleyin:</strong> Acil fon (3–6 aylık gider), peşinat veya emeklilik için net hedef koyun. <Link href="/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Konut kredisi hesap makinesi</Link> ile peşinat ihtiyacını hesaplayın.</li>
+                <li><strong>BES ile birleştirin:</strong> Devlet katkısı ile birikiminiz hızlanır. <Link href="/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">BES devlet katkısı hesap makinesi</Link> kullanın.</li>
+                <li><strong>Enflasyonu unutmayın:</strong> <Link href="/tr/hesap-makineleri/finans/enflasyon-alim-gucu-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Enflasyon ve alım gücü hesap makinesi</Link> ile paranızın reel değerini takip edin.</li>
+              </ul>
+            </div>
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Birikim Planlaması</h2>
               <p className="text-[#64748b] mb-4">
                 <Link href="/tr/hesap-makineleri/finans/bilesik-faiz-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Bileşik Faiz Hesap Makinesi</Link> faiz getirisini, <Link href="/tr/hesap-makineleri/finans/butce-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Bütçe Hesap Makinesi</Link> gelir-gider dengesini hesaplamanıza yardımcı olur.
@@ -101,23 +144,7 @@ export default function BirikimHesapMakinesiPage() {
                 ))}
               </div>
             </div>
-            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
-              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">İlgili Hesap Makineleri</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <Link href="/tr/hesap-makineleri/finans/bilesik-faiz-hesap-makinesi" className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors">
-                  <h4 className="font-semibold text-[#1e293b]">Bileşik Faiz Hesap Makinesi</h4>
-                  <p className="text-sm text-[#64748b]">Faiz getirisi</p>
-                </Link>
-                <Link href="/tr/hesap-makineleri/finans/yatirim-hesap-makinesi" className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors">
-                  <h4 className="font-semibold text-[#1e293b]">Yatırım Hesap Makinesi</h4>
-                  <p className="text-sm text-[#64748b]">Yatirim getirisi</p>
-                </Link>
-                <Link href="/tr/hesap-makineleri/finans/butce-hesap-makinesi" className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors">
-                  <h4 className="font-semibold text-[#1e293b]">Bütçe Hesap Makinesi</h4>
-                  <p className="text-sm text-[#64748b]">Gelir-gider planı</p>
-                </Link>
-              </div>
-            </div>
+            <RelatedCalculatorsTR categorySlug="finans" currentSlug="birikim-hesap-makinesi" maxResults={6} />
           </div>
         </div>
       </div>

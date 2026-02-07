@@ -1,10 +1,12 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { generateSimpleBreadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: "Kullanım Koşulları",
   description: "Calculator360Pro Kullanım Koşulları - Web sitemizi kullanırken uymanız gereken kurallar ve koşullar.",
+  keywords: ["kullanım koşulları", "şartlar", "yasal", "Calculator360Pro koşullar", "kullanıcı sözleşmesi"],
   alternates: {
     canonical: `${SITE_URL}/tr/kullanim-kosullari`,
     languages: {
@@ -33,12 +35,18 @@ export const metadata: Metadata = {
   },
 };
 
+const kullanimKosullariBreadcrumbSchema = generateSimpleBreadcrumbSchema([
+  { name: "Ana Sayfa", path: "/tr" },
+  { name: "Kullanım Koşulları", path: "/tr/kullanim-kosullari" },
+]);
+
 export default function KullanimKosullariPage() {
   return (
     <div className="min-h-screen bg-[#f8fafc] py-16">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(kullanimKosullariBreadcrumbSchema) }} />
       <div className="container mx-auto px-4 max-w-4xl">
         {/* Breadcrumb */}
-        <nav className="mb-6 text-sm">
+        <nav className="mb-6 text-sm" aria-label="Breadcrumb">
           <ol className="flex items-center space-x-2 text-[#64748b]">
             <li>
               <Link href="/tr" className="hover:text-[#2563eb]">

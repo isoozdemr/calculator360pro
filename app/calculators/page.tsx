@@ -2,11 +2,22 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getAllCalculators } from "@/lib/calculators/definitions";
 import { CALCULATOR_CATEGORIES, SITE_URL, getCategoryKeyBySlug, getCategorySlugByKey } from "@/lib/constants";
+import { generateSimpleBreadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: "All Calculators 2026 - Finance, Health, Math",
   description:
     "Browse 30+ free calculators: mortgage, BMI, tax, GPA, percentage & more. Accurate results in seconds. Try Calculator360Pro now!",
+  keywords: [
+    "free calculators",
+    "online calculators",
+    "mortgage calculator",
+    "tax calculator",
+    "BMI calculator",
+    "GPA calculator",
+    "percentage calculator",
+    "finance calculators",
+  ],
   alternates: {
     canonical: `${SITE_URL}/calculators`,
   },
@@ -46,12 +57,22 @@ export const metadata: Metadata = {
   },
 };
 
+const BREADCRUMB_ITEMS = [
+  { name: "Home", path: "/" },
+  { name: "Calculators", path: "/calculators" },
+];
+
 export default function CalculatorsPage() {
   const calculators = getAllCalculators();
   const categories = Object.values(CALCULATOR_CATEGORIES);
+  const breadcrumbSchema = generateSimpleBreadcrumbSchema(BREADCRUMB_ITEMS);
 
   return (
     <div className="min-h-screen bg-[#f8fafc] py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-[#1e293b] mb-4">

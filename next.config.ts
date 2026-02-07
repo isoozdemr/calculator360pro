@@ -45,6 +45,10 @@ const nextConfig: NextConfig = {
             key: "Referrer-Policy",
             value: "origin-when-cross-origin",
           },
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=31536000; includeSubDomains; preload",
+          },
         ],
       },
       {
@@ -89,6 +93,13 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+    ];
+  },
+
+  // 301 redirects: add entries when URLs are changed (e.g. slug or category rename)
+  async redirects() {
+    return [
+      // Example: { source: "/old-path", destination: "https://calculator360pro.com/new-path", permanent: true },
     ];
   },
 };

@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { TurkeyPregnancyCalculator } from "@/components/calculators/tr/TurkeyPregnancyCalculator";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
@@ -191,13 +192,24 @@ export default function GebelikHesapMakinesiPage() {
           <div className="container mx-auto px-4 max-w-4xl">
             <article className="prose prose-slate max-w-none">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
+                Gebelik ve Doğum Tarihi Nedir?
+              </h2>
+              <p className="text-[#64748b] mb-6 leading-relaxed">
+                Gebelik, son adet tarihinin (SAT) ilk gününden itibaren ortalama 40 hafta (280 gün) süren 
+                süreçtir. Tahmini doğum tarihi, SAT&apos;e 280 gün eklenerek hesaplanır (Naegele kuralı). 
+                Bu hesap makinesi gebelik haftanızı, trimester döneminizi ve tahmini doğum tarihinizi verir. 
+                Hamilelikte kilo ve kalori takibi için <Link href="/tr/hesap-makineleri/saglik/bmi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">BMI</Link> ve 
+                <Link href="/tr/hesap-makineleri/saglik/kalori-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium"> kalori hesap makinesi</Link> kullanabilirsiniz.
+              </p>
+
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
                 Gebelik Hesaplama Rehberi
               </h2>
               
               <p className="text-[#64748b] mb-6 leading-relaxed">
                 Gebelik hesaplama, hamilelik takibi için önemli bir araçtır. 
                 Son adet tarihinizden doğum tarihinizi, gebelik haftanızı ve 
-                hangi trimester'da olduğunuzu öğrenebilirsiniz.
+                hangi trimester&apos;da olduğunuzu öğrenebilirsiniz.
               </p>
 
               <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">
@@ -254,13 +266,15 @@ export default function GebelikHesapMakinesiPage() {
               </p>
 
               <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">
-                İlgili Hesaplamalar
+                İpuçları ve Öneriler
               </h3>
-              <p className="text-[#64748b] mb-4 leading-relaxed">
-                Hamilelik süresince sağlıklı kilo aralığınızı takip etmek için <Link href="/tr/hesap-makineleri/saglik/bmi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">BMI Hesap Makinesi</Link>, 
-                günlük kalori ihtiyacınız için <Link href="/tr/hesap-makineleri/saglik/kalori-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Kalori Hesap Makinesi</Link> aracımızı kullanabilirsiniz. 
-                İki tarih arası gün sayısı hesaplamak için <Link href="/tr/hesap-makineleri/tarih-zaman/tarih-farki-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Tarih Farkı Hesap Makinesi</Link> sayfamıza göz atın.
-              </p>
+              <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-4">
+                <li>Sağlıklı kilo aralığı: <Link href="/tr/hesap-makineleri/saglik/bmi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">BMI hesap makinesi</Link>.</li>
+                <li>Günlük kalori ihtiyacı: <Link href="/tr/hesap-makineleri/saglik/kalori-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">kalori hesap makinesi</Link>.</li>
+                <li>İki tarih arası gün: <Link href="/tr/hesap-makineleri/tarih-zaman/tarih-farki-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">tarih farkı hesap makinesi</Link>.</li>
+                <li>Vücut kompozisyonu takibi: <Link href="/tr/hesap-makineleri/saglik/vucut-yag-orani-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">vücut yağ oranı hesap makinesi</Link>.</li>
+                <li>Doğum tarihi ve yaş hesaplama: <Link href="/tr/hesap-makineleri/tarih-zaman/yas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">yaş hesap makinesi</Link>.</li>
+              </ul>
 
               <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mt-8">
                 <p className="text-sm text-blue-800">
@@ -293,50 +307,9 @@ export default function GebelikHesapMakinesiPage() {
           </div>
         </section>
 
-        {/* Related Calculators */}
         <section className="py-12 bg-[#f8fafc]">
           <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
-              İlgili Hesap Makineleri
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <Link 
-                href="/tr/hesap-makineleri/saglik/bmi-hesap-makinesi"
-                className="bg-white p-6 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors group"
-              >
-                <div className="text-3xl mb-3">⚖️</div>
-                <h3 className="font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2">
-                  BMI Hesap Makinesi
-                </h3>
-                <p className="text-sm text-[#64748b]">
-                  Vücut kitle indeksi hesaplama
-                </p>
-              </Link>
-              <Link 
-                href="/tr/hesap-makineleri/saglik/kalori-hesap-makinesi"
-                className="bg-white p-6 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors group"
-              >
-                <div className="text-3xl mb-3">🍎</div>
-                <h3 className="font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2">
-                  Kalori Hesap Makinesi
-                </h3>
-                <p className="text-sm text-[#64748b]">
-                  Günlük kalori ihtiyacı hesaplama
-                </p>
-              </Link>
-              <Link 
-                href="/tr/blog"
-                className="bg-white p-6 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors group"
-              >
-                <div className="text-3xl mb-3">📝</div>
-                <h3 className="font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2">
-                  Blog Yazıları
-                </h3>
-                <p className="text-sm text-[#64748b]">
-                  Sağlık rehberleri ve ipuçları
-                </p>
-              </Link>
-            </div>
+            <RelatedCalculatorsTR categorySlug="saglik" currentSlug="gebelik-hesap-makinesi" maxResults={6} />
           </div>
         </section>
       </div>

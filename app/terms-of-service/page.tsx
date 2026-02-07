@@ -1,9 +1,12 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { generateSimpleBreadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
   description: "Terms of Service for Calculator360Pro",
+  keywords: ["terms of service", "terms", "legal", "Calculator360Pro terms", "user agreement"],
   alternates: {
     canonical: `${SITE_URL}/terms-of-service`,
     languages: {
@@ -32,10 +35,23 @@ export const metadata: Metadata = {
   },
 };
 
+const termsBreadcrumbSchema = generateSimpleBreadcrumbSchema([
+  { name: "Home", path: "/" },
+  { name: "Terms of Service", path: "/terms-of-service" },
+]);
+
 export default function TermsOfServicePage() {
   return (
     <div className="min-h-screen bg-[#f8fafc] py-16">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(termsBreadcrumbSchema) }} />
       <div className="container mx-auto px-4 max-w-4xl">
+        <nav className="mb-6 text-sm text-[#64748b]" aria-label="Breadcrumb">
+          <ol className="flex items-center space-x-2">
+            <li><Link href="/" className="hover:text-[#2563eb]">Home</Link></li>
+            <li>/</li>
+            <li className="text-[#1e293b] font-medium">Terms of Service</li>
+          </ol>
+        </nav>
         <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-8">
           <h1 className="text-4xl font-bold text-[#1e293b] mb-8">
             Terms of Service

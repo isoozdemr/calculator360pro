@@ -1,11 +1,13 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { generateSimpleBreadcrumbSchema } from "@/lib/seo/schema";
 import { TR_REHBERLER } from "@/lib/tr-rehberler";
 
 export const metadata: Metadata = {
   title: "Hakkımızda - Misyonumuz ve Ekibimiz",
   description: "Calculator360Pro hakkında bilgi edinin - Uzmanlar tarafından geliştirilen ücretsiz online hesap makineleri. Ekibimizle tanışın ve hesaplamaları herkes için erişilebilir kılma misyonumuzu keşfedin.",
+  keywords: ["hakkımızda", "Calculator360Pro", "ücretsiz hesap makineleri", "misyon", "ekip", "online hesaplama"],
   alternates: {
     canonical: `${SITE_URL}/tr/hakkimizda`,
     languages: {
@@ -108,10 +110,23 @@ const trustIndicators = [
   },
 ];
 
+const hakkimizdaBreadcrumbSchema = generateSimpleBreadcrumbSchema([
+  { name: "Ana Sayfa", path: "/tr" },
+  { name: "Hakkımızda", path: "/tr/hakkimizda" },
+]);
+
 export default function HakkimizdaPage() {
   return (
     <div className="min-h-screen bg-[#f8fafc] py-16">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(hakkimizdaBreadcrumbSchema) }} />
       <div className="container mx-auto px-4 max-w-4xl">
+        <nav className="mb-6 text-sm text-[#64748b]" aria-label="Breadcrumb">
+          <ol className="flex items-center space-x-2">
+            <li><Link href="/tr" className="hover:text-[#2563eb]">Ana Sayfa</Link></li>
+            <li>/</li>
+            <li className="text-[#1e293b] font-medium">Hakkımızda</li>
+          </ol>
+        </nav>
         {/* Hero Section */}
         <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-8 mb-8">
           <h1 className="text-4xl font-bold text-[#1e293b] mb-4">

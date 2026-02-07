@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { TurkeySalaryCalculator } from "@/components/calculators/tr/TurkeySalaryCalculator";
 import { DATA_VERSION, MINIMUM_WAGE_2026, SGK_RATES_2026, INCOME_TAX_BRACKETS_2026 } from "@/lib/data/turkey-2026-data";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { generateTurkishHowToSchema, generateTurkishBreadcrumbSchema } from "@/lib/seo/schema";
 import { SITE_URL } from "@/lib/constants";
 import Link from "next/link";
@@ -33,10 +34,10 @@ export const metadata: Metadata = {
     "maaş bordrosu hesaplama",
   ],
   alternates: {
-    canonical: "https://calculator360pro.com/tr/hesap-makineleri/finans/maas-hesap-makinesi",
+    canonical: `${SITE_URL}/tr/hesap-makineleri/finans/maas-hesap-makinesi`,
     languages: {
-      "en": "https://calculator360pro.com/calculators/finance/salary-calculator",
-      "tr": "https://calculator360pro.com/tr/hesap-makineleri/finans/maas-hesap-makinesi",
+      en: `${SITE_URL}/calculators/finance/salary-calculator`,
+      tr: `${SITE_URL}/tr/hesap-makineleri/finans/maas-hesap-makinesi`,
     },
   },
   openGraph: {
@@ -88,7 +89,7 @@ export default function TurkeySalaryCalculatorPage() {
     "@type": "WebApplication",
     name: "Türkiye Maaş Hesap Makinesi 2026",
     description: "2026 yılı SGK oranları, AGİ ve vergi dilimleri ile brüt-net maaş hesaplama aracı. İşveren maliyeti hesaplama.",
-    url: "https://calculator360pro.com/tr/hesap-makineleri/finans/maas-hesap-makinesi",
+    url: `${SITE_URL}/tr/hesap-makineleri/finans/maas-hesap-makinesi`,
     applicationCategory: "FinanceApplication",
     operatingSystem: "Web",
     offers: {
@@ -278,6 +279,21 @@ export default function TurkeySalaryCalculatorPage() {
           <div className="container mx-auto px-4 max-w-4xl">
             <article className="prose prose-slate max-w-none">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
+                Maaş Nedir? Brüt ve Net Maaş
+              </h2>
+              <p className="text-[#64748b] mb-4 leading-relaxed">
+                <strong>Brüt maaş</strong>, işverenin çalışana sözleşmede belirtilen ve kesintiler 
+                öncesi ödediği tutardır. <strong>Net maaş</strong> ise SGK primi, gelir vergisi, 
+                damga vergisi ve işsizlik sigortası kesildikten sonra çalışanın eline geçen tutardır. 
+                Bu hesap makinesi brütten nete veya netten brüte maaş hesaplar.
+              </p>
+              <p className="text-[#64748b] mb-6 leading-relaxed">
+                Vergi diliminizi görmek için <Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">vergi hesap makinesi</Link>, 
+                aylık harcamalarınızı planlamak için <Link href="/tr/hesap-makineleri/finans/butce-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">bütçe hesap makinesi</Link>, 
+                emeklilik yaşınızı hesaplamak için <Link href="/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">emeklilik hesap makinesi</Link> kullanabilirsiniz.
+              </p>
+
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
                 Maaş Hesaplama Rehberi: Brütten Nete Nasıl Hesaplanır?
               </h2>
               
@@ -420,6 +436,17 @@ export default function TurkeySalaryCalculatorPage() {
                 sağlayabilir.
               </p>
 
+              <h2 className="text-2xl font-bold text-[#1e293b] mt-10 mb-4">
+                İpuçları ve Öneriler
+              </h2>
+              <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-4">
+                <li>Gelir vergisi diliminizi bilmek için <Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">vergi hesap makinesi</Link> kullanın.</li>
+                <li>Aylık harcama planı: <Link href="/tr/hesap-makineleri/finans/butce-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">bütçe hesap makinesi</Link> ile gelir–gider dengesini kurun.</li>
+                <li>Emeklilik yaşı ve prim: <Link href="/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">emeklilik hesap makinesi</Link>.</li>
+                <li>BES katkısı vergi matrahından düşer: <Link href="/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">BES devlet katkısı hesap makinesi</Link> ile senaryo kurun.</li>
+                <li>Konut veya ihtiyaç kredisi taksiti: <Link href="/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">konut kredisi</Link>, <Link href="/tr/hesap-makineleri/finans/kredi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">kredi hesap makinesi</Link>.</li>
+              </ul>
+
               <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mt-8">
                 <p className="text-sm text-blue-800">
                   <strong>Önemli Not:</strong> Bu hesap makinesi bilgilendirme amaçlıdır. 
@@ -474,50 +501,9 @@ export default function TurkeySalaryCalculatorPage() {
           </div>
         </section>
 
-        {/* Related Calculators */}
         <section className="py-12 bg-[#f8fafc]">
           <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
-              İlgili Hesap Makineleri
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <Link 
-                href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi"
-                className="bg-white p-6 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors group"
-              >
-                <div className="text-3xl mb-3">💰</div>
-                <h3 className="font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2">
-                  Vergi Hesap Makinesi
-                </h3>
-                <p className="text-sm text-[#64748b]">
-                  2026 gelir vergisi dilimleri ile kümülatif vergi hesaplama
-                </p>
-              </Link>
-              <Link 
-                href="/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi"
-                className="bg-white p-6 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors group"
-              >
-                <div className="text-3xl mb-3">🏖️</div>
-                <h3 className="font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2">
-                  Emeklilik Hesap Makinesi
-                </h3>
-                <p className="text-sm text-[#64748b]">
-                  SGK emeklilik yaşı ve prim gün sayısı hesaplama
-                </p>
-              </Link>
-              <Link 
-                href="/tr/hesap-makineleri/finans/kredi-hesap-makinesi"
-                className="bg-white p-6 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors group"
-              >
-                <div className="text-3xl mb-3">💳</div>
-                <h3 className="font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2">
-                  Kredi Hesap Makinesi
-                </h3>
-                <p className="text-sm text-[#64748b]">
-                  İhtiyaç kredisi, KKDF ve BSMV dahil hesaplama
-                </p>
-              </Link>
-            </div>
+            <RelatedCalculatorsTR categorySlug="finans" currentSlug="maas-hesap-makinesi" maxResults={6} />
           </div>
         </section>
 

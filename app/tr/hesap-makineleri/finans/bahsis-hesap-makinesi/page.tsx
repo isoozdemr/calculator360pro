@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { TurkeyTipCalculator } from "@/components/calculators/tr";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
@@ -79,8 +80,31 @@ export default function BahsisPage() {
             Bahşiş oranı ülke ve hizmete göre değişir; araç farklı yüzdeleri denemenize olanak tanır. Hizmet kalitesine göre %10, %15, %20 veya özel bir tutar seçebilirsiniz.
           </p>
           <TurkeyTipCalculator />
-          <div className="mt-12 bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
-            <h2 className="text-xl font-bold text-[#1e293b] mb-4">Sıkça Sorulan Sorular</h2>
+          <div className="mt-12 space-y-8">
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Bahşiş Nedir?</h2>
+              <p className="text-[#64748b] mb-4">
+                Bahşiş, hizmet aldığınız kişiye (garson, kuaför vb.) fiş tutarının belirli bir yüzdesi 
+                veya sabit tutar olarak verdiğiniz ek ödemedir. Türkiye&apos;de restoranlarda %5–10, 
+                ABD&apos;de %15–20 yaygındır. Bu hesap makinesi fiş tutarı ve yüzde (veya tutar) ile 
+                bahşiş miktarını ve kişi başı ödemeyi hesaplar.
+              </p>
+              <p className="text-[#64748b]">
+                Yüzde hesaplama için <Link href="/tr/hesap-makineleri/matematik/yuzde-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">yüzde hesap makinesi</Link>, 
+                indirimli fiyat için <Link href="/tr/hesap-makineleri/matematik/indirim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">indirim hesap makinesi</Link> kullanabilirsiniz.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">İpuçları ve Öneriler</h2>
+              <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-4">
+                <li>Fiş tutarı genelde KDV dahildir; bahşişi KDV dahil tutar üzerinden hesaplamak yaygındır.</li>
+                <li>Grup yemeklerinde kişi başı pay: toplam (fiş + bahşiş) kişi sayısına bölün. <Link href="/tr/hesap-makineleri/matematik/yuzde-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Yüzde hesap makinesi</Link> ile farklı oranları deneyin.</li>
+                <li>Bütçe planlaması: <Link href="/tr/hesap-makineleri/finans/butce-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">bütçe hesap makinesi</Link> ve <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">maaş hesap makinesi</Link> ile aylık harcamalarınızı takip edin.</li>
+                <li>Vergi: Çalışanın aldığı bahşiş gelir niteliğinde olabilir; <Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">vergi hesap makinesi</Link> ile diliminizi kontrol edin.</li>
+              </ul>
+            </div>
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-xl font-bold text-[#1e293b] mb-4">Sıkça Sorulan Sorular</h2>
             {faqs.map((f, i) => (
               <div key={i} className="mb-4"><h3 className="font-semibold text-[#1e293b]">{f.question}</h3><p className="text-sm text-[#64748b]">{f.answer}</p></div>
             ))}
@@ -91,6 +115,10 @@ export default function BahsisPage() {
               <Link href="/tr/hesap-makineleri/finans/butce-hesap-makinesi" className="text-[#2563eb] hover:underline">Bütçe Hesap Makinesi</Link>.
             </p>
           </div>
+          </div>
+          <section className="mt-12">
+            <RelatedCalculatorsTR categorySlug="finans" currentSlug="bahsis-hesap-makinesi" maxResults={6} />
+          </section>
         </div>
       </div>
     </>

@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { TurkeyScientificCalculator } from "@/components/calculators/tr";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
@@ -72,8 +73,32 @@ export default function BilimselHesapMakinesiPage() {
           <h1 className="text-3xl font-bold text-[#1e293b] mb-4">Bilimsel Hesap Makinesi</h1>
           <p className="text-[#64748b] mb-8">Trigonometri, logaritma, üs ve kök işlemleri.</p>
           <TurkeyScientificCalculator />
-          <div className="mt-12 bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
-            <h2 className="text-xl font-bold text-[#1e293b] mb-4">Sıkça Sorulan Sorular</h2>
+          <div className="mt-12 space-y-8">
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Bilimsel Hesap Makinesi Nedir?</h2>
+              <p className="text-[#64748b] mb-4">
+                Bilimsel hesap makinesi, trigonometri (sin, cos, tan), logaritma (log, ln), üs ve kök 
+                işlemleri, istatistik fonksiyonları gibi gelişmiş hesaplamaları yapan araçtır. Öğrenciler 
+                (matematik, fizik, mühendislik) ve günlük teknik hesaplamalar için kullanılır. Açı birimi 
+                olarak derece veya radyan seçilebilir.
+              </p>
+              <p className="text-[#64748b]">
+                <Link href="/tr/hesap-makineleri/matematik/yuzde-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Yüzde hesap makinesi</Link>, 
+                <Link href="/tr/hesap-makineleri/matematik/birim-cevirici" className="text-[#2563eb] hover:underline font-medium">birim çevirici</Link>, 
+                <Link href="/tr/hesap-makineleri/matematik/indirim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">indirim hesap makinesi</Link>.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">İpuçları ve İlgili Araçlar</h2>
+              <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-4">
+                <li>Trigonometride açı birimini (derece/radyan) kontrol edin; sonuç buna göre değişir.</li>
+                <li>log = 10 tabanlı, ln = doğal logaritma (e tabanı).</li>
+                <li><Link href="/tr/hesap-makineleri/matematik/yuzde-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Yüzde hesap makinesi</Link> ile oran, <Link href="/tr/hesap-makineleri/matematik/birim-cevirici" className="text-[#2563eb] hover:underline font-medium">birim çevirici</Link> ile ölçü dönüşümü.</li>
+                <li>Finansal hesaplar: <Link href="/tr/hesap-makineleri/finans/bilesik-faiz-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">bileşik faiz hesap makinesi</Link>, <Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">vergi hesap makinesi</Link>.</li>
+              </ul>
+            </div>
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-xl font-bold text-[#1e293b] mb-4">Sıkça Sorulan Sorular</h2>
             {faqs.map((f, i) => (
               <div key={i} className="mb-4"><h3 className="font-semibold text-[#1e293b]">{f.question}</h3><p className="text-sm text-[#64748b]">{f.answer}</p></div>
             ))}
@@ -82,6 +107,10 @@ export default function BilimselHesapMakinesiPage() {
               <Link href="/tr/hesap-makineleri/matematik/birim-cevirici" className="text-[#2563eb] hover:underline">Birim Çevirici</Link>.
             </p>
           </div>
+          </div>
+          <section className="mt-12">
+            <RelatedCalculatorsTR categorySlug="matematik" currentSlug="bilimsel-hesap-makinesi" maxResults={6} />
+          </section>
         </div>
       </div>
     </>

@@ -1,10 +1,12 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { generateSimpleBreadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: "About Us - Mission & Team | Calculator360Pro",
   description: "Meet the team behind Calculator360Pro. Free, accurate calculators built by experts. Discover our mission - try our tools today!",
+  keywords: ["about us", "Calculator360Pro", "free calculators", "mission", "team", "online calculators"],
   alternates: {
     canonical: `${SITE_URL}/about`,
     languages: {
@@ -89,10 +91,23 @@ const trustIndicators = [
   },
 ];
 
+const aboutBreadcrumbSchema = generateSimpleBreadcrumbSchema([
+  { name: "Home", path: "/" },
+  { name: "About Us", path: "/about" },
+]);
+
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-[#f8fafc] py-16">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutBreadcrumbSchema) }} />
       <div className="container mx-auto px-4 max-w-4xl">
+        <nav className="mb-6 text-sm text-[#64748b]" aria-label="Breadcrumb">
+          <ol className="flex items-center space-x-2">
+            <li><Link href="/" className="hover:text-[#2563eb]">Home</Link></li>
+            <li>/</li>
+            <li className="text-[#1e293b] font-medium">About Us</li>
+          </ol>
+        </nav>
         {/* Hero Section */}
         <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-8 mb-8">
           <h1 className="text-4xl font-bold text-[#1e293b] mb-4">

@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/constants";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 import { getTRCategoriesForHomepage, TR_CALCULATOR_COUNT } from "@/lib/tr-calculators-nav";
 import { TR_REHBERLER } from "@/lib/tr-rehberler";
@@ -33,10 +34,10 @@ export const metadata: Metadata = {
     "birim çevirici",
   ],
   alternates: {
-    canonical: "https://calculator360pro.com/tr",
+    canonical: `${SITE_URL}/tr`,
     languages: {
-      "en": "https://calculator360pro.com",
-      "tr": "https://calculator360pro.com/tr",
+      en: SITE_URL,
+      tr: `${SITE_URL}/tr`,
     },
   },
   openGraph: {

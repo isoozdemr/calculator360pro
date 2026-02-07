@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { TurkeyBodyFatCalculator } from "@/components/calculators/tr/TurkeyBodyFatCalculator";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
@@ -72,13 +73,38 @@ export default function VucutYagOraniPage() {
           </nav>
           <h1 className="text-3xl font-bold text-[#1e293b] mb-4">Vücut Yağ Oranı Hesap Makinesi</h1>
           <p className="text-[#64748b] mb-4">
-            Vücut yağ oranı, toplam ağırlığınızın yağ dokusundan gelen yüzdesidir. BMI'dan farklı olarak kas ve yağı ayırt eder; bu nedenle sporcular ve kilo verenler için daha anlamlı bir sağlık göstergesidir. Yaş, cinsiyet, boy, kilo ve bel çevresi gibi ölçülerle tahmini formüller kullanılarak hesaplanır.
+            Vücut yağ oranı, toplam ağırlığınızın yağ dokusundan gelen yüzdesidir. BMI&apos;dan farklı olarak kas ve yağı ayırt eder; bu nedenle sporcular ve kilo verenler için daha anlamlı bir sağlık göstergesidir. Yaş, cinsiyet, boy, kilo ve bel çevresi gibi ölçülerle tahmini formüller kullanılarak hesaplanır.
           </p>
           <p className="text-[#64748b] mb-8">
             Bu araç genel bilgilendirme amaçlıdır. Kesin ölçüm için DEXA, BIA veya uzman değerlendirmesi gerekebilir. Sağlık kararlarınız için mutlaka bir sağlık uzmanına danışın.
           </p>
           <TurkeyBodyFatCalculator />
-          <div className="mt-12 bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+          <div className="mt-12 space-y-8">
+          <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+            <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Vücut Yağ Oranı Nedir?</h2>
+            <p className="text-[#64748b] mb-4">
+              Vücut yağ oranı (body fat percentage), vücut ağırlığınızın yüzde kaçının yağ dokusundan 
+              geldiğini ifade eder. BMI sadece boy-kilo ilişkisine bakar; vücut yağ oranı ise kas/yağ 
+              ayrımı yaptığı için atletler ve kilo verenler için daha anlamlıdır. Bu hesap makinesi 
+              yaş, cinsiyet, boy, kilo ve bel çevresi ile tahmini vücut yağ oranı hesaplar.
+            </p>
+            <p className="text-[#64748b]">
+              İdeal aralıklar cinsiyet ve yaşa göre değişir. Genel sağlık için erkeklerde %10–20, 
+              kadınlarda %20–30 civarı hedeflenebilir. <Link href="/tr/hesap-makineleri/saglik/bmi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">BMI hesap makinesi</Link> ile 
+              kilo boy endeksinizi, <Link href="/tr/hesap-makineleri/saglik/kalori-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">kalori hesap makinesi</Link> ile 
+              günlük enerji ihtiyacınızı takip edebilirsiniz.
+            </p>
+          </div>
+          <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+            <h2 className="text-2xl font-bold text-[#1e293b] mb-4">İpuçları ve Öneriler</h2>
+            <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-4">
+              <li>Bel çevresi ölçümünü doğru yapın; formül doğruluğu için önemlidir.</li>
+              <li>Kilo verirken hem <Link href="/tr/hesap-makineleri/saglik/bmi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">BMI</Link> hem vücut yağ oranını takip edin.</li>
+              <li>Günlük kalori ihtiyacı için <Link href="/tr/hesap-makineleri/saglik/kalori-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">kalori hesap makinesi</Link> kullanın.</li>
+              <li>Hamilelikte kilo takibi: <Link href="/tr/hesap-makineleri/saglik/gebelik-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">gebelik hesap makinesi</Link> ile hafta takibi yapın.</li>
+            </ul>
+          </div>
+          <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
             <h2 className="text-xl font-bold text-[#1e293b] mb-4">Sıkça Sorulan Sorular</h2>
             {faqs.map((f, i) => (
               <div key={i} className="mb-4"><h3 className="font-semibold text-[#1e293b]">{f.question}</h3><p className="text-sm text-[#64748b]">{f.answer}</p></div>
@@ -89,6 +115,10 @@ export default function VucutYagOraniPage() {
               <Link href="/tr/hesap-makineleri/saglik/gebelik-hesap-makinesi" className="text-[#2563eb] hover:underline">Gebelik Hesap Makinesi</Link>.
             </p>
           </div>
+          </div>
+          <section className="mt-12">
+            <RelatedCalculatorsTR categorySlug="saglik" currentSlug="vucut-yag-orani-hesap-makinesi" maxResults={6} />
+          </section>
         </div>
       </div>
     </>

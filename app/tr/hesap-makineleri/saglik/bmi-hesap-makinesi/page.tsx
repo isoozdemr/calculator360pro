@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { generateTurkishHowToSchema, generateTurkishBreadcrumbSchema } from "@/lib/seo/schema";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { TurkeyBMICalculator } from "@/components/calculators/tr/TurkeyBMICalculator";
 
 export const metadata: Metadata = {
@@ -158,6 +159,12 @@ export default function BMIHesapMakinesiPage() {
                 hesaplanan ve vücut yağ oranı hakkında genel bir fikir veren bir değerdir. 
                 Dünya Sağlık Örgütü (WHO) tarafından kabul edilen standart bir ölçümdür.
               </p>
+              <p className="text-[#64748b] mb-4">
+                BMI tek başına tanı koymaz; ancak fazla kilolu ve obezite riski taramasında 
+                yaygın kullanılır. Bel çevresi ve <Link href="/tr/hesap-makineleri/saglik/vucut-yag-orani-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">vücut yağ oranı</Link> gibi 
+                ölçümler de sağlık değerlendirmesinde tamamlayıcıdır. Günlük kalori ihtiyacınızı 
+                bilmek için <Link href="/tr/hesap-makineleri/saglik/kalori-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">kalori hesap makinesi</Link> kullanabilirsiniz.
+              </p>
               <div className="bg-[#f8fafc] rounded-lg p-4">
                 <p className="font-mono text-center text-lg">
                   BMI = Kilo (kg) ÷ Boy² (m²)
@@ -175,6 +182,18 @@ export default function BMIHesapMakinesiPage() {
                 <li>"BMI Hesapla" butonuna tıklayın</li>
                 <li>Sonucunuzu ve kategorinizi görüntüleyin</li>
               </ol>
+            </div>
+
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
+                2026 Güncel BMI Referansları
+              </h2>
+              <p className="text-[#64748b] mb-4">
+                WHO ve Türkiye Sağlık Bakanlığı referanslarına göre yetişkin BMI kategorileri 
+                (zayıf &lt;18.5, normal 18.5–24.9, fazla kilolu 25–29.9, obez ≥30) 2026 yılında 
+                da geçerlidir. Çocuk ve ergenlerde yaş ve cinsiyete göre persentil eğrileri 
+                kullanılır; bu hesap makinesi yetişkin (18+ yaş) için tasarlanmıştır.
+              </p>
             </div>
 
             <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
@@ -314,9 +333,10 @@ export default function BMIHesapMakinesiPage() {
               </h2>
               <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-4">
                 <li>BMI&apos;nizi 3–6 ayda bir aynı tartı ve mezura ile ölçün; sabah aç karnına ölçüm daha tutarlıdır.</li>
-                <li>Bel çevrenizi de takip edin: erkeklerde 94 cm, kadınlarda 80 cm üzeri risk artışı gösterebilir.</li>
-                <li>Kilo verme hedeflerinde haftada 0,5–1 kg kayıp sağlıklı kabul edilir; ani diyetlerden kaçının.</li>
+                <li>Bel çevrenizi de takip edin: erkeklerde 94 cm, kadınlarda 80 cm üzeri risk artışı gösterebilir. <Link href="/tr/hesap-makineleri/saglik/vucut-yag-orani-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Vücut yağ oranı hesap makinesi</Link> ile daha detaylı tahmin alabilirsiniz.</li>
+                <li>Kilo verme hedeflerinde haftada 0,5–1 kg kayıp sağlıklı kabul edilir; ani diyetlerden kaçının. Günlük kalori ihtiyacınız için <Link href="/tr/hesap-makineleri/saglik/kalori-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">kalori hesap makinesi</Link> kullanın.</li>
                 <li>Düzenli fiziksel aktivite ve dengeli beslenme, BMI&apos;yi sağlıklı aralıkta tutmanın temelidir.</li>
+                <li>Gebelikte BMI takibi için <Link href="/tr/hesap-makineleri/saglik/gebelik-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">gebelik hesap makinesi</Link> ve sağlık uzmanı önerisi alın.</li>
               </ul>
               <p className="text-[#64748b]">
                 Detaylı rehber için <Link href="/tr/blog/saglikli-beslenme-who-onerileri-ve-turk-mutfagi" className="text-[#2563eb] hover:underline font-medium">Sağlıklı Beslenme: WHO Önerileri ve Türk Mutfağı</Link> yazımızı okuyabilirsiniz.
@@ -339,6 +359,10 @@ export default function BMIHesapMakinesiPage() {
                 bir sağlık uzmanına danışmanızı öneririz.
               </p>
             </div>
+
+            <section className="py-12 bg-[#f8fafc] mt-8">
+              <RelatedCalculatorsTR categorySlug="saglik" currentSlug="bmi-hesap-makinesi" maxResults={6} />
+            </section>
           </div>
         </div>
       </div>

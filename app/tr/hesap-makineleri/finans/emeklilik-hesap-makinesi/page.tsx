@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { TurkeyRetirementCalculator } from "@/components/calculators/tr/TurkeyRetirementCalculator";
 import { DATA_VERSION, SGK_PREMIUM_DAY_REQUIREMENTS, BES_2026 } from "@/lib/data/turkey-2026-data";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { generateTurkishHowToSchema, generateTurkishBreadcrumbSchema } from "@/lib/seo/schema";
 import { SITE_URL } from "@/lib/constants";
 import Link from "next/link";
@@ -20,10 +21,10 @@ export const metadata: Metadata = {
     "emeklilik hesap makinesi 2026",
   ],
   alternates: {
-    canonical: "https://calculator360pro.com/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi",
+    canonical: `${SITE_URL}/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi`,
     languages: {
-      "en": "https://calculator360pro.com/calculators/finance/retirement-calculator",
-      "tr": "https://calculator360pro.com/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi",
+      en: `${SITE_URL}/calculators/finance/retirement-calculator`,
+      tr: `${SITE_URL}/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi`,
     },
   },
   openGraph: {
@@ -39,7 +40,7 @@ export default function TurkeyRetirementCalculatorPage() {
     "@type": "WebApplication",
     name: "Türkiye Emeklilik Hesap Makinesi",
     description: "2026 yılı SGK emeklilik yaşı, prim gün sayısı ve BES hesaplama aracı",
-    url: "https://calculator360pro.com/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi",
+    url: `${SITE_URL}/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi`,
     applicationCategory: "FinanceApplication",
     operatingSystem: "Web",
     offers: {
@@ -116,14 +117,32 @@ export default function TurkeyRetirementCalculatorPage() {
 
           {/* SEO Content */}
           <div className="mt-12 prose prose-slate max-w-none">
-            <h2>Türkiye&apos;de Emeklilik Sistemi 2026</h2>
-            <p>
+            <h2 className="text-2xl font-bold text-[#1e293b] mb-4">SGK Emekliliği Nedir?</h2>
+            <p className="text-[#64748b] leading-relaxed mb-4">
+              SGK emekliliği, 4/a (işçi), 4/b (bağ-kur) veya 4/c (memur) kapsamında prim 
+              ödeyerek çalışanların belirli yaş ve prim gün şartlarını tamamlaması sonucu 
+              aylık bağlanmasıdır. Emeklilik yaşı doğum yılınıza göre kademeli olarak artar; 
+              1984 ve sonrası doğumlular için 65 yaş (kadın ve erkek) uygulanır. Prim gün şartı 
+              en az 7.200 gün (20 yıl) olup, EYT kapsamındakiler 08.09.1999 öncesi sigorta girişi 
+              ile yaş şartı olmadan prim gününü tamamlayarak emekli olabilir. Bu sayfadaki 
+              <strong> emeklilik hesap makinesi</strong> ile doğum yılınız ve sigorta girişinize 
+              göre emeklilik yaşınızı ve prim gün şartınızı görebilirsiniz.
+            </p>
+            <p className="text-[#64748b] leading-relaxed mb-6">
+              BES (Bireysel Emeklilik Sistemi), SGK&apos;ya ek olarak devlet katkısı ile birikim 
+              yapmanızı sağlar. <Link href="/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">BES devlet katkısı hesap makinesi</Link> ile 
+              birikim projeksiyonunuzu, <Link href="/tr/rehberler/sgk-emeklilik-tablosu" className="text-[#2563eb] hover:underline font-medium">SGK Emeklilik Tablosu</Link> rehberi ile 
+              yaş ve prim detaylarını inceleyebilirsiniz.
+            </p>
+
+            <h2 className="text-2xl font-bold text-[#1e293b] mt-8 mb-4">Türkiye&apos;de Emeklilik Sistemi 2026</h2>
+            <p className="text-[#64748b] leading-relaxed mb-4">
               Türkiye&apos;de emeklilik, SGK (Sosyal Güvenlik Kurumu) tarafından yönetilen 
               zorunlu sistem ve isteğe bağlı BES (Bireysel Emeklilik Sistemi) olmak üzere 
               iki ana bileşenden oluşur.
             </p>
 
-            <h3>SGK Emeklilik Şartları</h3>
+            <h3 className="text-xl font-bold text-[#1e293b] mt-6 mb-3">SGK Emeklilik Şartları</h3>
             <p>
               SGK&apos;dan emekli olabilmek için iki temel şart karşılanmalıdır:
             </p>
@@ -183,23 +202,27 @@ export default function TurkeyRetirementCalculatorPage() {
               <li>Emeklilik halinde: %{BES_2026.vestingRates.retirement}</li>
             </ul>
 
-            <h3>Emeklilik Planlaması İpuçları</h3>
-            <ol>
+            <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">Emeklilik Planlaması İpuçları</h3>
+            <ol className="list-decimal list-inside text-[#64748b] space-y-2 mb-4">
               <li>
                 <strong>Erken başlayın:</strong> Hem SGK hem BES için erken başlamak 
-                daha yüksek birikim sağlar.
+                daha yüksek birikim sağlar. <Link href="/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">BES devlet katkısı hesap makinesi</Link> ile senaryonuzu görün.
               </li>
               <li>
                 <strong>Prim günlerinizi takip edin:</strong> e-Devlet üzerinden 
-                SGK hizmet dökümünüzü kontrol edin.
+                SGK hizmet dökümünüzü kontrol edin; <Link href="/tr/rehberler/sgk-emeklilik-tablosu" className="text-[#2563eb] hover:underline font-medium">SGK Emeklilik Tablosu</Link> rehberinde yaş ve gün şartlarını inceleyin.
               </li>
               <li>
                 <strong>BES&apos;e katılın:</strong> Devlet katkısı sayesinde paranız 
-                %25 daha hızlı büyür.
+                %25 daha hızlı büyür; vergi indirimi de ek avantajdır. <Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Vergi hesap makinesi</Link> ile BES indirimi sonrası vergi tasarrufunuzu hesaplayın.
               </li>
               <li>
                 <strong>Sigorta açıklarını kapatın:</strong> Borçlanma ile geçmiş 
-                dönemleri sigortalı sayabilirsiniz.
+                dönemleri sigortalı sayabilirsiniz; maliyet için SGK veya mali müşavire danışın.
+              </li>
+              <li>
+                <strong>Birikim hedefi koyun:</strong> <Link href="/tr/hesap-makineleri/finans/birikim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Birikim hesap makinesi</Link> ve 
+                <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium"> maaş hesap makinesi</Link> ile aylık tasarruf kapasitenizi değerlendirin.
               </li>
             </ol>
 
@@ -233,27 +256,8 @@ export default function TurkeyRetirementCalculatorPage() {
             </Link>
           </div>
 
-          {/* Related Calculators */}
-          <div className="mt-12 bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
-            <h3 className="text-xl font-bold text-[#1e293b] mb-4">
-              İlgili Hesap Makineleri
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Link 
-                href="/tr/hesap-makineleri/finans/maas-hesap-makinesi"
-                className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors"
-              >
-                <h4 className="font-semibold text-[#1e293b]">Maaş Hesap Makinesi</h4>
-                <p className="text-sm text-[#64748b]">SGK kesintileri dahil maaş hesaplama</p>
-              </Link>
-              <Link 
-                href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi"
-                className="p-4 bg-[#f8fafc] rounded-lg hover:bg-[#e2e8f0] transition-colors"
-              >
-                <h4 className="font-semibold text-[#1e293b]">Vergi Hesap Makinesi</h4>
-                <p className="text-sm text-[#64748b]">Emekli maaşı üzerinden vergi hesaplama</p>
-              </Link>
-            </div>
+          <div className="mt-12">
+            <RelatedCalculatorsTR categorySlug="finans" currentSlug="emeklilik-hesap-makinesi" maxResults={6} />
           </div>
         </div>
       </div>

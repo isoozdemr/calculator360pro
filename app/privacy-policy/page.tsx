@@ -1,9 +1,12 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { generateSimpleBreadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "Privacy Policy for Calculator360Pro",
+  keywords: ["privacy policy", "privacy", "data protection", "Calculator360Pro privacy", "cookie policy"],
   alternates: {
     canonical: `${SITE_URL}/privacy-policy`,
     languages: {
@@ -32,10 +35,23 @@ export const metadata: Metadata = {
   },
 };
 
+const privacyBreadcrumbSchema = generateSimpleBreadcrumbSchema([
+  { name: "Home", path: "/" },
+  { name: "Privacy Policy", path: "/privacy-policy" },
+]);
+
 export default function PrivacyPolicyPage() {
   return (
     <div className="min-h-screen bg-[#f8fafc] py-16">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(privacyBreadcrumbSchema) }} />
       <div className="container mx-auto px-4 max-w-4xl">
+        <nav className="mb-6 text-sm text-[#64748b]" aria-label="Breadcrumb">
+          <ol className="flex items-center space-x-2">
+            <li><Link href="/" className="hover:text-[#2563eb]">Home</Link></li>
+            <li>/</li>
+            <li className="text-[#1e293b] font-medium">Privacy Policy</li>
+          </ol>
+        </nav>
         <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-8">
           <h1 className="text-4xl font-bold text-[#1e293b] mb-8">
             Privacy Policy

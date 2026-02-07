@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { TurkeyPercentageCalculator } from "@/components/calculators/tr/TurkeyPercentageCalculator";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
@@ -117,6 +118,29 @@ export default function YuzdeHesapMakinesiPage() {
                 Yüzde hesaplama, günlük hayatta alışverişten finansal kararlara kadar 
                 birçok alanda karşımıza çıkar.
               </p>
+              <p className="text-[#64748b] mb-4">
+                İndirim, KDV, zam oranı, faiz ve yatırım getirisi gibi konularda yüzde 
+                kullanılır. <Link href="/tr/hesap-makineleri/matematik/indirim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">İndirim hesap makinesi</Link> ile 
+                indirimli fiyat, <Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">vergi hesap makinesi</Link> ile 
+                gelir vergisi dilimlerinizi hesaplayabilirsiniz.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
+                Yüzde Nasıl Hesaplanır?
+              </h2>
+              <p className="text-[#64748b] mb-4">
+                Bu sayfadaki hesap makinesi ile dört temel işlemi yapabilirsiniz: bir sayının 
+                yüzdesini bulma, artış/azalış oranı hesaplama ve bir sayının diğerinin yüzde 
+                kaçı olduğunu bulma. Adımlar:
+              </p>
+              <ol className="list-decimal list-inside text-[#64748b] space-y-2 mb-4">
+                <li>Yapmak istediğiniz işlem türünü seçin (yüzde bulma, artış/azalış, yüzde kaç).</li>
+                <li>İstenen alanlara sayıları girin (ör. sayı ve yüzde, veya eski ve yeni değer).</li>
+                <li>Hesapla butonuna tıklayın; sonuç anında görünür.</li>
+                <li>Finansal senaryolar için <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">maaş</Link>, <Link href="/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">konut kredisi</Link> veya <Link href="/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">BES</Link> hesap makinelerimizi kullanın.</li>
+              </ol>
             </div>
 
             <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
@@ -273,15 +297,32 @@ export default function YuzdeHesapMakinesiPage() {
 
             <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
-                Uzman İpuçları
+                2026 Güncel Kullanım Alanları
               </h2>
               <p className="text-[#64748b] mb-4">
-                Alışverişte indirimleri karşılaştırırken indirimli fiyatı değil, orijinal fiyat üzerinden yüzdeyi düşünün. 
-                Maaş görüşmelerinde brüt artış oranı ile net artış oranı farklıdır; vergi dilimi değişebilir. 
-                Yatırım getirilerinde yıllık yüzde getiri (APR) ile bileşik getiriyi ayırt edin. 
-                Daha fazla finansal hesaplama için <Link href="/tr/blog/finansal-okuryazarlik-temel-kavramlar-ve-pratik-ipuclari" className="text-[#2563eb] hover:underline font-medium">Finansal Okuryazarlık</Link> blog yazımıza göz atın.
+                Yüzde hesaplama 2026 yılında da vergi dilimleri, maaş zamları, enflasyon oranları, 
+                kredi faizleri ve indirim kampanyalarında aynı şekilde kullanılır. <Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Vergi hesap makinesi</Link> ile 
+                efektif vergi oranınızı, <Link href="/tr/hesap-makineleri/finans/enflasyon-alim-gucu-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">enflasyon ve alım gücü hesap makinesi</Link> ile 
+                paranızın değer kaybını yüzde olarak görebilirsiniz.
               </p>
             </div>
+
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
+                İpuçları ve Öneriler
+              </h2>
+              <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-4">
+                <li><strong>Alışveriş:</strong> İndirimleri orijinal fiyat üzerinden karşılaştırın. <Link href="/tr/hesap-makineleri/matematik/indirim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">İndirim hesap makinesi</Link> ile tasarruf tutarını hesaplayın.</li>
+                <li><strong>Maaş:</strong> Brüt zam oranı ile net zam oranı farklıdır; vergi dilimi değişebilir. <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Maaş hesap makinesi</Link> ile brüt-net farkını görün.</li>
+                <li><strong>Yatırım:</strong> Yıllık yüzde getiri (APR) ile bileşik getiriyi ayırt edin. <Link href="/tr/hesap-makineleri/finans/yatirim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Yatırım hesap makinesi</Link> ve <Link href="/tr/hesap-makineleri/finans/bilesik-faiz-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">bileşik faiz hesap makinesi</Link> kullanın.</li>
+                <li><strong>Kredi ve BES:</strong> Faiz oranları ve devlet katkısı yüzde ile ifade edilir. <Link href="/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Konut kredisi</Link>, <Link href="/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">BES devlet katkısı</Link> hesaplamaları için ilgili araçlarımıza bakın.</li>
+                <li>Daha fazla finansal hesaplama için <Link href="/tr/blog/finansal-okuryazarlik-temel-kavramlar-ve-pratik-ipuclari" className="text-[#2563eb] hover:underline font-medium">Finansal Okuryazarlık</Link> blog yazımıza göz atın.</li>
+              </ul>
+            </div>
+
+            <section className="py-12 bg-[#f8fafc] mt-8">
+              <RelatedCalculatorsTR categorySlug="matematik" currentSlug="yuzde-hesap-makinesi" maxResults={6} />
+            </section>
           </div>
         </div>
       </div>

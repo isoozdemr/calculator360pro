@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { TurkeyTaxCalculator } from "@/components/calculators/tr/TurkeyTaxCalculator";
 import { DATA_VERSION, INCOME_TAX_BRACKETS_2026 } from "@/lib/data/turkey-2026-data";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { generateTurkishHowToSchema, generateTurkishBreadcrumbSchema } from "@/lib/seo/schema";
 import { SITE_URL } from "@/lib/constants";
 import Link from "next/link";
@@ -27,10 +28,10 @@ export const metadata: Metadata = {
     "stopaj vergisi hesaplama",
   ],
   alternates: {
-    canonical: "https://calculator360pro.com/tr/hesap-makineleri/finans/vergi-hesap-makinesi",
+    canonical: `${SITE_URL}/tr/hesap-makineleri/finans/vergi-hesap-makinesi`,
     languages: {
-      "en": "https://calculator360pro.com/calculators/finance/tax-calculator",
-      "tr": "https://calculator360pro.com/tr/hesap-makineleri/finans/vergi-hesap-makinesi",
+      en: `${SITE_URL}/calculators/finance/tax-calculator`,
+      tr: `${SITE_URL}/tr/hesap-makineleri/finans/vergi-hesap-makinesi`,
     },
   },
   openGraph: {
@@ -82,7 +83,7 @@ export default function TurkeyTaxCalculatorPage() {
     "@type": "WebApplication",
     name: "Türkiye Gelir Vergisi Hesap Makinesi 2026",
     description: "2026 yılı güncel gelir vergisi dilimleri ile kümülatif vergi matrahı, efektif vergi oranı ve damga vergisi hesaplama aracı",
-    url: "https://calculator360pro.com/tr/hesap-makineleri/finans/vergi-hesap-makinesi",
+    url: `${SITE_URL}/tr/hesap-makineleri/finans/vergi-hesap-makinesi`,
     applicationCategory: "FinanceApplication",
     operatingSystem: "Web",
     offers: {
@@ -371,6 +372,25 @@ export default function TurkeyTaxCalculatorPage() {
           <div className="container mx-auto px-4 max-w-4xl">
             <article className="prose prose-slate max-w-none">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
+                Gelir Vergisi Nedir?
+              </h2>
+              <p className="text-[#64748b] mb-4 leading-relaxed">
+                Gelir vergisi, gerçek kişilerin bir takvim yılı içinde elde ettikleri gelirler üzerinden 
+                alınan dolaysız bir vergidir. Türkiye&apos;de Gelir Vergisi Kanunu (GVK) ile düzenlenir; 
+                ücret, serbest meslek, ticari kazanç, kira geliri, faiz ve benzeri tüm gelir türleri 
+                (kanunda sayılan istisnalar hariç) gelir vergisine tabidir. Devlet, bu vergi geliriyle 
+                kamu hizmetlerini finanse eder; vatandaşlar ise gelirlerine göre kademeli oranlarla 
+                vergi öder.
+              </p>
+              <p className="text-[#64748b] mb-6 leading-relaxed">
+                Gelir vergisi hesaplama, brüt gelirden yasal indirimler (örneğin SGK primi) düşüldükten 
+                sonra kalan <strong>vergi matrahı</strong> üzerinden yapılır. Matrah, vergi dilimlerine 
+                göre kademeli olarak vergilendirilir; bu nedenle tüm geliriniz tek bir orana tabi 
+                tutulmaz. <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline">Maaş hesap makinesi</Link> ile 
+                brüt-net maaş ve vergi kesintilerini birlikte görebilirsiniz.
+              </p>
+
+              <h2 className="text-2xl font-bold text-[#1e293b] mt-10 mb-6">
                 Türkiye Gelir Vergisi Sistemi: Kapsamlı Rehber
               </h2>
               
@@ -482,6 +502,30 @@ export default function TurkeyTaxCalculatorPage() {
                 <li>Yurtdışı geliri olanlar</li>
               </ul>
 
+              <h2 className="text-2xl font-bold text-[#1e293b] mt-10 mb-4">
+                2026 Güncel Vergi Dilimleri ve Uygulama
+              </h2>
+              <p className="text-[#64748b] mb-4 leading-relaxed">
+                2026 yılı gelir vergisi dilimleri, bütçe kanunu ile belirlenir. İlk dilim 0–190.000 TL 
+                için %15, son dilim 5.300.000 TL üzeri için %40 oranı uygulanır. Asgari ücretliler 
+                gelir vergisi ve damga vergisinden muaftır; yalnızca asgari ücreti aşan kısım vergilendirilir. 
+                Dilimler yıllık kümülatif matrah üzerinden hesaplandığı için, aylık maaşınız sabit olsa bile 
+                yıl içinde net maaşınız değişebilir. Güncel oranları bu sayfadaki hesap makinesi ve tabloda 
+                kontrol edebilirsiniz.
+              </p>
+
+              <h2 className="text-2xl font-bold text-[#1e293b] mt-10 mb-4">
+                İpuçları ve Öneriler
+              </h2>
+              <ul className="list-disc list-inside text-[#64748b] mb-4 space-y-3">
+                <li><strong>Yıllık verginizi tahmin edin:</strong> Bu <Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline">vergi hesap makinesi</Link> ile yıllık brüt veya matrah girerek toplam vergi ve efektif oranı görebilirsiniz. Böylece bütçe ve vergi iadesi planlaması yapabilirsiniz.</li>
+                <li><strong>Brüt–net maaş ilişkisi:</strong> Maaşınızdan kesilen vergiyi anlamak için <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline">maaş hesap makinesi</Link> kullanın. SGK, gelir vergisi ve damga vergisi tek ekranda görünür.</li>
+                <li><strong>BES ve vergi avantajı:</strong> Bireysel emeklilik katkılarınız belirli limitlere kadar vergi indirimi sağlayabilir. <Link href="/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi" className="text-[#2563eb] hover:underline">BES devlet katkısı hesap makinesi</Link> ile birikim ve devlet katkısını hesaplayabilirsiniz.</li>
+                <li><strong>Kira ve diğer gelirler:</strong> Kira geliri, serbest meslek veya yan gelirleriniz varsa yıllık beyanname ve ödeme tarihlerini takip edin. <Link href="/tr/rehberler/vergi-takvimi-2026" className="text-[#2563eb] hover:underline">Vergi takvimi rehberi</Link> önemli tarihleri listeler.</li>
+                <li><strong>Eğitim ve sağlık giderleri:</strong> Belirli eğitim ve sağlık harcamaları vergi indirimi konusunda hak sağlayabilir. Detay için mali müşavir veya vergi dairesi kaynaklarını inceleyin.</li>
+                <li><strong>Konut ve yatırım:</strong> Konut kredisi faizleri ve yatırım getirileri vergi açısından farklı işleme tabidir. <Link href="/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi" className="text-[#2563eb] hover:underline">Konut kredisi hesap makinesi</Link> ve <Link href="/tr/hesap-makineleri/finans/yatirim-hesap-makinesi" className="text-[#2563eb] hover:underline">yatırım hesap makinesi</Link> ile planlama yapabilirsiniz.</li>
+              </ul>
+
               <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mt-8">
                 <p className="text-sm text-blue-800">
                   <strong>Önemli Not:</strong> Bu hesap makinesi ve içerik bilgilendirme amaçlıdır. 
@@ -535,50 +579,9 @@ export default function TurkeyTaxCalculatorPage() {
           </div>
         </section>
 
-        {/* Related Calculators */}
         <section className="py-12 bg-white">
           <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
-              İlgili Hesap Makineleri
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <Link 
-                href="/tr/hesap-makineleri/finans/maas-hesap-makinesi"
-                className="bg-[#f8fafc] p-6 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors group"
-              >
-                <div className="text-3xl mb-3">💵</div>
-                <h3 className="font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2">
-                  Maaş Hesap Makinesi
-                </h3>
-                <p className="text-sm text-[#64748b]">
-                  Brüt-net maaş hesaplama, SGK kesintileri dahil
-                </p>
-              </Link>
-              <Link 
-                href="/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi"
-                className="bg-[#f8fafc] p-6 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors group"
-              >
-                <div className="text-3xl mb-3">🏖️</div>
-                <h3 className="font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2">
-                  Emeklilik Hesap Makinesi
-                </h3>
-                <p className="text-sm text-[#64748b]">
-                  SGK emeklilik yaşı ve prim gün hesaplama
-                </p>
-              </Link>
-              <Link 
-                href="/tr/hesap-makineleri/finans/kredi-hesap-makinesi"
-                className="bg-[#f8fafc] p-6 rounded-lg border-2 border-[#e2e8f0] hover:border-[#2563eb] transition-colors group"
-              >
-                <div className="text-3xl mb-3">💳</div>
-                <h3 className="font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2">
-                  Kredi Hesap Makinesi
-                </h3>
-                <p className="text-sm text-[#64748b]">
-                  İhtiyaç kredisi, KKDF ve BSMV dahil hesaplama
-                </p>
-              </Link>
-            </div>
+            <RelatedCalculatorsTR categorySlug="finans" currentSlug="vergi-hesap-makinesi" maxResults={6} />
           </div>
         </section>
 

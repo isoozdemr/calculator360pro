@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { TurkeyCreditCardPayoffCalculator } from "@/components/calculators/tr";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
@@ -79,8 +80,32 @@ export default function KrediKartiBorcPage() {
             Borç tutarı, kartınızın aylık faiz oranı ve aylık ödemeyi girerek anında sonuç alırsınız. Birden fazla kartınız varsa her biri için ayrı hesaplama yapıp öncelik sırası belirleyebilirsiniz.
           </p>
           <TurkeyCreditCardPayoffCalculator />
-          <div className="mt-12 bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
-            <h2 className="text-xl font-bold text-[#1e293b] mb-4">Sıkça Sorulan Sorular</h2>
+          <div className="mt-12 space-y-8">
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Kredi Kartı Borcu Nedir?</h2>
+              <p className="text-[#64748b] mb-4">
+                Kredi kartı borcu, kartla yaptığınız harcamaların toplamından o ana kadar yapılan 
+                ödemelerin düşülmesiyle kalan bakiyedir. Aylık asgari ödeme (minimum ödeme) yapılsa bile 
+                kalan bakiyeye faiz işler; bu nedenle borç uzun sürede kapanır ve toplam faiz maliyeti 
+                artar. Bu hesap makinesi kapanma süresi ve toplam faizi hesaplar.
+              </p>
+              <p className="text-[#64748b]">
+                <Link href="/tr/hesap-makineleri/finans/kredi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Kredi hesap makinesi</Link> ile 
+                taksitli kredi maliyetini, <Link href="/tr/hesap-makineleri/finans/bilesik-faiz-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">bileşik faiz hesap makinesi</Link> ile 
+                getiri senaryolarını karşılaştırabilirsiniz.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">İpuçları ve Öneriler</h2>
+              <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-4">
+                <li>Minimum ödeme yerine mümkün olduğunca fazla ödeyin; kapanma süresi kısalır, faiz düşer.</li>
+                <li>Bütçenizi kontrol edin: <Link href="/tr/hesap-makineleri/finans/butce-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">bütçe hesap makinesi</Link> ve <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">maaş hesap makinesi</Link>.</li>
+                <li>Borç bitince birikim hedefi koyun: <Link href="/tr/hesap-makineleri/finans/birikim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">birikim hesap makinesi</Link>.</li>
+                <li>Faiz geliri vergisi: <Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">vergi hesap makinesi</Link> ile diliminizi bilin.</li>
+              </ul>
+            </div>
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-xl font-bold text-[#1e293b] mb-4">Sıkça Sorulan Sorular</h2>
             {faqs.map((f, i) => (
               <div key={i} className="mb-4"><h3 className="font-semibold text-[#1e293b]">{f.question}</h3><p className="text-sm text-[#64748b]">{f.answer}</p></div>
             ))}
@@ -92,6 +117,10 @@ export default function KrediKartiBorcPage() {
               <Link href="/tr/hesap-makineleri/finans/ogrenim-kredisi-hesap-makinesi" className="text-[#2563eb] hover:underline">Öğrenim Kredisi Hesap Makinesi</Link>.
             </p>
           </div>
+          </div>
+          <section className="mt-12">
+            <RelatedCalculatorsTR categorySlug="finans" currentSlug="kredi-karti-borc-hesap-makinesi" maxResults={6} />
+          </section>
         </div>
       </div>
     </>

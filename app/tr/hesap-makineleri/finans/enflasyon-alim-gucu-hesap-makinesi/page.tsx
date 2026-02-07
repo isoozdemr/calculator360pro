@@ -6,6 +6,7 @@ import {
   INFLATION_DATA_VERSION,
   TURKEY_ANNUAL_INFLATION_RATES,
 } from "@/lib/data/turkey-inflation-data";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { InflationPurchasingPowerCalculator } from "@/components/calculators/tr/InflationPurchasingPowerCalculator";
 
@@ -259,6 +260,16 @@ export default function EnflasyonAlimGucuHesapMakinesiPage() {
                 Banka faizi veya yatırım getirisi yüksek görünse bile, enflasyonu düşündüğünüzde reel (gerçek) getiri daha düşük olabilir. Reel getiri = nominal getiri − enflasyon oranı (kabaca). Örneğin mevduat faizi %40, enflasyon %50 ise reel getiri negatiftir; paranız değer kaybediyor demektir. <Link href="/tr/hesap-makineleri/finans/bilesik-faiz-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Bileşik faiz hesap makinesi</Link> ile nominal getiriyi hesaplayıp, bu sayfadaki enflasyon verileriyle reel getiriyi kıyaslayabilirsiniz.
               </p>
 
+              <h2 className="text-2xl font-bold text-[#1e293b] mt-10 mb-4">
+                İpuçları ve Öneriler
+              </h2>
+              <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-6">
+                <li>Maaş zamlarınızı enflasyon oranıyla kıyaslayın; reel artış için TÜFE&apos;nin üzerinde zam hedefleyin. <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Maaş hesap makinesi</Link> ile net maaşınızı görün.</li>
+                <li>Birikim hedeflerinizi nominal değil alım gücü cinsinden düşünün. <Link href="/tr/hesap-makineleri/finans/birikim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Birikim hesap makinesi</Link> ile aylık tasarruf planı yapın.</li>
+                <li>Yatırım getirisinde reel getiriyi hesaplayın: nominal getiri − enflasyon. <Link href="/tr/hesap-makineleri/finans/bilesik-faiz-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Bileşik faiz</Link> ve <Link href="/tr/hesap-makineleri/finans/yatirim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">yatırım hesap makinesi</Link> kullanın.</li>
+                <li>BES ve emeklilik birikiminde uzun vadede enflasyonu yenen getiri önemlidir. <Link href="/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">BES devlet katkısı hesap makinesi</Link> ile senaryonuzu kurun.</li>
+              </ul>
+
               <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">
                 İlgili Araçlar ve Rehberler
               </h3>
@@ -299,6 +310,12 @@ export default function EnflasyonAlimGucuHesapMakinesiPage() {
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        <section className="py-12 bg-white border-t border-[#e2e8f0]">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <RelatedCalculatorsTR categorySlug="finans" currentSlug="enflasyon-alim-gucu-hesap-makinesi" maxResults={6} />
           </div>
         </section>
       </div>

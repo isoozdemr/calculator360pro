@@ -4,7 +4,7 @@ import Link from "next/link";
 import { getCalculatorsByCategory } from "@/lib/calculators/definitions";
 import { CALCULATOR_CATEGORIES, SITE_URL, getCategoryKeyBySlug, getCategorySlugByKey, CalculatorCategory } from "@/lib/constants";
 import { CATEGORY_CONTENT } from "@/lib/categories/content";
-import { generateCategoryPageSchema } from "@/lib/seo/schema";
+import { generateCategoryPageSchema, generateSimpleBreadcrumbSchema } from "@/lib/seo/schema";
 
 interface PageProps {
   params: Promise<{
@@ -79,9 +79,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     metaDescription = metaDescription.substring(0, 157) + "...";
   }
 
+  const categoryKeywords: Record<CalculatorCategory, string[]> = {
+    finance: ["finance calculators", "mortgage calculator", "loan calculator", "tax calculator", "free financial tools"],
+    health: ["health calculators", "BMI calculator", "calorie calculator", "body fat calculator", "free health tools"],
+    education: ["education calculators", "GPA calculator", "grade calculator", "academic calculators"],
+    math: ["math calculators", "percentage calculator", "scientific calculator", "unit converter"],
+    dateTime: ["date time calculators", "age calculator", "date calculator", "hours calculator"],
+  };
+
   return {
     title,
     description: metaDescription,
+    keywords: categoryKeywords[categoryKey] || [],
     alternates: {
       canonical: url,
     },
@@ -141,11 +150,21 @@ export default async function CategoryPage({ params }: PageProps) {
     }))
   );
 
+  const breadcrumbSchema = generateSimpleBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Calculators", path: "/calculators" },
+    { name: `${categoryInfo.name} Calculators`, path: `/calculators/${category}` },
+  ]);
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(categorySchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <div className="min-h-screen bg-[#f8fafc] py-16">
       <div className="container mx-auto px-4 max-w-6xl">

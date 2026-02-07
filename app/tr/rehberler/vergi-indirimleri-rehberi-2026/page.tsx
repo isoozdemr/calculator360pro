@@ -7,7 +7,13 @@ export const metadata: Metadata = {
   title: "2026 Vergi İndirimleri Rehberi | Calculator360Pro",
   description: "2026 gelir vergisi indirimleri: eğitim, sağlık, BES, bağış. Vergi indirimi hesaplama. Vergi hesap makinesi.",
   keywords: ["vergi indirimleri", "gelir vergisi indirimi", "eğitim indirimi", "sağlık indirimi", "BES vergi avantajı", "vergi indirimi hesaplama", "2026 vergi indirimleri", "beyanname indirim"],
-  alternates: { canonical: `${SITE_URL}/tr/rehberler/vergi-indirimleri-rehberi-2026`, languages: { tr: `${SITE_URL}/tr/rehberler/vergi-indirimleri-rehberi-2026` } },
+  alternates: {
+    canonical: `${SITE_URL}/tr/rehberler/vergi-indirimleri-rehberi-2026`,
+    languages: {
+      tr: `${SITE_URL}/tr/rehberler/vergi-indirimleri-rehberi-2026`,
+      "x-default": `${SITE_URL}/tr/rehberler/vergi-indirimleri-rehberi-2026`,
+    },
+  },
   openGraph: { title: "2026 Vergi İndirimleri Rehberi", url: `${SITE_URL}/tr/rehberler/vergi-indirimleri-rehberi-2026`, locale: "tr_TR", siteName: "Calculator360Pro" },
 };
 

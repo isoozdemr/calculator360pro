@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { TurkeyCalorieCalculator } from "@/components/calculators/tr/TurkeyCalorieCalculator";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 
@@ -238,6 +239,16 @@ export default function KaloriHesapMakinesiPage() {
             </div>
 
             <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">İpuçları ve Öneriler</h2>
+              <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-4">
+                <li>BMH ve TDEE sonucunu düzenli güncelleyin; kilo değişiminde <Link href="/tr/hesap-makineleri/saglik/bmi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">BMI hesap makinesi</Link> ile ideal aralığı takip edin.</li>
+                <li>Vücut kompozisyonu için <Link href="/tr/hesap-makineleri/saglik/vucut-yag-orani-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">vücut yağ oranı hesap makinesi</Link> kullanın.</li>
+                <li>Hamilelikte kalori ihtiyacı değişir: <Link href="/tr/hesap-makineleri/saglik/gebelik-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">gebelik hesap makinesi</Link> ile hafta takibi yapın.</li>
+                <li>Blog yazılarımız: <Link href="/tr/blog/kalori-acigi-ile-kilo-verme-nasil-calisir" className="text-[#2563eb] hover:underline font-medium">Kalori Açığı ile Kilo Verme</Link>, <Link href="/tr/blog/gunluk-kalori-ihtiyaci-bmr-ve-tdee-nedir" className="text-[#2563eb] hover:underline font-medium">BMR ve TDEE</Link>, <Link href="/tr/blog/saglikli-beslenme-who-onerileri-ve-turk-mutfagi" className="text-[#2563eb] hover:underline font-medium">Sağlıklı Beslenme ve Türk Mutfağı</Link>.</li>
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
                 Türk Mutfağında Kalori Örnekleri
               </h2>
@@ -270,6 +281,10 @@ export default function KaloriHesapMakinesiPage() {
                 Kişisel beslenme planı için bir diyetisyene danışmanızı öneririz.
               </p>
             </div>
+
+            <section className="py-12 bg-[#f8fafc] mt-8">
+              <RelatedCalculatorsTR categorySlug="saglik" currentSlug="kalori-hesap-makinesi" maxResults={6} />
+            </section>
           </div>
         </div>
       </div>
