@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { TR_REHBERLER } from "@/lib/tr-rehberler";
 
 export const metadata: Metadata = {
   title: "Hakkımızda - Misyonumuz ve Ekibimiz",
@@ -214,6 +215,27 @@ export default function HakkimizdaPage() {
                   Tüm hesap makinelerimize göz atın →
                 </Link>
               </p>
+            </section>
+
+            <section className="mb-8">
+              <h2 className="text-2xl font-bold text-[#1e293b] mb-4">
+                Rehberler
+              </h2>
+              <p className="text-[#64748b] leading-relaxed mb-4">
+                Vergi, emeklilik, kredi ve yatırım konularında 2026 güncel rehberlerimiz hesap makinelerimizi tamamlar.
+                <Link href="/tr/rehberler" className="text-[#2563eb] hover:underline font-medium ml-1">
+                  Tüm rehberlere göz atın →
+                </Link>
+              </p>
+              <ul className="list-disc list-inside text-[#64748b] space-y-2">
+                {TR_REHBERLER.map((rehber) => (
+                  <li key={rehber.slug}>
+                    <Link href={`/tr/rehberler/${rehber.slug}`} className="text-[#2563eb] hover:underline">
+                      {rehber.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </section>
 
             <section className="mb-8">

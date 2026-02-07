@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { TurkeyGPACalculator } from "@/components/calculators/tr/TurkeyGPACalculator";
 import { DATA_VERSION, GPA_INFO } from "@/lib/data/turkey-2026-data";
 import Link from "next/link";
+import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 
 export const metadata: Metadata = {
   title: "Not Ortalaması Hesaplama | GANO Hesap Makinesi - 4'lük ve 100'lük Sistem",
@@ -31,31 +32,36 @@ export const metadata: Metadata = {
   },
 };
 
-export default function TurkeyGPACalculatorPage() {
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: "Türkiye Not Ortalaması (GANO) Hesap Makinesi",
-    description: "YÖK standardı 4'lük ve 100'lük not sistemi ile GANO hesaplama",
-    url: "https://calculator360pro.com/tr/hesap-makineleri/egitim/not-ortalamasi-hesap-makinesi",
-    applicationCategory: "EducationalApplication",
-    operatingSystem: "Web",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "TRY",
-    },
-    inLanguage: "tr",
-    dateModified: DATA_VERSION.lastUpdated,
-  };
+const faqs = [
+  { question: "GANO nedir?", answer: "GANO (Genel Akademik Not Ortalaması), üniversitede aldığınız derslerin kredi ağırlıklı not ortalamasıdır. YÖK standartlarına göre 4'lük veya 100'lük sistemle hesaplanır." },
+  { question: "4'lük sistem nasıl hesaplanır?", answer: "Her dersin harf notu (A=4, B=3, C=2, D=1, F=0) kredi ile çarpılır; toplamı alınan toplam krediye bölünür. Örneğin A (3 kredi) ve B (2 kredi) = (4×3 + 3×2) / 5 = 3,6." },
+  { question: "Onur ve yüksek onur öğrencisi nedir?", answer: "Genelde GANO 3,00–3,49 arası onur, 3,50 ve üzeri yüksek onur sayılır. Üniversite yönetmeliklerine göre değişebilir." },
+  { question: "100'lük sistem 4'lüğe nasıl dönüşür?", answer: "YÖK dönüşüm tablosuna göre 90–100 = 4,00; 85–89 = 3,50; 80–84 = 3,00 vb. Hesap makinesi bu dönüşümü otomatik yapar." },
+  { question: "Not ortalaması nerede kullanılır?", answer: "Staj başvuruları, yüksek lisans/doktora başvuruları, burs ve bazı iş ilanlarında GANO istenir." },
+];
 
+const howToSteps = [
+  { name: "Dersleri ekleyin", text: "Ders adı, kredi ve harf notu (veya 100'lük puan) girin." },
+  { name: "Sistemi seçin", text: "4'lük veya 100'lük not sistemini seçin." },
+  { name: "Hesapla", text: "GANO ve onur/yüksek onur durumunu görün." },
+];
+
+export default function TurkeyGPACalculatorPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      <SchemaMarkupTR
+        name="Not Ortalaması (GANO) Hesap Makinesi"
+        description="YÖK standardı 4'lük ve 100'lük not sistemi ile GANO hesaplama"
+        slug="not-ortalamasi-hesap-makinesi"
+        categorySlug="egitim"
+        categoryName="Eğitim"
+        dateModified={DATA_VERSION.lastUpdated}
+        category="education"
+        faqs={faqs}
+        howToName="Not Ortalaması Hesap Makinesi Nasıl Kullanılır?"
+        howToDescription="GANO hesaplamak için adımlar."
+        howToSteps={howToSteps}
       />
-      
       <div className="min-h-screen bg-[#f8fafc] py-8">
         <div className="container mx-auto px-4 max-w-4xl">
           {/* Breadcrumb */}

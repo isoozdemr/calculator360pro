@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { TurkeyCalorieCalculator } from "@/components/calculators/tr/TurkeyCalorieCalculator";
+import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 
 export const metadata: Metadata = {
   title: "Kalori Hesap Makinesi 2026 - BMH ve TDEE Hesapla",
@@ -33,60 +34,38 @@ export const metadata: Metadata = {
   },
 };
 
-// Schema markup
-function generateCalorieSchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Kalori Hesap Makinesi",
-    "description": "Günlük kalori ihtiyacı hesaplama aracı",
-    "url": `${SITE_URL}/tr/hesap-makineleri/saglik/kalori-hesap-makinesi`,
-    "applicationCategory": "HealthApplication",
-    "operatingSystem": "Web",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "TRY"
-    },
-    "inLanguage": "tr"
-  };
-}
-
 const kaloriFaqs = [
-  { q: "Günlük kalori ihtiyacı nasıl hesaplanır?", a: "Günlük kalori ihtiyacı, Bazal Metabolizma Hızı (BMH) ile aktivite faktörünün çarpılmasıyla hesaplanır. BMH için Mifflin-St Jeor denklemi kullanılır: Erkek (10×kilo)+(6.25×boy)-(5×yaş)+5, Kadın aynı formül -161." },
-  { q: "Kilo vermek için günde kaç kalori almalıyım?", a: "Sağlıklı kilo vermek için günlük ihtiyacınızın 500 kalori altında kalmanız önerilir; haftada ~0,5 kg kayıp. Kadınlar 1200, erkekler 1500 kalorinin altına düşmemeli." },
-  { q: "BMH (Bazal Metabolizma Hızı) nedir?", a: "BMH, vücudun dinlenme halinde temel yaşamsal fonksiyonlar için harcadığı enerjidir. Solunum, kalp atışı, hücre yenilenmesi bu enerjiye dahildir." },
-  { q: "TDEE ile BMH farkı nedir?", a: "BMH sadece dinlenme metabolizmasıdır. TDEE (Toplam Günlük Enerji Harcaması) BMH + günlük aktivite ve egzersizle harcanan kalorilerin toplamıdır." },
-  { q: "Makro besin dağılımı nasıl olmalı?", a: "Türkiye Beslenme Rehberi'ne göre kabaca: protein %15-20, karbonhidrat %45-55, yağ %25-30. Hedef ve sağlık durumuna göre diyetisyen ile kişiselleştirilebilir." },
-  { q: "Kalori açığı ne kadar güvenli?", a: "Günde 500 kalori açığı çoğu yetişkin için güvenli kabul edilir. Daha büyük açıklar besin eksikliği ve metabolizma yavaşlaması riski taşır; uzman kontrolü önerilir." },
+  { question: "Günlük kalori ihtiyacı nasıl hesaplanır?", answer: "Günlük kalori ihtiyacı, Bazal Metabolizma Hızı (BMH) ile aktivite faktörünün çarpılmasıyla hesaplanır. BMH için Mifflin-St Jeor denklemi kullanılır: Erkek (10×kilo)+(6.25×boy)-(5×yaş)+5, Kadın aynı formül -161." },
+  { question: "Kilo vermek için günde kaç kalori almalıyım?", answer: "Sağlıklı kilo vermek için günlük ihtiyacınızın 500 kalori altında kalmanız önerilir; haftada ~0,5 kg kayıp. Kadınlar 1200, erkekler 1500 kalorinin altına düşmemeli." },
+  { question: "BMH (Bazal Metabolizma Hızı) nedir?", answer: "BMH, vücudun dinlenme halinde temel yaşamsal fonksiyonlar için harcadığı enerjidir. Solunum, kalp atışı, hücre yenilenmesi bu enerjiye dahildir." },
+  { question: "TDEE ile BMH farkı nedir?", answer: "BMH sadece dinlenme metabolizmasıdır. TDEE (Toplam Günlük Enerji Harcaması) BMH + günlük aktivite ve egzersizle harcanan kalorilerin toplamıdır." },
+  { question: "Makro besin dağılımı nasıl olmalı?", answer: "Türkiye Beslenme Rehberi'ne göre kabaca: protein %15-20, karbonhidrat %45-55, yağ %25-30. Hedef ve sağlık durumuna göre diyetisyen ile kişiselleştirilebilir." },
+  { question: "Kalori açığı ne kadar güvenli?", answer: "Günde 500 kalori açığı çoğu yetişkin için güvenli kabul edilir. Daha büyük açıklar besin eksikliği ve metabolizma yavaşlaması riski taşır; uzman kontrolü önerilir." },
 ];
 
-function generateFAQSchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": kaloriFaqs.map((faq) => ({
-      "@type": "Question",
-      "name": faq.q,
-      "acceptedAnswer": { "@type": "Answer", "text": faq.a },
-    })),
-  };
-}
+const howToSteps = [
+  { name: "Cinsiyet ve yaş girin", text: "Cinsiyetinizi ve yaşınızı seçin." },
+  { name: "Boy ve kilo girin", text: "Boy (cm) ve kilo (kg) değerlerinizi girin." },
+  { name: "Aktivite seviyesi seçin", text: "Günlük aktivite seviyenizi (sedanter, hafif, orta, aktif, çok aktif) seçin." },
+  { name: "Hedef seçin (isteğe bağlı)", text: "Kilo verme, kilo alma veya mevcut kiloyu koruma hedefini seçin." },
+  { name: "Sonuçları inceleyin", text: "BMH, TDEE ve makro önerilerini görün." },
+];
 
 export default function KaloriHesapMakinesiPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateCalorieSchema()),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateFAQSchema()),
-        }}
+      <SchemaMarkupTR
+        name="Kalori Hesap Makinesi"
+        description="Günlük kalori ihtiyacı hesaplama aracı"
+        slug="kalori-hesap-makinesi"
+        categorySlug="saglik"
+        categoryName="Sağlık"
+        dateModified="2026-01-01"
+        category="health"
+        faqs={kaloriFaqs}
+        howToName="Kalori Hesap Makinesi Nasıl Kullanılır?"
+        howToDescription="Günlük kalori ihtiyacı hesaplamak için adımlar."
+        howToSteps={howToSteps}
       />
       
       <div className="min-h-screen bg-[#f8fafc] py-16">
@@ -204,8 +183,8 @@ export default function KaloriHesapMakinesiPage() {
               <div className="space-y-4 mb-8">
                 {kaloriFaqs.map((faq, i) => (
                   <div key={i} className="border-b border-[#e2e8f0] pb-4 last:border-0">
-                    <h3 className="font-semibold text-[#1e293b] mb-2">{faq.q}</h3>
-                    <p className="text-[#64748b] text-sm">{faq.a}</p>
+                    <h3 className="font-semibold text-[#1e293b] mb-2">{faq.question}</h3>
+                    <p className="text-[#64748b] text-sm">{faq.answer}</p>
                   </div>
                 ))}
               </div>

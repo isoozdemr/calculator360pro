@@ -38,6 +38,8 @@ const TURKISH_CALCULATORS = [
   { category: "finans", slug: "ogrenim-kredisi-hesap-makinesi", enCategory: "finance", enSlug: "student-loan-calculator" },
   { category: "finans", slug: "kredi-karti-borc-hesap-makinesi", enCategory: "finance", enSlug: "credit-card-payoff-calculator" },
   { category: "finans", slug: "bahsis-hesap-makinesi", enCategory: "finance", enSlug: "tip-calculator" },
+  { category: "finans", slug: "enflasyon-alim-gucu-hesap-makinesi", enCategory: "finance", enSlug: "inflation-purchasing-power-calculator" },
+  { category: "finans", slug: "bes-devlet-katkisi-hesap-makinesi", enCategory: "finance", enSlug: "retirement-calculator" },
 ];
 
 const TURKISH_CATEGORIES = [

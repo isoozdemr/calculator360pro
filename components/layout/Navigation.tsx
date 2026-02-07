@@ -148,7 +148,7 @@ export function Navigation() {
 
   return (
     <nav className="bg-white border-b-2 border-[#e2e8f0] sticky top-0 z-50">
-      <div className="container mx-auto px-4 max-w-6xl">
+      <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center">
             <Image
@@ -160,10 +160,10 @@ export function Navigation() {
               priority
             />
           </Link>
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-4">
             <Link
               href="/"
-              className="text-[#1e293b] hover:text-[#2563eb] font-medium transition-colors"
+              className="text-sm text-[#1e293b] hover:text-[#2563eb] font-medium transition-colors"
             >
               Home
             </Link>
@@ -186,7 +186,7 @@ export function Navigation() {
                   onMouseLeave={handleCategoryMouseLeave}
                 >
                   <button
-                    className="text-[#1e293b] hover:text-[#2563eb] font-medium transition-colors flex items-center"
+                    className="text-sm text-[#1e293b] hover:text-[#2563eb] font-medium transition-colors flex items-center"
                     aria-expanded={isOpen}
                     aria-haspopup="true"
                     aria-controls={`category-menu-${category.slug}`}
@@ -276,15 +276,9 @@ export function Navigation() {
 
             <Link
               href="/blog"
-              className="text-[#1e293b] hover:text-[#2563eb] font-medium transition-colors"
+              className="text-sm text-[#1e293b] hover:text-[#2563eb] font-medium transition-colors"
             >
               Blog
-            </Link>
-            <Link
-              href="/about"
-              className="text-[#1e293b] hover:text-[#2563eb] font-medium transition-colors"
-            >
-              About
             </Link>
 
             {/* Language Switcher */}
@@ -344,14 +338,14 @@ export function Navigation() {
             <div className="py-4 space-y-1">
               <Link
                 href="/"
-                className="block px-4 py-3 text-[#1e293b] hover:text-[#2563eb] hover:bg-[#f8fafc] font-medium rounded-lg transition-colors"
+                className="block px-4 py-3 text-sm text-[#1e293b] hover:text-[#2563eb] hover:bg-[#f8fafc] font-medium rounded-lg transition-colors"
                 onClick={closeMobileMenu}
               >
                 Home
               </Link>
               <Link
                 href="/calculators"
-                className="block px-4 py-3 text-[#1e293b] hover:text-[#2563eb] hover:bg-[#f8fafc] font-medium rounded-lg transition-colors"
+                className="block px-4 py-3 text-sm text-[#1e293b] hover:text-[#2563eb] hover:bg-[#f8fafc] font-medium rounded-lg transition-colors"
                 onClick={closeMobileMenu}
               >
                 All Calculators
@@ -366,7 +360,7 @@ export function Navigation() {
                 return (
                   <div key={category.slug} className="border-b border-[#e2e8f0] last:border-b-0">
                     <button
-                      className="w-full flex items-center justify-between px-4 py-3 text-left text-[#1e293b] hover:text-[#2563eb] hover:bg-[#f8fafc] font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full flex items-center justify-between px-4 py-3 text-left text-sm text-[#1e293b] hover:text-[#2563eb] hover:bg-[#f8fafc] font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                       onClick={() => hasCalculators && toggleMobileCategory(category.slug)}
                       onKeyDown={(e) => hasCalculators && handleMobileCategoryKeyDown(e, category.slug)}
                       aria-expanded={isCategoryOpen}
@@ -435,17 +429,10 @@ export function Navigation() {
 
               <Link
                 href="/blog"
-                className="block px-4 py-3 text-[#1e293b] hover:text-[#2563eb] hover:bg-[#f8fafc] font-medium rounded-lg transition-colors"
+                className="block px-4 py-3 text-sm text-[#1e293b] hover:text-[#2563eb] hover:bg-[#f8fafc] font-medium rounded-lg transition-colors"
                 onClick={closeMobileMenu}
               >
                 Blog
-              </Link>
-              <Link
-                href="/about"
-                className="block px-4 py-3 text-[#1e293b] hover:text-[#2563eb] hover:bg-[#f8fafc] font-medium rounded-lg transition-colors"
-                onClick={closeMobileMenu}
-              >
-                About
               </Link>
             </div>
           </div>

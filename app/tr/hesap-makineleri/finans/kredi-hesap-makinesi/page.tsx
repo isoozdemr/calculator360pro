@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import { TurkeyLoanCalculator } from "@/components/calculators/tr/TurkeyLoanCalculator";
 import { DATA_VERSION, CONSUMER_LOAN_FEES_2026 } from "@/lib/data/turkey-2026-data";
+import { generateTurkishHowToSchema, generateTurkishBreadcrumbSchema } from "@/lib/seo/schema";
+import { SITE_URL } from "@/lib/constants";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -37,7 +39,7 @@ export default function TurkeyLoanCalculatorPage() {
     "@type": "WebApplication",
     name: "Türkiye Kredi Hesap Makinesi",
     description: "2026 yılı KKDF ve BSMV oranları dahil tüketici kredisi hesaplama",
-    url: "https://calculator360pro.com/tr/hesap-makineleri/finans/kredi-hesap-makinesi",
+    url: `${SITE_URL}/tr/hesap-makineleri/finans/kredi-hesap-makinesi`,
     applicationCategory: "FinanceApplication",
     operatingSystem: "Web",
     offers: {
@@ -49,13 +51,28 @@ export default function TurkeyLoanCalculatorPage() {
     dateModified: DATA_VERSION.lastUpdated,
   };
 
+  const krediUrl = `${SITE_URL}/tr/hesap-makineleri/finans/kredi-hesap-makinesi`;
+  const howToSteps = [
+    { name: "Kredi tutarı ve vadeyi girin", text: "Çekmek istediğiniz kredi tutarını ve vadeyi (ay) girin." },
+    { name: "Faiz oranını ve kredi türünü seçin", text: "Yıllık faiz oranını ve kredi türünü (ihtiyaç, taşıt, eğitim) seçin." },
+    { name: "Hesapla butonuna tıklayın", text: "KKDF ve BSMV dahil aylık taksit ve toplam maliyeti görün." },
+  ];
+  const howToSchema = generateTurkishHowToSchema(
+    "Kredi Hesap Makinesi Nasıl Kullanılır?",
+    "İhtiyaç ve taşıt kredisi taksit hesaplamak için adımlar.",
+    howToSteps,
+    krediUrl
+  );
+  const breadcrumbSchema = generateTurkishBreadcrumbSchema("Finans", "finans", "Kredi Hesap Makinesi", "kredi-hesap-makinesi");
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
       />
-      
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <div className="min-h-screen bg-[#f8fafc] py-8">
         <div className="container mx-auto px-4 max-w-4xl">
           {/* Breadcrumb */}

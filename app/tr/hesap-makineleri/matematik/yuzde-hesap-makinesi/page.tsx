@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { TurkeyPercentageCalculator } from "@/components/calculators/tr/TurkeyPercentageCalculator";
+import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
+import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Yüzde Hesap Makinesi 2026 - Anında Hesapla",
@@ -32,62 +34,37 @@ export const metadata: Metadata = {
   },
 };
 
-// Schema markup
-function generatePercentageSchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Yüzde Hesap Makinesi",
-    "description": "Yüzde hesaplama aracı",
-    "url": `${SITE_URL}/tr/hesap-makineleri/matematik/yuzde-hesap-makinesi`,
-    "applicationCategory": "UtilityApplication",
-    "operatingSystem": "Web",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "TRY"
-    },
-    "inLanguage": "tr"
-  };
-}
-
 const yuzdeFaqs = [
-  { q: "Bir sayının yüzdesi nasıl hesaplanır?", a: "Bir sayının yüzdesini hesaplamak için: (Sayı × Yüzde) / 100 formülü kullanılır. Örneğin, 200'ün %25'i = (200 × 25) / 100 = 50." },
-  { q: "Artış oranı nasıl hesaplanır?", a: "Artış oranı formülü: ((Yeni Değer - Eski Değer) / Eski Değer) × 100. Örneğin, 100'den 120'ye artış = ((120-100)/100) × 100 = %20 artış." },
-  { q: "Bir sayı diğerinin yüzde kaçıdır nasıl bulunur?", a: "Formül: (Parça Değer / Toplam Değer) × 100. Örneğin, 25 sayısı 100'ün yüzde kaçıdır = (25/100) × 100 = %25." },
-  { q: "KDV dahil fiyattan KDV nasıl hesaplanır?", a: "KDV dahil fiyattan KDV'yi çıkarmak için: Net = Brüt / (1 + KDV oranı). %20 KDV için: 120 TL'den 100 TL net, 20 TL KDV." },
-  { q: "Yüzde puan ile yüzde farkı nedir?", a: "Yüzde puan mutlak farktır (örn. %10'dan %12'ye = 2 puan). Yüzde farkı oransal artıştır: ((12-10)/10)×100 = %20 artış." },
-  { q: "İki yüzde artış/azalış neden toplanmaz?", a: "Çünkü her işlem farklı taban üzerinden uygulanır. %20 artış sonra %10 azalış, toplam %10 artış değildir; 100→120→108 olur." },
+  { question: "Bir sayının yüzdesi nasıl hesaplanır?", answer: "Bir sayının yüzdesini hesaplamak için: (Sayı × Yüzde) / 100 formülü kullanılır. Örneğin, 200'ün %25'i = (200 × 25) / 100 = 50." },
+  { question: "Artış oranı nasıl hesaplanır?", answer: "Artış oranı formülü: ((Yeni Değer - Eski Değer) / Eski Değer) × 100. Örneğin, 100'den 120'ye artış = ((120-100)/100) × 100 = %20 artış." },
+  { question: "Bir sayı diğerinin yüzde kaçıdır nasıl bulunur?", answer: "Formül: (Parça Değer / Toplam Değer) × 100. Örneğin, 25 sayısı 100'ün yüzde kaçıdır = (25/100) × 100 = %25." },
+  { question: "KDV dahil fiyattan KDV nasıl hesaplanır?", answer: "KDV dahil fiyattan KDV'yi çıkarmak için: Net = Brüt / (1 + KDV oranı). %20 KDV için: 120 TL'den 100 TL net, 20 TL KDV." },
+  { question: "Yüzde puan ile yüzde farkı nedir?", answer: "Yüzde puan mutlak farktır (örn. %10'dan %12'ye = 2 puan). Yüzde farkı oransal artıştır: ((12-10)/10)×100 = %20 artış." },
+  { question: "İki yüzde artış/azalış neden toplanmaz?", answer: "Çünkü her işlem farklı taban üzerinden uygulanır. %20 artış sonra %10 azalış, toplam %10 artış değildir; 100→120→108 olur." },
 ];
 
-function generateFAQSchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": yuzdeFaqs.map((faq) => ({
-      "@type": "Question",
-      "name": faq.q,
-      "acceptedAnswer": { "@type": "Answer", "text": faq.a },
-    })),
-  };
-}
+const howToSteps = [
+  { name: "Hesaplama türünü seçin", text: "Yüzde bulma, artış/azalış oranı veya KDV hesaplama seçin." },
+  { name: "Değerleri girin", text: "İstenen sayıları ilgili alanlara girin." },
+  { name: "Hesapla", text: "Sonucu anında görün." },
+];
 
 export default function YuzdeHesapMakinesiPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generatePercentageSchema()),
-        }}
+      <SchemaMarkupTR
+        name="Yüzde Hesap Makinesi"
+        description="Yüzde hesaplama aracı"
+        slug="yuzde-hesap-makinesi"
+        categorySlug="matematik"
+        categoryName="Matematik"
+        dateModified={DATA_VERSION.lastUpdated}
+        category="math"
+        faqs={yuzdeFaqs}
+        howToName="Yüzde Hesap Makinesi Nasıl Kullanılır?"
+        howToDescription="Yüzde hesaplamak için adımlar."
+        howToSteps={howToSteps}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateFAQSchema()),
-        }}
-      />
-      
       <div className="min-h-screen bg-[#f8fafc] py-16">
         <div className="container mx-auto px-4 max-w-4xl">
           {/* Breadcrumb */}
@@ -287,8 +264,8 @@ export default function YuzdeHesapMakinesiPage() {
               <div className="space-y-4 mb-8">
                 {yuzdeFaqs.map((faq, i) => (
                   <div key={i} className="border-b border-[#e2e8f0] pb-4 last:border-0">
-                    <h3 className="font-semibold text-[#1e293b] mb-2">{faq.q}</h3>
-                    <p className="text-[#64748b] text-sm">{faq.a}</p>
+                    <h3 className="font-semibold text-[#1e293b] mb-2">{faq.question}</h3>
+                    <p className="text-[#64748b] text-sm">{faq.answer}</p>
                   </div>
                 ))}
               </div>

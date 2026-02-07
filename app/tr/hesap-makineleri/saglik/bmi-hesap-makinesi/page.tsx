@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { generateTurkishHowToSchema, generateTurkishBreadcrumbSchema } from "@/lib/seo/schema";
 import { TurkeyBMICalculator } from "@/components/calculators/tr/TurkeyBMICalculator";
 
 export const metadata: Metadata = {
@@ -72,7 +73,22 @@ function generateFAQSchema() {
   };
 }
 
+const bmiHowToSteps = [
+  { name: "Kilo ve boyu girin", text: "Kilonuzu (kg) ve boyunuzu (cm veya m) ilgili alanlara girin." },
+  { name: "Hesapla butonuna tıklayın", text: "BMI değerinizi ve WHO kategorisini görün." },
+  { name: "Sonucu yorumlayın", text: "İdeal kilo aralığı ve sağlık kategorisini inceleyin." },
+];
+
 export default function BMIHesapMakinesiPage() {
+  const bmiUrl = `${SITE_URL}/tr/hesap-makineleri/saglik/bmi-hesap-makinesi`;
+  const howToSchema = generateTurkishHowToSchema(
+    "BMI Hesap Makinesi Nasıl Kullanılır?",
+    "Vücut Kitle İndeksi hesaplamak için adımlar.",
+    bmiHowToSteps,
+    bmiUrl
+  );
+  const breadcrumbSchema = generateTurkishBreadcrumbSchema("Sağlık", "saglik", "BMI Hesap Makinesi", "bmi-hesap-makinesi");
+
   return (
     <>
       <script
@@ -81,6 +97,8 @@ export default function BMIHesapMakinesiPage() {
           __html: JSON.stringify(generateBMISchema()),
         }}
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

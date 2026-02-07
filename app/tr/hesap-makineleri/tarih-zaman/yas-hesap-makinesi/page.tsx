@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { TurkeyAgeCalculator } from "@/components/calculators/tr/TurkeyAgeCalculator";
+import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
+import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Yaş Hesap Makinesi 2026 - Doğum Tarihinden Hesapla",
@@ -32,60 +34,35 @@ export const metadata: Metadata = {
   },
 };
 
-// Schema markup
-function generateAgeSchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Yaş Hesap Makinesi",
-    "description": "Doğum tarihinizden yaşınızı hesaplama aracı",
-    "url": `${SITE_URL}/tr/hesap-makineleri/tarih-zaman/yas-hesap-makinesi`,
-    "applicationCategory": "UtilityApplication",
-    "operatingSystem": "Web",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "TRY"
-    },
-    "inLanguage": "tr"
-  };
-}
-
 const yasFaqs = [
-  { q: "Yaş nasıl hesaplanır?", a: "Yaş hesaplama, doğum tarihinizden bugünkü tarihe kadar geçen sürenin yıl, ay ve gün olarak hesaplanmasıdır. Resmi işlemlerde doğum yılından bugünkü yıl çıkarılır, ancak doğum günü henüz geçmediyse 1 yıl eksiltilir." },
-  { q: "Türkiye'de ehliyet almak için yaş sınırı nedir?", a: "Türkiye'de B sınıfı (otomobil) ehliyet alabilmek için 18 yaşını doldurmuş olmak gerekir. A1 motosiklet ehliyeti için 16 yaş, A2 için 18 yaş, A sınıfsız için 24 yaş şartı aranır." },
-  { q: "Türkiye'de evlilik yaşı nedir?", a: "Türk Medeni Kanunu'na göre evlilik yaşı 18'dir. Ancak hakim kararı ve yasal temsilcinin izni ile 17 yaşında evlenilebilir." },
-  { q: "Emeklilik yaşı nasıl hesaplanır?", a: "Emeklilik yaşı doğum yılına ve sigorta başlangıcına göre değişir. 1999 sonrası için 58-65 yaş aralığı uygulanır. SGK emeklilik tablosundan tam yaşınızı öğrenebilirsiniz." },
-  { q: "Oy kullanma yaşı kaçtır?", a: "Türkiye'de seçimlerde oy kullanabilmek için 18 yaşını doldurmuş olmak gerekir. Yaş, seçim günü itibarıyla hesaplanır." },
-  { q: "65 yaş kartı nedir?", a: "65 yaşını doldurmuş vatandaşlar belediyelerden ücretsiz ulaşım kartı alabilir. Yaş doğum tarihine göre resmi olarak hesaplanır." },
+  { question: "Yaş nasıl hesaplanır?", answer: "Yaş hesaplama, doğum tarihinizden bugünkü tarihe kadar geçen sürenin yıl, ay ve gün olarak hesaplanmasıdır. Resmi işlemlerde doğum yılından bugünkü yıl çıkarılır, ancak doğum günü henüz geçmediyse 1 yıl eksiltilir." },
+  { question: "Türkiye'de ehliyet almak için yaş sınırı nedir?", answer: "Türkiye'de B sınıfı (otomobil) ehliyet alabilmek için 18 yaşını doldurmuş olmak gerekir. A1 motosiklet ehliyeti için 16 yaş, A2 için 18 yaş, A sınıfsız için 24 yaş şartı aranır." },
+  { question: "Türkiye'de evlilik yaşı nedir?", answer: "Türk Medeni Kanunu'na göre evlilik yaşı 18'dir. Ancak hakim kararı ve yasal temsilcinin izni ile 17 yaşında evlenilebilir." },
+  { question: "Emeklilik yaşı nasıl hesaplanır?", answer: "Emeklilik yaşı doğum yılına ve sigorta başlangıcına göre değişir. 1999 sonrası için 58-65 yaş aralığı uygulanır. SGK emeklilik tablosundan tam yaşınızı öğrenebilirsiniz." },
+  { question: "Oy kullanma yaşı kaçtır?", answer: "Türkiye'de seçimlerde oy kullanabilmek için 18 yaşını doldurmuş olmak gerekir. Yaş, seçim günü itibarıyla hesaplanır." },
+  { question: "65 yaş kartı nedir?", answer: "65 yaşını doldurmuş vatandaşlar belediyelerden ücretsiz ulaşım kartı alabilir. Yaş doğum tarihine göre resmi olarak hesaplanır." },
 ];
 
-function generateFAQSchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": yasFaqs.map((faq) => ({
-      "@type": "Question",
-      "name": faq.q,
-      "acceptedAnswer": { "@type": "Answer", "text": faq.a },
-    })),
-  };
-}
+const howToSteps = [
+  { name: "Doğum tarihini girin", text: "Doğum tarihinizi gün, ay ve yıl olarak seçin." },
+  { name: "Hesapla", text: "Yaşınızı yıl, ay ve gün olarak görün; burç bilgisi de gösterilir." },
+];
 
 export default function YasHesapMakinesiPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateAgeSchema()),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateFAQSchema()),
-        }}
+      <SchemaMarkupTR
+        name="Yaş Hesap Makinesi"
+        description="Doğum tarihinizden yaşınızı hesaplama aracı"
+        slug="yas-hesap-makinesi"
+        categorySlug="tarih-zaman"
+        categoryName="Tarih-Zaman"
+        dateModified={DATA_VERSION.lastUpdated}
+        category="date-time"
+        faqs={yasFaqs}
+        howToName="Yaş Hesap Makinesi Nasıl Kullanılır?"
+        howToDescription="Doğum tarihinden yaş hesaplamak için adımlar."
+        howToSteps={howToSteps}
       />
       
       <div className="min-h-screen bg-[#f8fafc] py-16">
@@ -255,8 +232,8 @@ export default function YasHesapMakinesiPage() {
               <div className="space-y-4 mb-8">
                 {yasFaqs.map((faq, i) => (
                   <div key={i} className="border-b border-[#e2e8f0] pb-4 last:border-0">
-                    <h3 className="font-semibold text-[#1e293b] mb-2">{faq.q}</h3>
-                    <p className="text-[#64748b] text-sm">{faq.a}</p>
+                    <h3 className="font-semibold text-[#1e293b] mb-2">{faq.question}</h3>
+                    <p className="text-[#64748b] text-sm">{faq.answer}</p>
                   </div>
                 ))}
               </div>

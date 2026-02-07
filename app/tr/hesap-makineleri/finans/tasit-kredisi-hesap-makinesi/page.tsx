@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
-import { CarLoanCalculator } from "@/components/calculators/CarLoanCalculator";
+import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
+import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
+import { TurkeyCarLoanCalculator } from "@/components/calculators/tr";
 
 export const metadata: Metadata = {
   title: "Taşıt Kredisi Hesap Makinesi 2026 - Araç Kredisi Taksit",
@@ -38,32 +40,28 @@ const faqs = [
   { question: "Erken ödeme cezası var mı?", answer: "Bazı bankalarda taşıt kredisi erken kapamada cezai şart uygulanır. Sözleşmeyi okuyun. Erken kapatma planınız varsa cezai şartı sorun." },
 ];
 
-export default function TasitKredisiHesapMakinesiPage() {
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: "Taşıt Kredisi Hesap Makinesi",
-    description: "Taşıt kredisi taksit ve maliyet hesaplama aracı",
-    url: `${SITE_URL}/tr/hesap-makineleri/finans/tasit-kredisi-hesap-makinesi`,
-    applicationCategory: "FinanceApplication",
-    operatingSystem: "Web",
-    offers: { "@type": "Offer", price: "0", priceCurrency: "TRY" },
-    inLanguage: "tr",
-  };
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: { "@type": "Answer", text: faq.answer },
-    })),
-  };
+const howToSteps = [
+  { name: "Araç fiyatı ve peşinatı girin", text: "Aracın fiyatını ve peşinat tutarınızı girin." },
+  { name: "Faiz oranı ve vadeyi seçin", text: "Yıllık faiz oranı ve kredi vadesini (ay) seçin." },
+  { name: "Hesapla butonuna tıklayın", text: "Aylık taksit ve toplam maliyeti görün." },
+];
 
+export default function TasitKredisiHesapMakinesiPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <SchemaMarkupTR
+        name="Taşıt Kredisi Hesap Makinesi"
+        description="Taşıt kredisi taksit ve maliyet hesaplama aracı"
+        slug="tasit-kredisi-hesap-makinesi"
+        categorySlug="finans"
+        categoryName="Finans"
+        dateModified={DATA_VERSION.lastUpdated}
+        category="finance"
+        faqs={faqs}
+        howToName="Taşıt Kredisi Hesap Makinesi Nasıl Kullanılır?"
+        howToDescription="Araç kredisi taksit hesaplamak için adımlar."
+        howToSteps={howToSteps}
+      />
       <div className="min-h-screen bg-[#f8fafc] py-8">
         <div className="container mx-auto px-4 max-w-4xl">
           <nav className="mb-6 text-sm text-[#64748b]">
@@ -83,7 +81,7 @@ export default function TasitKredisiHesapMakinesiPage() {
               Araç kredisi aylık taksit ve toplam geri ödeme tutarını hesaplayın. Peşinat ve vade seçenekleri ile.
             </p>
           </div>
-          <CarLoanCalculator />
+          <TurkeyCarLoanCalculator />
           <div className="mt-12 space-y-8">
             <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Taşıt Kredisi ve Türkiye Mevzuatı</h2>

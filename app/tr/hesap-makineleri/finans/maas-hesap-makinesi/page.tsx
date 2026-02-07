@@ -1,11 +1,13 @@
 import { Metadata } from "next";
 import { TurkeySalaryCalculator } from "@/components/calculators/tr/TurkeySalaryCalculator";
 import { DATA_VERSION, MINIMUM_WAGE_2026, SGK_RATES_2026, INCOME_TAX_BRACKETS_2026 } from "@/lib/data/turkey-2026-data";
+import { generateTurkishHowToSchema, generateTurkishBreadcrumbSchema } from "@/lib/seo/schema";
+import { SITE_URL } from "@/lib/constants";
+import Link from "next/link";
 
 // Helper to access SGK rates
 const SGK_WORKER_TOTAL = SGK_RATES_2026.worker.total;
 const SGK_CEILING = SGK_RATES_2026.limits.ceiling;
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Maaş Hesaplama 2026 | Brüt Net Maaş Hesap Makinesi | SGK AGİ Hesaplama",
@@ -115,6 +117,20 @@ export default function TurkeySalaryCalculatorPage() {
     })),
   };
 
+  const maasUrl = `${SITE_URL}/tr/hesap-makineleri/finans/maas-hesap-makinesi`;
+  const howToSteps = [
+    { name: "Brüt maaşı girin", text: "Brüt maaş tutarınızı TL olarak girin." },
+    { name: "Medeni durum ve çocuk sayısını seçin", text: "AGİ için medeni durum ve bakmakla yükümlü olduğunuz kişi sayısını seçin." },
+    { name: "Hesapla butonuna tıklayın", text: "Net maaş, SGK kesintileri ve işveren maliyetini görün." },
+  ];
+  const howToSchema = generateTurkishHowToSchema(
+    "Maaş Hesap Makinesi Nasıl Kullanılır?",
+    "Brütten nete maaş ve SGK kesintileri hesaplamak için adımlar.",
+    howToSteps,
+    maasUrl
+  );
+  const breadcrumbSchema = generateTurkishBreadcrumbSchema("Finans", "finans", "Maaş Hesap Makinesi", "maas-hesap-makinesi");
+
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat("tr-TR", {
       style: "currency",
@@ -133,7 +149,8 @@ export default function TurkeySalaryCalculatorPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <div className="min-h-screen bg-[#f8fafc]">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-[#1e293b] to-[#334155] text-white py-8">

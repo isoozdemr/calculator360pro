@@ -57,8 +57,28 @@ const mathCalculators = [
   },
 ];
 
+const categorySchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Matematik Hesap Makineleri",
+  description: "Ücretsiz matematik hesap makineleri: Yüzde, kesir, oran hesaplama.",
+  url: `${SITE_URL}/tr/hesap-makineleri/matematik`,
+  inLanguage: "tr-TR",
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: mathCalculators.length,
+    itemListElement: mathCalculators.map((calc, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: { "@type": "SoftwareApplication", name: calc.name, url: `${SITE_URL}/tr/hesap-makineleri/matematik/${calc.slug}` },
+    })),
+  },
+};
+
 export default function MatematikKategorisiPage() {
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(categorySchema) }} />
     <div className="min-h-screen bg-[#f8fafc] py-16">
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Breadcrumb */}
@@ -207,5 +227,6 @@ export default function MatematikKategorisiPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

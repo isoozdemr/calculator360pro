@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Eğitim Hesap Makineleri | Not Ortalaması Hesaplama",
@@ -22,8 +23,28 @@ const calculators = [
   },
 ];
 
+const categorySchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Eğitim Hesap Makineleri",
+  description: "Türkiye üniversite not sistemi ile GANO hesaplama araçları.",
+  url: `${SITE_URL}/tr/hesap-makineleri/egitim`,
+  inLanguage: "tr-TR",
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: calculators.length,
+    itemListElement: calculators.map((calc, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: { "@type": "SoftwareApplication", name: calc.name, url: `${SITE_URL}/tr/hesap-makineleri/egitim/${calc.slug}` },
+    })),
+  },
+};
+
 export default function EducationCalculatorsPage() {
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(categorySchema) }} />
     <div className="min-h-screen bg-[#f8fafc] py-8">
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Breadcrumb */}
@@ -168,5 +189,6 @@ export default function EducationCalculatorsPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

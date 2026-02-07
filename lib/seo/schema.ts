@@ -427,6 +427,13 @@ export function generateTurkishCalculatorSchema(
     "softwareVersion": "1.0",
     "browserRequirements": "Requires JavaScript. Requires HTML5.",
     "permissions": "No special permissions required.",
+    "featureList": [
+      "Ücretsiz kullanım",
+      "Kayıt gerekmez",
+      "Anında sonuç",
+      "Mobil uyumlu",
+      "Doğru sonuçlar",
+    ],
     "about": {
       "@type": category === "finance" ? "FinancialProduct" : "Thing",
       "name": name,
@@ -590,4 +597,29 @@ export function generateTurkishArticleSchema(
   const speakable = generateSpeakableSchema([".prose p", ".prose h2", ".prose h3"]);
   if (speakable) article.speakable = speakable;
   return article;
+}
+
+/**
+ * Generate Article schema for Turkish guide pages (rehberler)
+ */
+export function generateTurkishGuideSchema(
+  headline: string,
+  description: string,
+  url: string,
+  dateModified: string
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": headline,
+    "description": description,
+    "image": `${SITE_URL}/og-image.png`,
+    "author": { "@type": "Organization", "name": "Calculator360Pro", "url": SITE_URL },
+    "publisher": { "@type": "Organization", "name": "Calculator360Pro", "logo": { "@type": "ImageObject", "url": `${SITE_URL}/logo.svg` } },
+    "datePublished": dateModified,
+    "dateModified": dateModified,
+    "mainEntityOfPage": { "@type": "WebPage", "@id": url },
+    "url": url,
+    "inLanguage": "tr-TR",
+  };
 }

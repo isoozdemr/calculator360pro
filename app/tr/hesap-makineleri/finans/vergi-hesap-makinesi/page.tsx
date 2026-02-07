@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import { TurkeyTaxCalculator } from "@/components/calculators/tr/TurkeyTaxCalculator";
 import { DATA_VERSION, INCOME_TAX_BRACKETS_2026 } from "@/lib/data/turkey-2026-data";
+import { generateTurkishHowToSchema, generateTurkishBreadcrumbSchema } from "@/lib/seo/schema";
+import { SITE_URL } from "@/lib/constants";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -109,6 +111,20 @@ export default function TurkeyTaxCalculatorPage() {
     })),
   };
 
+  const vergiUrl = `${SITE_URL}/tr/hesap-makineleri/finans/vergi-hesap-makinesi`;
+  const howToSteps = [
+    { name: "Yıllık geliri girin", text: "Vergilendirilecek yıllık brüt gelirinizi veya vergi matrahınızı girin." },
+    { name: "Hesapla butonuna tıklayın", text: "Hesapla butonuna tıklayarak kümülatif vergi ve efektif oranı görün." },
+    { name: "Vergi dilimlerini inceleyin", text: "Hangi dilimde vergilendiğinizi ve toplam vergi tutarını inceleyin." },
+  ];
+  const howToSchema = generateTurkishHowToSchema(
+    "Gelir Vergisi Hesap Makinesi Nasıl Kullanılır?",
+    "2026 gelir vergisi dilimleri ile verginizi hesaplamak için adımlar.",
+    howToSteps,
+    vergiUrl
+  );
+  const breadcrumbSchema = generateTurkishBreadcrumbSchema("Finans", "finans", "Gelir Vergisi Hesap Makinesi", "vergi-hesap-makinesi");
+
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat("tr-TR", {
       style: "currency",
@@ -128,7 +144,8 @@ export default function TurkeyTaxCalculatorPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <div className="min-h-screen bg-[#f8fafc]">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-[#1e293b] to-[#334155] text-white py-8">

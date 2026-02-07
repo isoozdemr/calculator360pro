@@ -115,7 +115,7 @@ Bu bilgiler genel bilgilendirme amaçlıdır. Vergi planlaması ve beyanname iş
     author: "Calculator360Pro Ekibi",
     date: "2026-01-20",
     category: "Finans",
-    tags: ["gelir vergisi", "vergi hesaplama", "2026 vergi dilimleri", "vergi matrahı", "finans"],
+    tags: ["gelir vergisi", "vergi hesaplama", "2026 vergi dilimleri", "vergi matrahı", "kümülatif vergi", "efektif vergi oranı", "vergi dilimleri", "gelir vergisi rehberi", "finans"],
     faqs: [
       {
         question: "2026 gelir vergisi dilimleri nelerdir?",
@@ -124,6 +124,14 @@ Bu bilgiler genel bilgilendirme amaçlıdır. Vergi planlaması ve beyanname iş
       {
         question: "Vergi matrahı nasıl hesaplanır?",
         answer: "Vergi matrahı = Brüt gelir - SGK kesintileri. SGK işçi payı %14 ve işsizlik sigortası işçi payı %1 olmak üzere toplam %15 kesinti brüt maaştan düşülerek vergi matrahı bulunur.",
+      },
+      {
+        question: "Efektif vergi oranı nedir?",
+        answer: "Efektif vergi oranı, ödenen toplam verginin vergi matrahına oranıdır. Kademeli sistemde en yüksek dilim oranından düşük çıkar; örneğin %27 diliminde olsanız bile efektif oran %19–20 civarında olabilir.",
+      },
+      {
+        question: "Kümülatif vergi matrahı ne demek?",
+        answer: "Yılın başından itibaren biriken toplam vergi matrahıdır. Maaşlı çalışanlarda her ay matrah eklenir; vergi dilimi bu toplama göre belirlenir.",
       },
     ],
   },
@@ -245,7 +253,14 @@ Bu bilgiler genel bilgilendirme amaçlıdır. Resmi hesaplamalar için işvereni
     author: "Calculator360Pro Ekibi",
     date: "2026-01-20",
     category: "Finans",
-    tags: ["maas hesaplama", "brut net maas", "sgk kesintileri", "agi", "finans"],
+    tags: ["maas hesaplama", "brut net maas", "sgk kesintileri", "agi", "net maas", "gelir vergisi kesintisi", "damga vergisi", "brutten nete hesaplama", "finans"],
+    faqs: [
+      { question: "Brüt maaştan net maaş nasıl hesaplanır?", answer: "Brüt maaştan önce SGK kesintisi (%15) düşülür; kalan vergi matrahına kademeli gelir vergisi uygulanır. Vergiden AGİ düşülür; damga vergisi brüt üzerinden hesaplanır. Net = Brüt - SGK - Net vergi - Damga vergisi." },
+      { question: "AGİ nedir?", answer: "Asgari Geçim İndirimi, gelir vergisinden düşülen bir indirimdir. Medeni durum ve çocuk sayısına göre aylık tutar değişir; 2026'da bekar için yaklaşık 2.477 TL." },
+      { question: "SGK işçi payı oranı nedir?", answer: "SGK işçi payı %14, işsizlik sigortası işçi payı %1'dir. Toplam %15 brüt maaştan kesilir." },
+      { question: "Asgari ücretli vergi öder mi?", answer: "2026'da asgari ücretliler gelir vergisi ve damga vergisinden muaftır. Sadece SGK kesintisi yapılır." },
+      { question: "Damga vergisi oranı kaç?", answer: "Brüt maaş üzerinden binde 7,59 (‰7,59) uygulanır. Asgari ücretliler muaftır." },
+    ],
   },
   {
     slug: "konut-kredisi-alirken-dikkat-edilecekler-2026",
@@ -410,7 +425,14 @@ Kredi başvurusu öncesi banka temsilcileri ile görüşmek ve tüm şartları d
     author: "Calculator360Pro Ekibi",
     date: "2026-01-20",
     category: "Finans",
-    tags: ["konut kredisi", "mortgage", "ev kredisi", "ipotek", "finans"],
+    tags: ["konut kredisi", "mortgage", "ev kredisi", "ipotek", "konut kredisi faiz", "peşinat", "tapu harcı", "kredi masrafları", "finans"],
+    faqs: [
+      { question: "Konut kredisi için en az ne kadar peşinat gerekir?", answer: "Genelde ev değerinin en az %10–20’si peşinat olarak istenir. %20–30 peşinat daha uygun faiz oranı sağlayabilir." },
+      { question: "Konut kredisi faiz oranları 2026’da nasıl?", answer: "Bankaya ve kredi notuna göre değişir; genelde %2,5–4,5 bandında. En iyi oran için birkaç bankadan teklif alın." },
+      { question: "Tapu harcı oranı nedir?", answer: "Konut alım satımında tapu harcı toplam %4’tür; alıcı ve satıcı payı ayrı ayrı %2. Çoğunlukla alıcı öder." },
+      { question: "Konut kredisi KKDF ve BSMV alır mı?", answer: "Hayır. Konut kredilerinde KKDF ve BSMV uygulanmaz (%0)." },
+      { question: "Ön onay ne işe yarar?", answer: "Ön onay, bütçenize uygun kredi limitini ve tahmini taksiti gösterir; ev bakarken güç verir. Kesin onay başvuru ve belgelerle sonradan alınır." },
+    ],
   },
   {
     slug: "eyt-nedir-kimler-faydalanabilir",
@@ -546,7 +568,13 @@ Resmi bilgi için SGK şubelerinden veya e-Devlet üzerinden bilgi almanız gere
     author: "Calculator360Pro Ekibi",
     date: "2026-01-20",
     category: "Finans",
-    tags: ["eyt", "emeklilik", "sgk", "erken emeklilik", "finans"],
+    tags: ["eyt", "emeklilik", "sgk", "erken emeklilik", "8 eylül 1999", "prim günü", "emeklilik yaşı", "EYT şartları", "finans"],
+    faqs: [
+      { question: "EYT nedir?", answer: "Erken Yaşlananlar Yasası; 8 Eylül 1999 öncesi sigorta girişi olanların emeklilik yaşı ve prim günü şartlarını düzenleyen düzenlemedir." },
+      { question: "EYT’den kimler yararlanır?", answer: "8 Eylül 1999’dan önce ilk kez sigortalı olarak işe giren ve belirli prim günü ile yaş şartını sağlayanlar." },
+      { question: "Prim günü nasıl öğrenilir?", answer: "e-Devlet, SGK şubeleri veya SGK mobil uygulaması üzerinden SGK kayıt bilgilerinize bakabilirsiniz." },
+      { question: "EYT emeklilik maaşı düşük mü?", answer: "Erken yaşta emeklilikte prim ödeme süresi kısa olabileceği için maaş daha düşük olabilir; hesaplama SGK formüllerine göre yapılır." },
+    ],
   },
   {
     slug: "bmi-nedir-ideal-kilo-nasil-hesaplanir",
@@ -696,7 +724,13 @@ Sağlık sorunları için mutlaka doktorunuza danışmanız gerekir. Bu bilgiler
     author: "Calculator360Pro Ekibi",
     date: "2026-01-20",
     category: "Sağlık",
-    tags: ["bmi", "vücut kitle indeksi", "ideal kilo", "sağlık", "kilo yönetimi"],
+    tags: ["bmi", "vücut kitle indeksi", "ideal kilo", "sağlık", "kilo yönetimi", "BMI hesaplama", "ideal kilo aralığı", "boy kilo oranı", "sağlıklı kilo"],
+    faqs: [
+      { question: "BMI nasıl hesaplanır?", answer: "BMI = Kilo (kg) / Boy (m)². Örneğin 70 kg ve 1,75 m için: 70 / (1,75)² = 22,9." },
+      { question: "İdeal BMI aralığı nedir?", answer: "Yetişkinlerde 18,5–24,9 normal kabul edilir. 25–29,9 fazla kilolu, 30 ve üzeri obez kategorisindedir." },
+      { question: "BMI tek başına yeterli mi?", answer: "Hayır. Kas/kemik oranı, bel çevresi ve genel sağlık da önemlidir. Sporcular yüksek BMI’a sahip olabilir." },
+      { question: "Çocuklarda BMI kullanılır mı?", answer: "Çocuklarda yaş ve cinsiyete göre persentil eğrileri kullanılır; yetişkin BMI sınırları uygulanmaz." },
+    ],
   },
   {
     slug: "2026-asgari-ucret-net-maas-hesaplama-sgk-kesintileri",
@@ -737,7 +771,13 @@ Bu bilgiler genel bilgilendirme amaçlıdır. Resmi hesaplamalar için işvereni
     author: "Calculator360Pro Ekibi",
     date: "2026-01-25",
     category: "Finans",
-    tags: ["asgari ücret", "net maaş", "sgk kesintileri", "2026 asgari ücret", "finans"],
+    tags: ["asgari ücret", "net maaş", "sgk kesintileri", "2026 asgari ücret", "asgari ücret net", "asgari ücret brüt", "agi", "finans"],
+    faqs: [
+      { question: "2026 asgari ücret ne kadar?", answer: "2026’da brüt asgari ücret 33.030 TL; bekar çalışan için net yaklaşık 28.075,50 TL (SGK kesintisi sonrası)." },
+      { question: "Asgari ücretliler vergi öder mi?", answer: "Hayır. Asgari ücretliler gelir vergisi ve damga vergisinden muaftır; sadece SGK kesintisi yapılır." },
+      { question: "Asgari ücret net nasıl hesaplanır?", answer: "Brütten %15 SGK işçi payı düşülür. Gelir ve damga vergisi uygulanmadığı için kalan tutar net maaştır." },
+      { question: "Asgari ücret ne zaman güncellenir?", answer: "Her yıl Çalışma ve Sosyal Güvenlik Bakanlığı tarafından belirlenir; genelde yıl sonunda açıklanır." },
+    ],
   },
   {
     slug: "ihtiyac-kredisi-mi-konut-kredisi-mi-hangisi-daha-avantajli",
@@ -780,7 +820,12 @@ Bu bilgiler genel bilgilendirme amaçlıdır. Kredi başvurusu öncesi banka tem
     author: "Calculator360Pro Ekibi",
     date: "2026-01-25",
     category: "Finans",
-    tags: ["ihtiyaç kredisi", "konut kredisi", "kredi karşılaştırma", "faiz oranları", "finans"],
+    tags: ["ihtiyaç kredisi", "konut kredisi", "kredi karşılaştırma", "faiz oranları", "KKDF BSMV", "kredi seçimi", "kredi hesaplama", "finans"],
+    faqs: [
+      { question: "İhtiyaç kredisi mi konut kredisi mi daha avantajlı?", answer: "Konut kredisi genelde daha düşük faizli ve KKDF/BSMV yok; ev alımı için konut kredisi tercih edilir. İhtiyaç kredisi daha esnek kullanım içindir ama maliyeti yüksektir." },
+      { question: "KKDF ve BSMV hangi kredide var?", answer: "Konut kredilerinde KKDF ve BSMV uygulanmaz. İhtiyaç ve taşıt kredilerinde uygulanır; oranlar yıla göre değişir." },
+      { question: "Kredi karşılaştırırken nelere bakmalı?", answer: "Efektif yıllık maliyet oranı (APR), toplam geri ödeme, aylık taksit ve erken ödeme şartlarına bakın." },
+    ],
   },
   {
     slug: "bireysel-emeklilik-bes-devlet-katkisi-nasil-hesaplanir",
@@ -825,7 +870,12 @@ Bu bilgiler genel bilgilendirme amaçlıdır. BES katkıları ve yatırım karar
     author: "Calculator360Pro Ekibi",
     date: "2026-01-26",
     category: "Finans",
-    tags: ["bes", "bireysel emeklilik", "devlet katkısı", "emeklilik planlama", "finans"],
+    tags: ["bes", "bireysel emeklilik", "devlet katkısı", "emeklilik planlama", "BES hesaplama", "devlet katkısı oranı", "emeklilik tasarruf", "finans"],
+    faqs: [
+      { question: "BES devlet katkısı nasıl hesaplanır?", answer: "Devlet, yatırdığınız tutarın belirli bir oranı kadar (yıllık limit dahilinde) katkı yapar. Oran ve limitler yıla göre güncellenir." },
+      { question: "BES’e kimler katılabilir?", answer: "Ücretli veya serbest çalışan herkes BES’e katılabilir; bazı durumlarda otomatik katılım uygulanır." },
+      { question: "BES vergi avantajı var mı?", answer: "Evet. Belirli limitlere kadar katkılar vergi matrahından düşülebilir; detaylar mevzuata göre değişir." },
+    ],
   },
   {
     slug: "aylik-butce-nasil-planlanir-tasarruf-yontemleri",
@@ -872,7 +922,11 @@ Bu bilgiler genel bilgilendirme amaçlıdır. Finansal planlama için mali müş
     author: "Calculator360Pro Ekibi",
     date: "2026-01-26",
     category: "Finans",
-    tags: ["bütçe planlama", "tasarruf", "gelir gider takibi", "finansal planlama", "finans"],
+    tags: ["bütçe planlama", "tasarruf", "gelir gider takibi", "finansal planlama", "aylık bütçe", "tasarruf yöntemleri", "harcama takibi", "finans"],
+    faqs: [
+      { question: "Aylık bütçe nasıl planlanır?", answer: "Geliri sabit tutun; zorunlu giderleri (kira, faturalar, kredi) çıkarın. Kalanı tasarruf ve isteğe bağlı harcamalara bölün." },
+      { question: "Tasarruf oranı ne olmalı?", answer: "Genelde gelirin en az %10–20’si tasarruf için ayrılması önerilir; acil fon için 3–6 aylık gider biriktirin." },
+    ],
   },
   {
     slug: "sgk-prim-gunu-hesaplama-emeklilik-icin-kac-gun-gerekli",
@@ -915,7 +969,11 @@ Bu bilgiler genel bilgilendirme amaçlıdır. Prim günü hesaplaması ve emekli
     author: "Calculator360Pro Ekibi",
     date: "2026-01-27",
     category: "Finans",
-    tags: ["sgk prim günü", "emeklilik", "prim günü hesaplama", "sgk", "finans"],
+    tags: ["sgk prim günü", "emeklilik", "prim günü hesaplama", "sgk", "emeklilik şartları", "prim ödeme", "kaç gün prim", "finans"],
+    faqs: [
+      { question: "Emeklilik için kaç gün prim gerekir?", answer: "Doğum yılı ve cinsiyete göre değişir; 1999 sonrası için en az 4500–7200 gün aralığında prim şartı vardır." },
+      { question: "Prim günü nasıl hesaplanır?", answer: "Sigortalı çalışılan her gün 1 prim günü sayılır; aylık tam gün çalışmada yaklaşık 30 gün prim yazılır." },
+    ],
   },
   {
     slug: "kalori-acigi-ile-kilo-verme-nasil-calisir",
@@ -964,7 +1022,11 @@ Bu bilgiler genel bilgilendirme amaçlıdır. Kilo verme ve beslenme planlaması
     author: "Calculator360Pro Ekibi",
     date: "2026-01-27",
     category: "Sağlık",
-    tags: ["kalori açığı", "kilo verme", "beslenme", "sağlık", "diyet"],
+    tags: ["kalori açığı", "kilo verme", "beslenme", "sağlık", "diyet", "kalori hesaplama", "sağlıklı kilo verme", "kalori açığı hesaplama"],
+    faqs: [
+      { question: "Kalori açığı nedir?", answer: "Aldığınız kaloriden daha az yiyerek veya daha fazla harcayarak oluşan fark; 500 kcal açık haftada yaklaşık 0,5 kg kayba denk gelir." },
+      { question: "Günde kaç kalori açığı güvenli?", answer: "Çoğu yetişkin için günde 500 kcal açık güvenli kabul edilir; kadınlar 1200, erkekler 1500 kalorinin altına düşmemeli." },
+    ],
   },
   {
     slug: "gunluk-kalori-ihtiyaci-bmr-ve-tdee-nedir",
@@ -1007,7 +1069,11 @@ Bu bilgiler genel bilgilendirme amaçlıdır. Beslenme planlaması için diyetis
     author: "Calculator360Pro Ekibi",
     date: "2026-01-28",
     category: "Sağlık",
-    tags: ["bmr", "tdee", "kalori ihtiyacı", "beslenme", "sağlık"],
+    tags: ["bmr", "tdee", "kalori ihtiyacı", "beslenme", "sağlık", "bazal metabolizma", "günlük kalori", "Mifflin-St Jeor"],
+    faqs: [
+      { question: "BMR ve TDEE nedir?", answer: "BMR dinlenme halinde harcanan enerji; TDEE ise BMR artı günlük aktivite ve egzersizle harcanan toplam enerjidir." },
+      { question: "Günlük kalori ihtiyacı nasıl hesaplanır?", answer: "BMR (Mifflin-St Jeor formülü) hesaplanır; aktivite katsayısı ile çarpılarak TDEE bulunur." },
+    ],
   },
   {
     slug: "universite-not-ortalamasi-nasil-yukseltilir",
@@ -1052,7 +1118,11 @@ Bu bilgiler genel bilgilendirme amaçlıdır. Üniversite not sistemi ve akademi
     author: "Calculator360Pro Ekibi",
     date: "2026-01-28",
     category: "Eğitim",
-    tags: ["not ortalaması", "gano", "agno", "üniversite", "eğitim"],
+    tags: ["not ortalaması", "gano", "agno", "üniversite", "eğitim", "GANO yükseltme", "not ortalaması hesaplama", "üniversite notları"],
+    faqs: [
+      { question: "Not ortalaması nasıl yükseltilir?", answer: "Yüksek kredili derslere odaklanın, düşük notlu dersleri tekrar alın (imkan varsa), seçmeli derslerde stratejik tercih yapın." },
+      { question: "Minimum GANO kaç olmalı?", answer: "Lisans mezuniyeti için genelde 2,0 (CC) gerekir; bazı bölümler daha yüksek talep edebilir." },
+    ],
   },
   {
     slug: "gano-ve-agno-arasindaki-farklar-hangi-sistem-kullaniliyor",
@@ -1099,7 +1169,11 @@ Bu bilgiler genel bilgilendirme amaçlıdır. Üniversite not sistemi için üni
     author: "Calculator360Pro Ekibi",
     date: "2026-01-29",
     category: "Eğitim",
-    tags: ["gano", "agno", "not ortalaması", "akts", "eğitim"],
+    tags: ["gano", "agno", "not ortalaması", "akts", "eğitim", "4 lük sistem", "100 lük sistem", "YÖK not sistemi"],
+    faqs: [
+      { question: "GANO ile AGNO farkı nedir?", answer: "GANO tüm dönemlerin genel ortalaması; AGNO o dönemde alınan derslerin ortalaması. AGNO dönemlik, GANO kümülatiftir." },
+      { question: "Hangi sistem kullanılıyor?", answer: "YÖK hem 4’lük hem 100’lük sistemi tanır; üniversiteler kendi yönetmeliklerine göre birini veya ikisini kullanır." },
+    ],
   },
   {
     slug: "online-hesap-makineleri-nasil-kullanilir",
@@ -1144,7 +1218,11 @@ Bu bilgiler genel bilgilendirme amaçlıdır. Resmi hesaplamalar için yetkili k
     author: "Calculator360Pro Ekibi",
     date: "2026-01-29",
     category: "Genel",
-    tags: ["hesap makinesi", "online araçlar", "hesaplama", "kullanım rehberi"],
+    tags: ["hesap makinesi", "online araçlar", "hesaplama", "kullanım rehberi", "hesap makinesi kullanımı", "online hesap", "ücretsiz hesaplama"],
+    faqs: [
+      { question: "Online hesap makineleri güvenilir mi?", answer: "Kaynağı belli, formülleri açıklayan ve güncel siteler genelde güvenilirdir; kritik işlemlerde sonucu doğrulayın." },
+      { question: "Hangi hesaplamalar yapılabilir?", answer: "Vergi, maaş, kredi, BMI, kalori, yüzde, tarih farkı ve daha birçok finans/sağlık/matematik hesaplaması yapan araçlar vardır." },
+    ],
   },
   {
     slug: "finansal-okuryazarlik-temel-kavramlar-ve-pratik-ipuclari",
@@ -1189,7 +1267,11 @@ Bu bilgiler genel bilgilendirme amaçlıdır. Finansal planlama için mali müş
     author: "Calculator360Pro Ekibi",
     date: "2026-01-30",
     category: "Finans",
-    tags: ["finansal okuryazarlık", "bütçe", "tasarruf", "yatırım", "finans"],
+    tags: ["finansal okuryazarlık", "bütçe", "tasarruf", "yatırım", "finans", "para yönetimi", "finansal planlama", "tasarruf ipuçları"],
+    faqs: [
+      { question: "Finansal okuryazarlık nedir?", answer: "Paranızı yönetme, bütçe yapma, tasarruf ve yatırım temellerini anlama ve uygulama becerisidir." },
+      { question: "Nereden başlanır?", answer: "Gelir-gider takibi, acil fon oluşturma ve borç yönetimi ile başlayın; sonra tasarruf ve basit yatırımlara geçin." },
+    ],
   },
   {
     slug: "saglikli-beslenme-who-onerileri-ve-turk-mutfagi",
@@ -1234,7 +1316,11 @@ Bu bilgiler genel bilgilendirme amaçlıdır. Beslenme planlaması için diyetis
     author: "Calculator360Pro Ekibi",
     date: "2026-01-30",
     category: "Sağlık",
-    tags: ["sağlıklı beslenme", "who önerileri", "türk mutfağı", "beslenme", "sağlık"],
+    tags: ["sağlıklı beslenme", "who önerileri", "türk mutfağı", "beslenme", "sağlık", "dengeli beslenme", "makro besin", "porsiyon"],
+    faqs: [
+      { question: "WHO beslenme önerileri nelerdir?", answer: "Sebze-meyve artışı, şeker/tuz kısıtı, tam tahıl ve protein çeşitliliği; kalori ihtiyacına göre porsiyon ayarı önerilir." },
+      { question: "Türk mutfağında sağlıklı seçenekler?", answer: "Zeytinyağlılar, çorbalar, baklagiller ve sebze yemekleri; porsiyon ve pişirme yöntemi (kızartma yerine fırın/haşlama) önemli." },
+    ],
   },
   {
     slug: "2026-bilesik-faiz-hesaplama-rehberi",
@@ -1272,7 +1358,11 @@ Bankalar vadeli mevduatta genelde aylık veya günlük bileşik faiz uygular. S�
     author: "Calculator360Pro Ekibi",
     date: "2026-02-01",
     category: "Finans",
-    tags: ["bileşik faiz", "faiz hesaplama", "yatırım", "birikim", "2026"],
+    tags: ["bileşik faiz", "faiz hesaplama", "yatırım", "birikim", "2026", "bileşik getiri", "faiz formülü", "yatırım getirisi"],
+    faqs: [
+      { question: "Bileşik faiz nasıl hesaplanır?", answer: "A = P(1 + r/n)^(nt). P anapara, r yıllık oran, n yılda birikim sayısı, t yıl. Aylık birikimde formül farklılaşır." },
+      { question: "Bileşik faiz neden önemli?", answer: "Getirilerin üzerine yeniden getiri eklenir; uzun vadede basit faize göre çok daha yüksek sonuç verir." },
+    ],
   },
   {
     slug: "yatirim-araclari-karsilastirmasi-2026",
@@ -1313,7 +1403,11 @@ Uzun vadeli birikim; devlet katkısı ve vergi avantajı var. [Emeklilik Hesap M
     author: "Calculator360Pro Ekibi",
     date: "2026-02-01",
     category: "Finans",
-    tags: ["yatırım", "mevduat", "BES", "getiri", "2026"],
+    tags: ["yatırım", "mevduat", "BES", "getiri", "2026", "yatırım araçları", "getiri karşılaştırma", "risk getiri"],
+    faqs: [
+      { question: "Hangi yatırım aracı daha getirili?", answer: "Risk-getiri dengesine göre değişir; mevduat düşük risk, hisse/bono/fon daha yüksek risk ve potansiyel getiri sunar." },
+      { question: "BES ve mevduat farkı?", answer: "BES uzun vadeli emeklilik tasarrufu ve vergi avantajı sunar; mevduat likit ve garantili getiri sağlar." },
+    ],
   },
   {
     slug: "turkiyede-tasit-kredisi-rehberi-2026",
@@ -1352,7 +1446,11 @@ Dosya masrafı, ekspertiz, kasko (bazen zorunlu) gibi ek maliyetler olabilir. B�
     author: "Calculator360Pro Ekibi",
     date: "2026-02-01",
     category: "Finans",
-    tags: ["taşıt kredisi", "araç kredisi", "kredi", "2026"],
+    tags: ["taşıt kredisi", "araç kredisi", "kredi", "2026", "taşıt kredisi faiz", "KKDF BSMV", "araç kredisi hesaplama", "taksit hesaplama"],
+    faqs: [
+      { question: "Taşıt kredisi faiz oranları 2026'da nasıl?", answer: "Bankaya ve vadeye göre değişir; taşıt kredilerinde KKDF ve BSMV uygulandığı için efektif maliyet reklam faizinden yüksektir." },
+      { question: "Taşıt kredisi ile ihtiyaç kredisi farkı?", answer: "Taşıt kredisi aracı teminat gösterir; oranlar ve vade farklı olabilir. İkisinde de KKDF/BSMV uygulanır." },
+    ],
   },
 ];
 

@@ -4,51 +4,9 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { getAllBlogPostsTR } from "@/lib/blog/posts-tr";
+import { getTRCategoriesWithCalculators } from "@/lib/tr-calculators-nav";
 
-// Türkçe kategoriler ve hesap makineleri
-const TR_CATEGORIES = [
-  {
-    name: "Finans",
-    slug: "finans",
-    calculators: [
-      { name: "Vergi Hesap Makinesi", slug: "vergi-hesap-makinesi" },
-      { name: "Maaş Hesap Makinesi", slug: "maas-hesap-makinesi" },
-      { name: "Konut Kredisi Hesap Makinesi", slug: "konut-kredisi-hesap-makinesi" },
-      { name: "Kredi Hesap Makinesi", slug: "kredi-hesap-makinesi" },
-      { name: "Emeklilik Hesap Makinesi", slug: "emeklilik-hesap-makinesi" },
-    ],
-  },
-  {
-    name: "Sağlık",
-    slug: "saglik",
-    calculators: [
-      { name: "BMI Hesap Makinesi", slug: "bmi-hesap-makinesi" },
-      { name: "Kalori Hesap Makinesi", slug: "kalori-hesap-makinesi" },
-    ],
-  },
-  {
-    name: "Eğitim",
-    slug: "egitim",
-    calculators: [
-      { name: "Not Ortalaması Hesap Makinesi", slug: "not-ortalamasi-hesap-makinesi" },
-    ],
-  },
-  {
-    name: "Matematik",
-    slug: "matematik",
-    calculators: [
-      { name: "Yüzde Hesap Makinesi", slug: "yuzde-hesap-makinesi" },
-    ],
-  },
-  {
-    name: "Tarih & Zaman",
-    slug: "tarih-zaman",
-    calculators: [
-      { name: "Yaş Hesap Makinesi", slug: "yas-hesap-makinesi" },
-    ],
-  },
-];
+const TR_CATEGORIES = getTRCategoriesWithCalculators();
 
 export function NavigationTR() {
   const [openCategory, setOpenCategory] = useState<string | null>(null);
@@ -135,7 +93,7 @@ export function NavigationTR() {
 
   return (
     <nav className="bg-white border-b-2 border-[#e2e8f0] sticky top-0 z-50">
-      <div className="container mx-auto px-4 max-w-6xl">
+      <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex items-center justify-between h-16">
           <Link href="/tr" className="flex items-center">
             <Image
@@ -148,10 +106,10 @@ export function NavigationTR() {
             />
           </Link>
 
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-4">
             <Link
               href="/tr"
-              className="text-[#1e293b] hover:text-[#2563eb] font-medium transition-colors"
+              className="text-sm text-[#1e293b] hover:text-[#2563eb] font-medium transition-colors"
             >
               Ana Sayfa
             </Link>
@@ -169,7 +127,7 @@ export function NavigationTR() {
                   onMouseLeave={handleCategoryMouseLeave}
                 >
                   <button
-                    className="text-[#1e293b] hover:text-[#2563eb] font-medium transition-colors flex items-center"
+                    className="text-sm text-[#1e293b] hover:text-[#2563eb] font-medium transition-colors flex items-center whitespace-nowrap"
                     aria-expanded={isOpen}
                     aria-haspopup="true"
                   >
@@ -185,29 +143,47 @@ export function NavigationTR() {
                   </button>
                   {isOpen && hasCalculators && (
                     <div
-                      className="absolute top-full left-0 mt-2 bg-white border-2 border-[#e2e8f0] rounded-lg shadow-xl overflow-hidden min-w-[280px]"
+                      className={`absolute top-full left-0 mt-2 bg-white border-2 border-[#e2e8f0] rounded-lg shadow-xl overflow-hidden ${
+                        category.calculators.length >= 10
+                          ? "min-w-[600px] w-[90%] max-w-[1000px]"
+                          : "min-w-[280px]"
+                      }`}
                       onMouseEnter={() => handleDropdownMouseEnter(category.slug)}
                       onMouseLeave={handleDropdownMouseLeave}
                     >
-                      <div className="p-4 max-h-[400px] overflow-y-auto">
+                      <div className={`p-4 ${category.calculators.length >= 10 ? "" : "max-h-[400px] overflow-y-auto"}`}>
                         <Link
                           href={`/tr/hesap-makineleri/${category.slug}`}
-                          className="block font-bold text-base text-[#1e293b] hover:text-[#2563eb] transition-colors mb-3 pb-2 border-b border-[#e2e8f0]"
+                          className="block font-bold text-sm text-[#1e293b] hover:text-[#2563eb] transition-colors mb-3 pb-2 border-b border-[#e2e8f0]"
                         >
                           Tüm {category.name} Hesap Makineleri
                         </Link>
-                        <ul className="space-y-2">
-                          {category.calculators.map((calc) => (
-                            <li key={calc.slug}>
+                        {category.calculators.length >= 10 ? (
+                          <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+                            {category.calculators.map((calc) => (
                               <Link
+                                key={calc.slug}
                                 href={`/tr/hesap-makineleri/${category.slug}/${calc.slug}`}
-                                className="block text-sm text-[#64748b] hover:text-[#2563eb] transition-colors py-1.5 px-2 rounded hover:bg-[#f8fafc]"
+                                className="block text-sm text-[#64748b] hover:text-[#2563eb] transition-colors py-1.5 px-2 rounded hover:bg-[#f8fafc] leading-relaxed"
                               >
                                 {calc.name}
                               </Link>
-                            </li>
-                          ))}
-                        </ul>
+                            ))}
+                          </div>
+                        ) : (
+                          <ul className="space-y-2">
+                            {category.calculators.map((calc) => (
+                              <li key={calc.slug}>
+                                <Link
+                                  href={`/tr/hesap-makineleri/${category.slug}/${calc.slug}`}
+                                  className="block text-sm text-[#64748b] hover:text-[#2563eb] transition-colors py-1.5 px-2 rounded hover:bg-[#f8fafc]"
+                                >
+                                  {calc.name}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
                       </div>
                     </div>
                   )}
@@ -217,15 +193,9 @@ export function NavigationTR() {
 
             <Link
               href="/tr/blog"
-              className="text-[#1e293b] hover:text-[#2563eb] font-medium transition-colors"
+              className="text-sm text-[#1e293b] hover:text-[#2563eb] font-medium transition-colors"
             >
               Blog
-            </Link>
-            <Link
-              href="/tr/hakkimizda"
-              className="text-[#1e293b] hover:text-[#2563eb] font-medium transition-colors"
-            >
-              Hakkımızda
             </Link>
 
             {/* Language Switcher */}
@@ -257,14 +227,14 @@ export function NavigationTR() {
             <div className="py-4 space-y-1">
               <Link
                 href="/tr"
-                className="block px-4 py-3 text-[#1e293b] hover:text-[#2563eb] hover:bg-[#f8fafc] font-medium"
+                className="block px-4 py-3 text-sm text-[#1e293b] hover:text-[#2563eb] hover:bg-[#f8fafc] font-medium"
                 onClick={closeMobileMenu}
               >
                 Ana Sayfa
               </Link>
               <Link
                 href="/tr/hesap-makineleri"
-                className="block px-4 py-3 text-[#1e293b] hover:text-[#2563eb] hover:bg-[#f8fafc] font-medium"
+                className="block px-4 py-3 text-sm text-[#1e293b] hover:text-[#2563eb] hover:bg-[#f8fafc] font-medium"
                 onClick={closeMobileMenu}
               >
                 Tüm Hesap Makineleri
@@ -276,7 +246,7 @@ export function NavigationTR() {
                 return (
                   <div key={category.slug} className="border-b border-[#e2e8f0]">
                     <button
-                      className="w-full flex items-center justify-between px-4 py-3 text-left text-[#1e293b] hover:text-[#2563eb] hover:bg-[#f8fafc] font-medium"
+                      className="w-full flex items-center justify-between px-4 py-3 text-left text-sm text-[#1e293b] hover:text-[#2563eb] hover:bg-[#f8fafc] font-medium"
                       onClick={() => toggleMobileCategory(category.slug)}
                     >
                       <span>{category.name} ({category.calculators.length})</span>
@@ -311,17 +281,10 @@ export function NavigationTR() {
 
               <Link
                 href="/tr/blog"
-                className="block px-4 py-3 text-[#1e293b] hover:text-[#2563eb] hover:bg-[#f8fafc] font-medium"
+                className="block px-4 py-3 text-sm text-[#1e293b] hover:text-[#2563eb] hover:bg-[#f8fafc] font-medium"
                 onClick={closeMobileMenu}
               >
                 Blog
-              </Link>
-              <Link
-                href="/tr/hakkimizda"
-                className="block px-4 py-3 text-[#1e293b] hover:text-[#2563eb] hover:bg-[#f8fafc] font-medium"
-                onClick={closeMobileMenu}
-              >
-                Hakkımızda
               </Link>
             </div>
           </div>

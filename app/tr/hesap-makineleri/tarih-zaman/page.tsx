@@ -39,8 +39,28 @@ const dateTimeCalculators = [
   },
 ];
 
+const categorySchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Tarih ve Zaman Hesap Makineleri",
+  description: "Ücretsiz tarih ve zaman hesap makineleri: Yaş hesaplama, gün hesaplama.",
+  url: `${SITE_URL}/tr/hesap-makineleri/tarih-zaman`,
+  inLanguage: "tr-TR",
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: dateTimeCalculators.length,
+    itemListElement: dateTimeCalculators.map((calc, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: { "@type": "SoftwareApplication", name: calc.name, url: `${SITE_URL}/tr/hesap-makineleri/tarih-zaman/${calc.slug}` },
+    })),
+  },
+};
+
 export default function TarihZamanKategorisiPage() {
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(categorySchema) }} />
     <div className="min-h-screen bg-[#f8fafc] py-16">
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Breadcrumb */}
@@ -188,5 +208,6 @@ export default function TarihZamanKategorisiPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

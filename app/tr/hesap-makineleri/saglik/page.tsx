@@ -58,8 +58,28 @@ const healthCalculators = [
   },
 ];
 
+const categorySchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Sağlık Hesap Makineleri",
+  description: "Ücretsiz sağlık hesap makineleri: BMI, kalori, ideal kilo hesaplama.",
+  url: `${SITE_URL}/tr/hesap-makineleri/saglik`,
+  inLanguage: "tr-TR",
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: healthCalculators.length,
+    itemListElement: healthCalculators.map((calc, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: { "@type": "SoftwareApplication", name: calc.name, url: `${SITE_URL}/tr/hesap-makineleri/saglik/${calc.slug}` },
+    })),
+  },
+};
+
 export default function SaglikKategorisiPage() {
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(categorySchema) }} />
     <div className="min-h-screen bg-[#f8fafc] py-16">
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Breadcrumb */}
@@ -271,5 +291,6 @@ export default function SaglikKategorisiPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

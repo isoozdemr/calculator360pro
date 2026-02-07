@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { getAllBlogPostsTR } from "@/lib/blog/posts-tr";
+import { TR_CATEGORY_SLUGS, TR_CATEGORY_NAMES } from "@/lib/tr-calculators-nav";
+import { TR_REHBERLER } from "@/lib/tr-rehberler";
 
 // Social media icons
 const TwitterIcon = () => (
@@ -42,21 +44,13 @@ const socialLinks = [
   { name: "YouTube", href: "https://www.youtube.com/@calculator360pro", icon: YouTubeIcon },
 ];
 
-const TR_CATEGORIES = [
-  { name: "Finans", slug: "finans" },
-  { name: "Sağlık", slug: "saglik" },
-  { name: "Eğitim", slug: "egitim" },
-  { name: "Matematik", slug: "matematik" },
-  { name: "Tarih & Zaman", slug: "tarih-zaman" },
-];
-
 export function FooterTR() {
   const recentBlogPosts = getAllBlogPostsTR().slice(0, 5);
 
   return (
     <footer className="bg-[#1e293b] text-[#f1f5f9] mt-16">
       <div className="container mx-auto px-4 py-12 max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-8">
           <div>
             <h3 className="text-xl font-bold mb-4">Calculator360Pro</h3>
             <p className="text-[#94a3b8] text-sm mb-4">
@@ -98,6 +92,11 @@ export function FooterTR() {
                 </Link>
               </li>
               <li>
+                <Link href="/tr/rehberler" className="hover:text-white transition-colors">
+                  Rehberler
+                </Link>
+              </li>
+              <li>
                 <Link href="/tr/hakkimizda" className="hover:text-white transition-colors">
                   Hakkımızda
                 </Link>
@@ -108,13 +107,30 @@ export function FooterTR() {
           <div>
             <h4 className="font-semibold mb-4">Kategoriler</h4>
             <ul className="space-y-2 text-sm text-[#94a3b8]">
-              {TR_CATEGORIES.map((category) => (
-                <li key={category.slug}>
+              {TR_CATEGORY_SLUGS.map((slug) => (
+                <li key={slug}>
                   <Link
-                    href={`/tr/hesap-makineleri/${category.slug}`}
+                    href={`/tr/hesap-makineleri/${slug}`}
                     className="hover:text-white transition-colors"
                   >
-                    {category.name}
+                    {TR_CATEGORY_NAMES[slug]}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-4">Rehberler</h4>
+            <ul className="space-y-2 text-sm text-[#94a3b8]">
+              {TR_REHBERLER.map((rehber) => (
+                <li key={rehber.slug}>
+                  <Link
+                    href={`/tr/rehberler/${rehber.slug}`}
+                    className="hover:text-white transition-colors line-clamp-1"
+                    title={rehber.title}
+                  >
+                    {rehber.title}
                   </Link>
                 </li>
               ))}

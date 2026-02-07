@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
-import { BudgetCalculator } from "@/components/calculators/BudgetCalculator";
+import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
+import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
+import { TurkeyBudgetCalculator } from "@/components/calculators/tr";
 
 export const metadata: Metadata = {
   title: "Bütçe Hesap Makinesi 2026 - Gelir Gider Dengesi",
@@ -38,32 +40,29 @@ const faqs = [
   { question: "Bütçe neden aşılır?", answer: "Gizli giderler (abonelikler, küçük harcamalar), plansız alışveriş ve acil harcamalar bütçeyi aşabilir. Harcamaları takip etmek ve kategorilere ayırmak farkındalık sağlar." },
 ];
 
-export default function ButceHesapMakinesiPage() {
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: "Bütçe Hesap Makinesi",
-    description: "Gelir-gider ve bütçe planlama aracı",
-    url: `${SITE_URL}/tr/hesap-makineleri/finans/butce-hesap-makinesi`,
-    applicationCategory: "FinanceApplication",
-    operatingSystem: "Web",
-    offers: { "@type": "Offer", price: "0", priceCurrency: "TRY" },
-    inLanguage: "tr",
-  };
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: { "@type": "Answer", text: faq.answer },
-    })),
-  };
+const howToSteps = [
+  { name: "Geliri girin", text: "Aylık toplam gelirinizi (net maaş vb.) girin." },
+  { name: "Giderleri girin", text: "Sabit ve değişken giderlerinizi kategorilere ayırarak girin." },
+  { name: "Hesapla butonuna tıklayın", text: "Bütçe dengesi ve tasarruf miktarını görün." },
+  { name: "Sonucu inceleyin", text: "Gelir-gider farkı ve tasarruf oranını değerlendirin." },
+];
 
+export default function ButceHesapMakinesiPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <SchemaMarkupTR
+        name="Bütçe Hesap Makinesi"
+        description="Gelir-gider ve bütçe planlama aracı"
+        slug="butce-hesap-makinesi"
+        categorySlug="finans"
+        categoryName="Finans"
+        dateModified={DATA_VERSION.lastUpdated}
+        category="finance"
+        faqs={faqs}
+        howToName="Bütçe Hesap Makinesi Nasıl Kullanılır?"
+        howToDescription="Gelir ve giderlerle bütçe planlamak için adımlar."
+        howToSteps={howToSteps}
+      />
       <div className="min-h-screen bg-[#f8fafc] py-8">
         <div className="container mx-auto px-4 max-w-4xl">
           <nav className="mb-6 text-sm text-[#64748b]">
@@ -83,7 +82,7 @@ export default function ButceHesapMakinesiPage() {
               Aylık gelir ve giderlerinizi girerek bütçe dengesini ve tasarruf potansiyelini görün.
             </p>
           </div>
-          <BudgetCalculator />
+          <TurkeyBudgetCalculator />
           <div className="mt-12 space-y-8">
             <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Bütçe Planlama İpuçları</h2>

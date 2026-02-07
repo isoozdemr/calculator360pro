@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
-import { CompoundInterestCalculator } from "@/components/calculators/CompoundInterestCalculator";
+import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
+import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
+import { TurkeyCompoundInterestCalculator } from "@/components/calculators/tr";
 
 export const metadata: Metadata = {
   title: "Bileşik Faiz Hesap Makinesi 2026 - Yatırım Getirisi",
@@ -54,32 +56,29 @@ const faqs = [
   },
 ];
 
-export default function BilesikFaizHesapMakinesiPage() {
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: "Bileşik Faiz Hesap Makinesi",
-    description: "Bileşik faiz ile yatırım ve birikim getirisi hesaplama aracı",
-    url: `${SITE_URL}/tr/hesap-makineleri/finans/bilesik-faiz-hesap-makinesi`,
-    applicationCategory: "FinanceApplication",
-    operatingSystem: "Web",
-    offers: { "@type": "Offer", price: "0", priceCurrency: "TRY" },
-    inLanguage: "tr",
-  };
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: { "@type": "Answer", text: faq.answer },
-    })),
-  };
+const howToSteps = [
+  { name: "Ana para ve faiz oranını girin", text: "Ana para (yatırım tutarı), yıllık faiz oranı ve vadeyi ilgili alanlara girin." },
+  { name: "Bileşikleşme sıklığını seçin", text: "Aylık, üç aylık veya yıllık bileşikleşme seçeneğini belirleyin." },
+  { name: "Hesapla butonuna tıklayın", text: "Hesapla butonuna tıklayarak toplam getiri ve sonucu görün." },
+  { name: "Sonucu inceleyin", text: "Hesaplanan nihai tutar ve faiz getirisini inceleyin; farklı senaryoları deneyebilirsiniz." },
+];
 
+export default function BilesikFaizHesapMakinesiPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <SchemaMarkupTR
+        name="Bileşik Faiz Hesap Makinesi"
+        description="Bileşik faiz ile yatırım ve birikim getirisi hesaplama aracı"
+        slug="bilesik-faiz-hesap-makinesi"
+        categorySlug="finans"
+        categoryName="Finans"
+        dateModified={DATA_VERSION.lastUpdated}
+        category="finance"
+        faqs={faqs}
+        howToName="Bileşik Faiz Hesap Makinesi Nasıl Kullanılır?"
+        howToDescription="Bileşik faiz getirisi hesaplamak için adımlar."
+        howToSteps={howToSteps}
+      />
       <div className="min-h-screen bg-[#f8fafc] py-8">
         <div className="container mx-auto px-4 max-w-4xl">
           <nav className="mb-6 text-sm text-[#64748b]">
@@ -102,7 +101,7 @@ export default function BilesikFaizHesapMakinesiPage() {
               Mevduat ve yatırım planlaması için ücretsiz araç.
             </p>
           </div>
-          <CompoundInterestCalculator />
+          <TurkeyCompoundInterestCalculator />
           <div className="mt-12 space-y-8">
             <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Bileşik Faiz Nedir?</h2>

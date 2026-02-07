@@ -1,22 +1,63 @@
+import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
-import { CreditCardPayoffCalculator } from "@/components/calculators/CreditCardPayoffCalculator";
+import { TurkeyCreditCardPayoffCalculator } from "@/components/calculators/tr";
+import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
+import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
+
+export const metadata: Metadata = {
+  title: "Kredi Kartı Borç Hesap Makinesi 2026 - Kapanma Süresi",
+  description: "Kredi kartı borcunuzun kapanma süresi ve toplam faiz maliyetini hesaplayın. Minimum ödeme ile karşılaştırın. Ücretsiz.",
+  keywords: [
+    "kredi kartı borcu hesaplama",
+    "kredi kartı borç kapanma süresi",
+    "kart borcu hesaplama",
+    "minimum odeme hesaplama",
+    "kredi karti faiz maliyeti",
+    "borc kapanma hesap makinesi",
+    "kredi karti odeme plani",
+    "kart borcu ne zaman biter",
+    "kredi karti borc hesap makinesi",
+    "faiz tasarrufu hesaplama",
+  ],
+  alternates: {
+    canonical: `${SITE_URL}/tr/hesap-makineleri/finans/kredi-karti-borc-hesap-makinesi`,
+    languages: { "en": `${SITE_URL}/calculators/finance/credit-card-payoff-calculator`, "tr": `${SITE_URL}/tr/hesap-makineleri/finans/kredi-karti-borc-hesap-makinesi` },
+  },
+  openGraph: { title: "Kredi Kartı Borç Hesap Makinesi 2026", url: `${SITE_URL}/tr/hesap-makineleri/finans/kredi-karti-borc-hesap-makinesi`, locale: "tr_TR", siteName: "Calculator360Pro" },
+};
 
 const faqs = [
-  { q: "Kredi karti borcu nasil hesaplanir?", a: "Borc tutari, aylik faiz orani ve aylik odeme miktarina gore kapanma suresi ve toplam faiz hesaplanir. Minimum odeme ile ne kadar surede bitecegini de gorebilirsiniz." },
-  { q: "Minimum odeme yeterli mi?", a: "Cogu zaman hayir. Minimum odeme cogunlukla faizi kapatir; ana para yavas iner. Aylik odemeyi artirirsaniz borc cok daha hizli kapanir ve faiz maliyeti duser." },
-  { q: "Faiz orani nereden bulunur?", a: "Kredi karti ekstrenizde veya banka mobil uygulamasinda aylik faiz orani (APR / yillik oranin 12'de biri) yazar. Hesaplayici aylik oran kullanir." },
-  { q: "Erken kapatmanin faydasi var mi?", a: "Evet. Ne kadar erken kapatirsaniz o kadar az faiz odersiniz. Ek gelir veya tasarrufla fazla odeme yapmak uzun vadede cok tasarruf saglar." },
-  { q: "Birden fazla karti nasil planlarim?", a: "Ya en yuksek faizli karti once bitirin (avalanche) ya da en kucuk bakiyeyi once kapatip motivasyon alin (snowball). Hesaplayici tek kart icindir; her karti ayri hesaplayip plan yapabilirsiniz." },
+  { question: "Kredi kartı borcu nasıl hesaplanır?", answer: "Borç tutarı, aylık faiz oranı ve aylık ödeme miktarına göre kapanma süresi ve toplam faiz hesaplanır. Minimum ödeme ile ne kadar sürede biteceğini de görebilirsiniz." },
+  { question: "Minimum ödeme yeterli mi?", answer: "Çoğu zaman hayır. Minimum ödeme çoğunlukla faizi kapatır; ana para yavaş iner. Aylık ödemeyi artırırsanız borç çok daha hızlı kapanır ve faiz maliyeti düşer." },
+  { question: "Faiz oranı nereden bulunur?", answer: "Kredi kartı ekstrenizde veya banka mobil uygulamasında aylık faiz oranı (APR / yıllık oranın 12'de biri) yazar. Hesaplayıcı aylık oran kullanır." },
+  { question: "Erken kapatmanın faydası var mı?", answer: "Evet. Ne kadar erken kapatırsanız o kadar az faiz ödersiniz. Ek gelir veya tasarrufla fazla ödeme yapmak uzun vadede çok tasarruf sağlar." },
+  { question: "Birden fazla kartı nasıl planlarım?", answer: "Ya en yüksek faizli kartı önce bitirin (avalanche) ya da en küçük bakiyeyi önce kapatıp motivasyon alın (snowball). Hesaplayıcı tek kart içindir; her kartı ayrı hesaplayıp plan yapabilirsiniz." },
+];
+
+const howToSteps = [
+  { name: "Borç tutarını girin", text: "Kredi kartı borç bakiyenizi girin." },
+  { name: "Aylık faiz oranını girin", text: "Kartınızın aylık faiz oranını (yıllık oran / 12) girin." },
+  { name: "Aylık ödeme tutarını girin", text: "Her ay ödeyeceğiniz tutarı girin. Minimum ödeme ile de hesaplayabilirsiniz." },
+  { name: "Sonuçları inceleyin", text: "Kapanma süresi ve toplam faiz maliyetini görün." },
 ];
 
 export default function KrediKartiBorcPage() {
-  const schema = { "@context": "https://schema.org", "@type": "WebApplication", name: "Kredi Karti Borc Hesap Makinesi", url: `${SITE_URL}/tr/hesap-makineleri/finans/kredi-karti-borc-hesap-makinesi`, applicationCategory: "FinanceApplication", offers: { "@type": "Offer", price: "0", priceCurrency: "TRY" }, inLanguage: "tr" };
-  const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <SchemaMarkupTR
+        name="Kredi Kartı Borç Hesap Makinesi"
+        description="Kredi kartı borcu kapanma süresi ve faiz maliyeti hesaplama aracı"
+        slug="kredi-karti-borc-hesap-makinesi"
+        categorySlug="finans"
+        categoryName="Finans"
+        dateModified={DATA_VERSION.lastUpdated}
+        category="finance"
+        faqs={faqs}
+        howToName="Kredi Kartı Borç Hesap Makinesi Nasıl Kullanılır?"
+        howToDescription="Kredi kartı borcu kapanma süresi hesaplamak için adımlar."
+        howToSteps={howToSteps}
+      />
       <div className="min-h-screen bg-[#f8fafc] py-8">
         <div className="container mx-auto px-4 max-w-4xl">
           <nav className="mb-6 text-sm text-[#64748b]">
@@ -27,28 +68,28 @@ export default function KrediKartiBorcPage() {
               <li>/</li>
               <li><Link href="/tr/hesap-makineleri/finans" className="hover:text-[#2563eb]">Finans</Link></li>
               <li>/</li>
-              <li className="text-[#1e293b] font-medium">Kredi Karti Borc</li>
+              <li className="text-[#1e293b] font-medium">Kredi Kartı Borç</li>
             </ol>
           </nav>
-          <h1 className="text-3xl font-bold text-[#1e293b] mb-4">Kredi Karti Borc Hesap Makinesi</h1>
+          <h1 className="text-3xl font-bold text-[#1e293b] mb-4">Kredi Kartı Borç Hesap Makinesi</h1>
           <p className="text-[#64748b] mb-4">
-            Kredi karti borcunuzun ne kadar surede kapanacagini ve toplam ne kadar faiz odeyeceginizi hesaplayin. Aylik odeme miktarini artirarak faiz maliyetini nasil dusurebileceginizi gormek icin ideal bir araçtir. Minimum odeme ile kapanma suresi genelde cok uzun ve faiz yuksek olur; bu yuzden mumkun oldugunca fazla odeme yapmak onerilir.
+            Kredi kartı borcunuzun ne kadar sürede kapanacağını ve toplam ne kadar faiz ödeyeceğinizi hesaplayın. Aylık ödeme miktarını artırarak faiz maliyetini nasıl düşürebileceğinizi görmek için ideal bir araçtır. Minimum ödeme ile kapanma süresi genelde çok uzun ve faiz yüksek olur; bu yüzden mümkün olduğunca fazla ödeme yapmak önerilir.
           </p>
           <p className="text-[#64748b] mb-8">
-            Borc tutari, kartinizin aylik faiz orani ve aylik odemeyi girerek aninda sonuc alirsiniz. Birden fazla kartiniz varsa her biri icin ayri hesaplama yapip oncelik sirasi belirleyebilirsiniz.
+            Borç tutarı, kartınızın aylık faiz oranı ve aylık ödemeyi girerek anında sonuç alırsınız. Birden fazla kartınız varsa her biri için ayrı hesaplama yapıp öncelik sırası belirleyebilirsiniz.
           </p>
-          <CreditCardPayoffCalculator />
+          <TurkeyCreditCardPayoffCalculator />
           <div className="mt-12 bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
-            <h2 className="text-xl font-bold text-[#1e293b] mb-4">Sikca Sorulan Sorular</h2>
+            <h2 className="text-xl font-bold text-[#1e293b] mb-4">Sıkça Sorulan Sorular</h2>
             {faqs.map((f, i) => (
-              <div key={i} className="mb-4"><h3 className="font-semibold text-[#1e293b]">{f.q}</h3><p className="text-sm text-[#64748b]">{f.a}</p></div>
+              <div key={i} className="mb-4"><h3 className="font-semibold text-[#1e293b]">{f.question}</h3><p className="text-sm text-[#64748b]">{f.answer}</p></div>
             ))}
             <p className="mt-4 text-[#64748b]">
-              Ilgili hesap makineleri:{" "}
+              İlgili hesap makineleri:{" "}
               <Link href="/tr/hesap-makineleri/finans/kredi-hesap-makinesi" className="text-[#2563eb] hover:underline">Kredi Hesap Makinesi</Link>,{" "}
-              <Link href="/tr/hesap-makineleri/finans/butce-hesap-makinesi" className="text-[#2563eb] hover:underline">Butce Hesap Makinesi</Link>,{" "}
-              <Link href="/tr/hesap-makineleri/finans/bilesik-faiz-hesap-makinesi" className="text-[#2563eb] hover:underline">Bilesik Faiz Hesap Makinesi</Link>,{" "}
-              <Link href="/tr/hesap-makineleri/finans/ogrenim-kredisi-hesap-makinesi" className="text-[#2563eb] hover:underline">Ogrenim Kredisi Hesap Makinesi</Link>.
+              <Link href="/tr/hesap-makineleri/finans/butce-hesap-makinesi" className="text-[#2563eb] hover:underline">Bütçe Hesap Makinesi</Link>,{" "}
+              <Link href="/tr/hesap-makineleri/finans/bilesik-faiz-hesap-makinesi" className="text-[#2563eb] hover:underline">Bileşik Faiz Hesap Makinesi</Link>,{" "}
+              <Link href="/tr/hesap-makineleri/finans/ogrenim-kredisi-hesap-makinesi" className="text-[#2563eb] hover:underline">Öğrenim Kredisi Hesap Makinesi</Link>.
             </p>
           </div>
         </div>

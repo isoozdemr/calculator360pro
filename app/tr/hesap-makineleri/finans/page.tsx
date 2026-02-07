@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Finans Hesap Makineleri | Vergi, Maaş, Kredi Hesaplama",
@@ -47,6 +48,18 @@ const calculators = [
     slug: "emeklilik-hesap-makinesi",
     description: "SGK emeklilik yaşı, prim gün sayısı ve BES hesaplama",
     icon: "🏖️",
+  },
+  {
+    name: "BES Devlet Katkısı Hesap Makinesi",
+    slug: "bes-devlet-katkisi-hesap-makinesi",
+    description: "BES %25 devlet katkısı ile birikim ve emeklilik hesaplama",
+    icon: "🏦",
+  },
+  {
+    name: "Enflasyon ve Alım Gücü Hesap Makinesi",
+    slug: "enflasyon-alim-gucu-hesap-makinesi",
+    description: "TÜİK TÜFE ile paranızın alım gücünü hesaplayın",
+    icon: "📉",
   },
   {
     name: "Bileşik Faiz Hesap Makinesi",
@@ -104,8 +117,32 @@ const calculators = [
   },
 ];
 
+const categorySchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Finans Hesap Makineleri",
+  description: "Türkiye'ye özel vergi, maaş, kredi ve emeklilik hesaplama araçları.",
+  url: `${SITE_URL}/tr/hesap-makineleri/finans`,
+  inLanguage: "tr-TR",
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: calculators.length,
+    itemListElement: calculators.map((calc, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "SoftwareApplication",
+        name: calc.name,
+        url: `${SITE_URL}/tr/hesap-makineleri/finans/${calc.slug}`,
+      },
+    })),
+  },
+};
+
 export default function FinanceCalculatorsPage() {
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(categorySchema) }} />
     <div className="min-h-screen bg-[#f8fafc] py-8">
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Breadcrumb */}
@@ -422,5 +459,6 @@ export default function FinanceCalculatorsPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

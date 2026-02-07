@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { TurkeyMortgageCalculator } from "@/components/calculators/tr/TurkeyMortgageCalculator";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 import Link from "next/link";
+import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 
 export const metadata: Metadata = {
   title: "Konut Kredisi Hesaplama 2026 | Mortgage Hesap Makinesi - KKDF, BSMV",
@@ -30,31 +31,37 @@ export const metadata: Metadata = {
   },
 };
 
-export default function TurkeyMortgageCalculatorPage() {
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: "Türkiye Konut Kredisi Hesap Makinesi",
-    description: "2026 yılı güncel oranları ile konut kredisi hesaplama aracı",
-    url: "https://calculator360pro.com/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi",
-    applicationCategory: "FinanceApplication",
-    operatingSystem: "Web",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "TRY",
-    },
-    inLanguage: "tr",
-    dateModified: DATA_VERSION.lastUpdated,
-  };
+const faqs = [
+  { question: "Konut kredisi KKDF ve BSMV uygulanır mı?", answer: "Türkiye'de konut kredilerinde KKDF ve BSMV uygulanmaz (%0). Bu muafiyet konut kredisini tüketici ve taşıt kredisine göre daha avantajlı kılar." },
+  { question: "Tapu harcı oranı nedir?", answer: "Konut alım satımında tapu harcı toplam %4'tür; genelde alıcı ve satıcı payları ayrı ayrı %2 olarak hesaplanır. Alıcı tek taraf olarak ödeyebilir." },
+  { question: "Minimum peşinat oranı ne kadar?", answer: "Bankalar genellikle konut değerinin en fazla %80'ine kadar kredi verir; yani en az %20 peşinat gerekir. Daha yüksek peşinat taksiti düşürür." },
+  { question: "Konut kredisi vadesi kaç yıl olabilir?", answer: "Türkiye'de konut kredileri genelde 1–20 yıl vade ile sunulur. Uzun vade aylık taksiti düşürür ancak toplam faiz maliyeti artar." },
+  { question: "Erken ödeme cezası var mı?", answer: "Bazı bankalarda erken kapamada cezai şart uygulanabilir. Sözleşmedeki erken ödeme maddesini kontrol edin; erken kapatma planınız varsa bankaya sorun." },
+];
 
+const howToSteps = [
+  { name: "Kredi tutarı ve vade girin", text: "Almak istediğiniz konut kredisi tutarını ve vadeyi (yıl veya ay) girin." },
+  { name: "Faiz oranını seçin", text: "Bankanın sunduğu yıllık nominal faiz oranını girin." },
+  { name: "Hesapla butonuna tıklayın", text: "Aylık taksit, toplam geri ödeme ve isteğe bağlı tapu harcı dahil maliyeti görün." },
+  { name: "Ödeme planını inceleyin", text: "Taksit tablosunda anapara ve faiz dağılımını inceleyin." },
+];
+
+export default function TurkeyMortgageCalculatorPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      <SchemaMarkupTR
+        name="Konut Kredisi Hesap Makinesi"
+        description="2026 yılı güncel oranları ile konut kredisi hesaplama aracı"
+        slug="konut-kredisi-hesap-makinesi"
+        categorySlug="finans"
+        categoryName="Finans"
+        dateModified={DATA_VERSION.lastUpdated}
+        category="finance"
+        faqs={faqs}
+        howToName="Konut Kredisi Hesap Makinesi Nasıl Kullanılır?"
+        howToDescription="Konut kredisi taksit ve maliyet hesaplamak için adımlar."
+        howToSteps={howToSteps}
       />
-      
       <div className="min-h-screen bg-[#f8fafc] py-8">
         <div className="container mx-auto px-4 max-w-4xl">
           {/* Breadcrumb */}
@@ -161,6 +168,16 @@ export default function TurkeyMortgageCalculatorPage() {
               erken kapama komisyonu alabilir. Bu oranlar genellikle kalan anaparanın 
               %1-2&apos;si arasındadır.
             </p>
+
+            <h3>Sıkça Sorulan Sorular</h3>
+            <div className="space-y-4 mt-4">
+              {faqs.map((faq, i) => (
+                <div key={i} className="border-b border-slate-200 pb-4 last:border-0">
+                  <h4 className="font-semibold text-slate-800 mb-2">{faq.question}</h4>
+                  <p className="text-slate-600 text-sm">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Related Blog Post */}

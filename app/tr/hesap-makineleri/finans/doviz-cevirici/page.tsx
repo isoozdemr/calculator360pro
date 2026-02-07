@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { TurkeyCurrencyConverter } from "@/components/calculators/tr/TurkeyCurrencyConverter";
+import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
+import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Döviz Çevirici 2026 - USD, EUR, TRY Anında",
@@ -60,47 +62,29 @@ const faqs = [
   },
 ];
 
+const howToSteps = [
+  { name: "Kaynak para birimini seçin", text: "Çevirmek istediğiniz tutarın para birimini (örn. TRY, USD) seçin." },
+  { name: "Hedef para birimini seçin", text: "Sonucun gösterileceği para birimini seçin." },
+  { name: "Tutarı girin", text: "Çevirmek istediğiniz tutarı girin." },
+  { name: "Sonucu görün", text: "Güncel kura göre hesaplanan eşdeğer tutarı görün." },
+];
+
 export default function DovizCeviriciPage() {
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: "Döviz Çevirici",
-    description: "Para birimi çevirici aracı - 150+ para birimi arasında döviz çevirisi",
-    url: `${SITE_URL}/tr/hesap-makineleri/finans/doviz-cevirici`,
-    applicationCategory: "FinanceApplication",
-    operatingSystem: "Web",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "TRY"
-    },
-    inLanguage: "tr"
-  };
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      <SchemaMarkupTR
+        name="Döviz Çevirici"
+        description="Para birimi çevirici aracı - 150+ para birimi arasında döviz çevirisi"
+        slug="doviz-cevirici"
+        categorySlug="finans"
+        categoryName="Finans"
+        dateModified={DATA_VERSION.lastUpdated}
+        category="finance"
+        faqs={faqs}
+        howToName="Döviz Çevirici Nasıl Kullanılır?"
+        howToDescription="Para birimi çevirisi yapmak için adımlar."
+        howToSteps={howToSteps}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      
       <div className="min-h-screen bg-[#f8fafc]">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-[#1e293b] to-[#334155] text-white py-8">

@@ -1,10 +1,12 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
+import { getTRCategoriesForHomepage, TR_CALCULATOR_COUNT } from "@/lib/tr-calculators-nav";
+import { TR_REHBERLER } from "@/lib/tr-rehberler";
 
 export const metadata: Metadata = {
-  title: "Ücretsiz Hesap Makinesi 2026 | Vergi, Maaş, Kredi",
-  description: "2026 güncel vergi dilimleri, SGK kesintileri ve asgari ücretle anında hesaplayın! Ücretsiz vergi, maaş, kredi, BMI hesap makineleri. Hemen deneyin!",
+  title: "Ücretsiz Hesap Makinesi 2026 | Vergi, Maaş, Kredi, BES, Enflasyon",
+  description: "2026 güncel vergi dilimleri, SGK kesintileri ve asgari ücretle anında hesaplayın! Ücretsiz vergi, maaş, kredi, BES devlet katkısı, enflasyon alım gücü, BMI ve 27 hesap makinesi. Hemen deneyin!",
   keywords: [
     "hesap makinesi",
     "online hesap makinesi",
@@ -14,7 +16,8 @@ export const metadata: Metadata = {
     "kredi hesaplama",
     "konut kredisi hesaplama",
     "emeklilik hesaplama",
-    "emeklilik yaşı hesaplama",
+    "BES devlet katkısı hesaplama",
+    "enflasyon alım gücü hesaplama",
     "sgk prim hesaplama",
     "not ortalaması hesaplama",
     "gano hesaplama",
@@ -26,6 +29,8 @@ export const metadata: Metadata = {
     "2026 vergi dilimleri",
     "asgari ücret 2026",
     "agi hesaplama",
+    "döviz çevirici",
+    "birim çevirici",
   ],
   alternates: {
     canonical: "https://calculator360pro.com/tr",
@@ -35,124 +40,18 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Ücretsiz Hesap Makinesi 2026 | Vergi, Maaş, Kredi",
-    description: "2026 güncel vergi, SGK ve asgari ücret hesaplama. Anında sonuç. Hemen deneyin!",
+    title: "Ücretsiz Hesap Makinesi 2026 | Vergi, Maaş, Kredi, BES",
+    description: "2026 güncel vergi, SGK, BES ve enflasyon hesaplama. 27 ücretsiz hesap makinesi. Hemen deneyin!",
     locale: "tr_TR",
     type: "website",
   },
 };
 
-const turkishCalculators = [
-  {
-    category: "Finans Hesap Makineleri",
-    slug: "finans",
-    description: "Türkiye'nin en kapsamlı finansal hesaplama araçları. Vergi, maaş, kredi ve yatırım hesaplamalarınızı 2026 güncel verileriyle yapın.",
-    calculators: [
-      {
-        name: "Vergi Hesap Makinesi",
-        slug: "vergi-hesap-makinesi",
-        description: "2026 yılı gelir vergisi dilimleri ile vergi hesaplama. Kümülatif vergi matrahı, gelir vergisi ve damga vergisi dahil.",
-        icon: "💰",
-        badge: "2026 Güncel",
-      },
-      {
-        name: "Maaş Hesap Makinesi",
-        slug: "maas-hesap-makinesi",
-        description: "Brütten nete, netten brüte maaş hesaplama. SGK işçi-işveren kesintileri, AGİ ve vergi iadesi dahil.",
-        icon: "💵",
-        badge: "En Popüler",
-      },
-      {
-        name: "Konut Kredisi Hesap Makinesi",
-        slug: "konut-kredisi-hesap-makinesi",
-        description: "Mortgage hesaplama aracı. Aylık taksit, toplam geri ödeme, tapu harcı ve sigorta masrafları dahil.",
-        icon: "🏠",
-        badge: null,
-      },
-      {
-        name: "Kredi Hesap Makinesi",
-        slug: "kredi-hesap-makinesi",
-        description: "İhtiyaç kredisi hesaplama. KKDF (%15) ve BSMV (%10) dahil toplam maliyet hesaplama.",
-        icon: "💳",
-        badge: null,
-      },
-      {
-        name: "Emeklilik Hesap Makinesi",
-        slug: "emeklilik-hesap-makinesi",
-        description: "SGK emeklilik yaşı ve prim gün sayısı hesaplama. EYT, BES ve kademeli emeklilik tablosu.",
-        icon: "🏖️",
-        badge: "Yeni",
-      },
-    ],
-  },
-  {
-    category: "Sağlık Hesap Makineleri",
-    slug: "saglik",
-    description: "Sağlık ve fitness hedefleriniz için bilimsel hesaplama araçları. WHO ve Türkiye Sağlık Bakanlığı standartlarına uygun.",
-    calculators: [
-      {
-        name: "BMI Hesap Makinesi",
-        slug: "bmi-hesap-makinesi",
-        description: "Vücut Kitle İndeksi (BMI) hesaplama. Zayıf, normal, fazla kilolu ve obezite kategorileri.",
-        icon: "⚖️",
-        badge: null,
-      },
-      {
-        name: "Kalori Hesap Makinesi",
-        slug: "kalori-hesap-makinesi",
-        description: "Günlük kalori ihtiyacı hesaplama. BMH, TDEE ve makro besin önerileri.",
-        icon: "🔥",
-        badge: null,
-      },
-    ],
-  },
-  {
-    category: "Eğitim Hesap Makineleri",
-    slug: "egitim",
-    description: "Üniversite ve lise öğrencileri için akademik hesaplama araçları. Türk eğitim sistemine uygun not hesaplama.",
-    calculators: [
-      {
-        name: "Not Ortalaması Hesap Makinesi",
-        slug: "not-ortalamasi-hesap-makinesi",
-        description: "GANO ve AGNO hesaplama. 4'lük sistem, 100'lük sistem ve harf notu dönüşümü.",
-        icon: "📚",
-        badge: null,
-      },
-    ],
-  },
-  {
-    category: "Matematik Hesap Makineleri",
-    slug: "matematik",
-    description: "Günlük hayatta sıkça ihtiyaç duyulan matematik hesaplama araçları.",
-    calculators: [
-      {
-        name: "Yüzde Hesap Makinesi",
-        slug: "yuzde-hesap-makinesi",
-        description: "Yüzde hesaplama, artış/azalış oranı bulma, indirim hesaplama.",
-        icon: "%",
-        badge: null,
-      },
-    ],
-  },
-  {
-    category: "Tarih ve Zaman Hesap Makineleri",
-    slug: "tarih-zaman",
-    description: "Yaş, tarih farkı ve zaman hesaplama araçları.",
-    calculators: [
-      {
-        name: "Yaş Hesap Makinesi",
-        slug: "yas-hesap-makinesi",
-        description: "Doğum tarihinden yaş hesaplama. Yıl, ay, gün detayları ve burç bilgisi.",
-        icon: "🎂",
-        badge: null,
-      },
-    ],
-  },
-];
+const turkishCalculators = getTRCategoriesForHomepage();
 
 const stats = [
   { value: "50.000+", label: "Aylık Hesaplama" },
-  { value: "10+", label: "Farklı Hesap Makinesi" },
+  { value: `${TR_CALCULATOR_COUNT}`, label: "Farklı Hesap Makinesi" },
   { value: "2026", label: "Güncel Veriler" },
   { value: "%100", label: "Ücretsiz" },
 ];
@@ -198,7 +97,8 @@ export default function TurkeyHomePage() {
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-[#94a3b8] mb-8 max-w-3xl mx-auto leading-relaxed">
-              Vergi hesaplama, maaş hesaplama, kredi hesaplama, emeklilik hesaplama ve daha fazlası. 
+              Vergi, maaş, kredi, emeklilik, BES devlet katkısı, enflasyon alım gücü, döviz, birim çevirici ve 
+              <strong className="text-white"> {TR_CALCULATOR_COUNT} farklı hesap makinesi</strong>. 
               <strong className="text-white"> 2026 yılı güncel vergi dilimleri</strong>, SGK oranları ve 
               Türkiye düzenlemeleri ile <strong className="text-white">%100 doğru sonuçlar</strong> alın.
             </p>
@@ -304,6 +204,48 @@ export default function TurkeyHomePage() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Rehberler Section */}
+      <section className="py-16 bg-white border-t border-[#e2e8f0]">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-[#1e293b] mb-4">
+              Faydalı Rehberler
+            </h2>
+            <p className="text-lg text-[#64748b] max-w-2xl mx-auto">
+              Vergi takvimi, SGK emeklilik tablosu, kredi notu ve vergi indirimleri rehberleri ile 
+              hesap makinelerimizi tamamlayın.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {TR_REHBERLER.map((rehber) => (
+              <Link
+                key={rehber.slug}
+                href={`/tr/rehberler/${rehber.slug}`}
+                className="bg-[#f8fafc] p-6 rounded-xl border-2 border-[#e2e8f0] hover:border-[#2563eb] hover:shadow-lg transition-all group"
+              >
+                <h3 className="text-lg font-bold text-[#1e293b] group-hover:text-[#2563eb] mb-2 transition-colors">
+                  {rehber.title}
+                </h3>
+                <p className="text-sm text-[#64748b] leading-relaxed">
+                  {rehber.description}
+                </p>
+                <span className="inline-flex items-center text-[#2563eb] text-sm font-medium mt-3">
+                  Oku
+                  <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </Link>
+            ))}
+          </div>
+          <p className="text-center mt-6">
+            <Link href="/tr/rehberler" className="text-[#2563eb] hover:underline font-medium">
+              Tüm rehberler →
+            </Link>
+          </p>
         </div>
       </section>
 
@@ -454,7 +396,12 @@ export default function TurkeyHomePage() {
               </div>
               <h3 className="text-lg font-bold text-[#1e293b] mb-2">Hesap Makinesi Seçin</h3>
               <p className="text-[#64748b]">
-                İhtiyacınıza uygun hesap makinesini finans, sağlık, eğitim veya matematik 
+                İhtiyacınıza uygun hesap makinesini{" "}
+                <Link href="/tr/hesap-makineleri/finans" className="text-[#2563eb] hover:underline">finans</Link>,{" "}
+                <Link href="/tr/hesap-makineleri/saglik" className="text-[#2563eb] hover:underline">sağlık</Link>,{" "}
+                <Link href="/tr/hesap-makineleri/egitim" className="text-[#2563eb] hover:underline">eğitim</Link>,{" "}
+                <Link href="/tr/hesap-makineleri/matematik" className="text-[#2563eb] hover:underline">matematik</Link> veya{" "}
+                <Link href="/tr/hesap-makineleri/tarih-zaman" className="text-[#2563eb] hover:underline">tarih ve zaman</Link>{" "}
                 kategorilerinden seçin.
               </p>
             </div>
@@ -465,7 +412,10 @@ export default function TurkeyHomePage() {
               <h3 className="text-lg font-bold text-[#1e293b] mb-2">Değerlerinizi Girin</h3>
               <p className="text-[#64748b]">
                 Brüt maaş, kredi tutarı, yaş gibi gerekli bilgileri ilgili alanlara girin. 
-                Tüm alanlar Türkçe ve anlaşılır şekilde etiketlenmiştir.
+                <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline"> Maaş</Link>,{" "}
+                <Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline">vergi</Link>,{" "}
+                <Link href="/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi" className="text-[#2563eb] hover:underline">BES</Link> veya{" "}
+                <Link href="/tr/hesap-makineleri/finans/enflasyon-alim-gucu-hesap-makinesi" className="text-[#2563eb] hover:underline">enflasyon alım gücü</Link> hesaplarında tüm alanlar Türkçe ve anlaşılır şekilde etiketlenmiştir.
               </p>
             </div>
             <div className="text-center">
@@ -550,12 +500,14 @@ export default function TurkeyHomePage() {
               güncel ve doğru hesaplama araçlarına sahip olmak kritik öneme sahiptir.
             </p>
             <p className="text-[#64748b] mb-4 leading-relaxed">
-              Calculator360Pro olarak, Türkiye&apos;ye özel hesap makineleri geliştiriyoruz. 
-              <strong className="text-[#1e293b]"> Vergi hesaplama</strong>, 
-              <strong className="text-[#1e293b]"> maaş hesaplama</strong>, 
-              <strong className="text-[#1e293b]"> kredi hesaplama</strong> ve 
-              <strong className="text-[#1e293b]"> emeklilik hesaplama</strong> gibi en çok 
-              ihtiyaç duyulan araçları, 2026 yılı güncel verileriyle sunuyoruz.
+              Calculator360Pro olarak, Türkiye&apos;ye özel {TR_CALCULATOR_COUNT} hesap makinesi sunuyoruz. 
+              <Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium"> Vergi hesaplama</Link>, 
+              <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium"> maaş hesaplama</Link>, 
+              <Link href="/tr/hesap-makineleri/finans/kredi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium"> kredi hesaplama</Link>, 
+              <Link href="/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium"> emeklilik hesaplama</Link>, 
+              <Link href="/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium"> BES devlet katkısı</Link>, 
+              <Link href="/tr/hesap-makineleri/finans/enflasyon-alim-gucu-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium"> enflasyon alım gücü</Link>, 
+              döviz çevirici, birim çevirici ve daha fazlasını 2026 yılı güncel verileriyle sunuyoruz.
             </p>
 
             <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">
@@ -645,6 +597,12 @@ export default function TurkeyHomePage() {
               className="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white font-semibold rounded-lg border border-white/20 hover:bg-white/20 transition-colors"
             >
               Vergi Hesapla
+            </Link>
+            <Link
+              href="/tr/rehberler"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white font-semibold rounded-lg border border-white/20 hover:bg-white/20 transition-colors"
+            >
+              Rehberler
             </Link>
           </div>
         </div>

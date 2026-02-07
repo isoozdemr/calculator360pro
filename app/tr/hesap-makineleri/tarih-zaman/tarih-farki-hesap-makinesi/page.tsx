@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { TurkeyDateCalculator } from "@/components/calculators/tr/TurkeyDateCalculator";
+import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
+import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Tarih Farkı Hesap Makinesi 2026 - Gün/Ay Hesapla",
@@ -60,47 +62,29 @@ const faqs = [
   },
 ];
 
+const howToSteps = [
+  { name: "Başlangıç tarihini seçin", text: "İlk tarihi gün, ay ve yıl olarak girin." },
+  { name: "Bitiş tarihini seçin", text: "İkinci tarihi girin." },
+  { name: "Bitiş dahil mi seçin", text: "Bitiş gününün sayıma dahil edilip edilmeyeceğini işaretleyin." },
+  { name: "Hesapla", text: "Gün, hafta, ay ve iş günü farkını görün." },
+];
+
 export default function TarihFarkiHesapMakinesiPage() {
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: "Tarih Farkı Hesap Makinesi",
-    description: "İki tarih arasındaki farkı hesaplama aracı - Gün, hafta, ay, yıl ve iş günü hesaplama",
-    url: `${SITE_URL}/tr/hesap-makineleri/tarih-zaman/tarih-farki-hesap-makinesi`,
-    applicationCategory: "UtilityApplication",
-    operatingSystem: "Web",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "TRY"
-    },
-    inLanguage: "tr"
-  };
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      <SchemaMarkupTR
+        name="Tarih Farkı Hesap Makinesi"
+        description="İki tarih arasındaki farkı hesaplama aracı - Gün, hafta, ay, yıl ve iş günü hesaplama"
+        slug="tarih-farki-hesap-makinesi"
+        categorySlug="tarih-zaman"
+        categoryName="Tarih-Zaman"
+        dateModified={DATA_VERSION.lastUpdated}
+        category="date-time"
+        faqs={faqs}
+        howToName="Tarih Farkı Hesap Makinesi Nasıl Kullanılır?"
+        howToDescription="İki tarih arası fark hesaplamak için adımlar."
+        howToSteps={howToSteps}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      
       <div className="min-h-screen bg-[#f8fafc]">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-[#1e293b] to-[#334155] text-white py-8">

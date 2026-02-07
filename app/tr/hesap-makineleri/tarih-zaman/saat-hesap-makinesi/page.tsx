@@ -1,11 +1,25 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
-import { HoursCalculator } from "@/components/calculators/HoursCalculator";
+import { TurkeyHoursCalculator } from "@/components/calculators/tr";
+import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
+import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
-  title: "Saat Hesap Makinesi 2026 - Calisma Suresi",
-  description: "Baslangic ve bitis saati ile toplam sure, ucret hesaplama. Ucretsiz saat hesap makinesi.",
+  title: "Saat Hesap Makinesi 2026 - Çalışma Süresi",
+  description: "Başlangıç ve bitiş saati ile toplam süre, ücret hesaplama. Ücretsiz saat hesap makinesi.",
+  keywords: [
+    "saat hesap makinesi",
+    "çalışma süresi hesaplama",
+    "toplam saat hesaplama",
+    "mesai hesaplama",
+    "saatlik ücret hesaplama",
+    "süre hesaplama",
+    "başlangıç bitiş saati",
+    "çalışma saati hesaplayıcı",
+    "ücret hesaplama saat",
+    "dakika saat çevirme",
+  ],
   alternates: {
     canonical: `${SITE_URL}/tr/hesap-makineleri/tarih-zaman/saat-hesap-makinesi`,
     languages: { "en": `${SITE_URL}/calculators/date-time/hours-calculator`, "tr": `${SITE_URL}/tr/hesap-makineleri/tarih-zaman/saat-hesap-makinesi` },
@@ -14,17 +28,35 @@ export const metadata: Metadata = {
 };
 
 const faqs = [
-  { q: "Calisma suresi nasil hesaplanir?", a: "Bitis saati - baslangic saati. Ara vermeler varsa cikarilir. Sonuc saat ve dakika olarak gorunur." },
-  { q: "Ucret hesaplamada kullanilir mi?", a: "Evet. Toplam calisma saati x saatlik ucret = brut ucret. Net icin vergi ve kesintiler uygulanir." },
+  { question: "Çalışma süresi nasıl hesaplanır?", answer: "Bitiş saati - başlangıç saati. Ara vermeler varsa çıkarılır. Sonuç saat ve dakika olarak görünür." },
+  { question: "Ücret hesaplamada kullanılır mı?", answer: "Evet. Toplam çalışma saati x saatlik ücret = brüt ücret. Net için vergi ve kesintiler uygulanır." },
+  { question: "Gece vardiyası nasıl hesaplanır?", answer: "Bitiş saati ertesi günü gösteriyorsa 24 saat ekleyerek toplam süreyi hesaplayın. Bazı araçlar bunu otomatik yapar." },
+  { question: "Dakika ondalık mı saat mi?", answer: "Sonuç genelde saat ve dakika (örn. 2 saat 30 dk) veya ondalık saat (2,5 saat) olarak gösterilir; ücret hesaplamada ondalık kullanılır." },
+];
+
+const howToSteps = [
+  { name: "Başlangıç saatini girin", text: "İş başlangıç veya başlangıç saatini seçin." },
+  { name: "Bitiş saatini girin", text: "Bitiş saatini girin. Ertesi gün için 24 saatlik format kullanılabilir." },
+  { name: "Ara varsa çıkarın", text: "Yemek veya mola sürelerini çıkararak net çalışma süresini alın." },
+  { name: "Toplam ve ücret", text: "Toplam süre ve isteğe bağlı saatlik ücret ile brüt ücreti görün." },
 ];
 
 export default function SaatHesapMakinesiPage() {
-  const schema = { "@context": "https://schema.org", "@type": "WebApplication", name: "Saat Hesap Makinesi", url: `${SITE_URL}/tr/hesap-makineleri/tarih-zaman/saat-hesap-makinesi`, applicationCategory: "UtilityApplication", offers: { "@type": "Offer", price: "0", priceCurrency: "TRY" }, inLanguage: "tr" };
-  const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <SchemaMarkupTR
+        name="Saat Hesap Makinesi"
+        description="Çalışma süresi ve toplam saat hesaplama aracı"
+        slug="saat-hesap-makinesi"
+        categorySlug="tarih-zaman"
+        categoryName="Tarih-Zaman"
+        dateModified={DATA_VERSION.lastUpdated}
+        category="date-time"
+        faqs={faqs}
+        howToName="Saat Hesap Makinesi Nasıl Kullanılır?"
+        howToDescription="Çalışma süresi hesaplamak için adımlar."
+        howToSteps={howToSteps}
+      />
       <div className="min-h-screen bg-[#f8fafc] py-8">
         <div className="container mx-auto px-4 max-w-4xl">
           <nav className="mb-6 text-sm text-[#64748b]">
@@ -39,15 +71,15 @@ export default function SaatHesapMakinesiPage() {
             </ol>
           </nav>
           <h1 className="text-3xl font-bold text-[#1e293b] mb-4">Saat Hesap Makinesi</h1>
-          <p className="text-[#64748b] mb-8">Calisma suresi ve toplam saat hesaplama.</p>
-          <HoursCalculator />
+          <p className="text-[#64748b] mb-8">Çalışma süresi ve toplam saat hesaplama.</p>
+          <TurkeyHoursCalculator />
           <div className="mt-12 bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
             <h2 className="text-xl font-bold text-[#1e293b] mb-4">SSS</h2>
             {faqs.map((f, i) => (
-              <div key={i} className="mb-4"><h3 className="font-semibold text-[#1e293b]">{f.q}</h3><p className="text-sm text-[#64748b]">{f.a}</p></div>
+              <div key={i} className="mb-4"><h3 className="font-semibold text-[#1e293b]">{f.question}</h3><p className="text-sm text-[#64748b]">{f.answer}</p></div>
             ))}
             <p className="mt-4 text-[#64748b]">
-              <Link href="/tr/hesap-makineleri/tarih-zaman/tarih-farki-hesap-makinesi" className="text-[#2563eb] hover:underline">Tarih Farki</Link>,{" "}
+              <Link href="/tr/hesap-makineleri/tarih-zaman/tarih-farki-hesap-makinesi" className="text-[#2563eb] hover:underline">Tarih Farkı</Link>,{" "}
               <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline">Maaş Hesap Makinesi</Link>.
             </p>
           </div>

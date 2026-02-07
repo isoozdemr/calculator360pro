@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { TurkeyPregnancyCalculator } from "@/components/calculators/tr/TurkeyPregnancyCalculator";
+import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
+import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Gebelik Hesap Makinesi 2026 - Doğum Tarihi Hesapla",
@@ -60,47 +62,28 @@ const faqs = [
   },
 ];
 
+const howToSteps = [
+  { name: "Son adet tarihini girin", text: "Son adet döneminizin ilk gününü seçin." },
+  { name: "Hesapla butonuna tıklayın", text: "Tahmini doğum tarihi ve gebelik haftası hesaplanır." },
+  { name: "Trimester bilgisini inceleyin", text: "Hangi trimester'da olduğunuzu ve hafta bilgisini görün." },
+];
+
 export default function GebelikHesapMakinesiPage() {
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: "Gebelik Hesap Makinesi",
-    description: "Doğum tarihi ve gebelik haftası hesaplama aracı",
-    url: `${SITE_URL}/tr/hesap-makineleri/saglik/gebelik-hesap-makinesi`,
-    applicationCategory: "HealthApplication",
-    operatingSystem: "Web",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "TRY"
-    },
-    inLanguage: "tr"
-  };
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      <SchemaMarkupTR
+        name="Gebelik Hesap Makinesi"
+        description="Doğum tarihi ve gebelik haftası hesaplama aracı"
+        slug="gebelik-hesap-makinesi"
+        categorySlug="saglik"
+        categoryName="Sağlık"
+        dateModified={DATA_VERSION.lastUpdated}
+        category="health"
+        faqs={faqs}
+        howToName="Gebelik Hesap Makinesi Nasıl Kullanılır?"
+        howToDescription="Doğum tarihi ve gebelik haftası hesaplamak için adımlar."
+        howToSteps={howToSteps}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      
       <div className="min-h-screen bg-[#f8fafc]">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-[#1e293b] to-[#334155] text-white py-8">

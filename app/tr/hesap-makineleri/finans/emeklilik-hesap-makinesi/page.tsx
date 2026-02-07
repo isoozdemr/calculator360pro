@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import { TurkeyRetirementCalculator } from "@/components/calculators/tr/TurkeyRetirementCalculator";
 import { DATA_VERSION, SGK_PREMIUM_DAY_REQUIREMENTS, BES_2026 } from "@/lib/data/turkey-2026-data";
+import { generateTurkishHowToSchema, generateTurkishBreadcrumbSchema } from "@/lib/seo/schema";
+import { SITE_URL } from "@/lib/constants";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -49,13 +51,28 @@ export default function TurkeyRetirementCalculatorPage() {
     dateModified: DATA_VERSION.lastUpdated,
   };
 
+  const emeklilikUrl = `${SITE_URL}/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi`;
+  const howToSteps = [
+    { name: "Doğum yılınızı girin", text: "SGK emeklilik yaşı için doğum yılınızı seçin." },
+    { name: "Cinsiyet ve sigorta bilgilerini girin", text: "Cinsiyet ve sigorta başlangıç tarihi gibi alanları doldurun." },
+    { name: "Hesapla butonuna tıklayın", text: "Emeklilik yaşı, prim günü ve BES projeksiyonunu görün." },
+  ];
+  const howToSchema = generateTurkishHowToSchema(
+    "Emeklilik Hesap Makinesi Nasıl Kullanılır?",
+    "SGK emeklilik yaşı ve BES hesaplamak için adımlar.",
+    howToSteps,
+    emeklilikUrl
+  );
+  const breadcrumbSchema = generateTurkishBreadcrumbSchema("Finans", "finans", "Emeklilik Hesap Makinesi", "emeklilik-hesap-makinesi");
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
       />
-      
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <div className="min-h-screen bg-[#f8fafc] py-8">
         <div className="container mx-auto px-4 max-w-4xl">
           {/* Breadcrumb */}

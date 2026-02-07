@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { TurkeyDiscountCalculator } from "@/components/calculators/tr/TurkeyDiscountCalculator";
+import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
+import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "İndirim Hesap Makinesi 2026 - Tasarruf Hesapla",
@@ -60,45 +62,27 @@ const faqs = [
   },
 ];
 
+const howToSteps = [
+  { name: "Orijinal fiyatı girin", text: "İndirim öncesi fiyatı girin." },
+  { name: "İndirim oranı veya tutarı", text: "Yüzde indirim (örn. %20) veya indirim tutarını girin." },
+  { name: "Hesapla", text: "İndirimli fiyat ve tasarruf tutarını görün." },
+];
+
 export default function IndirimHesapMakinesiPage() {
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: "İndirim Hesap Makinesi",
-    description: "İndirim hesaplama aracı - İndirimli fiyat, indirim tutarı ve tasarruf hesaplama",
-    url: `${SITE_URL}/tr/hesap-makineleri/matematik/indirim-hesap-makinesi`,
-    applicationCategory: "UtilityApplication",
-    operatingSystem: "Web",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "TRY"
-    },
-    inLanguage: "tr"
-  };
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      <SchemaMarkupTR
+        name="İndirim Hesap Makinesi"
+        description="İndirim hesaplama aracı - İndirimli fiyat, indirim tutarı ve tasarruf hesaplama"
+        slug="indirim-hesap-makinesi"
+        categorySlug="matematik"
+        categoryName="Matematik"
+        dateModified={DATA_VERSION.lastUpdated}
+        category="math"
+        faqs={faqs}
+        howToName="İndirim Hesap Makinesi Nasıl Kullanılır?"
+        howToDescription="İndirimli fiyat hesaplamak için adımlar."
+        howToSteps={howToSteps}
       />
       
       <div className="min-h-screen bg-[#f8fafc]">
