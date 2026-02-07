@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
-import { StudentLoanCalculator } from "@/components/calculators/StudentLoanCalculator";
+import { TurkeyStudentLoanCalculator } from "@/components/calculators/tr/TurkeyStudentLoanCalculator";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
