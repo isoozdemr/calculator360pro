@@ -29,11 +29,11 @@ Türkiye'de gelir vergisi, artan oranlı tarife sistemi ile hesaplanıyor. 2026 
 
 | Vergi Matrahı | Vergi Oranı |
 |---------------|-------------|
-| 0 - 110.000 TL | %15 |
-| 110.001 - 230.000 TL | %20 |
-| 230.001 - 870.000 TL | %27 |
-| 870.001 - 3.000.000 TL | %35 |
-| 3.000.001 TL ve üzeri | %40 |
+| 0 - 190.000 TL | %15 |
+| 190.001 - 400.000 TL | %20 |
+| 400.001 - 1.500.000 TL | %27 |
+| 1.500.001 - 5.300.000 TL | %35 |
+| 5.300.001 TL ve üzeri | %40 |
 
 ## Kademeli Vergi Sistemi Nasıl Çalışır?
 
@@ -43,15 +43,15 @@ Kademeli vergi sistemi, gelirinizin her dilimine farklı oran uygulanması anlam
 
 Bir çalışanın yıllık vergi matrahı 500.000 TL ise:
 
-1. **İlk 110.000 TL**: %15 = 16.500 TL
-2. **110.001 - 230.000 TL arası (120.000 TL)**: %20 = 24.000 TL
-3. **230.001 - 500.000 TL arası (270.000 TL)**: %27 = 72.900 TL
+1. **İlk 190.000 TL**: %15 = 28.500 TL
+2. **190.001 - 400.000 TL arası (210.000 TL)**: %20 = 42.000 TL
+3. **400.001 - 500.000 TL arası (100.000 TL)**: %27 = 27.000 TL
 
-**Toplam Vergi**: 16.500 + 24.000 + 72.900 = **113.400 TL**
+**Toplam Vergi**: 28.500 + 42.000 + 27.000 = **97.500 TL**
 
-**Efektif Vergi Oranı**: 113.400 / 500.000 = **%22.68**
+**Efektif Vergi Oranı**: 97.500 / 500.000 = **%19,50**
 
-Gördüğünüz gibi, en yüksek dilim %27 olmasına rağmen, efektif vergi oranı %22.68'dir. Bu, kademeli sistemin adil yapısını gösterir.
+Gördüğünüz gibi, en yüksek dilim %27 olmasına rağmen, efektif vergi oranı %19,50'dir. Bu, kademeli sistemin adil yapısını gösterir.
 
 ## Kümülatif Vergi Matrahı Nedir?
 
@@ -119,7 +119,7 @@ Bu bilgiler genel bilgilendirme amaçlıdır. Vergi planlaması ve beyanname iş
     faqs: [
       {
         question: "2026 gelir vergisi dilimleri nelerdir?",
-        answer: "2026 yılında 0-110.000 TL için %15, 110.001-230.000 TL için %20, 230.001-870.000 TL için %27, 870.001-3.000.000 TL için %35, 3.000.001 TL ve üzeri için %40 oranları uygulanır. Vergi matrahınız kademeli olarak bu dilimlere göre hesaplanır.",
+        answer: "2026 yılında 0-190.000 TL için %15, 190.001-400.000 TL için %20, 400.001-1.500.000 TL için %27, 1.500.001-5.300.000 TL için %35, 5.300.001 TL ve üzeri için %40 oranları uygulanır. Vergi matrahınız kademeli olarak bu dilimlere göre hesaplanır.",
       },
       {
         question: "Vergi matrahı nasıl hesaplanır?",
@@ -168,18 +168,18 @@ Vergi matrahı = Brüt Maaş - SGK Kesintileri
 
 Gelir vergisi, kademeli sistem ile hesaplanır. 2026 yılı vergi dilimleri:
 
-- 0 - 110.000 TL: %15
-- 110.001 - 230.000 TL: %20
-- 230.001 - 870.000 TL: %27
-- 870.001 - 3.000.000 TL: %35
-- 3.000.001 TL ve üzeri: %40
+- 0 - 190.000 TL: %15
+- 190.001 - 400.000 TL: %20
+- 400.001 - 1.500.000 TL: %27
+- 1.500.001 - 5.300.000 TL: %35
+- 5.300.001 TL ve üzeri: %40
 
 **Örnek**: Aylık 42.500 TL vergi matrahı için (yıllık 510.000 TL):
-- İlk 110.000 TL: %15 = 16.500 TL
-- 110.001 - 230.000 TL: %20 = 24.000 TL
-- 230.001 - 510.000 TL: %27 = 75.600 TL
-- **Yıllık Toplam Vergi**: 116.100 TL
-- **Aylık Vergi**: 116.100 / 12 = 9.675 TL
+- İlk 190.000 TL: %15 = 28.500 TL
+- 190.001 - 400.000 TL: %20 = 42.000 TL
+- 400.001 - 510.000 TL: %27 = 29.700 TL
+- **Yıllık Toplam Vergi**: 100.200 TL
+- **Aylık Vergi**: 100.200 / 12 = 8.350 TL
 
 ### 4. Damga Vergisi
 
@@ -193,12 +193,10 @@ Damga vergisi brüt maaş üzerinden binde 7,59 (‰7,59) oranında uygulanır.
 
 AGİ, gelir vergisinden düşülen bir indirimdir. Medeni durum ve çocuk sayısına göre değişir.
 
-2026 yılı AGİ tutarları (aylık):
-- Bekar: 2.500 TL
-- Evli (eşi çalışmıyor): 2.750 TL
-- Evli + 1 çocuk: 3.000 TL
-- Evli + 2 çocuk: 3.250 TL
-- Evli + 3 çocuk: 3.500 TL
+2026 yılı AGİ tutarları (aylık, yaklaşık):
+- Bekar: 2.477 TL
+- Evli (eşi çalışmıyor): 2.973 TL
+- Çocuk sayısına göre ek oranlar uygulanır (%7,5 ilk iki çocuk, %10 üçüncü ve sonrası).
 
 AGİ, gelir vergisinden düşülür.
 
@@ -209,18 +207,18 @@ AGİ, gelir vergisinden düşülür.
 1. **Brüt Maaş**: 50.000 TL
 2. **SGK Kesintisi** (%15): 7.500 TL
 3. **Vergi Matrahı**: 50.000 - 7.500 = 42.500 TL
-4. **Aylık Gelir Vergisi** (yıllık 510.000 TL matrah için): 9.675 TL
-5. **AGİ İndirimi**: 2.500 TL
-6. **Net Gelir Vergisi**: 9.675 - 2.500 = 7.175 TL
+4. **Aylık Gelir Vergisi** (yıllık 510.000 TL matrah için, 2026 dilimleri): 8.350 TL
+5. **AGİ İndirimi**: 2.477 TL
+6. **Net Gelir Vergisi**: 8.350 - 2.477 = 5.873 TL
 7. **Damga Vergisi**: 50.000 × 0.00759 = 379,50 TL
 
-**Net Maaş**: 50.000 - 7.500 - 7.175 - 379,50 = **34.945,50 TL**
+**Net Maaş**: 50.000 - 7.500 - 5.873 - 379,50 = **36.247,50 TL**
 
 ## Asgari Ücret Hesaplama
 
 2026 yılı asgari ücret:
-- **Brüt**: 26.005,50 TL
-- **Net**: 22.104,67 TL
+- **Brüt**: 33.030 TL
+- **Net**: 28.075,50 TL
 
 Asgari ücretliler gelir vergisinden ve damga vergisinden muaftır.
 
@@ -708,17 +706,17 @@ Sağlık sorunları için mutlaka doktorunuza danışmanız gerekir. Bu bilgiler
     content: `
 # 2026 Asgari Ücret: Net Maaş Hesaplama ve SGK Kesintileri
 
-2026 yılında asgari ücret brüt 26.005,50 TL olarak belirlendi. Bu tutar, çalışanların eline geçen net maaştan farklı çünkü çeşitli kesintiler yapılıyor. Asgari ücretliler için özel durumlar var ve bunları anlamak önemli.
+2026 yılında asgari ücret brüt 33.030 TL olarak belirlendi. Bu tutar, çalışanların eline geçen net maaştan farklı çünkü çeşitli kesintiler yapılıyor. Asgari ücretliler için özel durumlar var ve bunları anlamak önemli.
 
 Asgari ücret, işverenin çalışana ödediği brüt tutar. Bu tutardan SGK kesintileri yapılıyor ama gelir vergisi ve damga vergisi kesilmiyor. 2026 yılında asgari ücretliler bu vergilerden muaf.
 
-SGK kesintileri brüt maaş üzerinden hesaplanıyor. SGK işçi payı yüzde 14, işsizlik sigortası işçi payı yüzde 1. Toplamda yüzde 15 kesinti yapılıyor. 26.005,50 TL brüt maaş için SGK kesintisi 3.900,83 TL oluyor.
+SGK kesintileri brüt maaş üzerinden hesaplanıyor. SGK işçi payı yüzde 14, işsizlik sigortası işçi payı yüzde 1. Toplamda yüzde 15 kesinti yapılıyor. 33.030 TL brüt maaş için SGK kesintisi (işçi payı) 4.624,20 TL, işsizlik sigortası 330,30 TL; toplam kesinti 4.954,50 TL oluyor.
 
 Asgari ücretliler için gelir vergisi muafiyeti var. Bu, asgari ücretin üzerinde maaş alanlardan farklı bir durum. Asgari ücretin üzerinde maaş alanlar, sadece asgari ücreti aşan kısım için vergi ödüyorlar.
 
 Damga vergisi de asgari ücretliler için uygulanmıyor. Normalde brüt maaş üzerinden binde 7,59 oranında damga vergisi kesiliyor ama asgari ücretliler bu vergiden muaf.
 
-Net maaş hesaplaması şöyle yapılıyor: Brüt maaştan SGK kesintileri düşülüyor. Gelir vergisi ve damga vergisi kesilmiyor. Sonuç olarak 2026 yılında bekar bir çalışanın eline geçen net asgari ücret 22.104,67 TL.
+Net maaş hesaplaması şöyle yapılıyor: Brüt maaştan SGK kesintileri düşülüyor. Gelir vergisi ve damga vergisi kesilmiyor. Sonuç olarak 2026 yılında bekar bir çalışanın eline geçen net asgari ücret 28.075,50 TL.
 
 AGİ, asgari geçim indirimi, asgari ücretliler için de geçerli. Medeni durum ve çocuk sayısına göre AGİ tutarı değişiyor. Bekar çalışanlar için AGİ tutarı asgari ücretin yüzde 50'si üzerinden hesaplanan verginin yüzde 15'i kadar.
 
@@ -894,7 +892,7 @@ Prim günü hesaplaması için SGK kayıtlarınızı kontrol etmeniz gerekiyor. 
 
 Prim günü eksikliği durumunda ne yapılır? Eksik prim günlerinizi tamamlamak için birkaç seçenek var. En yaygın yöntem, eksik günleri ödemek. SGK'ya başvurarak eksik prim günlerinizi ödeyebilirsiniz.
 
-Eksik prim ödemesi için güncel prim tutarını ödemeniz gerekiyor. Bu tutar, asgari ücret üzerinden hesaplanıyor. 2026 yılı için bir günlük prim tutarı yaklaşık 867 TL. Yani 100 gün eksik priminiz varsa, yaklaşık 86.700 TL ödemeniz gerekiyor.
+Eksik prim ödemesi için güncel prim tutarını ödemeniz gerekiyor. Bu tutar, asgari ücret üzerinden hesaplanıyor. 2026 yılı için günlük asgari ücret 1.101 TL (33.030 TL / 30). 100 gün eksik priminiz varsa, tutar prim türüne göre değişir; SGK ile teyit edin.
 
 Prim günü eksikliği için başka bir seçenek, geçici işsizlik ödeneği almak. İşsiz kaldığınızda işsizlik ödeneği alırsanız, bu süre prim günü olarak sayılıyor. Ancak bu süre sınırlı, genellikle 6-10 ay arası.
 

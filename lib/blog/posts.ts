@@ -589,12 +589,12 @@ Tax brackets can be confusing, but understanding them is crucial for tax plannin
 
 ### Example: $75,000 Annual Income
 
-If you earn $75,000 per year (single filer, standard deduction):
+If you earn $75,000 per year (single filer, 2026 standard deduction of $16,100), your taxable income is $58,900:
 - First $12,400: Taxed at 10% = $1,240
 - Next $38,000 ($12,401 to $50,400): Taxed at 12% = $4,560
-- Next $24,600 ($50,401 to $75,000): Taxed at 22% = $5,412
-- Total tax: $11,212
-- Effective tax rate: 14.9% ($11,212 ÷ $75,000)
+- Next $8,500 ($50,401 to $58,900): Taxed at 22% = $1,870
+- Total tax: $7,670
+- Effective tax rate: 10.2% ($7,670 ÷ $75,000)
 
 This example shows that even though you're in the 22% tax bracket, your effective tax rate (actual tax ÷ total income) is lower because not all income is taxed at the highest rate.
 
@@ -663,7 +663,7 @@ If possible, time your income and deductions to optimize your tax situation. For
 
 ### Retirement Contributions
 
-Contributing to retirement accounts (401(k), IRA) reduces your taxable income, which can lower your tax bill and move you into a lower tax bracket. For 2026, you can contribute up to $23,000 to a 401(k) (or $30,500 if 50 or older).
+Contributing to retirement accounts (401(k), IRA) reduces your taxable income, which can lower your tax bill and move you into a lower tax bracket. For 2026, you can contribute up to $24,500 to a 401(k) (or $32,500 if 50 or older with catch-up).
 
 ## Common Tax Mistakes to Avoid
 
@@ -737,7 +737,7 @@ Your gross salary is the total amount you earn before any deductions, while your
 Common deductions from your paycheck include:
 - Federal income tax
 - State income tax (if applicable)
-- Social Security tax (6.2% on income up to $168,600 in 2024)
+- Social Security tax (6.2% on income up to $184,500 in 2026)
 - Medicare tax (1.45% on all income, plus 0.9% on income over $200,000)
 - Health insurance premiums
 - Retirement contributions (401(k), 403(b), etc.)
@@ -786,7 +786,7 @@ State income tax varies by state. Some states have no income tax, while others h
 
 ### Social Security Tax
 
-Social Security tax is 6.2% of your income up to the wage base limit ($168,600 in 2024). This tax funds Social Security benefits and is split between you and your employer (each pays 6.2%).
+Social Security tax is 6.2% of your income up to the wage base limit ($184,500 in 2026). This tax funds Social Security benefits and is split between you and your employer (each pays 6.2%).
 
 ### Medicare Tax
 
@@ -901,7 +901,7 @@ Contributing to a 401(k) reduces your taxable income, which can:
 - Increase your take-home pay (because less income is taxed)
 - Help you save for retirement
 
-For 2026, you can contribute up to $23,000 to a 401(k) (or $30,500 if 50 or older).
+For 2026, you can contribute up to $24,500 to a 401(k) (or $32,500 if 50 or older with catch-up).
 
 ### Health Savings Accounts (HSA)
 
@@ -1272,7 +1272,7 @@ Employer-sponsored retirement accounts offer:
 - Pre-tax contributions (reduce current taxable income)
 - Tax-deferred growth
 - Employer matching (free money)
-- Higher contribution limits ($23,000 in 2024, $30,500 if 50+)
+- Higher contribution limits ($24,500 in 2026, $32,500 if 50+)
 
 **Strategy**: Contribute at least enough to get the full employer match—it's free money.
 
@@ -1282,7 +1282,7 @@ Individual Retirement Account with:
 - Pre-tax contributions (if eligible)
 - Tax-deferred growth
 - Taxable withdrawals in retirement
-- Lower contribution limits ($7,000 in 2024, $8,000 if 50+)
+- Lower contribution limits ($7,500 in 2026, $8,500 if 50+)
 
 ### Roth IRA
 
@@ -1335,7 +1335,7 @@ Diversification reduces risk and helps ensure steady growth:
 
 ## Social Security Planning
 
-Social Security provides retirement income, but it's typically not enough to cover all expenses. The average Social Security benefit in 2024 is about $1,900 per month.
+Social Security provides retirement income, but it's typically not enough to cover all expenses. The average Social Security benefit in 2026 is about $2,000 per month (varies with COLA and claiming age).
 
 ### When to Claim Social Security
 

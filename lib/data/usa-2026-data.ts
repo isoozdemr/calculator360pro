@@ -4,7 +4,7 @@
  * This file contains all USA-specific data for English calculators.
  * Data is sourced from official sources and should be updated periodically.
  * 
- * Last Updated: January 2026
+ * Last Updated: February 2026
  * 
  * Official Sources:
  * - Internal Revenue Service (irs.gov)
@@ -18,8 +18,8 @@
 // ==========================================
 export const USA_DATA_VERSION = {
   year: 2026,
-  lastUpdated: "2026-01-01",
-  lastUpdatedDisplay: "January 2026",
+  lastUpdated: "2026-02-01",
+  lastUpdatedDisplay: "February 2026",
   sources: {
     tax: "irs.gov",
     socialSecurity: "ssa.gov",
@@ -37,47 +37,47 @@ export interface USATaxBracket {
   rate: number;
 }
 
-// Single Filers
+// Single Filers (IRS 2026 inflation-adjusted)
 export const FEDERAL_TAX_BRACKETS_SINGLE_2026: USATaxBracket[] = [
-  { min: 0, max: 11600, rate: 10 },
-  { min: 11601, max: 47150, rate: 12 },
-  { min: 47151, max: 100525, rate: 22 },
-  { min: 100526, max: 191950, rate: 24 },
-  { min: 191951, max: 243725, rate: 32 },
-  { min: 243726, max: 609350, rate: 35 },
-  { min: 609351, max: null, rate: 37 },
+  { min: 0, max: 12400, rate: 10 },
+  { min: 12401, max: 50400, rate: 12 },
+  { min: 50401, max: 105700, rate: 22 },
+  { min: 105701, max: 201775, rate: 24 },
+  { min: 201776, max: 256225, rate: 32 },
+  { min: 256226, max: 640600, rate: 35 },
+  { min: 640601, max: null, rate: 37 },
 ];
 
-// Married Filing Jointly
+// Married Filing Jointly (IRS 2026)
 export const FEDERAL_TAX_BRACKETS_MARRIED_2026: USATaxBracket[] = [
-  { min: 0, max: 23200, rate: 10 },
-  { min: 23201, max: 94300, rate: 12 },
-  { min: 94301, max: 201050, rate: 22 },
-  { min: 201051, max: 383900, rate: 24 },
-  { min: 383901, max: 487450, rate: 32 },
-  { min: 487451, max: 731200, rate: 35 },
-  { min: 731201, max: null, rate: 37 },
+  { min: 0, max: 24800, rate: 10 },
+  { min: 24801, max: 100800, rate: 12 },
+  { min: 100801, max: 211350, rate: 22 },
+  { min: 211351, max: 403550, rate: 24 },
+  { min: 403551, max: 512450, rate: 32 },
+  { min: 512451, max: 1281200, rate: 35 },
+  { min: 1281201, max: null, rate: 37 },
 ];
 
-// Head of Household
+// Head of Household (IRS 2026)
 export const FEDERAL_TAX_BRACKETS_HOH_2026: USATaxBracket[] = [
-  { min: 0, max: 16550, rate: 10 },
-  { min: 16551, max: 63100, rate: 12 },
-  { min: 63101, max: 100500, rate: 22 },
-  { min: 100501, max: 191950, rate: 24 },
-  { min: 191951, max: 243700, rate: 32 },
-  { min: 243701, max: 609350, rate: 35 },
-  { min: 609351, max: null, rate: 37 },
+  { min: 0, max: 17750, rate: 10 },
+  { min: 17751, max: 67400, rate: 12 },
+  { min: 67401, max: 107550, rate: 22 },
+  { min: 107551, max: 201750, rate: 24 },
+  { min: 201751, max: 256200, rate: 32 },
+  { min: 256201, max: 640600, rate: 35 },
+  { min: 640601, max: null, rate: 37 },
 ];
 
 // ==========================================
 // STANDARD DEDUCTIONS (2026)
 // ==========================================
 export const STANDARD_DEDUCTIONS_2026 = {
-  single: 14600,
-  marriedFilingJointly: 29200,
-  marriedFilingSeparately: 14600,
-  headOfHousehold: 21900,
+  single: 16100,
+  marriedFilingJointly: 32200,
+  marriedFilingSeparately: 16100,
+  headOfHousehold: 24400,
   
   // Additional deduction for 65+ or blind
   additional: {
@@ -96,7 +96,7 @@ export const SOCIAL_SECURITY_2026 = {
     selfEmployed: 12.4, // %12.4
   },
   
-  wageBase: 168600, // Maximum taxable earnings
+  wageBase: 184500, // Maximum taxable earnings (2026)
   
   // Benefits
   fullRetirementAge: {

@@ -967,7 +967,7 @@ function generateCalculatorContent(): Record<string, string> {
     <p>Understanding both rates is important. Your marginal rate helps you evaluate the tax impact of additional income or deductions, while your effective rate shows your overall tax burden. When people say "I'm in the 22% tax bracket," they're referring to their marginal rate, but their effective rate is typically much lower due to the progressive bracket system.</p>
 
     <h3>Deductions: Reducing Your Taxable Income</h3>
-    <p>The standard deduction is a fixed amount that reduces your taxable income without requiring itemization. For ${taxYearStr}, the standard deduction for single filers is $14,600, for married couples filing jointly is $29,200, and for heads of household is $21,900. The standard deduction is adjusted annually for inflation, and it's available to all taxpayers regardless of their actual expenses.</p>
+    <p>The standard deduction is a fixed amount that reduces your taxable income without requiring itemization. For ${taxYearStr}, the standard deduction for single filers is $16,100, for married couples filing jointly is $32,200, and for heads of household is $24,400. The standard deduction is adjusted annually for inflation, and it's available to all taxpayers regardless of their actual expenses.</p>
 
     <p>Itemized deductions allow you to deduct specific expenses if their total exceeds the standard deduction. Common itemized deductions include mortgage interest on loans up to $750,000 (or $375,000 for married filing separately), state and local taxes (SALT) limited to $10,000, charitable contributions up to certain limits, and medical expenses exceeding 7.5% of adjusted gross income. You can choose either the standard deduction or itemized deductions, whichever is larger, but not both.</p>
 
@@ -1041,7 +1041,7 @@ function generateCalculatorContent(): Record<string, string> {
     <p>Sarah is a single filer with $60,000 in taxable income for ${taxYearStr}. She might think she pays 22% on all $60,000, but actually she pays: 10% on the first $11,000 ($1,100), 12% on $11,001 to $44,725 ($4,047), and 22% on $44,726 to $60,000 ($3,361), for a total of $8,508. Her effective tax rate is 14.2%, not 22%.</p>
 
     <h4>Example 2: Standard vs. Itemized Deductions</h4>
-    <p>Mike and his wife have $12,000 in mortgage interest, $8,000 in state and local taxes (limited to $10,000 for SALT), and $3,000 in charitable contributions, totaling $25,000 in itemized deductions. Since their standard deduction is $29,200, they're better off taking the standard deduction, saving them $4,200 in deductions compared to itemizing.</p>
+    <p>Mike and his wife have $12,000 in mortgage interest, $8,000 in state and local taxes (limited to $10,000 for SALT), and $3,000 in charitable contributions, totaling $25,000 in itemized deductions. Since their standard deduction is $32,200, they're better off taking the standard deduction ($7,200 more than their itemized total).</p>
 
     <h4>Example 3: Impact of Retirement Contributions</h4>
     <p>Jennifer earns $75,000 and is in the 22% tax bracket. If she contributes $5,000 to her traditional 401(k), she reduces her taxable income to $70,000, saving $1,100 in taxes (22% of $5,000). Additionally, her employer matches 50% of her contributions up to 6%, providing an additional $2,250 in retirement savings. This makes retirement contributions one of the most tax-efficient ways to save.</p>
@@ -1113,7 +1113,7 @@ function generateCalculatorContent(): Record<string, string> {
 
     <p>State income tax varies by state, from 0% to over 13%. Some states, like Florida, Texas, and Nevada, have no state income tax, while states like California and New York have high state income tax rates. This can significantly impact your take-home pay. For example, someone earning $100,000 in California might pay around $6,000-$8,000 in state income tax, while someone in Texas would pay $0. This is an important factor to consider when comparing job offers in different states.</p>
 
-    <p>Social Security tax is 6.2% of gross income up to the wage base limit ($168,600 for ${taxYearStr}), with employers matching this amount. This means both you and your employer contribute 6.2% each, for a total of 12.4% going toward Social Security. Once you reach the wage base limit, you stop paying Social Security tax on additional earnings for that year, though Medicare tax continues on all earnings.</p>
+    <p>Social Security tax is 6.2% of gross income up to the wage base limit ($184,500 for ${taxYearStr}), with employers matching this amount. This means both you and your employer contribute 6.2% each, for a total of 12.4% going toward Social Security. Once you reach the wage base limit, you stop paying Social Security tax on additional earnings for that year, though Medicare tax continues on all earnings.</p>
 
     <p>Medicare tax is 1.45% of all gross income with no wage base limit, plus an additional 0.9% surtax for high earners (individuals earning over $200,000 or married couples earning over $250,000). Like Social Security, employers also match the 1.45% Medicare tax. The additional 0.9% surtax only applies to the employee portion, not the employer match.</p>
 

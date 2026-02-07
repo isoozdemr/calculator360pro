@@ -414,7 +414,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       {
         question: "How is income tax calculated?",
         answer:
-          "Income tax is calculated using progressive tax brackets. Each portion of income is taxed at the corresponding bracket rate, with higher income taxed at higher rates. For 2026, the federal tax brackets range from 10% to 37%. For example, a single filer earning $50,000 pays 10% on income up to $11,000, 12% on income from $11,001 to $44,725, and 22% on the remainder.",
+          "Income tax is calculated using progressive tax brackets. Each portion of income is taxed at the corresponding bracket rate, with higher income taxed at higher rates. For 2026, the federal tax brackets range from 10% to 37%. For example, a single filer earning $50,000 (after the $16,100 standard deduction, taxable income $33,900) pays 10% on the first $12,400, 12% on income from $12,401 to $33,900, for a total federal tax of about $2,020.",
       },
       {
         question: "What is the difference between marginal and effective tax rate?",
@@ -424,7 +424,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       {
         question: "What deductions can reduce my taxable income?",
         answer:
-          "Common deductions include standard deduction, itemized deductions (mortgage interest, charitable contributions), retirement contributions, and health savings accounts. For 2026, the standard deduction is $14,600 for single filers and $29,200 for married couples filing jointly. Itemized deductions may be more beneficial if they exceed the standard deduction, reducing your taxable income and overall tax liability.",
+          "Common deductions include standard deduction, itemized deductions (mortgage interest, charitable contributions), retirement contributions, and health savings accounts. For 2026, the standard deduction is $16,100 for single filers and $32,200 for married couples filing jointly. Itemized deductions may be more beneficial if they exceed the standard deduction, reducing your taxable income and overall tax liability.",
       },
     ],
     relatedCalculators: ["salary-calculator", "mortgage-calculator"],

@@ -160,7 +160,7 @@ const stats = [
 const faqs = [
   {
     question: "2026 yılı vergi dilimleri nedir?",
-    answer: "2026 yılı gelir vergisi dilimleri: 0-110.000 TL arası %15, 110.000-230.000 TL arası %20, 230.000-870.000 TL arası %27, 870.000-3.000.000 TL arası %35, 3.000.000 TL üzeri %40 oranında vergilendirilir.",
+    answer: "2026 yılı gelir vergisi dilimleri: 0-190.000 TL arası %15, 190.000-400.000 TL arası %20, 400.000-1.500.000 TL arası %27, 1.500.000-5.300.000 TL arası %35, 5.300.000 TL üzeri %40 oranında vergilendirilir.",
   },
   {
     question: "Brüt maaştan net maaş nasıl hesaplanır?",
@@ -396,11 +396,11 @@ export default function TurkeyHomePage() {
                 2026 Gelir Vergisi Dilimleri
               </h3>
               <ul className="space-y-2 text-sm text-[#64748b]">
-                <li className="flex justify-between"><span>0 - 110.000 TL</span><span className="font-semibold text-[#1e293b]">%15</span></li>
-                <li className="flex justify-between"><span>110.000 - 230.000 TL</span><span className="font-semibold text-[#1e293b]">%20</span></li>
-                <li className="flex justify-between"><span>230.000 - 870.000 TL</span><span className="font-semibold text-[#1e293b]">%27</span></li>
-                <li className="flex justify-between"><span>870.000 - 3.000.000 TL</span><span className="font-semibold text-[#1e293b]">%35</span></li>
-                <li className="flex justify-between"><span>3.000.000 TL üzeri</span><span className="font-semibold text-[#1e293b]">%40</span></li>
+                <li className="flex justify-between"><span>0 - 190.000 TL</span><span className="font-semibold text-[#1e293b]">%15</span></li>
+                <li className="flex justify-between"><span>190.000 - 400.000 TL</span><span className="font-semibold text-[#1e293b]">%20</span></li>
+                <li className="flex justify-between"><span>400.000 - 1.500.000 TL</span><span className="font-semibold text-[#1e293b]">%27</span></li>
+                <li className="flex justify-between"><span>1.500.000 - 5.300.000 TL</span><span className="font-semibold text-[#1e293b]">%35</span></li>
+                <li className="flex justify-between"><span>5.300.000 TL üzeri</span><span className="font-semibold text-[#1e293b]">%40</span></li>
               </ul>
             </div>
             
@@ -424,11 +424,11 @@ export default function TurkeyHomePage() {
                 2026 Diğer Veriler
               </h3>
               <ul className="space-y-2 text-sm text-[#64748b]">
-                <li className="flex justify-between"><span>Asgari Ücret (Brüt)</span><span className="font-semibold text-[#1e293b]">26.005,50 TL</span></li>
-                <li className="flex justify-between"><span>Asgari Ücret (Net)</span><span className="font-semibold text-[#1e293b]">22.104,67 TL</span></li>
+                <li className="flex justify-between"><span>Asgari Ücret (Brüt)</span><span className="font-semibold text-[#1e293b]">33.030 TL</span></li>
+                <li className="flex justify-between"><span>Asgari Ücret (Net)</span><span className="font-semibold text-[#1e293b]">28.075,50 TL</span></li>
                 <li className="flex justify-between"><span>KKDF Oranı</span><span className="font-semibold text-[#1e293b]">%15</span></li>
                 <li className="flex justify-between"><span>BSMV Oranı</span><span className="font-semibold text-[#1e293b]">%10</span></li>
-                <li className="flex justify-between"><span>SGK Tavan</span><span className="font-semibold text-[#1e293b]">195.041,25 TL</span></li>
+                <li className="flex justify-between"><span>SGK Tavan</span><span className="font-semibold text-[#1e293b]">297.270 TL</span></li>
               </ul>
             </div>
           </div>

@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Maaş Hesaplama 2026 | Brüt Net Maaş Hesap Makinesi | SGK AGİ Hesaplama",
-  description: "2026 güncel asgari ücret (26.005 TL brüt), SGK oranları ve vergi dilimleri ile brütten nete maaş hesaplayın. AGİ, damga vergisi, gelir vergisi, işveren maliyeti hesaplama. Ücretsiz online maaş hesap makinesi.",
+  description: "2026 güncel asgari ücret (33.030 TL brüt), SGK oranları ve vergi dilimleri ile brütten nete maaş hesaplayın. AGİ, damga vergisi, gelir vergisi, işveren maliyeti hesaplama. Ücretsiz online maaş hesap makinesi.",
   keywords: [
     "maaş hesaplama",
     "maaş hesaplama 2026",
@@ -48,11 +48,11 @@ export const metadata: Metadata = {
 const faqs = [
   {
     question: "2026 yılında brüt asgari ücret ne kadar?",
-    answer: "2026 yılı için brüt asgari ücret 26.005,50 TL olarak belirlenmiştir. Bu tutar, SGK ve vergi kesintileri yapılmadan önceki tutardır.",
+    answer: "2026 yılı için brüt asgari ücret 33.030 TL olarak belirlenmiştir. Bu tutar, SGK ve vergi kesintileri yapılmadan önceki tutardır.",
   },
   {
     question: "2026 yılında net asgari ücret ne kadar?",
-    answer: "2026 yılında bekar bir çalışanın eline geçen net asgari ücret yaklaşık 22.104,67 TL'dir. Bu tutar, tüm SGK kesintileri ve vergi kesintileri sonrası hesaplanmıştır.",
+    answer: "2026 yılında bekar bir çalışanın eline geçen net asgari ücret 28.075,50 TL'dir. Bu tutar, tüm SGK kesintileri sonrası hesaplanmıştır (asgari ücretliler gelir ve damga vergisinden muaftır).",
   },
   {
     question: "Brüt maaştan hangi kesintiler yapılır?",
@@ -68,7 +68,7 @@ const faqs = [
   },
   {
     question: "SGK tavan ücreti ne demek?",
-    answer: "SGK tavan ücreti, SGK primlerinin hesaplandığı maksimum ücret limitidir. 2026 yılında bu tutar 195.041,25 TL'dir. Bu tutarın üzerindeki maaşlardan SGK primi sadece tavan tutar üzerinden hesaplanır.",
+    answer: "SGK tavan ücreti, SGK primlerinin hesaplandığı maksimum ücret limitidir. 2026 yılında bu tutar 297.270 TL'dir (asgari ücretin 9 katı). Bu tutarın üzerindeki maaşlardan SGK primi sadece tavan tutar üzerinden hesaplanır.",
   },
   {
     question: "Kümülatif vergi matrahı nedir?",

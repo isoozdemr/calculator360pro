@@ -4,7 +4,7 @@
  * Bu dosya tüm Türkiye'ye özel hesap makineleri için merkezi veri kaynağıdır.
  * Veriler resmi kaynaklardan alınmıştır ve periyodik olarak güncellenmelidir.
  * 
- * Son Güncelleme: Ocak 2026
+ * Son Güncelleme: Şubat 2026
  * 
  * Resmi Kaynaklar:
  * - Gelir İdaresi Başkanlığı (gib.gov.tr)
@@ -18,8 +18,8 @@
 // ==========================================
 export const DATA_VERSION = {
   year: 2026,
-  lastUpdated: "2026-01-01",
-  lastUpdatedDisplay: "Ocak 2026",
+  lastUpdated: "2026-02-01",
+  lastUpdatedDisplay: "Şubat 2026",
   sources: {
     tax: "gib.gov.tr",
     sgk: "sgk.gov.tr",
@@ -38,42 +38,42 @@ export interface TaxBracket {
 }
 
 export const INCOME_TAX_BRACKETS_2026: TaxBracket[] = [
-  { min: 0, max: 158000, rate: 15 },
-  { min: 158001, max: 350000, rate: 20 },
-  { min: 350001, max: 900000, rate: 27 },
-  { min: 900001, max: 4700000, rate: 35 },
-  { min: 4700001, max: null, rate: 40 },
+  { min: 0, max: 190000, rate: 15 },
+  { min: 190001, max: 400000, rate: 20 },
+  { min: 400001, max: 1500000, rate: 27 },
+  { min: 1500001, max: 5300000, rate: 35 },
+  { min: 5300001, max: null, rate: 40 },
 ];
 
-// Ücret geliri için vergi dilimleri (farklı olabilir)
+// Ücret geliri için vergi dilimleri (2026 - ücret gelirleri)
 export const WAGE_TAX_BRACKETS_2026: TaxBracket[] = [
-  { min: 0, max: 158000, rate: 15 },
-  { min: 158001, max: 350000, rate: 20 },
-  { min: 350001, max: 900000, rate: 27 },
-  { min: 900001, max: 4700000, rate: 35 },
-  { min: 4700001, max: null, rate: 40 },
+  { min: 0, max: 190000, rate: 15 },
+  { min: 190001, max: 400000, rate: 20 },
+  { min: 400001, max: 1500000, rate: 27 },
+  { min: 1500001, max: 5300000, rate: 35 },
+  { min: 5300001, max: null, rate: 40 },
 ];
 
 // ==========================================
 // ASGARİ ÜCRET (2026)
 // ==========================================
 export const MINIMUM_WAGE_2026 = {
-  gross: 26005.50, // Brüt asgari ücret
-  net: 22104.67, // Net asgari ücret (bekar, AGI dahil)
+  gross: 33030, // Brüt asgari ücret (Resmi Gazete 26.12.2025)
+  net: 28075.50, // Net asgari ücret (bekar, SGK kesintileri sonrası)
   
   // Kesintiler
   deductions: {
-    sgkWorker: 3640.77, // SGK işçi payı (%14)
-    unemploymentWorker: 260.06, // İşsizlik sigortası işçi payı (%1)
+    sgkWorker: 4624.20, // SGK işçi payı (%14)
+    unemploymentWorker: 330.30, // İşsizlik sigortası işçi payı (%1)
     stampTax: 0, // Damga vergisi (asgari ücret muaf)
-    incomeTax: 0, // Gelir vergisi (asgari ücret muaf - 2024'ten itibaren)
+    incomeTax: 0, // Gelir vergisi (asgari ücret muaf)
   },
   
   // İşveren maliyeti
   employerCost: {
-    total: 32376.85,
-    sgkEmployer: 5331.13, // SGK işveren payı (%20.5)
-    unemploymentEmployer: 520.11, // İşsizlik sigortası işveren payı (%2)
+    total: 40461.75, // 33.030 + SGK işveren + işsizlik işveren
+    sgkEmployer: 6771.15, // SGK işveren payı (%20.5)
+    unemploymentEmployer: 660.60, // İşsizlik sigortası işveren payı (%2)
   },
 };
 
@@ -95,10 +95,10 @@ export const SGK_RATES_2026 = {
     total: 22.5, // Toplam işveren kesintisi %22.5
   },
   
-  // SGK tavan ve taban ücretleri
+  // SGK tavan ve taban ücretleri (5510 sayılı Kanun - 2026 tavan 9 kat)
   limits: {
-    floor: 26005.50, // Taban (asgari ücret)
-    ceiling: 195041.25, // Tavan (asgari ücretin 7.5 katı)
+    floor: 33030, // Taban (asgari ücret)
+    ceiling: 297270, // Tavan (asgari ücretin 9 katı)
   },
 };
 
@@ -127,11 +127,11 @@ export const AGI_RATES_2026 = {
     fourthAndMore: 5, // 4 ve üzeri çocuk - %5
   },
   
-  // 2026 için hesaplanmış AGI tutarları (yaklaşık)
+  // 2026 için hesaplanmış AGI tutarları (asgari ücret oranı × %15 vergi)
   amounts: {
-    single: 1033, // Bekar
-    marriedSpouseWorking: 1033, // Evli eşi çalışan
-    marriedSpouseNotWorking: 1240, // Evli eşi çalışmayan
+    single: 2477, // Bekar (%50 asgari ücret üzerinden)
+    marriedSpouseWorking: 2477, // Evli eşi çalışan
+    marriedSpouseNotWorking: 2973, // Evli eşi çalışmayan (%60)
   },
 };
 

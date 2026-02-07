@@ -204,8 +204,8 @@ export default function FinanceCalculatorsPage() {
                 2026 yılı vergi dilimleri nelerdir?
               </h3>
               <p className="text-[#64748b] text-sm leading-relaxed">
-                2026 yılı gelir vergisi dilimleri: 0-110.000 TL arası yüzde 15, 110.000-230.000 TL arası yüzde 20, 
-                230.000-870.000 TL arası yüzde 27, 870.000-3.000.000 TL arası yüzde 35, 3.000.000 TL üzeri yüzde 40 
+                2026 yılı gelir vergisi dilimleri: 0-190.000 TL arası yüzde 15, 190.000-400.000 TL arası yüzde 20, 
+                400.000-1.500.000 TL arası yüzde 27, 1.500.000-5.300.000 TL arası yüzde 35, 5.300.000 TL üzeri yüzde 40 
                 oranında vergilendiriliyor.
               </p>
             </div>

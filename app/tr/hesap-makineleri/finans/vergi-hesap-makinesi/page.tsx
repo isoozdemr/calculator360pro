@@ -42,7 +42,7 @@ export const metadata: Metadata = {
 const faqs = [
   {
     question: "2026 yılı gelir vergisi dilimleri nedir?",
-    answer: "2026 yılı gelir vergisi dilimleri: 0-110.000 TL arası %15, 110.000-230.000 TL arası %20, 230.000-870.000 TL arası %27, 870.000-3.000.000 TL arası %35, 3.000.000 TL üzeri %40 oranında vergilendirilir.",
+    answer: "2026 yılı gelir vergisi dilimleri: 0-190.000 TL arası %15, 190.000-400.000 TL arası %20, 400.000-1.500.000 TL arası %27, 1.500.000-5.300.000 TL arası %35, 5.300.000 TL üzeri %40 oranında vergilendirilir.",
   },
   {
     question: "Kümülatif vergi matrahı nedir?",
@@ -315,35 +315,35 @@ export default function TurkeyTaxCalculatorPage() {
                   </thead>
                   <tbody className="text-[#1e293b]">
                     <tr className="border-t border-[#e2e8f0]">
-                      <td className="py-2">0 - 110.000 TL</td>
-                      <td className="py-2 text-right">110.000 TL</td>
+                      <td className="py-2">0 - 190.000 TL</td>
+                      <td className="py-2 text-right">190.000 TL</td>
                       <td className="py-2 text-right">%15</td>
-                      <td className="py-2 text-right font-medium">16.500 TL</td>
+                      <td className="py-2 text-right font-medium">28.500 TL</td>
                     </tr>
                     <tr className="border-t border-[#e2e8f0]">
-                      <td className="py-2">110.000 - 230.000 TL</td>
-                      <td className="py-2 text-right">120.000 TL</td>
+                      <td className="py-2">190.000 - 400.000 TL</td>
+                      <td className="py-2 text-right">210.000 TL</td>
                       <td className="py-2 text-right">%20</td>
-                      <td className="py-2 text-right font-medium">24.000 TL</td>
+                      <td className="py-2 text-right font-medium">42.000 TL</td>
                     </tr>
                     <tr className="border-t border-[#e2e8f0]">
-                      <td className="py-2">230.000 - 500.000 TL</td>
-                      <td className="py-2 text-right">270.000 TL</td>
+                      <td className="py-2">400.000 - 500.000 TL</td>
+                      <td className="py-2 text-right">100.000 TL</td>
                       <td className="py-2 text-right">%27</td>
-                      <td className="py-2 text-right font-medium">72.900 TL</td>
+                      <td className="py-2 text-right font-medium">27.000 TL</td>
                     </tr>
                     <tr className="border-t-2 border-[#1e293b] font-bold">
                       <td className="py-2">TOPLAM</td>
                       <td className="py-2 text-right">500.000 TL</td>
-                      <td className="py-2 text-right text-[#2563eb]">%22.68 (Efektif)</td>
-                      <td className="py-2 text-right text-[#2563eb]">113.400 TL</td>
+                      <td className="py-2 text-right text-[#2563eb]">%19,50 (Efektif)</td>
+                      <td className="py-2 text-right text-[#2563eb]">97.500 TL</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
               <p className="text-sm text-[#64748b] mt-4">
-                * Bu örnekte, 500.000 TL vergi matrahı için toplam 113.400 TL vergi ödenir. 
-                Efektif vergi oranı %22.68&apos;dir, en yüksek dilim olan %27&apos;den düşüktür.
+                * Bu örnekte, 500.000 TL vergi matrahı için toplam 97.500 TL vergi ödenir. 
+                Efektif vergi oranı %19,50&apos;dir, en yüksek dilim olan %27&apos;den düşüktür.
               </p>
             </div>
           </div>
