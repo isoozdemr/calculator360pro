@@ -7,6 +7,7 @@ import { LayoutWrapper } from "@/components/layout/LayoutWrapper";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { ConsentBanner } from "@/components/consent/ConsentBanner";
 import Script from "next/script";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -154,6 +155,7 @@ export default function RootLayout({
         <LayoutWrapper>
           {children}
         </LayoutWrapper>
+        <SpeedInsights />
       </body>
     </html>
   );
