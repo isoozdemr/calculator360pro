@@ -91,7 +91,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "free online BMI calculator 2026",
     ],
     metaDescription:
-      "Free online BMI calculator. Get instant results for Body Mass Index (metric or imperial). No sign-up. Understand your BMI category and health status.",
+      "Free online BMI calculator. Get instant results for Body Mass Index (metric or imperial). No sign-up. Understand your BMI category and health status. Try free.",
     faqs: [
       {
         question: "What is BMI?",
@@ -273,7 +273,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "free online mortgage calculator 2026",
     ],
     metaDescription:
-      "Free online mortgage calculator. Instant results for monthly payments, total interest, and amortization. No sign-up. Perfect for 2026 homebuyers.",
+      "Free online mortgage calculator. Instant results for monthly payments, total interest, and amortization. No sign-up. Perfect for 2026 homebuyers. Try free.",
     faqs: [
       {
         question: "How is monthly mortgage payment calculated?",

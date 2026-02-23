@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { TurkeyCalorieCalculator } from "@/components/calculators/tr/TurkeyCalorieCalculator";
+import { CalculatorDisclaimer } from "@/components/calculators/CalculatorDisclaimer";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 
 export const metadata: Metadata = {
@@ -23,6 +24,7 @@ export const metadata: Metadata = {
     languages: {
       "en": `${SITE_URL}/calculators/health/calorie-calculator`,
       "tr": `${SITE_URL}/tr/hesap-makineleri/saglik/kalori-hesap-makinesi`,
+      "x-default": `${SITE_URL}/calculators/health/calorie-calculator`,
     },
   },
   openGraph: {
@@ -109,6 +111,7 @@ export default function KaloriHesapMakinesiPage() {
 
           {/* Calculator */}
           <TurkeyCalorieCalculator />
+          <CalculatorDisclaimer category="health" locale="tr" />
 
           {/* Educational Content */}
           <div className="mt-12 space-y-8">

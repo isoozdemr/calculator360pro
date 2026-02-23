@@ -19,7 +19,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${SITE_URL}/tr/rehberler`,
     languages: {
+      en: `${SITE_URL}/guides`,
       tr: `${SITE_URL}/tr/rehberler`,
+      "x-default": `${SITE_URL}/guides`,
     },
   },
   openGraph: {

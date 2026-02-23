@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: `${SITE_URL}/tr/hesap-makineleri/matematik/birim-cevirici`,
-    languages: { "en": `${SITE_URL}/calculators/math/unit-converter`, "tr": `${SITE_URL}/tr/hesap-makineleri/matematik/birim-cevirici` },
+    languages: { "en": `${SITE_URL}/calculators/math/unit-converter`, "tr": `${SITE_URL}/tr/hesap-makineleri/matematik/birim-cevirici`, "x-default": `${SITE_URL}/calculators/math/unit-converter` },
   },
   openGraph: { title: "Birim Cevirici 2026", url: `${SITE_URL}/tr/hesap-makineleri/matematik/birim-cevirici`, locale: "tr_TR", siteName: "Calculator360Pro" },
 };
@@ -34,6 +34,8 @@ const faqs = [
   { question: "Hangi kategoriler var?", answer: "Uzunluk, ağırlık, hacim, alan, sıcaklık ve daha fazlası. Tek ekranda hızlı çevirim yapılır." },
   { question: "Sonuçlar doğru mu?", answer: "Evet. Standart dönüşüm çarpanları kullanılır. Bilim ve günlük kullanım için yeterli hassasiyettedir." },
   { question: "Metrik ve imperial nedir?", answer: "Metrik: metre, kg, litre (SI). Imperial: foot, pound, gallon (ABD/UK). Çevirici her iki sistemi destekler." },
+  { question: "Nasıl kullanılır?", answer: "Önce kategori (uzunluk, ağırlık vb.) seçin. Kaynak ve hedef birimleri seçip değeri girin; sonuç anında hesaplanır. Tarif, seyahat veya ödev için tek sayfada birden fazla çevirim yapabilirsiniz." },
+  { question: "Hangi birimler destekleniyor?", answer: "Uzunlukta metre, foot, inç, mil; ağırlıkta kg, gram, pound, ons; hacimde litre, gallon, mililitre; sıcaklıkta Celsius, Fahrenheit, Kelvin. Alan birimleri de mevcuttur." },
 ];
 
 const howToSteps = [
@@ -82,6 +84,12 @@ export default function BirimCeviriciPage() {
                 Uzunluk (metre–foot), ağırlık (kg–pound), hacim (litre–gallon), alan ve sıcaklık 
                 (Celsius–Fahrenheit) gibi kategorilerde tek ekranda hızlı çevirim yapılır. Günlük 
                 hayat, seyahat, tarif ve bilimsel hesaplamalarda kullanılır.
+              </p>
+              <p className="text-[#64748b] mb-4">
+                Önce dönüştürmek istediğiniz kategoriyi (uzunluk, ağırlık, hacim, alan veya sıcaklık) seçin. 
+                Kaynak birimi (örneğin metre), hedef birimi (örneğin foot) ve çevirmek istediğiniz sayıyı girin; 
+                sonuç anında görünür. Tariflerde gram–su bardağı, seyahatte km–mil veya sıcaklık için derece–Fahrenheit 
+                gibi çevirileri tek yerden yapabilirsiniz.
               </p>
               <p className="text-[#64748b]">
                 <Link href="/tr/hesap-makineleri/matematik/yuzde-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Yüzde hesap makinesi</Link>, 

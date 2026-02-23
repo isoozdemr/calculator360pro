@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
+import { CalculatorDisclaimer } from "@/components/calculators/CalculatorDisclaimer";
 import { TurkeyTipCalculator } from "@/components/calculators/tr";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: `${SITE_URL}/tr/hesap-makineleri/finans/bahsis-hesap-makinesi`,
-    languages: { "en": `${SITE_URL}/calculators/finance/tip-calculator`, "tr": `${SITE_URL}/tr/hesap-makineleri/finans/bahsis-hesap-makinesi` },
+    languages: { "en": `${SITE_URL}/calculators/finance/tip-calculator`, "tr": `${SITE_URL}/tr/hesap-makineleri/finans/bahsis-hesap-makinesi`, "x-default": `${SITE_URL}/calculators/finance/tip-calculator` },
   },
   openGraph: { title: "Bahsis Hesap Makinesi 2026", url: `${SITE_URL}/tr/hesap-makineleri/finans/bahsis-hesap-makinesi`, locale: "tr_TR", siteName: "Calculator360Pro" },
 };
@@ -80,6 +81,7 @@ export default function BahsisPage() {
             Bahşiş oranı ülke ve hizmete göre değişir; araç farklı yüzdeleri denemenize olanak tanır. Hizmet kalitesine göre %10, %15, %20 veya özel bir tutar seçebilirsiniz.
           </p>
           <TurkeyTipCalculator />
+          <CalculatorDisclaimer category="finance" locale="tr" />
           <div className="mt-12 space-y-8">
             <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Bahşiş Nedir?</h2>

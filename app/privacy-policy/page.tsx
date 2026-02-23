@@ -118,6 +118,12 @@ export default function PrivacyPolicyPage() {
                 <li>Display relevant advertisements</li>
                 <li>Ensure website security and prevent fraud</li>
               </ul>
+              <p className="text-[#64748b] leading-relaxed mb-4">
+                Advertisements on our site may be personalized based on your browsing
+                activity and interests. You can manage your ad preferences and opt out
+                of personalized ads through your browser settings or your Google account
+                (e.g. adssettings.google.com).
+              </p>
             </section>
 
             <section className="mb-8">

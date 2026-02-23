@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { TurkeyLoanCalculator } from "@/components/calculators/tr/TurkeyLoanCalculator";
 import { DATA_VERSION, CONSUMER_LOAN_FEES_2026 } from "@/lib/data/turkey-2026-data";
 import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
+import { CalculatorDisclaimer } from "@/components/calculators/CalculatorDisclaimer";
 import { generateTurkishHowToSchema, generateTurkishBreadcrumbSchema } from "@/lib/seo/schema";
 import { SITE_URL } from "@/lib/constants";
 import Link from "next/link";
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
     languages: {
       en: `${SITE_URL}/calculators/finance/loan-calculator`,
       tr: `${SITE_URL}/tr/hesap-makineleri/finans/kredi-hesap-makinesi`,
+      "x-default": `${SITE_URL}/calculators/finance/loan-calculator`,
     },
   },
   openGraph: {
@@ -114,6 +116,7 @@ export default function TurkeyLoanCalculatorPage() {
 
           {/* Calculator */}
           <TurkeyLoanCalculator />
+          <CalculatorDisclaimer category="finance" locale="tr" />
 
           {/* SEO Content */}
           <div className="mt-12 prose prose-slate max-w-none">

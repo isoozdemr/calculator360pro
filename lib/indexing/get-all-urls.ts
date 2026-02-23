@@ -110,7 +110,8 @@ export function getAllIndexableUrls(): string[] {
   urls.push("/tr/rehberler/vergi-indirimleri-rehberi-2026");
   urls.push("/tr/rehberler/yatirim-baslangic-rehberi-2026");
 
-  // Guide pages (English)
+  // Guide pages (English) – index + listing
+  urls.push("/guides");
   urls.push("/guides/financial-terms-glossary");
   urls.push("/guides/tax-calendar-2026-usa");
 
@@ -119,6 +120,16 @@ export function getAllIndexableUrls(): string[] {
   urls.push("/tr/blog");
 
   return urls;
+}
+
+/**
+ * Recently added page URLs (not blog-by-date).
+ * Add here any new routes that were just launched and not yet submitted to Google.
+ */
+export function getRecentlyAddedPageUrls(): string[] {
+  return [
+    "/guides", // EN guides index (new)
+  ];
 }
 
 /**

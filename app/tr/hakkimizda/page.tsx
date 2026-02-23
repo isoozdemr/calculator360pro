@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     languages: {
       "en": `${SITE_URL}/about`,
       "tr": `${SITE_URL}/tr/hakkimizda`,
+      "x-default": `${SITE_URL}/about`,
     },
   },
   openGraph: {

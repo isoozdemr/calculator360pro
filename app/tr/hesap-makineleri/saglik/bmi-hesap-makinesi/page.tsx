@@ -4,6 +4,7 @@ import { SITE_URL } from "@/lib/constants";
 import { generateTurkishHowToSchema, generateTurkishBreadcrumbSchema } from "@/lib/seo/schema";
 import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { TurkeyBMICalculator } from "@/components/calculators/tr/TurkeyBMICalculator";
+import { CalculatorDisclaimer } from "@/components/calculators/CalculatorDisclaimer";
 
 export const metadata: Metadata = {
   title: "BMI Hesap Makinesi 2026 - İdeal Kilo Hesapla",
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
     languages: {
       "en": `${SITE_URL}/calculators/health/bmi-calculator`,
       "tr": `${SITE_URL}/tr/hesap-makineleri/saglik/bmi-hesap-makinesi`,
+      "x-default": `${SITE_URL}/calculators/health/bmi-calculator`,
     },
   },
   openGraph: {
@@ -147,6 +149,7 @@ export default function BMIHesapMakinesiPage() {
 
           {/* Calculator */}
           <TurkeyBMICalculator />
+          <CalculatorDisclaimer category="health" locale="tr" />
 
           {/* Educational Content */}
           <div className="mt-12 space-y-8">

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
+import { CalculatorDisclaimer } from "@/components/calculators/CalculatorDisclaimer";
 import { TurkeyStudentLoanCalculator } from "@/components/calculators/tr/TurkeyStudentLoanCalculator";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: `${SITE_URL}/tr/hesap-makineleri/finans/ogrenim-kredisi-hesap-makinesi`,
-    languages: { "en": `${SITE_URL}/calculators/finance/student-loan-calculator`, "tr": `${SITE_URL}/tr/hesap-makineleri/finans/ogrenim-kredisi-hesap-makinesi` },
+    languages: { "en": `${SITE_URL}/calculators/finance/student-loan-calculator`, "tr": `${SITE_URL}/tr/hesap-makineleri/finans/ogrenim-kredisi-hesap-makinesi`, "x-default": `${SITE_URL}/calculators/finance/student-loan-calculator` },
   },
   openGraph: { title: "Öğrenim Kredisi Hesap Makinesi 2026", url: `${SITE_URL}/tr/hesap-makineleri/finans/ogrenim-kredisi-hesap-makinesi`, locale: "tr_TR", siteName: "Calculator360Pro" },
 };
@@ -34,6 +35,8 @@ const faqs = [
   { question: "Erken ödeme yapılır mı?", answer: "Koşullar kredi sözleşmesine göre değişir. Erken ödeme ile toplam faiz düşebilir." },
   { question: "Öğrenim kredisi faiz oranı nasıl belirlenir?", answer: "Devlet destekli öğrenim kredisinde faiz oranları yasalarla belirlenir; yıllık güncellemeler yapılabilir." },
   { question: "Hangi koşullarda başvurulur?", answer: "Üniversite öğrencisi olmak ve gerekli belgeleri sunmak gerekir. Detaylar KYK veya ilgili kurum sitesinden öğrenilebilir." },
+  { question: "Taksit tablosu nasıl okunur?", answer: "Her satırda dönem, aylık taksit, anapara ve faiz payı, kalan bakiye görünür. İlk dönemlerde faiz payı yüksek, sonlara doğru anapara payı artar." },
+  { question: "Vade ve faiz değişince ne olur?", answer: "Daha uzun vade aylık taksiti düşürür ancak toplam faizi artırır. Daha düşük faiz oranı hem taksiti hem toplam maliyeti azaltır." },
 ];
 
 const howToSteps = [
@@ -75,6 +78,7 @@ export default function OgrenimKredisiPage() {
           <h1 className="text-3xl font-bold text-[#1e293b] mb-4">Öğrenim Kredisi Hesap Makinesi</h1>
           <p className="text-[#64748b] mb-8">Aylık taksit ve toplam maliyet hesaplama.</p>
           <TurkeyStudentLoanCalculator />
+          <CalculatorDisclaimer category="finance" locale="tr" />
           <div className="mt-12 space-y-8">
             <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Öğrenim Kredisi Nedir?</h2>

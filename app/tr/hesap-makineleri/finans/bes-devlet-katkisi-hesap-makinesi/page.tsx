@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { DATA_VERSION, BES_2026 } from "@/lib/data/turkey-2026-data";
 import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
+import { CalculatorDisclaimer } from "@/components/calculators/CalculatorDisclaimer";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { BESStateContributionCalculator } from "@/components/calculators/tr/BESStateContributionCalculator";
 
@@ -20,10 +21,6 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: `${SITE_URL}/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi`,
-    languages: {
-      tr: `${SITE_URL}/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi`,
-      "x-default": `${SITE_URL}/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi`,
-    },
   },
   openGraph: {
     title: "BES Devlet Katkısı Hesap Makinesi 2026 | Calculator360Pro",
@@ -155,6 +152,7 @@ export default function BESDevletKatkisiHesapMakinesiPage() {
         <section className="py-8">
           <div className="container mx-auto px-4 max-w-4xl">
             <BESStateContributionCalculator />
+            <CalculatorDisclaimer category="finance" locale="tr" />
           </div>
         </section>
 

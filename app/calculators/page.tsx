@@ -20,6 +20,11 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: `${SITE_URL}/calculators`,
+    languages: {
+      en: `${SITE_URL}/calculators`,
+      tr: `${SITE_URL}/tr/hesap-makineleri`,
+      "x-default": `${SITE_URL}/calculators`,
+    },
   },
   openGraph: {
     title: "All Calculators - Calculator360Pro",

@@ -4,6 +4,7 @@ import { SITE_URL } from "@/lib/constants";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 import Link from "next/link";
 import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
+import { CalculatorDisclaimer } from "@/components/calculators/CalculatorDisclaimer";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
     languages: {
       en: `${SITE_URL}/calculators/finance/mortgage-calculator`,
       tr: `${SITE_URL}/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi`,
+      "x-default": `${SITE_URL}/calculators/finance/mortgage-calculator`,
     },
   },
   openGraph: {
@@ -104,6 +106,7 @@ export default function TurkeyMortgageCalculatorPage() {
 
           {/* Calculator */}
           <TurkeyMortgageCalculator />
+          <CalculatorDisclaimer category="finance" locale="tr" />
 
           {/* SEO Content */}
           <div className="mt-12 prose prose-slate max-w-none">

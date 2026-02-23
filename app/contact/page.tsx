@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Contact Us | Calculator360Pro",
   description: "Get in touch with Calculator360Pro. Email us for questions, feedback, or support. We typically respond within 24-48 hours.",
   keywords: ["contact", "contact us", "support", "feedback", "Calculator360Pro contact", "calculator support"],
-  alternates: { canonical: `${SITE_URL}/contact`, languages: { en: `${SITE_URL}/contact`, tr: `${SITE_URL}/tr/iletisim` } },
+  alternates: { canonical: `${SITE_URL}/contact`, languages: { en: `${SITE_URL}/contact`, tr: `${SITE_URL}/tr/iletisim`, "x-default": `${SITE_URL}/contact` } },
   openGraph: { title: "Contact Us", url: `${SITE_URL}/contact`, locale: "en_US", siteName: "Calculator360Pro" },
 };
 

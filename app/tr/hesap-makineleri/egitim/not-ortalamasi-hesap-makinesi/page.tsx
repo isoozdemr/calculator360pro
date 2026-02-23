@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     languages: {
       en: `${SITE_URL}/calculators/education/gpa-calculator`,
       tr: `${SITE_URL}/tr/hesap-makineleri/egitim/not-ortalamasi-hesap-makinesi`,
+      "x-default": `${SITE_URL}/calculators/education/gpa-calculator`,
     },
   },
   openGraph: {

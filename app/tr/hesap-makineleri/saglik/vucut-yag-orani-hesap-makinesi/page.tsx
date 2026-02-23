@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { TurkeyBodyFatCalculator } from "@/components/calculators/tr/TurkeyBodyFatCalculator";
+import { CalculatorDisclaimer } from "@/components/calculators/CalculatorDisclaimer";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: `${SITE_URL}/tr/hesap-makineleri/saglik/vucut-yag-orani-hesap-makinesi`,
-    languages: { "en": `${SITE_URL}/calculators/health/body-fat-calculator`, "tr": `${SITE_URL}/tr/hesap-makineleri/saglik/vucut-yag-orani-hesap-makinesi` },
+    languages: { "en": `${SITE_URL}/calculators/health/body-fat-calculator`, "tr": `${SITE_URL}/tr/hesap-makineleri/saglik/vucut-yag-orani-hesap-makinesi`, "x-default": `${SITE_URL}/calculators/health/body-fat-calculator` },
   },
   openGraph: { title: "Vücut Yağ Oranı Hesap Makinesi 2026", url: `${SITE_URL}/tr/hesap-makineleri/saglik/vucut-yag-orani-hesap-makinesi`, locale: "tr_TR", siteName: "Calculator360Pro" },
 };
@@ -79,6 +80,7 @@ export default function VucutYagOraniPage() {
             Bu araç genel bilgilendirme amaçlıdır. Kesin ölçüm için DEXA, BIA veya uzman değerlendirmesi gerekebilir. Sağlık kararlarınız için mutlaka bir sağlık uzmanına danışın.
           </p>
           <TurkeyBodyFatCalculator />
+          <CalculatorDisclaimer category="health" locale="tr" />
           <div className="mt-12 space-y-8">
           <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
             <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Vücut Yağ Oranı Nedir?</h2>

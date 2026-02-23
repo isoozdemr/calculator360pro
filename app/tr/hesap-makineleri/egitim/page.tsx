@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     languages: {
       en: `${SITE_URL}/calculators/education`,
       tr: `${SITE_URL}/tr/hesap-makineleri/egitim`,
+      "x-default": `${SITE_URL}/calculators/education`,
     },
   },
 };

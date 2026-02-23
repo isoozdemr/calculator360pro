@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     languages: {
       "en": `${SITE_URL}/calculators/health`,
       "tr": `${SITE_URL}/tr/hesap-makineleri/saglik`,
+      "x-default": `${SITE_URL}/calculators/health`,
     },
   },
   openGraph: {

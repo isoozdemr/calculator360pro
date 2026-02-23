@@ -31,6 +31,7 @@ export const metadata: Metadata = {
     languages: {
       en: `${SITE_URL}/calculators`,
       tr: `${SITE_URL}/tr/hesap-makineleri`,
+      "x-default": `${SITE_URL}/calculators`,
     },
   },
   openGraph: {

@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     languages: {
       "en": `${SITE_URL}/calculators/math/percentage-calculator`,
       "tr": `${SITE_URL}/tr/hesap-makineleri/matematik/yuzde-hesap-makinesi`,
+      "x-default": `${SITE_URL}/calculators/math/percentage-calculator`,
     },
   },
   openGraph: {

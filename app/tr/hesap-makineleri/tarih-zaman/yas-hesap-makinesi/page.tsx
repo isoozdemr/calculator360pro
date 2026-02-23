@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     languages: {
       "en": `${SITE_URL}/calculators/date-time/age-calculator`,
       "tr": `${SITE_URL}/tr/hesap-makineleri/tarih-zaman/yas-hesap-makinesi`,
+      "x-default": `${SITE_URL}/calculators/date-time/age-calculator`,
     },
   },
   openGraph: {

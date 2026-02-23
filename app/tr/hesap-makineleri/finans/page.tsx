@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     languages: {
       en: `${SITE_URL}/calculators/finance`,
       tr: `${SITE_URL}/tr/hesap-makineleri/finans`,
+      "x-default": `${SITE_URL}/calculators/finance`,
     },
   },
 };

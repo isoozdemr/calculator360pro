@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { TurkeyRetirementCalculator } from "@/components/calculators/tr/TurkeyRetirementCalculator";
 import { DATA_VERSION, SGK_PREMIUM_DAY_REQUIREMENTS, BES_2026 } from "@/lib/data/turkey-2026-data";
 import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
+import { CalculatorDisclaimer } from "@/components/calculators/CalculatorDisclaimer";
 import { generateTurkishHowToSchema, generateTurkishBreadcrumbSchema } from "@/lib/seo/schema";
 import { SITE_URL } from "@/lib/constants";
 import Link from "next/link";
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
     languages: {
       en: `${SITE_URL}/calculators/finance/retirement-calculator`,
       tr: `${SITE_URL}/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi`,
+      "x-default": `${SITE_URL}/calculators/finance/retirement-calculator`,
     },
   },
   openGraph: {
@@ -114,6 +116,7 @@ export default function TurkeyRetirementCalculatorPage() {
 
           {/* Calculator */}
           <TurkeyRetirementCalculator />
+          <CalculatorDisclaimer category="finance" locale="tr" />
 
           {/* SEO Content */}
           <div className="mt-12 prose prose-slate max-w-none">

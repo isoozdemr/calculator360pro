@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: `${SITE_URL}/tr/hesap-makineleri/tarih-zaman/saat-hesap-makinesi`,
-    languages: { "en": `${SITE_URL}/calculators/date-time/hours-calculator`, "tr": `${SITE_URL}/tr/hesap-makineleri/tarih-zaman/saat-hesap-makinesi` },
+    languages: { "en": `${SITE_URL}/calculators/date-time/hours-calculator`, "tr": `${SITE_URL}/tr/hesap-makineleri/tarih-zaman/saat-hesap-makinesi`, "x-default": `${SITE_URL}/calculators/date-time/hours-calculator` },
   },
   openGraph: { title: "Saat Hesap Makinesi 2026", url: `${SITE_URL}/tr/hesap-makineleri/tarih-zaman/saat-hesap-makinesi`, locale: "tr_TR", siteName: "Calculator360Pro" },
 };
@@ -33,6 +33,8 @@ const faqs = [
   { question: "Ücret hesaplamada kullanılır mı?", answer: "Evet. Toplam çalışma saati x saatlik ücret = brüt ücret. Net için vergi ve kesintiler uygulanır." },
   { question: "Gece vardiyası nasıl hesaplanır?", answer: "Bitiş saati ertesi günü gösteriyorsa 24 saat ekleyerek toplam süreyi hesaplayın. Bazı araçlar bunu otomatik yapar." },
   { question: "Dakika ondalık mı saat mi?", answer: "Sonuç genelde saat ve dakika (örn. 2 saat 30 dk) veya ondalık saat (2,5 saat) olarak gösterilir; ücret hesaplamada ondalık kullanılır." },
+  { question: "Part-time veya esnek çalışmada kullanılır mı?", answer: "Evet. Günlük veya haftalık toplam çalışma saatini hesaplamak, mesai ve ücret tahmini yapmak için uygundur. Birden fazla giriş-çıkış varsa her birini ayrı hesaplayıp toplayabilirsiniz." },
+  { question: "Sonuç nasıl yorumlanır?", answer: "Toplam süre saat ve dakika veya ondalık saat olarak gösterilir. Saatlik ücret girildiyse brüt kazanç da hesaplanır; net ücret için vergi ve SGK kesintilerini ayrıca değerlendirin." },
 ];
 
 const howToSteps = [
@@ -81,6 +83,12 @@ export default function SaatHesapMakinesiPage() {
                 Çalışma süresi hesaplama, başlangıç ve bitiş saatleri arasında geçen toplam saati 
                 bulmanıza yarar. Part-time veya fazla mesai toplamları, proje süreleri ve ücretlendirme 
                 için sık kullanılır. Bu araç günlük toplam çalışma saatini hesaplar.
+              </p>
+              <p className="text-[#64748b] mb-4">
+                Başlangıç ve bitiş saatini seçin; ara (mola) varsa süreyi çıkarın. Toplam süre otomatik 
+                hesaplanır. İsteğe bağlı saatlik ücret girerseniz brüt kazanç da görünür. Gece vardiyasında 
+                bitiş ertesi günü gösteriyorsa araç 24 saatlik eklemeyi destekleyebilir. Net maaş için 
+                vergi ve kesintileri ayrıca <Link href="/tr/hesap-makineleri/finans/maas-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">maaş hesap makinesi</Link> ile hesaplayabilirsiniz.
               </p>
               <p className="text-[#64748b]">
                 İki tarih arası gün sayısı için <Link href="/tr/hesap-makineleri/tarih-zaman/tarih-farki-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">tarih farkı hesap makinesi</Link>, 

@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     languages: {
       "en": `${SITE_URL}/calculators/date-time`,
       "tr": `${SITE_URL}/tr/hesap-makineleri/tarih-zaman`,
+      "x-default": `${SITE_URL}/calculators/date-time`,
     },
   },
   openGraph: {

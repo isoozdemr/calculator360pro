@@ -35,6 +35,7 @@ import { PrintPdfButton } from "@/components/engagement/PrintPdfButton";
 import { CalculationHistory } from "@/components/engagement/CalculationHistory";
 import { getCategorySlugByKey } from "@/lib/constants";
 import { optimizeFAQAnswer } from "@/lib/seo/featured-snippets";
+import { CalculatorDisclaimer } from "@/components/calculators/CalculatorDisclaimer";
 import Link from "next/link";
 
 interface CalculatorPageProps {
@@ -101,6 +102,10 @@ export function CalculatorPage({ calculator }: CalculatorPageProps) {
         <AdAboveFold />
 
         <CalculatorComponent />
+
+        {(calculator.category === "health" || calculator.category === "finance") && (
+          <CalculatorDisclaimer category={calculator.category} locale="en" />
+        )}
 
         {/* User Rating Component */}
         <StarRating calculatorId={calculator.id} calculatorName={calculator.name} />

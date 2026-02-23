@@ -162,8 +162,9 @@ export function getSitemapEntries(): MetadataRoute.Sitemap {
   const aboutAlt = { en: "/about", tr: "/tr/hakkimizda", "x-default": "/about" };
   urls.push(entry("/about", now, "monthly", 0.5, aboutAlt));
   urls.push(entry("/tr/hakkimizda", now, "monthly", 0.5, aboutAlt));
-  urls.push({ url: fullUrl("/blog"), lastModified: now, changeFrequency: "weekly", priority: 0.6 });
-  urls.push({ url: fullUrl("/tr/blog"), lastModified: now, changeFrequency: "weekly", priority: 0.6 });
+  const blogAlt = { en: "/blog", tr: "/tr/blog", "x-default": "/blog" };
+  urls.push(entry("/blog", now, "weekly", 0.6, blogAlt));
+  urls.push(entry("/tr/blog", now, "weekly", 0.6, blogAlt));
   urls.push({ url: fullUrl("/search"), lastModified: now, changeFrequency: "monthly", priority: 0.4 });
 
   const guidesAlt = { en: "/guides", tr: "/tr/rehberler", "x-default": "/guides" };

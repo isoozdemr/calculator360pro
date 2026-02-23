@@ -9,10 +9,6 @@ export const metadata: Metadata = {
   keywords: ["yatırım başlangıç", "yatırıma nereden başlanır", "mevduat BES", "bileşik faiz", "acil fon", "yatırım rehberi", "birikim planlama", "2026 yatırım"],
   alternates: {
     canonical: `${SITE_URL}/tr/rehberler/yatirim-baslangic-rehberi-2026`,
-    languages: {
-      tr: `${SITE_URL}/tr/rehberler/yatirim-baslangic-rehberi-2026`,
-      "x-default": `${SITE_URL}/tr/rehberler/yatirim-baslangic-rehberi-2026`,
-    },
   },
   openGraph: { title: "Yatırım Başlangıç Rehberi 2026", url: `${SITE_URL}/tr/rehberler/yatirim-baslangic-rehberi-2026`, locale: "tr_TR", siteName: "Calculator360Pro" },
 };

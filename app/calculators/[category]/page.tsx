@@ -5,6 +5,7 @@ import { getCalculatorsByCategory } from "@/lib/calculators/definitions";
 import { CALCULATOR_CATEGORIES, SITE_URL, getCategoryKeyBySlug, getCategorySlugByKey, CalculatorCategory } from "@/lib/constants";
 import { CATEGORY_CONTENT } from "@/lib/categories/content";
 import { generateCategoryPageSchema, generateSimpleBreadcrumbSchema } from "@/lib/seo/schema";
+import { URL_MAPPINGS } from "@/lib/seo/url-mappings";
 
 interface PageProps {
   params: Promise<{
@@ -87,13 +88,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     dateTime: ["date time calculators", "age calculator", "date calculator", "hours calculator"],
   };
 
+  const enPath = `/calculators/${category}`;
+  const trPath = URL_MAPPINGS[enPath];
+  const alternates: Metadata["alternates"] = { canonical: url };
+  if (trPath) {
+    alternates.languages = {
+      en: url,
+      tr: `${SITE_URL}${trPath}`,
+      "x-default": url,
+    };
+  }
+
   return {
     title,
     description: metaDescription,
     keywords: categoryKeywords[categoryKey] || [],
-    alternates: {
-      canonical: url,
-    },
+    alternates,
     openGraph: {
       title,
       description: metaDescription,

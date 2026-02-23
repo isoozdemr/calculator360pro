@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { TurkeyPregnancyCalculator } from "@/components/calculators/tr/TurkeyPregnancyCalculator";
+import { CalculatorDisclaimer } from "@/components/calculators/CalculatorDisclaimer";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
     languages: {
       "en": `${SITE_URL}/calculators/health/pregnancy-calculator`,
       "tr": `${SITE_URL}/tr/hesap-makineleri/saglik/gebelik-hesap-makinesi`,
+      "x-default": `${SITE_URL}/calculators/health/pregnancy-calculator`,
     },
   },
   openGraph: {
@@ -131,6 +133,7 @@ export default function GebelikHesapMakinesiPage() {
         <section className="py-8">
           <div className="container mx-auto px-4 max-w-4xl">
             <TurkeyPregnancyCalculator />
+            <CalculatorDisclaimer category="health" locale="tr" />
           </div>
         </section>
 

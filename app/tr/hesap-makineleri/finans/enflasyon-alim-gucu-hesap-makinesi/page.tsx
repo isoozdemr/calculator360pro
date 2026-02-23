@@ -7,6 +7,7 @@ import {
   TURKEY_ANNUAL_INFLATION_RATES,
 } from "@/lib/data/turkey-inflation-data";
 import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
+import { CalculatorDisclaimer } from "@/components/calculators/CalculatorDisclaimer";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { InflationPurchasingPowerCalculator } from "@/components/calculators/tr/InflationPurchasingPowerCalculator";
 
@@ -29,6 +30,7 @@ export const metadata: Metadata = {
     languages: {
       en: `${SITE_URL}/calculators/finance/inflation-purchasing-power-calculator`,
       tr: `${SITE_URL}/tr/hesap-makineleri/finans/enflasyon-alim-gucu-hesap-makinesi`,
+      "x-default": `${SITE_URL}/calculators/finance/inflation-purchasing-power-calculator`,
     },
   },
   openGraph: {
@@ -161,6 +163,7 @@ export default function EnflasyonAlimGucuHesapMakinesiPage() {
         <section className="py-8">
           <div className="container mx-auto px-4 max-w-4xl">
             <InflationPurchasingPowerCalculator />
+            <CalculatorDisclaimer category="finance" locale="tr" />
           </div>
         </section>
 

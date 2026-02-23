@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     languages: {
       "en": `${SITE_URL}/privacy-policy`,
       "tr": `${SITE_URL}/tr/gizlilik-politikasi`,
+      "x-default": `${SITE_URL}/privacy-policy`,
     },
   },
   openGraph: {
@@ -137,6 +138,12 @@ export default function GizlilikPolitikasiPage() {
                 <li>İlgili reklamları görüntülemek</li>
                 <li>Web sitesi güvenliğini sağlamak ve dolandırıcılığı önlemek</li>
               </ul>
+              <p className="text-[#64748b] leading-relaxed mb-4">
+                Sitemizdeki reklamlar, gezinme aktiviteniz ve ilgi alanlarınıza göre
+                kişiselleştirilmiş olabilir. Reklam tercihlerinizi yönetmek veya
+                kişiselleştirilmiş reklamlardan çıkmak için tarayıcı ayarlarınızı veya
+                Google hesabınızı (örn. adssettings.google.com) kullanabilirsiniz.
+              </p>
             </section>
 
             <section className="mb-8">

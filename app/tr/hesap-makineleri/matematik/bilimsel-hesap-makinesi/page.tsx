@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: `${SITE_URL}/tr/hesap-makineleri/matematik/bilimsel-hesap-makinesi`,
-    languages: { "en": `${SITE_URL}/calculators/math/scientific-calculator`, "tr": `${SITE_URL}/tr/hesap-makineleri/matematik/bilimsel-hesap-makinesi` },
+    languages: { "en": `${SITE_URL}/calculators/math/scientific-calculator`, "tr": `${SITE_URL}/tr/hesap-makineleri/matematik/bilimsel-hesap-makinesi`, "x-default": `${SITE_URL}/calculators/math/scientific-calculator` },
   },
   openGraph: { title: "Bilimsel Hesap Makinesi 2026", url: `${SITE_URL}/tr/hesap-makineleri/matematik/bilimsel-hesap-makinesi`, locale: "tr_TR", siteName: "Calculator360Pro" },
 };
@@ -33,6 +33,8 @@ const faqs = [
   { question: "Radyan mı derece mi?", answer: "Açıları derece veya radyan cinsinden girebilirsiniz. Trigonometrik fonksiyonlarda birim seçeneğini kontrol edin." },
   { question: "Logaritma tabanı nedir?", answer: "log genelde 10 tabanlı (log10), ln doğal logaritma (e tabanı). Hesap makinesi her ikisini de destekler." },
   { question: "Bilimsel notasyon nasıl kullanılır?", answer: "Çok büyük veya küçük sayılar için 1.5e10 gibi gösterim kullanılır. e sonrası üs (10'un kuvveti) anlamına gelir." },
+  { question: "Parantez ve işlem sırası nasıl?", answer: "İşlem sırası parantez içi önce, sonra üs, çarpma-bölme, toplama-çıkarma şeklindedir. Karmaşık ifadelerde parantez kullanarak doğru sırayı garanti edebilirsiniz." },
+  { question: "Mühendislik hesaplarında kullanılır mı?", answer: "Evet. Açı dönüşümü, logaritmik hesaplamalar, üstel fonksiyonlar ve istatistiksel işlemler mühendislik ve fen derslerinde sık kullanılır." },
 ];
 
 const howToSteps = [
@@ -81,6 +83,12 @@ export default function BilimselHesapMakinesiPage() {
                 işlemleri, istatistik fonksiyonları gibi gelişmiş hesaplamaları yapan araçtır. Öğrenciler 
                 (matematik, fizik, mühendislik) ve günlük teknik hesaplamalar için kullanılır. Açı birimi 
                 olarak derece veya radyan seçilebilir.
+              </p>
+              <p className="text-[#64748b] mb-4">
+                Sayıları ve operatörleri sırayla girin; parantez ile işlem önceliğini belirleyebilirsiniz. 
+                Trigonometrik fonksiyonlar için önce açıyı girip sonra sin, cos veya tan seçin. Sonuç anında 
+                hesaplanır. Bu araç yalnızca bilgilendirme ve eğitim amaçlıdır; resmi sınav veya mühendislik 
+                uygulamalarında kurumunuzun kabul ettiği cihazları kullanın.
               </p>
               <p className="text-[#64748b]">
                 <Link href="/tr/hesap-makineleri/matematik/yuzde-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Yüzde hesap makinesi</Link>, 

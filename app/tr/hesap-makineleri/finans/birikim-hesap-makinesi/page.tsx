@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
+import { CalculatorDisclaimer } from "@/components/calculators/CalculatorDisclaimer";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { TurkeySavingsCalculator } from "@/components/calculators/tr";
 
@@ -27,6 +28,7 @@ export const metadata: Metadata = {
     languages: {
       "en": `${SITE_URL}/calculators/finance/savings-calculator`,
       "tr": `${SITE_URL}/tr/hesap-makineleri/finans/birikim-hesap-makinesi`,
+      "x-default": `${SITE_URL}/calculators/finance/savings-calculator`,
     },
   },
   openGraph: {
@@ -84,6 +86,7 @@ export default function BirikimHesapMakinesiPage() {
             <p className="text-lg text-[#64748b]">Hedef birikime ulaşmak için aylık ne kadar birikim yapmanız gerektiğini hesaplayın.</p>
           </div>
           <TurkeySavingsCalculator />
+          <CalculatorDisclaimer category="finance" locale="tr" />
           <div className="mt-12 space-y-8">
             <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Birikim Nedir?</h2>

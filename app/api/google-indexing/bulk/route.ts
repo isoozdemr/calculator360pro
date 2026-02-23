@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getAllIndexableUrls, getNewContentUrls } from "@/lib/indexing/get-all-urls";
+import { getAllIndexableUrls, getNewContentUrls, getRecentlyAddedPageUrls } from "@/lib/indexing/get-all-urls";
 import { SITE_URL } from "@/lib/constants";
 import { google } from "googleapis";
 
@@ -125,7 +125,7 @@ async function notifyGoogle(url: string, type: "URL_UPDATED" | "URL_DELETED" = "
  */
 
 interface BulkIndexingRequest {
-  type?: "all" | "new";
+  type?: "all" | "new" | "recent";
   days?: number; // For "new" type, how many days back to check
 }
 
@@ -150,6 +150,8 @@ export async function POST(request: NextRequest) {
     let urls: string[] = [];
     if (type === "new") {
       urls = getNewContentUrls(days);
+    } else if (type === "recent") {
+      urls = getRecentlyAddedPageUrls();
     } else {
       urls = getAllIndexableUrls();
     }
@@ -229,6 +231,7 @@ export async function POST(request: NextRequest) {
 export async function GET() {
   const allUrls = getAllIndexableUrls();
   const newUrls = getNewContentUrls(7);
+  const recentUrls = getRecentlyAddedPageUrls();
 
   return NextResponse.json({
     service: "Google Indexing API - Bulk Submission",
@@ -236,6 +239,7 @@ export async function GET() {
     stats: {
       totalIndexableUrls: allUrls.length,
       newUrlsLast7Days: newUrls.length,
+      recentPageUrls: recentUrls.length,
     },
     usage: {
       method: "POST",
@@ -244,7 +248,7 @@ export async function GET() {
         "x-api-key": "your-secret-key",
       },
       body: {
-        type: "all", // or "new"
+        type: "all", // or "new" | "recent"
         days: 7, // For "new" type, how many days back to check
       },
     },

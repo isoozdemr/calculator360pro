@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     languages: {
       "en": `${SITE_URL}/terms-of-service`,
       "tr": `${SITE_URL}/tr/kullanim-kosullari`,
+      "x-default": `${SITE_URL}/terms-of-service`,
     },
   },
   openGraph: {

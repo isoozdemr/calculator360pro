@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
+import { CalculatorDisclaimer } from "@/components/calculators/CalculatorDisclaimer";
 import { TurkeyInvestmentCalculator } from "@/components/calculators/tr";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
@@ -27,6 +28,7 @@ export const metadata: Metadata = {
     languages: {
       "en": `${SITE_URL}/calculators/finance/investment-calculator`,
       "tr": `${SITE_URL}/tr/hesap-makineleri/finans/yatirim-hesap-makinesi`,
+      "x-default": `${SITE_URL}/calculators/finance/investment-calculator`,
     },
   },
   openGraph: {
@@ -87,6 +89,7 @@ export default function YatirimHesapMakinesiPage() {
             <p className="text-lg text-[#64748b]">Başlangıç tutarı ve aylık yatırımla getirinizi hesaplayın.</p>
           </div>
           <TurkeyInvestmentCalculator />
+          <CalculatorDisclaimer category="finance" locale="tr" />
           <div className="mt-12 space-y-8">
             <section className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Yatırım Getirisi Nedir?</h2>

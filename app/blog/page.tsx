@@ -10,6 +10,11 @@ export const metadata: Metadata = {
     "Expert guides on mortgage, BMI, tax, GPA & more. Learn to calculate like a pro. Free tips & tutorials - read now!",
   alternates: {
     canonical: `${SITE_URL}/blog`,
+    languages: {
+      en: `${SITE_URL}/blog`,
+      tr: `${SITE_URL}/tr/blog`,
+      "x-default": `${SITE_URL}/blog`,
+    },
   },
   openGraph: {
     title: "Blog - Calculator Guides and Tips",

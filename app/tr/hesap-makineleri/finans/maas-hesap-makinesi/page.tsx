@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { TurkeySalaryCalculator } from "@/components/calculators/tr/TurkeySalaryCalculator";
 import { DATA_VERSION, MINIMUM_WAGE_2026, SGK_RATES_2026, INCOME_TAX_BRACKETS_2026 } from "@/lib/data/turkey-2026-data";
 import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
+import { CalculatorDisclaimer } from "@/components/calculators/CalculatorDisclaimer";
 import { generateTurkishHowToSchema, generateTurkishBreadcrumbSchema } from "@/lib/seo/schema";
 import { SITE_URL } from "@/lib/constants";
 import Link from "next/link";
@@ -38,6 +39,7 @@ export const metadata: Metadata = {
     languages: {
       en: `${SITE_URL}/calculators/finance/salary-calculator`,
       tr: `${SITE_URL}/tr/hesap-makineleri/finans/maas-hesap-makinesi`,
+      "x-default": `${SITE_URL}/calculators/finance/salary-calculator`,
     },
   },
   openGraph: {
@@ -228,6 +230,7 @@ export default function TurkeySalaryCalculatorPage() {
         <section className="py-8">
           <div className="container mx-auto px-4 max-w-4xl">
             <TurkeySalaryCalculator />
+            <CalculatorDisclaimer category="finance" locale="tr" />
           </div>
         </section>
 

@@ -38,6 +38,7 @@ export const metadata: Metadata = {
     languages: {
       en: SITE_URL,
       tr: `${SITE_URL}/tr`,
+      "x-default": SITE_URL,
     },
   },
   openGraph: {

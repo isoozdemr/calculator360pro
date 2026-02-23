@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
+import { CalculatorDisclaimer } from "@/components/calculators/CalculatorDisclaimer";
 import { TurkeyCurrencyConverter } from "@/components/calculators/tr/TurkeyCurrencyConverter";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
     languages: {
       "en": `${SITE_URL}/calculators/finance/currency-converter`,
       "tr": `${SITE_URL}/tr/hesap-makineleri/finans/doviz-cevirici`,
+      "x-default": `${SITE_URL}/calculators/finance/currency-converter`,
     },
   },
   openGraph: {
@@ -132,6 +134,7 @@ export default function DovizCeviriciPage() {
         <section className="py-8">
           <div className="container mx-auto px-4 max-w-4xl">
             <TurkeyCurrencyConverter />
+            <CalculatorDisclaimer category="finance" locale="tr" />
           </div>
         </section>
 

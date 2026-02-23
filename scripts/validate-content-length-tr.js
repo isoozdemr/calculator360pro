@@ -8,8 +8,8 @@
 const fs = require("fs");
 const path = require("path");
 
-// Minimum words per TR calculator page (catches near-empty pages). For AdSense, 1500+ words per page is recommended.
-const MIN_WORDS = 80;
+// Minimum words per TR calculator page (AdSense/SEO). For AdSense, 1500+ words per page is recommended.
+const MIN_WORDS = 300;
 const HESAP_MAKINELERI = path.join(__dirname, "../app/tr/hesap-makineleri");
 
 const CATEGORY_SLUGS = new Set(["finans", "saglik", "matematik", "egitim", "tarih-zaman", "hesap-makineleri"]);
@@ -58,6 +58,13 @@ function extractTextFromFile(filePath) {
     if (s.length > 10) text += " " + s;
   }
 
+  // JSX text content: text between > and < (min 20 chars to skip short tags)
+  const jsxTextRe = />([^<]{20,})</g;
+  while ((m = jsxTextRe.exec(content)) !== null) {
+    const s = m[1].replace(/\s+/g, " ").trim();
+    if (s.length > 15 && !/^[\d\s.,;:]+$/.test(s)) text += " " + s;
+  }
+
   return text;
 }
 
@@ -98,6 +105,11 @@ results.forEach((r) => {
 
 console.log("─".repeat(60));
 console.log(`\nSummary: ${results.length} TR calculator(s), ✅ ≥${MIN_WORDS} words: ${valid}, ⚠️ <${MIN_WORDS} words: ${invalid}`);
+console.log(`\nWord count report (min for AdSense: ${MIN_WORDS}, recommended: 1500+):`);
+results.forEach((r) => {
+  const status = r.ok ? "OK" : "BELOW MIN";
+  console.log(`  ${r.wordCount.toString().padStart(5)} words  ${status.padEnd(12)}  ${r.slug}`);
+});
 
 if (invalid > 0) {
   console.log(`\nWARNING: ${invalid} TR page(s) have less than ${MIN_WORDS} words. Add more FAQs, descriptions, or body text. For AdSense, aim for 1500+ words per page.\n`);

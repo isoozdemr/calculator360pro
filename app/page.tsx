@@ -9,6 +9,11 @@ export const metadata: Metadata = {
     "Calculate mortgage, BMI, taxes & more with free online tools. Trusted by millions. Accurate results in seconds - try Calculator360Pro now!",
   alternates: {
     canonical: SITE_URL,
+    languages: {
+      en: SITE_URL,
+      tr: `${SITE_URL}/tr`,
+      "x-default": SITE_URL,
+    },
   },
   openGraph: {
     title: "Free Online Calculators 2026 | Mortgage, BMI, Tax",

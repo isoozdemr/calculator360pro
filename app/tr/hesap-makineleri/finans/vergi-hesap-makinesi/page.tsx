@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { TurkeyTaxCalculator } from "@/components/calculators/tr/TurkeyTaxCalculator";
 import { DATA_VERSION, INCOME_TAX_BRACKETS_2026 } from "@/lib/data/turkey-2026-data";
 import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
+import { CalculatorDisclaimer } from "@/components/calculators/CalculatorDisclaimer";
 import { generateTurkishHowToSchema, generateTurkishBreadcrumbSchema } from "@/lib/seo/schema";
 import { SITE_URL } from "@/lib/constants";
 import Link from "next/link";
@@ -32,6 +33,7 @@ export const metadata: Metadata = {
     languages: {
       en: `${SITE_URL}/calculators/finance/tax-calculator`,
       tr: `${SITE_URL}/tr/hesap-makineleri/finans/vergi-hesap-makinesi`,
+      "x-default": `${SITE_URL}/calculators/finance/tax-calculator`,
     },
   },
   openGraph: {
@@ -219,6 +221,7 @@ export default function TurkeyTaxCalculatorPage() {
         <section className="py-8">
           <div className="container mx-auto px-4 max-w-4xl">
             <TurkeyTaxCalculator />
+            <CalculatorDisclaimer category="finance" locale="tr" />
           </div>
         </section>
 

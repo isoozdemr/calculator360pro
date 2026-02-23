@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
+import { CalculatorDisclaimer } from "@/components/calculators/CalculatorDisclaimer";
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 import { TurkeyCompoundInterestCalculator } from "@/components/calculators/tr";
 
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
     languages: {
       "en": `${SITE_URL}/calculators/finance/compound-interest-calculator`,
       "tr": `${SITE_URL}/tr/hesap-makineleri/finans/bilesik-faiz-hesap-makinesi`,
+      "x-default": `${SITE_URL}/calculators/finance/compound-interest-calculator`,
     },
   },
   openGraph: {
@@ -103,6 +105,7 @@ export default function BilesikFaizHesapMakinesiPage() {
             </p>
           </div>
           <TurkeyCompoundInterestCalculator />
+          <CalculatorDisclaimer category="finance" locale="tr" />
           <div className="mt-12 space-y-8">
             <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-4">Bileşik Faiz Nedir?</h2>
