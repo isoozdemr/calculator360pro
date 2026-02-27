@@ -9,7 +9,7 @@ import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Gebelik Hesap Makinesi 2026 - Doğum Tarihi Hesapla",
-  description: "Son adet tarihinden doğum tarihi ve gebelik haftası anında! Trimester bilgisi. Ücretsiz hamilelik takibi - hemen deneyin.",
+  description: "Gebelik hesap makinesi: Son adet tarihinden doğum tarihi ve gebelik haftası hesaplayın. Trimester bilgisi ve hamilelik takibi. Ücretsiz gebelik hesaplama - hemen deneyin.",
   keywords: [
     "gebelik hesaplama",
     "doğum tarihi hesaplama",

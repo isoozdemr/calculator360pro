@@ -13,6 +13,8 @@ export const metadata: Metadata = {
   keywords: [
     "gelir vergisi hesaplama",
     "gelir vergisi hesaplama 2026",
+    "2022 gelir vergisi hesaplama",
+    "gelir vergisi hesaplama 2022",
     "vergi hesap makinesi",
     "2026 vergi dilimleri",
     "türkiye vergi hesaplama",
@@ -417,6 +419,11 @@ export default function TurkeyTaxCalculatorPage() {
                 Bu sistem, düşük gelirli kişilerin düşük oranda vergi ödemesini sağlarken, 
                 yüksek gelirli kişilerin de sadece yüksek gelir kısımları için yüksek oran 
                 ödemesini sağlar. Bu sayede daha adil bir vergilendirme yapılmış olur.
+              </p>
+              <p className="text-[#64748b] mb-4 leading-relaxed">
+                Önceki yıllar (2022, 2023 vb.) için vergi dilimleri ve tutarlar farklı olabilir; 
+                bu hesap makinesi güncel 2026 dilimlerine göre hesaplama yapar. Eski yıl vergisi 
+                için GİB veya mali müşavirinize danışın.
               </p>
 
               <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">

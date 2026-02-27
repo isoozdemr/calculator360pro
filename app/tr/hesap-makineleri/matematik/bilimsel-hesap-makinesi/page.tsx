@@ -8,7 +8,7 @@ import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Bilimsel Hesap Makinesi 2026 - Trigonometri, Log",
-  description: "Trigonometri, logaritma, üs ve kök işlemleri. Ücretsiz bilimsel hesap makinesi - hemen kullanın.",
+  description: "Bilimsel hesap makinesi: Trigonometri, logaritma, üs ve kök işlemleri. Öğrenciler ve mühendisler için ücretsiz online bilimsel hesap makinesi - hemen kullanın.",
   keywords: [
     "bilimsel hesap makinesi",
     "trigonometri hesaplama",

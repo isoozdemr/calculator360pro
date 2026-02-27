@@ -4,7 +4,7 @@ import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Sağlık Hesap Makineleri - BMI, Kalori ve Daha Fazlası",
-  description: "Ücretsiz sağlık hesap makineleri: BMI (Vücut Kitle İndeksi), kalori ihtiyacı, ideal kilo hesaplama. Türkiye Sağlık Bakanlığı standartlarına uygun.",
+  description: "Sağlık hesap makineleri: BMI (vücut kitle indeksi), kalori ihtiyacı, vücut yağ oranı ve gebelik hesaplama. WHO ve Türkiye standartlarına uygun. Ücretsiz online araçlar.",
   keywords: [
     "sağlık hesap makinesi",
     "bmi hesaplama",

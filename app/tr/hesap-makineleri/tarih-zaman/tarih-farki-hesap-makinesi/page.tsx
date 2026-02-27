@@ -8,7 +8,7 @@ import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Tarih Farkı Hesap Makinesi 2026 - Gün/Ay Hesapla",
-  description: "İki tarih arası gün, hafta, ay ve iş günü anında! Proje ve teslimat süreleri için ücretsiz. Hemen hesaplayın.",
+  description: "Tarih farkı hesap makinesi: İki tarih arasındaki gün, hafta, ay ve iş günü sayısını hesaplayın. Proje ve teslimat süreleri için ücretsiz tarih farkı hesaplama.",
   keywords: [
     "tarih farkı hesaplama",
     "tarih farkı hesap makinesi",

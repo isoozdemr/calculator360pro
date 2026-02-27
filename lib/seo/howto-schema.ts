@@ -200,6 +200,47 @@ const CALCULATOR_HOWTO_STEPS: Record<string, Array<{ name: string; text: string 
     { name: "View conversion rate", text: "The current exchange rate is displayed." },
     { name: "View converted amount", text: "See the converted amount in your target currency." },
   ],
+  "inflation-purchasing-power-calculator": [
+    { name: "Enter amount", text: "Input the dollar amount you want to convert (e.g., 10000 or 50000)." },
+    { name: "Select start year", text: "Choose the year the amount is from (e.g., 2020)." },
+    { name: "Select end year", text: "Choose the year you want the equivalent value in (e.g., 2026)." },
+    { name: "Click Calculate", text: "Press Calculate to see the equivalent amount in end-year purchasing power." },
+    { name: "Interpret result", text: "The result shows what the start-year amount is worth in end-year dollars based on BLS CPI-U inflation." },
+  ],
+  "fraction-calculator": [
+    { name: "Enter first fraction", text: "Enter the numerator and denominator of the first fraction (e.g., 1 and 2 for 1/2)." },
+    { name: "Select operation", text: "Choose add, subtract, multiply, or divide." },
+    { name: "Enter second fraction", text: "Enter the numerator and denominator of the second fraction." },
+    { name: "Click Calculate", text: "Press Calculate to see the result as a simplified fraction and decimal." },
+    { name: "Copy or try examples", text: "Use Copy result to use the value elsewhere, or try an example preset for common calculations." },
+  ],
+  "bmr-calculator": [
+    { name: "Select gender", text: "Choose your biological gender for the Mifflin-St Jeor formula." },
+    { name: "Enter age, weight, height", text: "Enter your age in years and your weight and height in metric or imperial units." },
+    { name: "Click Calculate", text: "Press Calculate to see your BMR (calories at rest) per day." },
+    { name: "Interpret result", text: "The result is the calories your body burns at rest. Use our calorie calculator for total daily needs including activity." },
+  ],
+  "grade-calculator": [
+    { name: "Choose mode", text: "Select percentage to letter, points to grade, or grade needed on final." },
+    { name: "Select grading scale", text: "Choose standard (90/80/70/60), strict (93/85/77/70), or set custom cutoffs." },
+    { name: "Enter your values", text: "Enter percentage, points earned and total, or current grade and final weight and desired grade." },
+    { name: "Click Calculate", text: "Press Calculate to see your letter grade, percentage, or grade needed on the final." },
+    { name: "Copy result", text: "Use Copy result to save the outcome for your records." },
+  ],
+  "roi-calculator": [
+    { name: "Enter initial cost", text: "Input the amount you invested (e.g., purchase price plus fees)." },
+    { name: "Enter final value", text: "Input the amount you received or current value (e.g., sale price or portfolio value)." },
+    { name: "Enter holding period (optional)", text: "Add number of years held to see annualized ROI." },
+    { name: "Click Calculate ROI", text: "Press Calculate to see ROI percentage and optional annualized return." },
+    { name: "Copy result", text: "Use Copy result to save the ROI for your records. See disclaimer for educational use." },
+  ],
+  "payback-period-calculator": [
+    { name: "Enter initial investment", text: "Input the total amount you spent on the project or asset." },
+    { name: "Choose annual or monthly", text: "Select whether your net cash flow is per year or per month." },
+    { name: "Enter net cash flow", text: "Input the annual or monthly net cash flow (revenue minus costs)." },
+    { name: "Click Calculate payback", text: "Press Calculate to see payback period in years and months." },
+    { name: "Copy result", text: "Use Copy result to save the payback period. Simple payback does not account for time value of money." },
+  ],
 };
 
 /**

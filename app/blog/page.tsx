@@ -7,7 +7,7 @@ import { generateBlogListSchema } from "@/lib/seo/schema";
 export const metadata: Metadata = {
   title: "Blog - Calculator Guides & Tips 2026",
   description:
-    "Expert guides on mortgage, BMI, tax, GPA & more. Learn to calculate like a pro. Free tips & tutorials - read now!",
+    "Expert guides on mortgage, BMI, tax, GPA, ROI and more. Learn to calculate like a pro. Free tips, step-by-step tutorials and calculator how-tos for finance, health and education. Read now!",
   alternates: {
     canonical: `${SITE_URL}/blog`,
     languages: {
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Blog - Calculator Guides and Tips",
     description:
-      "Learn how to use calculators effectively with our comprehensive guides. Tips, tutorials, and expert advice on financial, health, and educational calculations.",
+      "Expert guides on mortgage, BMI, tax, GPA, ROI and more. Free step-by-step tutorials and calculator how-tos for finance, health and education. Read now!",
     url: `${SITE_URL}/blog`,
     type: "website",
     siteName: "Calculator360Pro",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Blog - Calculator Guides and Tips",
     description:
-      "Learn how to use calculators effectively with our comprehensive guides. Tips, tutorials, and expert advice on financial, health, and educational calculations.",
+      "Expert guides on mortgage, BMI, tax, GPA, ROI and more. Free step-by-step tutorials and calculator how-tos for finance, health and education. Read now!",
     images: [`${SITE_URL}/og-image.png`],
   },
   robots: {

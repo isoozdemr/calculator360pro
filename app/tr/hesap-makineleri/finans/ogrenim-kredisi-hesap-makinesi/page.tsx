@@ -9,7 +9,7 @@ import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Öğrenim Kredisi Hesap Makinesi 2026",
-  description: "Öğrenim kredisi aylık taksit ve toplam faiz hesaplama. Ücretsiz öğrenim kredisi hesaplayıcı.",
+  description: "Öğrenim kredisi (KYK) hesap makinesi: Aylık taksit ve toplam faiz maliyetini hesaplayın. Kredi tutarı ve vadeye göre geri ödeme planı. Ücretsiz öğrenim kredisi hesaplama.",
   keywords: [
     "öğrenim kredisi hesaplama",
     "öğrenim kredisi taksit",

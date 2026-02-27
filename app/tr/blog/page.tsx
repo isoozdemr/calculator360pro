@@ -7,7 +7,7 @@ import { generateBlogListSchema } from "@/lib/seo/schema";
 export const metadata: Metadata = {
   title: "Blog - Hesap Makinesi Rehberleri ve İpuçları | Calculator360Pro",
   description:
-    "Hesap makinelerini etkili kullanma rehberleri. Finans, sağlık ve eğitim hesaplamaları hakkında ipuçları, öğreticiler ve uzman tavsiyeleri.",
+    "Hesap makinelerini etkili kullanma rehberleri. Finans, sağlık ve eğitim hesaplamaları hakkında ipuçları, adım adım öğreticiler ve uzman tavsiyeleri. Ücretsiz rehberler – hemen okuyun!",
   alternates: {
     canonical: `${SITE_URL}/tr/blog`,
     languages: {
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Blog - Hesap Makinesi Rehberleri ve İpuçları",
     description:
-      "Hesap makinelerini etkili kullanma rehberleri. Finans, sağlık ve eğitim hesaplamaları hakkında ipuçları, öğreticiler ve uzman tavsiyeleri.",
+      "Hesap makinelerini etkili kullanma rehberleri. Finans, sağlık ve eğitim hesaplamaları hakkında ipuçları, adım adım öğreticiler ve uzman tavsiyeleri. Ücretsiz rehberler – hemen okuyun!",
     url: `${SITE_URL}/tr/blog`,
     locale: "tr_TR",
     type: "website",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Blog - Hesap Makinesi Rehberleri ve İpuçları",
     description:
-      "Hesap makinelerini etkili kullanma rehberleri. Finans, sağlık ve eğitim hesaplamaları hakkında ipuçları, öğreticiler ve uzman tavsiyeleri.",
+      "Hesap makinelerini etkili kullanma rehberleri. Finans, sağlık ve eğitim hesaplamaları hakkında ipuçları, adım adım öğreticiler ve uzman tavsiyeleri. Ücretsiz rehberler – hemen okuyun!",
     images: [`${SITE_URL}/og-image.png`],
   },
   robots: {

@@ -8,7 +8,7 @@ import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Yüzde Hesap Makinesi 2026 - Anında Hesapla",
-  description: "Yüzde, artış/azalış ve indirim hesaplama. Anında sonuç. Ücretsiz - vergi, maaş, KDV için hemen kullanın!",
+  description: "Yüzde hesap makinesi: Bir sayının yüzdesi, artış ve azalış oranı, indirim hesaplama. Vergi, maaş ve KDV için anında sonuç. Ücretsiz yüzde hesaplama aracı - hemen kullanın.",
   keywords: [
     "yüzde hesaplama",
     "yüzde hesap makinesi",

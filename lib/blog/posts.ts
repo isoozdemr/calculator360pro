@@ -217,7 +217,7 @@ GPA is a numerical representation of your academic performance, calculated by av
 
 ## Conclusion
 
-Understanding GPA calculation helps you make informed academic decisions. Use our free GPA calculator to track your progress and plan your course load.
+Understanding GPA calculation helps you make informed academic decisions. Use our free [GPA calculator](/calculators/education/gpa-calculator) to track your progress and plan your course load. To convert a single test score or percentage to a letter grade, use our [grade calculator](/calculators/education/grade-calculator).
     `,
     author: "Calculator360Pro Team",
     date: "2026-01-09",
@@ -288,7 +288,7 @@ More frequent compounding = higher returns (though the difference becomes smalle
 
 ## Conclusion
 
-Compound interest is a powerful wealth-building tool. The earlier you start investing, the more you'll benefit from compounding. Use our calculator to visualize your financial future.
+Compound interest is a powerful wealth-building tool. The earlier you start investing, the more you'll benefit from compounding. Use our [compound interest calculator](/calculators/finance/compound-interest-calculator) to visualize your financial future. For return as a percentage, try our [ROI calculator](/calculators/finance/roi-calculator); for how long until you get your money back, see our [payback period calculator](/calculators/finance/payback-period-calculator).
     `,
     author: "Calculator360Pro Team",
     date: "2026-01-09",
@@ -299,7 +299,7 @@ Compound interest is a powerful wealth-building tool. The earlier you start inve
     slug: "percentage-calculations-made-easy",
     title: "Percentage Calculations Made Easy: A Practical Guide",
     description:
-      "Master percentage calculations with our comprehensive guide. Learn to calculate percentages, increases, decreases, and more.",
+      "Percentage made easy: master percentage calculations with our guide. Calculate percentages, increases, decreases, and more. Practical examples for daily use.",
     content: `
 # Percentage Calculations Made Easy: A Practical Guide
 
@@ -1145,6 +1145,8 @@ Before investing, build an emergency fund:
 
 If you found our investment calculator helpful, you might also be interested in:
 
+- **[ROI Calculator](/calculators/finance/roi-calculator)**: Calculate return on investment as a percentage
+- **[Payback Period Calculator](/calculators/finance/payback-period-calculator)**: See how long until you recover your investment
 - **[Compound Interest Calculator](/calculators/finance/compound-interest-calculator)**: See how compound interest grows
 - **[Retirement Calculator](/calculators/finance/retirement-calculator)**: Plan for retirement
 - **[Savings Calculator](/calculators/finance/savings-calculator)**: Plan savings goals
@@ -1360,6 +1362,8 @@ Healthcare costs are a significant retirement expense. Consider:
 
 If you found our retirement calculator helpful, you might also be interested in:
 
+- **[ROI Calculator](/calculators/finance/roi-calculator)**: Calculate return on investment for your portfolio
+- **[Payback Period Calculator](/calculators/finance/payback-period-calculator)**: See how long until an investment pays back
 - **[Investment Calculator](/calculators/finance/investment-calculator)**: Calculate investment growth
 - **[Compound Interest Calculator](/calculators/finance/compound-interest-calculator)**: See how savings compound
 - **[Savings Calculator](/calculators/finance/savings-calculator)**: Plan savings goals

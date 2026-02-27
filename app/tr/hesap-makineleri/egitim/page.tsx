@@ -4,7 +4,7 @@ import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Eğitim Hesap Makineleri | Not Ortalaması Hesaplama",
-  description: "Türkiye üniversite not sistemi ile GANO hesaplama. 4'lük ve 100'lük not sistemi dönüşümü. YÖK standardı hesap makinesi.",
+  description: "Eğitim hesap makineleri: GANO ve not ortalaması hesaplama. Türkiye üniversite not sistemi, 4'lük ve 100'lük dönüşüm. YÖK standardı. Ücretsiz not hesaplama aracı.",
   keywords: [
     "eğitim hesap makinesi",
     "not ortalaması hesaplama",

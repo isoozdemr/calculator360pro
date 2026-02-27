@@ -283,6 +283,15 @@ export default function SGKEmeklilikTablosuPage() {
               </p>
             </Link>
             <Link
+              href="/tr/hesap-makineleri/finans/prim-gunu-hesap-makinesi"
+              className="block p-4 bg-[#f8fafc] rounded-lg border border-[#e2e8f0] hover:border-[#2563eb] transition-colors"
+            >
+              <h3 className="font-semibold text-[#1e293b] mb-2">Prim Günü Hesap Makinesi</h3>
+              <p className="text-sm text-[#64748b]">
+                Tarih aralığına göre toplam SGK prim günü hesaplama
+              </p>
+            </Link>
+            <Link
               href="/tr/blog/eyt-nedir-kimler-faydalanabilir"
               className="block p-4 bg-[#f8fafc] rounded-lg border border-[#e2e8f0] hover:border-[#2563eb] transition-colors"
             >

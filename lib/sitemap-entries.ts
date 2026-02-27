@@ -40,6 +40,9 @@ const TURKISH_CALCULATORS = [
   { category: "finans", slug: "bahsis-hesap-makinesi", enCategory: "finance", enSlug: "tip-calculator" },
   { category: "finans", slug: "enflasyon-alim-gucu-hesap-makinesi", enCategory: "finance", enSlug: "inflation-purchasing-power-calculator" },
   { category: "finans", slug: "bes-devlet-katkisi-hesap-makinesi", enCategory: "finance", enSlug: "retirement-calculator" },
+  { category: "finans", slug: "emlak-vergisi-hesap-makinesi", enCategory: "finance", enSlug: "tax-calculator" },
+  { category: "finans", slug: "prim-gunu-hesap-makinesi", enCategory: "finance", enSlug: "retirement-calculator" },
+  { category: "tarih-zaman", slug: "haftalik-calisma-saati-hesap-makinesi", enCategory: "date-time", enSlug: "hours-calculator" },
 ];
 
 const TURKISH_CATEGORIES = [

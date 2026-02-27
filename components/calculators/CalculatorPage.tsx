@@ -25,6 +25,12 @@ import { UnitConverter } from "./UnitConverter";
 import { PregnancyCalculator } from "./PregnancyCalculator";
 import { HoursCalculator } from "./HoursCalculator";
 import { CurrencyConverter } from "./CurrencyConverter";
+import { InflationPurchasingPowerCalculator } from "./InflationPurchasingPowerCalculator";
+import { FractionCalculator } from "./FractionCalculator";
+import { BMRCalculator } from "./BMRCalculator";
+import { GradeCalculator } from "./GradeCalculator";
+import { ROICalculator } from "./ROICalculator";
+import { PaybackPeriodCalculator } from "./PaybackPeriodCalculator";
 import { AdAboveFold, AdBelowContent } from "@/components/ads/AdSense";
 import { getRelatedCalculators } from "@/lib/calculators/related";
 import { getRelatedBlogPosts } from "@/lib/blog/related";
@@ -72,6 +78,12 @@ const calculatorComponents: Record<
   "pregnancy-calculator": PregnancyCalculator,
   "hours-calculator": HoursCalculator,
   "currency-converter": CurrencyConverter,
+  "inflation-purchasing-power-calculator": InflationPurchasingPowerCalculator,
+  "fraction-calculator": FractionCalculator,
+  "bmr-calculator": BMRCalculator,
+  "grade-calculator": GradeCalculator,
+  "roi-calculator": ROICalculator,
+  "payback-period-calculator": PaybackPeriodCalculator,
 };
 
 export function CalculatorPage({ calculator }: CalculatorPageProps) {

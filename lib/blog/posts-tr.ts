@@ -246,7 +246,7 @@ Vergi hesaplaması yıl başından itibaren kümülatiftir. Yılın ilk ayların
 
 AGİ indirimi gelir vergisinden düşülür ve negatif olamaz. Asgari ücretliler gelir vergisinden ve damga vergisinden muaftır. [2026 Asgari Ücret](/tr/blog/2026-asgari-ucret-net-maas-hesaplama-sgk-kesintileri) yazımızda asgari ücret hesaplamaları hakkında bilgi bulabilirsiniz.
 
-Brütten nete maaş hesaplama SGK, vergi, damga vergisi ve AGİ gibi birçok faktörü içerir. [Maaş Hesap Makinemizi](/tr/hesap-makineleri/finans/maas-hesap-makinesi) kullanarak doğru hesaplama yapabilirsiniz. [Vergi Hesap Makinemiz](/tr/hesap-makineleri/finans/vergi-hesap-makinesi) ile de vergi hesaplamalarınızı yapabilirsiniz. Finansal terimler hakkında bilgi için [Finansal Terimler Sözlüğümüze](/tr/rehberler/finansal-terimler-sozlugu) bakabilirsiniz.
+Brütten nete maaş hesaplama SGK, vergi, damga vergisi ve AGİ gibi birçok faktörü içerir. [Maaş Hesap Makinemizi](/tr/hesap-makineleri/finans/maas-hesap-makinesi) kullanarak doğru hesaplama yapabilirsiniz. [Vergi Hesap Makinemiz](/tr/hesap-makineleri/finans/vergi-hesap-makinesi) ile de vergi hesaplamalarınızı yapabilirsiniz. Haftalık çalışma saatinizi hesaplamak için [Haftalık Çalışma Saati Hesap Makinemizi](/tr/hesap-makineleri/tarih-zaman/haftalik-calisma-saati-hesap-makinesi) kullanabilirsiniz. Finansal terimler hakkında bilgi için [Finansal Terimler Sözlüğümüze](/tr/rehberler/finansal-terimler-sozlugu) bakabilirsiniz.
 
 Bu bilgiler genel bilgilendirme amaçlıdır. Resmi hesaplamalar için işvereniniz veya mali müşaviriniz ile görüşmeniz gerekir.
     `,
@@ -539,7 +539,7 @@ Emeklilik maaşı şu faktörlere bağlıdır:
 3. **Prim Günü**: Toplam prim günü sayısı
 4. **Yaş**: Emeklilik yaşı
 
-Detaylı hesaplama için [Emeklilik Hesap Makinemizi](/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi) kullanabilirsiniz. [SGK Emeklilik Tablosu](/tr/rehberler/sgk-emeklilik-tablosu) sayfamızda emeklilik yaşı ve prim günü şartlarını görebilirsiniz.
+Detaylı hesaplama için [Emeklilik Hesap Makinemizi](/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi) kullanabilirsiniz. Tarih aralığına göre toplam prim gününüzü hesaplamak için [Prim Günü Hesap Makinemizi](/tr/hesap-makineleri/finans/prim-gunu-hesap-makinesi) kullanabilirsiniz. [SGK Emeklilik Tablosu](/tr/rehberler/sgk-emeklilik-tablosu) sayfamızda emeklilik yaşı ve prim günü şartlarını görebilirsiniz.
 
 ## EYT ile İlgili Sık Sorulan Sorular
 
@@ -561,7 +561,7 @@ Evet, şartları tamamladığınızda emekli olabilirsiniz. Ancak emeklilik maa�
 
 Hayır, EYT kapsamına girdiyseniz, bu şartlardan yararlanırsınız.
 
-EYT, 1999 öncesi sigortalı olanlar için önemli bir avantaj. Emeklilik planlaması yaparken sigorta başlangıç tarihinizi öğrenmek ilk adım. [Emeklilik Hesap Makinesi](/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi) ile emeklilik tarihinizi hesaplayabilir, prim günü ve yaş şartlarını planlayabilirsiniz. [SGK Prim Günü Hesaplama](/tr/blog/sgk-prim-gunu-hesaplama-emeklilik-icin-kac-gun-gerekli) yazımızda prim günü hakkında detaylı bilgi bulabilirsiniz. [SGK Emeklilik Tablosu](/tr/rehberler/sgk-emeklilik-tablosu) sayfamızda emeklilik şartlarını görebilirsiniz. [Bireysel Emeklilik](/tr/blog/bireysel-emeklilik-bes-devlet-katkisi-nasil-hesaplanir) yazımızda BES hakkında bilgi edinebilirsiniz.
+EYT, 1999 öncesi sigortalı olanlar için önemli bir avantaj. Emeklilik planlaması yaparken sigorta başlangıç tarihinizi öğrenmek ilk adım. [Emeklilik Hesap Makinesi](/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi) ile emeklilik tarihinizi hesaplayabilir, [Prim Günü Hesap Makinesi](/tr/hesap-makineleri/finans/prim-gunu-hesap-makinesi) ile tarih aralığına göre toplam prim gününüzü hesaplayabilirsiniz. [SGK Prim Günü Hesaplama](/tr/blog/sgk-prim-gunu-hesaplama-emeklilik-icin-kac-gun-gerekli) yazımızda prim günü hakkında detaylı bilgi bulabilirsiniz. [SGK Emeklilik Tablosu](/tr/rehberler/sgk-emeklilik-tablosu) sayfamızda emeklilik şartlarını görebilirsiniz. [Bireysel Emeklilik](/tr/blog/bireysel-emeklilik-bes-devlet-katkisi-nasil-hesaplanir) yazımızda BES hakkında bilgi edinebilirsiniz.
 
 Resmi bilgi için SGK şubelerinden veya e-Devlet üzerinden bilgi almanız gerekir. Bu bilgiler genel bilgilendirme amaçlıdır.
     `,
@@ -958,7 +958,7 @@ Prim günü hesaplaması için çalışma sürelerinizi toplamanız gerekiyor. H
 
 Prim günü eksikliği durumunda emeklilik ertelenebiliyor. Prim günü şartını tamamlamak için daha fazla çalışmanız gerekiyor. Bu durumda emeklilik yaşınız geldiğinde bile emekli olamayabilirsiniz.
 
-Prim günü hesaplaması için [Emeklilik Hesap Makinemizi](/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi) kullanabilirsiniz. Bu araç, prim günü sayınızı, emeklilik yaşınızı ve emeklilik tarihinizi hesaplıyor. [EYT Nedir](/tr/blog/eyt-nedir-kimler-faydalanabilir) yazımızda EYT kapsamında emeklilik şartlarını öğrenebilirsiniz. [SGK Emeklilik Tablosu](/tr/rehberler/sgk-emeklilik-tablosu) sayfamızda emeklilik yaşı ve prim günü şartlarını görebilirsiniz. [Finans Kategorimizdeki](/tr/hesap-makineleri/finans) diğer hesap makinelerine göz atabilirsiniz.
+Prim günü hesaplaması için [Prim Günü Hesap Makinemizi](/tr/hesap-makineleri/finans/prim-gunu-hesap-makinesi) ile tarih aralığına göre toplam prim gününüzü hesaplayabilir, [Emeklilik Hesap Makinemizi](/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi) ile emeklilik yaşınızı ve emeklilik tarihinizi görebilirsiniz. [EYT Nedir](/tr/blog/eyt-nedir-kimler-faydalanabilir) yazımızda EYT kapsamında emeklilik şartlarını öğrenebilirsiniz. [SGK Emeklilik Tablosu](/tr/rehberler/sgk-emeklilik-tablosu) sayfamızda emeklilik yaşı ve prim günü şartlarını görebilirsiniz. [Finans Kategorimizdeki](/tr/hesap-makineleri/finans) diğer hesap makinelerine göz atabilirsiniz.
 
 Prim günü takibi için düzenli kontrol yapmak önemli. Yılda bir kez SGK kayıtlarınızı kontrol edin, prim günü sayınızı görün. Eksiklik varsa erken müdahale edin, böylece emeklilik planlamanızı yapabilirsiniz.
 

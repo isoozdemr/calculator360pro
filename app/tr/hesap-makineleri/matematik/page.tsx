@@ -4,7 +4,7 @@ import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Matematik Hesap Makineleri - Yüzde, Kesir ve Daha Fazlası",
-  description: "Ücretsiz matematik hesap makineleri: Yüzde hesaplama, kesir işlemleri, oran hesaplama ve daha fazlası. Günlük hayatta ve iş yaşamında kullanabileceğiniz hesap makineleri.",
+  description: "Matematik hesap makineleri: yüzde hesaplama, kesir işlemleri, indirim ve oran hesaplama, bilimsel hesap, birim çevirici. Günlük hayat ve iş için ücretsiz araçlar.",
   keywords: [
     "matematik hesap makinesi",
     "yüzde hesaplama",

@@ -78,6 +78,9 @@ export const TR_CALCULATORS: TRCalculatorItem[] = [
   { category: "finans", slug: "bahsis-hesap-makinesi", name: "Bahşiş Hesap Makinesi", description: "Restoran bahşiş ve kişi başı ücret hesaplama", icon: "🍽️", badge: null },
   { category: "finans", slug: "enflasyon-alim-gucu-hesap-makinesi", name: "Enflasyon ve Alım Gücü Hesap Makinesi", description: "TÜİK TÜFE ile paranızın alım gücünü hesaplayın", icon: "📉", badge: null },
   { category: "finans", slug: "bes-devlet-katkisi-hesap-makinesi", name: "BES Devlet Katkısı Hesap Makinesi", description: "BES %25 devlet katkısı ile birikim ve emeklilik hesaplama", icon: "🏦", badge: null },
+  { category: "finans", slug: "emlak-vergisi-hesap-makinesi", name: "Emlak Vergisi Hesap Makinesi", description: "Yıllık emlak vergisi hesaplama, konut ve işyeri oranları", icon: "🏠", badge: "Yeni" },
+  { category: "finans", slug: "prim-gunu-hesap-makinesi", name: "Prim Günü Hesap Makinesi", description: "SGK prim günü hesaplama, tarih aralığına göre toplam gün", icon: "📋", badge: null },
+  { category: "tarih-zaman", slug: "haftalik-calisma-saati-hesap-makinesi", name: "Haftalık Çalışma Saati Hesap Makinesi", description: "Haftalık toplam çalışma saati, 45 saat sınırı ile karşılaştırma", icon: "⏱️", badge: null },
 ];
 
 /** Categories with their calculators for nav/homepage. */

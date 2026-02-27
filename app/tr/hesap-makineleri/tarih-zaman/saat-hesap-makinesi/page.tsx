@@ -8,7 +8,7 @@ import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Saat Hesap Makinesi 2026 - Çalışma Süresi",
-  description: "Başlangıç ve bitiş saati ile toplam süre, ücret hesaplama. Ücretsiz saat hesap makinesi.",
+  description: "Saat hesap makinesi: Başlangıç ve bitiş saati ile toplam çalışma süresi ve ücret hesaplama. Mesai ve bordro için ücretsiz saat hesaplama aracı.",
   keywords: [
     "saat hesap makinesi",
     "çalışma süresi hesaplama",

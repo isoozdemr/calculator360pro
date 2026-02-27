@@ -91,7 +91,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "free online BMI calculator 2026",
     ],
     metaDescription:
-      "Free online BMI calculator. Get instant results for Body Mass Index (metric or imperial). No sign-up. Understand your BMI category and health status. Try free.",
+      "Calculating your BMI is easy: free online BMI calculator. Get instant Body Mass Index results (metric or imperial). Understand your BMI category and health status. No sign-up. Try now.",
     faqs: [
       {
         question: "What is BMI?",
@@ -136,7 +136,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "GPA conversion calculator",
     ],
     metaDescription:
-      "Free GPA calculator to calculate your Grade Point Average using the 4.0 scale or other grading systems. Perfect for students tracking academic performance.",
+      "Free GPA calculator to calculate your Grade Point Average using the 4.0 or 5.0 scale. Add courses, enter grades and credits. Perfect for students tracking academic performance. No sign-up.",
     faqs: [
       {
         question: "How is GPA calculated?",
@@ -181,7 +181,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "online calculator with functions",
     ],
     metaDescription:
-      "Free online scientific calculator with trigonometric functions, logarithms, exponentials, and more. Perfect for students and professionals solving complex math.",
+      "Free online scientific calculator with trig, logarithms, exponentials, and more. Degrees or radians. Perfect for students and professionals. No sign-up, instant results.",
     faqs: [
       {
         question: "What functions does a scientific calculator have?",
@@ -226,7 +226,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "exact age calculator online",
     ],
     metaDescription:
-      "Free age calculator to calculate your exact age in years, months, weeks, and days. Find out how many days you've been alive and calculate age differences.",
+      "Free age calculator: your exact age in years, months, weeks, and days. Find how many days you've been alive or age between two dates. No sign-up. Instant results.",
     faqs: [
       {
         question: "How do I calculate my exact age?",
@@ -319,7 +319,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "free compound interest calculator",
     ],
     metaDescription:
-      "Free compound interest calculator to calculate investment growth and savings over time. See how your money grows with different compounding frequencies.",
+      "Free compound interest calculator: investment growth and savings over time. See how your money grows with different compounding frequencies. Add regular contributions. No sign-up.",
     faqs: [
       {
         question: "What is compound interest?",
@@ -364,7 +364,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "loan calculator with amortization schedule",
     ],
     metaDescription:
-      "Free loan calculator to calculate monthly payments, total interest, and amortization schedule for personal, auto, and student loans. Plan your payments.",
+      "Free loan calculator: monthly payments, total interest, and amortization for personal, auto, and student loans. Compare terms and rates. Plan your payments. No sign-up.",
     faqs: [
       {
         question: "How do I calculate loan payments?",
@@ -500,7 +500,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "US Navy body fat calculator free",
     ],
     metaDescription:
-      "Free body fat calculator using the US Navy method. Calculate your body fat percentage accurately based on your measurements and understand body composition.",
+      "Free body fat calculator using the US Navy method. Calculate body fat percentage from measurements. Understand body composition. Metric or imperial. No sign-up.",
     faqs: [
       {
         question: "How is body fat percentage calculated?",
@@ -551,7 +551,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "daily calorie calculator free",
     ],
     metaDescription:
-      "Free calorie calculator to calculate your daily calorie needs, BMR, and TDEE. Understand how many calories you need to maintain, lose, or gain weight.",
+      "Free calorie calculator: daily calorie needs, BMR, and TDEE. How many calories to maintain, lose, or gain weight. Activity level and goals. No sign-up. Instant results.",
     faqs: [
       {
         question: "How do I calculate my daily calorie needs?",
@@ -601,7 +601,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "investment compound calculator",
     ],
     metaDescription:
-      "Free investment calculator to calculate investment returns, future value, and growth potential. Plan your investment strategy and see how your money grows.",
+      "Free investment calculator: returns, future value, and growth. Initial and recurring investments. Plan your strategy and see how your money grows. No sign-up.",
     faqs: [
       {
         question: "How do I calculate investment returns?",
@@ -657,7 +657,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "vehicle financing calculator",
     ],
     metaDescription:
-      "Free car loan calculator to calculate monthly payments, total interest, and amortization schedule. Compare different loan terms and rates to find the best deal.",
+      "Free car loan calculator: monthly payments, total interest, and amortization. Compare loan terms and rates. Down payment and trade-in. Find the best auto loan deal. No sign-up.",
     faqs: [
       {
         question: "How is a car loan payment calculated?",
@@ -697,6 +697,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "Calculate student loan payments, total interest, and repayment strategies. Compare different repayment plans and see how extra payments can save money.",
     keywords: [
       "student loan calculator",
+      "student loans monthly payment calculator",
       "student loan payment calculator",
       "student debt calculator",
       "calculate student loan payment",
@@ -713,7 +714,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "student loan calculator online",
     ],
     metaDescription:
-      "Free student loan calculator to calculate monthly payments, total interest, and repayment strategies. Compare different repayment plans and save money.",
+      "Free student loan calculator: monthly payments, total interest, and repayment strategies. Compare repayment plans. Student loans monthly payment calculator. No sign-up.",
     faqs: [
       {
         question: "How are student loan payments calculated?",
@@ -769,7 +770,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "credit card minimum payment calculator",
     ],
     metaDescription:
-      "Free credit card payoff calculator to calculate payoff time, total interest, and see how extra payments can accelerate debt payoff and save you money.",
+      "Free credit card payoff calculator: payoff time and total interest. See how extra payments accelerate debt payoff and save money. Minimum payment comparison. No sign-up.",
     faqs: [
       {
         question: "How long will it take to pay off my credit card?",
@@ -825,7 +826,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "how much do I need to retire calculator",
     ],
     metaDescription:
-      "Free retirement calculator to calculate how much you need to save for retirement, estimate retirement income, and see if you're on track to meet your goals.",
+      "Free retirement calculator: how much to save for retirement, estimate income, and see if you're on track. Age, savings, and contributions. Meet your goals. No sign-up.",
     faqs: [
       {
         question: "How much do I need to save for retirement?",
@@ -881,7 +882,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "emergency fund calculator online",
     ],
     metaDescription:
-      "Free savings calculator to calculate how much your savings will grow with compound interest. Plan your savings goals and see how regular contributions help.",
+      "Free savings calculator: how much your savings grow with compound interest. Plan goals and see how regular contributions help. Interest rate and term. No sign-up.",
     faqs: [
       {
         question: "How do I calculate savings growth?",
@@ -937,7 +938,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "budget calculator app",
     ],
     metaDescription:
-      "Free budget calculator to create a comprehensive budget, track income and expenses, identify savings opportunities, and achieve your financial goals today.",
+      "Free budget calculator: create a budget, track income and expenses, identify savings. Achieve your financial goals. Income, fixed and variable expenses. No sign-up.",
     faqs: [
       {
         question: "How do I create a budget?",
@@ -993,7 +994,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "tip calculator 20 percent",
     ],
     metaDescription:
-      "Free tip calculator to calculate tips quickly and accurately. Split bills, calculate different tip percentages, and determine the total amount to pay.",
+      "Free tip calculator: calculate tips quickly. Split bills, 15% 18% 20% or custom. Total amount to pay. Restaurant and service tips. No sign-up. Instant results.",
     faqs: [
       {
         question: "How do I calculate a tip?",
@@ -1049,7 +1050,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "shopping discount calculator",
     ],
     metaDescription:
-      "Free discount calculator to calculate sale prices, discounts, and savings. Find the final price after discounts and make smart shopping decisions easily.",
+      "Free discount calculator: sale prices, discounts, and savings. Final price after percent off. Make smart shopping decisions. Original price and discount. No sign-up.",
     faqs: [
       {
         question: "How do I calculate a discount?",
@@ -1335,6 +1336,299 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
     ],
     relatedCalculators: ["salary-calculator", "budget-calculator"],
     content: CALCULATOR_CONTENT["currency-converter"],
+  },
+  "inflation-purchasing-power-calculator": {
+    id: "inflation-purchasing-power-calculator",
+    name: "Inflation & Purchasing Power Calculator",
+    slug: "inflation-purchasing-power-calculator",
+    category: "finance",
+    description:
+      "See how inflation affects your money. Convert any dollar amount between years using U.S. BLS CPI-U data. Free inflation calculator and purchasing power calculator.",
+    keywords: [
+      "inflation calculator",
+      "purchasing power calculator",
+      "CPI calculator",
+      "inflation rate calculator",
+      "how much is money worth over time",
+      "dollar value over time",
+      "inflation adjustment calculator",
+      "real value calculator",
+      "salary in today's dollars",
+      "historical inflation calculator",
+      "BLS CPI calculator",
+      "cost of living calculator",
+      "money value over time",
+      "free inflation calculator",
+    ],
+    metaDescription:
+      "Free inflation calculator: convert dollar amounts between years using U.S. BLS CPI-U data. See purchasing power over time. Start and end year. No sign-up, instant results.",
+    faqs: [
+      {
+        question: "How does the inflation calculator work?",
+        answer:
+          "The calculator uses U.S. Bureau of Labor Statistics (BLS) annual CPI-U inflation rates. You enter an amount and two years (start and end). It applies compound inflation between those years to show the equivalent purchasing power. For example, $10,000 in 2020 might equal about $12,000 in 2026 depending on cumulative inflation.",
+      },
+      {
+        question: "What is purchasing power?",
+        answer:
+          "Purchasing power is how much goods or services your money can buy. When inflation rises, the same dollar amount buys less over time. Our calculator shows what a past or future amount would be worth in another year's dollars, so you can compare salaries, savings, and prices in real terms.",
+      },
+      {
+        question: "What data does the inflation calculator use?",
+        answer:
+          "We use the U.S. Consumer Price Index for All Urban Consumers (CPI-U) from the Bureau of Labor Statistics (BLS). Annual rates are applied in compound form between your chosen years. Data is updated when BLS releases new figures; future years may use estimates until official data is available.",
+      },
+      {
+        question: "Why did my salary's purchasing power go down?",
+        answer:
+          "If your salary increase is smaller than inflation, your real (inflation-adjusted) purchasing power falls. For example, a 2% raise when inflation is 4% means you can buy less than the year before. Use our calculator to convert your past salary into today's dollars and compare with your current pay.",
+      },
+      {
+        question: "How do I compare salaries from different years?",
+        answer:
+          "Enter the older salary amount, set the start year to when that salary was earned, and set the end year to the more recent year (or today). The result is that salary in end-year dollars. You can then compare it fairly to a current salary. Use our salary calculator to see take-home pay for any amount.",
+      },
+    ],
+    relatedCalculators: ["retirement-calculator", "investment-calculator", "salary-calculator", "compound-interest-calculator"],
+    content: CALCULATOR_CONTENT["inflation-purchasing-power-calculator"],
+  },
+  "fraction-calculator": {
+    id: "fraction-calculator",
+    name: "Fraction Calculator",
+    slug: "fraction-calculator",
+    category: "math",
+    description:
+      "Add, subtract, multiply, and divide fractions. Simplify fractions and convert between fractions and decimals. Free online fraction calculator with step-by-step results.",
+    keywords: [
+      "fraction calculator",
+      "add fractions",
+      "subtract fractions",
+      "multiply fractions",
+      "divide fractions",
+      "simplify fractions",
+      "fraction to decimal",
+      "decimal to fraction",
+      "common denominator",
+      "mixed number calculator",
+      "fraction simplifier",
+      "free fraction calculator",
+      "online fraction calculator",
+    ],
+    metaDescription:
+      "Free fraction calculator: add, subtract, multiply, divide and simplify fractions. Convert to decimal. Mixed numbers. Homework and daily math. No sign-up. Instant results.",
+    faqs: [
+      {
+        question: "How do I add two fractions?",
+        answer:
+          "To add fractions with the same denominator, add the numerators and keep the denominator. For different denominators, find the least common multiple (LCM) of the denominators, convert each fraction to that denominator, then add the numerators. Our calculator does this automatically and shows the result in simplified form.",
+      },
+      {
+        question: "How do I simplify a fraction?",
+        answer:
+          "To simplify a fraction, divide both the numerator and denominator by their greatest common divisor (GCD). For example, 8/12 simplifies to 2/3 because GCD(8,12) = 4. Our calculator simplifies results automatically and can also convert mixed numbers to improper fractions and back.",
+      },
+      {
+        question: "How do I convert a fraction to a decimal?",
+        answer:
+          "Divide the numerator by the denominator. For example, 3/4 = 3 ÷ 4 = 0.75. Repeating decimals are shown with a bar or rounded to a practical number of places. Our fraction calculator shows both the fraction result and its decimal equivalent.",
+      },
+      {
+        question: "What is a mixed number?",
+        answer:
+          "A mixed number has a whole number part and a fraction part, e.g. 2 1/3 (two and one-third). It equals 2 + 1/3 = 7/3 as an improper fraction. Our calculator supports mixed number input and displays results as simplified fractions or mixed numbers when appropriate.",
+      },
+      {
+        question: "Can the calculator handle negative fractions?",
+        answer:
+          "Yes. You can enter negative numerators or denominators. The calculator follows standard rules: a negative divided by a positive is negative, and a negative divided by a negative is positive. Results are simplified and shown in decimal form as well.",
+      },
+    ],
+    relatedCalculators: ["percentage-calculator", "scientific-calculator", "gpa-calculator", "unit-converter"],
+    content: CALCULATOR_CONTENT["fraction-calculator"],
+  },
+  "bmr-calculator": {
+    id: "bmr-calculator",
+    name: "BMR Calculator",
+    slug: "bmr-calculator",
+    category: "health",
+    description:
+      "Calculate your Basal Metabolic Rate (BMR)—the calories your body burns at rest. Uses the Mifflin-St Jeor equation. Free BMR calculator for diet and fitness planning.",
+    keywords: [
+      "BMR calculator",
+      "basal metabolic rate calculator",
+      "calories at rest",
+      "Mifflin-St Jeor",
+      "BMR formula",
+      "resting calorie calculator",
+      "how many calories do I burn at rest",
+      "BMR for weight loss",
+      "free BMR calculator",
+    ],
+    metaDescription:
+      "Free BMR calculator: basal metabolic rate (calories at rest) with Mifflin-St Jeor. For diet and fitness. Gender, age, weight, height. Metric or imperial. No sign-up.",
+    faqs: [
+      {
+        question: "What is BMR?",
+        answer:
+          "BMR (Basal Metabolic Rate) is the number of calories your body burns at complete rest to maintain vital functions like breathing, circulation, and cell production. It does not include activity. Knowing your BMR helps you set daily calorie targets for weight loss, maintenance, or gain.",
+      },
+      {
+        question: "What formula does the BMR calculator use?",
+        answer:
+          "We use the Mifflin-St Jeor equation, which is the standard recommended by the Academy of Nutrition and Dietetics. It uses your gender, age, weight, and height. The formula is more accurate than older equations like Harris-Benedict for most adults.",
+      },
+      {
+        question: "How is BMR different from TDEE?",
+        answer:
+          "BMR is calories burned at rest. TDEE (Total Daily Energy Expenditure) is BMR plus calories burned through activity (work, exercise, daily movement). Use our calorie calculator to get your TDEE based on activity level; BMR is the first step in that calculation.",
+      },
+      {
+        question: "Can I use BMR for weight loss?",
+        answer:
+          "Yes. To lose weight you typically eat fewer calories than your TDEE. BMR shows your minimum resting needs; eating below BMR long-term is not recommended. A safe deficit is often 300–500 calories below TDEE. Use our calorie calculator to plan intake.",
+      },
+      {
+        question: "Why do I need my gender and age for BMR?",
+        answer:
+          "The Mifflin-St Jeor formula uses gender and age because metabolism differs: men tend to have higher BMR per unit body mass, and BMR generally decreases with age. Entering accurate data gives you a more reliable estimate for diet and fitness planning.",
+      },
+    ],
+    relatedCalculators: ["calorie-calculator", "bmi-calculator", "body-fat-calculator"],
+    content: CALCULATOR_CONTENT["bmr-calculator"],
+  },
+  "grade-calculator": {
+    id: "grade-calculator",
+    name: "Grade Calculator",
+    slug: "grade-calculator",
+    category: "education",
+    description:
+      "Convert between percentage and letter grades. Calculate test grades, final grades, and weighted averages. Free grade calculator for students and teachers.",
+    keywords: [
+      "grade calculator",
+      "letter grade calculator",
+      "percentage to grade",
+      "test grade calculator",
+      "final grade calculator",
+      "weighted grade calculator",
+      "grade percentage",
+      "what grade do I need",
+      "GPA calculator",
+      "free grade calculator",
+    ],
+    metaDescription:
+      "Free grade calculator: convert percentage to letter grade, final and weighted grades. What grade you need on the final. For students and teachers. No sign-up.",
+    faqs: [
+      {
+        question: "How do I convert a percentage to a letter grade?",
+        answer:
+          "Schools use different scales. Common US scale: A 90-100%, B 80-89%, C 70-79%, D 60-69%, F below 60%. Enter your percentage and select your scale; the calculator shows the letter grade. You can also enter points earned and total points to get the percentage and letter.",
+      },
+      {
+        question: "How do I calculate my final grade?",
+        answer:
+          "If your grade is based on weighted categories (e.g. tests 60%, homework 40%), multiply each category grade by its weight and add the results. Our calculator supports entering current grade, final exam weight, and desired course grade to find the grade you need on the final.",
+      },
+      {
+        question: "What is a weighted grade?",
+        answer:
+          "A weighted grade gives different importance to different assignments. For example, midterm 30% and final 70%. Your weighted average = (midterm × 0.30) + (final × 0.70). Use our grade calculator to compute weighted averages and see how each assignment affects your total.",
+      },
+      {
+        question: "What grade do I need on the final to pass?",
+        answer:
+          "Enter your current grade in the course, the weight of the final (as a percentage), and the minimum grade you want (e.g. 60% to pass). The calculator shows the grade you need on the final exam to achieve that overall grade.",
+      },
+    ],
+    relatedCalculators: ["gpa-calculator", "percentage-calculator", "scientific-calculator"],
+    content: CALCULATOR_CONTENT["grade-calculator"],
+  },
+  "roi-calculator": {
+    id: "roi-calculator",
+    name: "ROI Calculator",
+    slug: "roi-calculator",
+    category: "finance",
+    description:
+      "Calculate Return on Investment (ROI). Enter cost and gain or final value to get ROI percentage. Free ROI calculator for investments and business.",
+    keywords: [
+      "ROI calculator",
+      "return on investment calculator",
+      "investment return calculator",
+      "ROI formula",
+      "calculate ROI",
+      "investment ROI",
+      "percent return calculator",
+      "free ROI calculator",
+    ],
+    metaDescription:
+      "Free ROI calculator: return on investment as a percentage. Enter cost and gain or final value. Optional annualized ROI. For investments and business. No sign-up.",
+    faqs: [
+      {
+        question: "How is ROI calculated?",
+        answer:
+          "ROI = (Gain from Investment - Cost of Investment) / Cost of Investment × 100. For example, you invest $1,000 and it becomes $1,200; gain is $200, so ROI = (200/1000) × 100 = 20%. Our calculator accepts initial cost and final value (or gain) and gives you the ROI percentage.",
+      },
+      {
+        question: "What is a good ROI?",
+        answer:
+          "It depends on the asset and risk. Stocks historically average about 7-10% per year; real estate and business can vary. ROI alone does not account for time—a 20% return in one year is different from 20% in five years. Use annualized ROI or our investment calculator for time-based comparison.",
+      },
+      {
+        question: "Can ROI be negative?",
+        answer:
+          "Yes. If your investment loses value, gain is negative and ROI is negative. For example, $1,000 that becomes $800 has ROI = -20%. Negative ROI means you lost money. Our calculator supports negative results so you can evaluate losses.",
+      },
+      {
+        question: "What is the difference between ROI and annualized return?",
+        answer:
+          "ROI is total return over the whole period. Annualized return is the average per year (e.g. (1 + ROI/100)^(1/years) - 1). For multi-year investments, annualized return helps compare different holding periods. Our ROI calculator can show both when you enter the time period.",
+      },
+    ],
+    relatedCalculators: ["investment-calculator", "compound-interest-calculator", "payback-period-calculator"],
+    content: CALCULATOR_CONTENT["roi-calculator"],
+  },
+  "payback-period-calculator": {
+    id: "payback-period-calculator",
+    name: "Payback Period Calculator",
+    slug: "payback-period-calculator",
+    category: "finance",
+    description:
+      "Calculate how long it takes to recover an investment. Enter initial cost and annual (or monthly) cash flow to get payback period in years and months. Free payback period calculator.",
+    keywords: [
+      "payback period calculator",
+      "investment payback",
+      "how long to recover investment",
+      "payback calculator",
+      "break even calculator",
+      "investment recovery time",
+      "simple payback",
+      "free payback period calculator",
+    ],
+    metaDescription:
+      "Free payback period calculator: years or months to recover your investment. Enter cost and annual or monthly cash flow. Simple payback. No sign-up. Instant results.",
+    faqs: [
+      {
+        question: "What is payback period?",
+        answer:
+          "Payback period is the time it takes for an investment to recover its initial cost from the cash flow it generates. For example, you invest $10,000 and receive $2,000 per year; payback period = 10,000 / 2,000 = 5 years. It does not account for time value of money or returns after payback.",
+      },
+      {
+        question: "How do I calculate payback period?",
+        answer:
+          "Simple payback = Initial Investment / Annual Net Cash Flow. If cash flow is monthly, divide initial cost by monthly flow and convert to years (e.g. 24 months = 2 years). Our calculator accepts annual or monthly cash flow and shows the result in years and months.",
+      },
+      {
+        question: "What is the difference between simple and discounted payback?",
+        answer:
+          "Simple payback ignores the time value of money. Discounted payback uses present value of future cash flows, so it takes longer to \"pay back\" in present-value terms. Our tool calculates simple payback; for discounted payback you would use NPV or our investment calculator with discount rate.",
+      },
+      {
+        question: "Is a shorter payback period always better?",
+        answer:
+          "Not necessarily. Shorter payback means faster recovery of capital and less risk from time, but it ignores cash flows after payback and total profitability. A project with a longer payback might have higher total returns. Use payback together with ROI or NPV for full picture.",
+      },
+    ],
+    relatedCalculators: ["roi-calculator", "investment-calculator", "compound-interest-calculator"],
+    content: CALCULATOR_CONTENT["payback-period-calculator"],
   },
 };
 

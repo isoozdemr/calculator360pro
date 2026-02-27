@@ -9,7 +9,7 @@ import { TurkeyCompoundInterestCalculator } from "@/components/calculators/tr";
 
 export const metadata: Metadata = {
   title: "Bileşik Faiz Hesap Makinesi 2026 - Yatırım Getirisi",
-  description: "Bileşik faiz ile birikim ve yatırım getirinizi anında hesaplayın! Ana para, faiz oranı ve vade. Ücretsiz - hemen deneyin.",
+  description: "Bileşik faiz hesap makinesi: Ana para, faiz oranı ve vade ile birikim ve yatırım getirinizi anında hesaplayın. Ücretsiz bileşik faiz hesaplama aracı - hemen deneyin.",
   keywords: [
     "bileşik faiz hesaplama",
     "bileşik faiz hesap makinesi",

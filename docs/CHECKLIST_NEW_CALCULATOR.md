@@ -88,6 +88,22 @@
 - [ ] Content includes tips/best practices
 - [ ] Content includes common mistakes
 
+### 8. AdSense Uyumu (Zorunlu)
+- [ ] Reklam sayısı: masaüstü max 3, mobil max 2
+- [ ] Reklam yerleşimi: Above-the-fold (max 1), Below-content (max 1); hesaplama alanının **içinde** reklam yok
+- [ ] "Advertisement" etiketi kullanılıyor; reklam ile içerik net ayrılmış
+- [ ] Reklamlar hesaplamayı engellemiyor; pop-up/interstitial yok
+- [ ] İçerik orijinal ve kullanıcı odaklı (reklam odaklı değil)
+- [ ] Referans: `docs/strategy/07-adsense-monetization.md`
+
+### 9. Sayfa Tamamlandı (Tümü işaretlenmeden sayfa tamamlanmış sayılmaz)
+- [ ] Meta: Title 50–60 karakter, primary keyword başta; meta description 150–160; keywords, canonical, hreflang, Open Graph
+- [ ] Schema: WebApplication/SoftwareApplication, FAQPage, HowTo, BreadcrumbList (finance/health ekleri dahil); Google Rich Results Test ile doğrulandı
+- [ ] İçerik: Minimum 2000 kelime; FAQ 3–5 madde (schema ile aynı metin)
+- [ ] Sayfa yapısı: Breadcrumb, H1, kısa açıklama, reklam alanları, hesap aracı, disclaimer (finans/sağlık), uzun içerik, FAQ, ilgili hesaplar (min 2–3), CTA
+- [ ] AdSense: Reklam sayısı ve yerleşim kurallarına uyuldu
+- [ ] Tam kural seti: `docs/tool-and-blog-page-rules.md`
+
 ## ⚠️ TESPİT EDİLEN EKSİKLİKLER
 
 ### 1. Title Tag Optimizasyonu
@@ -111,9 +127,13 @@ title: `${calculator.name} - Free Online Calculator`
 - Meta description'lar var ama 150-160 karakter kontrolü yok
 - Bazı meta description'lar çok kısa veya uzun olabilir
 
+**Kural:** Meta description **mutlaka 150–160 karakter** olmalı; kısa açıklama snippet’te zayıf görünür ve **CTR’yi düşürür**. Yeni sayfa öncesi mevcut TR/EN sayfa meta denetimi yapılmalı.
+
 **Öneri:**
 - Meta description validation eklemek
 - Otomatik truncate/expand mekanizması
+- GSC’de görünen sorgular için title/description’da o sorguya yakın ifadeler (veya FAQ’te soru cümlesi) kullanılmalı
+- Eski yıl aramaları (örn. 2022 vergi) için keywords veya içerikte kısa atıf düşünülmeli
 
 ### 3. Keywords Research
 **Mevcut Durum:**

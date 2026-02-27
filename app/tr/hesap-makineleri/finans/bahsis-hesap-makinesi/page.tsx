@@ -9,7 +9,7 @@ import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Bahsis Hesap Makinesi 2026 - Restoran Bahsis Hesaplama",
-  description: "Restoran fişi üzerinden bahşiş ve kişi başı ödeme hesaplayın. %10, %15, %20 veya özel tutar. Ücretsiz bahşiş hesaplayıcı.",
+  description: "Bahşiş hesap makinesi: Restoran fişi üzerinden bahşiş tutarı ve kişi başı ödeme hesaplayın. %10, %15, %20 veya özel oran. Ücretsiz bahşiş hesaplama aracı.",
   keywords: [
     "bahsis hesaplama",
     "bahsis hesap makinesi",

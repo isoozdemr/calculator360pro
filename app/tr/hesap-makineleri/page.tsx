@@ -5,7 +5,7 @@ import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Tüm Hesap Makineleri 2026 | Vergi, Maaş, Kredi",
-  description: "2026 güncel vergi, maaş, kredi, BMI, kalori ve daha fazlası. Ücretsiz - anında hesaplayın. Hemen deneyin!",
+  description: "Tüm hesap makineleri 2026: vergi, maaş, kredi, konut kredisi, emeklilik, BMI, kalori, yüzde ve yaş hesaplama. Türkiye'ye özel ücretsiz araçlar. Anında hesaplayın.",
   keywords: [
     "hesap makinesi",
     "online hesap makinesi",

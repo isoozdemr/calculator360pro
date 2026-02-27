@@ -9,7 +9,7 @@ import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Kredi Kartı Borç Hesap Makinesi 2026 - Kapanma Süresi",
-  description: "Kredi kartı borcunuzun kapanma süresi ve toplam faiz maliyetini hesaplayın. Minimum ödeme ile karşılaştırın. Ücretsiz.",
+  description: "Kredi kartı borç hesap makinesi: Borcunuzun kapanma süresi ve toplam faiz maliyetini hesaplayın. Minimum ödeme ile karşılaştırın. Ücretsiz kredi kartı borç hesaplama.",
   keywords: [
     "kredi kartı borcu hesaplama",
     "kredi kartı borç kapanma süresi",

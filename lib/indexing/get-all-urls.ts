@@ -2,6 +2,7 @@ import { getAllCalculators } from "@/lib/calculators/definitions";
 import { getAllBlogPosts } from "@/lib/blog/posts";
 import { getAllBlogPostsTR } from "@/lib/blog/posts-tr";
 import { SITE_URL, getCategorySlugByKey, CALCULATOR_CATEGORIES, CalculatorCategory } from "@/lib/constants";
+import { TR_REHBERLER } from "@/lib/tr-rehberler";
 
 // Turkish calculator pages with their English equivalents
 const TURKISH_CALCULATORS = [
@@ -33,6 +34,9 @@ const TURKISH_CALCULATORS = [
   { category: "finans", slug: "bahsis-hesap-makinesi", enCategory: "finance", enSlug: "tip-calculator" },
   { category: "finans", slug: "enflasyon-alim-gucu-hesap-makinesi", enCategory: "finance", enSlug: "inflation-purchasing-power-calculator" },
   { category: "finans", slug: "bes-devlet-katkisi-hesap-makinesi", enCategory: "finance", enSlug: "retirement-calculator" },
+  { category: "finans", slug: "emlak-vergisi-hesap-makinesi", enCategory: "finance", enSlug: "tax-calculator" },
+  { category: "finans", slug: "prim-gunu-hesap-makinesi", enCategory: "finance", enSlug: "retirement-calculator" },
+  { category: "tarih-zaman", slug: "haftalik-calisma-saati-hesap-makinesi", enCategory: "date-time", enSlug: "hours-calculator" },
 ];
 
 // Turkish category mappings
@@ -102,13 +106,10 @@ export function getAllIndexableUrls(): string[] {
   urls.push("/tr/gizlilik-politikasi");
   urls.push("/tr/kullanim-kosullari");
 
-  // Resource/Guide pages (Turkish)
-  urls.push("/tr/rehberler/finansal-terimler-sozlugu");
-  urls.push("/tr/rehberler/vergi-takvimi-2026");
-  urls.push("/tr/rehberler/sgk-emeklilik-tablosu");
-  urls.push("/tr/rehberler/kredi-notu-nasil-yukseltilir");
-  urls.push("/tr/rehberler/vergi-indirimleri-rehberi-2026");
-  urls.push("/tr/rehberler/yatirim-baslangic-rehberi-2026");
+  // Resource/Guide pages (Turkish) – single source: TR_REHBERLER
+  TR_REHBERLER.forEach((rehber) => {
+    urls.push(`/tr/rehberler/${rehber.slug}`);
+  });
 
   // Guide pages (English) – index + listing
   urls.push("/guides");

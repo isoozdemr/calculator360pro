@@ -9,7 +9,7 @@ import { TurkeySavingsCalculator } from "@/components/calculators/tr";
 
 export const metadata: Metadata = {
   title: "Birikim Hesap Makinesi 2026 - Hedef Birikim Hesapla",
-  description: "Hedef birikime ulaşmak için aylık ne kadar birikim yapmalısınız? Faiz oranı ve vade ile ücretsiz hesaplayın.",
+  description: "Birikim hesap makinesi: Hedef birikime ulaşmak için aylık ne kadar tasarruf yapmalısınız? Faiz oranı ve vade ile hesaplayın. Ücretsiz birikim hesaplama aracı.",
   keywords: [
     "birikim hesaplama",
     "birikim hesap makinesi",

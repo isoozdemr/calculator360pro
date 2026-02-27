@@ -9,7 +9,7 @@ import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Vücut Yağ Oranı Hesap Makinesi 2026 - Yağ Oranı Hesaplama",
-  description: "Vücut yağ oranı tahmini hesaplayın. Yaş, cinsiyet, boy, kilo ve bel çevresi ile. BMI'dan farklı kompozisyon göstergesi.",
+  description: "Vücut yağ oranı hesap makinesi: Yaş, cinsiyet, boy, kilo ve bel çevresi ile vücut yağ yüzdesi tahmini. BMI'dan farklı kompozisyon göstergesi. Ücretsiz hesaplama.",
   keywords: [
     "vücut yağ oranı hesaplama",
     "vücut yağ oranı hesap makinesi",

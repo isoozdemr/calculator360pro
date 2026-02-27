@@ -8,7 +8,7 @@ import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 
 export const metadata: Metadata = {
   title: "Kalori Hesap Makinesi 2026 - BMH ve TDEE Hesapla",
-  description: "Günlük kalori ihtiyacınızı anında hesaplayın! BMH, TDEE ve makro önerileri. Kilo verme/alma için ücretsiz - deneyin.",
+  description: "Kalori hesap makinesi: Günlük kalori ihtiyacınızı BMH ve TDEE ile anında hesaplayın. Makro önerileri, kilo verme ve kilo alma hedefleri. Ücretsiz online kalori hesaplama - hemen deneyin.",
   keywords: [
     "kalori hesaplama",
     "günlük kalori ihtiyacı",

@@ -9,7 +9,7 @@ import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Yatırım Hesap Makinesi 2026 - Getiri Hesapla",
-  description: "Yatırım getirinizi anında hesaplayın. Bileşik getiri ile yatırım planlaması. Ücretsiz.",
+  description: "Yatırım hesap makinesi: Başlangıç ve aylık yatırımla getirinizi bileşik getiri ile hesaplayın. Yatırım planlaması ve hedef tutar. Ücretsiz yatırım getirisi hesaplama.",
   keywords: [
     "yatırım hesaplama",
     "yatırım getirisi",

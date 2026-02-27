@@ -8,7 +8,7 @@ import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Birim Çevirici 2026 - Uzunluk, Ağırlık, Hacim",
-  description: "Uzunluk, ağırlık, hacim, alan ve sıcaklık birim çevirme. Ücretsiz birim çevirici.",
+  description: "Birim çevirici: Uzunluk, ağırlık, hacim, alan ve sıcaklık birimleri arasında anında çeviri. Metrik ve imperial. Ücretsiz online birim çevirme aracı.",
   keywords: [
     "birim çevirici",
     "uzunluk çevirme",

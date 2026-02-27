@@ -9,7 +9,7 @@ import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Döviz Çevirici 2026 - USD, EUR, TRY Anında",
-  description: "USD, EUR, GBP, TRY ve 150+ para birimi arasında anında çeviri! Güncel kurlar. Ücretsiz - seyahat ve yatırım için hemen kullanın.",
+  description: "Döviz çevirici: USD, EUR, GBP, TRY ve 150+ para birimi arasında güncel kurlarla anında çeviri. Seyahat ve yatırım için ücretsiz döviz hesaplama - hemen kullanın.",
   keywords: [
     "döviz çevirici",
     "döviz kuru hesaplama",

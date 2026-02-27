@@ -4,7 +4,7 @@ import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Tarih ve Zaman Hesap Makineleri - Yaş Hesaplama",
-  description: "Ücretsiz tarih ve zaman hesap makineleri: Yaş hesaplama, gün hesaplama, tarih farkı bulma. Hızlı ve kolay kullanım.",
+  description: "Tarih ve zaman hesap makineleri: yaş hesaplama, tarih farkı, saat ve haftalık çalışma saati hesaplama. İki tarih arası gün ve iş günü. Ücretsiz araçlar.",
   keywords: [
     "yaş hesaplama",
     "tarih hesap makinesi",

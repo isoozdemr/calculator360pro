@@ -4,7 +4,7 @@ import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Finans Hesap Makineleri | Vergi, Maaş, Kredi Hesaplama",
-  description: "Türkiye'ye özel finans hesap makineleri. Vergi hesaplama, maaş hesaplama, konut kredisi, tüketici kredisi ve emeklilik hesaplama araçları.",
+  description: "Finans hesap makineleri: vergi, maaş, konut kredisi, tüketici kredisi, emeklilik ve BES hesaplama. 2026 güncel vergi dilimleri ve SGK oranları. Türkiye'ye özel ücretsiz araçlar.",
   keywords: [
     "finans hesap makineleri",
     "vergi hesaplama",

@@ -9,7 +9,7 @@ import { TurkeyBudgetCalculator } from "@/components/calculators/tr";
 
 export const metadata: Metadata = {
   title: "Bütçe Hesap Makinesi 2026 - Gelir Gider Dengesi",
-  description: "Aylık gelir ve giderlerinizi dengeleyin. Bütçe planı, tasarruf hedefi. Ücretsiz bütçe hesap makinesi - hemen kullanın!",
+  description: "Bütçe hesap makinesi: Aylık gelir ve giderlerinizi dengeleyin, tasarruf hedefi belirleyin. Gelir-gider analizi ve bütçe planı. Ücretsiz bütçe hesaplama aracı - hemen kullanın.",
   keywords: [
     "bütçe hesaplama",
     "bütçe hesap makinesi",
