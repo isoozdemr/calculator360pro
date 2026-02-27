@@ -28,7 +28,8 @@ export const URL_MAPPINGS: Record<string, string> = {
   "/privacy-policy": "/tr/gizlilik-politikasi",
   "/terms-of-service": "/tr/kullanim-kosullari",
   "/contact": "/tr/iletisim",
-  
+  "/guides": "/tr/rehberler",
+
   // Category pages
   "/calculators/finance": "/tr/hesap-makineleri/finans",
   "/calculators/health": "/tr/hesap-makineleri/saglik",

@@ -20,7 +20,8 @@
     "track:keywords": "node scripts/track-keywords-research.js",
     "check:freshness": "node scripts/check-content-freshness.js",
     "analyze:keywords": "node scripts/analyze-keywords-density.js",
-    "submit:urls": "tsx scripts/submit-all-urls-to-google.ts"
+    "submit:urls": "tsx scripts/submit-all-urls-to-google.ts",
+    "gsc:urls": "tsx scripts/print-sitemap-urls.ts"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^16.1.1",

@@ -169,6 +169,7 @@ export function getSitemapEntries(): MetadataRoute.Sitemap {
 
   const guidesAlt = { en: "/guides", tr: "/tr/rehberler", "x-default": "/guides" };
   urls.push(entry("/guides", now, "weekly", 0.6, guidesAlt));
+  urls.push(entry("/tr/rehberler", now, "weekly", 0.6, guidesAlt));
 
   const privacyAlt = { en: "/privacy-policy", tr: "/tr/gizlilik-politikasi", "x-default": "/privacy-policy" };
   urls.push(entry("/privacy-policy", now, "yearly", 0.3, privacyAlt));

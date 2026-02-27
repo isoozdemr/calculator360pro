@@ -40,3 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# GSC: generated list for comparing with Search Console
+sitemap-urls.txt

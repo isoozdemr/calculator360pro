@@ -96,11 +96,44 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  // 301 redirects: add entries when URLs are changed (e.g. slug or category rename)
+  // 301 redirects: common fixes + GSC env vars (see .env.example)
   async redirects() {
-    return [
-      // Example: { source: "/old-path", destination: "https://calculator360pro.com/new-path", permanent: true },
-    ];
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://calculator360pro.com";
+    const redirects: { source: string; destination: string; permanent: boolean }[] = [];
+
+    // Yaygın yanlış/eski linkler (GSC 404 / yönlendirmeli sayfa için)
+    redirects.push({ source: "/guide", destination: "/guides", permanent: true });
+    redirects.push({ source: "/calculator", destination: "/calculators", permanent: true });
+    redirects.push({ source: "/tr/guide", destination: "/tr/rehberler", permanent: true });
+    redirects.push({ source: "/guides/", destination: "/guides", permanent: true });
+    redirects.push({ source: "/tr/rehberler/", destination: "/tr/rehberler", permanent: true });
+
+    const toPath = (v: string) => { const p = (v.replace(baseUrl, "").trim() || v); return p.startsWith("/") ? p : "/" + p; };
+    const toDest = (v: string) => (v.startsWith("http") ? v : `${baseUrl}${v.startsWith("/") ? v : "/" + v}`);
+
+    // 404: GSC → "Bulunamadı (404)" → GSC_REDIRECT_404_SOURCE + GSC_REDIRECT_404_DEST
+    if (process.env.GSC_REDIRECT_404_SOURCE && process.env.GSC_REDIRECT_404_DEST) {
+      redirects.push({
+        source: toPath(process.env.GSC_REDIRECT_404_SOURCE),
+        destination: toDest(process.env.GSC_REDIRECT_404_DEST),
+        permanent: true,
+      });
+    }
+
+    // Redirected (3): GSC → "Yönlendirmeli sayfa" → set GSC_REDIRECT_1_SOURCE/DEST, _2_, _3_
+    for (let i = 1; i <= 3; i++) {
+      const src = process.env[`GSC_REDIRECT_${i}_SOURCE`];
+      const dest = process.env[`GSC_REDIRECT_${i}_DEST`];
+      if (src && dest) {
+        redirects.push({
+          source: toPath(src),
+          destination: toDest(dest),
+          permanent: true,
+        });
+      }
+    }
+
+    return redirects;
   },
 };
 
