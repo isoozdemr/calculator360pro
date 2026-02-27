@@ -24,6 +24,16 @@ function formatDate(date: Date): string {
   return date.toISOString();
 }
 
+/** Escape text for safe use inside XML (e.g. image:title, image:caption). */
+function escapeXml(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
 function generateImageSitemapXML(): string {
   const calculators = getAllCalculators();
   const now = new Date();
@@ -34,7 +44,7 @@ function generateImageSitemapXML(): string {
   // Homepage OG image
   urls.push(`
   <url>
-    <loc>${SITE_URL}</loc>
+    <loc>${escapeXml(SITE_URL)}</loc>
     <image:image>
       <image:loc>${SITE_URL}/og-image.png</image:loc>
       <image:title>Calculator360Pro - Free Online Calculators</image:title>
@@ -45,11 +55,11 @@ function generateImageSitemapXML(): string {
   // Turkish homepage OG image
   urls.push(`
   <url>
-    <loc>${SITE_URL}/tr</loc>
+    <loc>${escapeXml(SITE_URL + "/tr")}</loc>
     <image:image>
       <image:loc>${SITE_URL}/og-image.png</image:loc>
       <image:title>Calculator360Pro - Ücretsiz Online Hesap Makineleri</image:title>
-      <image:caption>Türkiye'ye özel ücretsiz online hesap makineleri. 2026 güncel veriler ile doğru hesaplamalar.</image:caption>
+      <image:caption>${escapeXml("Türkiye'ye özel ücretsiz online hesap makineleri. 2026 güncel veriler ile doğru hesaplamalar.")}</image:caption>
     </image:image>
   </url>`);
 
@@ -59,11 +69,11 @@ function generateImageSitemapXML(): string {
     const enPath = `${SITE_URL}/calculators/${categorySlug}/${calc.slug}`;
     urls.push(`
   <url>
-    <loc>${enPath}</loc>
+    <loc>${escapeXml(enPath)}</loc>
     <image:image>
       <image:loc>${SITE_URL}/og-image.png</image:loc>
-      <image:title>${calc.name} - Calculator360Pro</image:title>
-      <image:caption>${calc.description}</image:caption>
+      <image:title>${escapeXml(calc.name + " - Calculator360Pro")}</image:title>
+      <image:caption>${escapeXml(calc.description)}</image:caption>
     </image:image>
   </url>`);
   });
@@ -73,7 +83,7 @@ function generateImageSitemapXML(): string {
     const trPath = `${SITE_URL}/tr/hesap-makineleri/${calc.category}/${calc.slug}`;
     urls.push(`
   <url>
-    <loc>${trPath}</loc>
+    <loc>${escapeXml(trPath)}</loc>
     <image:image>
       <image:loc>${SITE_URL}/og-image.png</image:loc>
       <image:title>Hesap Makinesi - Calculator360Pro</image:title>
