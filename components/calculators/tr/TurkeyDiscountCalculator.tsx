@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { formatPercent } from "@/lib/format/locale-format";
 import { validateField, COMMON_RULES } from "@/lib/validation/rules";
 
 export function TurkeyDiscountCalculator() {
@@ -144,7 +145,7 @@ export function TurkeyDiscountCalculator() {
                   Tasarruf Oranı
                 </p>
                 <p className="text-2xl font-bold text-[#10b981] font-mono">
-                  %{result.savingsPercentage.toFixed(1)}
+                  {formatPercent(result.savingsPercentage, "tr", { maxFractionDigits: 1 })}
                 </p>
               </div>
             </div>

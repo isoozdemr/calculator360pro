@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { formatNumber } from "@/lib/format/locale-format";
 import { validateField, COMMON_RULES } from "@/lib/validation/rules";
 
 const formatTL = (value: number) =>
@@ -174,7 +175,7 @@ export function TurkeyCreditCardPayoffCalculator() {
                 <p className="text-3xl font-bold text-[#10b981] font-mono">
                   {result.payoffTime < 12
                     ? `${result.payoffTime} ${result.payoffTime === 1 ? "ay" : "ay"}`
-                    : `${(result.payoffTime / 12).toFixed(1)} yıl`}
+                    : `${formatNumber(result.payoffTime / 12, "tr", { maxFractionDigits: 1 })} yıl`}
                 </p>
               </div>
               <div>

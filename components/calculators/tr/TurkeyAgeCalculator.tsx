@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { formatNumber } from "@/lib/format/locale-format";
 
 // Türkçe burç isimleri
 const BURCLAR = [
@@ -184,7 +185,7 @@ export function TurkeyAgeCalculator() {
                 </div>
                 <div className="text-center">
                   <p className="text-3xl font-bold text-[#10b981] font-mono">
-                    {age.weeks.toLocaleString("tr-TR")}
+                    {formatNumber(age.weeks, "tr", { maxFractionDigits: 0 })}
                   </p>
                   <p className="text-sm text-[#64748b] mt-1">
                     Hafta
@@ -192,7 +193,7 @@ export function TurkeyAgeCalculator() {
                 </div>
                 <div className="text-center">
                   <p className="text-3xl font-bold text-[#10b981] font-mono">
-                    {age.totalDays.toLocaleString("tr-TR")}
+                    {formatNumber(age.totalDays, "tr", { maxFractionDigits: 0 })}
                   </p>
                   <p className="text-sm text-[#64748b] mt-1">
                     Gün
@@ -207,11 +208,11 @@ export function TurkeyAgeCalculator() {
                 <ul className="space-y-2 text-sm text-[#64748b]">
                   <li className="flex justify-between">
                     <span>Toplam Ay:</span>
-                    <span className="font-medium text-[#1e293b]">{age.totalMonths.toLocaleString("tr-TR")}</span>
+                    <span className="font-medium text-[#1e293b]">{formatNumber(age.totalMonths, "tr", { maxFractionDigits: 0 })}</span>
                   </li>
                   <li className="flex justify-between">
                     <span>Toplam Saat:</span>
-                    <span className="font-medium text-[#1e293b]">{age.totalHours.toLocaleString("tr-TR")}</span>
+                    <span className="font-medium text-[#1e293b]">{formatNumber(age.totalHours, "tr", { maxFractionDigits: 0 })}</span>
                   </li>
                   <li className="flex justify-between">
                     <span>Doğduğunuz Gün:</span>

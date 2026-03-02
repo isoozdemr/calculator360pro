@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { validateField, COMMON_RULES } from "@/lib/validation/rules";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatNumber } from "@/lib/format/locale-format";
 
 const ACTIVITY_LEVELS = [
   { value: "sedentary", label: "Sedentary (little or no exercise)", labelTr: "Hareketsiz (az veya hiç egzersiz)", factor: 1 },
@@ -60,18 +60,15 @@ export function WaterIntakeCalculator({ locale: localeProp = "en" }: { locale?: 
     <div className="w-full max-w-2xl mx-auto space-y-6">
       <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6 space-y-6">
         <div className="space-y-4">
-          <Input
+          <FormattedNumberInput
             label={isTr ? "Vücut Ağırlığı (kg)" : "Body Weight (kg)"}
-            type="number"
             value={weightKg}
-            onChange={(e) => { setWeightKg(e.target.value); setWeightError(null); }}
-            onBlur={() => setWeightError(validateField(weightKg, COMMON_RULES.positiveNumber))}
-            placeholder={isTr ? "örn. 70" : "e.g. 70"}
+            onChange={(v) => { setWeightKg(v); setWeightError(null); }}
+            locale={locale}
+            formatAs="number"
+            maxFractionDigits={1}
             error={weightError || undefined}
             helperText={isTr ? "Mevcut kilonuz (kg)" : "Your current weight in kilograms"}
-            step="1"
-            min="1"
-            max="300"
           />
           <div>
             <label className="block text-sm font-medium text-[#1e293b] mb-2">{isTr ? "Aktivite düzeyi" : "Activity level"}</label>
@@ -116,8 +113,8 @@ export function WaterIntakeCalculator({ locale: localeProp = "en" }: { locale?: 
           <div className="result-container bg-[#f0fdf4] border-2 border-[#10b981] rounded-lg p-6 space-y-4">
             <h3 className="text-lg font-semibold text-[#1e293b]">{isTr ? "Günlük su tüketimi" : "Daily water intake"}</h3>
             <div className="space-y-2">
-              <p className="text-3xl font-bold text-[#10b981] font-mono">{result.ml.toLocaleString(isTr ? "tr-TR" : "en-US")} ml</p>
-              <p className="text-lg text-[#64748b]">{isTr ? `yaklaşık ${result.cups} bardak (250 ml / bardak)` : `about ${result.cups} cups (250 ml per cup)`}</p>
+              <p className="text-3xl font-bold text-[#10b981] font-mono">{formatNumber(result.ml, locale, { maxFractionDigits: 0 })} ml</p>
+              <p className="text-lg text-[#64748b]">{isTr ? `yaklaşık ${formatNumber(result.cups, locale, { maxFractionDigits: 0 })} bardak (250 ml / bardak)` : `about ${formatNumber(result.cups, locale, { maxFractionDigits: 0 })} cups (250 ml per cup)`}</p>
               <p className="text-sm text-[#64748b]">{isTr ? "Gün içine yayın. Susuzluk ve aktiviteye göre ayarlayın." : "Spread throughout the day. Adjust for thirst and activity."}</p>
             </div>
           </div>

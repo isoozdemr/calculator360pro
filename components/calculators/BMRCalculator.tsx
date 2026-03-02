@@ -2,8 +2,8 @@
 
 import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { validateField, COMMON_RULES } from "@/lib/validation/rules";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatNumber } from "@/lib/format/locale-format";
 
 /** Mifflin-St Jeor: BMR (kcal/day). Weight in kg, height in cm. */
 function mifflinStJeor(gender: "male" | "female", age: number, weightKg: number, heightCm: number): number {
@@ -16,7 +16,8 @@ function mifflinStJeor(gender: "male" | "female", age: number, weightKg: number,
 type Locale = "en" | "tr";
 
 export function BMRCalculator({ locale: localeProp = "en" }: { locale?: Locale }) {
-  const isTr = localeProp === "tr";
+  const locale = localeProp;
+  const isTr = locale === "tr";
   const [gender, setGender] = useState<"male" | "female">("male");
   const [age, setAge] = useState("");
   const [weight, setWeight] = useState("");
@@ -28,42 +29,64 @@ export function BMRCalculator({ locale: localeProp = "en" }: { locale?: Locale }
   const [heightError, setHeightError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
-  const weightRule = unit === "metric" ? COMMON_RULES.weightKg : COMMON_RULES.weightLbs;
-  const heightRule = unit === "metric" ? COMMON_RULES.heightCm : { required: true, min: 20, max: 120, custom: { validate: (v: string) => { const n = parseFloat(v); return !isNaN(n) && n >= 20 && n <= 120; }, message: "Height must be between 20 and 120 inches" } };
-
   const calculate = useCallback(() => {
-    const aErr = validateField(age, COMMON_RULES.age);
-    const wErr = validateField(weight, weightRule);
-    const hErr = validateField(height, heightRule);
-    setAgeError(aErr);
-    setWeightError(wErr);
-    setHeightError(hErr);
-    if (aErr || wErr || hErr) {
+    const ageVal = parseLocaleNumber(age, locale);
+    const weightVal = parseLocaleNumber(weight, locale);
+    const heightVal = parseLocaleNumber(height, locale);
+
+    if (ageVal == null || ageVal < 15 || ageVal > 120 || !Number.isInteger(ageVal)) {
+      setAgeError(isTr ? "15–120 arası tam sayı girin" : "Enter an integer between 15 and 120");
       setResult(null);
       return;
     }
-    const ageVal = parseInt(age, 10);
+    if (unit === "metric") {
+      if (weightVal == null || weightVal < 20 || weightVal > 300) {
+        setWeightError(isTr ? "20–300 kg arası girin" : "Enter between 20 and 300 kg");
+        setResult(null);
+        return;
+      }
+      if (heightVal == null || heightVal < 100 || heightVal > 250) {
+        setHeightError(isTr ? "100–250 cm arası girin" : "Enter between 100 and 250 cm");
+        setResult(null);
+        return;
+      }
+    } else {
+      if (weightVal == null || weightVal < 44 || weightVal > 660) {
+        setWeightError(isTr ? "44–660 lb arası girin" : "Enter between 44 and 660 lb");
+        setResult(null);
+        return;
+      }
+      if (heightVal == null || heightVal < 39 || heightVal > 98) {
+        setHeightError(isTr ? "39–98 inç arası girin" : "Enter between 39 and 98 inches");
+        setResult(null);
+        return;
+      }
+    }
+    setAgeError(null);
+    setWeightError(null);
+    setHeightError(null);
+
     let weightKg: number;
     let heightCm: number;
     if (unit === "metric") {
-      weightKg = parseFloat(weight);
-      heightCm = parseFloat(height);
+      weightKg = weightVal!;
+      heightCm = heightVal!;
     } else {
-      weightKg = parseFloat(weight) * 0.453592;
-      heightCm = parseFloat(height) * 2.54;
+      weightKg = weightVal! * 0.453592;
+      heightCm = heightVal! * 2.54;
     }
-    const bmr = Math.round(mifflinStJeor(gender, ageVal, weightKg, heightCm));
+    const bmr = Math.round(mifflinStJeor(gender, Math.round(ageVal), weightKg, heightCm));
     setResult(Math.max(0, bmr));
-  }, [age, weight, height, unit, gender, weightRule, heightRule]);
+  }, [age, weight, height, unit, gender, locale]);
 
   const copyResult = useCallback(() => {
     if (result == null) return;
     const suffix = isTr ? " kcal/gün" : " kcal/day";
-    void navigator.clipboard.writeText(`${result}${suffix}`).then(() => {
+    void navigator.clipboard.writeText(`${formatNumber(result, locale, { maxFractionDigits: 0 })}${suffix}`).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     });
-  }, [result, isTr]);
+  }, [result, isTr, locale]);
 
   const reset = useCallback(() => {
     setAge("");
@@ -126,38 +149,32 @@ export function BMRCalculator({ locale: localeProp = "en" }: { locale?: Locale }
           </div>
         </div>
 
-        <Input
+        <FormattedNumberInput
           label={isTr ? "Yaş (yıl)" : "Age (years)"}
-          type="number"
           value={age}
-          onChange={(e) => { setAge(e.target.value); setAgeError(null); }}
-          placeholder="e.g. 30"
+          onChange={(v) => { setAge(v); setAgeError(null); }}
+          locale={locale}
+          formatAs="number"
+          maxFractionDigits={0}
           error={ageError || undefined}
-          min={15}
-          max={120}
-          step={1}
         />
-        <Input
+        <FormattedNumberInput
           label={unit === "metric" ? (isTr ? "Kilo (kg)" : "Weight (kg)") : (isTr ? "Kilo (lb)" : "Weight (lb)")}
-          type="number"
           value={weight}
-          onChange={(e) => { setWeight(e.target.value); setWeightError(null); }}
-          placeholder={unit === "metric" ? (isTr ? "örn. 70" : "e.g. 70") : (isTr ? "örn. 154" : "e.g. 154")}
+          onChange={(v) => { setWeight(v); setWeightError(null); }}
+          locale={locale}
+          formatAs="number"
+          maxFractionDigits={1}
           error={weightError || undefined}
-          min={unit === "metric" ? 20 : 44}
-          max={unit === "metric" ? 300 : 660}
-          step={0.1}
         />
-        <Input
+        <FormattedNumberInput
           label={unit === "metric" ? (isTr ? "Boy (cm)" : "Height (cm)") : (isTr ? "Boy (inç)" : "Height (inches)")}
-          type="number"
           value={height}
-          onChange={(e) => { setHeight(e.target.value); setHeightError(null); }}
-          placeholder={unit === "metric" ? (isTr ? "örn. 175" : "e.g. 175") : (isTr ? "örn. 69" : "e.g. 69")}
+          onChange={(v) => { setHeight(v); setHeightError(null); }}
+          locale={locale}
+          formatAs="number"
+          maxFractionDigits={1}
           error={heightError || undefined}
-          min={unit === "metric" ? 100 : 39}
-          max={unit === "metric" ? 250 : 98}
-          step={0.1}
         />
 
         <div className="flex flex-wrap gap-3">
@@ -179,7 +196,7 @@ export function BMRCalculator({ locale: localeProp = "en" }: { locale?: Locale }
         >
           <p className="text-sm text-[#94a3b8] mb-2">{isTr ? "BMR (Bazal Metabolizma Hızı)" : "Your BMR (Basal Metabolic Rate)"}</p>
           <p className="text-2xl md:text-3xl font-bold mb-2">
-            <span className="text-[#93c5fd]">{result}</span> {isTr ? "kcal/gün" : "kcal/day"}
+            <span className="text-[#93c5fd]">{formatNumber(result, locale, { maxFractionDigits: 0 })}</span> {isTr ? "kcal/gün" : "kcal/day"}
           </p>
           <p className="text-sm text-[#94a3b8] mb-3">
             {isTr ? "Vücudunuz dinlenirken hayati fonksiyonları sürdürmek için yaktığı kalori. Aktivite dahil değildir." : "Calories your body burns at rest to maintain vital functions. This does not include activity."}

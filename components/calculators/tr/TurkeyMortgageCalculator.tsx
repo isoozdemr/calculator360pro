@@ -7,6 +7,7 @@ import {
   MORTGAGE_FEES_2026,
   DATA_VERSION,
 } from "@/lib/data/turkey-2026-data";
+import { formatPercent } from "@/lib/format/locale-format";
 
 interface MortgageFormData {
   propertyValue: number;
@@ -99,7 +100,7 @@ export function TurkeyMortgageCalculator() {
   };
 
   const ltvRatio = propertyValue && downPayment 
-    ? ((propertyValue - downPayment) / propertyValue * 100).toFixed(1) 
+    ? formatPercent((propertyValue - downPayment) / propertyValue * 100, "tr", { maxFractionDigits: 1 }) 
     : "0";
 
   return (
@@ -235,7 +236,7 @@ export function TurkeyMortgageCalculator() {
             <div className="bg-green-50 p-4 rounded-lg border border-green-200">
               <p className="text-sm text-green-600">Efektif Faiz</p>
               <p className="text-2xl font-bold text-green-700">
-                %{result.effectiveRate.toFixed(2)}
+                {formatPercent(result.effectiveRate, "tr", { maxFractionDigits: 2 })}
               </p>
             </div>
           </div>

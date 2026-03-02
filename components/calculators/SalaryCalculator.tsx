@@ -2,10 +2,14 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { validateField, COMMON_RULES } from "@/lib/validation/rules";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatCurrency } from "@/lib/format/locale-format";
 
-export function SalaryCalculator() {
+type Locale = "en" | "tr";
+
+export function SalaryCalculator({ locale: localeProp = "en" }: { locale?: Locale } = {}) {
+  const locale = localeProp;
+  const isTr = locale === "tr";
   const [salary, setSalary] = useState("");
   const [payFrequency, setPayFrequency] = useState<"annual" | "monthly" | "hourly">("annual");
   const [hoursPerWeek, setHoursPerWeek] = useState("40");
@@ -16,63 +20,43 @@ export function SalaryCalculator() {
     hourly: number;
     takeHome: number;
   } | null>(null);
-  
-  // Error states
   const [salaryError, setSalaryError] = useState<string | null>(null);
   const [hoursError, setHoursError] = useState<string | null>(null);
 
-  const handleSalaryChange = (value: string) => {
-    setSalary(value);
-    if (salaryError) setSalaryError(null);
-  };
-
-  const handleHoursChange = (value: string) => {
-    setHoursPerWeek(value);
-    if (hoursError) setHoursError(null);
-  };
-
   const calculate = () => {
-    const salaryErr = validateField(salary, COMMON_RULES.positiveNumber);
-    const hoursErr = payFrequency === "hourly" 
-      ? validateField(hoursPerWeek, COMMON_RULES.hoursPerWeek)
-      : null;
+    const salaryVal = parseLocaleNumber(salary, locale);
+    const hoursVal = payFrequency === "hourly" ? parseLocaleNumber(hoursPerWeek, locale) : 40;
 
-    if (salaryErr || hoursErr) {
-      setSalaryError(salaryErr);
-      setHoursError(hoursErr);
+    if (salaryVal == null || salaryVal <= 0) {
+      setSalaryError(isTr ? "Pozitif tutar girin" : "Enter a positive amount");
+      setResult(null);
       return;
     }
+    if (payFrequency === "hourly" && (hoursVal == null || hoursVal < 1 || hoursVal > 168)) {
+      setHoursError(isTr ? "Haftalık 1–168 saat girin" : "Enter 1–168 hours per week");
+      setResult(null);
+      return;
+    }
+    setSalaryError(null);
+    setHoursError(null);
 
     let annualSalary = 0;
-
     if (payFrequency === "annual") {
-      annualSalary = parseFloat(salary);
+      annualSalary = salaryVal;
     } else if (payFrequency === "monthly") {
-      annualSalary = parseFloat(salary) * 12;
-    } else if (payFrequency === "hourly") {
-      const hourly = parseFloat(salary);
-      const hours = parseFloat(hoursPerWeek) || 40;
-      annualSalary = hourly * hours * 52;
+      annualSalary = salaryVal * 12;
+    } else {
+      const hours = hoursVal ?? 40;
+      annualSalary = salaryVal * hours * 52;
     }
 
-    if (!isNaN(annualSalary) && annualSalary > 0) {
-      const monthly = annualSalary / 12;
-      const weekly = annualSalary / 52;
-      const hours = parseFloat(hoursPerWeek) || 40;
-      const hourly = annualSalary / (hours * 52);
+    const monthly = annualSalary / 12;
+    const weekly = annualSalary / 52;
+    const hours = hoursVal ?? 40;
+    const hourly = annualSalary / (hours * 52);
+    const takeHome = annualSalary * 0.8;
 
-      // Simplified tax calculation (estimate 20% for federal + state)
-      const estimatedTaxRate = 0.2;
-      const takeHome = annualSalary * (1 - estimatedTaxRate);
-
-      setResult({
-        annual: annualSalary,
-        monthly,
-        weekly,
-        hourly,
-        takeHome,
-      });
-    }
+    setResult({ annual: annualSalary, monthly, weekly, hourly, takeHome });
   };
 
   const reset = () => {
@@ -126,65 +110,47 @@ export function SalaryCalculator() {
             </div>
           </div>
 
-          <Input
+          <FormattedNumberInput
             label={
               payFrequency === "annual"
-                ? "Annual Salary ($)"
+                ? (isTr ? "Yıllık Maaş ($)" : "Annual Salary ($)")
                 : payFrequency === "monthly"
-                ? "Monthly Salary ($)"
-                : "Hourly Wage ($)"
+                ? (isTr ? "Aylık Maaş ($)" : "Monthly Salary ($)")
+                : (isTr ? "Saatlik Ücret ($)" : "Hourly Wage ($)")
             }
-            type="number"
             value={salary}
-            onChange={(e) => handleSalaryChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(salary, COMMON_RULES.positiveNumber);
-              setSalaryError(error);
-            }}
-            placeholder={
-              payFrequency === "annual"
-                ? "Enter annual salary (e.g., 75000)"
-                : payFrequency === "monthly"
-                ? "Enter monthly salary (e.g., 6250)"
-                : "Enter hourly wage (e.g., 25)"
-            }
+            onChange={(v) => { setSalary(v); setSalaryError(null); }}
+            locale={locale}
+            formatAs="currency"
             error={salaryError || undefined}
             helperText={
               payFrequency === "annual"
-                ? "Enter your annual salary"
+                ? (isTr ? "Yıllık maaşınızı girin" : "Enter your annual salary")
                 : payFrequency === "monthly"
-                ? "Enter your monthly salary"
-                : "Enter your hourly wage"
+                ? (isTr ? "Aylık maaşınızı girin" : "Enter your monthly salary")
+                : (isTr ? "Saatlik ücretinizi girin" : "Enter your hourly wage")
             }
-            step={payFrequency === "hourly" ? "0.01" : "1000"}
-            min="0.01"
           />
 
           {payFrequency === "hourly" && (
-            <Input
-              label="Hours Per Week"
-              type="number"
+            <FormattedNumberInput
+              label={isTr ? "Haftalık Saat" : "Hours Per Week"}
               value={hoursPerWeek}
-              onChange={(e) => handleHoursChange(e.target.value)}
-              onBlur={() => {
-                const error = validateField(hoursPerWeek, COMMON_RULES.hoursPerWeek);
-                setHoursError(error);
-              }}
-              placeholder="Enter hours per week (e.g., 40)"
+              onChange={(v) => { setHoursPerWeek(v); setHoursError(null); }}
+              locale={locale}
+              formatAs="number"
+              maxFractionDigits={0}
               error={hoursError || undefined}
-              helperText="Enter the number of hours you work per week"
-              step="1"
-              min="1"
-              max="168"
+              helperText={isTr ? "Haftalık çalışma saatinizi girin" : "Enter the number of hours you work per week"}
             />
           )}
 
           <div className="flex gap-3">
             <Button onClick={calculate} className="flex-1">
-              Calculate
+              {isTr ? "Hesapla" : "Calculate"}
             </Button>
             <Button onClick={reset} variant="outline">
-              Reset
+              {isTr ? "Sıfırla" : "Reset"}
             </Button>
           </div>
         </div>
@@ -192,40 +158,40 @@ export function SalaryCalculator() {
         {result && (
           <div className="result-container bg-[#f0fdf4] border-2 border-[#10b981] rounded-lg p-6 space-y-4">
             <h3 className="text-lg font-semibold text-[#1e293b]">
-              Salary Breakdown
+              {isTr ? "Maaş Dağılımı" : "Salary Breakdown"}
             </h3>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-sm text-[#64748b]">Annual</p>
+                <p className="text-sm text-[#64748b]">{isTr ? "Yıllık" : "Annual"}</p>
                 <p className="text-xl font-bold text-[#10b981] font-mono">
-                  ${result.annual.toFixed(2)}
+                  {formatCurrency(result.annual, locale)}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-[#64748b]">Monthly</p>
+                <p className="text-sm text-[#64748b]">{isTr ? "Aylık" : "Monthly"}</p>
                 <p className="text-xl font-bold text-[#10b981] font-mono">
-                  ${result.monthly.toFixed(2)}
+                  {formatCurrency(result.monthly, locale)}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-[#64748b]">Weekly</p>
+                <p className="text-sm text-[#64748b]">{isTr ? "Haftalık" : "Weekly"}</p>
                 <p className="text-xl font-bold text-[#10b981] font-mono">
-                  ${result.weekly.toFixed(2)}
+                  {formatCurrency(result.weekly, locale)}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-[#64748b]">Hourly</p>
+                <p className="text-sm text-[#64748b]">{isTr ? "Saatlik" : "Hourly"}</p>
                 <p className="text-xl font-bold text-[#10b981] font-mono">
-                  ${result.hourly.toFixed(2)}
+                  {formatCurrency(result.hourly, locale)}
                 </p>
               </div>
             </div>
             <div className="pt-4 border-t border-[#10b981]/30">
               <p className="text-sm text-[#64748b]">
-                Estimated Take-Home (after ~20% taxes)
+                {isTr ? "Tahmini net (yaklaşık %20 vergi sonrası)" : "Estimated Take-Home (after ~20% taxes)"}
               </p>
               <p className="text-2xl font-bold text-[#10b981] font-mono">
-                ${result.takeHome.toFixed(2)}/year
+                {formatCurrency(result.takeHome, locale)}/year
               </p>
             </div>
           </div>

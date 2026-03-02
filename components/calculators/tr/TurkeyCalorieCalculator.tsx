@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { formatNumber } from "@/lib/format/locale-format";
 
 export function TurkeyCalorieCalculator() {
   const [age, setAge] = useState("");
@@ -295,7 +296,7 @@ export function TurkeyCalorieCalculator() {
                   TDEE (Günlük Toplam Enerji Harcaması)
                 </p>
                 <p className="text-3xl font-bold text-[#10b981] font-mono">
-                  {result.tdee.toFixed(0)} kalori/gün
+                  {formatNumber(result.tdee, "tr", { maxFractionDigits: 0 })} kalori/gün
                 </p>
                 <p className="text-xs text-[#64748b] mt-1">
                   Aktivite dahil yakılan toplam kalori
@@ -306,7 +307,7 @@ export function TurkeyCalorieCalculator() {
                   Günlük Kalori Hedefi ({goal === "lose" ? "Kilo Verme" : goal === "gain" ? "Kilo Alma" : "Koruma"})
                 </p>
                 <p className="text-3xl font-bold text-[#10b981] font-mono">
-                  {result.dailyCalories.toFixed(0)} kalori/gün
+                  {formatNumber(result.dailyCalories, "tr", { maxFractionDigits: 0 })} kalori/gün
                 </p>
               </div>
               <div className="pt-3 border-t border-[#10b981]/30">
@@ -316,15 +317,15 @@ export function TurkeyCalorieCalculator() {
                 <div className="grid grid-cols-3 gap-3">
                   <div className="bg-white rounded-lg p-3 text-center">
                     <p className="text-xs text-[#64748b]">Protein</p>
-                    <p className="text-lg font-bold text-[#1e293b]">{result.protein.toFixed(0)}g</p>
+                    <p className="text-lg font-bold text-[#1e293b]">{formatNumber(result.protein, "tr", { maxFractionDigits: 0 })}g</p>
                   </div>
                   <div className="bg-white rounded-lg p-3 text-center">
                     <p className="text-xs text-[#64748b]">Karbonhidrat</p>
-                    <p className="text-lg font-bold text-[#1e293b]">{result.carbs.toFixed(0)}g</p>
+                    <p className="text-lg font-bold text-[#1e293b]">{formatNumber(result.carbs, "tr", { maxFractionDigits: 0 })}g</p>
                   </div>
                   <div className="bg-white rounded-lg p-3 text-center">
                     <p className="text-xs text-[#64748b]">Yağ</p>
-                    <p className="text-lg font-bold text-[#1e293b]">{result.fat.toFixed(0)}g</p>
+                    <p className="text-lg font-bold text-[#1e293b]">{formatNumber(result.fat, "tr", { maxFractionDigits: 0 })}g</p>
                   </div>
                 </div>
               </div>

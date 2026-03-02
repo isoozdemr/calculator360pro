@@ -3,8 +3,13 @@
 import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { formatNumber } from "@/lib/format/locale-format";
 
-export function PregnancyCalculator() {
+type Locale = "en" | "tr";
+
+export function PregnancyCalculator({ locale: localeProp = "en" }: { locale?: Locale } = {}) {
+  const locale = localeProp;
+  const isTr = locale === "tr";
   const [lmpDate, setLmpDate] = useState("");
   const [result, setResult] = useState<{
     dueDate: Date;
@@ -13,32 +18,23 @@ export function PregnancyCalculator() {
     trimester: string;
     daysRemaining: number;
   } | null>(null);
-  
   const [lmpDateError, setLmpDateError] = useState<string | null>(null);
 
-  const handleLmpDateChange = useCallback((value: string) => {
-    setLmpDate(value);
-    if (lmpDateError) setLmpDateError(null);
-  }, [lmpDateError]);
-
   const calculate = useCallback(() => {
-    if (!lmpDate) {
-      setLmpDateError("Last menstrual period date is required");
+    if (!lmpDate?.trim()) {
+      setLmpDateError(isTr ? "Son adet tarihi girin" : "Last menstrual period date is required");
       return;
     }
-
     const lmp = new Date(lmpDate);
     if (isNaN(lmp.getTime())) {
-      setLmpDateError("Invalid date");
+      setLmpDateError(isTr ? "Geçerli bir tarih girin" : "Invalid date");
       return;
     }
-
     const today = new Date();
     if (lmp > today) {
-      setLmpDateError("LMP date cannot be in the future");
+      setLmpDateError(isTr ? "Son adet tarihi gelecekte olamaz" : "LMP date cannot be in the future");
       return;
     }
-
     setLmpDateError(null);
 
     // Calculate due date: LMP + 280 days (40 weeks)
@@ -65,7 +61,7 @@ export function PregnancyCalculator() {
       trimester,
       daysRemaining,
     });
-  }, [lmpDate]);
+  }, [lmpDate, isTr]);
 
   const reset = useCallback(() => {
     setLmpDate("");
@@ -78,12 +74,12 @@ export function PregnancyCalculator() {
       <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6 space-y-6">
         <div className="space-y-4">
           <Input
-            label="Last Menstrual Period (LMP) Date"
+            label={isTr ? "Son Adet Tarihi (SAT)" : "Last Menstrual Period (LMP) Date"}
             type="date"
             value={lmpDate}
-            onChange={(e) => handleLmpDateChange(e.target.value)}
+            onChange={(e) => { setLmpDate(e.target.value); setLmpDateError(null); }}
             error={lmpDateError || undefined}
-            helperText="Enter the first day of your last menstrual period"
+            helperText={isTr ? "Son adetinizin ilk gününü girin" : "Enter the first day of your last menstrual period"}
           />
 
           <div className="flex gap-3">
@@ -99,44 +95,43 @@ export function PregnancyCalculator() {
         {result && (
           <div className="result-container bg-[#f0fdf4] border-2 border-[#10b981] rounded-lg p-6 space-y-4">
             <h3 className="text-lg font-semibold text-[#1e293b]">
-              Pregnancy Information
+              {isTr ? "Gebelik Bilgisi" : "Pregnancy Information"}
             </h3>
             <div className="space-y-4">
               <div>
-                <p className="text-sm text-[#64748b]">Estimated Due Date</p>
+                <p className="text-sm text-[#64748b]">{isTr ? "Tahmini Doğum Tarihi" : "Estimated Due Date"}</p>
                 <p className="text-2xl font-bold text-[#10b981] font-mono">
-                  {result.dueDate.toLocaleDateString("en-US", { 
-                    year: "numeric", 
-                    month: "long", 
-                    day: "numeric" 
+                  {result.dueDate.toLocaleDateString(locale === "tr" ? "tr-TR" : "en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
                   })}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-[#64748b]">Current Pregnancy Week</p>
+                <p className="text-sm text-[#64748b]">{isTr ? "Mevcut gebelik haftası" : "Current Pregnancy Week"}</p>
                 <p className="text-2xl font-bold text-[#10b981] font-mono">
-                  Week {result.currentWeek}, Day {result.currentDay}
+                  {isTr ? "Hafta " : "Week "}{formatNumber(result.currentWeek, locale, { maxFractionDigits: 0 })}, {isTr ? "Gün " : "Day "}{formatNumber(result.currentDay, locale, { maxFractionDigits: 0 })}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-[#64748b]">Trimester</p>
+                <p className="text-sm text-[#64748b]">{isTr ? "Trimester" : "Trimester"}</p>
                 <p className="text-xl font-bold text-[#10b981]">
-                  {result.trimester} Trimester
+                  {result.trimester} {isTr ? "Trimester" : "Trimester"}
                 </p>
               </div>
               {result.daysRemaining > 0 && (
                 <div>
-                  <p className="text-sm text-[#64748b]">Days Until Due Date</p>
+                  <p className="text-sm text-[#64748b]">{isTr ? "Doğum tarihine kalan gün" : "Days Until Due Date"}</p>
                   <p className="text-xl font-bold text-[#10b981] font-mono">
-                    {result.daysRemaining} days
+                    {formatNumber(result.daysRemaining, locale, { maxFractionDigits: 0 })} {isTr ? "gün" : "days"}
                   </p>
                 </div>
               )}
             </div>
             <div className="pt-4 border-t border-[#10b981]">
               <p className="text-xs text-[#64748b]">
-                Note: Due dates are estimates. Only about 5% of babies are born exactly on their due date. 
-                Most births occur within 2 weeks before or after the due date.
+                {isTr ? "Not: Doğum tarihleri tahminidir. Bebeklerin yalnızca yaklaşık %5'i tam tahmini tarihte doğar. Çoğu doğum tahmini tarihten 2 hafta önce veya sonra gerçekleşir." : "Note: Due dates are estimates. Only about 5% of babies are born exactly on their due date. Most births occur within 2 weeks before or after the due date."}
               </p>
             </div>
           </div>

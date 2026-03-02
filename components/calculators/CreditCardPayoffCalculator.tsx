@@ -2,10 +2,14 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { validateField, COMMON_RULES } from "@/lib/validation/rules";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatCurrency } from "@/lib/format/locale-format";
 
-export function CreditCardPayoffCalculator() {
+type Locale = "en" | "tr";
+
+export function CreditCardPayoffCalculator({ locale: localeProp = "en" }: { locale?: Locale } = {}) {
+  const locale = localeProp;
+  const isTr = locale === "tr";
   const [balance, setBalance] = useState("");
   const [interestRate, setInterestRate] = useState("");
   const [monthlyPayment, setMonthlyPayment] = useState("");
@@ -16,55 +20,48 @@ export function CreditCardPayoffCalculator() {
     minimumPayment: number;
     warning: string | null;
   } | null>(null);
-  
-  // Error states
   const [balanceError, setBalanceError] = useState<string | null>(null);
   const [interestRateError, setInterestRateError] = useState<string | null>(null);
   const [monthlyPaymentError, setMonthlyPaymentError] = useState<string | null>(null);
 
-  const handleBalanceChange = (value: string) => {
-    setBalance(value);
-    if (balanceError) setBalanceError(null);
-  };
-
-  const handleInterestRateChange = (value: string) => {
-    setInterestRate(value);
-    if (interestRateError) setInterestRateError(null);
-  };
-
-  const handleMonthlyPaymentChange = (value: string) => {
-    setMonthlyPayment(value);
-    if (monthlyPaymentError) setMonthlyPaymentError(null);
-  };
-
   const calculate = () => {
-    const balanceErr = validateField(balance, COMMON_RULES.positiveNumber);
-    const interestErr = validateField(interestRate, COMMON_RULES.interestRate);
-    const paymentErr = validateField(monthlyPayment, COMMON_RULES.positiveNumber);
+    const bal = parseLocaleNumber(balance, locale);
+    const rateRaw = parseLocaleNumber(interestRate.replace(/%/g, "").trim(), locale);
+    const payment = parseLocaleNumber(monthlyPayment, locale);
 
-    if (balanceErr || interestErr || paymentErr) {
-      setBalanceError(balanceErr);
-      setInterestRateError(interestErr);
-      setMonthlyPaymentError(paymentErr);
+    if (bal == null || bal <= 0) {
+      setBalanceError(isTr ? "Pozitif bakiye girin" : "Enter a positive balance");
+      setResult(null);
+      return;
+    }
+    if (rateRaw == null || rateRaw < 0 || rateRaw > 100) {
+      setInterestRateError(isTr ? "Yıllık faiz oranı %0–100" : "Annual interest rate 0–100%");
+      setResult(null);
+      return;
+    }
+    if (payment == null || payment <= 0) {
+      setMonthlyPaymentError(isTr ? "Pozitif aylık ödeme girin" : "Enter a positive monthly payment");
+      setResult(null);
       return;
     }
 
-    const bal = parseFloat(balance);
-    const rate = parseFloat(interestRate) / 100 / 12; // Monthly rate
-    const payment = parseFloat(monthlyPayment);
-
-    // Calculate minimum payment (typically 1% of balance + interest)
-    const minimumPayment = Math.max(bal * 0.01 + (bal * rate), 25);
+    const rate = rateRaw / 100 / 12;
+    const minimumPayment = Math.max(bal * 0.01 + bal * rate, 25);
 
     if (payment < minimumPayment) {
-      setMonthlyPaymentError(`Minimum payment should be at least $${minimumPayment.toFixed(2)}`);
+      setMonthlyPaymentError(isTr ? `Minimum ödeme en az ${formatCurrency(minimumPayment, locale)} olmalı` : `Minimum payment should be at least ${formatCurrency(minimumPayment, locale)}`);
+      setResult(null);
       return;
     }
 
     if (payment <= bal * rate) {
-      setMonthlyPaymentError("Monthly payment must be greater than monthly interest");
+      setMonthlyPaymentError(isTr ? "Aylık ödeme aylık faizden büyük olmalı" : "Monthly payment must be greater than monthly interest");
+      setResult(null);
       return;
     }
+    setBalanceError(null);
+    setInterestRateError(null);
+    setMonthlyPaymentError(null);
 
     // Calculate payoff time using iterative method
     let remainingBalance = bal;
@@ -83,7 +80,7 @@ export function CreditCardPayoffCalculator() {
     let warning: string | null = null;
 
     if (payment < minimumPayment * 1.5) {
-      warning = "Consider paying more than the minimum to pay off faster and save on interest.";
+      warning = isTr ? "Daha hızlı kapanması ve faiz tasarrufu için minimumun üzerinde ödeme yapmayı düşünün." : "Consider paying more than the minimum to pay off faster and save on interest.";
     }
 
     setResult({
@@ -109,59 +106,40 @@ export function CreditCardPayoffCalculator() {
     <div className="w-full max-w-2xl mx-auto space-y-6">
       <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6 space-y-6">
         <div className="space-y-4">
-          <Input
-            label="Credit Card Balance ($)"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Kredi Kartı Bakiyesi ($)" : "Credit Card Balance ($)"}
             value={balance}
-            onChange={(e) => handleBalanceChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(balance, COMMON_RULES.positiveNumber);
-              setBalanceError(error);
-            }}
-            placeholder="Enter credit card balance (e.g., 5000)"
+            onChange={(v) => { setBalance(v); setBalanceError(null); }}
+            locale={locale}
+            formatAs="currency"
             error={balanceError || undefined}
-            helperText="Enter the current credit card balance"
-            step="10"
-            min="0.01"
+            helperText={isTr ? "Güncel kredi kartı bakiyesi" : "Enter the current credit card balance"}
           />
-          <Input
-            label="Annual Interest Rate (%)"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Yıllık Faiz Oranı (%)" : "Annual Interest Rate (%)"}
             value={interestRate}
-            onChange={(e) => handleInterestRateChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(interestRate, COMMON_RULES.interestRate);
-              setInterestRateError(error);
-            }}
-            placeholder="Enter interest rate (e.g., 18.5)"
+            onChange={(v) => { setInterestRate(v); setInterestRateError(null); }}
+            locale={locale}
+            formatAs="percent"
             error={interestRateError || undefined}
-            helperText="Enter the annual interest rate (APR) as a percentage"
-            step="0.1"
-            min="0"
-            max="100"
+            helperText={isTr ? "Yıllık faiz oranı (APR) yüzde" : "Enter the annual interest rate (APR) as a percentage"}
           />
-          <Input
-            label="Monthly Payment ($)"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Aylık Ödeme ($)" : "Monthly Payment ($)"}
             value={monthlyPayment}
-            onChange={(e) => handleMonthlyPaymentChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(monthlyPayment, COMMON_RULES.positiveNumber);
-              setMonthlyPaymentError(error);
-            }}
-            placeholder="Enter monthly payment (e.g., 200)"
+            onChange={(v) => { setMonthlyPayment(v); setMonthlyPaymentError(null); }}
+            locale={locale}
+            formatAs="currency"
             error={monthlyPaymentError || undefined}
-            helperText="Enter the amount you plan to pay each month"
-            step="10"
-            min="0.01"
+            helperText={isTr ? "Her ay ödemeyi planladığınız tutar" : "Enter the amount you plan to pay each month"}
           />
 
           <div className="flex gap-3">
             <Button onClick={calculate} className="flex-1">
-              Calculate
+              {isTr ? "Hesapla" : "Calculate"}
             </Button>
             <Button onClick={reset} variant="outline">
-              Reset
+              {isTr ? "Sıfırla" : "Reset"}
             </Button>
           </div>
         </div>
@@ -169,41 +147,41 @@ export function CreditCardPayoffCalculator() {
         {result && (
           <div className="result-container bg-[#f0fdf4] border-2 border-[#10b981] rounded-lg p-6 space-y-4">
             <h3 className="text-lg font-semibold text-[#1e293b]">
-              Results
+              {isTr ? "Sonuçlar" : "Results"}
             </h3>
             <div className="space-y-3">
               <div>
                 <p className="text-sm text-[#64748b]">
-                  Payoff Time
+                  {isTr ? "Kapanma Süresi" : "Payoff Time"}
                 </p>
                 <p className="text-3xl font-bold text-[#10b981] font-mono">
                   {result.payoffTime < 12 
-                    ? `${result.payoffTime} ${result.payoffTime === 1 ? "month" : "months"}`
-                    : `${(result.payoffTime / 12).toFixed(1)} years`}
+                    ? `${result.payoffTime} ${result.payoffTime === 1 ? (isTr ? "ay" : "month") : (isTr ? "ay" : "months")}`
+                    : `${(result.payoffTime / 12).toFixed(1)} ${isTr ? "yıl" : "years"}`}
                 </p>
               </div>
               <div>
                 <p className="text-sm text-[#64748b]">
-                  Total Interest
+                  {isTr ? "Toplam Faiz" : "Total Interest"}
                 </p>
                 <p className="text-2xl font-bold text-[#10b981] font-mono">
-                  ${result.totalInterest.toFixed(2)}
+                  {formatCurrency(result.totalInterest, locale)}
                 </p>
               </div>
               <div>
                 <p className="text-sm text-[#64748b]">
-                  Total Payment
+                  {isTr ? "Toplam Ödeme" : "Total Payment"}
                 </p>
                 <p className="text-2xl font-bold text-[#10b981] font-mono">
-                  ${result.totalPayment.toFixed(2)}
+                  {formatCurrency(result.totalPayment, locale)}
                 </p>
               </div>
               <div className="pt-3 border-t border-[#10b981]/30">
                 <p className="text-sm text-[#64748b]">
-                  Minimum Payment
+                  {isTr ? "Minimum Ödeme" : "Minimum Payment"}
                 </p>
                 <p className="text-lg font-semibold text-[#1e293b]">
-                  ${result.minimumPayment.toFixed(2)}
+                  {formatCurrency(result.minimumPayment, locale)}
                 </p>
               </div>
               {result.warning && (

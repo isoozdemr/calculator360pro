@@ -2,8 +2,10 @@
 
 import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatNumber } from "@/lib/format/locale-format";
 
+type Locale = "en" | "tr";
 type UnitType = "length" | "weight" | "temperature" | "volume" | "area";
 
 const UNIT_CONVERSIONS: Record<UnitType, Record<string, number>> = {
@@ -50,18 +52,15 @@ const UNIT_CONVERSIONS: Record<UnitType, Record<string, number>> = {
   },
 };
 
-export function UnitConverter() {
+export function UnitConverter({ locale: localeProp = "en" }: { locale?: Locale } = {}) {
+  const locale = localeProp;
+  const isTr = locale === "tr";
   const [unitType, setUnitType] = useState<UnitType>("length");
   const [fromUnit, setFromUnit] = useState("meter");
   const [toUnit, setToUnit] = useState("kilometer");
   const [value, setValue] = useState("");
   const [result, setResult] = useState<number | null>(null);
   const [valueError, setValueError] = useState<string | null>(null);
-
-  const handleValueChange = useCallback((val: string) => {
-    setValue(val);
-    if (valueError) setValueError(null);
-  }, [valueError]);
 
   const handleUnitTypeChange = useCallback((type: UnitType) => {
     setUnitType(type);
@@ -101,17 +100,11 @@ export function UnitConverter() {
   }, []);
 
   const calculate = useCallback(() => {
-    if (!value || value.trim() === "") {
-      setValueError("Value is required");
+    const numValue = parseLocaleNumber(value, locale);
+    if (numValue == null) {
+      setValueError(isTr ? "Geçerli bir sayı girin" : "Please enter a valid number");
       return;
     }
-
-    const numValue = parseFloat(value);
-    if (isNaN(numValue)) {
-      setValueError("Please enter a valid number");
-      return;
-    }
-
     setValueError(null);
 
     if (unitType === "temperature") {
@@ -120,20 +113,17 @@ export function UnitConverter() {
       return;
     }
 
-    // For other units, convert via base unit
     const fromFactor = UNIT_CONVERSIONS[unitType][fromUnit];
     const toFactor = UNIT_CONVERSIONS[unitType][toUnit];
-    
     if (!fromFactor || !toFactor) {
-      setValueError("Invalid unit selection");
+      setValueError(isTr ? "Geçersiz birim seçimi" : "Invalid unit selection");
       return;
     }
 
-    // Convert to base unit, then to target unit
     const baseValue = numValue / fromFactor;
     const converted = baseValue * toFactor;
     setResult(converted);
-  }, [value, unitType, fromUnit, toUnit, convertTemperature]);
+  }, [value, locale, unitType, fromUnit, toUnit, convertTemperature, isTr]);
 
   const reset = useCallback(() => {
     setValue("");
@@ -276,7 +266,7 @@ export function UnitConverter() {
                 {value} {unitOptions.find(o => o.value === fromUnit)?.label} =
               </p>
               <p className="text-3xl font-bold text-[#10b981] font-mono">
-                {result.toFixed(6).replace(/\.?0+$/, "")} {unitOptions.find(o => o.value === toUnit)?.label}
+                {formatNumber(result, locale, { maxFractionDigits: 6, minFractionDigits: 0 })} {unitOptions.find(o => o.value === toUnit)?.label}
               </p>
             </div>
           </div>

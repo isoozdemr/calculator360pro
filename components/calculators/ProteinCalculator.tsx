@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { validateField, COMMON_RULES } from "@/lib/validation/rules";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatNumber } from "@/lib/format/locale-format";
 
 const GOALS = [
   { value: "maintain", label: "Maintain weight", labelTr: "Kilo koruma", min: 0.8, max: 1.0 },
@@ -14,25 +14,21 @@ const GOALS = [
 type Locale = "en" | "tr";
 
 export function ProteinCalculator({ locale: localeProp = "en" }: { locale?: Locale }) {
-  const isTr = localeProp === "tr";
+  const locale = localeProp;
+  const isTr = locale === "tr";
   const [weightKg, setWeightKg] = useState("");
   const [goal, setGoal] = useState<(typeof GOALS)[number]["value"]>("maintain");
   const [result, setResult] = useState<{ minG: number; maxG: number; midG: number } | null>(null);
   const [weightError, setWeightError] = useState<string | null>(null);
 
   const calculate = () => {
-    const err = validateField(weightKg, COMMON_RULES.positiveNumber);
-    if (err) {
-      setWeightError(err);
+    const w = parseLocaleNumber(weightKg, locale);
+    if (w == null || w <= 0 || w > 300) {
+      setWeightError(isTr ? "1 ile 300 kg arasında bir ağırlık girin" : "Enter a weight between 1 and 300 kg");
       setResult(null);
       return;
     }
     setWeightError(null);
-    const w = parseFloat(weightKg);
-    if (w <= 0 || w > 300) {
-      setWeightError(isTr ? "1 ile 300 kg arasında bir ağırlık girin" : "Enter a weight between 1 and 300 kg");
-      return;
-    }
     const g = GOALS.find((x) => x.value === goal);
     if (!g) return;
     const minG = Math.round(w * g.min);
@@ -88,8 +84,8 @@ export function ProteinCalculator({ locale: localeProp = "en" }: { locale?: Loca
           <div className="result-container bg-[#f0fdf4] border-2 border-[#10b981] rounded-lg p-6 space-y-4">
             <h3 className="text-lg font-semibold text-[#1e293b]">{isTr ? "Günlük protein hedefi" : "Daily protein target"}</h3>
             <div className="space-y-2">
-              <p className="text-3xl font-bold text-[#10b981] font-mono">{result.midG} g</p>
-              <p className="text-[#64748b]">{isTr ? "Aralık: " : "Range: "}{result.minG} – {result.maxG} g {isTr ? "günlük" : "per day"}</p>
+              <p className="text-3xl font-bold text-[#10b981] font-mono">{formatNumber(result.midG, locale, { maxFractionDigits: 0 })} g</p>
+              <p className="text-[#64748b]">{isTr ? "Aralık: " : "Range: "}{formatNumber(result.minG, locale, { maxFractionDigits: 0 })} – {formatNumber(result.maxG, locale, { maxFractionDigits: 0 })} g {isTr ? "günlük" : "per day"}</p>
               <p className="text-sm text-[#64748b]">{isTr ? "Öğünlere yayın. Kas kazanımı için direnç antrenmanı ile birleştirin." : "Spread across meals. Combine with resistance training for muscle gain."}</p>
             </div>
           </div>

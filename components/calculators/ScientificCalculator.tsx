@@ -2,8 +2,12 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
+import { formatNumber } from "@/lib/format/locale-format";
 
-export function ScientificCalculator() {
+type Locale = "en" | "tr";
+
+export function ScientificCalculator({ locale: localeProp = "en" }: { locale?: Locale } = {}) {
+  const locale = localeProp;
   const [display, setDisplay] = useState("0");
   const [previousValue, setPreviousValue] = useState<number | null>(null);
   const [operation, setOperation] = useState<string | null>(null);
@@ -112,7 +116,10 @@ export function ScientificCalculator() {
           <div className="bg-[#0f172a] rounded-lg p-4 min-h-[80px] flex items-center justify-end">
             <div className="text-right">
               <p className="text-3xl font-mono text-white font-bold break-all">
-                {display}
+                {(() => {
+                  const n = parseFloat(display);
+                  return Number.isNaN(n) ? display : formatNumber(n, locale, { maxFractionDigits: 10 });
+                })()}
               </p>
             </div>
           </div>

@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { validateField, COMMON_RULES } from "@/lib/validation/rules";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatCurrency } from "@/lib/format/locale-format";
 
 type Locale = "en" | "tr";
 
@@ -27,7 +27,8 @@ function payoffMonths(
 }
 
 export function LoanPayoffCalculator({ locale: localeProp = "en" }: { locale?: Locale }) {
-  const isTr = localeProp === "tr";
+  const locale = localeProp;
+  const isTr = locale === "tr";
   const [balance, setBalance] = useState("");
   const [interestRate, setInterestRate] = useState("");
   const [monthlyPayment, setMonthlyPayment] = useState("");
@@ -48,28 +49,35 @@ export function LoanPayoffCalculator({ locale: localeProp = "en" }: { locale?: L
   const [extraPaymentError, setExtraPaymentError] = useState<string | null>(null);
 
   const calculate = () => {
-    const balanceErr = validateField(balance, COMMON_RULES.positiveNumber);
-    const rateErr = validateField(interestRate, COMMON_RULES.interestRate);
-    const paymentErr = validateField(monthlyPayment, COMMON_RULES.positiveNumber);
-    const extraErr = validateField(extraPayment, { pattern: /^[0-9]+\.?[0-9]*$/, required: false, min: 0 });
+    const bal = parseLocaleNumber(balance, locale);
+    const rate = parseLocaleNumber(interestRate.replace(/%/g, "").trim(), locale);
+    const payment = parseLocaleNumber(monthlyPayment, locale);
+    const extra = extraPayment.trim() === "" ? 0 : (parseLocaleNumber(extraPayment, locale) ?? 0);
 
-    if (balanceErr || rateErr || paymentErr) {
-      setBalanceError(balanceErr);
-      setInterestRateError(rateErr);
-      setMonthlyPaymentError(paymentErr);
-      setExtraPaymentError(extraErr || null);
+    if (bal == null || bal <= 0) {
+      setBalanceError(isTr ? "Bakiye 0'dan büyük olmalı" : "Balance must be greater than 0");
+      setResult(null);
+      return;
+    }
+    if (rate == null || rate < 0 || rate > 100) {
+      setInterestRateError(isTr ? "Faiz oranı 0–100 arası olmalı" : "Interest rate must be between 0 and 100");
+      setResult(null);
+      return;
+    }
+    if (payment == null || payment <= 0) {
+      setMonthlyPaymentError(isTr ? "Aylık taksit 0'dan büyük olmalı" : "Monthly payment must be greater than 0");
+      setResult(null);
+      return;
+    }
+    if (extra < 0) {
+      setExtraPaymentError(isTr ? "0 veya pozitif girin" : "Enter 0 or positive");
       setResult(null);
       return;
     }
     setBalanceError(null);
     setInterestRateError(null);
     setMonthlyPaymentError(null);
-    setExtraPaymentError(extraErr || null);
-
-    const bal = parseFloat(balance);
-    const rate = parseFloat(interestRate);
-    const payment = parseFloat(monthlyPayment);
-    const extra = extraPayment.trim() === "" ? 0 : parseFloat(extraPayment);
+    setExtraPaymentError(null);
 
     const r = rate / 100 / 12;
     if (payment <= bal * r) {
@@ -117,60 +125,48 @@ export function LoanPayoffCalculator({ locale: localeProp = "en" }: { locale?: L
     if (m === 0) return `${years} year${years !== 1 ? "s" : ""}`;
     return `${years} year${years !== 1 ? "s" : ""} ${m} month${m !== 1 ? "s" : ""}`;
   };
-  const formatMoney = (n: number) => isTr ? `${n.toLocaleString("tr-TR", { minimumFractionDigits: 2 })} ₺` : `$${n.toLocaleString("en-US", { minimumFractionDigits: 2 })}`;
+  const formatMoney = (n: number) => formatCurrency(n, locale);
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-6">
       <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6 space-y-6">
         <div className="space-y-4">
-          <Input
+          <FormattedNumberInput
             label={isTr ? "Kalan Bakiye (TL)" : "Current Loan Balance ($)"}
-            type="number"
             value={balance}
-            onChange={(e) => { setBalance(e.target.value); setBalanceError(null); }}
-            onBlur={() => setBalanceError(validateField(balance, COMMON_RULES.positiveNumber))}
-            placeholder={isTr ? "örn. 200000" : "e.g. 200000"}
+            onChange={(v) => { setBalance(v); setBalanceError(null); }}
+            locale={locale}
+            formatAs="currency"
             error={balanceError || undefined}
             helperText={isTr ? "Kalan anapara" : "Remaining principal"}
-            step="1000"
-            min="1"
           />
-          <Input
+          <FormattedNumberInput
             label={isTr ? "Yıllık Faiz Oranı (%)" : "Annual Interest Rate (%)"}
-            type="number"
             value={interestRate}
-            onChange={(e) => { setInterestRate(e.target.value); setInterestRateError(null); }}
-            onBlur={() => setInterestRateError(validateField(interestRate, COMMON_RULES.interestRate))}
-            placeholder={isTr ? "örn. 6" : "e.g. 6"}
+            onChange={(v) => { setInterestRate(v); setInterestRateError(null); }}
+            locale={locale}
+            formatAs="percent"
+            maxFractionDigits={2}
             error={interestRateError || undefined}
             helperText={isTr ? "Mevcut kredi APR" : "Current loan APR"}
-            step="0.1"
-            min="0"
-            max="30"
           />
-          <Input
+          <FormattedNumberInput
             label={isTr ? "Aylık Taksit (TL)" : "Monthly Payment ($)"}
-            type="number"
             value={monthlyPayment}
-            onChange={(e) => { setMonthlyPayment(e.target.value); setMonthlyPaymentError(null); }}
-            onBlur={() => setMonthlyPaymentError(validateField(monthlyPayment, COMMON_RULES.positiveNumber))}
-            placeholder={isTr ? "Anapara + faiz" : "Principal + interest only"}
+            onChange={(v) => { setMonthlyPayment(v); setMonthlyPaymentError(null); }}
+            locale={locale}
+            formatAs="currency"
             error={monthlyPaymentError || undefined}
             helperText={isTr ? "Mevcut toplam aylık taksit (A+F)" : "Current total monthly payment (P&I)"}
-            step="50"
-            min="0.01"
           />
-          <Input
+          <FormattedNumberInput
             label={isTr ? "Ekstra Aylık Ödeme (TL)" : "Extra Monthly Payment ($)"}
-            type="number"
             value={extraPayment}
-            onChange={(e) => { setExtraPayment(e.target.value); setExtraPaymentError(null); }}
-            onBlur={() => setExtraPaymentError(validateField(extraPayment, { pattern: /^[0-9]+\.?[0-9]*$/, required: false, min: 0 }) || null)}
-            placeholder={isTr ? "İsteğe bağlı - örn. 100" : "Optional - e.g. 100"}
+            onChange={(v) => { setExtraPayment(v); setExtraPaymentError(null); }}
+            locale={locale}
+            formatAs="currency"
             error={extraPaymentError || undefined}
             helperText={isTr ? "Her ay eklenecek ek tutar" : "Additional amount to add each month"}
-            step="25"
-            min="0"
           />
 
           <div className="flex gap-3">

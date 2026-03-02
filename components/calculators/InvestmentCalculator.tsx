@@ -2,10 +2,14 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { validateField, COMMON_RULES } from "@/lib/validation/rules";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatCurrency } from "@/lib/format/locale-format";
 
-export function InvestmentCalculator() {
+type Locale = "en" | "tr";
+
+export function InvestmentCalculator({ locale: localeProp = "en" }: { locale?: Locale } = {}) {
+  const locale = localeProp;
+  const isTr = locale === "tr";
   const [initialInvestment, setInitialInvestment] = useState("");
   const [monthlyContribution, setMonthlyContribution] = useState("");
   const [interestRate, setInterestRate] = useState("");
@@ -15,71 +19,45 @@ export function InvestmentCalculator() {
     totalContributions: number;
     interestEarned: number;
   } | null>(null);
-  
-  // Error states
   const [initialInvestmentError, setInitialInvestmentError] = useState<string | null>(null);
   const [monthlyContributionError, setMonthlyContributionError] = useState<string | null>(null);
   const [interestRateError, setInterestRateError] = useState<string | null>(null);
   const [timePeriodError, setTimePeriodError] = useState<string | null>(null);
 
-  const handleInitialInvestmentChange = (value: string) => {
-    setInitialInvestment(value);
-    if (initialInvestmentError) setInitialInvestmentError(null);
-  };
-
-  const handleMonthlyContributionChange = (value: string) => {
-    setMonthlyContribution(value);
-    if (monthlyContributionError) setMonthlyContributionError(null);
-  };
-
-  const handleInterestRateChange = (value: string) => {
-    setInterestRate(value);
-    if (interestRateError) setInterestRateError(null);
-  };
-
-  const handleTimePeriodChange = (value: string) => {
-    setTimePeriod(value);
-    if (timePeriodError) setTimePeriodError(null);
-  };
+  const parseOpt = (v: string) => (v.trim() ? (parseLocaleNumber(v, locale) ?? 0) : 0);
 
   const calculate = () => {
-    const initialErr = validateField(initialInvestment, COMMON_RULES.optionalPositive);
-    const monthlyErr = validateField(monthlyContribution, COMMON_RULES.optionalPositive);
-    const interestErr = validateField(interestRate, COMMON_RULES.interestRate);
-    const timeErr = validateField(timePeriod, COMMON_RULES.timeYears);
+    const initial = parseOpt(initialInvestment);
+    const monthly = parseOpt(monthlyContribution);
+    const rateRaw = parseLocaleNumber(interestRate.replace(/%/g, "").trim(), locale);
+    const years = parseLocaleNumber(timePeriod, locale);
 
-    if (interestErr || timeErr) {
-      setInterestRateError(interestErr);
-      setTimePeriodError(timeErr);
+    if (rateRaw == null || rateRaw < 0 || rateRaw > 100) {
+      setInterestRateError(isTr ? "Yıllık getiri %0–100" : "Annual return 0–100%");
+      setResult(null);
       return;
     }
-
-    const initial = parseFloat(initialInvestment) || 0;
-    const monthly = parseFloat(monthlyContribution) || 0;
-    const rate = parseFloat(interestRate) / 100 / 12; // Monthly rate
-    const years = parseFloat(timePeriod);
-    const months = years * 12;
-
-    if (!isNaN(initial) && !isNaN(monthly) && !isNaN(rate) && !isNaN(months) && months > 0) {
-      // Compound interest for initial investment
-      let finalAmount = initial * Math.pow(1 + rate, months);
-      
-      // Future value of monthly contributions (annuity)
-      if (monthly > 0 && rate > 0) {
-        finalAmount += monthly * ((Math.pow(1 + rate, months) - 1) / rate);
-      } else if (monthly > 0) {
-        finalAmount += monthly * months;
-      }
-
-      const totalContributions = initial + (monthly * months);
-      const interestEarned = finalAmount - totalContributions;
-
-      setResult({
-        finalAmount,
-        totalContributions,
-        interestEarned,
-      });
+    if (years == null || years < 0.01 || years > 100) {
+      setTimePeriodError(isTr ? "0,01–100 yıl arası girin" : "Enter 0.01–100 years");
+      setResult(null);
+      return;
     }
+    setInitialInvestmentError(null);
+    setMonthlyContributionError(null);
+    setInterestRateError(null);
+    setTimePeriodError(null);
+
+    const rate = rateRaw / 100 / 12;
+    const months = years * 12;
+    let finalAmount = initial * Math.pow(1 + rate, months);
+    if (monthly > 0 && rate > 0) {
+      finalAmount += monthly * ((Math.pow(1 + rate, months) - 1) / rate);
+    } else if (monthly > 0) {
+      finalAmount += monthly * months;
+    }
+    const totalContributions = initial + monthly * months;
+    const interestEarned = finalAmount - totalContributions;
+    setResult({ finalAmount, totalContributions, interestEarned });
   };
 
   const reset = () => {
@@ -98,75 +76,50 @@ export function InvestmentCalculator() {
     <div className="w-full max-w-2xl mx-auto space-y-6">
       <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6 space-y-6">
         <div className="space-y-4">
-          <Input
-            label="Initial Investment ($)"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Başlangıç Yatırımı ($)" : "Initial Investment ($)"}
             value={initialInvestment}
-            onChange={(e) => handleInitialInvestmentChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(initialInvestment, COMMON_RULES.optionalPositive);
-              setInitialInvestmentError(error);
-            }}
-            placeholder="Enter initial investment (e.g., 5000)"
+            onChange={(v) => { setInitialInvestment(v); setInitialInvestmentError(null); }}
+            locale={locale}
+            formatAs="currency"
             error={initialInvestmentError || undefined}
-            helperText="Enter starting investment amount (optional)"
-            step="100"
-            min="0"
+            helperText={isTr ? "Başlangıç yatırım tutarı (isteğe bağlı)" : "Enter starting investment amount (optional)"}
           />
-          <Input
-            label="Monthly Contribution ($)"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Aylık Katkı ($)" : "Monthly Contribution ($)"}
             value={monthlyContribution}
-            onChange={(e) => handleMonthlyContributionChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(monthlyContribution, COMMON_RULES.optionalPositive);
-              setMonthlyContributionError(error);
-            }}
-            placeholder="Enter monthly contribution (e.g., 500)"
+            onChange={(v) => { setMonthlyContribution(v); setMonthlyContributionError(null); }}
+            locale={locale}
+            formatAs="currency"
             error={monthlyContributionError || undefined}
-            helperText="Enter monthly investment amount (optional)"
-            step="10"
-            min="0"
+            helperText={isTr ? "Aylık yatırım tutarı (isteğe bağlı)" : "Enter monthly investment amount (optional)"}
           />
-          <Input
-            label="Annual Interest Rate (%)"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Yıllık Getiri Oranı (%)" : "Annual Interest Rate (%)"}
             value={interestRate}
-            onChange={(e) => handleInterestRateChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(interestRate, COMMON_RULES.interestRate);
-              setInterestRateError(error);
-            }}
-            placeholder="Enter interest rate (e.g., 7)"
+            onChange={(v) => { setInterestRate(v); setInterestRateError(null); }}
+            locale={locale}
+            formatAs="percent"
             error={interestRateError || undefined}
-            helperText="Enter expected annual return as a percentage"
-            step="0.01"
-            min="0"
-            max="100"
+            helperText={isTr ? "Beklenen yıllık getiri yüzde" : "Enter expected annual return as a percentage"}
           />
-          <Input
-            label="Time Period (years)"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Süre (yıl)" : "Time Period (years)"}
             value={timePeriod}
-            onChange={(e) => handleTimePeriodChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(timePeriod, COMMON_RULES.timeYears);
-              setTimePeriodError(error);
-            }}
-            placeholder="Enter investment period (e.g., 20)"
+            onChange={(v) => { setTimePeriod(v); setTimePeriodError(null); }}
+            locale={locale}
+            formatAs="number"
+            maxFractionDigits={2}
             error={timePeriodError || undefined}
-            helperText="Enter the investment period in years"
-            step="0.1"
-            min="0.01"
-            max="100"
+            helperText={isTr ? "Yatırım süresi (yıl)" : "Enter the investment period in years"}
           />
 
           <div className="flex gap-3">
             <Button onClick={calculate} className="flex-1">
-              Calculate
+              {isTr ? "Hesapla" : "Calculate"}
             </Button>
             <Button onClick={reset} variant="outline">
-              Reset
+              {isTr ? "Sıfırla" : "Reset"}
             </Button>
           </div>
         </div>
@@ -174,31 +127,31 @@ export function InvestmentCalculator() {
         {result && (
           <div className="result-container bg-[#f0fdf4] border-2 border-[#10b981] rounded-lg p-6 space-y-4">
             <h3 className="text-lg font-semibold text-[#1e293b]">
-              Results
+              {isTr ? "Sonuçlar" : "Results"}
             </h3>
             <div className="space-y-3">
               <div>
                 <p className="text-sm text-[#64748b]">
-                  Final Amount
+                  {isTr ? "Toplam Tutar" : "Final Amount"}
                 </p>
                 <p className="text-3xl font-bold text-[#10b981] font-mono">
-                  ${result.finalAmount.toFixed(2)}
+                  {formatCurrency(result.finalAmount, locale)}
                 </p>
               </div>
               <div>
                 <p className="text-sm text-[#64748b]">
-                  Total Contributions
+                  {isTr ? "Toplam Katkı" : "Total Contributions"}
                 </p>
                 <p className="text-2xl font-bold text-[#10b981] font-mono">
-                  ${result.totalContributions.toFixed(2)}
+                  {formatCurrency(result.totalContributions, locale)}
                 </p>
               </div>
               <div>
                 <p className="text-sm text-[#64748b]">
-                  Interest Earned
+                  {isTr ? "Kazanılan Faiz" : "Interest Earned"}
                 </p>
                 <p className="text-2xl font-bold text-[#10b981] font-mono">
-                  ${result.interestEarned.toFixed(2)}
+                  {formatCurrency(result.interestEarned, locale)}
                 </p>
               </div>
             </div>

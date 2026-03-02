@@ -2,10 +2,14 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { validateField, COMMON_RULES } from "@/lib/validation/rules";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatCurrency } from "@/lib/format/locale-format";
 
-export function TipCalculator() {
+type Locale = "en" | "tr";
+
+export function TipCalculator({ locale: localeProp = "en" }: { locale?: Locale }) {
+  const locale = localeProp;
+  const isTr = locale === "tr";
   const [billAmount, setBillAmount] = useState("");
   const [tipPercentage, setTipPercentage] = useState("");
   const [numberOfPeople, setNumberOfPeople] = useState("1");
@@ -14,65 +18,38 @@ export function TipCalculator() {
     totalAmount: number;
     perPerson: number;
   } | null>(null);
-  
-  // Error states
   const [billAmountError, setBillAmountError] = useState<string | null>(null);
   const [tipPercentageError, setTipPercentageError] = useState<string | null>(null);
   const [numberOfPeopleError, setNumberOfPeopleError] = useState<string | null>(null);
 
-  const handleBillAmountChange = (value: string) => {
-    setBillAmount(value);
-    if (billAmountError) setBillAmountError(null);
-  };
-
-  const handleTipPercentageChange = (value: string) => {
-    setTipPercentage(value);
-    if (tipPercentageError) setTipPercentageError(null);
-  };
-
-  const handleNumberOfPeopleChange = (value: string) => {
-    setNumberOfPeople(value);
-    if (numberOfPeopleError) setNumberOfPeopleError(null);
-  };
-
   const calculate = () => {
-    const billErr = validateField(billAmount, COMMON_RULES.positiveNumber);
-    const tipErr = validateField(tipPercentage, COMMON_RULES.percentage);
-    const peopleErr = validateField(numberOfPeople, {
-      required: true,
-      min: 1,
-      max: 100,
-      custom: {
-        validate: (v: string) => {
-          const num = parseFloat(v);
-          return !isNaN(num) && num >= 1 && num <= 100 && Number.isInteger(num);
-        },
-        message: "Number of people must be between 1 and 100",
-      },
-    } as typeof COMMON_RULES.positiveNumber);
+    const bill = parseLocaleNumber(billAmount, locale);
+    const tip = parseLocaleNumber(tipPercentage.replace(/%/g, "").trim(), locale);
+    const people = parseLocaleNumber(numberOfPeople, locale);
 
-    if (billErr || tipErr || peopleErr) {
-      setBillAmountError(billErr);
-      setTipPercentageError(tipErr);
-      setNumberOfPeopleError(peopleErr);
+    if (bill == null || bill <= 0) {
+      setBillAmountError(isTr ? "Pozitif tutar girin" : "Enter a positive amount");
+      setResult(null);
       return;
     }
-
-    const bill = parseFloat(billAmount);
-    const tip = parseFloat(tipPercentage);
-    const people = parseFloat(numberOfPeople);
-
-    if (!isNaN(bill) && !isNaN(tip) && !isNaN(people) && bill > 0 && tip >= 0 && people >= 1) {
-      const tipAmount = (bill * tip) / 100;
-      const totalAmount = bill + tipAmount;
-      const perPerson = totalAmount / people;
-
-      setResult({
-        tipAmount,
-        totalAmount,
-        perPerson,
-      });
+    if (tip == null || tip < 0 || tip > 100) {
+      setTipPercentageError(isTr ? "0–100 arası girin" : "Enter 0–100");
+      setResult(null);
+      return;
     }
+    if (people == null || people < 1 || people > 100 || !Number.isInteger(people)) {
+      setNumberOfPeopleError(isTr ? "1–100 arası tam sayı girin" : "Enter 1–100 (integer)");
+      setResult(null);
+      return;
+    }
+    setBillAmountError(null);
+    setTipPercentageError(null);
+    setNumberOfPeopleError(null);
+
+    const tipAmount = (bill * tip) / 100;
+    const totalAmount = bill + tipAmount;
+    const perPerson = totalAmount / people;
+    setResult({ tipAmount, totalAmount, perPerson });
   };
 
   const reset = () => {
@@ -89,71 +66,41 @@ export function TipCalculator() {
     <div className="w-full max-w-2xl mx-auto space-y-6">
       <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6 space-y-6">
         <div className="space-y-4">
-          <Input
-            label="Bill Amount ($)"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Hesap Tutarı ($)" : "Bill Amount ($)"}
             value={billAmount}
-            onChange={(e) => handleBillAmountChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(billAmount, COMMON_RULES.positiveNumber);
-              setBillAmountError(error);
-            }}
-            placeholder="Enter bill amount (e.g., 100)"
+            onChange={(v) => { setBillAmount(v); setBillAmountError(null); }}
+            locale={locale}
+            formatAs="currency"
             error={billAmountError || undefined}
-            helperText="Enter the total bill amount"
-            step="0.01"
-            min="0.01"
+            helperText={isTr ? "Toplam hesap tutarını girin" : "Enter the total bill amount"}
           />
-          <Input
-            label="Tip Percentage (%)"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Bahşiş Yüzdesi (%)" : "Tip Percentage (%)"}
             value={tipPercentage}
-            onChange={(e) => handleTipPercentageChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(tipPercentage, COMMON_RULES.percentage);
-              setTipPercentageError(error);
-            }}
-            placeholder="Enter tip percentage (e.g., 15)"
+            onChange={(v) => { setTipPercentage(v); setTipPercentageError(null); }}
+            locale={locale}
+            formatAs="percent"
             error={tipPercentageError || undefined}
-            helperText="Enter tip percentage (0-100)"
-            step="0.1"
-            min="0"
-            max="100"
+            helperText={isTr ? "Bahşiş yüzdesi (0–100)" : "Enter tip percentage (0-100)"}
           />
-          <Input
-            label="Number of People"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Kişi Sayısı" : "Number of People"}
             value={numberOfPeople}
-            onChange={(e) => handleNumberOfPeopleChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(numberOfPeople, {
-                required: true,
-                min: 1,
-                max: 100,
-                custom: {
-                  validate: (v: string) => {
-                    const num = parseFloat(v);
-                    return !isNaN(num) && num >= 1 && num <= 100 && Number.isInteger(num);
-                  },
-                  message: "Number of people must be between 1 and 100",
-                },
-              } as typeof COMMON_RULES.positiveNumber);
-              setNumberOfPeopleError(error);
-            }}
-            placeholder="Enter number of people (e.g., 2)"
+            onChange={(v) => { setNumberOfPeople(v); setNumberOfPeopleError(null); }}
+            locale={locale}
+            formatAs="number"
+            maxFractionDigits={0}
             error={numberOfPeopleError || undefined}
-            helperText="Enter number of people splitting the bill"
-            step="1"
-            min="1"
-            max="100"
+            helperText={isTr ? "Hesabı bölen kişi sayısı" : "Enter number of people splitting the bill"}
           />
 
           <div className="flex gap-3">
             <Button onClick={calculate} className="flex-1">
-              Calculate
+              {isTr ? "Hesapla" : "Calculate"}
             </Button>
             <Button onClick={reset} variant="outline">
-              Reset
+              {isTr ? "Sıfırla" : "Reset"}
             </Button>
           </div>
         </div>
@@ -161,32 +108,32 @@ export function TipCalculator() {
         {result && (
           <div className="result-container bg-[#f0fdf4] border-2 border-[#10b981] rounded-lg p-6 space-y-4">
             <h3 className="text-lg font-semibold text-[#1e293b]">
-              Results
+              {isTr ? "Sonuçlar" : "Results"}
             </h3>
             <div className="space-y-3">
               <div>
                 <p className="text-sm text-[#64748b]">
-                  Tip Amount
+                  {isTr ? "Bahşiş Tutarı" : "Tip Amount"}
                 </p>
                 <p className="text-3xl font-bold text-[#10b981] font-mono">
-                  ${result.tipAmount.toFixed(2)}
+                  {formatCurrency(result.tipAmount, locale)}
                 </p>
               </div>
               <div>
                 <p className="text-sm text-[#64748b]">
-                  Total Amount
+                  {isTr ? "Toplam Tutar" : "Total Amount"}
                 </p>
                 <p className="text-3xl font-bold text-[#10b981] font-mono">
-                  ${result.totalAmount.toFixed(2)}
+                  {formatCurrency(result.totalAmount, locale)}
                 </p>
               </div>
-              {parseFloat(numberOfPeople) > 1 && (
+              {(parseLocaleNumber(numberOfPeople, locale) ?? 0) > 1 && (
                 <div>
                   <p className="text-sm text-[#64748b]">
-                    Per Person
+                    {isTr ? "Kişi Başı" : "Per Person"}
                   </p>
                   <p className="text-2xl font-bold text-[#10b981] font-mono">
-                    ${result.perPerson.toFixed(2)}
+                    {formatCurrency(result.perPerson, locale)}
                   </p>
                 </div>
               )}

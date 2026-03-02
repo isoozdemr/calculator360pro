@@ -2,10 +2,14 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { validateField, COMMON_RULES } from "@/lib/validation/rules";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatNumber } from "@/lib/format/locale-format";
 
-export function CalorieCalculator() {
+type Locale = "en" | "tr";
+
+export function CalorieCalculator({ locale: localeProp = "en" }: { locale?: Locale } = {}) {
+  const locale = localeProp;
+  const isTr = locale === "tr";
   const [age, setAge] = useState("");
   const [gender, setGender] = useState<"male" | "female">("male");
   const [weight, setWeight] = useState("");
@@ -17,44 +21,34 @@ export function CalorieCalculator() {
     tdee: number;
     dailyCalories: number;
   } | null>(null);
-  
-  // Error states
   const [ageError, setAgeError] = useState<string | null>(null);
   const [weightError, setWeightError] = useState<string | null>(null);
   const [heightError, setHeightError] = useState<string | null>(null);
 
-  const handleAgeChange = (value: string) => {
-    setAge(value);
-    if (ageError) setAgeError(null);
-  };
-
-  const handleWeightChange = (value: string) => {
-    setWeight(value);
-    if (weightError) setWeightError(null);
-  };
-
-  const handleHeightChange = (value: string) => {
-    setHeight(value);
-    if (heightError) setHeightError(null);
-  };
-
   const calculate = () => {
-    const ageErr = validateField(age, COMMON_RULES.age);
-    const weightErr = validateField(weight, COMMON_RULES.weightKg);
-    const heightErr = validateField(height, COMMON_RULES.heightCm);
+    const ageVal = parseLocaleNumber(age, locale);
+    const weightKg = parseLocaleNumber(weight, locale);
+    const heightCm = parseLocaleNumber(height, locale);
 
-    if (ageErr || weightErr || heightErr) {
-      setAgeError(ageErr);
-      setWeightError(weightErr);
-      setHeightError(heightErr);
+    if (ageVal == null || ageVal < 18 || ageVal > 100) {
+      setAgeError(isTr ? "18–100 arası yaş girin" : "Enter age 18–100");
+      setResult(null);
       return;
     }
+    if (weightKg == null || weightKg < 20 || weightKg > 500) {
+      setWeightError(isTr ? "20–500 kg arası girin" : "Enter 20–500 kg");
+      setResult(null);
+      return;
+    }
+    if (heightCm == null || heightCm < 100 || heightCm > 250) {
+      setHeightError(isTr ? "100–250 cm arası girin" : "Enter 100–250 cm");
+      setResult(null);
+      return;
+    }
+    setAgeError(null);
+    setWeightError(null);
+    setHeightError(null);
 
-    const ageVal = parseFloat(age);
-    const weightKg = parseFloat(weight);
-    const heightCm = parseFloat(height);
-
-    // Mifflin-St Jeor Equation (most accurate BMR formula)
     let bmr: number;
     if (gender === "male") {
       bmr = 10 * weightKg + 6.25 * heightCm - 5 * ageVal + 5;
@@ -135,53 +129,35 @@ export function CalorieCalculator() {
             </div>
           </div>
 
-          <Input
-            label="Age"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Yaş" : "Age"}
             value={age}
-            onChange={(e) => handleAgeChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(age, COMMON_RULES.age);
-              setAgeError(error);
-            }}
-            placeholder="Enter age (e.g., 30)"
+            onChange={(v) => { setAge(v); setAgeError(null); }}
+            locale={locale}
+            formatAs="number"
+            maxFractionDigits={0}
             error={ageError || undefined}
-            helperText="Enter your age"
-            step="1"
-            min="1"
-            max="150"
+            helperText={isTr ? "Yaşınız" : "Enter your age"}
           />
-          <Input
-            label="Weight (kg)"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Kilo (kg)" : "Weight (kg)"}
             value={weight}
-            onChange={(e) => handleWeightChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(weight, COMMON_RULES.weightKg);
-              setWeightError(error);
-            }}
-            placeholder="Enter weight in kg (e.g., 70)"
+            onChange={(v) => { setWeight(v); setWeightError(null); }}
+            locale={locale}
+            formatAs="number"
+            maxFractionDigits={1}
             error={weightError || undefined}
-            helperText="Enter your weight in kilograms"
-            step="0.1"
-            min="1"
-            max="500"
+            helperText={isTr ? "Kilonuz (kg)" : "Enter your weight in kilograms"}
           />
-          <Input
-            label="Height (cm)"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Boy (cm)" : "Height (cm)"}
             value={height}
-            onChange={(e) => handleHeightChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(height, COMMON_RULES.heightCm);
-              setHeightError(error);
-            }}
-            placeholder="Enter height in cm (e.g., 175)"
+            onChange={(v) => { setHeight(v); setHeightError(null); }}
+            locale={locale}
+            formatAs="number"
+            maxFractionDigits={1}
             error={heightError || undefined}
-            helperText="Enter your height in centimeters"
-            step="0.1"
-            min="30"
-            max="300"
+            helperText={isTr ? "Boyunuz (cm)" : "Enter your height in centimeters"}
           />
           <div>
             <label className="block text-sm font-medium text-[#1e293b] mb-1.5">
@@ -258,7 +234,7 @@ export function CalorieCalculator() {
                   BMR (Basal Metabolic Rate)
                 </p>
                 <p className="text-3xl font-bold text-[#10b981] font-mono">
-                  {result.bmr.toFixed(0)} calories/day
+                  {formatNumber(result.bmr, locale, { maxFractionDigits: 0 })} {isTr ? "kalori/gün" : "calories/day"}
                 </p>
                 <p className="text-xs text-[#64748b] mt-1">
                   Calories burned at rest
@@ -269,7 +245,7 @@ export function CalorieCalculator() {
                   TDEE (Total Daily Energy Expenditure)
                 </p>
                 <p className="text-3xl font-bold text-[#10b981] font-mono">
-                  {result.tdee.toFixed(0)} calories/day
+                  {formatNumber(result.tdee, locale, { maxFractionDigits: 0 })} {isTr ? "kalori/gün" : "calories/day"}
                 </p>
                 <p className="text-xs text-[#64748b] mt-1">
                   Calories burned including activity
@@ -280,7 +256,7 @@ export function CalorieCalculator() {
                   Daily Calorie Target ({goal === "lose" ? "Weight Loss" : goal === "gain" ? "Weight Gain" : "Maintenance"})
                 </p>
                 <p className="text-3xl font-bold text-[#10b981] font-mono">
-                  {result.dailyCalories.toFixed(0)} calories/day
+                  {formatNumber(result.dailyCalories, locale, { maxFractionDigits: 0 })} {isTr ? "kalori/gün" : "calories/day"}
                 </p>
               </div>
             </div>

@@ -3,9 +3,13 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { validateField, COMMON_RULES } from "@/lib/validation/rules";
+import { formatNumber } from "@/lib/format/locale-format";
 
-export function AgeCalculator() {
+type Locale = "en" | "tr";
+
+export function AgeCalculator({ locale: localeProp = "en" }: { locale?: Locale } = {}) {
+  const locale = localeProp;
+  const isTr = locale === "tr";
   const [birthDate, setBirthDate] = useState("");
   const [age, setAge] = useState<{
     years: number;
@@ -15,25 +19,22 @@ export function AgeCalculator() {
   } | null>(null);
   const [birthDateError, setBirthDateError] = useState<string | null>(null);
 
-  const handleBirthDateChange = (value: string) => {
-    setBirthDate(value);
-    if (birthDateError) setBirthDateError(null);
-  };
-
   const calculateAge = () => {
-    const error = validateField(birthDate, COMMON_RULES.birthDate);
-    if (error) {
-      setBirthDateError(error);
+    if (!birthDate.trim()) {
+      setBirthDateError(isTr ? "Doğum tarihi girin" : "Enter birth date");
       return;
     }
-
     const birth = new Date(birthDate);
     const today = new Date();
-
-    if (birth > today) {
-      setBirthDateError("Birth date cannot be in the future");
+    if (isNaN(birth.getTime())) {
+      setBirthDateError(isTr ? "Geçerli bir tarih girin" : "Enter a valid date");
       return;
     }
+    if (birth > today) {
+      setBirthDateError(isTr ? "Doğum tarihi gelecekte olamaz" : "Birth date cannot be in the future");
+      return;
+    }
+    setBirthDateError(null);
 
     let years = today.getFullYear() - birth.getFullYear();
     let months = today.getMonth() - birth.getMonth();
@@ -73,17 +74,13 @@ export function AgeCalculator() {
       <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6 space-y-6">
         <div className="space-y-4">
           <Input
-            label="Birth Date"
+            label={isTr ? "Doğum Tarihi" : "Birth Date"}
             type="date"
             value={birthDate}
-            onChange={(e) => handleBirthDateChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(birthDate, COMMON_RULES.birthDate);
-              setBirthDateError(error);
-            }}
+            onChange={(e) => { setBirthDate(e.target.value); setBirthDateError(null); }}
             max={new Date().toISOString().split("T")[0]}
             error={birthDateError || undefined}
-            helperText="Select your date of birth"
+            helperText={isTr ? "Doğum tarihinizi seçin" : "Select your date of birth"}
           />
 
           <div className="flex gap-3">
@@ -104,34 +101,34 @@ export function AgeCalculator() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="text-center">
                 <p className="text-3xl font-bold text-[#10b981] font-mono">
-                  {age.years}
+                  {formatNumber(age.years, locale, { maxFractionDigits: 0 })}
                 </p>
                 <p className="text-sm text-[#64748b] mt-1">
-                  Years
+                  {isTr ? "Yıl" : "Years"}
                 </p>
               </div>
               <div className="text-center">
                 <p className="text-3xl font-bold text-[#10b981] font-mono">
-                  {age.months}
+                  {formatNumber(age.months, locale, { maxFractionDigits: 0 })}
                 </p>
                 <p className="text-sm text-[#64748b] mt-1">
-                  Months
+                  {isTr ? "Ay" : "Months"}
                 </p>
               </div>
               <div className="text-center">
                 <p className="text-3xl font-bold text-[#10b981] font-mono">
-                  {age.weeks}
+                  {formatNumber(age.weeks, locale, { maxFractionDigits: 0 })}
                 </p>
                 <p className="text-sm text-[#64748b] mt-1">
-                  Weeks
+                  {isTr ? "Hafta" : "Weeks"}
                 </p>
               </div>
               <div className="text-center">
                 <p className="text-3xl font-bold text-[#10b981] font-mono">
-                  {age.days}
+                  {formatNumber(age.days, locale, { maxFractionDigits: 0 })}
                 </p>
                 <p className="text-sm text-[#64748b] mt-1">
-                  Days
+                  {isTr ? "Gün" : "Days"}
                 </p>
               </div>
             </div>

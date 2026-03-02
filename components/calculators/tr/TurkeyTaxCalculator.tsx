@@ -7,6 +7,7 @@ import {
   INCOME_TAX_BRACKETS_2026,
   DATA_VERSION,
 } from "@/lib/data/turkey-2026-data";
+import { formatPercent } from "@/lib/format/locale-format";
 
 interface TaxFormData {
   annualIncome: number;
@@ -130,7 +131,7 @@ export function TurkeyTaxCalculator() {
             <div className="bg-[#f8fafc] p-4 rounded-lg border border-[#e2e8f0]">
               <p className="text-sm text-[#64748b]">Efektif Vergi Oranı</p>
               <p className="text-2xl font-bold text-[#1e293b]">
-                %{result.effectiveRate.toFixed(2)}
+                {formatPercent(result.effectiveRate, "tr", { maxFractionDigits: 2 })}
               </p>
             </div>
           </div>

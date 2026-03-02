@@ -10,6 +10,7 @@ import {
   BES_2026,
   DATA_VERSION,
 } from "@/lib/data/turkey-2026-data";
+import { formatNumber, formatPercent } from "@/lib/format/locale-format";
 
 interface RetirementFormData {
   birthYear: number;
@@ -339,7 +340,7 @@ export function TurkeyRetirementCalculator() {
               <div>
                 <p className="text-sm text-[#64748b]">Gerekli Prim Günü</p>
                 <p className="text-xl font-bold text-[#1e293b]">
-                  {result.requiredPremiumDays.toLocaleString("tr-TR")} gün
+                  {formatNumber(result.requiredPremiumDays, "tr", { maxFractionDigits: 0 })} gün
                 </p>
                 <p className="text-xs text-[#64748b]">
                   ({SGK_PREMIUM_DAY_REQUIREMENTS.normal.minYears} yıl)
@@ -348,7 +349,7 @@ export function TurkeyRetirementCalculator() {
               <div>
                 <p className="text-sm text-[#64748b]">Mevcut Prim Günü</p>
                 <p className="text-xl font-bold text-[#1e293b]">
-                  {(result.requiredPremiumDays - result.remainingPremiumDays).toLocaleString("tr-TR")} gün
+                  {formatNumber(result.requiredPremiumDays - result.remainingPremiumDays, "tr", { maxFractionDigits: 0 })} gün
                 </p>
               </div>
               <div>
@@ -358,7 +359,7 @@ export function TurkeyRetirementCalculator() {
                 }`}>
                   {result.remainingPremiumDays === 0 
                     ? "Tamamlandı ✓" 
-                    : `${result.remainingPremiumDays.toLocaleString("tr-TR")} gün`
+                    : `${formatNumber(result.remainingPremiumDays, "tr", { maxFractionDigits: 0 })} gün`
                   }
                 </p>
               </div>
@@ -374,7 +375,7 @@ export function TurkeyRetirementCalculator() {
                 />
               </div>
               <p className="text-xs text-[#64748b] mt-1 text-right">
-                %{(((result.requiredPremiumDays - result.remainingPremiumDays) / result.requiredPremiumDays) * 100).toFixed(1)} tamamlandı
+                {formatPercent(((result.requiredPremiumDays - result.remainingPremiumDays) / result.requiredPremiumDays) * 100, "tr", { maxFractionDigits: 1 })} tamamlandı
               </p>
             </div>
           </div>

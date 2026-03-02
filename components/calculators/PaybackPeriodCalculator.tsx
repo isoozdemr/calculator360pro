@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { validateField, COMMON_RULES } from "@/lib/validation/rules";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber } from "@/lib/format/locale-format";
 
 type Locale = "en" | "tr";
 
 export function PaybackPeriodCalculator({ locale: localeProp = "en" }: { locale?: Locale }) {
-  const isTr = localeProp === "tr";
+  const locale = localeProp;
+  const isTr = locale === "tr";
   const [initialInvestment, setInitialInvestment] = useState("");
   const [cashFlow, setCashFlow] = useState("");
   const [isMonthly, setIsMonthly] = useState(false);
@@ -18,19 +19,20 @@ export function PaybackPeriodCalculator({ locale: localeProp = "en" }: { locale?
   const [cashFlowError, setCashFlowError] = useState<string | null>(null);
 
   const calculate = () => {
-    const invErr = validateField(initialInvestment, COMMON_RULES.positiveNumber);
-    const flowErr = validateField(cashFlow, COMMON_RULES.positiveNumber);
-    if (invErr || flowErr) {
-      setInvestmentError(invErr);
-      setCashFlowError(flowErr);
+    const inv = parseLocaleNumber(initialInvestment, locale);
+    const flow = parseLocaleNumber(cashFlow, locale);
+    if (inv == null || inv <= 0) {
+      setInvestmentError(isTr ? "Pozitif bir sayı girin" : "Enter a positive number");
+      setResult(null);
+      return;
+    }
+    if (flow == null || flow <= 0) {
+      setCashFlowError(isTr ? "Pozitif bir sayı girin" : "Enter a positive number");
+      setResult(null);
       return;
     }
     setInvestmentError(null);
     setCashFlowError(null);
-
-    const inv = parseFloat(initialInvestment);
-    const flow = parseFloat(cashFlow);
-    if (flow <= 0) return;
     const monthsToPayback = isMonthly ? inv / flow : (inv / flow) * 12;
     const years = Math.floor(monthsToPayback / 12);
     const months = Math.round(monthsToPayback % 12);
@@ -66,19 +68,13 @@ export function PaybackPeriodCalculator({ locale: localeProp = "en" }: { locale?
   return (
     <div className="w-full max-w-2xl mx-auto space-y-6">
       <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6 space-y-6">
-        <Input
+        <FormattedNumberInput
           label={isTr ? "Başlangıç yatırımı (TL)" : "Initial investment ($)"}
-          type="number"
           value={initialInvestment}
-          onChange={(e) => {
-            setInitialInvestment(e.target.value);
-            if (investmentError) setInvestmentError(null);
-          }}
-          onBlur={() => setInvestmentError(validateField(initialInvestment, COMMON_RULES.positiveNumber))}
-          placeholder={isTr ? "örn. 24000" : "e.g. 24000"}
+          onChange={(v) => { setInitialInvestment(v); if (investmentError) setInvestmentError(null); }}
+          locale={locale}
+          formatAs="currency"
           error={investmentError || undefined}
-          step="1"
-          min="0"
         />
         <div className="space-y-2">
           <div className="flex items-center gap-2">
@@ -102,19 +98,13 @@ export function PaybackPeriodCalculator({ locale: localeProp = "en" }: { locale?
             <label htmlFor="monthly">{isTr ? "Aylık net nakit akışı" : "Monthly net cash flow"}</label>
           </div>
         </div>
-        <Input
+        <FormattedNumberInput
           label={isMonthly ? (isTr ? "Aylık net nakit akışı (TL)" : "Monthly net cash flow ($)") : (isTr ? "Yıllık net nakit akışı (TL)" : "Annual net cash flow ($)")}
-          type="number"
           value={cashFlow}
-          onChange={(e) => {
-            setCashFlow(e.target.value);
-            if (cashFlowError) setCashFlowError(null);
-          }}
-          onBlur={() => setCashFlowError(validateField(cashFlow, COMMON_RULES.positiveNumber))}
-          placeholder={isMonthly ? (isTr ? "örn. 500" : "e.g. 500") : (isTr ? "örn. 6000" : "e.g. 6000")}
+          onChange={(v) => { setCashFlow(v); if (cashFlowError) setCashFlowError(null); }}
+          locale={locale}
+          formatAs="currency"
           error={cashFlowError || undefined}
-          step="1"
-          min="0"
         />
         <div className="flex gap-3">
           <Button onClick={calculate} className="flex-1">

@@ -52,7 +52,7 @@ interface CalculatorPageProps {
 
 const calculatorComponents: Record<
   string,
-  React.ComponentType<Record<string, never>>
+  React.ComponentType<{ locale?: "en" | "tr" }>
 > = {
   "percentage-calculator": PercentageCalculator,
   "bmi-calculator": BMICalculator,
@@ -116,7 +116,7 @@ export function CalculatorPage({ calculator }: CalculatorPageProps) {
           </p>
         </div>
 
-        <CalculatorComponent />
+        <CalculatorComponent locale="en" />
 
         {(calculator.category === "health" || calculator.category === "finance") && (
           <CalculatorDisclaimer category={calculator.category} locale="en" />

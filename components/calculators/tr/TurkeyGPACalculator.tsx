@@ -8,6 +8,7 @@ import {
   GPA_INFO,
   DATA_VERSION,
 } from "@/lib/data/turkey-2026-data";
+import { formatNumber } from "@/lib/format/locale-format";
 
 interface Course {
   name: string;
@@ -272,7 +273,7 @@ export function TurkeyGPACalculator() {
             <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
               <p className="text-sm text-blue-600">Genel Ağırlıklı Not Ortalaması (GANO)</p>
               <p className="text-3xl font-bold text-blue-700">
-                {result.gpa.toFixed(2)}
+                {formatNumber(result.gpa, "tr", { maxFractionDigits: 2 })}
               </p>
             </div>
             <div className="bg-[#f8fafc] p-4 rounded-lg border border-[#e2e8f0]">
@@ -323,9 +324,9 @@ export function TurkeyGPACalculator() {
                       <td className="py-2 px-3 text-center text-[#1e293b]">{course.credit}</td>
                       <td className="py-2 px-3 text-center text-[#1e293b]">{course.score}</td>
                       <td className="py-2 px-3 text-center font-semibold text-[#2563eb]">{course.letter}</td>
-                      <td className="py-2 px-3 text-center text-[#1e293b]">{course.gpa.toFixed(1)}</td>
+                      <td className="py-2 px-3 text-center text-[#1e293b]">{formatNumber(course.gpa, "tr", { maxFractionDigits: 1 })}</td>
                       <td className="py-2 px-3 text-right font-semibold text-[#1e293b]">
-                        {course.gradePoints.toFixed(2)}
+                        {formatNumber(course.gradePoints, "tr", { maxFractionDigits: 2 })}
                       </td>
                     </tr>
                   ))}
@@ -333,7 +334,7 @@ export function TurkeyGPACalculator() {
                     <td className="py-2 px-3 font-semibold text-[#1e293b]" colSpan={4}>Toplam</td>
                     <td className="py-2 px-3 text-center font-bold text-[#1e293b]">{result.totalCredits}</td>
                     <td className="py-2 px-3 text-right font-bold text-blue-700">
-                      {result.totalGradePoints.toFixed(2)}
+                      {formatNumber(result.totalGradePoints, "tr", { maxFractionDigits: 2 })}
                     </td>
                   </tr>
                 </tbody>
@@ -362,7 +363,7 @@ export function TurkeyGPACalculator() {
               {TURKEY_GRADE_SCALE_4.map((grade, index) => (
                 <tr key={index} className="border-b border-[#e2e8f0] last:border-0">
                   <td className="py-2 px-3 font-semibold text-[#2563eb]">{grade.letter}</td>
-                  <td className="py-2 px-3 text-center text-[#1e293b]">{grade.gpa.toFixed(1)}</td>
+                  <td className="py-2 px-3 text-center text-[#1e293b]">{formatNumber(grade.gpa, "tr", { maxFractionDigits: 1 })}</td>
                   <td className="py-2 px-3 text-center text-[#1e293b]">
                     {grade.minScore} - {grade.maxScore}
                   </td>

@@ -2,10 +2,14 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { validateField, COMMON_RULES } from "@/lib/validation/rules";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatCurrency } from "@/lib/format/locale-format";
 
-export function RetirementCalculator() {
+type Locale = "en" | "tr";
+
+export function RetirementCalculator({ locale: localeProp = "en" }: { locale?: Locale } = {}) {
+  const locale = localeProp;
+  const isTr = locale === "tr";
   const [currentAge, setCurrentAge] = useState("");
   const [retirementAge, setRetirementAge] = useState("");
   const [currentSavings, setCurrentSavings] = useState("");
@@ -17,93 +21,59 @@ export function RetirementCalculator() {
     interestEarned: number;
     monthlyIncome: number;
   } | null>(null);
-  
-  // Error states
   const [currentAgeError, setCurrentAgeError] = useState<string | null>(null);
   const [retirementAgeError, setRetirementAgeError] = useState<string | null>(null);
   const [currentSavingsError, setCurrentSavingsError] = useState<string | null>(null);
   const [monthlyContributionError, setMonthlyContributionError] = useState<string | null>(null);
   const [expectedReturnError, setExpectedReturnError] = useState<string | null>(null);
 
-  const handleCurrentAgeChange = (value: string) => {
-    setCurrentAge(value);
-    if (currentAgeError) setCurrentAgeError(null);
-  };
-
-  const handleRetirementAgeChange = (value: string) => {
-    setRetirementAge(value);
-    if (retirementAgeError) setRetirementAgeError(null);
-  };
-
-  const handleCurrentSavingsChange = (value: string) => {
-    setCurrentSavings(value);
-    if (currentSavingsError) setCurrentSavingsError(null);
-  };
-
-  const handleMonthlyContributionChange = (value: string) => {
-    setMonthlyContribution(value);
-    if (monthlyContributionError) setMonthlyContributionError(null);
-  };
-
-  const handleExpectedReturnChange = (value: string) => {
-    setExpectedReturn(value);
-    if (expectedReturnError) setExpectedReturnError(null);
-  };
+  const parseOpt = (v: string) => (v.trim() ? (parseLocaleNumber(v, locale) ?? 0) : 0);
 
   const calculate = () => {
-    const currentAgeErr = validateField(currentAge, COMMON_RULES.age);
-    const retirementAgeErr = validateField(retirementAge, COMMON_RULES.age);
-    const currentSavingsErr = validateField(currentSavings, COMMON_RULES.optionalPositive);
-    const monthlyContributionErr = validateField(monthlyContribution, COMMON_RULES.optionalPositive);
-    const expectedReturnErr = validateField(expectedReturn, COMMON_RULES.interestRate);
+    const current = parseLocaleNumber(currentAge, locale);
+    const retirement = parseLocaleNumber(retirementAge, locale);
+    const savings = parseOpt(currentSavings);
+    const monthly = parseOpt(monthlyContribution);
+    const rateRaw = parseLocaleNumber(expectedReturn.replace(/%/g, "").trim(), locale);
 
-    if (currentAgeErr || retirementAgeErr || expectedReturnErr) {
-      setCurrentAgeError(currentAgeErr);
-      setRetirementAgeError(retirementAgeErr);
-      setCurrentSavingsError(currentSavingsErr);
-      setMonthlyContributionError(monthlyContributionErr);
-      setExpectedReturnError(expectedReturnErr);
+    if (current == null || current < 18 || current > 100) {
+      setCurrentAgeError(isTr ? "18–100 arası yaş girin" : "Enter age 18–100");
+      setResult(null);
       return;
     }
-
-    const current = parseFloat(currentAge);
-    const retirement = parseFloat(retirementAge);
-    const savings = parseFloat(currentSavings) || 0;
-    const monthly = parseFloat(monthlyContribution) || 0;
-    const rate = parseFloat(expectedReturn) / 100 / 12; // Monthly rate
-
+    if (retirement == null || retirement < 18 || retirement > 100) {
+      setRetirementAgeError(isTr ? "18–100 arası yaş girin" : "Enter age 18–100");
+      setResult(null);
+      return;
+    }
     if (retirement <= current) {
-      setRetirementAgeError("Retirement age must be greater than current age");
+      setRetirementAgeError(isTr ? "Emeklilik yaşı mevcut yaştan büyük olmalı" : "Retirement age must be greater than current age");
+      setResult(null);
       return;
     }
-
-    const yearsToRetirement = retirement - current;
-    const months = yearsToRetirement * 12;
-
-    if (!isNaN(current) && !isNaN(retirement) && !isNaN(savings) && !isNaN(monthly) && !isNaN(rate) && months > 0) {
-      // Compound interest for current savings
-      let retirementSavings = savings * Math.pow(1 + rate, months);
-      
-      // Future value of monthly contributions (annuity)
-      if (monthly > 0 && rate > 0) {
-        retirementSavings += monthly * ((Math.pow(1 + rate, months) - 1) / rate);
-      } else if (monthly > 0) {
-        retirementSavings += monthly * months;
-      }
-
-      const totalContributions = savings + (monthly * months);
-      const interestEarned = retirementSavings - totalContributions;
-
-      // Estimate monthly income (4% withdrawal rule)
-      const monthlyIncome = (retirementSavings * 0.04) / 12;
-
-      setResult({
-        retirementSavings,
-        totalContributions,
-        interestEarned,
-        monthlyIncome,
-      });
+    if (rateRaw == null || rateRaw < 0 || rateRaw > 100) {
+      setExpectedReturnError(isTr ? "Beklenen getiri %0–100" : "Expected return 0–100%");
+      setResult(null);
+      return;
     }
+    setCurrentAgeError(null);
+    setRetirementAgeError(null);
+    setCurrentSavingsError(null);
+    setMonthlyContributionError(null);
+    setExpectedReturnError(null);
+
+    const rate = rateRaw / 100 / 12;
+    const months = (retirement - current) * 12;
+    let retirementSavings = savings * Math.pow(1 + rate, months);
+    if (monthly > 0 && rate > 0) {
+      retirementSavings += monthly * ((Math.pow(1 + rate, months) - 1) / rate);
+    } else if (monthly > 0) {
+      retirementSavings += monthly * months;
+    }
+    const totalContributions = savings + monthly * months;
+    const interestEarned = retirementSavings - totalContributions;
+    const monthlyIncome = (retirementSavings * 0.04) / 12;
+    setResult({ retirementSavings, totalContributions, interestEarned, monthlyIncome });
   };
 
   const reset = () => {
@@ -124,91 +94,60 @@ export function RetirementCalculator() {
     <div className="w-full max-w-2xl mx-auto space-y-6">
       <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6 space-y-6">
         <div className="space-y-4">
-          <Input
-            label="Current Age"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Mevcut Yaş" : "Current Age"}
             value={currentAge}
-            onChange={(e) => handleCurrentAgeChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(currentAge, COMMON_RULES.age);
-              setCurrentAgeError(error);
-            }}
-            placeholder="Enter current age (e.g., 30)"
+            onChange={(v) => { setCurrentAge(v); setCurrentAgeError(null); }}
+            locale={locale}
+            formatAs="number"
+            maxFractionDigits={0}
             error={currentAgeError || undefined}
-            helperText="Enter your current age"
-            step="1"
-            min="18"
-            max="100"
+            helperText={isTr ? "Mevcut yaşınız" : "Enter your current age"}
           />
-          <Input
-            label="Retirement Age"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Emeklilik Yaşı" : "Retirement Age"}
             value={retirementAge}
-            onChange={(e) => handleRetirementAgeChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(retirementAge, COMMON_RULES.age);
-              setRetirementAgeError(error);
-            }}
-            placeholder="Enter retirement age (e.g., 65)"
+            onChange={(v) => { setRetirementAge(v); setRetirementAgeError(null); }}
+            locale={locale}
+            formatAs="number"
+            maxFractionDigits={0}
             error={retirementAgeError || undefined}
-            helperText="Enter your planned retirement age"
-            step="1"
-            min="18"
-            max="100"
+            helperText={isTr ? "Planladığınız emeklilik yaşı" : "Enter your planned retirement age"}
           />
-          <Input
-            label="Current Savings ($)"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Mevcut Birikim ($)" : "Current Savings ($)"}
             value={currentSavings}
-            onChange={(e) => handleCurrentSavingsChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(currentSavings, COMMON_RULES.optionalPositive);
-              setCurrentSavingsError(error);
-            }}
-            placeholder="Enter current retirement savings (e.g., 50000)"
+            onChange={(v) => { setCurrentSavings(v); setCurrentSavingsError(null); }}
+            locale={locale}
+            formatAs="currency"
             error={currentSavingsError || undefined}
-            helperText="Enter your current retirement savings (optional)"
-            step="1000"
-            min="0"
+            helperText={isTr ? "Mevcut emeklilik birikiminiz (isteğe bağlı)" : "Enter your current retirement savings (optional)"}
           />
-          <Input
-            label="Monthly Contribution ($)"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Aylık Katkı ($)" : "Monthly Contribution ($)"}
             value={monthlyContribution}
-            onChange={(e) => handleMonthlyContributionChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(monthlyContribution, COMMON_RULES.optionalPositive);
-              setMonthlyContributionError(error);
-            }}
-            placeholder="Enter monthly contribution (e.g., 500)"
+            onChange={(v) => { setMonthlyContribution(v); setMonthlyContributionError(null); }}
+            locale={locale}
+            formatAs="currency"
             error={monthlyContributionError || undefined}
-            helperText="Enter monthly retirement contribution (optional)"
-            step="10"
-            min="0"
+            helperText={isTr ? "Aylık emeklilik katkısı (isteğe bağlı)" : "Enter monthly retirement contribution (optional)"}
           />
-          <Input
-            label="Expected Annual Return (%)"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Beklenen Yıllık Getiri (%)" : "Expected Annual Return (%)"}
             value={expectedReturn}
-            onChange={(e) => handleExpectedReturnChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(expectedReturn, COMMON_RULES.interestRate);
-              setExpectedReturnError(error);
-            }}
-            placeholder="Enter expected return (e.g., 7)"
+            onChange={(v) => { setExpectedReturn(v); setExpectedReturnError(null); }}
+            locale={locale}
+            formatAs="percent"
             error={expectedReturnError || undefined}
-            helperText="Enter expected annual return as a percentage"
-            step="0.1"
-            min="0"
-            max="100"
+            helperText={isTr ? "Beklenen yıllık getiri yüzde" : "Enter expected annual return as a percentage"}
           />
 
           <div className="flex gap-3">
             <Button onClick={calculate} className="flex-1">
-              Calculate
+              {isTr ? "Hesapla" : "Calculate"}
             </Button>
             <Button onClick={reset} variant="outline">
-              Reset
+              {isTr ? "Sıfırla" : "Reset"}
             </Button>
           </div>
         </div>
@@ -216,42 +155,42 @@ export function RetirementCalculator() {
         {result && (
           <div className="result-container bg-[#f0fdf4] border-2 border-[#10b981] rounded-lg p-6 space-y-4">
             <h3 className="text-lg font-semibold text-[#1e293b]">
-              Retirement Projection
+              {isTr ? "Emeklilik Tahmini" : "Retirement Projection"}
             </h3>
             <div className="space-y-3">
               <div>
                 <p className="text-sm text-[#64748b]">
-                  Retirement Savings
+                  {isTr ? "Emeklilik Birikimi" : "Retirement Savings"}
                 </p>
                 <p className="text-3xl font-bold text-[#10b981] font-mono">
-                  ${result.retirementSavings.toFixed(2)}
+                  {formatCurrency(result.retirementSavings, locale)}
                 </p>
               </div>
               <div>
                 <p className="text-sm text-[#64748b]">
-                  Total Contributions
+                  {isTr ? "Toplam Katkı" : "Total Contributions"}
                 </p>
                 <p className="text-2xl font-bold text-[#10b981] font-mono">
-                  ${result.totalContributions.toFixed(2)}
+                  {formatCurrency(result.totalContributions, locale)}
                 </p>
               </div>
               <div>
                 <p className="text-sm text-[#64748b]">
-                  Interest Earned
+                  {isTr ? "Kazanılan Faiz" : "Interest Earned"}
                 </p>
                 <p className="text-2xl font-bold text-[#10b981] font-mono">
-                  ${result.interestEarned.toFixed(2)}
+                  {formatCurrency(result.interestEarned, locale)}
                 </p>
               </div>
               <div className="pt-3 border-t border-[#10b981]/30">
                 <p className="text-sm text-[#64748b]">
-                  Estimated Monthly Income (4% rule)
+                  {isTr ? "Tahmini Aylık Gelir (%4 kuralı)" : "Estimated Monthly Income (4% rule)"}
                 </p>
                 <p className="text-2xl font-bold text-[#10b981] font-mono">
-                  ${result.monthlyIncome.toFixed(2)}
+                  {formatCurrency(result.monthlyIncome, locale)}
                 </p>
                 <p className="text-xs text-[#64748b] mt-1">
-                  Based on 4% annual withdrawal rate
+                  {isTr ? "Yıllık %4 çekim oranına dayanır" : "Based on 4% annual withdrawal rate"}
                 </p>
               </div>
             </div>

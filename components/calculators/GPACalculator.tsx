@@ -2,12 +2,15 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { validateField, COMMON_RULES } from "@/lib/validation/rules";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatNumber } from "@/lib/format/locale-format";
+
+type Locale = "en" | "tr";
 
 interface Course {
   name: string;
   grade: string;
-  credits: number;
+  credits: string;
 }
 
 interface CourseErrors {
@@ -16,9 +19,11 @@ interface CourseErrors {
   credits?: string;
 }
 
-export function GPACalculator() {
+export function GPACalculator({ locale: localeProp = "en" }: { locale?: Locale } = {}) {
+  const locale = localeProp;
+  const isTr = locale === "tr";
   const [courses, setCourses] = useState<Course[]>([
-    { name: "", grade: "", credits: 0 },
+    { name: "", grade: "", credits: "" },
   ]);
   const [gpa, setGpa] = useState<number | null>(null);
   const [scale, setScale] = useState<"4.0" | "5.0">("4.0");
@@ -54,7 +59,7 @@ export function GPACalculator() {
   };
 
   const addCourse = () => {
-    setCourses([...courses, { name: "", grade: "", credits: 0 }]);
+    setCourses([...courses, { name: "", grade: "", credits: "" }]);
   };
 
   const removeCourse = (index: number) => {
@@ -79,20 +84,16 @@ export function GPACalculator() {
 
   const validateCourse = (course: Course, index: number): CourseErrors => {
     const courseErrors: CourseErrors = {};
-    
     if (!course.name || course.name.trim() === "") {
-      courseErrors.name = "Course name is required";
+      courseErrors.name = isTr ? "Ders adı gerekli" : "Course name is required";
     }
-    
     if (!course.grade || course.grade.trim() === "") {
-      courseErrors.grade = "Grade is required";
+      courseErrors.grade = isTr ? "Not gerekli" : "Grade is required";
     }
-    
-    const creditsError = validateField(course.credits.toString(), COMMON_RULES.credits);
-    if (creditsError) {
-      courseErrors.credits = creditsError;
+    const cred = parseLocaleNumber(course.credits, locale);
+    if (cred == null || cred < 0.5 || cred > 10) {
+      courseErrors.credits = isTr ? "Kredi 0,5–10 arası olmalı" : "Credits must be 0.5–10";
     }
-    
     return courseErrors;
   };
 
@@ -118,9 +119,10 @@ export function GPACalculator() {
 
     courses.forEach((course) => {
       const gradeValue = gradePoints[scale][course.grade.toUpperCase() as keyof typeof gradePoints["4.0"]];
-      if (gradeValue !== undefined && course.credits > 0) {
-        totalPoints += gradeValue * course.credits;
-        totalCredits += course.credits;
+      const cred = parseLocaleNumber(course.credits, locale);
+      if (gradeValue !== undefined && cred != null && cred > 0) {
+        totalPoints += gradeValue * cred;
+        totalCredits += cred;
       }
     });
 
@@ -130,7 +132,7 @@ export function GPACalculator() {
   };
 
   const reset = () => {
-    setCourses([{ name: "", grade: "", credits: 0 }]);
+    setCourses([{ name: "", grade: "", credits: "" }]);
     setGpa(null);
     setErrors({});
   };
@@ -234,42 +236,15 @@ export function GPACalculator() {
                   </div>
                 </div>
                 <div className="md:col-span-3">
-                  <div>
-                    <input
-                      type="number"
-                      placeholder="Credits (e.g., 3)"
-                      value={course.credits || ""}
-                      onChange={(e) =>
-                        updateCourse(index, "credits", parseFloat(e.target.value) || 0)
-                      }
-                      onBlur={() => {
-                        const courseErrors = validateCourse(course, index);
-                        if (courseErrors.credits) {
-                          setErrors({ ...errors, [index]: { ...errors[index], credits: courseErrors.credits } });
-                        }
-                      }}
-                      step="0.5"
-                      min="0.5"
-                      max="10"
-                      className={`w-full px-4 py-2.5 border-2 rounded-lg bg-white text-[#1e293b] min-h-[44px] ${
-                        errors[index]?.credits
-                          ? "border-[#ef4444] focus:ring-[#ef4444]"
-                          : "border-[#e2e8f0]"
-                      }`}
-                    />
-                    <div className="min-h-[20px] mt-1.5">
-                      {errors[index]?.credits && (
-                        <p className="text-[11px] text-[#ef4444] leading-tight whitespace-nowrap overflow-hidden text-ellipsis" role="alert">
-                          {errors[index].credits}
-                        </p>
-                      )}
-                      {!errors[index]?.credits && (
-                        <p className="text-[11px] text-[#64748b] leading-tight">
-                          Enter credits (0.5-10)
-                        </p>
-                      )}
-                    </div>
-                  </div>
+                  <FormattedNumberInput
+                    value={course.credits}
+                    onChange={(v) => updateCourse(index, "credits", v)}
+                    locale={locale}
+                    formatAs="number"
+                    maxFractionDigits={1}
+                    error={errors[index]?.credits}
+                    helperText={!errors[index]?.credits ? (isTr ? "Kredi (0,5–10)" : "Enter credits (0.5-10)") : undefined}
+                  />
                 </div>
                 <div className="md:col-span-2">
                   {courses.length > 1 && (
@@ -307,7 +282,7 @@ export function GPACalculator() {
               Your GPA
             </h3>
             <p className="text-4xl font-bold text-[#10b981] font-mono">
-              {gpa.toFixed(2)}
+              {formatNumber(gpa, locale, { maxFractionDigits: 2 })}
             </p>
             <p className="text-sm text-[#64748b] mt-2">
               Based on {scale} scale

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { formatPercent } from "@/lib/format/locale-format";
 import { validateField, COMMON_RULES, VALIDATION_PATTERNS } from "@/lib/validation/rules";
 
 const CATEGORIES_MALE: Record<string, string> = {
@@ -390,7 +391,7 @@ export function TurkeyBodyFatCalculator() {
           <div className="result-container bg-[#f0fdf4] border-2 border-[#10b981] rounded-lg p-6">
             <h3 className="text-lg font-semibold text-[#1e293b] mb-2">Vücut Yağ Oranınız</h3>
             <p className="text-4xl font-bold text-[#10b981] font-mono mb-2">
-              {result.bodyFatPercentage.toFixed(1)}%
+              {formatPercent(result.bodyFatPercentage, "tr", { maxFractionDigits: 1 })}
             </p>
             <p className="text-lg font-semibold text-[#1e293b]">{result.category}</p>
             <div className="mt-4 pt-4 border-t border-[#10b981]/30">

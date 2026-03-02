@@ -3,8 +3,13 @@
 import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { formatNumber } from "@/lib/format/locale-format";
 
-export function DateCalculator() {
+type Locale = "en" | "tr";
+
+export function DateCalculator({ locale: localeProp = "en" }: { locale?: Locale } = {}) {
+  const locale = localeProp;
+  const isTr = locale === "tr";
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [includeEndDate, setIncludeEndDate] = useState(true);
@@ -15,19 +20,18 @@ export function DateCalculator() {
     years: number;
     businessDays: number;
   } | null>(null);
-  
   const [startDateError, setStartDateError] = useState<string | null>(null);
   const [endDateError, setEndDateError] = useState<string | null>(null);
 
   const handleStartDateChange = useCallback((value: string) => {
     setStartDate(value);
-    if (startDateError) setStartDateError(null);
-  }, [startDateError]);
+    setStartDateError(null);
+  }, []);
 
   const handleEndDateChange = useCallback((value: string) => {
     setEndDate(value);
-    if (endDateError) setEndDateError(null);
-  }, [endDateError]);
+    setEndDateError(null);
+  }, []);
 
   const calculateBusinessDays = useCallback((start: Date, end: Date): number => {
     let count = 0;
@@ -43,27 +47,23 @@ export function DateCalculator() {
   }, []);
 
   const calculate = useCallback(() => {
-    if (!startDate || !endDate) {
-      if (!startDate) setStartDateError("Start date is required");
-      if (!endDate) setEndDateError("End date is required");
-      return;
-    }
+    if (!startDate?.trim()) setStartDateError(isTr ? "Başlangıç tarihi gerekli" : "Start date is required");
+    if (!endDate?.trim()) setEndDateError(isTr ? "Bitiş tarihi gerekli" : "End date is required");
+    if (!startDate?.trim() || !endDate?.trim()) return;
 
     const start = new Date(startDate);
     const end = new Date(endDate);
 
     if (isNaN(start.getTime())) {
-      setStartDateError("Invalid start date");
+      setStartDateError(isTr ? "Geçersiz başlangıç tarihi" : "Invalid start date");
       return;
     }
-
     if (isNaN(end.getTime())) {
-      setEndDateError("Invalid end date");
+      setEndDateError(isTr ? "Geçersiz bitiş tarihi" : "Invalid end date");
       return;
     }
-
     if (start > end) {
-      setEndDateError("End date must be after start date");
+      setEndDateError(isTr ? "Bitiş tarihi başlangıçtan sonra olmalı" : "End date must be after start date");
       return;
     }
 
@@ -153,34 +153,34 @@ export function DateCalculator() {
             </h3>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-sm text-[#64748b]">Total Days</p>
+                <p className="text-sm text-[#64748b]">{isTr ? "Toplam Gün" : "Total Days"}</p>
                 <p className="text-2xl font-bold text-[#10b981] font-mono">
-                  {result.days}
+                  {formatNumber(result.days, locale, { maxFractionDigits: 0 })}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-[#64748b]">Weeks</p>
+                <p className="text-sm text-[#64748b]">{isTr ? "Hafta" : "Weeks"}</p>
                 <p className="text-2xl font-bold text-[#10b981] font-mono">
-                  {result.weeks}
+                  {formatNumber(result.weeks, locale, { maxFractionDigits: 0 })}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-[#64748b]">Months</p>
+                <p className="text-sm text-[#64748b]">{isTr ? "Ay" : "Months"}</p>
                 <p className="text-2xl font-bold text-[#10b981] font-mono">
-                  {result.months}
+                  {formatNumber(result.months, locale, { maxFractionDigits: 0 })}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-[#64748b]">Years</p>
+                <p className="text-sm text-[#64748b]">{isTr ? "Yıl" : "Years"}</p>
                 <p className="text-2xl font-bold text-[#10b981] font-mono">
-                  {result.years}
+                  {formatNumber(result.years, locale, { maxFractionDigits: 0 })}
                 </p>
               </div>
             </div>
             <div className="pt-4 border-t border-[#10b981]">
-              <p className="text-sm text-[#64748b]">Business Days (Weekdays)</p>
+              <p className="text-sm text-[#64748b]">{isTr ? "İş günü (hafta içi)" : "Business Days (Weekdays)"}</p>
               <p className="text-xl font-bold text-[#10b981] font-mono">
-                {result.businessDays}
+                {formatNumber(result.businessDays, locale, { maxFractionDigits: 0 })}
               </p>
             </div>
           </div>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { formatNumber } from "@/lib/format/locale-format";
 
 export function TurkeyBMICalculator() {
   const [weight, setWeight] = useState("");
@@ -145,7 +146,7 @@ export function TurkeyBMICalculator() {
               Vücut Kitle İndeksiniz (BMI)
             </h3>
             <p className="text-4xl font-bold text-[#10b981] font-mono mb-2">
-              {bmi.toFixed(1)}
+              {formatNumber(bmi, "tr", { maxFractionDigits: 1 })}
             </p>
             <p className={`text-lg font-semibold ${categoryColor}`}>
               {category}

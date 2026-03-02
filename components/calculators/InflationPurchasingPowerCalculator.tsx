@@ -7,9 +7,14 @@ import {
   USA_INFLATION_YEAR_MAX,
 } from "@/lib/data/usa-inflation-data";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatCurrency } from "@/lib/format/locale-format";
 
-export function InflationPurchasingPowerCalculator() {
+type Locale = "en" | "tr";
+
+export function InflationPurchasingPowerCalculator({ locale: localeProp = "en" }: { locale?: Locale } = {}) {
+  const locale = localeProp;
+  const isTr = locale === "tr";
   const [amount, setAmount] = useState("10000");
   const [startYear, setStartYear] = useState("2020");
   const [endYear, setEndYear] = useState("2026");
@@ -26,11 +31,11 @@ export function InflationPurchasingPowerCalculator() {
   );
 
   const calculate = () => {
-    const am = parseFloat(amount.replace(/,/g, "."));
+    const am = parseLocaleNumber(amount, locale);
     const sY = parseInt(startYear, 10);
     const eY = parseInt(endYear, 10);
     if (
-      isNaN(am) ||
+      am == null ||
       am <= 0 ||
       isNaN(sY) ||
       isNaN(eY) ||
@@ -50,31 +55,19 @@ export function InflationPurchasingPowerCalculator() {
     });
   };
 
-  const formatCurrency = (value: number) =>
-    new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    }).format(value);
-
   return (
     <div className="w-full max-w-2xl mx-auto space-y-6">
       <div className="bg-white rounded-xl border-2 border-[#e2e8f0] p-6 shadow-sm space-y-6">
         <div className="grid gap-4 md:grid-cols-3">
-          <div>
-            <label className="block text-sm font-medium text-[#475569] mb-2">
-              Amount ($)
-            </label>
-            <Input
-              type="text"
-              inputMode="decimal"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              placeholder="10,000"
-              className="w-full"
-            />
-          </div>
+          <FormattedNumberInput
+            label={isTr ? "Tutar ($)" : "Amount ($)"}
+            value={amount}
+            onChange={setAmount}
+            locale={locale}
+            formatAs="currency"
+            error={undefined}
+            helperText={undefined}
+          />
           <div>
             <label className="block text-sm font-medium text-[#475569] mb-2">
               Start year
@@ -133,12 +126,11 @@ export function InflationPurchasingPowerCalculator() {
         >
           <p className="text-sm text-[#94a3b8] mb-2">Result summary</p>
           <p className="text-xl md:text-2xl font-bold leading-snug">
-            {formatCurrency(result.amount)} ({result.startYear} value) is
-            equivalent to approximately{" "}
+            {formatCurrency(result.amount, locale)} ({result.startYear} {isTr ? "değeri" : "value"}) {isTr ? "yaklaşık olarak şuna eşdeğerdir: " : "is equivalent to approximately "}
             <span className="text-[#93c5fd]">
-              {formatCurrency(result.equivalentAmount)}
-            </span>{" "}
-            in {result.endYear} purchasing power.
+              {formatCurrency(result.equivalentAmount, locale)}
+            </span>
+            {" "}{result.endYear} {isTr ? "alım gücü." : "purchasing power."}
           </p>
           <p className="text-[#94a3b8] mt-3 text-sm">
             Based on BLS annual CPI-U inflation rates.

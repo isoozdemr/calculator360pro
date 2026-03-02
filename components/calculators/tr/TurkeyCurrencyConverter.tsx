@@ -3,6 +3,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { formatNumber } from "@/lib/format/locale-format";
 
 const CURRENCIES = [
   { code: "TRY", name: "Türk Lirası" },
@@ -232,7 +233,7 @@ export function TurkeyCurrencyConverter() {
               </div>
               <div className="pt-3 border-t border-[#10b981]">
                 <p className="text-xs text-[#64748b]">
-                  Döviz Kuru: 1 {fromCurrency} = {exchangeRate.toFixed(6)} {toCurrency}
+                  Döviz Kuru: 1 {fromCurrency} = {formatNumber(exchangeRate, "tr", { maxFractionDigits: 6 })} {toCurrency}
                 </p>
                 <p className="text-xs text-[#64748b] mt-2">
                   Not: Döviz kurları yaklaşık değerlerdir ve değişebilir. Gerçek işlemler için 

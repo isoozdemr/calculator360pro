@@ -2,7 +2,10 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatCurrency, formatPercent } from "@/lib/format/locale-format";
+
+const locale = "tr" as const;
 
 /** Türkiye emlak vergisi oranları (yıllık, tahmini – belediyeye göre değişir) */
 const RATE_OPTIONS = [
@@ -18,40 +21,28 @@ export function EmlakVergisiHesaplama() {
   const [customRate, setCustomRate] = useState("");
   const [result, setResult] = useState<{ annualTax: number; rate: number } | null>(null);
 
-  const rate = customRate ? parseFloat(customRate.replace(/,/g, ".")) / 100 : RATE_OPTIONS[rateIndex].value;
+  const customRatePct = customRate ? (parseLocaleNumber(customRate, locale) ?? NaN) : null;
+  const rate = customRatePct != null && !Number.isNaN(customRatePct) ? customRatePct / 100 : RATE_OPTIONS[rateIndex].value;
 
   const calculate = () => {
-    const val = parseFloat(value.replace(/,/g, "."));
-    if (isNaN(val) || val <= 0) return;
-    if (customRate && (isNaN(rate) || rate <= 0 || rate > 10)) return;
+    const val = parseLocaleNumber(value, locale);
+    if (val == null || val <= 0) return;
+    if (customRate && (Number.isNaN(rate) || rate <= 0 || rate > 10)) return;
     const annualTax = val * rate;
     setResult({ annualTax, rate });
   };
-
-  const formatTRY = (n: number) =>
-    new Intl.NumberFormat("tr-TR", {
-      style: "decimal",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    }).format(n) + " TL";
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-6">
       <div className="bg-white rounded-xl border-2 border-[#e2e8f0] p-6 shadow-sm space-y-6">
         <div className="grid gap-4 md:grid-cols-2">
-          <div>
-            <label className="block text-sm font-medium text-[#475569] mb-2">
-              Emlak değeri (TL)
-            </label>
-            <Input
-              type="text"
-              inputMode="decimal"
-              value={value}
-              onChange={(e) => setValue(e.target.value)}
-              placeholder="1.000.000"
-              className="w-full"
-            />
-          </div>
+          <FormattedNumberInput
+            label="Emlak değeri (TL)"
+            value={value}
+            onChange={setValue}
+            locale={locale}
+            formatAs="currency"
+          />
           <div>
             <label className="block text-sm font-medium text-[#475569] mb-2">
               Vergi oranı
@@ -70,18 +61,18 @@ export function EmlakVergisiHesaplama() {
                 </option>
               ))}
             </select>
-            <p className="text-xs text-[#64748b] mt-1">
+            <div className="text-xs text-[#64748b] mt-1 flex items-center gap-1">
               Özel oran:{" "}
-              <input
-                type="text"
-                inputMode="decimal"
+              <FormattedNumberInput
                 value={customRate}
-                onChange={(e) => setCustomRate(e.target.value)}
-                placeholder="örn. 0,2"
-                className="w-20 border border-[#e2e8f0] rounded px-2 py-1 text-sm"
-              />{" "}
+                onChange={setCustomRate}
+                locale={locale}
+                formatAs="number"
+                maxFractionDigits={2}
+                className="w-24"
+              />
               %
-            </p>
+            </div>
           </div>
         </div>
         <div className="flex flex-wrap gap-3">
@@ -109,10 +100,10 @@ export function EmlakVergisiHesaplama() {
         >
           <p className="text-sm text-[#94a3b8] mb-2">Yıllık emlak vergisi (tahmini)</p>
           <p className="text-xl md:text-2xl font-bold leading-snug">
-            <span className="text-[#93c5fd]">{formatTRY(result.annualTax)}</span>
+            <span className="text-[#93c5fd]">{formatCurrency(result.annualTax, locale)}</span>
             <br />
             <span className="text-sm font-normal text-[#94a3b8]">
-              (Oran: %{(result.rate * 100).toFixed(2)})
+              (Oran: {formatPercent(result.rate * 100, locale, { maxFractionDigits: 2 })})
             </span>
           </p>
           <p className="text-[#94a3b8] mt-3 text-sm">

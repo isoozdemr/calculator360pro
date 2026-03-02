@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { formatNumber, formatPercent } from "@/lib/format/locale-format";
 
 export function TurkeyPercentageCalculator() {
   const [value, setValue] = useState("");
@@ -282,27 +283,27 @@ export function TurkeyPercentageCalculator() {
             </h3>
             <p className="text-3xl font-bold text-[#10b981] font-mono">
               {calculationType === "of"
-                ? `${result.toFixed(2)}`
-                : `%${result.toFixed(2)}`}
+                ? formatNumber(result, "tr", { maxFractionDigits: 2 })
+                : formatPercent(result, "tr", { maxFractionDigits: 2 })}
             </p>
             {calculationType === "of" && (
               <p className="text-sm text-[#64748b] mt-2">
-                {value}&apos;nin %{percentage}&apos;ı = {result.toFixed(2)}
+                {value}&apos;nin %{percentage}&apos;ı = {formatNumber(result, "tr", { maxFractionDigits: 2 })}
               </p>
             )}
             {calculationType === "findPercentage" && (
               <p className="text-sm text-[#64748b] mt-2">
-                {value}, {percentage}&apos;nin %{result.toFixed(2)}&apos;sidir
+                {value}, {percentage}&apos;nin {formatPercent(result, "tr", { maxFractionDigits: 2 })}&apos;sidir
               </p>
             )}
             {calculationType === "increase" && (
               <p className="text-sm text-[#64748b] mt-2">
-                {oldValue}&apos;den {newValue}&apos;ye %{result.toFixed(2)} artış
+                {oldValue}&apos;den {newValue}&apos;ye {formatPercent(result, "tr", { maxFractionDigits: 2 })} artış
               </p>
             )}
             {calculationType === "decrease" && (
               <p className="text-sm text-[#64748b] mt-2">
-                {oldValue}&apos;den {newValue}&apos;ye %{result.toFixed(2)} azalış
+                {oldValue}&apos;den {newValue}&apos;ye {formatPercent(result, "tr", { maxFractionDigits: 2 })} azalış
               </p>
             )}
           </div>

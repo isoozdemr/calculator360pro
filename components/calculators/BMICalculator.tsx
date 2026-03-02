@@ -3,91 +3,79 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { validateField, COMMON_RULES, VALIDATION_PATTERNS } from "@/lib/validation/rules";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatNumber } from "@/lib/format/locale-format";
+import { VALIDATION_PATTERNS } from "@/lib/validation/rules";
 
-export function BMICalculator() {
+type Locale = "en" | "tr";
+
+const CATEGORIES: Record<string, { en: string; tr: string }> = {
+  under: { en: "Underweight", tr: "Zayıf" },
+  normal: { en: "Normal weight", tr: "Normal" },
+  over: { en: "Overweight", tr: "Fazla kilolu" },
+  obese: { en: "Obese", tr: "Obez" },
+};
+
+export function BMICalculator({ locale: localeProp = "en" }: { locale?: Locale }) {
+  const locale = localeProp;
+  const isTr = locale === "tr";
   const [weight, setWeight] = useState("");
   const [height, setHeight] = useState("");
   const [unit, setUnit] = useState<"metric" | "imperial">("metric");
   const [bmi, setBmi] = useState<number | null>(null);
   const [category, setCategory] = useState<string>("");
-  
-  // Error states
   const [weightError, setWeightError] = useState<string | null>(null);
   const [heightError, setHeightError] = useState<string | null>(null);
 
-  const handleWeightChange = (value: string) => {
-    setWeight(value);
-    if (weightError) setWeightError(null);
-  };
-
-  const handleWeightBlur = () => {
-    const rules = unit === "metric" ? COMMON_RULES.weightKg : COMMON_RULES.weightLbs;
-    const error = validateField(weight, rules);
-    setWeightError(error);
-  };
-
-  const handleHeightChange = (value: string) => {
-    setHeight(value);
-    if (heightError) setHeightError(null);
-  };
-
-  const handleHeightBlur = () => {
-    if (unit === "metric") {
-      const error = validateField(height, COMMON_RULES.heightCm);
-      setHeightError(error);
-    } else {
-      const error = validateField(height, COMMON_RULES.heightImperial);
-      setHeightError(error);
-    }
-  };
-
   const calculateBMI = () => {
-    // Validate all fields
-    const weightRules = unit === "metric" ? COMMON_RULES.weightKg : COMMON_RULES.weightLbs;
-    const heightRules = unit === "metric" ? COMMON_RULES.heightCm : COMMON_RULES.heightImperial;
-    
-    const weightErr = validateField(weight, weightRules);
-    const heightErr = validateField(height, heightRules);
-
-    if (weightErr || heightErr) {
-      setWeightError(weightErr);
-      setHeightError(heightErr);
-      return;
-    }
-
     let weightKg: number;
     let heightM: number;
 
     if (unit === "metric") {
-      weightKg = parseFloat(weight);
-      heightM = parseFloat(height) / 100; // cm to m
-    } else {
-      // Imperial: weight in lbs, height in feet and inches
-      const match = height.match(VALIDATION_PATTERNS.HEIGHT_IMPERIAL);
-      if (!match) {
-        setHeightError("Height must be in format: feet'inches (e.g., 5'10)");
+      const w = parseLocaleNumber(weight, locale);
+      const h = parseLocaleNumber(height, locale);
+      if (w == null || w < 1 || w > 500) {
+        setWeightError(isTr ? "1–500 kg arası girin" : "Enter between 1 and 500 kg");
+        setBmi(null);
         return;
       }
-      const feet = parseInt(match[1]);
-      const inches = parseInt(match[2] || "0");
-      weightKg = parseFloat(weight) * 0.453592; // lbs to kg
-      heightM = (feet * 12 + inches) * 0.0254; // inches to m
+      if (h == null || h < 30 || h > 300) {
+        setHeightError(isTr ? "30–300 cm arası girin" : "Enter between 30 and 300 cm");
+        setBmi(null);
+        return;
+      }
+      setWeightError(null);
+      setHeightError(null);
+      weightKg = w;
+      heightM = h / 100;
+    } else {
+      const w = parseLocaleNumber(weight, locale);
+      if (w == null || w < 2.2 || w > 1100) {
+        setWeightError(isTr ? "2,2–1100 lb arası girin" : "Enter between 2.2 and 1100 lbs");
+        setBmi(null);
+        return;
+      }
+      const match = height.match(VALIDATION_PATTERNS.HEIGHT_IMPERIAL);
+      if (!match) {
+        setHeightError(isTr ? "Boyu feet'inç formatında girin (örn. 5'10)" : "Height must be in format: feet'inches (e.g., 5'10)");
+        setBmi(null);
+        return;
+      }
+      setWeightError(null);
+      setHeightError(null);
+      const feet = parseInt(match[1], 10);
+      const inches = parseInt(match[2] || "0", 10);
+      weightKg = w * 0.453592;
+      heightM = (feet * 12 + inches) * 0.0254;
     }
 
-    if (!isNaN(weightKg) && !isNaN(heightM) && heightM > 0) {
+    if (heightM > 0) {
       const bmiValue = weightKg / (heightM * heightM);
       setBmi(bmiValue);
-
-      if (bmiValue < 18.5) {
-        setCategory("Underweight");
-      } else if (bmiValue < 25) {
-        setCategory("Normal weight");
-      } else if (bmiValue < 30) {
-        setCategory("Overweight");
-      } else {
-        setCategory("Obese");
-      }
+      if (bmiValue < 18.5) setCategory(isTr ? CATEGORIES.under.tr : CATEGORIES.under.en);
+      else if (bmiValue < 25) setCategory(isTr ? CATEGORIES.normal.tr : CATEGORIES.normal.en);
+      else if (bmiValue < 30) setCategory(isTr ? CATEGORIES.over.tr : CATEGORIES.over.en);
+      else setCategory(isTr ? CATEGORIES.obese.tr : CATEGORIES.obese.en);
     }
   };
 
@@ -113,7 +101,7 @@ export function BMICalculator() {
                   : "bg-[#f1f5f9] text-[#1e293b]"
               }`}
             >
-              Metric (kg, cm)
+              {isTr ? "Metrik (kg, cm)" : "Metric (kg, cm)"}
             </button>
             <button
               onClick={() => setUnit("imperial")}
@@ -123,57 +111,50 @@ export function BMICalculator() {
                   : "bg-[#f1f5f9] text-[#1e293b]"
               }`}
             >
-              Imperial (lbs, ft'in)
+              {isTr ? "İmparatorluk (lb, ft'inç)" : "Imperial (lbs, ft'in)"}
             </button>
           </div>
 
-          <Input
-            label={unit === "metric" ? "Weight (kg)" : "Weight (lbs)"}
-            type="number"
+          <FormattedNumberInput
+            label={unit === "metric" ? (isTr ? "Kilo (kg)" : "Weight (kg)") : (isTr ? "Kilo (lb)" : "Weight (lbs)")}
             value={weight}
-            onChange={(e) => handleWeightChange(e.target.value)}
-            onBlur={handleWeightBlur}
-            placeholder={unit === "metric" ? "Enter weight in kg (e.g., 70)" : "Enter weight in lbs (e.g., 154)"}
+            onChange={(v) => { setWeight(v); setWeightError(null); }}
+            locale={locale}
+            formatAs="number"
+            maxFractionDigits={1}
             error={weightError || undefined}
-            helperText={unit === "metric" ? "Enter your weight in kilograms" : "Enter your weight in pounds"}
-            step="0.1"
-            min={unit === "metric" ? "1" : "2.2"}
-            max={unit === "metric" ? "500" : "1100"}
+            helperText={unit === "metric" ? (isTr ? "Kilonuzu kg girin" : "Enter your weight in kilograms") : (isTr ? "Kilonuzu lb girin" : "Enter your weight in pounds")}
           />
 
           {unit === "metric" ? (
-            <Input
-              label="Height (cm)"
-              type="number"
+            <FormattedNumberInput
+              label={isTr ? "Boy (cm)" : "Height (cm)"}
               value={height}
-              onChange={(e) => handleHeightChange(e.target.value)}
-              onBlur={handleHeightBlur}
-              placeholder="Enter height in cm (e.g., 175)"
+              onChange={(v) => { setHeight(v); setHeightError(null); }}
+              locale={locale}
+              formatAs="number"
+              maxFractionDigits={1}
               error={heightError || undefined}
-              helperText="Enter your height in centimeters"
-              step="0.1"
-              min="30"
-              max="300"
+              helperText={isTr ? "Boyunuzu cm girin" : "Enter your height in centimeters"}
             />
           ) : (
             <Input
-              label="Height (ft'in)"
+              label={isTr ? "Boy (ft'inç)" : "Height (ft'in)"}
               type="text"
               value={height}
-              onChange={(e) => handleHeightChange(e.target.value)}
-              onBlur={handleHeightBlur}
+              onChange={(e) => { setHeight(e.target.value); setHeightError(null); }}
               placeholder="e.g., 5'10"
               error={heightError || undefined}
-              helperText="Enter height in format: feet'inches (e.g., 5'10)"
+              helperText={isTr ? "Boy: feet'inç (örn. 5'10)" : "Enter height in format: feet'inches (e.g., 5'10)"}
             />
           )}
 
           <div className="flex gap-3">
             <Button onClick={calculateBMI} className="flex-1">
-              Calculate BMI
+              {isTr ? "BMI Hesapla" : "Calculate BMI"}
             </Button>
             <Button onClick={reset} variant="outline">
-              Reset
+              {isTr ? "Sıfırla" : "Reset"}
             </Button>
           </div>
         </div>
@@ -181,23 +162,23 @@ export function BMICalculator() {
         {bmi !== null && (
           <div className="result-container bg-[#f0fdf4] border-2 border-[#10b981] rounded-lg p-6">
             <h3 className="text-lg font-semibold text-[#1e293b] mb-2">
-              Your BMI
+              {isTr ? "BMI Sonucunuz" : "Your BMI"}
             </h3>
             <p className="text-4xl font-bold text-[#10b981] font-mono mb-2">
-              {bmi.toFixed(1)}
+              {formatNumber(bmi, locale, { minFractionDigits: 1, maxFractionDigits: 1 })}
             </p>
             <p className="text-lg font-semibold text-[#1e293b]">
               {category}
             </p>
             <div className="mt-4 pt-4 border-t border-[#10b981]/30">
               <p className="text-sm text-[#64748b]">
-                BMI Categories:
+                {isTr ? "BMI Kategorileri:" : "BMI Categories:"}
               </p>
               <ul className="text-xs text-[#64748b] mt-2 space-y-1">
-                <li>Underweight: &lt; 18.5</li>
-                <li>Normal weight: 18.5 - 24.9</li>
-                <li>Overweight: 25 - 29.9</li>
-                <li>Obese: ≥ 30</li>
+                <li>{isTr ? "Zayıf" : "Underweight"}: &lt; 18.5</li>
+                <li>{isTr ? "Normal" : "Normal weight"}: 18.5 - 24.9</li>
+                <li>{isTr ? "Fazla kilolu" : "Overweight"}: 25 - 29.9</li>
+                <li>{isTr ? "Obez" : "Obese"}: ≥ 30</li>
               </ul>
             </div>
           </div>

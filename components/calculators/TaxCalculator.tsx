@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { validateField, COMMON_RULES } from "@/lib/validation/rules";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatCurrency, formatPercent } from "@/lib/format/locale-format";
 
 // Simplified US tax brackets for 2026 (single filer)
 const TAX_BRACKETS = [
@@ -18,7 +18,11 @@ const TAX_BRACKETS = [
 
 const STANDARD_DEDUCTION = 16100; // 2026 single filer
 
-export function TaxCalculator() {
+type Locale = "en" | "tr";
+
+export function TaxCalculator({ locale: localeProp = "en" }: { locale?: Locale }) {
+  const locale = localeProp;
+  const isTr = locale === "tr";
   const [income, setIncome] = useState("");
   const [deductions, setDeductions] = useState("");
   const [result, setResult] = useState<{
@@ -27,8 +31,6 @@ export function TaxCalculator() {
     effectiveRate: number;
     marginalRate: number;
   } | null>(null);
-  
-  // Error states
   const [incomeError, setIncomeError] = useState<string | null>(null);
   const [deductionsError, setDeductionsError] = useState<string | null>(null);
 
@@ -50,32 +52,24 @@ export function TaxCalculator() {
     return tax;
   };
 
-  const handleIncomeChange = (value: string) => {
-    setIncome(value);
-    if (incomeError) setIncomeError(null);
-  };
-
-  const handleDeductionsChange = (value: string) => {
-    setDeductions(value);
-    if (deductionsError) setDeductionsError(null);
-  };
-
   const calculate = () => {
-    const incomeErr = validateField(income, COMMON_RULES.income);
-    const deductionsErr = deductions 
-      ? validateField(deductions, COMMON_RULES.optionalPositive)
-      : null;
+    const grossIncome = parseLocaleNumber(income, locale);
+    const itemizedDeductions = deductions.trim() ? (parseLocaleNumber(deductions, locale) ?? 0) : 0;
 
-    if (incomeErr || deductionsErr) {
-      setIncomeError(incomeErr);
-      setDeductionsError(deductionsErr);
+    if (grossIncome == null || grossIncome <= 0) {
+      setIncomeError(isTr ? "Pozitif gelir girin" : "Enter a positive income");
+      setResult(null);
       return;
     }
+    if (deductions.trim() && (itemizedDeductions < 0 || isNaN(itemizedDeductions))) {
+      setDeductionsError(isTr ? "Geçerli bir tutar girin" : "Enter a valid amount");
+      setResult(null);
+      return;
+    }
+    setIncomeError(null);
+    setDeductionsError(null);
 
-    const grossIncome = parseFloat(income);
-    const itemizedDeductions = parseFloat(deductions) || 0;
-
-    if (!isNaN(grossIncome) && grossIncome > 0) {
+    if (grossIncome > 0) {
       const deduction = Math.max(STANDARD_DEDUCTION, itemizedDeductions);
       const taxableIncome = Math.max(0, grossIncome - deduction);
       const taxOwed = calculateTax(taxableIncome);
@@ -111,49 +105,34 @@ export function TaxCalculator() {
     <div className="w-full max-w-2xl mx-auto space-y-6">
       <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6 space-y-6">
         <div className="space-y-4">
-          <Input
-            label="Annual Income ($)"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Yıllık Gelir ($)" : "Annual Income ($)"}
             value={income}
-            onChange={(e) => handleIncomeChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(income, COMMON_RULES.income);
-              setIncomeError(error);
-            }}
-            placeholder="Enter annual income (e.g., 75000)"
+            onChange={(v) => { setIncome(v); setIncomeError(null); }}
+            locale={locale}
+            formatAs="currency"
             error={incomeError || undefined}
-            helperText="Enter your gross annual income"
-            step="1000"
-            min="0"
-            max="100000000"
+            helperText={isTr ? "Brüt yıllık gelirinizi girin" : "Enter your gross annual income"}
           />
-          <Input
-            label="Itemized Deductions ($) - Optional"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "İndirimler ($) – İsteğe bağlı" : "Itemized Deductions ($) - Optional"}
             value={deductions}
-            onChange={(e) => handleDeductionsChange(e.target.value)}
-            onBlur={() => {
-              if (deductions) {
-                const error = validateField(deductions, COMMON_RULES.optionalPositive);
-                setDeductionsError(error);
-              }
-            }}
-            placeholder="Enter deductions (or leave blank for standard deduction)"
+            onChange={(v) => { setDeductions(v); setDeductionsError(null); }}
+            locale={locale}
+            formatAs="currency"
             error={deductionsError || undefined}
-            helperText="Enter itemized deductions or leave blank to use standard deduction"
-            step="100"
-            min="0"
+            helperText={isTr ? "İndirimleri girin veya standart indirim için boş bırakın" : "Enter itemized deductions or leave blank to use standard deduction"}
           />
           <p className="text-sm text-[#64748b]">
-            Standard deduction for 2026: ${STANDARD_DEDUCTION.toLocaleString()}
+            {isTr ? "2026 standart indirim: " : "Standard deduction for 2026: "}{formatCurrency(STANDARD_DEDUCTION, locale)}
           </p>
 
           <div className="flex gap-3">
             <Button onClick={calculate} className="flex-1">
-              Calculate Tax
+              {isTr ? "Vergi Hesapla" : "Calculate Tax"}
             </Button>
             <Button onClick={reset} variant="outline">
-              Reset
+              {isTr ? "Sıfırla" : "Reset"}
             </Button>
           </div>
         </div>
@@ -161,39 +140,39 @@ export function TaxCalculator() {
         {result && (
           <div className="result-container bg-[#f0fdf4] border-2 border-[#10b981] rounded-lg p-6 space-y-4">
             <h3 className="text-lg font-semibold text-[#1e293b]">
-              Tax Results
+              {isTr ? "Vergi Sonuçları" : "Tax Results"}
             </h3>
             <div className="space-y-3">
               <div>
                 <p className="text-sm text-[#64748b]">
-                  Taxable Income
+                  {isTr ? "Vergiye tabi gelir" : "Taxable Income"}
                 </p>
                 <p className="text-2xl font-bold text-[#10b981] font-mono">
-                  ${result.taxableIncome.toFixed(2)}
+                  {formatCurrency(result.taxableIncome, locale)}
                 </p>
               </div>
               <div>
                 <p className="text-sm text-[#64748b]">
-                  Tax Owed
+                  {isTr ? "Ödenecek vergi" : "Tax Owed"}
                 </p>
                 <p className="text-3xl font-bold text-[#10b981] font-mono">
-                  ${result.taxOwed.toFixed(2)}
+                  {formatCurrency(result.taxOwed, locale)}
                 </p>
               </div>
               <div>
                 <p className="text-sm text-[#64748b]">
-                  Effective Tax Rate
+                  {isTr ? "Etkin vergi oranı" : "Effective Tax Rate"}
                 </p>
                 <p className="text-2xl font-bold text-[#10b981] font-mono">
-                  {result.effectiveRate.toFixed(2)}%
+                  {formatPercent(result.effectiveRate, locale)}
                 </p>
               </div>
               <div>
                 <p className="text-sm text-[#64748b]">
-                  Marginal Tax Rate
+                  {isTr ? "Marjinal vergi oranı" : "Marginal Tax Rate"}
                 </p>
                 <p className="text-2xl font-bold text-[#10b981] font-mono">
-                  {result.marginalRate.toFixed(2)}%
+                  {formatPercent(result.marginalRate, locale)}
                 </p>
               </div>
             </div>

@@ -2,10 +2,13 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { validateField, COMMON_RULES } from "@/lib/validation/rules";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatNumber, formatPercent } from "@/lib/format/locale-format";
 
-export function PercentageCalculator() {
+type Locale = "en" | "tr";
+
+export function PercentageCalculator({ locale: localeProp = "en" }: { locale?: Locale }) {
+  const locale = localeProp;
   const [value, setValue] = useState("");
   const [percentage, setPercentage] = useState("");
   const [result, setResult] = useState<number | null>(null);
@@ -15,66 +18,48 @@ export function PercentageCalculator() {
   const [oldValue, setOldValue] = useState("");
   const [newValue, setNewValue] = useState("");
   
-  // Error states
   const [valueError, setValueError] = useState<string | null>(null);
   const [percentageError, setPercentageError] = useState<string | null>(null);
   const [oldValueError, setOldValueError] = useState<string | null>(null);
   const [newValueError, setNewValueError] = useState<string | null>(null);
 
-  const handleValueChange = (val: string) => {
-    setValue(val);
-    if (valueError) setValueError(null);
-  };
-
-  const handlePercentageChange = (val: string) => {
-    setPercentage(val);
-    if (percentageError) setPercentageError(null);
-  };
-
-  const handleOldValueChange = (val: string) => {
-    setOldValue(val);
-    if (oldValueError) setOldValueError(null);
-  };
-
-  const handleNewValueChange = (val: string) => {
-    setNewValue(val);
-    if (newValueError) setNewValueError(null);
-  };
-
   const calculate = () => {
     if (calculationType === "of") {
-      const valueErr = validateField(value, COMMON_RULES.positiveNumber);
-      const percErr = validateField(percentage, COMMON_RULES.percentage);
-      
-      if (valueErr || percErr) {
-        setValueError(valueErr);
-        setPercentageError(percErr);
+      const val = parseLocaleNumber(value, locale);
+      const perc = parseLocaleNumber(percentage.replace(/%/g, "").trim(), locale);
+      if (val == null || val <= 0) {
+        setValueError(locale === "tr" ? "Pozitif bir sayı girin" : "Enter a positive number");
+        setResult(null);
         return;
       }
-
-      const val = parseFloat(value);
-      const perc = parseFloat(percentage);
-      if (!isNaN(val) && !isNaN(perc)) {
-        setResult((val * perc) / 100);
+      if (perc == null || perc < 0 || perc > 100) {
+        setPercentageError(locale === "tr" ? "0–100 arası girin" : "Enter a value between 0 and 100");
+        setResult(null);
+        return;
       }
+      setValueError(null);
+      setPercentageError(null);
+      setResult((val * perc) / 100);
     } else if (calculationType === "increase" || calculationType === "decrease") {
-      const oldErr = validateField(oldValue, COMMON_RULES.positiveNumber);
-      const newErr = validateField(newValue, COMMON_RULES.positiveNumber);
-      
-      if (oldErr || newErr) {
-        setOldValueError(oldErr);
-        setNewValueError(newErr);
+      const old = parseLocaleNumber(oldValue, locale);
+      const newVal = parseLocaleNumber(newValue, locale);
+      if (old == null || old <= 0) {
+        setOldValueError(locale === "tr" ? "Pozitif bir sayı girin" : "Enter a positive number");
+        setResult(null);
         return;
       }
-
-      const old = parseFloat(oldValue);
-      const newVal = parseFloat(newValue);
-      
+      if (newVal == null || newVal < 0) {
+        setNewValueError(locale === "tr" ? "Geçerli bir sayı girin" : "Enter a valid number");
+        setResult(null);
+        return;
+      }
       if (old === 0) {
-        setOldValueError("Old value cannot be zero");
+        setOldValueError(locale === "tr" ? "Eski değer sıfır olamaz" : "Old value cannot be zero");
+        setResult(null);
         return;
       }
-
+      setOldValueError(null);
+      setNewValueError(null);
       if (calculationType === "increase") {
         setResult(((newVal - old) / old) * 100);
       } else {
@@ -134,69 +119,44 @@ export function PercentageCalculator() {
 
           {calculationType === "of" ? (
             <>
-              <Input
+              <FormattedNumberInput
                 label="Value"
-                type="number"
                 value={value}
-                onChange={(e) => handleValueChange(e.target.value)}
-                onBlur={() => {
-                  const error = validateField(value, COMMON_RULES.positiveNumber);
-                  setValueError(error);
-                }}
-                placeholder="Enter value (e.g., 100)"
+                onChange={(v) => { setValue(v); setValueError(null); }}
+                locale={locale}
+                formatAs="number"
                 error={valueError || undefined}
-                helperText="Enter the base value"
-                step="0.01"
-                min="0.01"
+                helperText={locale === "tr" ? "Temel değeri girin" : "Enter the base value"}
               />
-              <Input
+              <FormattedNumberInput
                 label="Percentage (%)"
-                type="number"
                 value={percentage}
-                onChange={(e) => handlePercentageChange(e.target.value)}
-                onBlur={() => {
-                  const error = validateField(percentage, COMMON_RULES.percentage);
-                  setPercentageError(error);
-                }}
-                placeholder="Enter percentage (e.g., 25)"
+                onChange={(v) => { setPercentage(v); setPercentageError(null); }}
+                locale={locale}
+                formatAs="percent"
                 error={percentageError || undefined}
-                helperText="Enter percentage between 0 and 100"
-                step="0.01"
-                min="0"
-                max="100"
+                helperText={locale === "tr" ? "0–100 arası yüzde girin" : "Enter percentage between 0 and 100"}
               />
             </>
           ) : (
             <>
-              <Input
-                label="Old Value"
-                type="number"
+              <FormattedNumberInput
+                label={locale === "tr" ? "Eski Değer" : "Old Value"}
                 value={oldValue}
-                onChange={(e) => handleOldValueChange(e.target.value)}
-                onBlur={() => {
-                  const error = validateField(oldValue, COMMON_RULES.positiveNumber);
-                  setOldValueError(error);
-                }}
-                placeholder="Enter old value (e.g., 100)"
+                onChange={(v) => { setOldValue(v); setOldValueError(null); }}
+                locale={locale}
+                formatAs="number"
                 error={oldValueError || undefined}
-                helperText="Enter the original value"
-                step="0.01"
-                min="0.01"
+                helperText={locale === "tr" ? "Orijinal değeri girin" : "Enter the original value"}
               />
-              <Input
-                label="New Value"
-                type="number"
+              <FormattedNumberInput
+                label={locale === "tr" ? "Yeni Değer" : "New Value"}
                 value={newValue}
-                onChange={(e) => handleNewValueChange(e.target.value)}
-                onBlur={() => {
-                  const error = validateField(newValue, COMMON_RULES.positiveNumber);
-                  setNewValueError(error);
-                }}
-                placeholder="Enter new value (e.g., 120)"
+                onChange={(v) => { setNewValue(v); setNewValueError(null); }}
+                locale={locale}
+                formatAs="number"
                 error={newValueError || undefined}
-                helperText="Enter the new value"
-                step="0.01"
-                min="0.01"
+                helperText={locale === "tr" ? "Yeni değeri girin" : "Enter the new value"}
               />
             </>
           )}
@@ -218,12 +178,12 @@ export function PercentageCalculator() {
             </h3>
             <p className="text-3xl font-bold text-[#10b981] font-mono">
               {calculationType === "of"
-                ? `${result.toFixed(2)}`
-                : `${result.toFixed(2)}%`}
+                ? formatNumber(result, locale, { minFractionDigits: 0, maxFractionDigits: 2 })
+                : formatPercent(result, locale)}
             </p>
             {calculationType === "of" && (
               <p className="text-sm text-[#64748b] mt-2">
-                {percentage}% of {value} = {result.toFixed(2)}
+                {percentage}% of {value} = {formatNumber(result, locale, { minFractionDigits: 0, maxFractionDigits: 2 })}
               </p>
             )}
           </div>

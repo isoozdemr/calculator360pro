@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { validateField, COMMON_RULES } from "@/lib/validation/rules";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatNumber, formatPercent } from "@/lib/format/locale-format";
 
 type ScalePreset = "standard" | "strict" | "custom";
 const SCALE_PRESETS: Record<ScalePreset, { A: number; B: number; C: number; D: number }> = {
@@ -40,9 +40,10 @@ export function GradeCalculator({ locale: localeProp = "en" }: { locale?: Locale
   const [copied, setCopied] = useState(false);
   const [errors, setErrors] = useState<Record<string, string | null>>({});
 
+  const locale = localeProp;
   const scale =
     scalePreset === "custom"
-      ? { A: parseFloat(customA) || 90, B: parseFloat(customB) || 80, C: parseFloat(customC) || 70, D: parseFloat(customD) || 60 }
+      ? { A: parseLocaleNumber(customA, locale) ?? 90, B: parseLocaleNumber(customB, locale) ?? 80, C: parseLocaleNumber(customC, locale) ?? 70, D: parseLocaleNumber(customD, locale) ?? 60 }
       : SCALE_PRESETS[scalePreset];
 
   const clearError = (key: string) => {
@@ -52,47 +53,45 @@ export function GradeCalculator({ locale: localeProp = "en" }: { locale?: Locale
   const calculate = () => {
     const newErrors: Record<string, string | null> = {};
     if (mode === "percent") {
-      const err = validateField(percent, { ...COMMON_RULES.percentage, max: 100 });
-      if (err) newErrors.percent = err;
+      const p = parseLocaleNumber(percent, locale);
+      if (p == null || p < 0 || p > 100) newErrors.percent = isTr ? "0–100 arası yüzde girin" : "Enter percentage 0–100";
     }
     if (mode === "points") {
-      const errEarned = validateField(pointsEarned, COMMON_RULES.positiveNumber);
-      const errTotal = validateField(pointsTotal, COMMON_RULES.positiveNumber);
-      if (errEarned) newErrors.pointsEarned = errEarned;
-      if (errTotal) newErrors.pointsTotal = errTotal;
-      const e = parseFloat(pointsEarned);
-      const t = parseFloat(pointsTotal);
-      if (!errEarned && !errTotal && t > 0 && e > t) newErrors.pointsEarned = isTr ? "Kazanılan toplamı aşamaz" : "Earned cannot exceed total";
+      const e = parseLocaleNumber(pointsEarned, locale);
+      const t = parseLocaleNumber(pointsTotal, locale);
+      if (e == null || e < 0) newErrors.pointsEarned = isTr ? "Geçerli kazanılan puan" : "Valid points earned";
+      if (t == null || t <= 0) newErrors.pointsTotal = isTr ? "Geçerli toplam puan" : "Valid total points";
+      if (e != null && t != null && t > 0 && e > t) newErrors.pointsEarned = isTr ? "Kazanılan toplamı aşamaz" : "Earned cannot exceed total";
     }
     if (mode === "final") {
-      const errCur = validateField(currentGrade, COMMON_RULES.percentage);
-      const errWeight = validateField(finalWeight, COMMON_RULES.percentage);
-      const errDes = validateField(desiredGrade, COMMON_RULES.percentage);
-      if (errCur) newErrors.currentGrade = errCur;
-      if (errWeight) newErrors.finalWeight = errWeight;
-      if (errDes) newErrors.desiredGrade = errDes;
+      const cur = parseLocaleNumber(currentGrade, locale);
+      const w = parseLocaleNumber(finalWeight, locale);
+      const des = parseLocaleNumber(desiredGrade, locale);
+      if (cur == null || cur < 0 || cur > 100) newErrors.currentGrade = isTr ? "0–100 arası girin" : "Enter 0–100";
+      if (w == null || w <= 0 || w > 100) newErrors.finalWeight = isTr ? "0–100 arası ağırlık" : "Weight 0–100";
+      if (des == null || des < 0 || des > 100) newErrors.desiredGrade = isTr ? "0–100 arası istenen not" : "Desired grade 0–100";
     }
     setErrors(newErrors);
     if (Object.keys(newErrors).some((k) => newErrors[k])) return;
 
     if (mode === "percent") {
-      const p = parseFloat(percent);
-      if (!isNaN(p) && p >= 0 && p <= 100) setResult({ letter: percentToLetter(p, scale), percent: p });
+      const p = parseLocaleNumber(percent, locale);
+      if (p != null && p >= 0 && p <= 100) setResult({ letter: percentToLetter(p, scale), percent: p });
       return;
     }
     if (mode === "points") {
-      const e = parseFloat(pointsEarned);
-      const t = parseFloat(pointsTotal);
-      if (!isNaN(e) && !isNaN(t) && t > 0 && e <= t) {
+      const e = parseLocaleNumber(pointsEarned, locale)!;
+      const t = parseLocaleNumber(pointsTotal, locale)!;
+      if (t > 0 && e <= t) {
         const p = (e / t) * 100;
         setResult({ letter: percentToLetter(p, scale), percent: p });
       }
       return;
     }
     if (mode === "final") {
-      const cur = parseFloat(currentGrade);
-      const w = parseFloat(finalWeight);
-      const des = parseFloat(desiredGrade);
+      const cur = parseLocaleNumber(currentGrade, locale)!;
+      const w = parseLocaleNumber(finalWeight, locale)!;
+      const des = parseLocaleNumber(desiredGrade, locale)!;
       if (w <= 0 || w > 100) return;
       const weightDecimal = w / 100;
       const currentWeight = 1 - weightDecimal;
@@ -115,7 +114,9 @@ export function GradeCalculator({ locale: localeProp = "en" }: { locale?: Locale
 
   const copyResult = () => {
     if (!result) return;
-    const text = "needed" in result ? "Grade needed on final: " + result.needed.toFixed(1) + "%" : "Grade: " + result.letter + " (" + result.percent.toFixed(1) + "%)";
+    const text = "needed" in result
+      ? (isTr ? "Finalde gerekli not: " : "Grade needed on final: ") + formatPercent(result.needed, locale, { maxFractionDigits: 1 })
+      : (isTr ? "Not: " : "Grade: ") + result.letter + " (" + formatPercent(result.percent, locale, { maxFractionDigits: 1 }) + ")";
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -138,27 +139,27 @@ export function GradeCalculator({ locale: localeProp = "en" }: { locale?: Locale
           </select>
           {scalePreset === "custom" && (
             <div className="grid grid-cols-4 gap-2 mt-2">
-              <Input label={isTr ? "A min %" : "A min %"} type="number" value={customA} onChange={(e) => setCustomA(e.target.value)} min="0" max="100" />
-              <Input label={isTr ? "B min %" : "B min %"} type="number" value={customB} onChange={(e) => setCustomB(e.target.value)} min="0" max="100" />
-              <Input label={isTr ? "C min %" : "C min %"} type="number" value={customC} onChange={(e) => setCustomC(e.target.value)} min="0" max="100" />
-              <Input label={isTr ? "D min %" : "D min %"} type="number" value={customD} onChange={(e) => setCustomD(e.target.value)} min="0" max="100" />
+              <FormattedNumberInput label={isTr ? "A min %" : "A min %"} value={customA} onChange={setCustomA} locale={locale} formatAs="number" maxFractionDigits={0} />
+              <FormattedNumberInput label={isTr ? "B min %" : "B min %"} value={customB} onChange={setCustomB} locale={locale} formatAs="number" maxFractionDigits={0} />
+              <FormattedNumberInput label={isTr ? "C min %" : "C min %"} value={customC} onChange={setCustomC} locale={locale} formatAs="number" maxFractionDigits={0} />
+              <FormattedNumberInput label={isTr ? "D min %" : "D min %"} value={customD} onChange={setCustomD} locale={locale} formatAs="number" maxFractionDigits={0} />
             </div>
           )}
         </div>
         {mode === "percent" && (
-          <Input label={isTr ? "Yüzde" : "Percentage"} type="number" value={percent} onChange={(e) => { setPercent(e.target.value); clearError("percent"); }} placeholder={isTr ? "örn. 85" : "e.g. 85"} error={errors.percent || undefined} step="0.1" min="0" max="100" />
+          <FormattedNumberInput label={isTr ? "Yüzde" : "Percentage"} value={percent} onChange={(v) => { setPercent(v); clearError("percent"); }} locale={locale} formatAs="percent" error={errors.percent || undefined} helperText={isTr ? "örn. 85" : "e.g. 85"} />
         )}
         {mode === "points" && (
           <>
-            <Input label={isTr ? "Kazanılan puan" : "Points earned"} type="number" value={pointsEarned} onChange={(e) => { setPointsEarned(e.target.value); clearError("pointsEarned"); }} placeholder={isTr ? "örn. 42" : "e.g. 42"} error={errors.pointsEarned || undefined} min="0" />
-            <Input label={isTr ? "Toplam puan" : "Total points"} type="number" value={pointsTotal} onChange={(e) => { setPointsTotal(e.target.value); clearError("pointsTotal"); }} placeholder={isTr ? "örn. 50" : "e.g. 50"} error={errors.pointsTotal || undefined} min="0" />
+            <FormattedNumberInput label={isTr ? "Kazanılan puan" : "Points earned"} value={pointsEarned} onChange={(v) => { setPointsEarned(v); clearError("pointsEarned"); }} locale={locale} formatAs="number" error={errors.pointsEarned || undefined} helperText={isTr ? "örn. 42" : "e.g. 42"} />
+            <FormattedNumberInput label={isTr ? "Toplam puan" : "Total points"} value={pointsTotal} onChange={(v) => { setPointsTotal(v); clearError("pointsTotal"); }} locale={locale} formatAs="number" error={errors.pointsTotal || undefined} helperText={isTr ? "örn. 50" : "e.g. 50"} />
           </>
         )}
         {mode === "final" && (
           <>
-            <Input label={isTr ? "Mevcut not (%)" : "Current grade (%)"} type="number" value={currentGrade} onChange={(e) => { setCurrentGrade(e.target.value); clearError("currentGrade"); }} placeholder={isTr ? "örn. 78" : "e.g. 78"} error={errors.currentGrade || undefined} step="0.1" min="0" max="100" />
-            <Input label={isTr ? "Final sınav ağırlığı (%)" : "Final exam weight (%)"} type="number" value={finalWeight} onChange={(e) => { setFinalWeight(e.target.value); clearError("finalWeight"); }} placeholder={isTr ? "örn. 30" : "e.g. 30"} error={errors.finalWeight || undefined} step="0.1" min="0" max="100" />
-            <Input label={isTr ? "İstenen ders notu (%)" : "Desired course grade (%)"} type="number" value={desiredGrade} onChange={(e) => { setDesiredGrade(e.target.value); clearError("desiredGrade"); }} placeholder={isTr ? "örn. 80" : "e.g. 80"} error={errors.desiredGrade || undefined} step="0.1" min="0" max="100" />
+            <FormattedNumberInput label={isTr ? "Mevcut not (%)" : "Current grade (%)"} value={currentGrade} onChange={(v) => { setCurrentGrade(v); clearError("currentGrade"); }} locale={locale} formatAs="percent" error={errors.currentGrade || undefined} helperText={isTr ? "örn. 78" : "e.g. 78"} />
+            <FormattedNumberInput label={isTr ? "Final sınav ağırlığı (%)" : "Final exam weight (%)"} value={finalWeight} onChange={(v) => { setFinalWeight(v); clearError("finalWeight"); }} locale={locale} formatAs="percent" error={errors.finalWeight || undefined} helperText={isTr ? "örn. 30" : "e.g. 30"} />
+            <FormattedNumberInput label={isTr ? "İstenen ders notu (%)" : "Desired course grade (%)"} value={desiredGrade} onChange={(v) => { setDesiredGrade(v); clearError("desiredGrade"); }} locale={locale} formatAs="percent" error={errors.desiredGrade || undefined} helperText={isTr ? "örn. 80" : "e.g. 80"} />
           </>
         )}
         <div className="flex gap-3">
@@ -170,9 +171,9 @@ export function GradeCalculator({ locale: localeProp = "en" }: { locale?: Locale
         <div className="bg-[#f0fdf4] border-2 border-[#10b981] rounded-lg p-6 space-y-3" id="result-summary">
           <h3 className="text-lg font-semibold text-[#1e293b]">{isTr ? "Sonuç" : "Result"}</h3>
           {"needed" in result ? (
-            <p className="text-2xl font-bold text-[#10b981] font-mono">{isTr ? "Finalde gerekli not: " : "Grade needed on final: "}{result.needed.toFixed(1)}%{result.needed > 100 && (isTr ? " (imkansız)" : " (impossible)")}{result.needed < 0 && (isTr ? " (zaten hedefin üzerinde)" : " (already above target)")}</p>
+            <p className="text-2xl font-bold text-[#10b981] font-mono">{isTr ? "Finalde gerekli not: " : "Grade needed on final: "}{formatPercent(result.needed, locale, { maxFractionDigits: 1 })}{result.needed > 100 && (isTr ? " (imkansız)" : " (impossible)")}{result.needed < 0 && (isTr ? " (zaten hedefin üzerinde)" : " (already above target)")}</p>
           ) : (
-            <p className="text-2xl font-bold text-[#10b981] font-mono">{result.letter} — {result.percent.toFixed(1)}%</p>
+            <p className="text-2xl font-bold text-[#10b981] font-mono">{result.letter} — {formatPercent(result.percent, locale, { maxFractionDigits: 1 })}</p>
           )}
           <Button onClick={copyResult} variant="outline" size="sm">{copied ? (isTr ? "Kopyalandı!" : "Copied!") : (isTr ? "Sonucu kopyala" : "Copy result")}</Button>
         </div>

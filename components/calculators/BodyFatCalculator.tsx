@@ -3,9 +3,15 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { validateField, COMMON_RULES, VALIDATION_PATTERNS } from "@/lib/validation/rules";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatPercent } from "@/lib/format/locale-format";
+import { VALIDATION_PATTERNS } from "@/lib/validation/rules";
 
-export function BodyFatCalculator() {
+type Locale = "en" | "tr";
+
+export function BodyFatCalculator({ locale: localeProp = "en" }: { locale?: Locale } = {}) {
+  const locale = localeProp;
+  const isTr = locale === "tr";
   const [gender, setGender] = useState<"male" | "female">("male");
   const [age, setAge] = useState("");
   const [height, setHeight] = useState("");
@@ -17,94 +23,94 @@ export function BodyFatCalculator() {
     bodyFatPercentage: number;
     category: string;
   } | null>(null);
-  
-  // Error states
   const [ageError, setAgeError] = useState<string | null>(null);
   const [heightError, setHeightError] = useState<string | null>(null);
   const [neckError, setNeckError] = useState<string | null>(null);
   const [waistError, setWaistError] = useState<string | null>(null);
   const [hipError, setHipError] = useState<string | null>(null);
 
-  const handleAgeChange = (value: string) => {
-    setAge(value);
-    if (ageError) setAgeError(null);
-  };
-
-  const handleHeightChange = (value: string) => {
-    setHeight(value);
-    if (heightError) setHeightError(null);
-  };
-
-  const handleNeckChange = (value: string) => {
-    setNeck(value);
-    if (neckError) setNeckError(null);
-  };
-
-  const handleWaistChange = (value: string) => {
-    setWaist(value);
-    if (waistError) setWaistError(null);
-  };
-
-  const handleHipChange = (value: string) => {
-    setHip(value);
-    if (hipError) setHipError(null);
-  };
-
   const calculateBodyFat = () => {
-    // Validate all fields
-    const ageErr = validateField(age, COMMON_RULES.age);
-    const heightRules = unit === "metric" ? COMMON_RULES.heightCm : COMMON_RULES.heightImperial;
-    const heightErr = validateField(height, heightRules);
-    const neckRules = unit === "metric" ? COMMON_RULES.circumferenceCm : COMMON_RULES.circumferenceInches;
-    const neckErr = validateField(neck, neckRules);
-    const waistErr = validateField(waist, neckRules);
-    const hipErr = gender === "female" ? validateField(hip, neckRules) : null;
+    setAgeError(null);
+    setHeightError(null);
+    setNeckError(null);
+    setWaistError(null);
+    setHipError(null);
 
-    if (ageErr || heightErr || neckErr || waistErr || hipErr) {
-      setAgeError(ageErr);
-      setHeightError(heightErr);
-      setNeckError(neckErr);
-      setWaistError(waistErr);
-      setHipError(hipErr);
-      return;
-    }
-
-    const ageNum = parseFloat(age);
+    const ageNum = parseLocaleNumber(age, locale);
     let heightCm: number;
     let neckCm: number;
     let waistCm: number;
     let hipCm: number;
 
     if (unit === "metric") {
-      heightCm = parseFloat(height);
-      neckCm = parseFloat(neck);
-      waistCm = parseFloat(waist);
-      hipCm = gender === "female" ? parseFloat(hip) : 0;
-    } else {
-      // Imperial: convert to cm
-      const match = height.match(VALIDATION_PATTERNS.HEIGHT_IMPERIAL);
-      if (!match) {
-        setHeightError("Height must be in format: feet'inches (e.g., 5'10)");
+      const h = parseLocaleNumber(height, locale);
+      const n = parseLocaleNumber(neck, locale);
+      const w = parseLocaleNumber(waist, locale);
+      const hi = gender === "female" ? parseLocaleNumber(hip, locale) : 0;
+      if (ageNum == null || ageNum < 18 || ageNum > 100) {
+        setAgeError(isTr ? "18–100 arası yaş girin" : "Enter age 18–100");
         return;
       }
-      const feet = parseInt(match[1]);
-      const inches = parseInt(match[2] || "0");
+      if (h == null || h < 100 || h > 250) {
+        setHeightError(isTr ? "100–250 cm girin" : "Enter 100–250 cm");
+        return;
+      }
+      if (n == null || n < 20 || n > 80) {
+        setNeckError(isTr ? "Geçerli boyun çevresi girin" : "Enter valid neck circumference");
+        return;
+      }
+      if (w == null || w < 50 || w > 200) {
+        setWaistError(isTr ? "Geçerli bel çevresi girin" : "Enter valid waist circumference");
+        return;
+      }
+      if (gender === "female" && (hi == null || hi < 60 || hi > 200)) {
+        setHipError(isTr ? "Geçerli kalça çevresi girin" : "Enter valid hip circumference");
+        return;
+      }
+      heightCm = h;
+      neckCm = n;
+      waistCm = w;
+      hipCm = gender === "female" ? hi! : 0;
+    } else {
+      const match = height.match(VALIDATION_PATTERNS.HEIGHT_IMPERIAL);
+      if (!match) {
+        setHeightError(isTr ? "Boy formatı: feet'inch (örn. 5'10)" : "Height format: feet'inches (e.g., 5'10)");
+        return;
+      }
+      const feet = parseInt(match[1], 10);
+      const inches = parseInt(match[2] || "0", 10);
       heightCm = (feet * 12 + inches) * 2.54;
-      neckCm = parseFloat(neck) * 2.54;
-      waistCm = parseFloat(waist) * 2.54;
-      hipCm = gender === "female" ? parseFloat(hip) * 2.54 : 0;
+      const n = parseLocaleNumber(neck, locale);
+      const w = parseLocaleNumber(waist, locale);
+      const hi = gender === "female" ? parseLocaleNumber(hip, locale) : 0;
+      if (ageNum == null || ageNum < 18 || ageNum > 100) {
+        setAgeError(isTr ? "18–100 arası yaş girin" : "Enter age 18–100");
+        return;
+      }
+      if (n == null || n < 4 || n > 36) {
+        setNeckError(isTr ? "Geçerli boyun çevresi (inç)" : "Enter valid neck (inches)");
+        return;
+      }
+      if (w == null || w < 20 || w > 80) {
+        setWaistError(isTr ? "Geçerli bel çevresi (inç)" : "Enter valid waist (inches)");
+        return;
+      }
+      if (gender === "female" && (hi == null || hi < 24 || hi > 80)) {
+        setHipError(isTr ? "Geçerli kalça çevresi (inç)" : "Enter valid hip (inches)");
+        return;
+      }
+      neckCm = n * 2.54;
+      waistCm = w * 2.54;
+      hipCm = gender === "female" ? hi! * 2.54 : 0;
     }
 
     if (
-      !isNaN(ageNum) &&
-      !isNaN(heightCm) &&
-      !isNaN(neckCm) &&
-      !isNaN(waistCm) &&
+      ageNum != null &&
       heightCm > 0 &&
       neckCm > 0 &&
       waistCm > 0 &&
       ageNum > 0 &&
-      (gender === "male" || (gender === "female" && !isNaN(hipCm) && hipCm > 0))
+      (gender === "male" || (gender === "female" && hipCm > 0))
     ) {
       let bodyFatPercentage: number;
 
@@ -223,163 +229,111 @@ export function BodyFatCalculator() {
             </button>
           </div>
 
-          <Input
-            label="Age"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Yaş" : "Age"}
             value={age}
-            onChange={(e) => handleAgeChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(age, COMMON_RULES.age);
-              setAgeError(error);
-            }}
-            placeholder="Enter your age (e.g., 30)"
+            onChange={(v) => { setAge(v); setAgeError(null); }}
+            locale={locale}
+            formatAs="number"
+            maxFractionDigits={0}
             error={ageError || undefined}
-            helperText="Enter your age in years"
-            step="1"
-            min="0"
-            max="150"
+            helperText={isTr ? "Yaşınız" : "Enter your age in years"}
           />
 
           {unit === "metric" ? (
-            <Input
-              label="Height (cm)"
-              type="number"
+            <FormattedNumberInput
+              label={isTr ? "Boy (cm)" : "Height (cm)"}
               value={height}
-              onChange={(e) => handleHeightChange(e.target.value)}
-              onBlur={() => {
-                const error = validateField(height, COMMON_RULES.heightCm);
-                setHeightError(error);
-              }}
-              placeholder="Enter height in cm (e.g., 175)"
+              onChange={(v) => { setHeight(v); setHeightError(null); }}
+              locale={locale}
+              formatAs="number"
+              maxFractionDigits={1}
               error={heightError || undefined}
-              helperText="Enter your height in centimeters"
-              step="0.1"
-              min="30"
-              max="300"
+              helperText={isTr ? "Boyunuz (cm)" : "Enter your height in centimeters"}
             />
           ) : (
             <Input
-              label="Height (ft'in)"
+              label={isTr ? "Boy (ft'in)" : "Height (ft'in)"}
               type="text"
               value={height}
-              onChange={(e) => handleHeightChange(e.target.value)}
-              onBlur={() => {
-                const error = validateField(height, COMMON_RULES.heightImperial);
-                setHeightError(error);
-              }}
+              onChange={(e) => { setHeight(e.target.value); setHeightError(null); }}
               placeholder="e.g., 5'10"
               error={heightError || undefined}
-              helperText="Enter height in format: feet'inches (e.g., 5'10)"
+              helperText={isTr ? "Boy: feet'inch (örn. 5'10)" : "Enter height in format: feet'inches (e.g., 5'10)"}
             />
           )}
 
           {unit === "metric" ? (
-            <Input
-              label="Neck Circumference (cm)"
-              type="number"
+            <FormattedNumberInput
+              label={isTr ? "Boyun çevresi (cm)" : "Neck Circumference (cm)"}
               value={neck}
-              onChange={(e) => handleNeckChange(e.target.value)}
-              onBlur={() => {
-                const error = validateField(neck, COMMON_RULES.circumferenceCm);
-                setNeckError(error);
-              }}
-              placeholder="Measure at narrowest point (e.g., 38)"
+              onChange={(v) => { setNeck(v); setNeckError(null); }}
+              locale={locale}
+              formatAs="number"
+              maxFractionDigits={1}
               error={neckError || undefined}
-              helperText="Measure your neck at the narrowest point"
-              step="0.1"
-              min="10"
-              max="200"
+              helperText={isTr ? "En dar noktadan ölçün" : "Measure your neck at the narrowest point"}
             />
           ) : (
-            <Input
-              label="Neck Circumference (inches)"
-              type="number"
+            <FormattedNumberInput
+              label={isTr ? "Boyun çevresi (inç)" : "Neck Circumference (inches)"}
               value={neck}
-              onChange={(e) => handleNeckChange(e.target.value)}
-              onBlur={() => {
-                const error = validateField(neck, COMMON_RULES.circumferenceInches);
-                setNeckError(error);
-              }}
-              placeholder="Measure at narrowest point (e.g., 15)"
+              onChange={(v) => { setNeck(v); setNeckError(null); }}
+              locale={locale}
+              formatAs="number"
+              maxFractionDigits={1}
               error={neckError || undefined}
-              helperText="Measure your neck at the narrowest point"
-              step="0.1"
-              min="4"
-              max="80"
+              helperText={isTr ? "En dar noktadan ölçün" : "Measure your neck at the narrowest point"}
             />
           )}
 
           {unit === "metric" ? (
-            <Input
-              label="Waist Circumference (cm)"
-              type="number"
+            <FormattedNumberInput
+              label={isTr ? "Bel çevresi (cm)" : "Waist Circumference (cm)"}
               value={waist}
-              onChange={(e) => handleWaistChange(e.target.value)}
-              onBlur={() => {
-                const error = validateField(waist, COMMON_RULES.circumferenceCm);
-                setWaistError(error);
-              }}
-              placeholder={gender === "male" ? "Measure at navel (e.g., 90)" : "Measure at narrowest point (e.g., 75)"}
+              onChange={(v) => { setWaist(v); setWaistError(null); }}
+              locale={locale}
+              formatAs="number"
+              maxFractionDigits={1}
               error={waistError || undefined}
-              helperText={gender === "male" ? "Measure your waist at the navel level" : "Measure your waist at the narrowest point"}
-              step="0.1"
-              min="10"
-              max="200"
+              helperText={gender === "male" ? (isTr ? "Göbek hizasından ölçün" : "Measure your waist at the navel level") : (isTr ? "En dar noktadan ölçün" : "Measure your waist at the narrowest point")}
             />
           ) : (
-            <Input
-              label="Waist Circumference (inches)"
-              type="number"
+            <FormattedNumberInput
+              label={isTr ? "Bel çevresi (inç)" : "Waist Circumference (inches)"}
               value={waist}
-              onChange={(e) => handleWaistChange(e.target.value)}
-              onBlur={() => {
-                const error = validateField(waist, COMMON_RULES.circumferenceInches);
-                setWaistError(error);
-              }}
-              placeholder={gender === "male" ? "Measure at navel (e.g., 35)" : "Measure at narrowest point (e.g., 30)"}
+              onChange={(v) => { setWaist(v); setWaistError(null); }}
+              locale={locale}
+              formatAs="number"
+              maxFractionDigits={1}
               error={waistError || undefined}
-              helperText={gender === "male" ? "Measure your waist at the navel level" : "Measure your waist at the narrowest point"}
-              step="0.1"
-              min="4"
-              max="80"
+              helperText={gender === "male" ? (isTr ? "Göbek hizasından ölçün" : "Measure your waist at the navel level") : (isTr ? "En dar noktadan ölçün" : "Measure your waist at the narrowest point")}
             />
           )}
 
           {gender === "female" && (
             <>
               {unit === "metric" ? (
-                <Input
-                  label="Hip Circumference (cm)"
-                  type="number"
+                <FormattedNumberInput
+                  label={isTr ? "Kalça çevresi (cm)" : "Hip Circumference (cm)"}
                   value={hip}
-                  onChange={(e) => handleHipChange(e.target.value)}
-                  onBlur={() => {
-                    const error = validateField(hip, COMMON_RULES.circumferenceCm);
-                    setHipError(error);
-                  }}
-                  placeholder="Measure at widest point (e.g., 100)"
+                  onChange={(v) => { setHip(v); setHipError(null); }}
+                  locale={locale}
+                  formatAs="number"
+                  maxFractionDigits={1}
                   error={hipError || undefined}
-                  helperText="Measure your hips at the widest point"
-                  step="0.1"
-                  min="10"
-                  max="200"
+                  helperText={isTr ? "En geniş noktadan ölçün" : "Measure your hips at the widest point"}
                 />
               ) : (
-                <Input
-                  label="Hip Circumference (inches)"
-                  type="number"
+                <FormattedNumberInput
+                  label={isTr ? "Kalça çevresi (inç)" : "Hip Circumference (inches)"}
                   value={hip}
-                  onChange={(e) => handleHipChange(e.target.value)}
-                  onBlur={() => {
-                    const error = validateField(hip, COMMON_RULES.circumferenceInches);
-                    setHipError(error);
-                  }}
-                  placeholder="Measure at widest point (e.g., 40)"
+                  onChange={(v) => { setHip(v); setHipError(null); }}
+                  locale={locale}
+                  formatAs="number"
+                  maxFractionDigits={1}
                   error={hipError || undefined}
-                  helperText="Measure your hips at the widest point"
-                  step="0.1"
-                  min="4"
-                  max="80"
+                  helperText={isTr ? "En geniş noktadan ölçün" : "Measure your hips at the widest point"}
                 />
               )}
             </>
@@ -401,7 +355,7 @@ export function BodyFatCalculator() {
               Your Body Fat Percentage
             </h3>
             <p className="text-4xl font-bold text-[#10b981] font-mono mb-2">
-              {result.bodyFatPercentage.toFixed(1)}%
+              {formatPercent(result.bodyFatPercentage, locale, { maxFractionDigits: 1 })}
             </p>
             <p className="text-lg font-semibold text-[#1e293b]">
               {result.category}

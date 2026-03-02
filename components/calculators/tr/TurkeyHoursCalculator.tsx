@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { formatNumber } from "@/lib/format/locale-format";
 
 interface TimeEntry {
   clockIn: string;
@@ -174,16 +175,16 @@ export function TurkeyHoursCalculator() {
               <div className="pt-3 border-t border-[#10b981] space-y-2">
                 <div className="flex justify-between">
                   <span className="text-sm text-[#64748b]">Toplam Saat</span>
-                  <span className="text-2xl font-bold text-[#10b981] font-mono">{result.totalHours.toFixed(2)}</span>
+                  <span className="text-2xl font-bold text-[#10b981] font-mono">{formatNumber(result.totalHours, "tr", { maxFractionDigits: 2 })}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm text-[#64748b]">Normal Saat</span>
-                  <span className="text-xl font-bold text-[#10b981] font-mono">{result.regularHours.toFixed(2)}</span>
+                  <span className="text-xl font-bold text-[#10b981] font-mono">{formatNumber(result.regularHours, "tr", { maxFractionDigits: 2 })}</span>
                 </div>
                 {result.overtimeHours > 0 && (
                   <div className="flex justify-between">
                     <span className="text-sm text-[#64748b]">Mesai Saati</span>
-                    <span className="text-xl font-bold text-[#10b981] font-mono">{result.overtimeHours.toFixed(2)}</span>
+                    <span className="text-xl font-bold text-[#10b981] font-mono">{formatNumber(result.overtimeHours, "tr", { maxFractionDigits: 2 })}</span>
                   </div>
                 )}
               </div>

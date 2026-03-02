@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { formatNumber } from "@/lib/format/locale-format";
 
 type UnitType = "length" | "weight" | "temperature" | "volume" | "area";
 
@@ -251,7 +252,7 @@ export function TurkeyUnitConverter() {
                 {value} {unitOptions.find((o) => o.value === fromUnit)?.label} =
               </p>
               <p className="text-3xl font-bold text-[#10b981] font-mono">
-                {result.toFixed(6).replace(/\.?0+$/, "")} {unitOptions.find((o) => o.value === toUnit)?.label}
+                {formatNumber(result, "tr", { maxFractionDigits: 6, minFractionDigits: 0 })} {unitOptions.find((o) => o.value === toUnit)?.label}
               </p>
             </div>
           </div>

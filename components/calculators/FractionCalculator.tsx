@@ -2,7 +2,8 @@
 
 import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatNumber } from "@/lib/format/locale-format";
 
 function gcd(a: number, b: number): number {
   a = Math.abs(a);
@@ -46,11 +47,14 @@ export function FractionCalculator({ locale: localeProp = "en" }: { locale?: Loc
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
+  const locale = localeProp;
   const parse = useCallback((n: string, d: string) => {
-    const a = parseInt(n, 10);
-    const b = parseInt(d, 10);
-    return { a, b, valid: !isNaN(a) && !isNaN(b) && b !== 0 };
-  }, []);
+    const aRaw = parseLocaleNumber(n, locale);
+    const bRaw = parseLocaleNumber(d, locale);
+    const a = aRaw != null ? Math.round(aRaw) : NaN;
+    const b = bRaw != null ? Math.round(bRaw) : NaN;
+    return { a, b, valid: !Number.isNaN(a) && !Number.isNaN(b) && b !== 0 };
+  }, [locale]);
 
   const calculate = useCallback(() => {
     setError(null);
@@ -96,12 +100,12 @@ export function FractionCalculator({ locale: localeProp = "en" }: { locale?: Loc
     if (!result) return;
     const text = result.den === 1
       ? String(result.num)
-      : `${result.num}/${result.den} (${result.decimal.toFixed(6)})`;
+      : `${result.num}/${result.den} (${formatNumber(result.decimal, locale, { maxFractionDigits: 6 })})`;
     void navigator.clipboard.writeText(text).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     });
-  }, [result]);
+  }, [result, locale]);
 
   const applyPreset = useCallback((preset: (typeof PRESETS)[0]) => {
     setNum1(String(preset.n1));
@@ -120,22 +124,24 @@ export function FractionCalculator({ locale: localeProp = "en" }: { locale?: Loc
           <div>
             <label className="block text-sm font-medium text-[#475569] mb-2">{isTr ? "Kesir 1" : "First fraction"}</label>
             <div className="flex items-center gap-2 flex-wrap">
-              <Input
-                type="number"
+              <FormattedNumberInput
                 value={num1}
-                onChange={(e) => setNum1(e.target.value)}
-                placeholder={isTr ? "Pay" : "Num"}
+                onChange={setNum1}
+                locale={locale}
+                formatAs="number"
+                maxFractionDigits={0}
+                helperText={undefined}
                 className="w-20 text-center"
-                aria-label={isTr ? "İlk kesir pay" : "First fraction numerator"}
               />
               <span className="text-[#64748b]">/</span>
-              <Input
-                type="number"
+              <FormattedNumberInput
                 value={den1}
-                onChange={(e) => setDen1(e.target.value)}
-                placeholder={isTr ? "Payda" : "Den"}
+                onChange={setDen1}
+                locale={locale}
+                formatAs="number"
+                maxFractionDigits={0}
+                helperText={undefined}
                 className="w-20 text-center"
-                aria-label={isTr ? "İlk kesir payda" : "First fraction denominator"}
               />
             </div>
           </div>
@@ -156,22 +162,24 @@ export function FractionCalculator({ locale: localeProp = "en" }: { locale?: Loc
           <div>
             <label className="block text-sm font-medium text-[#475569] mb-2">{isTr ? "Kesir 2" : "Second fraction"}</label>
             <div className="flex items-center gap-2 flex-wrap">
-              <Input
-                type="number"
+              <FormattedNumberInput
                 value={num2}
-                onChange={(e) => setNum2(e.target.value)}
-                placeholder={isTr ? "Pay" : "Num"}
+                onChange={setNum2}
+                locale={locale}
+                formatAs="number"
+                maxFractionDigits={0}
+                helperText={undefined}
                 className="w-20 text-center"
-                aria-label={isTr ? "İkinci kesir pay" : "Second fraction numerator"}
               />
               <span className="text-[#64748b]">/</span>
-              <Input
-                type="number"
+              <FormattedNumberInput
                 value={den2}
-                onChange={(e) => setDen2(e.target.value)}
-                placeholder={isTr ? "Payda" : "Den"}
+                onChange={setDen2}
+                locale={locale}
+                formatAs="number"
+                maxFractionDigits={0}
+                helperText={undefined}
                 className="w-20 text-center"
-                aria-label={isTr ? "İkinci kesir payda" : "Second fraction denominator"}
               />
             </div>
           </div>
@@ -224,7 +232,7 @@ export function FractionCalculator({ locale: localeProp = "en" }: { locale?: Loc
               <span>{result.num}/{result.den}</span>
             )}
             <span className="text-[#93c5fd] ml-2">
-              = {result.decimal.toFixed(6)}
+              = {formatNumber(result.decimal, locale, { maxFractionDigits: 6 })}
             </span>
           </p>
           <p className="text-sm text-[#94a3b8] mb-3">

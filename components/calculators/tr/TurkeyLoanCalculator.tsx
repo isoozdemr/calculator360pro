@@ -7,6 +7,7 @@ import {
   CONSUMER_LOAN_FEES_2026,
   DATA_VERSION,
 } from "@/lib/data/turkey-2026-data";
+import { formatNumber, formatPercent } from "@/lib/format/locale-format";
 
 interface LoanFormData {
   loanAmount: number;
@@ -180,7 +181,7 @@ export function TurkeyLoanCalculator() {
               <p className="text-red-500 text-sm mt-1">{errors.interestRate.message}</p>
             )}
             <p className="text-xs text-[#64748b] mt-1">
-              Yıllık faiz oranı: %{((watch("interestRate") || 0) * 12).toFixed(2)}
+              Yıllık faiz oranı: {formatPercent((watch("interestRate") || 0) * 12, "tr", { maxFractionDigits: 2 })}
             </p>
           </div>
         </div>
@@ -232,7 +233,7 @@ export function TurkeyLoanCalculator() {
             <div className="bg-green-50 p-4 rounded-lg border border-green-200">
               <p className="text-sm text-green-600">Efektif Faiz</p>
               <p className="text-2xl font-bold text-green-700">
-                %{result.effectiveRate.toFixed(2)}
+                {formatPercent(result.effectiveRate, "tr", { maxFractionDigits: 2 })}
               </p>
             </div>
           </div>

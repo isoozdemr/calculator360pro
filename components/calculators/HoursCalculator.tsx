@@ -3,6 +3,10 @@
 import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatNumber } from "@/lib/format/locale-format";
+
+type Locale = "en" | "tr";
 
 interface TimeEntry {
   clockIn: string;
@@ -10,7 +14,9 @@ interface TimeEntry {
   breakMinutes: string;
 }
 
-export function HoursCalculator() {
+export function HoursCalculator({ locale: localeProp = "en" }: { locale?: Locale } = {}) {
+  const locale = localeProp;
+  const isTr = locale === "tr";
   const [entries, setEntries] = useState<TimeEntry[]>([
     { clockIn: "", clockOut: "", breakMinutes: "0" },
   ]);
@@ -65,28 +71,25 @@ export function HoursCalculator() {
 
     entries.forEach((entry, index) => {
       if (!entry.clockIn || !entry.clockOut) {
-        newErrors[index] = "Clock-in and clock-out times are required";
+        newErrors[index] = isTr ? "Giriş ve çıkış saati gerekli" : "Clock-in and clock-out times are required";
         return;
       }
 
       const clockInMinutes = parseTime(entry.clockIn);
       const clockOutMinutes = parseTime(entry.clockOut);
-      const breakMinutes = parseFloat(entry.breakMinutes) || 0;
+      const breakMinutes = parseLocaleNumber(entry.breakMinutes, locale) ?? 0;
 
       if (isNaN(clockInMinutes) || isNaN(clockOutMinutes)) {
-        newErrors[index] = "Invalid time format (use HH:MM)";
+        newErrors[index] = isTr ? "Geçerli saat formatı (SS:DD)" : "Invalid time format (use HH:MM)";
         return;
       }
 
       let workMinutes = clockOutMinutes - clockInMinutes;
-      if (workMinutes < 0) {
-        // Handle overnight shifts
-        workMinutes += 24 * 60;
-      }
+      if (workMinutes < 0) workMinutes += 24 * 60;
       workMinutes -= breakMinutes;
 
       if (workMinutes < 0) {
-        newErrors[index] = "Break time cannot exceed work time";
+        newErrors[index] = isTr ? "Mola süresi çalışma süresini aşamaz" : "Break time cannot exceed work time";
         return;
       }
 
@@ -112,7 +115,7 @@ export function HoursCalculator() {
       regularHours,
       overtimeHours,
     });
-  }, [entries, parseTime]);
+  }, [entries, parseTime, locale, isTr]);
 
   const reset = useCallback(() => {
     setEntries([{ clockIn: "", clockOut: "", breakMinutes: "0" }]);
@@ -155,14 +158,14 @@ export function HoursCalculator() {
                   error={errors[index]?.includes("Clock-out") ? errors[index] : undefined}
                 />
               </div>
-              <Input
-                label="Break Time (minutes)"
-                type="number"
+              <FormattedNumberInput
+                label={isTr ? "Mola süresi (dakika)" : "Break Time (minutes)"}
                 value={entry.breakMinutes}
-                onChange={(e) => handleEntryChange(index, "breakMinutes", e.target.value)}
-                helperText="Enter unpaid break time in minutes"
-                min="0"
-                step="1"
+                onChange={(v) => handleEntryChange(index, "breakMinutes", v)}
+                locale={locale}
+                formatAs="number"
+                maxFractionDigits={0}
+                helperText={isTr ? "Ücretsiz mola süresi (dakika)" : "Enter unpaid break time in minutes"}
               />
               {errors[index] && !errors[index].includes("Clock") && (
                 <p className="text-xs text-[#ef4444]">{errors[index]}</p>
@@ -194,28 +197,28 @@ export function HoursCalculator() {
                 <div key={index} className="flex justify-between">
                   <span className="text-sm text-[#64748b]">Day {index + 1}</span>
                   <span className="text-base font-semibold text-[#10b981] font-mono">
-                    {hours.toFixed(2)} hours
+                    {formatNumber(hours, locale, { maxFractionDigits: 2 })} {isTr ? "saat" : "hours"}
                   </span>
                 </div>
               ))}
               <div className="pt-3 border-t border-[#10b981] space-y-2">
                 <div className="flex justify-between">
-                  <span className="text-sm text-[#64748b]">Total Hours</span>
+                  <span className="text-sm text-[#64748b]">{isTr ? "Toplam saat" : "Total Hours"}</span>
                   <span className="text-2xl font-bold text-[#10b981] font-mono">
-                    {result.totalHours.toFixed(2)}
+                    {formatNumber(result.totalHours, locale, { maxFractionDigits: 2 })}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-sm text-[#64748b]">Regular Hours</span>
+                  <span className="text-sm text-[#64748b]">{isTr ? "Normal saat" : "Regular Hours"}</span>
                   <span className="text-xl font-bold text-[#10b981] font-mono">
-                    {result.regularHours.toFixed(2)}
+                    {formatNumber(result.regularHours, locale, { maxFractionDigits: 2 })}
                   </span>
                 </div>
                 {result.overtimeHours > 0 && (
                   <div className="flex justify-between">
-                    <span className="text-sm text-[#64748b]">Overtime Hours</span>
+                    <span className="text-sm text-[#64748b]">{isTr ? "Mesai saati" : "Overtime Hours"}</span>
                     <span className="text-xl font-bold text-[#10b981] font-mono">
-                      {result.overtimeHours.toFixed(2)}
+                      {formatNumber(result.overtimeHours, locale, { maxFractionDigits: 2 })}
                     </span>
                   </div>
                 )}

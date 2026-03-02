@@ -2,10 +2,14 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { validateField, COMMON_RULES } from "@/lib/validation/rules";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatCurrency } from "@/lib/format/locale-format";
 
-export function StudentLoanCalculator() {
+type Locale = "en" | "tr";
+
+export function StudentLoanCalculator({ locale: localeProp = "en" }: { locale?: Locale } = {}) {
+  const locale = localeProp;
+  const isTr = locale === "tr";
   const [loanAmount, setLoanAmount] = useState("");
   const [interestRate, setInterestRate] = useState("");
   const [loanTerm, setLoanTerm] = useState("");
@@ -16,77 +20,52 @@ export function StudentLoanCalculator() {
     totalPayment: number;
     payoffDate: string;
   } | null>(null);
-  
-  // Error states
   const [loanAmountError, setLoanAmountError] = useState<string | null>(null);
   const [interestRateError, setInterestRateError] = useState<string | null>(null);
   const [loanTermError, setLoanTermError] = useState<string | null>(null);
 
-  const handleLoanAmountChange = (value: string) => {
-    setLoanAmount(value);
-    if (loanAmountError) setLoanAmountError(null);
-  };
-
-  const handleInterestRateChange = (value: string) => {
-    setInterestRate(value);
-    if (interestRateError) setInterestRateError(null);
-  };
-
-  const handleLoanTermChange = (value: string) => {
-    setLoanTerm(value);
-    if (loanTermError) setLoanTermError(null);
-  };
+  const maxTerm = repaymentPlan === "standard" ? 10 : 25;
 
   const calculate = () => {
-    const amountErr = validateField(loanAmount, COMMON_RULES.loanAmount);
-    const interestErr = validateField(interestRate, COMMON_RULES.interestRate);
-    const termErr = validateField(loanTerm, {
-      required: true,
-      min: 5,
-      max: repaymentPlan === "standard" ? 10 : 25,
-      custom: {
-        validate: (v: string) => {
-          const num = parseFloat(v);
-          const maxTerm = repaymentPlan === "standard" ? 10 : 25;
-          return !isNaN(num) && num >= 5 && num <= maxTerm && Number.isInteger(num);
-        },
-        message: `Loan term must be between 5 and ${repaymentPlan === "standard" ? 10 : 25} years`,
-      },
-    } as typeof COMMON_RULES.positiveNumber);
+    const principal = parseLocaleNumber(loanAmount, locale);
+    const rateRaw = parseLocaleNumber(interestRate.replace(/%/g, "").trim(), locale);
+    const nYears = parseLocaleNumber(loanTerm, locale);
 
-    if (amountErr || interestErr || termErr) {
-      setLoanAmountError(amountErr);
-      setInterestRateError(interestErr);
-      setLoanTermError(termErr);
+    if (principal == null || principal < 1000 || principal > 10000000) {
+      setLoanAmountError(isTr ? "1.000 – 10.000.000 arası girin" : "Enter between 1,000 and 10,000,000");
+      setResult(null);
       return;
     }
-
-    const principal = parseFloat(loanAmount);
-    const r = parseFloat(interestRate) / 100 / 12; // Monthly rate
-    const n = parseFloat(loanTerm) * 12; // Number of payments
-
-    if (!isNaN(principal) && !isNaN(r) && !isNaN(n) && principal > 0 && r >= 0 && n > 0) {
-      const monthlyPayment = (principal * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-      const totalPayment = monthlyPayment * n;
-      const totalInterest = totalPayment - principal;
-
-      // Calculate payoff date
-      const today = new Date();
-      const payoffDate = new Date(today);
-      payoffDate.setMonth(payoffDate.getMonth() + n);
-      const payoffDateStr = payoffDate.toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      });
-
-      setResult({
-        monthlyPayment,
-        totalInterest,
-        totalPayment,
-        payoffDate: payoffDateStr,
-      });
+    if (rateRaw == null || rateRaw < 0 || rateRaw > 100) {
+      setInterestRateError(isTr ? "Yıllık faiz oranı %0–100" : "Annual interest rate 0–100%");
+      setResult(null);
+      return;
     }
+    if (nYears == null || nYears < 5 || nYears > maxTerm || !Number.isInteger(nYears)) {
+      setLoanTermError(isTr ? `Vade 5–${maxTerm} yıl (tam sayı)` : `Loan term 5–${maxTerm} years (integer)`);
+      setResult(null);
+      return;
+    }
+    setLoanAmountError(null);
+    setInterestRateError(null);
+    setLoanTermError(null);
+
+    const r = rateRaw / 100 / 12;
+    const n = nYears * 12;
+    const monthlyPayment = (principal * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+    const totalPayment = monthlyPayment * n;
+    const totalInterest = totalPayment - principal;
+
+    const today = new Date();
+    const payoffDate = new Date(today);
+    payoffDate.setMonth(payoffDate.getMonth() + n);
+    const payoffDateStr = payoffDate.toLocaleDateString(locale === "tr" ? "tr-TR" : "en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+
+    setResult({ monthlyPayment, totalInterest, totalPayment, payoffDate: payoffDateStr });
   };
 
   const reset = () => {
@@ -104,86 +83,54 @@ export function StudentLoanCalculator() {
     <div className="w-full max-w-2xl mx-auto space-y-6">
       <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6 space-y-6">
         <div className="space-y-4">
-          <Input
-            label="Loan Amount ($)"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Kredi Tutarı ($)" : "Loan Amount ($)"}
             value={loanAmount}
-            onChange={(e) => handleLoanAmountChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(loanAmount, COMMON_RULES.loanAmount);
-              setLoanAmountError(error);
-            }}
-            placeholder="Enter loan amount (e.g., 30000)"
+            onChange={(v) => { setLoanAmount(v); setLoanAmountError(null); }}
+            locale={locale}
+            formatAs="currency"
             error={loanAmountError || undefined}
-            helperText="Enter the total student loan amount"
-            step="1000"
-            min="1000"
-            max="10000000"
+            helperText={isTr ? "Toplam öğrenim kredisi tutarı" : "Enter the total student loan amount"}
           />
-          <Input
-            label="Annual Interest Rate (%)"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Yıllık Faiz Oranı (%)" : "Annual Interest Rate (%)"}
             value={interestRate}
-            onChange={(e) => handleInterestRateChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(interestRate, COMMON_RULES.interestRate);
-              setInterestRateError(error);
-            }}
-            placeholder="Enter interest rate (e.g., 5.5)"
+            onChange={(v) => { setInterestRate(v); setInterestRateError(null); }}
+            locale={locale}
+            formatAs="percent"
             error={interestRateError || undefined}
-            helperText="Enter the annual interest rate as a percentage"
-            step="0.01"
-            min="0"
-            max="100"
+            helperText={isTr ? "Yıllık faiz oranı yüzde" : "Enter the annual interest rate as a percentage"}
           />
           <div>
             <label className="block text-sm font-medium text-[#1e293b] mb-1.5">
-              Repayment Plan
+              {isTr ? "Geri Ödeme Planı" : "Repayment Plan"}
             </label>
             <select
               value={repaymentPlan}
               onChange={(e) => setRepaymentPlan(e.target.value as "standard" | "extended")}
               className="w-full px-4 py-2.5 border-2 border-[#e2e8f0] rounded-lg bg-white text-[#1e293b] min-h-[44px]"
             >
-              <option value="standard">Standard (5-10 years)</option>
-              <option value="extended">Extended (5-25 years)</option>
+              <option value="standard">{isTr ? "Standart (5-10 yıl)" : "Standard (5-10 years)"}</option>
+              <option value="extended">{isTr ? "Uzun (5-25 yıl)" : "Extended (5-25 years)"}</option>
             </select>
           </div>
-          <Input
-            label="Loan Term (years)"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Vade (yıl)" : "Loan Term (years)"}
             value={loanTerm}
-            onChange={(e) => handleLoanTermChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(loanTerm, {
-                required: true,
-                min: 5,
-                max: repaymentPlan === "standard" ? 10 : 25,
-                custom: {
-                  validate: (v: string) => {
-                    const num = parseFloat(v);
-                    const maxTerm = repaymentPlan === "standard" ? 10 : 25;
-                    return !isNaN(num) && num >= 5 && num <= maxTerm && Number.isInteger(num);
-                  },
-                  message: `Loan term must be between 5 and ${repaymentPlan === "standard" ? 10 : 25} years`,
-                },
-              } as typeof COMMON_RULES.positiveNumber);
-              setLoanTermError(error);
-            }}
-            placeholder={repaymentPlan === "standard" ? "Enter loan term (5-10 years)" : "Enter loan term (5-25 years)"}
+            onChange={(v) => { setLoanTerm(v); setLoanTermError(null); }}
+            locale={locale}
+            formatAs="number"
+            maxFractionDigits={0}
             error={loanTermError || undefined}
-            helperText={repaymentPlan === "standard" ? "Enter the loan term in years (5-10)" : "Enter the loan term in years (5-25)"}
-            step="1"
-            min="5"
-            max={repaymentPlan === "standard" ? 10 : 25}
+            helperText={repaymentPlan === "standard" ? (isTr ? "Vade (5–10 yıl)" : "Enter the loan term in years (5-10)") : (isTr ? "Vade (5–25 yıl)" : "Enter the loan term in years (5-25)")}
           />
 
           <div className="flex gap-3">
             <Button onClick={calculate} className="flex-1">
-              Calculate
+              {isTr ? "Hesapla" : "Calculate"}
             </Button>
             <Button onClick={reset} variant="outline">
-              Reset
+              {isTr ? "Sıfırla" : "Reset"}
             </Button>
           </div>
         </div>
@@ -191,36 +138,36 @@ export function StudentLoanCalculator() {
         {result && (
           <div className="result-container bg-[#f0fdf4] border-2 border-[#10b981] rounded-lg p-6 space-y-4">
             <h3 className="text-lg font-semibold text-[#1e293b]">
-              Results
+              {isTr ? "Sonuçlar" : "Results"}
             </h3>
             <div className="space-y-3">
               <div>
                 <p className="text-sm text-[#64748b]">
-                  Monthly Payment
+                  {isTr ? "Aylık Taksit" : "Monthly Payment"}
                 </p>
                 <p className="text-3xl font-bold text-[#10b981] font-mono">
-                  ${result.monthlyPayment.toFixed(2)}
+                  {formatCurrency(result.monthlyPayment, locale)}
                 </p>
               </div>
               <div>
                 <p className="text-sm text-[#64748b]">
-                  Total Interest
+                  {isTr ? "Toplam Faiz" : "Total Interest"}
                 </p>
                 <p className="text-2xl font-bold text-[#10b981] font-mono">
-                  ${result.totalInterest.toFixed(2)}
+                  {formatCurrency(result.totalInterest, locale)}
                 </p>
               </div>
               <div>
                 <p className="text-sm text-[#64748b]">
-                  Total Payment
+                  {isTr ? "Toplam Ödeme" : "Total Payment"}
                 </p>
                 <p className="text-2xl font-bold text-[#10b981] font-mono">
-                  ${result.totalPayment.toFixed(2)}
+                  {formatCurrency(result.totalPayment, locale)}
                 </p>
               </div>
               <div>
                 <p className="text-sm text-[#64748b]">
-                  Payoff Date
+                  {isTr ? "Kapanış Tarihi" : "Payoff Date"}
                 </p>
                 <p className="text-lg font-semibold text-[#1e293b]">
                   {result.payoffDate}

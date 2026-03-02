@@ -2,10 +2,14 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { validateField, COMMON_RULES } from "@/lib/validation/rules";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatCurrency, formatPercent } from "@/lib/format/locale-format";
 
-export function DiscountCalculator() {
+type Locale = "en" | "tr";
+
+export function DiscountCalculator({ locale: localeProp = "en" }: { locale?: Locale }) {
+  const locale = localeProp;
+  const isTr = locale === "tr";
   const [originalPrice, setOriginalPrice] = useState("");
   const [discountPercentage, setDiscountPercentage] = useState("");
   const [result, setResult] = useState<{
@@ -13,45 +17,29 @@ export function DiscountCalculator() {
     finalPrice: number;
     savingsPercentage: number;
   } | null>(null);
-  
-  // Error states
   const [originalPriceError, setOriginalPriceError] = useState<string | null>(null);
   const [discountPercentageError, setDiscountPercentageError] = useState<string | null>(null);
 
-  const handleOriginalPriceChange = (value: string) => {
-    setOriginalPrice(value);
-    if (originalPriceError) setOriginalPriceError(null);
-  };
-
-  const handleDiscountPercentageChange = (value: string) => {
-    setDiscountPercentage(value);
-    if (discountPercentageError) setDiscountPercentageError(null);
-  };
-
   const calculate = () => {
-    const priceErr = validateField(originalPrice, COMMON_RULES.positiveNumber);
-    const discountErr = validateField(discountPercentage, COMMON_RULES.percentage);
+    const price = parseLocaleNumber(originalPrice, locale);
+    const discount = parseLocaleNumber(discountPercentage.replace(/%/g, "").trim(), locale);
 
-    if (priceErr || discountErr) {
-      setOriginalPriceError(priceErr);
-      setDiscountPercentageError(discountErr);
+    if (price == null || price <= 0) {
+      setOriginalPriceError(isTr ? "Pozitif fiyat girin" : "Enter a positive price");
+      setResult(null);
       return;
     }
-
-    const price = parseFloat(originalPrice);
-    const discount = parseFloat(discountPercentage);
-
-    if (!isNaN(price) && !isNaN(discount) && price > 0 && discount >= 0 && discount <= 100) {
-      const discountAmount = (price * discount) / 100;
-      const finalPrice = price - discountAmount;
-      const savingsPercentage = discount;
-
-      setResult({
-        discountAmount,
-        finalPrice,
-        savingsPercentage,
-      });
+    if (discount == null || discount < 0 || discount > 100) {
+      setDiscountPercentageError(isTr ? "0–100 arası girin" : "Enter 0–100");
+      setResult(null);
+      return;
     }
+    setOriginalPriceError(null);
+    setDiscountPercentageError(null);
+
+    const discountAmount = (price * discount) / 100;
+    const finalPrice = price - discountAmount;
+    setResult({ discountAmount, finalPrice, savingsPercentage: discount });
   };
 
   const reset = () => {
@@ -111,31 +99,31 @@ export function DiscountCalculator() {
         {result && (
           <div className="result-container bg-[#f0fdf4] border-2 border-[#10b981] rounded-lg p-6 space-y-4">
             <h3 className="text-lg font-semibold text-[#1e293b]">
-              Results
+              {isTr ? "Sonuçlar" : "Results"}
             </h3>
             <div className="space-y-3">
               <div>
                 <p className="text-sm text-[#64748b]">
-                  Discount Amount
+                  {isTr ? "İndirim Tutarı" : "Discount Amount"}
                 </p>
                 <p className="text-3xl font-bold text-[#10b981] font-mono">
-                  ${result.discountAmount.toFixed(2)}
+                  {formatCurrency(result.discountAmount, locale)}
                 </p>
               </div>
               <div>
                 <p className="text-sm text-[#64748b]">
-                  Final Price
+                  {isTr ? "İndirimli Fiyat" : "Final Price"}
                 </p>
                 <p className="text-3xl font-bold text-[#10b981] font-mono">
-                  ${result.finalPrice.toFixed(2)}
+                  {formatCurrency(result.finalPrice, locale)}
                 </p>
               </div>
               <div>
                 <p className="text-sm text-[#64748b]">
-                  You Save
+                  {isTr ? "Tasarruf" : "You Save"}
                 </p>
                 <p className="text-2xl font-bold text-[#10b981] font-mono">
-                  {result.savingsPercentage.toFixed(1)}%
+                  {formatPercent(result.savingsPercentage, locale)}
                 </p>
               </div>
             </div>

@@ -2,8 +2,11 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatCurrency } from "@/lib/format/locale-format";
 import { calculateMTV2026 } from "@/lib/data/mtv-2026";
+
+const locale = "tr" as const;
 
 export function MTVHesaplama() {
   const [engineCC, setEngineCC] = useState("");
@@ -14,13 +17,15 @@ export function MTVHesaplama() {
   const handleCalculate = () => {
     setError(null);
     setResult(null);
-    const cc = parseInt(engineCC, 10);
-    const age = parseInt(vehicleAge, 10);
-    if (isNaN(cc) || cc < 1 || cc > 10000) {
+    const ccRaw = parseLocaleNumber(engineCC, locale);
+    const ageRaw = parseLocaleNumber(vehicleAge, locale);
+    const cc = ccRaw != null ? Math.round(ccRaw) : NaN;
+    const age = ageRaw != null ? Math.round(ageRaw) : NaN;
+    if (Number.isNaN(cc) || cc < 1 || cc > 10000) {
       setError("Motor hacmini 1–10000 cm³ arasında girin.");
       return;
     }
-    if (isNaN(age) || age < 1 || age > 30) {
+    if (Number.isNaN(age) || age < 1 || age > 30) {
       setError("Araç yaşını 1–30 arasında girin.");
       return;
     }
@@ -46,27 +51,23 @@ export function MTVHesaplama() {
           2026 MTV (2018 öncesi tescilli otomobiller için tahmini). 2018 sonrası tescilli araçlarda taşıt değeri (matrah) da kullanıldığı için resmi tutarı belediyenizden veya e-Devlet&apos;ten kontrol edin.
         </p>
         <div className="space-y-4">
-          <Input
+          <FormattedNumberInput
             label="Motor hacmi (cm³)"
-            type="number"
             value={engineCC}
-            onChange={(e) => setEngineCC(e.target.value)}
-            placeholder="Örn. 1600"
-            error={undefined}
+            onChange={setEngineCC}
+            locale={locale}
+            formatAs="number"
+            maxFractionDigits={0}
             helperText="Örn. 1400, 1600, 1800"
-            step="100"
-            min="1"
-            max="10000"
           />
-          <Input
+          <FormattedNumberInput
             label="Araç yaşı (yıl)"
-            type="number"
             value={vehicleAge}
-            onChange={(e) => setVehicleAge(e.target.value)}
-            placeholder="Örn. 5"
-            step="1"
-            min="1"
-            max="30"
+            onChange={setVehicleAge}
+            locale={locale}
+            formatAs="number"
+            maxFractionDigits={0}
+            helperText="Örn. 5"
           />
           <div className="flex gap-3">
             <Button onClick={handleCalculate} className="flex-1">Hesapla</Button>
@@ -77,7 +78,7 @@ export function MTVHesaplama() {
         {result !== null && (
           <div className="bg-[#f0fdf4] border-2 border-[#10b981] rounded-lg p-6">
             <p className="text-sm text-[#64748b]">Yıllık MTV (2026, tahmini)</p>
-            <p className="text-3xl font-bold text-[#10b981]">{result.toLocaleString("tr-TR")} TL</p>
+            <p className="text-3xl font-bold text-[#10b981]">{formatCurrency(result, locale)}</p>
             <p className="text-xs text-[#64748b] mt-2">Yılda 2 taksit (Ocak ve Temmuz) ödenir.</p>
           </div>
         )}

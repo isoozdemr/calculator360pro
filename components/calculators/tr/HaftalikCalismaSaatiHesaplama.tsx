@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
+import { parseLocaleNumber, formatNumber } from "@/lib/format/locale-format";
 
 const DAYS = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"] as const;
 
@@ -16,29 +18,31 @@ export function HaftalikCalismaSaatiHesaplama() {
   const [result, setResult] = useState<number | null>(null);
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const locale = "tr" as const;
 
   const calculate = () => {
     setError(null);
     if (usePreset) {
-      const h = parseFloat(presetHours.replace(/,/g, "."));
-      const d = parseInt(presetDays, 10);
-      if (isNaN(h) || h < 0 || h > 24) {
+      const h = parseLocaleNumber(presetHours, locale);
+      const d = parseLocaleNumber(presetDays, locale);
+      const dInt = d != null ? Math.round(d) : NaN;
+      if (h == null || h < 0 || h > 24) {
         setError("Geçerli bir saat girin (0–24).");
         return;
       }
-      if (isNaN(d) || d < 0 || d > 7) {
+      if (Number.isNaN(dInt) || dInt < 0 || dInt > 7) {
         setError("Gün sayısı 0–7 arası olmalıdır.");
         return;
       }
-      setResult(h * d);
+      setResult(h * dInt);
       return;
     }
     let total = 0;
     for (const day of DAYS) {
       const val = hours[day];
       if (!val || val.trim() === "") continue;
-      const num = parseFloat(val.replace(/,/g, "."));
-      if (isNaN(num) || num < 0 || num > 24) {
+      const num = parseLocaleNumber(val, locale);
+      if (num == null || num < 0 || num > 24) {
         setError(`${day} için geçerli bir saat girin (0–24).`);
         return;
       }
@@ -58,7 +62,7 @@ export function HaftalikCalismaSaatiHesaplama() {
 
   const copyResult = () => {
     if (result === null) return;
-    navigator.clipboard.writeText(`Haftalık toplam çalışma saati: ${result.toFixed(1)} saat`);
+    navigator.clipboard.writeText(`Haftalık toplam çalışma saati: ${formatNumber(result, "tr", { maxFractionDigits: 1 })} saat`);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -145,10 +149,10 @@ export function HaftalikCalismaSaatiHesaplama() {
       {result !== null && (
         <div className="bg-[#f0fdf4] border-2 border-[#10b981] rounded-lg p-6 space-y-3" id="result-summary">
           <h3 className="text-lg font-semibold text-[#1e293b]">Sonuç</h3>
-          <p className="text-2xl font-bold text-[#10b981] font-mono">Haftalık toplam: {result.toFixed(1)} saat</p>
+          <p className="text-2xl font-bold text-[#10b981] font-mono">Haftalık toplam: {formatNumber(result, locale, { maxFractionDigits: 1 })} saat</p>
           {result > weeklyLimit && (
             <p className="text-sm text-amber-700">
-              Türkiye İş Kanunu&apos;na göre haftalık normal çalışma süresi genelde 45 saati aşmamalıdır. {result.toFixed(1)} saat, 45 saatlik sınırın üzerindedir; fazla mesai uygulaması iş sözleşmesi ve mevzuata tabidir.
+              Türkiye İş Kanunu&apos;na göre haftalık normal çalışma süresi genelde 45 saati aşmamalıdır. {formatNumber(result, locale, { maxFractionDigits: 1 })} saat, 45 saatlik sınırın üzerindedir; fazla mesai uygulaması iş sözleşmesi ve mevzuata tabidir.
             </p>
           )}
           {result <= weeklyLimit && result > 0 && (
