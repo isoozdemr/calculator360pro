@@ -54,36 +54,23 @@ export function DiscountCalculator({ locale: localeProp = "en" }: { locale?: Loc
     <div className="w-full max-w-2xl mx-auto space-y-6">
       <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6 space-y-6">
         <div className="space-y-4">
-          <Input
-            label="Original Price ($)"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Orijinal Fiyat ($)" : "Original Price ($)"}
             value={originalPrice}
-            onChange={(e) => handleOriginalPriceChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(originalPrice, COMMON_RULES.positiveNumber);
-              setOriginalPriceError(error);
-            }}
-            placeholder="Enter original price (e.g., 100)"
+            onChange={(v) => { setOriginalPrice(v); setOriginalPriceError(null); }}
+            locale={locale}
+            formatAs="currency"
             error={originalPriceError || undefined}
-            helperText="Enter the original price before discount"
-            step="0.01"
-            min="0.01"
+            helperText={isTr ? "İndirim öncesi fiyat" : "Enter the original price before discount"}
           />
-          <Input
-            label="Discount Percentage (%)"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "İndirim Oranı (%)" : "Discount Percentage (%)"}
             value={discountPercentage}
-            onChange={(e) => handleDiscountPercentageChange(e.target.value)}
-            onBlur={() => {
-              const error = validateField(discountPercentage, COMMON_RULES.percentage);
-              setDiscountPercentageError(error);
-            }}
-            placeholder="Enter discount percentage (e.g., 20)"
+            onChange={(v) => { setDiscountPercentage(v); setDiscountPercentageError(null); }}
+            locale={locale}
+            formatAs="percent"
             error={discountPercentageError || undefined}
-            helperText="Enter discount percentage (0-100)"
-            step="0.1"
-            min="0"
-            max="100"
+            helperText={isTr ? "İndirim yüzdesi (0–100)" : "Enter discount percentage (0-100)"}
           />
 
           <div className="flex gap-3">
