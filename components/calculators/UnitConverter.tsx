@@ -205,14 +205,15 @@ export function UnitConverter({ locale: localeProp = "en" }: { locale?: Locale }
             </select>
           </div>
 
-          <Input
-            label="Value"
-            type="number"
+          <FormattedNumberInput
+            label={isTr ? "Değer" : "Value"}
             value={value}
-            onChange={(e) => handleValueChange(e.target.value)}
+            onChange={(v) => { setValue(v); setValueError(null); }}
+            locale={locale}
+            formatAs="number"
+            maxFractionDigits={10}
             error={valueError || undefined}
-            helperText="Enter the value to convert"
-            step="0.01"
+            helperText={isTr ? "Dönüştürecek değeri girin" : "Enter the value to convert"}
           />
 
           <div className="grid grid-cols-2 gap-4">

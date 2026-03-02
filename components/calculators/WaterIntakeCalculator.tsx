@@ -16,7 +16,8 @@ const ACTIVITY_LEVELS = [
 type Locale = "en" | "tr";
 
 export function WaterIntakeCalculator({ locale: localeProp = "en" }: { locale?: Locale }) {
-  const isTr = localeProp === "tr";
+  const locale = localeProp;
+  const isTr = locale === "tr";
   const [weightKg, setWeightKg] = useState("");
   const [activity, setActivity] = useState<(typeof ACTIVITY_LEVELS)[number]["value"]>("moderate");
   const [hotClimate, setHotClimate] = useState(false);
@@ -25,18 +26,13 @@ export function WaterIntakeCalculator({ locale: localeProp = "en" }: { locale?: 
   const [weightError, setWeightError] = useState<string | null>(null);
 
   const calculate = () => {
-    const err = validateField(weightKg, COMMON_RULES.positiveNumber);
-    if (err) {
-      setWeightError(err);
+    const w = parseLocaleNumber(weightKg, locale);
+    if (w == null || w <= 0 || w > 300) {
+      setWeightError(isTr ? "1 ile 300 kg arasında bir ağırlık girin" : "Enter a weight between 1 and 300 kg");
       setResult(null);
       return;
     }
     setWeightError(null);
-    const w = parseFloat(weightKg);
-    if (w <= 0 || w > 300) {
-      setWeightError(isTr ? "1 ile 300 kg arasında bir ağırlık girin" : "Enter a weight between 1 and 300 kg");
-      return;
-    }
     // Base: 35 ml per kg per day
     let ml = w * 35;
     const level = ACTIVITY_LEVELS.find((l) => l.value === activity);

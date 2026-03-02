@@ -48,18 +48,15 @@ export function ProteinCalculator({ locale: localeProp = "en" }: { locale?: Loca
     <div className="w-full max-w-2xl mx-auto space-y-6">
       <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6 space-y-6">
         <div className="space-y-4">
-          <Input
+          <FormattedNumberInput
             label={isTr ? "Vücut Ağırlığı (kg)" : "Body Weight (kg)"}
-            type="number"
             value={weightKg}
-            onChange={(e) => { setWeightKg(e.target.value); setWeightError(null); }}
-            onBlur={() => setWeightError(validateField(weightKg, COMMON_RULES.positiveNumber))}
-            placeholder={isTr ? "örn. 70" : "e.g. 70"}
+            onChange={(v) => { setWeightKg(v); setWeightError(null); }}
+            locale={locale}
+            formatAs="number"
+            maxFractionDigits={1}
             error={weightError || undefined}
             helperText={isTr ? "Mevcut kilonuz (kg)" : "Your current weight in kilograms"}
-            step="1"
-            min="1"
-            max="300"
           />
           <div>
             <label className="block text-sm font-medium text-[#1e293b] mb-2">{isTr ? "Hedef" : "Goal"}</label>
