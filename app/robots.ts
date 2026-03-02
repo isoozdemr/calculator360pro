@@ -9,11 +9,11 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/api/", "/admin/", "/_next/", "/embed"],
       },
-      // Googlebot specific rules for better crawling
+      // Googlebot: same as * (no _next crawl; indexable pages stay allow /)
       {
         userAgent: "Googlebot",
         allow: "/",
-        disallow: ["/api/", "/admin/", "/embed"],
+        disallow: ["/api/", "/admin/", "/_next/", "/embed"],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
