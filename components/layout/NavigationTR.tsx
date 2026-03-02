@@ -145,26 +145,26 @@ export function NavigationTR() {
                     <div
                       className={`absolute top-full left-0 mt-2 bg-white border-2 border-[#e2e8f0] rounded-lg shadow-xl overflow-hidden ${
                         category.calculators.length >= 10
-                          ? "min-w-[600px] w-[90%] max-w-[1000px]"
+                          ? "min-w-[720px] w-[90%] max-w-[1100px]"
                           : "min-w-[280px]"
                       }`}
                       onMouseEnter={() => handleDropdownMouseEnter(category.slug)}
                       onMouseLeave={handleDropdownMouseLeave}
                     >
-                      <div className={`p-4 ${category.calculators.length >= 10 ? "" : "max-h-[400px] overflow-y-auto"}`}>
+                      <div className={`p-3 ${category.calculators.length >= 10 ? "" : "max-h-[400px] overflow-y-auto"}`}>
                         <Link
                           href={`/tr/hesap-makineleri/${category.slug}`}
-                          className="block font-bold text-sm text-[#1e293b] hover:text-[#2563eb] transition-colors mb-3 pb-2 border-b border-[#e2e8f0]"
+                          className="block font-bold text-sm text-[#1e293b] hover:text-[#2563eb] transition-colors mb-2 pb-1.5 border-b border-[#e2e8f0]"
                         >
                           Tüm {category.name} Hesap Makineleri
                         </Link>
                         {category.calculators.length >= 10 ? (
-                          <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+                          <div className="grid grid-cols-3 gap-x-3 gap-y-1.5">
                             {category.calculators.map((calc) => (
                               <Link
                                 key={calc.slug}
                                 href={`/tr/hesap-makineleri/${category.slug}/${calc.slug}`}
-                                className="block text-sm text-[#64748b] hover:text-[#2563eb] transition-colors py-1.5 px-2 rounded hover:bg-[#f8fafc] leading-relaxed"
+                                className="block text-sm text-[#64748b] hover:text-[#2563eb] transition-colors py-1 px-2 rounded hover:bg-[#f8fafc] leading-relaxed"
                               >
                                 {calc.name}
                               </Link>
@@ -176,7 +176,7 @@ export function NavigationTR() {
                               <li key={calc.slug}>
                                 <Link
                                   href={`/tr/hesap-makineleri/${category.slug}/${calc.slug}`}
-                                  className="block text-sm text-[#64748b] hover:text-[#2563eb] transition-colors py-1.5 px-2 rounded hover:bg-[#f8fafc]"
+                                  className="block text-sm text-[#64748b] hover:text-[#2563eb] transition-colors py-1 px-2 rounded hover:bg-[#f8fafc]"
                                 >
                                   {calc.name}
                                 </Link>

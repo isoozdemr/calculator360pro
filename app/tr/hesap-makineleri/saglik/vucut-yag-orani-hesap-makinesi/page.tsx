@@ -9,7 +9,7 @@ import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Vücut Yağ Oranı Hesap Makinesi 2026 - Yağ Oranı Hesaplama",
-  description: "Vücut yağ oranı hesap makinesi: Yaş, cinsiyet, boy, kilo ve bel çevresi ile vücut yağ yüzdesi tahmini. BMI'dan farklı kompozisyon göstergesi. Ücretsiz hesaplama.",
+  description: "Vücut yağ oranı hesap makinesi 2026: Yaş, cinsiyet, boy, kilo ve bel çevresi ile vücut yağ yüzdesi tahmini. BMI'dan farklı kompozisyon göstergesi. Ücretsiz - hemen hesaplayın.",
   keywords: [
     "vücut yağ oranı hesaplama",
     "vücut yağ oranı hesap makinesi",
@@ -26,7 +26,14 @@ export const metadata: Metadata = {
     canonical: `${SITE_URL}/tr/hesap-makineleri/saglik/vucut-yag-orani-hesap-makinesi`,
     languages: { "en": `${SITE_URL}/calculators/health/body-fat-calculator`, "tr": `${SITE_URL}/tr/hesap-makineleri/saglik/vucut-yag-orani-hesap-makinesi`, "x-default": `${SITE_URL}/calculators/health/body-fat-calculator` },
   },
-  openGraph: { title: "Vücut Yağ Oranı Hesap Makinesi 2026", url: `${SITE_URL}/tr/hesap-makineleri/saglik/vucut-yag-orani-hesap-makinesi`, locale: "tr_TR", siteName: "Calculator360Pro" },
+  openGraph: {
+    title: "Vücut Yağ Oranı Hesap Makinesi 2026 - Yağ Oranı Hesaplama",
+    description: "Yaş, cinsiyet, boy, kilo ve bel çevresi ile vücut yağ yüzdesi tahmini. US Navy formülü. Ücretsiz hemen hesaplayın.",
+    url: `${SITE_URL}/tr/hesap-makineleri/saglik/vucut-yag-orani-hesap-makinesi`,
+    locale: "tr_TR",
+    siteName: "Calculator360Pro",
+    type: "website",
+  },
 };
 
 const faqs = [

@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     "çalışma saati hesaplama",
     "iş kanunu çalışma süresi",
     "haftalık mesai hesaplama",
+    "haftalık çalışma saati hesap makinesi",
   ],
   alternates: {
     canonical: `${SITE_URL}/tr/hesap-makineleri/tarih-zaman/haftalik-calisma-saati-hesap-makinesi`,
@@ -184,13 +185,11 @@ export default function HaftalikCalismaSaatiHesapMakinesiPage() {
         <section className="py-12 bg-white border-t border-[#e2e8f0]">
           <div className="container mx-auto px-4 max-w-4xl">
             <h2 className="text-2xl font-bold text-[#1e293b] mb-6">Sıkça Sorulan Sorular</h2>
-            <ul className="space-y-6" itemScope itemType="https://schema.org/FAQPage">
+            <ul className="space-y-6">
               {faqs.map((faq, i) => (
-                <li key={i} itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                  <h3 className="font-bold text-[#1e293b] mb-2" itemProp="name">{faq.question}</h3>
-                  <p className="text-[#64748b]" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                    <span itemProp="text">{faq.answer}</span>
-                  </p>
+                <li key={i}>
+                  <h3 className="font-bold text-[#1e293b] mb-2">{faq.question}</h3>
+                  <p className="text-[#64748b]">{faq.answer}</p>
                 </li>
               ))}
             </ul>

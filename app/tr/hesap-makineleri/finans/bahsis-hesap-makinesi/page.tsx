@@ -9,7 +9,7 @@ import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Bahsis Hesap Makinesi 2026 - Restoran Bahsis Hesaplama",
-  description: "Bahşiş hesap makinesi: Restoran fişi üzerinden bahşiş tutarı ve kişi başı ödeme hesaplayın. %10, %15, %20 veya özel oran. Ücretsiz bahşiş hesaplama aracı.",
+  description: "Bahşiş hesap makinesi 2026: Restoran fişi üzerinden bahşiş tutarı ve kişi başı ödeme hesaplayın. %10, %15, %20 veya özel oran. Ücretsiz bahşiş hesaplama - hemen kullanın.",
   keywords: [
     "bahsis hesaplama",
     "bahsis hesap makinesi",
@@ -26,7 +26,14 @@ export const metadata: Metadata = {
     canonical: `${SITE_URL}/tr/hesap-makineleri/finans/bahsis-hesap-makinesi`,
     languages: { "en": `${SITE_URL}/calculators/finance/tip-calculator`, "tr": `${SITE_URL}/tr/hesap-makineleri/finans/bahsis-hesap-makinesi`, "x-default": `${SITE_URL}/calculators/finance/tip-calculator` },
   },
-  openGraph: { title: "Bahsis Hesap Makinesi 2026", url: `${SITE_URL}/tr/hesap-makineleri/finans/bahsis-hesap-makinesi`, locale: "tr_TR", siteName: "Calculator360Pro" },
+  openGraph: {
+    title: "Bahsis Hesap Makinesi 2026",
+    description: "Restoran fişi üzerinden bahşiş ve kişi başı ödeme hesaplama. Ücretsiz araç.",
+    url: `${SITE_URL}/tr/hesap-makineleri/finans/bahsis-hesap-makinesi`,
+    locale: "tr_TR",
+    siteName: "Calculator360Pro",
+    type: "website",
+  },
 };
 
 const faqs = [
@@ -77,7 +84,7 @@ export default function BahsisPage() {
           <p className="text-[#64748b] mb-4">
             Restoran veya hizmet fişi üzerinden bahşiş tutarını ve kişi başı ödemeyi hızlıca hesaplayın. Fiş tutarını ve istediğiniz bahşiş yüzdesini (veya tutarını) girerek toplam ödeme ve kişi başı payı görürsünüz. Grup yemeklerinde herkesin eşit pay vermesi için çok kullanışlıdır.
           </p>
-          <p className="text-[#64748b] mb-8">
+          <p className="text-[#64748b] mb-6">
             Bahşiş oranı ülke ve hizmete göre değişir; araç farklı yüzdeleri denemenize olanak tanır. Hizmet kalitesine göre %10, %15, %20 veya özel bir tutar seçebilirsiniz.
           </p>
           <TurkeyTipCalculator />

@@ -26,7 +26,7 @@ const BLOG_CALCULATOR_MAPPINGS: Record<string, string[]> = {
   "tip-etiquette-guide": ["tip-calculator", "percentage-calculator", "discount-calculator"],
   "discount-shopping-strategies": ["discount-calculator", "percentage-calculator", "budget-calculator"],
   "time-management-hours-tracking": ["hours-calculator", "date-calculator", "salary-calculator"],
-  "currency-exchange-tips": ["currency-converter", "budget-calculator"],
+  "currency-exchange-tips": ["budget-calculator", "savings-calculator"],
   "age-calculation-methods": ["age-calculator", "date-calculator", "pregnancy-calculator"],
   "loan-comparison-guide": ["loan-calculator", "mortgage-calculator", "car-loan-calculator", "student-loan-calculator"],
   "savings-strategies-guide": ["savings-calculator", "compound-interest-calculator", "budget-calculator", "retirement-calculator"],

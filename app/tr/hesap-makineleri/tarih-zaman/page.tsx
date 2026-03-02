@@ -1,10 +1,18 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { TR_CALCULATORS, TR_CATEGORY_PAGE_TITLES } from "@/lib/tr-calculators-nav";
+
+const dateTimeCalculators = TR_CALCULATORS.filter((c) => c.category === "tarih-zaman").map((c) => ({
+  name: c.name,
+  slug: c.slug,
+  description: c.description ?? "",
+  icon: c.icon ?? "📅",
+}));
 
 export const metadata: Metadata = {
   title: "Tarih ve Zaman Hesap Makineleri - Yaş Hesaplama",
-  description: "Tarih ve zaman hesap makineleri: yaş hesaplama, tarih farkı, saat ve haftalık çalışma saati hesaplama. İki tarih arası gün ve iş günü. Ücretsiz araçlar.",
+  description: "Tarih ve zaman hesap makineleri 2026: yaş hesaplama, tarih farkı, saat ve haftalık çalışma saati. İki tarih arası gün ve iş günü. Ücretsiz araçlar - hemen hesaplayın.",
   keywords: [
     "yaş hesaplama",
     "tarih hesap makinesi",
@@ -31,19 +39,10 @@ export const metadata: Metadata = {
   },
 };
 
-const dateTimeCalculators = [
-  {
-    name: "Yaş Hesap Makinesi",
-    description: "Doğum tarihinizden yaşınızı hesaplayın. Yıl, ay, hafta, gün detayları, burç bilgisi ve sonraki doğum gününe kalan süre.",
-    slug: "yas-hesap-makinesi",
-    icon: "🎂",
-  },
-];
-
 const categorySchema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  name: "Tarih ve Zaman Hesap Makineleri",
+  name: TR_CATEGORY_PAGE_TITLES["tarih-zaman"],
   description: "Ücretsiz tarih ve zaman hesap makineleri: Yaş hesaplama, gün hesaplama.",
   url: `${SITE_URL}/tr/hesap-makineleri/tarih-zaman`,
   inLanguage: "tr-TR",

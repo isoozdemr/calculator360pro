@@ -9,7 +9,7 @@ import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Öğrenim Kredisi Hesap Makinesi 2026",
-  description: "Öğrenim kredisi (KYK) hesap makinesi: Aylık taksit ve toplam faiz maliyetini hesaplayın. Kredi tutarı ve vadeye göre geri ödeme planı. Ücretsiz öğrenim kredisi hesaplama.",
+  description: "Öğrenim kredisi (KYK) hesap makinesi 2026: Aylık taksit ve toplam faiz maliyetini hesaplayın. Kredi tutarı ve vadeye göre geri ödeme planı. Ücretsiz - hemen hesaplayın.",
   keywords: [
     "öğrenim kredisi hesaplama",
     "öğrenim kredisi taksit",
@@ -26,7 +26,14 @@ export const metadata: Metadata = {
     canonical: `${SITE_URL}/tr/hesap-makineleri/finans/ogrenim-kredisi-hesap-makinesi`,
     languages: { "en": `${SITE_URL}/calculators/finance/student-loan-calculator`, "tr": `${SITE_URL}/tr/hesap-makineleri/finans/ogrenim-kredisi-hesap-makinesi`, "x-default": `${SITE_URL}/calculators/finance/student-loan-calculator` },
   },
-  openGraph: { title: "Öğrenim Kredisi Hesap Makinesi 2026", url: `${SITE_URL}/tr/hesap-makineleri/finans/ogrenim-kredisi-hesap-makinesi`, locale: "tr_TR", siteName: "Calculator360Pro" },
+  openGraph: {
+    title: "Öğrenim Kredisi Hesap Makinesi 2026",
+    description: "KYK öğrenim kredisi aylık taksit ve toplam maliyet hesaplama. Ücretsiz araç.",
+    url: `${SITE_URL}/tr/hesap-makineleri/finans/ogrenim-kredisi-hesap-makinesi`,
+    locale: "tr_TR",
+    siteName: "Calculator360Pro",
+    type: "website",
+  },
 };
 
 const faqs = [

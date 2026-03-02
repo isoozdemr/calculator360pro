@@ -5,7 +5,7 @@ import { generateSimpleBreadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: "İletişim | Calculator360Pro",
-  description: "Calculator360Pro ile iletişime geçin. Soru, geri bildirim veya destek için e-posta gönderin. Genelde 24-48 saat içinde yanıt veriyoruz.",
+  description: "Calculator360Pro iletişim: Soru, geri bildirim veya destek için bize ulaşın. E-posta gönderin; genelde 24-48 saat içinde yanıt veriyoruz. Ücretsiz hesap makineleri desteği.",
   keywords: ["iletişim", "destek", "geri bildirim", "Calculator360Pro iletişim", "hesap makinesi destek"],
   alternates: { canonical: `${SITE_URL}/tr/iletisim`, languages: { en: `${SITE_URL}/contact`, tr: `${SITE_URL}/tr/iletisim`, "x-default": `${SITE_URL}/contact` } },
   openGraph: { title: "İletişim", url: `${SITE_URL}/tr/iletisim`, locale: "tr_TR", siteName: "Calculator360Pro" },

@@ -8,7 +8,7 @@ import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "İndirim Hesap Makinesi 2026 - Tasarruf Hesapla",
-  description: "İndirim hesap makinesi: Yüzde indirimden indirimli fiyat ve tasarruf tutarını anında hesaplayın. Alışverişte son fiyat hesaplama. Ücretsiz indirim hesaplama aracı.",
+  description: "İndirim hesap makinesi 2026: Yüzde indirimden indirimli fiyat ve tasarruf tutarını anında hesaplayın. Alışverişte son fiyat hesaplama. Ücretsiz indirim hesaplama - hemen kullanın.",
   keywords: [
     "indirim hesaplama",
     "indirim hesap makinesi",

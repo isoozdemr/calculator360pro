@@ -8,7 +8,7 @@ import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Saat Hesap Makinesi 2026 - Çalışma Süresi",
-  description: "Saat hesap makinesi: Başlangıç ve bitiş saati ile toplam çalışma süresi ve ücret hesaplama. Mesai ve bordro için ücretsiz saat hesaplama aracı.",
+  description: "Saat hesap makinesi 2026: Başlangıç ve bitiş saati ile toplam çalışma süresi ve ücret hesaplama. Mesai ve bordro için ücretsiz saat hesaplama - hemen kullanın.",
   keywords: [
     "saat hesap makinesi",
     "çalışma süresi hesaplama",
@@ -25,7 +25,14 @@ export const metadata: Metadata = {
     canonical: `${SITE_URL}/tr/hesap-makineleri/tarih-zaman/saat-hesap-makinesi`,
     languages: { "en": `${SITE_URL}/calculators/date-time/hours-calculator`, "tr": `${SITE_URL}/tr/hesap-makineleri/tarih-zaman/saat-hesap-makinesi`, "x-default": `${SITE_URL}/calculators/date-time/hours-calculator` },
   },
-  openGraph: { title: "Saat Hesap Makinesi 2026", url: `${SITE_URL}/tr/hesap-makineleri/tarih-zaman/saat-hesap-makinesi`, locale: "tr_TR", siteName: "Calculator360Pro" },
+  openGraph: {
+    title: "Saat Hesap Makinesi 2026 - Çalışma Süresi",
+    description: "Başlangıç ve bitiş saati ile toplam çalışma süresi ve ücret hesaplama. Mesai ve bordro için ücretsiz saat hesaplama.",
+    url: `${SITE_URL}/tr/hesap-makineleri/tarih-zaman/saat-hesap-makinesi`,
+    locale: "tr_TR",
+    siteName: "Calculator360Pro",
+    type: "website",
+  },
 };
 
 const faqs = [

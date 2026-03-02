@@ -30,7 +30,6 @@ export const metadata: Metadata = {
     "2026 vergi dilimleri",
     "asgari ücret 2026",
     "agi hesaplama",
-    "döviz çevirici",
     "birim çevirici",
   ],
   alternates: {
@@ -99,7 +98,7 @@ export default function TurkeyHomePage() {
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-[#94a3b8] mb-8 max-w-3xl mx-auto leading-relaxed">
-              Vergi, maaş, kredi, emeklilik, BES devlet katkısı, enflasyon alım gücü, döviz, birim çevirici ve 
+              Vergi, maaş, kredi, emeklilik, BES devlet katkısı, enflasyon alım gücü, birim çevirici ve 
               <strong className="text-white"> {TR_CALCULATOR_COUNT} farklı hesap makinesi</strong>. 
               <strong className="text-white"> 2026 yılı güncel vergi dilimleri</strong>, SGK oranları ve 
               Türkiye düzenlemeleri ile <strong className="text-white">%100 doğru sonuçlar</strong> alın.
@@ -509,7 +508,7 @@ export default function TurkeyHomePage() {
               <Link href="/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium"> emeklilik hesaplama</Link>, 
               <Link href="/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium"> BES devlet katkısı</Link>, 
               <Link href="/tr/hesap-makineleri/finans/enflasyon-alim-gucu-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium"> enflasyon alım gücü</Link>, 
-              döviz çevirici, birim çevirici ve daha fazlasını 2026 yılı güncel verileriyle sunuyoruz.
+              birim çevirici ve daha fazlasını 2026 yılı güncel verileriyle sunuyoruz.
             </p>
 
             <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">

@@ -60,7 +60,6 @@ export const TR_CALCULATORS: TRCalculatorItem[] = [
   { category: "finans", slug: "birikim-hesap-makinesi", name: "Birikim Hesap Makinesi", description: "Hedef birikim için aylık tasarruf hesaplama", icon: "🐷", badge: null },
   { category: "finans", slug: "butce-hesap-makinesi", name: "Bütçe Hesap Makinesi", description: "Gelir-gider dengesi ve bütçe planlama", icon: "📊", badge: null },
   { category: "finans", slug: "tasit-kredisi-hesap-makinesi", name: "Taşıt Kredisi Hesap Makinesi", description: "Araç kredisi aylık taksit ve toplam maliyet hesaplama", icon: "🚗", badge: null },
-  { category: "finans", slug: "doviz-cevirici", name: "Döviz Çevirici", description: "USD, EUR, TRY ve 150+ para birimi çevirisi", icon: "💱", badge: null },
   { category: "egitim", slug: "not-ortalamasi-hesap-makinesi", name: "Not Ortalaması Hesap Makinesi", description: "GANO hesaplama, 4'lük ve 100'lük not sistemi dönüşümü", icon: "📚", badge: null },
   { category: "saglik", slug: "bmi-hesap-makinesi", name: "BMI Hesap Makinesi", description: "Vücut Kitle İndeksinizi (BMI) hesaplayın", icon: "⚖️", badge: null },
   { category: "saglik", slug: "kalori-hesap-makinesi", name: "Kalori Hesap Makinesi", description: "Günlük kalori ihtiyacınızı hesaplayın. BMH, TDEE ve makro önerileri", icon: "🔥", badge: null },
@@ -81,6 +80,17 @@ export const TR_CALCULATORS: TRCalculatorItem[] = [
   { category: "finans", slug: "emlak-vergisi-hesap-makinesi", name: "Emlak Vergisi Hesap Makinesi", description: "Yıllık emlak vergisi hesaplama, konut ve işyeri oranları", icon: "🏠", badge: "Yeni" },
   { category: "finans", slug: "prim-gunu-hesap-makinesi", name: "Prim Günü Hesap Makinesi", description: "SGK prim günü hesaplama, tarih aralığına göre toplam gün", icon: "📋", badge: null },
   { category: "tarih-zaman", slug: "haftalik-calisma-saati-hesap-makinesi", name: "Haftalık Çalışma Saati Hesap Makinesi", description: "Haftalık toplam çalışma saati, 45 saat sınırı ile karşılaştırma", icon: "⏱️", badge: null },
+  { category: "matematik", slug: "kesir-hesap-makinesi", name: "Kesir Hesap Makinesi", description: "Kesir toplama, çıkarma, çarpma, bölme ve sadeleştirme", icon: "🔢", badge: null },
+  { category: "saglik", slug: "bazal-metabolizma-hesap-makinesi", name: "Bazal Metabolizma Hesap Makinesi", description: "BMR – dinlenirken harcanan kalori (Mifflin-St Jeor)", icon: "🔥", badge: null },
+  { category: "egitim", slug: "not-hesap-makinesi", name: "Not Hesap Makinesi", description: "Yüzde–harf notu dönüşümü, ağırlıklı ortalama ve final notu hesaplama", icon: "📝", badge: null },
+  { category: "finans", slug: "yatirim-getirisi-hesap-makinesi", name: "Yatırım Getirisi (ROI) Hesap Makinesi", description: "Yatırım maliyeti ve kazanç ile ROI yüzdesi hesaplama", icon: "📈", badge: null },
+  { category: "finans", slug: "geri-donus-suresi-hesap-makinesi", name: "Geri Dönüş Süresi Hesap Makinesi", description: "Yatırımın kendini ne kadar sürede geri ödeyeceğini hesaplama", icon: "⏳", badge: null },
+  { category: "finans", slug: "gelir-gider-orani-hesap-makinesi", name: "Gelir Gider Oranı Hesap Makinesi", description: "Kredi uygunluğu için DTI (gelir-gider oranı) hesaplama", icon: "📊", badge: "Yeni" },
+  { category: "finans", slug: "kredi-erken-kapanis-hesap-makinesi", name: "Kredi Erken Kapanış Hesap Makinesi", description: "Ekstra taksit ile kredi ne zaman biter, ne kadar faiz tasarrufu", icon: "⏳", badge: null },
+  { category: "saglik", slug: "su-tuketimi-hesap-makinesi", name: "Su Tüketimi Hesap Makinesi", description: "Günlük su ihtiyacı, kilo ve aktiviteye göre", icon: "💧", badge: null },
+  { category: "saglik", slug: "protein-ihtiyaci-hesap-makinesi", name: "Protein İhtiyacı Hesap Makinesi", description: "Günlük protein kaç gram, kilo verme ve kas için", icon: "💪", badge: null },
+  { category: "finans", slug: "asgari-ucret-hesap-makinesi", name: "Asgari Ücret Hesap Makinesi", description: "2026 net ve brüt asgari ücret, SGK ve vergi kesintileri", icon: "💰", badge: "2026" },
+  { category: "finans", slug: "mtv-hesap-makinesi", name: "MTV Hesap Makinesi", description: "Motorlu taşıt vergisi 2026, motor hacmi ve araç yaşına göre", icon: "🚗", badge: "2026" },
 ];
 
 /** Categories with their calculators for nav/homepage. */

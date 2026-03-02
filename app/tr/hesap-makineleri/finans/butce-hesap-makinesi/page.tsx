@@ -9,13 +9,15 @@ import { TurkeyBudgetCalculator } from "@/components/calculators/tr";
 
 export const metadata: Metadata = {
   title: "Bütçe Hesap Makinesi 2026 - Gelir Gider Dengesi",
-  description: "Bütçe hesap makinesi: Aylık gelir ve giderlerinizi dengeleyin, tasarruf hedefi belirleyin. Gelir-gider analizi ve bütçe planı. Ücretsiz bütçe hesaplama aracı - hemen kullanın.",
+  description: "Bütçe hesap makinesi 2026: Aylık gelir ve giderlerinizi dengeleyin, tasarruf hedefi belirleyin. Gelir-gider analizi ve bütçe planı. Ücretsiz bütçe hesaplama - hemen kullanın.",
   keywords: [
     "bütçe hesaplama",
     "bütçe hesap makinesi",
     "gelir gider",
     "aylık bütçe",
     "tasarruf planı",
+    "gelir gider dengesi",
+    "aylık bütçe planı",
   ],
   alternates: {
     canonical: `${SITE_URL}/tr/hesap-makineleri/finans/butce-hesap-makinesi`,

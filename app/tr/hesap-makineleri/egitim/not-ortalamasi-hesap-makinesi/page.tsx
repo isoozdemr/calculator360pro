@@ -7,8 +7,8 @@ import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalcula
 import { SchemaMarkupTR } from "@/components/SEO/SchemaMarkupTR";
 
 export const metadata: Metadata = {
-  title: "Not Ortalaması Hesaplama | GANO Hesap Makinesi - 4'lük ve 100'lük Sistem",
-  description: "Üniversite not ortalamanızı (GANO) hesaplayın. YÖK standardı 4'lük ve 100'lük not sistemi dönüşümü. Onur ve yüksek onur öğrencisi durumunuzu öğrenin.",
+  title: "Not Ortalaması Hesaplama | GANO Hesap Makinesi - 4'lük ve 100'lük",
+  description: "Not ortalaması (GANO) hesap makinesi 2026: Üniversite not ortalamanızı hesaplayın. YÖK standardı 4'lük ve 100'lük dönüşüm, onur ve yüksek onur. Ücretsiz hemen hesaplayın.",
   keywords: [
     "not ortalaması hesaplama",
     "GANO hesaplama",
@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     "harf notu dönüşümü",
     "not ortalaması hesap makinesi",
     "YÖK not sistemi",
+    "onur öğrencisi hesaplama",
   ],
   alternates: {
     canonical: `${SITE_URL}/tr/hesap-makineleri/egitim/not-ortalamasi-hesap-makinesi`,
@@ -29,9 +30,12 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Not Ortalaması (GANO) Hesaplama",
-    description: "Türkiye üniversite not sistemi ile GANO hesaplama aracı.",
+    title: "Not Ortalaması (GANO) Hesap Makinesi - 4'lük ve 100'lük Sistem",
+    description: "Türkiye üniversite not sistemi ile GANO hesaplama. YÖK standardı, onur ve yüksek onur. Ücretsiz hemen hesaplayın.",
+    url: `${SITE_URL}/tr/hesap-makineleri/egitim/not-ortalamasi-hesap-makinesi`,
     locale: "tr_TR",
+    siteName: "Calculator360Pro",
+    type: "website",
   },
 };
 

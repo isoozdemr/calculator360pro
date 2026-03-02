@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Kredi Hesaplama 2026 | İhtiyaç Kredisi Hesap Makinesi - KKDF, BSMV Dahil",
-  description: "2026 güncel oranları ile ihtiyaç, taşıt ve eğitim kredisi hesaplayın. KKDF ve BSMV dahil gerçek maliyet hesaplama. Aylık taksit ve ödeme planı.",
+  description: "Kredi hesap makinesi 2026: İhtiyaç, taşıt ve eğitim kredisi hesaplayın. KKDF ve BSMV dahil gerçek maliyet, aylık taksit ve ödeme planı. Ücretsiz - hemen hesaplayın.",
   keywords: [
     "kredi hesaplama",
     "ihtiyaç kredisi hesaplama",
@@ -32,7 +32,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Kredi Hesaplama 2026 - İhtiyaç Kredisi Hesap Makinesi",
     description: "KKDF ve BSMV dahil gerçek kredi maliyeti hesaplama.",
+    url: `${SITE_URL}/tr/hesap-makineleri/finans/kredi-hesap-makinesi`,
     locale: "tr_TR",
+    siteName: "Calculator360Pro",
+    type: "website",
   },
 };
 
@@ -117,7 +120,6 @@ export default function TurkeyLoanCalculatorPage() {
           {/* Calculator */}
           <TurkeyLoanCalculator />
           <CalculatorDisclaimer category="finance" locale="tr" />
-
           {/* SEO Content */}
           <div className="mt-12 prose prose-slate max-w-none">
             <h2 className="text-2xl font-bold text-[#1e293b] mb-4">İhtiyaç Kredisi (Tüketici Kredisi) Nedir?</h2>

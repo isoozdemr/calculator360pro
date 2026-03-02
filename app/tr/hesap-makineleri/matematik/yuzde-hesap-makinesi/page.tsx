@@ -8,7 +8,7 @@ import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Yüzde Hesap Makinesi 2026 - Anında Hesapla",
-  description: "Yüzde hesap makinesi: Bir sayının yüzdesi, artış ve azalış oranı, indirim hesaplama. Vergi, maaş ve KDV için anında sonuç. Ücretsiz yüzde hesaplama aracı - hemen kullanın.",
+  description: "Yüzde hesap makinesi 2026: Bir sayının yüzdesi, artış ve azalış oranı, indirim hesaplama. Vergi, maaş ve KDV için anında sonuç. Ücretsiz yüzde hesaplama aracı - hemen kullanın.",
   keywords: [
     "yüzde hesaplama",
     "yüzde hesap makinesi",
@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     "indirim hesaplama",
     "oran hesaplama",
     "yüzde bulma",
+    "yüzde hesaplama aracı",
   ],
   alternates: {
     canonical: `${SITE_URL}/tr/hesap-makineleri/matematik/yuzde-hesap-makinesi`,

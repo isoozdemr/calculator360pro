@@ -215,28 +215,28 @@ export function Navigation() {
                       id={`category-menu-${category.slug}`}
                       className={`absolute top-full left-0 mt-2 bg-white border-2 border-[#e2e8f0] rounded-lg shadow-xl overflow-hidden ${
                         isFinance 
-                          ? "min-w-[600px] w-[90%] max-w-[1000px]" 
+                          ? "min-w-[720px] w-[90%] max-w-[1100px]" 
                           : "min-w-[350px] w-[80%] max-w-[920px]"
                       }`}
                       onMouseEnter={() => handleDropdownMouseEnter(category.slug)}
                       onMouseLeave={handleDropdownMouseLeave}
                       role="menu"
                     >
-                      <div className={`overflow-y-auto p-4 ${isFinance ? "max-h-[500px]" : "max-h-[400px]"}`}>
+                      <div className={`overflow-y-auto p-3 ${isFinance ? "max-h-[500px]" : "max-h-[400px]"}`}>
                         <Link
                           href={`/calculators/${category.slug}`}
-                          className="block font-bold text-base text-[#1e293b] hover:text-[#2563eb] transition-colors mb-3 pb-2 border-b border-[#e2e8f0]"
+                          className="block font-bold text-base text-[#1e293b] hover:text-[#2563eb] transition-colors mb-2 pb-1.5 border-b border-[#e2e8f0]"
                           role="menuitem"
                         >
                           {category.name}
                         </Link>
                         {isFinance ? (
-                          <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+                          <div className="grid grid-cols-3 gap-x-3 gap-y-1.5">
                             {displayedCalculators.map((calc) => (
                               <Link
                                 key={calc.id}
                                 href={`/calculators/${getCategorySlugByKey(calc.category)}/${calc.slug}`}
-                                className="block text-sm text-[#64748b] hover:text-[#2563eb] transition-colors py-1.5 leading-relaxed rounded px-2 hover:bg-[#f8fafc]"
+                                className="block text-sm text-[#64748b] hover:text-[#2563eb] transition-colors py-1 leading-relaxed rounded px-2 hover:bg-[#f8fafc]"
                                 role="menuitem"
                               >
                                 {calc.name}
@@ -249,7 +249,7 @@ export function Navigation() {
                               <li key={calc.id} role="none">
                                 <Link
                                   href={`/calculators/${getCategorySlugByKey(calc.category)}/${calc.slug}`}
-                                  className="block text-sm text-[#64748b] hover:text-[#2563eb] transition-colors py-1.5 leading-relaxed rounded px-2 hover:bg-[#f8fafc]"
+                                  className="block text-sm text-[#64748b] hover:text-[#2563eb] transition-colors py-1 leading-relaxed rounded px-2 hover:bg-[#f8fafc]"
                                   role="menuitem"
                                 >
                                   {calc.name}
@@ -261,7 +261,7 @@ export function Navigation() {
                         {!showAllCalculators && categoryCalculators.length > 10 && (
                           <Link
                             href={`/calculators/${category.slug}`}
-                            className="block text-xs font-semibold text-[#2563eb] hover:underline mt-4 pt-3 border-t border-[#e2e8f0]"
+                            className="block text-xs font-semibold text-[#2563eb] hover:underline mt-3 pt-2 border-t border-[#e2e8f0]"
                             role="menuitem"
                           >
                             View all {categoryCalculators.length} calculators →

@@ -97,7 +97,8 @@
 - [ ] Referans: `docs/strategy/07-adsense-monetization.md`
 
 ### 9. Sayfa Tamamlandı (Tümü işaretlenmeden sayfa tamamlanmış sayılmaz)
-- [ ] Meta: Title 50–60 karakter, primary keyword başta; meta description 150–160; keywords, canonical, hreflang, Open Graph
+- [ ] Meta: Title 50–60 karakter, primary keyword başta; meta description **150–160 karakter** (kısa meta CTR düşürür); keywords 6–8+, canonical, hreflang, Open Graph
+- [ ] Rakip/CTR: Description aksiyon odaklı; GSC sorgularına uyum için hedef ifadeler title/description veya FAQ'te (bkz. `docs/GSC_ACTION_CHECKLIST.md` – Meta 150–160 ve rakip/CTR revizyonu)
 - [ ] Schema: WebApplication/SoftwareApplication, FAQPage, HowTo, BreadcrumbList (finance/health ekleri dahil); Google Rich Results Test ile doğrulandı
 - [ ] İçerik: Minimum 2000 kelime; FAQ 3–5 madde (schema ile aynı metin)
 - [ ] Sayfa yapısı: Breadcrumb, H1, kısa açıklama, reklam alanları, hesap aracı, disclaimer (finans/sağlık), uzun içerik, FAQ, ilgili hesaplar (min 2–3), CTA

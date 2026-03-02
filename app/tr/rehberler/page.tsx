@@ -6,7 +6,7 @@ import { TR_REHBERLER } from "@/lib/tr-rehberler";
 export const metadata: Metadata = {
   title: "Rehberler | Finans ve Emeklilik Rehberleri 2026",
   description:
-    "Vergi takvimi, SGK emeklilik tablosu, finansal terimler sözlüğü, kredi notu ve vergi indirimleri rehberleri. 2026 güncel bilgiler.",
+    "Rehberler 2026: Vergi takvimi, SGK emeklilik tablosu, finansal terimler sözlüğü, kredi notu ve vergi indirimleri. Türkiye'ye özel ücretsiz rehberler - hemen okuyun.",
   keywords: [
     "rehberler",
     "vergi takvimi 2026",

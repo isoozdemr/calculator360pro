@@ -8,7 +8,7 @@ import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Yaş Hesap Makinesi 2026 - Doğum Tarihinden Hesapla",
-  description: "Yaş hesap makinesi: Doğum tarihinizden yaşınızı yıl, ay ve gün olarak hesaplayın. Burç ve ehliyet yaşı. Emeklilik yaşı için ücretsiz yaş hesaplama - deneyin.",
+  description: "Yaş hesap makinesi 2026: Doğum tarihinizden yaşınızı yıl, ay ve gün olarak hesaplayın. Burç ve ehliyet yaşı. Emeklilik yaşı için ücretsiz yaş hesaplama - hemen deneyin.",
   keywords: [
     "yaş hesaplama",
     "yaş hesap makinesi",
@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     "yaş hesapla",
     "burç hesaplama",
     "doğum günü hesaplama",
+    "yaş hesaplama aracı",
   ],
   alternates: {
     canonical: `${SITE_URL}/tr/hesap-makineleri/tarih-zaman/yas-hesap-makinesi`,

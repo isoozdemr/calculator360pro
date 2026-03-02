@@ -13,7 +13,10 @@ function mifflinStJeor(gender: "male" | "female", age: number, weightKg: number,
   return 10 * weightKg + 6.25 * heightCm - 5 * age - 161;
 }
 
-export function BMRCalculator() {
+type Locale = "en" | "tr";
+
+export function BMRCalculator({ locale: localeProp = "en" }: { locale?: Locale }) {
+  const isTr = localeProp === "tr";
   const [gender, setGender] = useState<"male" | "female">("male");
   const [age, setAge] = useState("");
   const [weight, setWeight] = useState("");
@@ -55,11 +58,12 @@ export function BMRCalculator() {
 
   const copyResult = useCallback(() => {
     if (result == null) return;
-    void navigator.clipboard.writeText(`${result} kcal/day`).then(() => {
+    const suffix = isTr ? " kcal/gün" : " kcal/day";
+    void navigator.clipboard.writeText(`${result}${suffix}`).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     });
-  }, [result]);
+  }, [result, isTr]);
 
   const reset = useCallback(() => {
     setAge("");
@@ -75,7 +79,7 @@ export function BMRCalculator() {
     <div className="w-full max-w-2xl mx-auto space-y-6">
       <div className="bg-white rounded-xl border-2 border-[#e2e8f0] p-6 shadow-sm space-y-6">
         <div>
-          <label className="block text-sm font-medium text-[#475569] mb-2">Gender</label>
+          <label className="block text-sm font-medium text-[#475569] mb-2">{isTr ? "Cinsiyet" : "Gender"}</label>
           <div className="flex gap-2">
             <button
               type="button"
@@ -84,7 +88,7 @@ export function BMRCalculator() {
                 gender === "male" ? "bg-[#2563eb] text-white" : "bg-[#f1f5f9] text-[#1e293b]"
               }`}
             >
-              Male
+              {isTr ? "Erkek" : "Male"}
             </button>
             <button
               type="button"
@@ -93,13 +97,13 @@ export function BMRCalculator() {
                 gender === "female" ? "bg-[#2563eb] text-white" : "bg-[#f1f5f9] text-[#1e293b]"
               }`}
             >
-              Female
+              {isTr ? "Kadın" : "Female"}
             </button>
           </div>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-[#475569] mb-2">Units</label>
+          <label className="block text-sm font-medium text-[#475569] mb-2">{isTr ? "Birim" : "Units"}</label>
           <div className="flex gap-2">
             <button
               type="button"
@@ -108,7 +112,7 @@ export function BMRCalculator() {
                 unit === "metric" ? "bg-[#2563eb] text-white" : "bg-[#f1f5f9] text-[#1e293b]"
               }`}
             >
-              Metric (kg, cm)
+              {isTr ? "Metrik (kg, cm)" : "Metric (kg, cm)"}
             </button>
             <button
               type="button"
@@ -117,13 +121,13 @@ export function BMRCalculator() {
                 unit === "imperial" ? "bg-[#2563eb] text-white" : "bg-[#f1f5f9] text-[#1e293b]"
               }`}
             >
-              Imperial (lb, in)
+              {isTr ? "İmparatorluk (lb, in)" : "Imperial (lb, in)"}
             </button>
           </div>
         </div>
 
         <Input
-          label="Age (years)"
+          label={isTr ? "Yaş (yıl)" : "Age (years)"}
           type="number"
           value={age}
           onChange={(e) => { setAge(e.target.value); setAgeError(null); }}
@@ -134,22 +138,22 @@ export function BMRCalculator() {
           step={1}
         />
         <Input
-          label={unit === "metric" ? "Weight (kg)" : "Weight (lb)"}
+          label={unit === "metric" ? (isTr ? "Kilo (kg)" : "Weight (kg)") : (isTr ? "Kilo (lb)" : "Weight (lb)")}
           type="number"
           value={weight}
           onChange={(e) => { setWeight(e.target.value); setWeightError(null); }}
-          placeholder={unit === "metric" ? "e.g. 70" : "e.g. 154"}
+          placeholder={unit === "metric" ? (isTr ? "örn. 70" : "e.g. 70") : (isTr ? "örn. 154" : "e.g. 154")}
           error={weightError || undefined}
           min={unit === "metric" ? 20 : 44}
           max={unit === "metric" ? 300 : 660}
           step={0.1}
         />
         <Input
-          label={unit === "metric" ? "Height (cm)" : "Height (inches)"}
+          label={unit === "metric" ? (isTr ? "Boy (cm)" : "Height (cm)") : (isTr ? "Boy (inç)" : "Height (inches)")}
           type="number"
           value={height}
           onChange={(e) => { setHeight(e.target.value); setHeightError(null); }}
-          placeholder={unit === "metric" ? "e.g. 175" : "e.g. 69"}
+          placeholder={unit === "metric" ? (isTr ? "örn. 175" : "e.g. 175") : (isTr ? "örn. 69" : "e.g. 69")}
           error={heightError || undefined}
           min={unit === "metric" ? 100 : 39}
           max={unit === "metric" ? 250 : 98}
@@ -157,13 +161,14 @@ export function BMRCalculator() {
         />
 
         <div className="flex flex-wrap gap-3">
-          <Button onClick={calculate} variant="primary">Calculate</Button>
-          <Button onClick={reset} variant="secondary">Reset</Button>
+          <Button onClick={calculate} variant="primary">{isTr ? "Hesapla" : "Calculate"}</Button>
+          <Button onClick={reset} variant="secondary">{isTr ? "Sıfırla" : "Reset"}</Button>
         </div>
 
         <p className="text-sm text-[#64748b]">
-          Uses the Mifflin-St Jeor equation. For total daily calories including activity, use our{" "}
-          <a href="/calculators/health/calorie-calculator" className="text-[#2563eb] hover:underline">calorie calculator</a>.
+          {isTr ? "Mifflin-St Jeor formülü kullanılır. Aktivite dahil günlük kalori için " : "Uses the Mifflin-St Jeor equation. For total daily calories including activity, use our "}
+          {isTr ? <a href="/tr/hesap-makineleri/saglik/kalori-hesap-makinesi" className="text-[#2563eb] hover:underline">kalori hesaplama</a> : <a href="/calculators/health/calorie-calculator" className="text-[#2563eb] hover:underline">calorie calculator</a>}
+          {isTr ? "." : "."}
         </p>
       </div>
 
@@ -172,12 +177,12 @@ export function BMRCalculator() {
           className="bg-gradient-to-br from-[#1e293b] to-[#334155] text-white rounded-xl p-6 shadow-lg"
           id="result-summary"
         >
-          <p className="text-sm text-[#94a3b8] mb-2">Your BMR (Basal Metabolic Rate)</p>
+          <p className="text-sm text-[#94a3b8] mb-2">{isTr ? "BMR (Bazal Metabolizma Hızı)" : "Your BMR (Basal Metabolic Rate)"}</p>
           <p className="text-2xl md:text-3xl font-bold mb-2">
-            <span className="text-[#93c5fd]">{result}</span> kcal/day
+            <span className="text-[#93c5fd]">{result}</span> {isTr ? "kcal/gün" : "kcal/day"}
           </p>
           <p className="text-sm text-[#94a3b8] mb-3">
-            Calories your body burns at rest to maintain vital functions. This does not include activity.
+            {isTr ? "Vücudunuz dinlenirken hayati fonksiyonları sürdürmek için yaktığı kalori. Aktivite dahil değildir." : "Calories your body burns at rest to maintain vital functions. This does not include activity."}
           </p>
           <Button
             onClick={copyResult}
@@ -185,7 +190,7 @@ export function BMRCalculator() {
             size="sm"
             className="border-[#64748b] text-white hover:bg-[#334155]"
           >
-            {copied ? "Copied!" : "Copy result"}
+            {copied ? (isTr ? "Kopyalandı!" : "Copied!") : (isTr ? "Sonucu kopyala" : "Copy result")}
           </Button>
         </div>
       )}

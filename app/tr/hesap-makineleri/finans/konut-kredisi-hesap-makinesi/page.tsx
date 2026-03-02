@@ -19,6 +19,8 @@ export const metadata: Metadata = {
     "tapu harcı hesaplama",
     "konut kredisi 2026",
     "mortgage calculator türkiye",
+    "peşinat hesaplama",
+    "konut kredisi taksit",
   ],
   alternates: {
     canonical: `${SITE_URL}/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi`,
@@ -31,7 +33,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Konut Kredisi Hesaplama 2026",
     description: "Güncel faiz oranları ile konut kredisi taksit ve maliyet hesaplama.",
+    url: `${SITE_URL}/tr/hesap-makineleri/finans/konut-kredisi-hesap-makinesi`,
     locale: "tr_TR",
+    siteName: "Calculator360Pro",
+    type: "website",
   },
 };
 

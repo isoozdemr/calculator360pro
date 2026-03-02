@@ -3,50 +3,7 @@ import { getAllBlogPosts } from "@/lib/blog/posts";
 import { getAllBlogPostsTR } from "@/lib/blog/posts-tr";
 import { SITE_URL, getCategorySlugByKey, CALCULATOR_CATEGORIES, CalculatorCategory } from "@/lib/constants";
 import { TR_REHBERLER } from "@/lib/tr-rehberler";
-
-// Turkish calculator pages with their English equivalents
-const TURKISH_CALCULATORS = [
-  { category: "finans", slug: "vergi-hesap-makinesi", enCategory: "finance", enSlug: "tax-calculator" },
-  { category: "finans", slug: "maas-hesap-makinesi", enCategory: "finance", enSlug: "salary-calculator" },
-  { category: "finans", slug: "konut-kredisi-hesap-makinesi", enCategory: "finance", enSlug: "mortgage-calculator" },
-  { category: "finans", slug: "kredi-hesap-makinesi", enCategory: "finance", enSlug: "loan-calculator" },
-  { category: "finans", slug: "emeklilik-hesap-makinesi", enCategory: "finance", enSlug: "retirement-calculator" },
-  { category: "finans", slug: "bilesik-faiz-hesap-makinesi", enCategory: "finance", enSlug: "compound-interest-calculator" },
-  { category: "finans", slug: "yatirim-hesap-makinesi", enCategory: "finance", enSlug: "investment-calculator" },
-  { category: "finans", slug: "birikim-hesap-makinesi", enCategory: "finance", enSlug: "savings-calculator" },
-  { category: "finans", slug: "butce-hesap-makinesi", enCategory: "finance", enSlug: "budget-calculator" },
-  { category: "finans", slug: "tasit-kredisi-hesap-makinesi", enCategory: "finance", enSlug: "car-loan-calculator" },
-  { category: "finans", slug: "doviz-cevirici", enCategory: "finance", enSlug: "currency-converter" },
-  { category: "egitim", slug: "not-ortalamasi-hesap-makinesi", enCategory: "education", enSlug: "gpa-calculator" },
-  { category: "saglik", slug: "bmi-hesap-makinesi", enCategory: "health", enSlug: "bmi-calculator" },
-  { category: "saglik", slug: "kalori-hesap-makinesi", enCategory: "health", enSlug: "calorie-calculator" },
-  { category: "saglik", slug: "gebelik-hesap-makinesi", enCategory: "health", enSlug: "pregnancy-calculator" },
-  { category: "matematik", slug: "yuzde-hesap-makinesi", enCategory: "math", enSlug: "percentage-calculator" },
-  { category: "matematik", slug: "indirim-hesap-makinesi", enCategory: "finance", enSlug: "discount-calculator" },
-  { category: "tarih-zaman", slug: "yas-hesap-makinesi", enCategory: "date-time", enSlug: "age-calculator" },
-  { category: "tarih-zaman", slug: "tarih-farki-hesap-makinesi", enCategory: "date-time", enSlug: "date-calculator" },
-  { category: "matematik", slug: "bilimsel-hesap-makinesi", enCategory: "math", enSlug: "scientific-calculator" },
-  { category: "matematik", slug: "birim-cevirici", enCategory: "math", enSlug: "unit-converter" },
-  { category: "tarih-zaman", slug: "saat-hesap-makinesi", enCategory: "date-time", enSlug: "hours-calculator" },
-  { category: "saglik", slug: "vucut-yag-orani-hesap-makinesi", enCategory: "health", enSlug: "body-fat-calculator" },
-  { category: "finans", slug: "ogrenim-kredisi-hesap-makinesi", enCategory: "finance", enSlug: "student-loan-calculator" },
-  { category: "finans", slug: "kredi-karti-borc-hesap-makinesi", enCategory: "finance", enSlug: "credit-card-payoff-calculator" },
-  { category: "finans", slug: "bahsis-hesap-makinesi", enCategory: "finance", enSlug: "tip-calculator" },
-  { category: "finans", slug: "enflasyon-alim-gucu-hesap-makinesi", enCategory: "finance", enSlug: "inflation-purchasing-power-calculator" },
-  { category: "finans", slug: "bes-devlet-katkisi-hesap-makinesi", enCategory: "finance", enSlug: "retirement-calculator" },
-  { category: "finans", slug: "emlak-vergisi-hesap-makinesi", enCategory: "finance", enSlug: "tax-calculator" },
-  { category: "finans", slug: "prim-gunu-hesap-makinesi", enCategory: "finance", enSlug: "retirement-calculator" },
-  { category: "tarih-zaman", slug: "haftalik-calisma-saati-hesap-makinesi", enCategory: "date-time", enSlug: "hours-calculator" },
-];
-
-// Turkish category mappings
-const TURKISH_CATEGORIES = [
-  { tr: "finans", en: "finance" },
-  { tr: "egitim", en: "education" },
-  { tr: "saglik", en: "health" },
-  { tr: "matematik", en: "math" },
-  { tr: "tarih-zaman", en: "date-time" },
-];
+import { TURKISH_CALCULATORS, TURKISH_CATEGORIES } from "@/lib/sitemap-entries";
 
 /**
  * Get all URLs that should be indexed by Google

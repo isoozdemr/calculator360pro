@@ -1,0 +1,19 @@
+---
+description: Tool ve blog sayfalarında Google/AdSense uyumu ve sayfa tamamlanma kriterleri
+globs: "**/calculators/**/*.tsx,**/hesap-makineleri/**/page.tsx,**/blog/**/*.tsx,lib/calculators/definitions.ts,lib/calculators/content.ts"
+alwaysApply: false
+---
+
+# Tool & Blog Sayfa Kuralları
+
+**Tam metin:** `docs/tool-and-blog-page-rules.md`
+
+## Zorunlu (uyulmadan sayfa tamamlanmış sayılmaz)
+
+- **Meta:** Title 50–60 karakter (primary keyword başta), meta description 150–160 karakter.
+- **İçerik:** Tool/kategori min 2000 kelime; orijinal, AdSense uyumlu.
+- **Schema:** WebApplication/SoftwareApplication, FAQPage, HowTo, BreadcrumbList; finance/health ekleri; Rich Results Test ile doğrulanmış.
+- **Sayfa:** Breadcrumb, H1, kısa açıklama, reklam (max 3 desktop / 2 mobile), calculator, disclaimer (finans/sağlık), FAQ (3–5), ilgili hesaplar, CTA.
+- **AdSense:** Reklam hesaplama alanı içinde değil; "Advertisement" etiketi.
+
+Yeni calculator eklerken `docs/CHECKLIST_NEW_CALCULATOR.md`, blog için `docs/CHECKLIST_NEW_BLOG.md` kullan.

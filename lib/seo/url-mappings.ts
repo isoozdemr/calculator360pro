@@ -51,7 +51,6 @@ export const URL_MAPPINGS: Record<string, string> = {
   "/calculators/math/scientific-calculator": "/tr/hesap-makineleri/matematik/bilimsel-hesap-makinesi",
   "/calculators/date-time/hours-calculator": "/tr/hesap-makineleri/tarih-zaman/saat-hesap-makinesi",
   "/calculators/math/unit-converter": "/tr/hesap-makineleri/matematik/birim-cevirici",
-  "/calculators/finance/currency-converter": "/tr/hesap-makineleri/finans/doviz-cevirici",
   "/calculators/finance/discount-calculator": "/tr/hesap-makineleri/matematik/indirim-hesap-makinesi",
   
   // Health Calculator pages
@@ -73,6 +72,20 @@ export const URL_MAPPINGS: Record<string, string> = {
   // Date-Time Calculator pages
   "/calculators/date-time/age-calculator": "/tr/hesap-makineleri/tarih-zaman/yas-hesap-makinesi",
   "/calculators/date-time/date-calculator": "/tr/hesap-makineleri/tarih-zaman/tarih-farki-hesap-makinesi",
+
+  // Math: fraction (EN-only → TR)
+  "/calculators/math/fraction-calculator": "/tr/hesap-makineleri/matematik/kesir-hesap-makinesi",
+  // Health: BMR
+  "/calculators/health/bmr-calculator": "/tr/hesap-makineleri/saglik/bazal-metabolizma-hesap-makinesi",
+  // Education: grade
+  "/calculators/education/grade-calculator": "/tr/hesap-makineleri/egitim/not-hesap-makinesi",
+  // Finance: ROI, payback period
+  "/calculators/finance/roi-calculator": "/tr/hesap-makineleri/finans/yatirim-getirisi-hesap-makinesi",
+  "/calculators/finance/payback-period-calculator": "/tr/hesap-makineleri/finans/geri-donus-suresi-hesap-makinesi",
+  "/calculators/finance/debt-to-income-calculator": "/tr/hesap-makineleri/finans/gelir-gider-orani-hesap-makinesi",
+  "/calculators/finance/loan-payoff-calculator": "/tr/hesap-makineleri/finans/kredi-erken-kapanis-hesap-makinesi",
+  "/calculators/health/water-intake-calculator": "/tr/hesap-makineleri/saglik/su-tuketimi-hesap-makinesi",
+  "/calculators/health/protein-calculator": "/tr/hesap-makineleri/saglik/protein-ihtiyaci-hesap-makinesi",
 
   // Guide pages (EN–TR pairs)
   "/guides/financial-terms-glossary": "/tr/rehberler/finansal-terimler-sozlugu",

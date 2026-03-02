@@ -33,7 +33,10 @@ const PRESETS = [
 
 type Op = "+" | "−" | "×" | "÷";
 
-export function FractionCalculator() {
+type Locale = "en" | "tr";
+
+export function FractionCalculator({ locale: localeProp = "en" }: { locale?: Locale }) {
+  const isTr = localeProp === "tr";
   const [num1, setNum1] = useState("1");
   const [den1, setDen1] = useState("2");
   const [num2, setNum2] = useState("1");
@@ -55,11 +58,11 @@ export function FractionCalculator() {
     const p1 = parse(num1, den1);
     const p2 = parse(num2, den2);
     if (!p1.valid) {
-      setError("First fraction: enter valid numerator and denominator (denominator cannot be zero).");
+      setError(isTr ? "İlk kesir: geçerli pay ve payda girin (payda sıfır olamaz)." : "First fraction: enter valid numerator and denominator (denominator cannot be zero).");
       return;
     }
     if (!p2.valid) {
-      setError("Second fraction: enter valid numerator and denominator (denominator cannot be zero).");
+      setError(isTr ? "İkinci kesir: geçerli pay ve payda girin (payda sıfır olamaz)." : "Second fraction: enter valid numerator and denominator (denominator cannot be zero).");
       return;
     }
     const { a: n1, b: d1 } = p1;
@@ -78,7 +81,7 @@ export function FractionCalculator() {
       den = d1 * d2;
     } else {
       if (n2 === 0) {
-        setError("Cannot divide by zero.");
+        setError(isTr ? "Sıfıra bölünemez." : "Cannot divide by zero.");
         return;
       }
       num = n1 * d2;
@@ -87,7 +90,7 @@ export function FractionCalculator() {
     const { num: rn, den: rd } = simplify(num, den);
     const decimal = rd === 0 ? 0 : rn / rd;
     setResult({ num: rn, den: rd, decimal });
-  }, [num1, den1, num2, den2, op, parse]);
+  }, [num1, den1, num2, den2, op, parse, isTr]);
 
   const copyResult = useCallback(() => {
     if (!result) return;
@@ -115,60 +118,60 @@ export function FractionCalculator() {
       <div className="bg-white rounded-xl border-2 border-[#e2e8f0] p-6 shadow-sm space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium text-[#475569] mb-2">First fraction</label>
+            <label className="block text-sm font-medium text-[#475569] mb-2">{isTr ? "Kesir 1" : "First fraction"}</label>
             <div className="flex items-center gap-2 flex-wrap">
               <Input
                 type="number"
                 value={num1}
                 onChange={(e) => setNum1(e.target.value)}
-                placeholder="Num"
+                placeholder={isTr ? "Pay" : "Num"}
                 className="w-20 text-center"
-                aria-label="First fraction numerator"
+                aria-label={isTr ? "İlk kesir pay" : "First fraction numerator"}
               />
               <span className="text-[#64748b]">/</span>
               <Input
                 type="number"
                 value={den1}
                 onChange={(e) => setDen1(e.target.value)}
-                placeholder="Den"
+                placeholder={isTr ? "Payda" : "Den"}
                 className="w-20 text-center"
-                aria-label="First fraction denominator"
+                aria-label={isTr ? "İlk kesir payda" : "First fraction denominator"}
               />
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium text-[#475569] mb-2">Operation</label>
+            <label className="block text-sm font-medium text-[#475569] mb-2">{isTr ? "İşlem" : "Operation"}</label>
             <select
               value={op}
               onChange={(e) => setOp(e.target.value as Op)}
               className="w-full rounded-lg border border-[#e2e8f0] px-4 py-2.5 text-[#1e293b] focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20"
-              aria-label="Operation"
+              aria-label={isTr ? "İşlem" : "Operation"}
             >
-              <option value="+">Add (+)</option>
-              <option value="−">Subtract (−)</option>
-              <option value="×">Multiply (×)</option>
-              <option value="÷">Divide (÷)</option>
+              <option value="+">{isTr ? "Toplama (+)" : "Add (+)"}</option>
+              <option value="−">{isTr ? "Çıkarma (−)" : "Subtract (−)"}</option>
+              <option value="×">{isTr ? "Çarpma (×)" : "Multiply (×)"}</option>
+              <option value="÷">{isTr ? "Bölme (÷)" : "Divide (÷)"}</option>
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-[#475569] mb-2">Second fraction</label>
+            <label className="block text-sm font-medium text-[#475569] mb-2">{isTr ? "Kesir 2" : "Second fraction"}</label>
             <div className="flex items-center gap-2 flex-wrap">
               <Input
                 type="number"
                 value={num2}
                 onChange={(e) => setNum2(e.target.value)}
-                placeholder="Num"
+                placeholder={isTr ? "Pay" : "Num"}
                 className="w-20 text-center"
-                aria-label="Second fraction numerator"
+                aria-label={isTr ? "İkinci kesir pay" : "Second fraction numerator"}
               />
               <span className="text-[#64748b]">/</span>
               <Input
                 type="number"
                 value={den2}
                 onChange={(e) => setDen2(e.target.value)}
-                placeholder="Den"
+                placeholder={isTr ? "Payda" : "Den"}
                 className="w-20 text-center"
-                aria-label="Second fraction denominator"
+                aria-label={isTr ? "İkinci kesir payda" : "Second fraction denominator"}
               />
             </div>
           </div>
@@ -179,7 +182,7 @@ export function FractionCalculator() {
         )}
 
         <div className="flex flex-wrap gap-3">
-          <Button onClick={calculate} variant="primary">Calculate</Button>
+          <Button onClick={calculate} variant="primary">{isTr ? "Hesapla" : "Calculate"}</Button>
           <Button
             onClick={() => {
               setNum1("1"); setDen1("2"); setNum2("1"); setDen2("3"); setOp("+");
@@ -187,12 +190,12 @@ export function FractionCalculator() {
             }}
             variant="secondary"
           >
-            Reset
+            {isTr ? "Temizle" : "Reset"}
           </Button>
         </div>
 
         <div>
-          <p className="text-sm text-[#64748b] mb-2">Try an example:</p>
+          <p className="text-sm text-[#64748b] mb-2">{isTr ? "Örnek dene:" : "Try an example:"}</p>
           <div className="flex flex-wrap gap-2">
             {PRESETS.map((preset) => (
               <button
@@ -213,7 +216,7 @@ export function FractionCalculator() {
           className="bg-gradient-to-br from-[#1e293b] to-[#334155] text-white rounded-xl p-6 shadow-lg"
           id="result-summary"
         >
-          <p className="text-sm text-[#94a3b8] mb-2">Result</p>
+          <p className="text-sm text-[#94a3b8] mb-2">{isTr ? "Sonuç" : "Result"}</p>
           <p className="text-xl md:text-2xl font-bold leading-snug mb-2">
             {result.den === 1 ? (
               result.num
@@ -225,7 +228,7 @@ export function FractionCalculator() {
             </span>
           </p>
           <p className="text-sm text-[#94a3b8] mb-3">
-            Simplified fraction and decimal form.
+            {isTr ? "Sadeleştirilmiş kesir ve ondalık biçim." : "Simplified fraction and decimal form."}
           </p>
           <Button
             onClick={copyResult}
@@ -233,7 +236,7 @@ export function FractionCalculator() {
             size="sm"
             className="border-[#64748b] text-white hover:bg-[#334155]"
           >
-            {copied ? "Copied!" : "Copy result"}
+            {copied ? (isTr ? "Kopyalandı!" : "Copied!") : (isTr ? "Sonucu kopyala" : "Copy result")}
           </Button>
         </div>
       )}

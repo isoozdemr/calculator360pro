@@ -9,7 +9,7 @@ import { TurkeySavingsCalculator } from "@/components/calculators/tr";
 
 export const metadata: Metadata = {
   title: "Birikim Hesap Makinesi 2026 - Hedef Birikim Hesapla",
-  description: "Birikim hesap makinesi: Hedef birikime ulaşmak için aylık ne kadar tasarruf yapmalısınız? Faiz oranı ve vade ile hesaplayın. Ücretsiz birikim hesaplama aracı.",
+  description: "Birikim hesap makinesi 2026: Hedef birikime ulaşmak için aylık ne kadar tasarruf yapmalısınız? Faiz oranı ve vade ile hesaplayın. Ücretsiz birikim hesaplama - hemen deneyin.",
   keywords: [
     "birikim hesaplama",
     "birikim hesap makinesi",
@@ -33,6 +33,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Birikim Hesap Makinesi 2026 | Calculator360Pro",
+    description: "Hedef birikime ulaşmak için aylık tasarruf hesaplayın. Faiz ve vade ile birikim planı.",
     url: `${SITE_URL}/tr/hesap-makineleri/finans/birikim-hesap-makinesi`,
     type: "website",
     locale: "tr_TR",

@@ -6,7 +6,7 @@ import { TR_REHBERLER } from "@/lib/tr-rehberler";
 
 export const metadata: Metadata = {
   title: "Hakkımızda - Misyonumuz ve Ekibimiz",
-  description: "Calculator360Pro hakkında bilgi edinin - Uzmanlar tarafından geliştirilen ücretsiz online hesap makineleri. Ekibimizle tanışın ve hesaplamaları herkes için erişilebilir kılma misyonumuzu keşfedin.",
+  description: "Calculator360Pro hakkında: Uzmanlar tarafından geliştirilen ücretsiz online hesap makineleri. Ekibimizle tanışın, misyonumuzu keşfedin. Hesaplamaları herkes için erişilebilir kılıyoruz.",
   keywords: ["hakkımızda", "Calculator360Pro", "ücretsiz hesap makineleri", "misyon", "ekip", "online hesaplama"],
   alternates: {
     canonical: `${SITE_URL}/tr/hakkimizda`,

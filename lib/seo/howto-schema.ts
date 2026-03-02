@@ -193,13 +193,6 @@ const CALCULATOR_HOWTO_STEPS: Record<string, Array<{ name: string; text: string 
     { name: "Click Calculate", text: "Press Calculate to see total hours worked." },
     { name: "View time breakdown", text: "See hours, minutes, and decimal hours for payroll." },
   ],
-  "currency-converter": [
-    { name: "Enter amount", text: "Input the amount you want to convert." },
-    { name: "Select source currency", text: "Choose the currency you're converting from." },
-    { name: "Select target currency", text: "Choose the currency you're converting to." },
-    { name: "View conversion rate", text: "The current exchange rate is displayed." },
-    { name: "View converted amount", text: "See the converted amount in your target currency." },
-  ],
   "inflation-purchasing-power-calculator": [
     { name: "Enter amount", text: "Input the dollar amount you want to convert (e.g., 10000 or 50000)." },
     { name: "Select start year", text: "Choose the year the amount is from (e.g., 2020)." },
@@ -240,6 +233,33 @@ const CALCULATOR_HOWTO_STEPS: Record<string, Array<{ name: string; text: string 
     { name: "Enter net cash flow", text: "Input the annual or monthly net cash flow (revenue minus costs)." },
     { name: "Click Calculate payback", text: "Press Calculate to see payback period in years and months." },
     { name: "Copy result", text: "Use Copy result to save the payback period. Simple payback does not account for time value of money." },
+  ],
+  "debt-to-income-calculator": [
+    { name: "Enter gross monthly income", text: "Input your total pre-tax monthly income from all sources." },
+    { name: "Enter housing payment", text: "Input your monthly housing cost (rent or mortgage PITI). Use 0 if not applicable." },
+    { name: "Enter other monthly debts", text: "Input the sum of all other monthly debt payments (auto, credit cards, student loans, etc.)." },
+    { name: "Click Calculate", text: "Press Calculate to see your front-end and back-end DTI percentages." },
+    { name: "Review results", text: "Compare your ratios to common lender thresholds (e.g. 28% front-end, 36% or 43% back-end)." },
+  ],
+  "loan-payoff-calculator": [
+    { name: "Enter current loan balance", text: "Input the remaining principal balance on your loan." },
+    { name: "Enter interest rate and payment", text: "Input the annual interest rate and your current monthly payment (principal and interest)." },
+    { name: "Enter extra payment", text: "Optionally add an extra amount you can pay each month toward principal." },
+    { name: "Click Calculate", text: "Press Calculate to see payoff time and interest saved." },
+    { name: "Compare results", text: "View payoff with and without extra payment and total interest saved." },
+  ],
+  "water-intake-calculator": [
+    { name: "Enter body weight", text: "Input your weight in kilograms." },
+    { name: "Select activity level", text: "Choose your typical activity level (sedentary to very active)." },
+    { name: "Optional: climate or pregnancy", text: "Check hot/humid climate or pregnancy if applicable." },
+    { name: "Click Calculate", text: "Press Calculate to see daily water intake in ml and cups." },
+    { name: "Use the result", text: "Spread the recommended amount throughout the day; adjust for thirst." },
+  ],
+  "protein-calculator": [
+    { name: "Enter body weight", text: "Input your weight in kilograms." },
+    { name: "Select goal", text: "Choose maintain weight, lose weight, or build muscle." },
+    { name: "Click Calculate", text: "Press Calculate to see daily protein target in grams." },
+    { name: "Use the range", text: "Aim for the middle of the range and spread across meals." },
   ],
 };
 

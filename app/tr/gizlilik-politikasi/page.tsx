@@ -5,7 +5,7 @@ import { generateSimpleBreadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: "Gizlilik Politikası",
-  description: "Calculator360Pro Gizlilik Politikası - Kişisel verilerinizin nasıl toplandığı, kullanıldığı ve korunduğu hakkında bilgi.",
+  description: "Calculator360Pro Gizlilik Politikası: Kişisel verilerinizin nasıl toplandığı, kullanıldığı ve korunduğu. Çerez politikası ve veri güvenliği. Güncel bilgi için okuyun.",
   keywords: ["gizlilik politikası", "gizlilik", "veri koruma", "Calculator360Pro gizlilik", "çerez politikası"],
   alternates: {
     canonical: `${SITE_URL}/tr/gizlilik-politikasi`,

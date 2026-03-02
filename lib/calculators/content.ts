@@ -4661,139 +4661,6 @@ function generateCalculatorContent(): Record<string, string> {
     <h3>Conclusion</h3>
     <p>Calculating work hours accurately is essential for time tracking, payroll accuracy, and schedule management. Our free hours calculator makes it easy to calculate total work hours, time card entries, and weekly hours, accounting for breaks, lunch periods, and overtime. Whether you're tracking your own work time, managing employee schedules, or preparing time cards for payroll, our hours calculator provides accurate calculations instantly. Use it to verify time cards, calculate overtime, track weekly hours, and ensure accurate pay calculations. With proper hours tracking and calculation, you can manage work time effectively and ensure fair compensation for hours worked.</p>
   `,
-    "currency-converter": `
-    <h2>Currency Converter: Convert Between World Currencies</h2>
-    <p>Converting between different currencies is essential for international travel, online shopping, business transactions, and understanding global prices. Our free currency converter makes it easy to convert between USD, EUR, GBP, JPY, and 150+ other currencies with current exchange rates. Whether you're planning a trip, shopping online from international retailers, sending money abroad, or conducting business internationally, our currency converter provides accurate conversions instantly to help you understand prices and make informed financial decisions.</p>
-
-    <h3>Understanding Currency Conversion</h3>
-    <p>Currency conversion involves exchanging one currency for another at a specific exchange rate. Exchange rates fluctuate constantly based on economic factors, market conditions, and supply and demand. Our currency converter uses current exchange rates to provide accurate conversions, helping you understand how much your money is worth in different currencies.</p>
-
-    <p>Exchange rates are typically expressed as how much of one currency equals one unit of another currency. For example, if 1 USD = 0.85 EUR, then 100 USD = 85 EUR. Exchange rates change throughout the day as markets fluctuate, so conversions are most accurate when using real-time or recently updated rates.</p>
-
-    <h3>How Currency Conversion Works</h3>
-    <p>Currency conversion is straightforward: multiply the amount you want to convert by the current exchange rate. For example, to convert 100 USD to EUR at a rate of 1 USD = 0.85 EUR: 100 × 0.85 = 85 EUR. Our currency converter performs this calculation automatically using current exchange rates.</p>
-
-    <p>Exchange rates can be quoted in two ways: direct (how much of the foreign currency equals one unit of your currency) or indirect (how much of your currency equals one unit of the foreign currency). Our currency converter handles both formats automatically, making conversions easy regardless of how rates are quoted.</p>
-
-    <h3>Major World Currencies</h3>
-    <p>Our currency converter supports all major world currencies, including:</p>
-    <ul>
-      <li><strong>USD (US Dollar):</strong> The world's primary reserve currency, used in the United States</li>
-      <li><strong>EUR (Euro):</strong> Used by 19 European Union countries</li>
-      <li><strong>GBP (British Pound):</strong> Used in the United Kingdom</li>
-      <li><strong>JPY (Japanese Yen):</strong> Used in Japan</li>
-      <li><strong>CAD (Canadian Dollar):</strong> Used in Canada</li>
-      <li><strong>AUD (Australian Dollar):</strong> Used in Australia</li>
-      <li><strong>CHF (Swiss Franc):</strong> Used in Switzerland</li>
-      <li><strong>CNY (Chinese Yuan):</strong> Used in China</li>
-      <li><strong>INR (Indian Rupee):</strong> Used in India</li>
-    </ul>
-
-    <p>Our currency converter supports 150+ currencies, covering virtually all countries and territories worldwide. This makes it easy to convert between any currencies you encounter in travel, shopping, or business.</p>
-
-    <h3>Exchange Rate Fluctuations</h3>
-    <p>Exchange rates fluctuate constantly due to various factors:</p>
-    <ul>
-      <li><strong>Economic indicators:</strong> GDP growth, inflation, employment data affect currency values</li>
-      <li><strong>Interest rates:</strong> Higher interest rates typically strengthen a currency</li>
-      <li><strong>Political stability:</strong> Political events and stability affect currency confidence</li>
-      <li><strong>Market sentiment:</strong> Investor confidence and market trends influence rates</li>
-      <li><strong>Supply and demand:</strong> Trading volume and currency demand affect rates</li>
-    </ul>
-
-    <p>Our currency converter uses current exchange rates that are updated regularly. However, for large transactions or precise financial planning, verify rates with your bank or financial institution, as rates can vary slightly between providers and may include fees.</p>
-
-    <h3>Step-by-Step Guide to Using Our Currency Converter</h3>
-    <p>Our currency converter is designed to be simple and accurate. Here's how to use it:</p>
-
-    <h4>Step 1: Enter Amount</h4>
-    <p>Enter the amount of money you want to convert. You can enter whole numbers or decimals, depending on the precision you need. For example, enter "100" to convert 100 units of your currency.</p>
-
-    <h4>Step 2: Select From Currency</h4>
-    <p>Choose the currency you're converting from. This is the currency of the amount you entered. For example, if you entered 100 and it's 100 US Dollars, select "USD" as the "from" currency.</p>
-
-    <h4>Step 3: Select To Currency</h4>
-    <p>Choose the currency you want to convert to. This is the currency you want to see the equivalent amount in. For example, to see how much 100 USD is in Euros, select "EUR" as the "to" currency.</p>
-
-    <h4>Step 4: View Conversion Result</h4>
-    <p>The calculator instantly displays the converted amount using current exchange rates. The result shows the equivalent value in your chosen currency, helping you understand prices and make financial decisions.</p>
-
-    <h3>Currency Conversion for Travel</h3>
-    <p>Currency conversion is essential for international travel. Our currency converter helps you:</p>
-    <ul>
-      <li><strong>Plan budgets:</strong> Understand how much local currency you'll need for your trip</li>
-      <li><strong>Compare prices:</strong> Understand prices in foreign currencies</li>
-      <li><strong>Track expenses:</strong> Convert expenses back to your home currency</li>
-      <li><strong>Exchange money:</strong> Understand exchange rates before exchanging currency</li>
-    </ul>
-
-    <p>When traveling, exchange rates at banks, currency exchange services, or ATMs may differ from online rates due to fees and margins. Our currency converter provides reference rates, but actual exchange rates may vary when you exchange money in person.</p>
-
-    <h3>Online Shopping and International Purchases</h3>
-    <p>Online shopping from international retailers requires currency conversion to understand prices. Our currency converter helps you:</p>
-    <ul>
-      <li><strong>Compare prices:</strong> Convert prices to your currency to compare with local options</li>
-      <li><strong>Understand costs:</strong> See the true cost of international purchases</li>
-      <li><strong>Budget planning:</strong> Plan spending for international shopping</li>
-      <li><strong>Shipping costs:</strong> Convert shipping fees to understand total costs</li>
-    </ul>
-
-    <p>When shopping online, be aware that credit card companies may charge foreign transaction fees (typically 1-3%) in addition to exchange rates. Our currency converter shows the base exchange rate, but total costs may be slightly higher due to fees.</p>
-
-    <h3>Business and International Transactions</h3>
-    <p>Businesses conducting international transactions need currency conversion for:</p>
-    <ul>
-      <li><strong>Pricing products:</strong> Set prices in different currencies</li>
-      <li><strong>Invoice conversion:</strong> Convert invoices to different currencies</li>
-      <li><strong>Cost analysis:</strong> Understand costs in different currencies</li>
-      <li><strong>Financial reporting:</strong> Convert financial data for reporting</li>
-    </ul>
-
-    <p>For business transactions, exchange rates can significantly impact profitability. Our currency converter provides reference rates, but businesses should work with financial institutions for precise rates and hedging strategies for large transactions.</p>
-
-    <h3>Exchange Rate Accuracy and Fees</h3>
-    <p>It's important to understand that exchange rates vary between providers:</p>
-    <ul>
-      <li><strong>Banks:</strong> Typically offer competitive rates but may charge fees</li>
-      <li><strong>Currency exchange services:</strong> May offer different rates, often with fees or margins</li>
-      <li><strong>Credit cards:</strong> Use network rates but may charge foreign transaction fees</li>
-      <li><strong>Online services:</strong> May offer competitive rates with lower fees</li>
-    </ul>
-
-    <p>Our currency converter provides current market exchange rates for reference. However, actual rates when exchanging money may differ due to fees, margins, and provider-specific rates. For large transactions, compare rates from multiple providers to find the best deal.</p>
-
-    <h3>Practical Examples</h3>
-    <h4>Example 1: Travel Planning</h4>
-    <p>You're planning a trip to Europe and want to know how much 1000 USD is in Euros. Using our currency converter: If 1 USD = 0.85 EUR, then 1000 USD = 850 EUR. This helps you plan your travel budget and understand how much spending money you'll have.</p>
-
-    <h4>Example 2: Online Shopping</h4>
-    <p>You see a product priced at 50 GBP on a UK website. Using our currency converter: If 1 GBP = 1.25 USD, then 50 GBP = 62.50 USD. This helps you understand the true cost and compare with local prices.</p>
-
-    <h4>Example 3: Business Invoice</h4>
-    <p>A client in Japan sends an invoice for 100,000 JPY. Using our currency converter: If 1 USD = 110 JPY, then 100,000 JPY = approximately 909 USD. This helps you understand the invoice amount in your currency.</p>
-
-    <h3>Currency Conversion Tips</h3>
-    <p>For the best currency conversion experience:</p>
-    <ul>
-      <li><strong>Check rates regularly:</strong> Exchange rates change frequently</li>
-      <li><strong>Compare providers:</strong> Rates and fees vary between banks and services</li>
-      <li><strong>Understand fees:</strong> Be aware of transaction fees and margins</li>
-      <li><strong>Plan ahead:</strong> Monitor rates before large transactions</li>
-      <li><strong>Use for reference:</strong> Our converter provides reference rates; verify with providers for actual transactions</li>
-    </ul>
-
-    <p>Our currency converter is a helpful tool for understanding exchange rates and conversions, but always verify rates and fees with your financial institution for actual transactions.</p>
-
-    <h3>Related Calculators and Tools</h3>
-    <p>If you found our currency converter helpful, you might also be interested in:</p>
-    <ul>
-      <li><strong><a href="/calculators/finance/salary-calculator">Salary Calculator</a></strong> - Calculate take-home pay and salary</li>
-      <li><strong><a href="/calculators/finance/budget-calculator">Budget Calculator</a></strong> - Create and manage budgets</li>
-    </ul>
-
-    <h3>Conclusion</h3>
-    <p>Currency conversion is essential in our global economy, whether for travel, shopping, business, or personal finance. Our free currency converter makes it easy to convert between USD, EUR, GBP, JPY, and 150+ other currencies with current exchange rates. Use it to plan travel budgets, understand international prices, convert business transactions, and make informed financial decisions. While our converter provides accurate reference rates, remember that actual exchange rates may vary when exchanging money due to fees and provider-specific rates. For large transactions, compare rates from multiple providers and verify with your financial institution to ensure you get the best rates and understand all fees involved.</p>
-  `,
     "inflation-purchasing-power-calculator": `
     <h2>Inflation and Purchasing Power Calculator: Understand How Inflation Affects Your Money</h2>
     <p>Inflation is one of the most important economic forces affecting your finances. Over time, rising prices reduce the purchasing power of your money—what cost $100 a few years ago may cost $110 or more today. Our free inflation calculator (purchasing power calculator) uses official U.S. Bureau of Labor Statistics (BLS) CPI-U data to show you how much a past or future dollar amount is worth in today's terms, or in any other year. Whether you're planning retirement with our <a href="/calculators/finance/retirement-calculator">retirement calculator</a>, comparing salaries across decades, or understanding why your salary "doesn't go as far," this tool helps you see the real value of money over time.</p>
@@ -5031,6 +4898,107 @@ function generateCalculatorContent(): Record<string, string> {
 
     <h3>Conclusion</h3>
     <p>Payback period tells you how long until an investment pays for itself. Our free payback period calculator uses initial investment and annual or monthly net cash flow to compute simple payback in years and months. Use it for quick assessment of recovery time, and combine it with our ROI and investment calculators for a fuller view. This tool is for educational and planning purposes; for major decisions, consider professional advice.</p>
+  `,
+
+  "debt-to-income-calculator": `
+    <h2>Debt-to-Income Ratio Calculator: Check Loan and Mortgage Eligibility</h2>
+    <p>Your debt-to-income ratio (DTI) is one of the key numbers lenders use to decide whether you qualify for a mortgage, auto loan, or personal loan. Our free debt-to-income calculator lets you enter your gross monthly income and all monthly debt payments to get your front-end and back-end DTI in seconds. No sign-up required. Use it before you apply to see where you stand and what you might need to improve. For monthly payment estimates, use our <a href="/calculators/finance/mortgage-calculator">mortgage calculator</a> or <a href="/calculators/finance/loan-calculator">loan calculator</a>.</p>
+
+    <h3>What Is Debt-to-Income Ratio (DTI)?</h3>
+    <p>Debt-to-income ratio is your total monthly debt payments divided by your gross (before-tax) monthly income, expressed as a percentage. For example, if your gross income is $6,000 and you pay $1,800 per month toward debts (housing, car, credit cards, student loans), your DTI is 1,800 / 6,000 = 30%. Lenders use DTI to gauge whether you can afford new debt. Lower DTI usually means better approval odds and sometimes better rates. In the US, many conventional loans prefer a back-end DTI of 36% or below; some programs allow up to 43% or higher under certain conditions.</p>
+
+    <h3>Front-End vs Back-End DTI</h3>
+    <p>Lenders often look at two DTI numbers. <strong>Front-end DTI</strong> (housing ratio) uses only your housing payment—principal, interest, property taxes, insurance, and HOA if applicable—divided by gross monthly income. It answers: what share of income goes to housing? Many guidelines cap this at 28%. <strong>Back-end DTI</strong> uses all recurring monthly debt: housing plus auto loans, credit card minimums, student loans, personal loans, child support, and other obligations, divided by gross income. This is the number most people mean when they say "DTI." Our calculator shows both so you can see how lenders may view your application. For a new mortgage, the future housing payment is included in both ratios when the lender estimates it.</p>
+
+    <h3>What Is a Good DTI Ratio?</h3>
+    <p>There is no single "good" DTI for everyone, but common benchmarks are: back-end DTI under 36% is often considered strong; 36% to 43% may still qualify for many loans; above 43% can make approval harder or require compensating factors. Front-end housing ratio under 28% is typical for conventional mortgages. FHA and other programs may allow higher DTI with other strong factors. Our debt-to-income calculator does not replace a lender's decision, but it helps you see whether you are in a typical range and where you might improve (e.g. paying down a car loan or credit card) before applying. Use our <a href="/calculators/finance/budget-calculator">budget calculator</a> to plan debt payoff.</p>
+
+    <h3>How to Calculate DTI</h3>
+    <p>Formula: DTI = (Total monthly debt payments / Gross monthly income) × 100. Include all recurring debt: rent or mortgage, auto loans, student loans, credit card minimum payments, personal loans, and other fixed payments. Use gross (pre-tax) income, not take-home pay. If you have a partner and apply together, use combined income and combined debts. Our calculator does this for you: enter gross monthly income, housing payment, and other monthly debts; it computes front-end ratio (housing only) and back-end ratio (all debts) and shows whether you are under common 28% / 36% or 43% thresholds.</p>
+
+    <h3>What Counts as Monthly Debt?</h3>
+    <p>Include any payment that appears on your credit report or that you pay every month: mortgage or rent, second mortgage, auto loans, student loans, credit card minimums, personal loans, store cards, and other installment debt. Do not include utilities, insurance (unless in escrow), groceries, or discretionary spending. If you are estimating a future mortgage, use the expected principal and interest plus taxes and insurance (PITI). Our tool asks for housing payment and "other" debts so you can separate front-end and back-end easily.</p>
+
+    <h3>How to Improve Your DTI</h3>
+    <p>To lower DTI you can (1) increase income, (2) reduce debt, or (3) both. Paying off a car loan or credit card removes that monthly payment from the denominator and lowers DTI. Refinancing to a lower payment can help too, but avoid extending terms too long if the goal is to free up income for a new loan. Do not take on new debt right before applying for a mortgage. Use our <a href="/calculators/finance/credit-card-payoff-calculator">credit card payoff calculator</a> or <a href="/calculators/finance/loan-calculator">loan calculator</a> to see how paying off or paying down debt changes your monthly obligations and thus your DTI.</p>
+
+    <h3>Example: DTI Calculation</h3>
+    <p>Gross monthly income: $7,000. Housing payment (PITI): $1,800. Other debts: car $400, student loan $300, credit cards $150. Front-end DTI = 1,800 / 7,000 = 25.7%. Back-end DTI = (1,800 + 400 + 300 + 150) / 7,000 = 2,650 / 7,000 = 37.9%. This person is under 28% on housing but a bit over 36% on total debt; paying off the $150 credit card minimum (or the card) would drop back-end to about 35.7%. Enter these numbers into our debt-to-income calculator to confirm and experiment with different scenarios.</p>
+
+    <h3>Related Tools</h3>
+    <p><a href="/calculators/finance/mortgage-calculator">Mortgage Calculator</a> – Monthly payment and amortization. <a href="/calculators/finance/loan-calculator">Loan Calculator</a> – Personal and auto loans. <a href="/calculators/finance/budget-calculator">Budget Calculator</a> – Income and expenses. <a href="/calculators/finance">Finance calculators</a> – Full list.</p>
+
+    <h3>Conclusion</h3>
+    <p>Your debt-to-income ratio is a key factor in loan and mortgage eligibility. Our free debt-to-income calculator computes front-end and back-end DTI from your gross monthly income and debt payments, so you can see where you stand before you apply. Use it together with our mortgage and loan calculators to plan your next steps. This tool is for education and estimation; actual approval and terms depend on the lender and your full profile.</p>
+  `,
+
+  "loan-payoff-calculator": `
+    <h2>Loan Payoff Calculator: See How Extra Payments Shorten Your Loan</h2>
+    <p>Paying extra on your loan each month can significantly shorten the payoff time and save you thousands in interest. Our free loan payoff calculator lets you enter your current balance, interest rate, monthly payment, and an optional extra payment to see your new payoff date and total interest saved. No sign-up required. Use it for mortgages, auto loans, personal loans, or any amortizing loan. For standard payment estimates, use our <a href="/calculators/finance/loan-calculator">loan calculator</a> or <a href="/calculators/finance/mortgage-calculator">mortgage calculator</a>.</p>
+
+    <h3>How Extra Payments Affect Your Loan</h3>
+    <p>When you make an extra payment (or add a fixed amount to each monthly payment), the extra goes toward principal. That reduces the balance faster, so less interest accrues each month. Over time you pay off the loan sooner and pay less total interest. For example, on a $250,000 mortgage at 6% for 30 years, the standard payment is about $1,499 per month and total interest is about $289,600. Adding $200 per month can cut the term to roughly 24 years and save over $60,000 in interest. Our loan payoff calculator shows the exact payoff date and interest saved for your numbers.</p>
+
+    <h3>How to Use the Loan Payoff Calculator</h3>
+    <p>Enter your current loan balance (remaining principal). Enter the annual interest rate and your current monthly payment (principal and interest). Optionally enter an extra amount you can add each month. Click Calculate. The calculator shows how many months until payoff with and without the extra payment, and how much interest you save. You can try different extra amounts to see the trade-off between payoff speed and monthly budget. This tool assumes a fixed rate and fixed payment; if your loan has a different structure, results are approximate.</p>
+
+    <h3>Extra Payment vs Refinancing</h3>
+    <p>Making extra payments keeps your existing loan and reduces term and interest. Refinancing replaces the loan with a new one (often at a lower rate or different term). If your current rate is high, refinancing might save more than extra payments; if your rate is already low, extra payments can be simpler and avoid closing costs. Use our calculator to see the impact of extra payments, and our <a href="/calculators/finance/mortgage-calculator">mortgage calculator</a> to compare a new loan. For credit card debt, use our <a href="/calculators/finance/credit-card-payoff-calculator">credit card payoff calculator</a>.</p>
+
+    <h3>Example: Mortgage Payoff with Extra Payment</h3>
+    <p>Balance: $200,000. Rate: 5.5%. Current payment: $1,136/month. Without extra: payoff in about 30 years, total interest about $209,000. With $150 extra per month: payoff in about 25 years, total interest about $168,000—saving roughly $41,000 and 5 years. Enter these into the loan payoff calculator to confirm. Small extra amounts add up; even $50 or $100 per month can shorten the term and save a lot over time.</p>
+
+    <h3>Related Tools</h3>
+    <p><a href="/calculators/finance/loan-calculator">Loan Calculator</a> – Monthly payment and amortization. <a href="/calculators/finance/mortgage-calculator">Mortgage Calculator</a> – Home loan payment. <a href="/calculators/finance/credit-card-payoff-calculator">Credit Card Payoff Calculator</a> – Pay off credit card debt. <a href="/calculators/finance">Finance calculators</a> – Full list.</p>
+
+    <h3>Conclusion</h3>
+    <p>Extra payments on your loan can shorten the payoff period and save a substantial amount in interest. Our free loan payoff calculator shows the new payoff date and total interest saved when you add an optional extra payment. Use it with our loan and mortgage calculators to plan your payoff strategy. This tool is for estimation; actual savings depend on your loan terms and any prepayment rules.</p>
+  `,
+
+  "water-intake-calculator": `
+    <h2>Water Intake Calculator: Daily Water Need by Weight and Activity</h2>
+    <p>Staying well hydrated supports energy, digestion, and overall health. Our free water intake calculator estimates your daily fluid need based on body weight, activity level, and optional factors like hot climate or pregnancy. You get a result in milliliters and cups so you can plan how much to drink each day. No sign-up required. For daily calorie and nutrition targets, use our <a href="/calculators/health/calorie-calculator">calorie calculator</a> or <a href="/calculators/health/bmi-calculator">BMI calculator</a>.</p>
+
+    <h3>How Much Water Should You Drink?</h3>
+    <p>There is no single number for everyone. A common baseline is 30–35 ml of fluid per kilogram of body weight per day—about 0.5–1 oz per pound. For a 70 kg (154 lb) adult, that's roughly 2.1–2.5 liters (about 9–10 cups) per day at rest. Activity, heat, humidity, and health conditions can increase needs. Our calculator uses your weight and activity level to give a personalized daily target. Food and other beverages (e.g. tea, milk) also contribute to fluid intake; the recommendation is for total fluid, not only plain water.</p>
+
+    <h3>Activity Level and Climate</h3>
+    <p>If you are sedentary, the baseline amount is usually enough. Light to moderate activity (e.g. walking, light exercise) increases sweat and breathing, so we add a small multiplier. Active and very active people (regular intense exercise or physical work) need more—often 10–20% or more above baseline. In hot or humid weather, add extra fluid to replace sweat. The calculator lets you choose activity level and optionally add a climate or pregnancy adjustment. Listen to your body: thirst and light-colored urine are good signs of adequate hydration.</p>
+
+    <h3>Cups vs Milliliters</h3>
+    <p>We show the result in both ml and cups. One cup is often taken as 240 ml (8 fl oz) in nutrition guidelines; we use 250 ml per cup for easy rounding. A typical glass holds 200–250 ml. Spread your intake across the day rather than drinking a lot at once. Carrying a bottle and sipping regularly helps many people meet their target.</p>
+
+    <h3>Who May Need More or Less?</h3>
+    <p>Pregnant and breastfeeding women typically need more fluid; our tool can add an extra amount. People with certain medical conditions (e.g. heart or kidney disease) may need to limit fluid—follow your doctor's advice. In general, healthy adults can use the calculator as a starting point and adjust based on thirst, activity, and climate. For personalized nutrition including fluids, a dietitian can help. Combine this with our <a href="/calculators/health/calorie-calculator">calorie calculator</a> and <a href="/calculators/health/body-fat-calculator">body fat calculator</a> for a fuller picture of your health metrics.</p>
+
+    <h3>Related Tools</h3>
+    <p><a href="/calculators/health/calorie-calculator">Calorie Calculator</a> – Daily energy need. <a href="/calculators/health/bmi-calculator">BMI Calculator</a> – Weight status. <a href="/calculators/health/body-fat-calculator">Body Fat Calculator</a> – Body composition. <a href="/calculators/health">Health calculators</a> – Full list.</p>
+
+    <h3>Conclusion</h3>
+    <p>Daily water need depends on weight, activity, and environment. Our free water intake calculator gives a daily target in ml and cups. Use it as a guide and adjust for thirst and conditions. This tool is for general information only; it is not medical advice. For specific health needs, consult a healthcare provider.</p>
+  `,
+
+  "protein-calculator": `
+    <h2>Protein Calculator: Daily Protein Need by Weight and Goal</h2>
+    <p>Protein supports muscle, immune function, and satiety. How much you need each day depends on your body weight and goal—maintaining weight, losing fat, or building muscle. Our free protein calculator uses your weight and goal to give a daily protein target in grams. No sign-up required. For daily calories and macros, use our <a href="/calculators/health/calorie-calculator">calorie calculator</a>; for hydration, try our <a href="/calculators/health/water-intake-calculator">water intake calculator</a>.</p>
+
+    <h3>How Much Protein Per Day?</h3>
+    <p>A common baseline for sedentary adults is 0.8 g of protein per kilogram of body weight per day (about 0.36 g per pound). For a 70 kg (154 lb) person, that's 56 g per day. If you're trying to lose weight, higher protein (e.g. 1.2–1.6 g/kg) can help preserve muscle and keep you full. For muscle gain, 1.6–2.2 g/kg is often recommended, combined with resistance training. Our calculator lets you choose maintain, lose weight, or build muscle and returns a daily gram target and a range so you can adjust within your diet.</p>
+
+    <h3>Protein for Weight Loss</h3>
+    <p>When you're in a calorie deficit, adequate protein helps preserve lean mass and can improve satiety. Many guidelines suggest 1.2–1.6 g/kg for fat loss. Our tool applies this range when you select \"lose weight.\" Pair protein with a moderate calorie deficit and strength training for best results. Use our <a href="/calculators/health/calorie-calculator">calorie calculator</a> to set a daily calorie target.</p>
+
+    <h3>Protein for Muscle Building</h3>
+    <p>To build muscle, you need sufficient protein and resistance training. Research suggests 1.6–2.2 g/kg per day is enough for most people; more than that usually doesn't add extra gain. Spread intake across meals (e.g. 20–40 g per meal). Our calculator gives an upper range for the \"build muscle\" goal. Combine with enough total calories and progressive overload in the gym.</p>
+
+    <h3>Sources of Protein</h3>
+    <p>Animal sources (meat, fish, eggs, dairy) provide all essential amino acids. Plant sources (legumes, tofu, tempeh, quinoa, nuts) can meet needs when varied. If you're vegetarian or vegan, combine complementary proteins and aim for the same gram target. The calculator doesn't distinguish source; it only gives total daily grams. For a full macro breakdown, consider a dietitian or nutrition app.</p>
+
+    <h3>Related Tools</h3>
+    <p><a href="/calculators/health/calorie-calculator">Calorie Calculator</a> – Daily energy need. <a href="/calculators/health/water-intake-calculator">Water Intake Calculator</a> – Daily fluids. <a href="/calculators/health/bmi-calculator">BMI Calculator</a> – Weight status. <a href="/calculators/health">Health calculators</a> – Full list.</p>
+
+    <h3>Conclusion</h3>
+    <p>Daily protein need depends on weight and goal. Our free protein calculator gives a target in grams for maintenance, weight loss, or muscle gain. Use it with our calorie and water intake calculators for a simple nutrition baseline. This tool is for general information only; it is not medical or dietary advice. For personalized plans, consult a dietitian or healthcare provider.</p>
   `,
   };
 }

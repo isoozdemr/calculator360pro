@@ -32,7 +32,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Emeklilik Hesaplama 2026 - SGK ve BES",
     description: "SGK emeklilik yaşı, prim gün şartı ve BES projeksiyonu hesaplama.",
+    url: `${SITE_URL}/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi`,
     locale: "tr_TR",
+    siteName: "Calculator360Pro",
+    type: "website",
   },
 };
 
@@ -117,7 +120,6 @@ export default function TurkeyRetirementCalculatorPage() {
           {/* Calculator */}
           <TurkeyRetirementCalculator />
           <CalculatorDisclaimer category="finance" locale="tr" />
-
           {/* SEO Content */}
           <div className="mt-12 prose prose-slate max-w-none">
             <h2 className="text-2xl font-bold text-[#1e293b] mb-4">SGK Emekliliği Nedir?</h2>

@@ -93,6 +93,11 @@ export default function FinancialGlossaryPage() {
         <p className="text-[#64748b] mb-4">
           Key terms for mortgages, loans, investments, and taxes. Use our calculators with confidence.
         </p>
+        <p className="mb-6 text-[#1e293b]">
+          Use our tools: <Link href="/calculators/finance/tax-calculator" className="text-[#2563eb] hover:underline font-medium">Tax Calculator</Link>,{" "}
+          <Link href="/calculators/finance/mortgage-calculator" className="text-[#2563eb] hover:underline font-medium">Mortgage Calculator</Link>,{" "}
+          <Link href="/calculators/finance/compound-interest-calculator" className="text-[#2563eb] hover:underline font-medium">Compound Interest Calculator</Link>.
+        </p>
         <p className="text-[#64748b] mb-4">
           Understanding these terms helps you compare offers, plan repayments, and make better financial decisions. When in doubt, check the fine print or consult a financial or tax professional for your situation.
         </p>
@@ -115,15 +120,13 @@ export default function FinancialGlossaryPage() {
             </li>
           ))}
         </ul>
-        <section className="mb-8 pt-6 border-t border-[#e2e8f0]" itemScope itemType="https://schema.org/FAQPage">
+        <section className="mb-8 pt-6 border-t border-[#e2e8f0]">
           <h2 className="text-xl font-bold text-[#1e293b] mb-4">Frequently Asked Questions</h2>
           <ul className="space-y-4">
             {GUIDE_FAQS.map((faq, i) => (
-              <li key={i} itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <h3 className="font-semibold text-[#1e293b]" itemProp="name">{faq.question}</h3>
-                <p className="text-[#64748b] mt-1" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <span itemProp="text">{faq.answer}</span>
-                </p>
+              <li key={i}>
+                <h3 className="font-semibold text-[#1e293b]">{faq.question}</h3>
+                <p className="text-[#64748b] mt-1">{faq.answer}</p>
               </li>
             ))}
           </ul>

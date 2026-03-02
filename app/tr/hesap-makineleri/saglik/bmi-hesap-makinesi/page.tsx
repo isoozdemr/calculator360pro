@@ -8,7 +8,7 @@ import { CalculatorDisclaimer } from "@/components/calculators/CalculatorDisclai
 
 export const metadata: Metadata = {
   title: "BMI Hesap Makinesi 2026 - İdeal Kilo Hesapla",
-  description: "BMI hesap makinesi: Kilonuz ve boyunuzla vücut kitle indeksinizi saniyede hesaplayın. WHO kategorileri ve ideal kilo aralığı. Ücretsiz BMI hesaplama - hemen deneyin.",
+  description: "BMI hesap makinesi 2026: Kilonuz ve boyunuzla vücut kitle indeksinizi saniyede hesaplayın. WHO kategorileri ve ideal kilo aralığı. Ücretsiz BMI hesaplama - hemen deneyin.",
   keywords: [
     "bmi hesaplama",
     "vücut kitle indeksi",
@@ -17,6 +17,8 @@ export const metadata: Metadata = {
     "obezite hesaplama",
     "bmi hesap makinesi",
     "zayıflık testi",
+    "vücut kitle indeksi hesaplama",
+    "ideal kilo",
   ],
   alternates: {
     canonical: `${SITE_URL}/tr/hesap-makineleri/saglik/bmi-hesap-makinesi`,

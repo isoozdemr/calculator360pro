@@ -2,10 +2,11 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
 import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
+import { getTRCategoriesForHomepage, type TRCategorySlug } from "@/lib/tr-calculators-nav";
 
 export const metadata: Metadata = {
   title: "Tüm Hesap Makineleri 2026 | Vergi, Maaş, Kredi",
-  description: "Tüm hesap makineleri 2026: vergi, maaş, kredi, konut kredisi, emeklilik, BMI, kalori, yüzde ve yaş hesaplama. Türkiye'ye özel ücretsiz araçlar. Anında hesaplayın.",
+  description: "Tüm hesap makineleri 2026: vergi, maaş, kredi, konut kredisi, emeklilik, BMI, kalori, yüzde ve yaş hesaplama. Türkiye'ye özel ücretsiz araçlar - anında hesaplayın.",
   keywords: [
     "hesap makinesi",
     "online hesap makinesi",
@@ -42,133 +43,30 @@ export const metadata: Metadata = {
   },
 };
 
-const categories = [
-  {
-    name: "Finans Hesap Makineleri",
-    slug: "finans",
-    icon: "💰",
-    description: "Türkiye'deki vergi düzenlemeleri, SGK mevzuatı ve bankacılık kurallarına göre hazırlanmış profesyonel finansal hesaplama araçları. 2026 yılı güncel vergi dilimleri ve SGK oranları ile doğru sonuçlar.",
-    longDescription: "Finansal kararlarınızı doğru verilerle destekleyin. Brüt maaşınızdan net maaşınızı hesaplayın, kredi maliyetlerinizi KKDF ve BSMV dahil öğrenin, emeklilik planlamanızı yapın. Tüm hesaplamalar 2026 yılı Türkiye düzenlemelerine uygun olarak yapılmaktadır.",
-    calculators: [
-      { 
-        name: "Vergi Hesap Makinesi", 
-        slug: "vergi-hesap-makinesi",
-        description: "2026 yılı gelir vergisi dilimleri ile kümülatif vergi hesaplama. Yıllık gelir vergisi, aylık vergi matrahı ve damga vergisi dahil.",
-        icon: "💰",
-        badge: "2026 Güncel",
-        popular: true,
-      },
-      { 
-        name: "Maaş Hesap Makinesi", 
-        slug: "maas-hesap-makinesi",
-        description: "Brütten nete, netten brüte maaş hesaplama. SGK işçi payı (%14), işsizlik sigortası (%1), gelir vergisi ve AGİ dahil detaylı döküm.",
-        icon: "💵",
-        badge: "En Popüler",
-        popular: true,
-      },
-      { 
-        name: "Konut Kredisi Hesap Makinesi", 
-        slug: "konut-kredisi-hesap-makinesi",
-        description: "Mortgage hesaplama aracı. Aylık taksit tutarı, toplam geri ödeme, faiz maliyeti, tapu harcı ve DASK/konut sigortası masrafları.",
-        icon: "🏠",
-        badge: null,
-        popular: true,
-      },
-      { 
-        name: "Kredi Hesap Makinesi", 
-        slug: "kredi-hesap-makinesi",
-        description: "İhtiyaç kredisi ve taşıt kredisi hesaplama. KKDF (%15) ve BSMV (%10) dahil gerçek toplam maliyet hesaplaması.",
-        icon: "💳",
-        badge: null,
-        popular: false,
-      },
-      { 
-        name: "Emeklilik Hesap Makinesi", 
-        slug: "emeklilik-hesap-makinesi",
-        description: "SGK emeklilik yaşı ve prim gün sayısı hesaplama. EYT tablosu, kademeli emeklilik yaşı ve BES birikimi hesaplama.",
-        icon: "🏖️",
-        badge: "Yeni",
-        popular: true,
-      },
-    ],
-  },
-  {
-    name: "Sağlık Hesap Makineleri",
-    slug: "saglik",
-    icon: "🏥",
-    description: "Dünya Sağlık Örgütü (WHO) ve T.C. Sağlık Bakanlığı standartlarına uygun sağlık ve fitness hesaplama araçları.",
-    longDescription: "Sağlığınızı takip edin ve bilinçli kararlar alın. Vücut kitle indeksinizi hesaplayın, günlük kalori ihtiyacınızı öğrenin. Tüm hesaplamalar bilimsel formüllere dayanmaktadır.",
-    calculators: [
-      { 
-        name: "BMI Hesap Makinesi", 
-        slug: "bmi-hesap-makinesi",
-        description: "Vücut Kitle İndeksi (BMI) hesaplama. WHO standartlarına göre zayıf, normal, fazla kilolu ve obezite kategorileri. Türkiye obezite istatistikleri.",
-        icon: "⚖️",
-        badge: null,
-        popular: true,
-      },
-      { 
-        name: "Kalori Hesap Makinesi", 
-        slug: "kalori-hesap-makinesi",
-        description: "Günlük kalori ihtiyacı hesaplama. Mifflin-St Jeor formülü ile BMH ve TDEE hesabı. Kilo verme, koruma ve alma hedeflerine göre kalori önerileri.",
-        icon: "🔥",
-        badge: null,
-        popular: false,
-      },
-    ],
-  },
-  {
-    name: "Eğitim Hesap Makineleri",
-    slug: "egitim",
-    icon: "📚",
-    description: "Türk eğitim sistemine uygun akademik hesaplama araçları. Üniversite ve lise öğrencileri için not ortalaması hesaplama.",
-    longDescription: "Akademik başarınızı takip edin. GANO (Genel Ağırlıklı Not Ortalaması) ve AGNO hesaplama, 4'lük ve 100'lük not sistemi dönüşümü, harf notu hesaplama.",
-    calculators: [
-      { 
-        name: "Not Ortalaması Hesap Makinesi", 
-        slug: "not-ortalamasi-hesap-makinesi",
-        description: "GANO ve AGNO hesaplama. Türk üniversitelerinde kullanılan 4'lük not sistemi, AKTS kredi hesabı ve 100'lük sisteme dönüşüm.",
-        icon: "📚",
-        badge: null,
-        popular: true,
-      },
-    ],
-  },
-  {
-    name: "Matematik Hesap Makineleri",
-    slug: "matematik",
-    icon: "🔢",
-    description: "Günlük hayatta ve iş yaşamında sıkça ihtiyaç duyulan temel matematik hesaplama araçları.",
-    longDescription: "Yüzde hesaplama, oran bulma, artış ve azalış hesaplama. Alışverişte indirim hesabından maaş zammı hesaplamasına kadar birçok alanda kullanılabilir.",
-    calculators: [
-      { 
-        name: "Yüzde Hesap Makinesi", 
-        slug: "yuzde-hesap-makinesi",
-        description: "Yüzde hesaplama, artış/azalış oranı bulma, indirim hesaplama. Bir sayının yüzdesi, bir sayı diğerinin yüzde kaçı hesaplamaları.",
-        icon: "%",
-        badge: null,
-        popular: true,
-      },
-    ],
-  },
-  {
-    name: "Tarih ve Zaman Hesap Makineleri",
-    slug: "tarih-zaman",
-    icon: "📅",
-    description: "Yaş hesaplama, tarih farkı bulma ve zaman hesaplama araçları.",
-    longDescription: "Doğum tarihinizden yaşınızı hesaplayın, iki tarih arasındaki farkı bulun. Resmi işlemler için yaş hesabı, burç hesaplama ve doğum günü geri sayımı.",
-    calculators: [
-      { 
-        name: "Yaş Hesap Makinesi", 
-        slug: "yas-hesap-makinesi",
-        description: "Doğum tarihinden yaş hesaplama. Yıl, ay, hafta ve gün detayları. Burç hesaplama ve sonraki doğum gününe geri sayım.",
-        icon: "🎂",
-        badge: null,
-        popular: true,
-      },
-    ],
-  },
-];
+const CATEGORY_ICONS: Record<TRCategorySlug, string> = {
+  finans: "💰",
+  saglik: "🏥",
+  egitim: "📚",
+  matematik: "🔢",
+  "tarih-zaman": "📅",
+};
+
+const LONG_DESCRIPTIONS: Record<TRCategorySlug, string> = {
+  finans: "Finansal kararlarınızı doğru verilerle destekleyin. Brüt maaşınızdan net maaşınızı hesaplayın, kredi maliyetlerinizi KKDF ve BSMV dahil öğrenin, emeklilik planlamanızı yapın. Tüm hesaplamalar 2026 yılı Türkiye düzenlemelerine uygun olarak yapılmaktadır.",
+  saglik: "Sağlığınızı takip edin ve bilinçli kararlar alın. Vücut kitle indeksinizi hesaplayın, günlük kalori ihtiyacınızı öğrenin. Tüm hesaplamalar bilimsel formüllere dayanmaktadır.",
+  egitim: "Akademik başarınızı takip edin. GANO (Genel Ağırlıklı Not Ortalaması) ve AGNO hesaplama, 4'lük ve 100'lük not sistemi dönüşümü, harf notu hesaplama.",
+  matematik: "Yüzde hesaplama, oran bulma, artış ve azalış hesaplama. Alışverişte indirim hesabından maaş zammı hesaplamasına kadar birçok alanda kullanılabilir.",
+  "tarih-zaman": "Doğum tarihinizden yaşınızı hesaplayın, iki tarih arasındaki farkı bulun. Resmi işlemler için yaş hesabı, burç hesaplama ve doğum günü geri sayımı.",
+};
+
+const categories = getTRCategoriesForHomepage().map((cat) => ({
+  name: cat.category,
+  slug: cat.slug,
+  icon: CATEGORY_ICONS[cat.slug],
+  description: cat.description,
+  longDescription: LONG_DESCRIPTIONS[cat.slug],
+  calculators: cat.calculators,
+}));
 
 const popularCalculators = [
   { name: "Maaş Hesaplama", slug: "finans/maas-hesap-makinesi", icon: "💵" },
@@ -291,7 +189,7 @@ export default function TurkeyCalculatorsPage() {
                       {calc.name}
                     </h3>
                     <p className="text-sm text-[#64748b] leading-relaxed">
-                      {calc.description}
+                      {calc.description ?? ""}
                     </p>
                     <div className="mt-4 flex items-center text-[#2563eb] text-sm font-medium">
                       Hesapla

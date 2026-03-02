@@ -27,6 +27,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "Calculate percentages, percentage increase/decrease, and percentage of a number with our free percentage calculator.",
     keywords: [
       "percentage calculator",
+      "percentage made easy",
       "percent calculator",
       "percentage increase calculator",
       "percentage decrease calculator",
@@ -44,7 +45,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "free online percentage calculator",
     ],
     metaDescription:
-      "Free online percentage calculator. Calculate percent, increase/decrease, and percentage of a number. No sign-up, instant results. Fast and accurate for everyone.",
+      "Percentage made easy: free online percentage calculator. Calculate percent, increase/decrease, and percentage of a number. No sign-up, instant results. Fast and accurate for everyone.",
     faqs: [
       {
         question: "How do I calculate a percentage?",
@@ -74,6 +75,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "Calculate your Body Mass Index (BMI) using metric or imperial units. Get instant results and understand your BMI category.",
     keywords: [
       "BMI calculator",
+      "calculating your BMI",
       "body mass index calculator",
       "BMI calculator metric",
       "BMI calculator imperial",
@@ -91,7 +93,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "free online BMI calculator 2026",
     ],
     metaDescription:
-      "Calculating your BMI is easy: free online BMI calculator. Get instant Body Mass Index results (metric or imperial). Understand your BMI category and health status. No sign-up. Try now.",
+      "Calculating your BMI is easy with our free online BMI calculator. Get instant Body Mass Index results (metric or imperial). Understand your BMI category and health status. No sign-up. Try now.",
     faqs: [
       {
         question: "What is BMI?",
@@ -136,7 +138,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "GPA conversion calculator",
     ],
     metaDescription:
-      "Free GPA calculator to calculate your Grade Point Average using the 4.0 or 5.0 scale. Add courses, enter grades and credits. Perfect for students tracking academic performance. No sign-up.",
+      "Free GPA calculator: calculate your Grade Point Average using the 4.0 or 5.0 scale. Add courses, enter grades and credits. Perfect for students. No sign-up, instant results.",
     faqs: [
       {
         question: "How is GPA calculated?",
@@ -181,7 +183,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "online calculator with functions",
     ],
     metaDescription:
-      "Free online scientific calculator with trig, logarithms, exponentials, and more. Degrees or radians. Perfect for students and professionals. No sign-up, instant results.",
+      "Free online scientific calculator: trig, logarithms, exponentials, and more. Degrees or radians. Perfect for students and professionals. No sign-up, instant results. Try now.",
     faqs: [
       {
         question: "What functions does a scientific calculator have?",
@@ -226,7 +228,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "exact age calculator online",
     ],
     metaDescription:
-      "Free age calculator: your exact age in years, months, weeks, and days. Find how many days you've been alive or age between two dates. No sign-up. Instant results.",
+      "Free age calculator: your exact age in years, months, weeks, and days. Find how many days you've been alive or age between two dates. No sign-up. Instant results. Try now.",
     faqs: [
       {
         question: "How do I calculate my exact age?",
@@ -291,7 +293,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
           "A larger down payment reduces the principal amount, which lowers monthly payments and total interest paid over the life of the loan. For example, a 20% down payment on a $300,000 home ($60,000) reduces the loan to $240,000, saving thousands in interest. Additionally, down payments of 20% or more eliminate PMI requirements, further reducing monthly costs.",
       },
     ],
-    relatedCalculators: ["loan-calculator", "compound-interest-calculator"],
+    relatedCalculators: ["loan-calculator", "compound-interest-calculator", "debt-to-income-calculator"],
     content: CALCULATOR_CONTENT["mortgage-calculator"],
   },
   "compound-interest-calculator": {
@@ -382,7 +384,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
           "Longer loan terms result in lower monthly payments but higher total interest paid. Shorter terms have higher monthly payments but lower total interest. For example, a $20,000 loan at 6% interest costs $387/month for 5 years (total interest: $3,220) versus $333/month for 6 years (total interest: $3,976). Choose based on your monthly budget and long-term financial goals.",
       },
     ],
-    relatedCalculators: ["mortgage-calculator", "compound-interest-calculator"],
+    relatedCalculators: ["mortgage-calculator", "compound-interest-calculator", "debt-to-income-calculator", "loan-payoff-calculator"],
     content: CALCULATOR_CONTENT["loan-calculator"],
   },
   "tax-calculator": {
@@ -500,7 +502,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "US Navy body fat calculator free",
     ],
     metaDescription:
-      "Free body fat calculator using the US Navy method. Calculate body fat percentage from measurements. Understand body composition. Metric or imperial. No sign-up.",
+      "Free body fat calculator using the US Navy method. Calculate body fat percentage from measurements. Understand body composition. Metric or imperial. No sign-up. Try now.",
     faqs: [
       {
         question: "How is body fat percentage calculated?",
@@ -579,7 +581,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
           "Calorie tracking can be helpful for understanding your eating patterns and creating awareness, but it's not necessary for everyone. Some people find it empowering, while others find it stressful. The most important thing is finding a sustainable approach that works for you, whether that includes tracking or focuses on mindful eating and portion control.",
       },
     ],
-    relatedCalculators: ["bmi-calculator", "body-fat-calculator"],
+    relatedCalculators: ["bmi-calculator", "body-fat-calculator", "water-intake-calculator", "protein-calculator"],
     content: CALCULATOR_CONTENT["calorie-calculator"],
   },
   "investment-calculator": {
@@ -714,7 +716,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "student loan calculator online",
     ],
     metaDescription:
-      "Free student loan calculator: monthly payments, total interest, and repayment strategies. Compare repayment plans. Student loans monthly payment calculator. No sign-up.",
+      "Student loans monthly payment calculator: free tool for monthly payments, total interest, and repayment strategies. Compare federal and private repayment plans. No sign-up.",
     faqs: [
       {
         question: "How are student loan payments calculated?",
@@ -1158,7 +1160,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "measurement converter calculator",
     ],
     metaDescription:
-      "Free unit converter to convert between length, weight, temperature, volume, and area units. Fast, accurate conversions for metric, imperial, and other measurement systems.",
+      "Free unit converter: length, weight, temperature, volume, and area. Fast, accurate conversions for metric, imperial, and other systems. No sign-up. Instant results.",
     faqs: [
       {
         question: "How do I convert between different units?",
@@ -1285,57 +1287,6 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
     ],
     relatedCalculators: ["date-calculator", "salary-calculator"],
     content: CALCULATOR_CONTENT["hours-calculator"],
-  },
-  "currency-converter": {
-    id: "currency-converter",
-    name: "Currency Converter",
-    slug: "currency-converter",
-    category: "finance",
-    description:
-      "Convert between different currencies with real-time exchange rates. Free currency converter for USD, EUR, GBP, JPY, and 150+ other currencies.",
-    keywords: [
-      "currency converter",
-      "exchange rate calculator",
-      "currency calculator",
-      "convert currency",
-      "money converter",
-      "forex calculator",
-      "currency exchange calculator",
-      "USD to EUR converter",
-      "currency rate calculator",
-      "currency converter online free",
-      "exchange rate calculator online",
-      "free currency converter",
-      "currency converter real time",
-      "money converter online",
-      "forex calculator online",
-    ],
-    metaDescription:
-      "Free currency converter with real-time exchange rates. Convert between USD, EUR, GBP, JPY, and 150+ currencies instantly. Accurate, up-to-date currency conversion for travel and business.",
-    faqs: [
-      {
-        question: "How do I convert currency?",
-        answer:
-          "To convert currency, enter the amount you want to convert, select the 'from' currency (the currency you have), and select the 'to' currency (the currency you want). Our currency converter uses real-time exchange rates to calculate the converted amount instantly. For example, to convert 100 USD to EUR, enter 100, select USD, select EUR, and see the result.",
-      },
-      {
-        question: "Are the exchange rates real-time?",
-        answer:
-          "Our currency converter uses current exchange rates that are updated regularly. Exchange rates fluctuate throughout the day based on market conditions. For exact real-time rates, especially for large transactions, we recommend checking with your bank or financial institution, as rates can vary slightly between providers.",
-      },
-      {
-        question: "What currencies are supported?",
-        answer:
-          "Our currency converter supports major world currencies including USD (US Dollar), EUR (Euro), GBP (British Pound), JPY (Japanese Yen), CAD (Canadian Dollar), AUD (Australian Dollar), CHF (Swiss Franc), CNY (Chinese Yuan), INR (Indian Rupee), and 150+ other currencies. You can convert between any supported currencies.",
-      },
-      {
-        question: "How accurate are currency conversions?",
-        answer:
-          "Currency conversions are based on current market exchange rates and are accurate for general reference. However, actual exchange rates may vary when you exchange money at banks, currency exchange services, or use credit cards abroad, as these services typically add fees or use different rates. For precise amounts, especially for large transactions, check with your financial institution.",
-      },
-    ],
-    relatedCalculators: ["salary-calculator", "budget-calculator"],
-    content: CALCULATOR_CONTENT["currency-converter"],
   },
   "inflation-purchasing-power-calculator": {
     id: "inflation-purchasing-power-calculator",
@@ -1465,7 +1416,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "free BMR calculator",
     ],
     metaDescription:
-      "Free BMR calculator: basal metabolic rate (calories at rest) with Mifflin-St Jeor. For diet and fitness. Gender, age, weight, height. Metric or imperial. No sign-up.",
+      "Free BMR calculator: basal metabolic rate (calories at rest) with Mifflin-St Jeor. For diet and fitness. Gender, age, weight, height. Metric or imperial. No sign-up. Try now.",
     faqs: [
       {
         question: "What is BMR?",
@@ -1516,7 +1467,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "free grade calculator",
     ],
     metaDescription:
-      "Free grade calculator: convert percentage to letter grade, final and weighted grades. What grade you need on the final. For students and teachers. No sign-up.",
+      "Free grade calculator: convert percentage to letter grade, final and weighted grades. What grade you need on the final. For students and teachers. No sign-up. Try now.",
     faqs: [
       {
         question: "How do I convert a percentage to a letter grade?",
@@ -1560,7 +1511,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "free ROI calculator",
     ],
     metaDescription:
-      "Free ROI calculator: return on investment as a percentage. Enter cost and gain or final value. Optional annualized ROI. For investments and business. No sign-up.",
+      "Free ROI calculator: return on investment as a percentage. Enter cost and gain or final value. Optional annualized ROI. For investments and business. No sign-up. Try now.",
     faqs: [
       {
         question: "How is ROI calculated?",
@@ -1604,7 +1555,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "free payback period calculator",
     ],
     metaDescription:
-      "Free payback period calculator: years or months to recover your investment. Enter cost and annual or monthly cash flow. Simple payback. No sign-up. Instant results.",
+      "Free payback period calculator: years or months to recover your investment. Enter cost and annual or monthly cash flow. Simple payback. No sign-up. Instant results. Try now.",
     faqs: [
       {
         question: "What is payback period?",
@@ -1629,6 +1580,179 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
     ],
     relatedCalculators: ["roi-calculator", "investment-calculator", "compound-interest-calculator"],
     content: CALCULATOR_CONTENT["payback-period-calculator"],
+  },
+  "debt-to-income-calculator": {
+    id: "debt-to-income-calculator",
+    name: "Debt-to-Income Calculator",
+    slug: "debt-to-income-calculator",
+    category: "finance",
+    description:
+      "Calculate your debt-to-income ratio (DTI) for mortgage and loan eligibility. Check front-end and back-end DTI. Free DTI calculator.",
+    keywords: [
+      "debt to income calculator",
+      "DTI ratio calculator",
+      "debt to income ratio",
+      "mortgage DTI calculator",
+      "loan eligibility calculator",
+      "front-end back-end ratio",
+      "housing expense ratio",
+      "what is a good debt to income ratio",
+      "how to calculate DTI for mortgage",
+      "free debt to income calculator",
+    ],
+    metaDescription:
+      "Free debt-to-income ratio calculator. Check front-end and back-end DTI for mortgages and loans. See if you qualify. No sign-up. Instant results. Plan before you apply.",
+    faqs: [
+      {
+        question: "What is debt-to-income ratio (DTI)?",
+        answer:
+          "Debt-to-income ratio is your monthly debt payments divided by your gross monthly income, expressed as a percentage. Lenders use it to assess your ability to repay a loan. For example, if your gross income is $5,000 and your total monthly debts are $1,500, your DTI is 30%. Lower DTI generally means better loan eligibility and rates.",
+      },
+      {
+        question: "What is a good debt-to-income ratio?",
+        answer:
+          "Many lenders prefer a back-end DTI of 36% or below; some allow up to 43% for qualified mortgages. Front-end ratio (housing only) is often capped at 28%. Keeping DTI under 36% improves your chances of approval and better rates. Our calculator shows both front-end and back-end ratios so you can see where you stand.",
+      },
+      {
+        question: "What is front-end vs back-end DTI?",
+        answer:
+          "Front-end DTI is your monthly housing payment (principal, interest, taxes, insurance, HOA) divided by gross monthly income. Back-end DTI includes all monthly debt obligations—housing plus auto loans, credit cards, student loans, and other recurring debt—divided by gross income. Lenders typically look at both when evaluating mortgage applications.",
+      },
+      {
+        question: "How can I lower my DTI ratio?",
+        answer:
+          "You can lower DTI by increasing income, paying off existing debt, or both. Paying down credit card balances or other loans reduces monthly payments and thus your DTI. Avoid taking on new debt before applying for a mortgage. Use our loan calculator to see how paying off a loan affects your monthly obligations.",
+      },
+    ],
+    relatedCalculators: ["mortgage-calculator", "loan-calculator", "budget-calculator"],
+    content: CALCULATOR_CONTENT["debt-to-income-calculator"],
+  },
+  "loan-payoff-calculator": {
+    id: "loan-payoff-calculator",
+    name: "Loan Payoff Calculator",
+    slug: "loan-payoff-calculator",
+    category: "finance",
+    description:
+      "See how fast you can pay off your loan with extra payments. Calculate payoff date and total interest saved. Free loan payoff calculator.",
+    keywords: [
+      "loan payoff calculator",
+      "early loan payoff calculator",
+      "extra payment calculator",
+      "pay off loan faster",
+      "how much to pay extra on loan",
+      "loan payoff with extra payments",
+      "when will my loan be paid off",
+      "loan payoff date calculator",
+      "extra principal payment calculator",
+      "free loan payoff calculator",
+    ],
+    metaDescription:
+      "Free loan payoff calculator. Add extra payments and see how fast you pay off your loan. View total interest saved and new payoff date. No sign-up. Try now.",
+    faqs: [
+      {
+        question: "How does an extra payment affect my loan payoff?",
+        answer:
+          "Extra payments reduce the principal balance faster, so you pay less interest over time and pay off the loan sooner. For example, adding $100 per month to a $200,000 mortgage at 6% can shorten the term by several years and save tens of thousands in interest. Our calculator shows the new payoff date and total interest saved when you enter your current payment and optional extra amount.",
+      },
+      {
+        question: "Should I pay extra on my loan or invest?",
+        answer:
+          "It depends on your loan rate and investment returns. If your loan rate is high (e.g. above 6–7%), paying extra often makes sense. If your rate is low and you can earn more in the market, investing may be better. Consider also your emergency fund and other goals. Our loan payoff calculator shows the interest you save by paying extra; compare that to potential investment returns.",
+      },
+      {
+        question: "How do I calculate loan payoff with extra payments?",
+        answer:
+          "The calculator applies your regular monthly payment plus any extra amount to the balance each month. Interest is charged on the remaining balance. As principal shrinks faster with extra payments, less interest accrues. Enter current balance, interest rate, regular monthly payment, and optional extra payment; the tool shows payoff time and total interest with and without the extra.",
+      },
+      {
+        question: "Will extra payments reduce my monthly payment?",
+        answer:
+          "No. Extra payments typically reduce the term (number of months) and total interest, not the required monthly payment. Your minimum payment stays the same unless you refinance. To see how a lower payment would look on a new loan, use our mortgage calculator or loan calculator.",
+      },
+    ],
+    relatedCalculators: ["loan-calculator", "mortgage-calculator", "credit-card-payoff-calculator"],
+    content: CALCULATOR_CONTENT["loan-payoff-calculator"],
+  },
+  "water-intake-calculator": {
+    id: "water-intake-calculator",
+    name: "Water Intake Calculator",
+    slug: "water-intake-calculator",
+    category: "health",
+    description:
+      "Calculate your daily water need by weight, activity, and climate. Get a recommendation in cups and ml. Free water intake calculator.",
+    keywords: [
+      "water intake calculator",
+      "daily water intake calculator",
+      "how much water should I drink",
+      "daily water need",
+      "water consumption calculator",
+      "water intake by weight",
+      "how many glasses of water per day",
+      "daily water recommendation",
+      "free water intake calculator",
+    ],
+    metaDescription:
+      "Free water intake calculator. Daily water need by weight, activity, and climate. Result in glasses and ml. No sign-up. Instant recommendation.",
+    faqs: [
+      {
+        question: "How much water should I drink per day?",
+        answer:
+          "Daily water need depends on body weight, activity level, and climate. A common baseline is 30–35 ml per kg of body weight per day (about 0.5–1 oz per pound). For a 70 kg (154 lb) sedentary adult, that's about 2.1–2.5 liters (9–10 cups). Active people and those in hot climates need more. Our calculator uses weight and activity to give a personalized estimate in cups and ml.",
+      },
+      {
+        question: "Does the water intake calculator account for activity?",
+        answer:
+          "Yes. We apply a multiplier based on activity level: sedentary, light, moderate, active, or very active. Higher activity increases fluid loss, so the recommended intake goes up. You can also add extra for hot weather or pregnancy. The result is a daily target; spread intake throughout the day and adjust based on thirst and urine color.",
+      },
+      {
+        question: "Should I drink water in ml or cups?",
+        answer:
+          "Both are useful. Many guidelines use cups (1 cup ≈ 240 ml or 8 fl oz). Our calculator shows the result in ml and in cups (250 ml per cup for simplicity). A standard glass is often 200–250 ml. Use whichever unit you prefer; the total daily amount is the same.",
+      },
+    ],
+    relatedCalculators: ["calorie-calculator", "bmi-calculator", "protein-calculator"],
+    content: CALCULATOR_CONTENT["water-intake-calculator"],
+  },
+  "protein-calculator": {
+    id: "protein-calculator",
+    name: "Protein Calculator",
+    slug: "protein-calculator",
+    category: "health",
+    description:
+      "Calculate your daily protein need by weight and goal: weight loss, maintenance, or muscle gain. Free protein calculator in grams.",
+    keywords: [
+      "protein calculator",
+      "daily protein calculator",
+      "protein intake calculator",
+      "how much protein per day",
+      "protein need by weight",
+      "macro calculator protein",
+      "protein for muscle gain",
+      "protein for weight loss",
+      "grams of protein per day",
+      "free protein calculator",
+    ],
+    metaDescription:
+      "Free protein calculator. Daily protein need for weight loss, maintenance, or muscle gain. By weight and goal. No sign-up. Instant results. Try now for free.",
+    faqs: [
+      {
+        question: "How much protein do I need per day?",
+        answer:
+          "Daily protein need depends on body weight and goal. A common baseline is 0.8 g per kg of body weight for sedentary adults. For weight loss while preserving muscle, 1.2–1.6 g/kg is often recommended. For muscle gain, 1.6–2.2 g/kg is typical. Our calculator uses your weight and selected goal (maintain, lose weight, or build muscle) to give a daily target in grams.",
+      },
+      {
+        question: "Is more protein better for muscle building?",
+        answer:
+          "Up to a point. Research suggests 1.6–2.2 g per kg of body weight per day is sufficient for most people trying to build muscle; going much higher usually doesn't add extra benefit and can displace other nutrients. Spread intake across meals and combine with resistance training. Our protein calculator gives a range based on your goal.",
+      },
+      {
+        question: "Can I use the protein calculator for weight loss?",
+        answer:
+          "Yes. Choose \"lose weight\" to get a higher protein target (e.g. 1.2–1.6 g/kg) that helps preserve muscle while in a calorie deficit. Pair with our calorie calculator to set a daily calorie target and our water intake calculator for hydration. This tool is for general guidance only; for personalized plans consult a dietitian.",
+      },
+    ],
+    relatedCalculators: ["calorie-calculator", "water-intake-calculator", "bmi-calculator"],
+    content: CALCULATOR_CONTENT["protein-calculator"],
   },
 };
 

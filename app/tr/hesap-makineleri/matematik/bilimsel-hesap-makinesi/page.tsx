@@ -8,7 +8,7 @@ import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Bilimsel Hesap Makinesi 2026 - Trigonometri, Log",
-  description: "Bilimsel hesap makinesi: Trigonometri, logaritma, üs ve kök işlemleri. Öğrenciler ve mühendisler için ücretsiz online bilimsel hesap makinesi - hemen kullanın.",
+  description: "Bilimsel hesap makinesi 2026: Trigonometri, logaritma, üs ve kök işlemleri. Öğrenciler ve mühendisler için ücretsiz online bilimsel hesap makinesi - hemen kullanın.",
   keywords: [
     "bilimsel hesap makinesi",
     "trigonometri hesaplama",
@@ -25,7 +25,14 @@ export const metadata: Metadata = {
     canonical: `${SITE_URL}/tr/hesap-makineleri/matematik/bilimsel-hesap-makinesi`,
     languages: { "en": `${SITE_URL}/calculators/math/scientific-calculator`, "tr": `${SITE_URL}/tr/hesap-makineleri/matematik/bilimsel-hesap-makinesi`, "x-default": `${SITE_URL}/calculators/math/scientific-calculator` },
   },
-  openGraph: { title: "Bilimsel Hesap Makinesi 2026", url: `${SITE_URL}/tr/hesap-makineleri/matematik/bilimsel-hesap-makinesi`, locale: "tr_TR", siteName: "Calculator360Pro" },
+  openGraph: {
+    title: "Bilimsel Hesap Makinesi 2026 - Trigonometri, Log, Üs",
+    description: "Trigonometri, logaritma, üs ve kök işlemleri. Öğrenciler ve mühendisler için ücretsiz online bilimsel hesap makinesi.",
+    url: `${SITE_URL}/tr/hesap-makineleri/matematik/bilimsel-hesap-makinesi`,
+    locale: "tr_TR",
+    siteName: "Calculator360Pro",
+    type: "website",
+  },
 };
 
 const faqs = [

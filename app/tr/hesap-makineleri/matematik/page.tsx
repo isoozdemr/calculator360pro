@@ -1,10 +1,18 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { TR_CALCULATORS, TR_CATEGORY_PAGE_TITLES } from "@/lib/tr-calculators-nav";
+
+const mathCalculators = TR_CALCULATORS.filter((c) => c.category === "matematik").map((c) => ({
+  name: c.name,
+  slug: c.slug,
+  description: c.description ?? "",
+  icon: c.icon ?? "🔢",
+}));
 
 export const metadata: Metadata = {
   title: "Matematik Hesap Makineleri - Yüzde, Kesir ve Daha Fazlası",
-  description: "Matematik hesap makineleri: yüzde hesaplama, kesir işlemleri, indirim ve oran hesaplama, bilimsel hesap, birim çevirici. Günlük hayat ve iş için ücretsiz araçlar.",
+  description: "Matematik hesap makineleri 2026: yüzde, kesir, indirim, bilimsel hesap, birim çevirici. Günlük hayat ve iş için ücretsiz araçlar - hemen kullanın.",
   keywords: [
     "matematik hesap makinesi",
     "yüzde hesaplama",
@@ -31,37 +39,10 @@ export const metadata: Metadata = {
   },
 };
 
-const mathCalculators = [
-  {
-    name: "Yüzde Hesap Makinesi",
-    description: "Yüzde hesaplama, artış/azalış oranı bulma ve oran hesaplama. Günlük hayatta en çok ihtiyaç duyulan hesaplama aracı.",
-    slug: "yuzde-hesap-makinesi",
-    icon: "%",
-  },
-  {
-    name: "İndirim Hesap Makinesi",
-    description: "İndirimli fiyat, yüzde indirim ve tasarruf hesaplama. Alışverişte anında sonuç.",
-    slug: "indirim-hesap-makinesi",
-    icon: "🏷️",
-  },
-  {
-    name: "Bilimsel Hesap Makinesi",
-    description: "Trigonometri, logaritma, üs ve kök işlemleri. Öğrenciler ve mühendisler için.",
-    slug: "bilimsel-hesap-makinesi",
-    icon: "🔬",
-  },
-  {
-    name: "Birim Çevirici",
-    description: "Uzunluk, ağırlık, hacim, alan ve sıcaklık birim dönüşümleri.",
-    slug: "birim-cevirici",
-    icon: "📐",
-  },
-];
-
 const categorySchema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  name: "Matematik Hesap Makineleri",
+  name: TR_CATEGORY_PAGE_TITLES.matematik,
   description: "Ücretsiz matematik hesap makineleri: Yüzde, kesir, oran hesaplama.",
   url: `${SITE_URL}/tr/hesap-makineleri/matematik`,
   inLanguage: "tr-TR",

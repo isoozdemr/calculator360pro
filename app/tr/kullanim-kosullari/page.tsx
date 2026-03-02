@@ -5,7 +5,7 @@ import { generateSimpleBreadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: "Kullanım Koşulları",
-  description: "Calculator360Pro Kullanım Koşulları - Web sitemizi kullanırken uymanız gereken kurallar ve koşullar.",
+  description: "Calculator360Pro Kullanım Koşulları: Web sitemizi kullanırken uymanız gereken kurallar ve koşullar. Yasal bilgi ve kullanıcı sözleşmesi. Güncel metin için okuyun.",
   keywords: ["kullanım koşulları", "şartlar", "yasal", "Calculator360Pro koşullar", "kullanıcı sözleşmesi"],
   alternates: {
     canonical: `${SITE_URL}/tr/kullanim-kosullari`,

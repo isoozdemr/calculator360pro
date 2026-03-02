@@ -8,7 +8,7 @@ import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Birim Çevirici 2026 - Uzunluk, Ağırlık, Hacim",
-  description: "Birim çevirici: Uzunluk, ağırlık, hacim, alan ve sıcaklık birimleri arasında anında çeviri. Metrik ve imperial. Ücretsiz online birim çevirme aracı.",
+  description: "Birim çevirici 2026: Uzunluk, ağırlık, hacim, alan ve sıcaklık birimleri arasında anında çeviri. Metrik ve imperial. Ücretsiz online birim çevirme - hemen kullanın.",
   keywords: [
     "birim çevirici",
     "uzunluk çevirme",
@@ -26,7 +26,14 @@ export const metadata: Metadata = {
     canonical: `${SITE_URL}/tr/hesap-makineleri/matematik/birim-cevirici`,
     languages: { "en": `${SITE_URL}/calculators/math/unit-converter`, "tr": `${SITE_URL}/tr/hesap-makineleri/matematik/birim-cevirici`, "x-default": `${SITE_URL}/calculators/math/unit-converter` },
   },
-  openGraph: { title: "Birim Cevirici 2026", url: `${SITE_URL}/tr/hesap-makineleri/matematik/birim-cevirici`, locale: "tr_TR", siteName: "Calculator360Pro" },
+  openGraph: {
+    title: "Birim Cevirici 2026 - Uzunluk, Ağırlık, Hacim",
+    description: "Uzunluk, ağırlık, hacim, alan ve sıcaklık birimleri arasında anında çeviri. Metrik ve imperial. Ücretsiz online birim çevirme.",
+    url: `${SITE_URL}/tr/hesap-makineleri/matematik/birim-cevirici`,
+    locale: "tr_TR",
+    siteName: "Calculator360Pro",
+    type: "website",
+  },
 };
 
 const faqs = [
@@ -102,7 +109,7 @@ export default function BirimCeviriciPage() {
               <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-4">
                 <li>Metrik (SI): metre, kg, litre. Imperial: foot, pound, gallon (ABD/UK).</li>
                 <li>Tarif ve mutfak: hacim ve ağırlık çevirileri sık kullanılır.</li>
-                <li><Link href="/tr/hesap-makineleri/matematik/yuzde-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Yüzde hesap makinesi</Link> ile oran, <Link href="/tr/hesap-makineleri/finans/doviz-cevirici" className="text-[#2563eb] hover:underline font-medium">döviz çevirici</Link> ile para birimi dönüşümü.</li>
+                <li><Link href="/tr/hesap-makineleri/matematik/yuzde-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Yüzde hesap makinesi</Link> ile oran, <Link href="/tr/hesap-makineleri/finans/birikim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">birikim hesap makinesi</Link> ile tasarruf planlama.</li>
                 <li><Link href="/tr/hesap-makineleri/tarih-zaman/tarih-farki-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Tarih farkı hesap makinesi</Link> ile süre hesaplama.</li>
               </ul>
             </div>

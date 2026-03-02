@@ -8,7 +8,10 @@ import { CalculatorDisclaimer } from "@/components/calculators/CalculatorDisclai
 
 const finalValueRule: FieldValidation = { required: true, min: 0, custom: { validate: (v: string) => !isNaN(parseFloat(v)), message: "Enter a number" } };
 
-export function ROICalculator() {
+type Locale = "en" | "tr";
+
+export function ROICalculator({ locale: localeProp = "en" }: { locale?: Locale }) {
+  const isTr = localeProp === "tr";
   const [initialCost, setInitialCost] = useState("");
   const [finalValue, setFinalValue] = useState("");
   const [years, setYears] = useState("");
@@ -75,53 +78,53 @@ export function ROICalculator() {
     <div className="w-full max-w-2xl mx-auto space-y-6">
       <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6 space-y-6">
         <Input
-          label="Initial cost / investment ($)"
+          label={isTr ? "Yatırım Maliyeti (TL)" : "Initial cost / investment ($)"}
           type="number"
           value={initialCost}
           onChange={(e) => { setInitialCost(e.target.value); if (costError) setCostError(null); }}
           onBlur={() => setCostError(validateField(initialCost, COMMON_RULES.positiveNumber))}
-          placeholder="e.g. 10000"
+          placeholder={isTr ? "örn. 10000" : "e.g. 10000"}
           error={costError || undefined}
           step="1"
           min="0"
         />
         <Input
-          label="Final value / amount received ($)"
+          label={isTr ? "Toplam Getiri / Kazanç (TL)" : "Final value / amount received ($)"}
           type="number"
           value={finalValue}
           onChange={(e) => { setFinalValue(e.target.value); if (valueError) setValueError(null); }}
           onBlur={() => setValueError(validateField(finalValue, finalValueRule))}
-          placeholder="e.g. 12500"
+          placeholder={isTr ? "örn. 12500" : "e.g. 12500"}
           error={valueError || undefined}
           step="1"
           min="0"
         />
         <Input
-          label="Holding period (years) — optional"
+          label={isTr ? "Tutma süresi (yıl) — isteğe bağlı" : "Holding period (years) — optional"}
           type="number"
           value={years}
           onChange={(e) => { setYears(e.target.value); if (yearsError) setYearsError(null); }}
           onBlur={() => { if (!years.trim()) setYearsError(null); else setYearsError(validateField(years, { min: 0.01, max: 200 }) || null); }}
-          placeholder="e.g. 3"
+          placeholder={isTr ? "örn. 3" : "e.g. 3"}
           error={yearsError || undefined}
-          helperText="Leave blank for total ROI only"
+          helperText={isTr ? "Sadece toplam ROI için boş bırakın" : "Leave blank for total ROI only"}
           step="0.1"
           min="0"
         />
         <div className="flex gap-3">
-          <Button onClick={calculate} className="flex-1">Calculate ROI</Button>
-          <Button onClick={reset} variant="outline">Reset</Button>
+          <Button onClick={calculate} className="flex-1">{isTr ? "Hesapla" : "Calculate ROI"}</Button>
+          <Button onClick={reset} variant="outline">{isTr ? "Sıfırla" : "Reset"}</Button>
         </div>
       </div>
       {result && (
         <div className="bg-[#f0fdf4] border-2 border-[#10b981] rounded-lg p-6 space-y-3" id="result-summary">
-          <h3 className="text-lg font-semibold text-[#1e293b]">Result</h3>
+          <h3 className="text-lg font-semibold text-[#1e293b]">{isTr ? "Sonuç" : "Result"}</h3>
           <p className="text-2xl font-bold text-[#10b981] font-mono">ROI: {result.roi.toFixed(2)}%</p>
-          {result.annualized != null && <p className="text-lg text-[#64748b]">Annualized return: {result.annualized.toFixed(2)}% per year</p>}
-          <Button onClick={copyResult} variant="outline" size="sm">{copied ? "Copied!" : "Copy result"}</Button>
+          {result.annualized != null && <p className="text-lg text-[#64748b]">{isTr ? "Yıllık getiri: " : "Annualized return: "}{result.annualized.toFixed(2)}% {isTr ? "yıllık" : "per year"}</p>}
+          <Button onClick={copyResult} variant="outline" size="sm">{copied ? (isTr ? "Kopyalandı!" : "Copied!") : (isTr ? "Sonucu kopyala" : "Copy result")}</Button>
         </div>
       )}
-      <CalculatorDisclaimer category="finance" locale="en" />
+      <CalculatorDisclaimer category="finance" locale={localeProp} />
     </div>
   );
 }

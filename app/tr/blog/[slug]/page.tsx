@@ -128,9 +128,6 @@ export default async function BlogPostPageTR({ params }: PageProps) {
     relatedCalculatorIds.push("compound-interest-calculator");
     relatedCalculatorIds.push("investment-calculator");
   }
-  if (post.tags.includes("döviz") || post.tags.includes("kur")) {
-    relatedCalculatorIds.push("currency-converter");
-  }
   if (post.tags.includes("gebelik") || post.tags.includes("hamilelik")) {
     relatedCalculatorIds.push("pregnancy-calculator");
   }
@@ -301,17 +298,15 @@ export default async function BlogPostPageTR({ params }: PageProps) {
               dangerouslySetInnerHTML={{ __html: htmlContent }}
             />
 
-            {/* FAQ Section (when faqs provided) */}
+            {/* FAQ Section (when faqs provided) - JSON-LD only, no microdata to avoid duplicate FAQPage */}
             {post.faqs && post.faqs.length > 0 && (
-              <div className="mt-8 pt-6 border-t border-[#e2e8f0]" itemScope itemType="https://schema.org/FAQPage">
+              <div className="mt-8 pt-6 border-t border-[#e2e8f0]">
                 <h2 className="text-xl font-bold text-[#1e293b] mb-4">Sıkça Sorulan Sorular</h2>
                 <ul className="space-y-4">
                   {post.faqs.map((faq, i) => (
-                    <li key={i} itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                      <h3 className="font-semibold text-[#1e293b]" itemProp="name">{faq.question}</h3>
-                      <p className="text-[#64748b] mt-1" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                        <span itemProp="text">{faq.answer}</span>
-                      </p>
+                    <li key={i}>
+                      <h3 className="font-semibold text-[#1e293b]">{faq.question}</h3>
+                      <p className="text-[#64748b] mt-1">{faq.answer}</p>
                     </li>
                   ))}
                 </ul>
@@ -390,7 +385,6 @@ export default async function BlogPostPageTR({ params }: PageProps) {
                     "savings-calculator": "birikim-hesap-makinesi",
                     "budget-calculator": "butce-hesap-makinesi",
                     "car-loan-calculator": "tasit-kredisi-hesap-makinesi",
-                    "currency-converter": "doviz-cevirici",
                     "bmi-calculator": "bmi-hesap-makinesi",
                     "calorie-calculator": "kalori-hesap-makinesi",
                     "pregnancy-calculator": "gebelik-hesap-makinesi",

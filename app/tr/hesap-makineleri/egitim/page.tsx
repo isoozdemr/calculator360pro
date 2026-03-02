@@ -1,10 +1,18 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { TR_CALCULATORS, TR_CATEGORY_PAGE_TITLES } from "@/lib/tr-calculators-nav";
+
+const calculators = TR_CALCULATORS.filter((c) => c.category === "egitim").map((c) => ({
+  name: c.name,
+  slug: c.slug,
+  description: c.description ?? "",
+  icon: c.icon ?? "📚",
+}));
 
 export const metadata: Metadata = {
   title: "Eğitim Hesap Makineleri | Not Ortalaması Hesaplama",
-  description: "Eğitim hesap makineleri: GANO ve not ortalaması hesaplama. Türkiye üniversite not sistemi, 4'lük ve 100'lük dönüşüm. YÖK standardı. Ücretsiz not hesaplama aracı.",
+  description: "Eğitim hesap makineleri 2026: GANO ve not ortalaması hesaplama. Türkiye üniversite not sistemi, 4'lük ve 100'lük dönüşüm. YÖK standardı - ücretsiz hemen hesaplayın.",
   keywords: [
     "eğitim hesap makinesi",
     "not ortalaması hesaplama",
@@ -25,19 +33,10 @@ export const metadata: Metadata = {
   },
 };
 
-const calculators = [
-  {
-    name: "Not Ortalaması Hesap Makinesi",
-    slug: "not-ortalamasi-hesap-makinesi",
-    description: "GANO hesaplama, 4'lük ve 100'lük not sistemi dönüşümü",
-    icon: "📚",
-  },
-];
-
 const categorySchema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  name: "Eğitim Hesap Makineleri",
+  name: TR_CATEGORY_PAGE_TITLES.egitim,
   description: "Türkiye üniversite not sistemi ile GANO hesaplama araçları.",
   url: `${SITE_URL}/tr/hesap-makineleri/egitim`,
   inLanguage: "tr-TR",

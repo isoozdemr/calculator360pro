@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Gelir Vergisi Hesaplama 2026 | Vergi Dilimi Hesap Makinesi | Calculator360Pro",
-  description: "2026 güncel gelir vergisi dilimleri ile verginizi hesaplayın. Kümülatif vergi matrahı, efektif vergi oranı, damga vergisi hesaplama. GİB onaylı oranlar ile ücretsiz vergi hesap makinesi.",
+  description: "Gelir vergisi hesaplama 2026: Güncel vergi dilimleri ile verginizi hesaplayın. Kümülatif vergi matrahı, efektif vergi oranı, damga vergisi. GİB onaylı oranlar ile ücretsiz vergi hesap makinesi.",
   keywords: [
     "gelir vergisi hesaplama",
     "gelir vergisi hesaplama 2026",
@@ -41,7 +41,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Gelir Vergisi Hesaplama 2026 - Vergi Dilimi Hesap Makinesi",
     description: "2026 güncel gelir vergisi dilimleri ve oranları ile verginizi hesaplayın. Kümülatif vergi matrahı ve efektif vergi oranı hesaplama.",
+    url: `${SITE_URL}/tr/hesap-makineleri/finans/vergi-hesap-makinesi`,
     locale: "tr_TR",
+    siteName: "Calculator360Pro",
     type: "website",
   },
 };

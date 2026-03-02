@@ -9,7 +9,7 @@ import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Kredi Kartı Borç Hesap Makinesi 2026 - Kapanma Süresi",
-  description: "Kredi kartı borç hesap makinesi: Borcunuzun kapanma süresi ve toplam faiz maliyetini hesaplayın. Minimum ödeme ile karşılaştırın. Ücretsiz kredi kartı borç hesaplama.",
+  description: "Kredi kartı borç hesap makinesi 2026: Borcunuzun kapanma süresi ve toplam faiz maliyetini hesaplayın. Minimum ödeme ile karşılaştırın. Ücretsiz - hemen hesaplayın.",
   keywords: [
     "kredi kartı borcu hesaplama",
     "kredi kartı borç kapanma süresi",
@@ -26,7 +26,14 @@ export const metadata: Metadata = {
     canonical: `${SITE_URL}/tr/hesap-makineleri/finans/kredi-karti-borc-hesap-makinesi`,
     languages: { "en": `${SITE_URL}/calculators/finance/credit-card-payoff-calculator`, "tr": `${SITE_URL}/tr/hesap-makineleri/finans/kredi-karti-borc-hesap-makinesi`, "x-default": `${SITE_URL}/calculators/finance/credit-card-payoff-calculator` },
   },
-  openGraph: { title: "Kredi Kartı Borç Hesap Makinesi 2026", url: `${SITE_URL}/tr/hesap-makineleri/finans/kredi-karti-borc-hesap-makinesi`, locale: "tr_TR", siteName: "Calculator360Pro" },
+  openGraph: {
+    title: "Kredi Kartı Borç Hesap Makinesi 2026",
+    description: "Kredi kartı borcu kapanma süresi ve faiz maliyeti hesaplama. Minimum ödeme karşılaştırma.",
+    url: `${SITE_URL}/tr/hesap-makineleri/finans/kredi-karti-borc-hesap-makinesi`,
+    locale: "tr_TR",
+    siteName: "Calculator360Pro",
+    type: "website",
+  },
 };
 
 const faqs = [

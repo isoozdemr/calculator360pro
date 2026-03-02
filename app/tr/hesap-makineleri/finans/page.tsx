@@ -1,10 +1,18 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { TR_CALCULATORS, TR_CATEGORY_PAGE_TITLES } from "@/lib/tr-calculators-nav";
+
+const calculators = TR_CALCULATORS.filter((c) => c.category === "finans").map((c) => ({
+  name: c.name,
+  slug: c.slug,
+  description: c.description ?? "",
+  icon: c.icon ?? "💰",
+}));
 
 export const metadata: Metadata = {
   title: "Finans Hesap Makineleri | Vergi, Maaş, Kredi Hesaplama",
-  description: "Finans hesap makineleri: vergi, maaş, konut kredisi, tüketici kredisi, emeklilik ve BES hesaplama. 2026 güncel vergi dilimleri ve SGK oranları. Türkiye'ye özel ücretsiz araçlar.",
+  description: "Finans hesap makineleri 2026: vergi, maaş, konut kredisi, tüketici kredisi, emeklilik ve BES. Güncel vergi dilimleri ve SGK oranları. Türkiye'ye özel ücretsiz araçlar - hemen hesaplayın.",
   keywords: [
     "finans hesap makineleri",
     "vergi hesaplama",
@@ -28,109 +36,10 @@ export const metadata: Metadata = {
   },
 };
 
-const calculators = [
-  {
-    name: "Vergi Hesap Makinesi",
-    slug: "vergi-hesap-makinesi",
-    description: "2026 gelir vergisi dilimleri ile yıllık verginizi hesaplayın",
-    icon: "💰",
-  },
-  {
-    name: "Maaş Hesap Makinesi",
-    slug: "maas-hesap-makinesi",
-    description: "Brüt-net maaş hesaplama, SGK, AGİ dahil",
-    icon: "💵",
-  },
-  {
-    name: "Konut Kredisi Hesap Makinesi",
-    slug: "konut-kredisi-hesap-makinesi",
-    description: "Mortgage hesaplama, tapu harcı ve ödeme planı",
-    icon: "🏠",
-  },
-  {
-    name: "Kredi Hesap Makinesi",
-    slug: "kredi-hesap-makinesi",
-    description: "İhtiyaç kredisi hesaplama, KKDF ve BSMV dahil",
-    icon: "💳",
-  },
-  {
-    name: "Emeklilik Hesap Makinesi",
-    slug: "emeklilik-hesap-makinesi",
-    description: "SGK emeklilik yaşı, prim gün sayısı ve BES hesaplama",
-    icon: "🏖️",
-  },
-  {
-    name: "BES Devlet Katkısı Hesap Makinesi",
-    slug: "bes-devlet-katkisi-hesap-makinesi",
-    description: "BES %25 devlet katkısı ile birikim ve emeklilik hesaplama",
-    icon: "🏦",
-  },
-  {
-    name: "Enflasyon ve Alım Gücü Hesap Makinesi",
-    slug: "enflasyon-alim-gucu-hesap-makinesi",
-    description: "TÜİK TÜFE ile paranızın alım gücünü hesaplayın",
-    icon: "📉",
-  },
-  {
-    name: "Bileşik Faiz Hesap Makinesi",
-    slug: "bilesik-faiz-hesap-makinesi",
-    description: "Bileşik faiz ile yatırım ve birikim getirisi hesaplama",
-    icon: "📈",
-  },
-  {
-    name: "Yatırım Hesap Makinesi",
-    slug: "yatirim-hesap-makinesi",
-    description: "Yatırım getirisi ve aylık yatırım planı hesaplama",
-    icon: "💹",
-  },
-  {
-    name: "Birikim Hesap Makinesi",
-    slug: "birikim-hesap-makinesi",
-    description: "Hedef birikim için aylık tasarruf hesaplama",
-    icon: "🐷",
-  },
-  {
-    name: "Bütçe Hesap Makinesi",
-    slug: "butce-hesap-makinesi",
-    description: "Gelir-gider dengesi ve bütçe planlama",
-    icon: "📊",
-  },
-  {
-    name: "Taşıt Kredisi Hesap Makinesi",
-    slug: "tasit-kredisi-hesap-makinesi",
-    description: "Araç kredisi aylık taksit ve toplam maliyet hesaplama",
-    icon: "🚗",
-  },
-  {
-    name: "Döviz Çevirici",
-    slug: "doviz-cevirici",
-    description: "USD, EUR, TRY ve 150+ para birimi çevirisi",
-    icon: "💱",
-  },
-  {
-    name: "Öğrenim Kredisi Hesap Makinesi",
-    slug: "ogrenim-kredisi-hesap-makinesi",
-    description: "Öğrenim kredisi aylık taksit ve toplam faiz hesaplama",
-    icon: "🎓",
-  },
-  {
-    name: "Kredi Kartı Borç Hesap Makinesi",
-    slug: "kredi-karti-borc-hesap-makinesi",
-    description: "Kredi kartı borcunu ne zaman bitirirsiniz? Aylık ödeme ve faiz",
-    icon: "💳",
-  },
-  {
-    name: "Bahşiş Hesap Makinesi",
-    slug: "bahsis-hesap-makinesi",
-    description: "Restoran bahşiş ve kişi başı ücret hesaplama",
-    icon: "🍽️",
-  },
-];
-
 const categorySchema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  name: "Finans Hesap Makineleri",
+  name: TR_CATEGORY_PAGE_TITLES.finans,
   description: "Türkiye'ye özel vergi, maaş, kredi ve emeklilik hesaplama araçları.",
   url: `${SITE_URL}/tr/hesap-makineleri/finans`,
   inLanguage: "tr-TR",

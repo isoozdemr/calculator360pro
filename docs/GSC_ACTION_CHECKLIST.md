@@ -74,6 +74,37 @@ Her biri için:
 - [ ] Position düşük olan sayfaların içeriğini güçlendir
 - [ ] Core Web Vitals trendlerini incele
 
+## "Doğru standart etikete sahip alternatif sayfa" (49 sayfa)
+
+Bu durum **hata değildir**. Google, hreflang/canonical sayesinde bu URL'leri "doğru alternatif" olarak tanıyor ve aynı sorgu için çift içerik göstermemek amacıyla, seçilen dil/bölgeye göre **tek bir sürümü** (EN veya TR) sonuçlarda gösteriyor. Örneğin:
+
+- Türkçe aramalarda TR sayfaları (örn. `/tr/rehberler`) gösterilir; EN sürümü bu listede "alternatif" görünebilir.
+- İngilizce aramalarda EN sayfaları gösterilir; TR sürümü "alternatif" görünebilir.
+
+**Yapılacak:** Ek aksiyon gerekmez. Canonical ve hreflang ([MetaTags.tsx](components/SEO/MetaTags.tsx), TR sayfa metadata, [sitemap-to-xml.ts](lib/sitemap-to-xml.ts)) tutarlı olduğu sürece bu sayı normaldir. GSC "Uluslararası Hedefleme" raporunda tutarsızlık görürseniz canonical/hreflang değerlerini kontrol edin.
+
+## 404 ve Yönlendirmeli Sayfalar (GSC Plan)
+
+### 404 – Bulunamadı (1 URL)
+1. GSC → **Sayfa indeksleme** → **Bulunamadı (404)** listesinden 404 veren URL’yi kopyala.
+2. Bu URL `lib/sitemap-entries.ts` veya `lib/indexing/get-all-urls.ts` içinde geçiyorsa kaldır; sitemap’te olmamalı.
+3. İsteniyorsa yönlendirme ekle: `.env.local` içinde `GSC_REDIRECT_404_SOURCE` ve `GSC_REDIRECT_404_DEST` tanımla (örnek: `.env.example`).
+
+### Yönlendirmeli sayfa (3 URL)
+1. GSC → **Sayfa indeksleme** → **Yönlendirmeli sayfa** listesinden 3 kaynak ve hedef URL’yi al.
+2. `.env.local` içinde `GSC_REDIRECT_1_SOURCE`/`GSC_REDIRECT_1_DEST`, `GSC_REDIRECT_2_*`, `GSC_REDIRECT_3_*` olarak gir (bkz. `.env.example`).
+3. Sitemap’te yalnızca hedef (canonical) URL’lerin yer alması gerekir; kaynak URL’ler `next.config.ts` redirect’leri ile hedefe yönlendirilir.
+
+### Canonical ve hreflang doğrulama
+- **Sayfa meta:** `components/SEO/MetaTags.tsx` (EN calculator/blog) ve TR sayfa `metadata` / `generateMetadata`: her sayfada `alternates.canonical` ve `alternates.languages` (en, tr, x-default) tutarlı.
+- **Sitemap:** `lib/sitemap-to-xml.ts` sitemap XML’inde her URL için `xhtml:link` ile hreflang (en, tr, x-default) üretiyor; `lib/sitemap-entries.ts` alternates ile besliyor.
+- GSC **Uluslararası Hedefleme** raporu ile karşılaştır; tutarsızlık varsa ilgili sayfa metadata veya sitemap alternates güncellenecek.
+
+### Tarandı – dizine eklenmemiş (6 URL)
+1. GSC → **Sayfa indeksleme** → **Tarandı – şu anda dizine eklenmiş değil** (ve gerekiyorsa **Keşfedildi – dizine eklenmemiş**) listesinden URL’leri al.
+2. Her URL için: içerik 2000+ kelime ve benzersiz mi? Canonical doğru mu? (FAQPage yinelenmesi giderildi; sayfada yalnızca JSON-LD FAQPage kaldı.)
+3. Gerekirse: içerik derinleştir (H2/H3, örnek, “nasıl yapılır”), ilgili blog/rehberden o sayfaya internal link ekle (“Hemen hesapla” / “Şu aracı kullan” CTA).
+
 ## Sorun Giderme
 
 ### Sayfalar Indexlenmiyor
@@ -82,6 +113,15 @@ Her biri için:
 3. Sitemap'te sayfa var mı kontrol et
 4. Manuel olarak indexing request yap
 5. 48-72 saat bekle
+
+### GSC 5 sorgu + snippet (title 50–60, meta 150–160)
+Hedef sorgular: **kalori hesap makinesi**, **calculating your bmi**, **student loans monthly payment calculator**, **percentage made easy**, **2022 gelir vergisi hesaplama**. İlgili sayfalarda title 50–60 karakter, meta description 150–160 karakter; bu ifadelere yakın geçiş title/description ve (uygunsa) FAQ’te kullanıldı. Eksik kalan sayfa varsa tamamlanacak.
+
+### Meta 150–160 ve rakip/CTR revizyonu
+- **Tüm sayfalarda** meta description 150–160 karakter; kısa açıklama CTR'yi düşürür (kural: `docs/tool-and-blog-page-rules.md`).
+- Yeni sayfa eklemeden önce mevcut TR/EN sayfa meta denetimi: title 50–60, description 150–160, keywords 6–8+.
+- Rakip odaklı iyileştirme: GSC "Sorgular" ve rakip SERP'e göre title/description'da tıklanmayı artıran ifadeler ("Ücretsiz", "2026", "Anında", "Hemen hesapla") eklenebilir; keyword stuffing yapılmaz.
+- Image sitemap: XML'e giren tüm metinler `escapeXml` ile escape edilmeli (`&` → `&amp;` vb.); aksi halde "xmlParseEntityRef: no name" hatası oluşur.
 
 ### CTR Düşük (< %2)
 1. Title tag'i optimize et (primary keyword başta)

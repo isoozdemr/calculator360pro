@@ -11,6 +11,8 @@ interface PageProps {
   }>;
 }
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const { getAllCalculators } = await import("@/lib/calculators/definitions");
   const { getCategorySlugByKey } = await import("@/lib/constants");

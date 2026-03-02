@@ -9,7 +9,7 @@ import { DATA_VERSION } from "@/lib/data/turkey-2026-data";
 
 export const metadata: Metadata = {
   title: "Yatırım Hesap Makinesi 2026 - Getiri Hesapla",
-  description: "Yatırım hesap makinesi: Başlangıç ve aylık yatırımla getirinizi bileşik getiri ile hesaplayın. Yatırım planlaması ve hedef tutar. Ücretsiz yatırım getirisi hesaplama.",
+  description: "Yatırım hesap makinesi 2026: Başlangıç ve aylık yatırımla getirinizi bileşik getiri ile hesaplayın. Yatırım planlaması ve hedef tutar. Ücretsiz - hemen hesaplayın.",
   keywords: [
     "yatırım hesaplama",
     "yatırım getirisi",
@@ -33,6 +33,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Yatırım Hesap Makinesi 2026 | Calculator360Pro",
+    description: "Başlangıç ve aylık yatırımla getiri hesaplayın. Bileşik getiri ile yatırım planlaması.",
     url: `${SITE_URL}/tr/hesap-makineleri/finans/yatirim-hesap-makinesi`,
     type: "website",
     locale: "tr_TR",

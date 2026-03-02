@@ -1,10 +1,18 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/constants";
+import { TR_CALCULATORS, TR_CATEGORY_PAGE_TITLES } from "@/lib/tr-calculators-nav";
+
+const healthCalculators = TR_CALCULATORS.filter((c) => c.category === "saglik").map((c) => ({
+  name: c.name,
+  slug: c.slug,
+  description: c.description ?? "",
+  icon: c.icon ?? "🏥",
+}));
 
 export const metadata: Metadata = {
   title: "Sağlık Hesap Makineleri - BMI, Kalori ve Daha Fazlası",
-  description: "Sağlık hesap makineleri: BMI (vücut kitle indeksi), kalori ihtiyacı, vücut yağ oranı ve gebelik hesaplama. WHO ve Türkiye standartlarına uygun. Ücretsiz online araçlar.",
+  description: "Sağlık hesap makineleri 2026: BMI, kalori ihtiyacı, vücut yağ oranı ve gebelik hesaplama. WHO ve Türkiye standartlarına uygun. Ücretsiz online araçlar - hemen hesaplayın.",
   keywords: [
     "sağlık hesap makinesi",
     "bmi hesaplama",
@@ -32,37 +40,10 @@ export const metadata: Metadata = {
   },
 };
 
-const healthCalculators = [
-  {
-    name: "BMI Hesap Makinesi",
-    description: "Vücut Kitle İndeksinizi (BMI) hesaplayın ve sağlık durumunuzu değerlendirin. WHO standartlarına uygun kategoriler.",
-    slug: "bmi-hesap-makinesi",
-    icon: "⚖️",
-  },
-  {
-    name: "Vücut Yağ Oranı Hesap Makinesi",
-    description: "Vücut yağ yüzdesi tahmini. BMI'dan daha anlamlı vücut kompozisyonu göstergesi.",
-    slug: "vucut-yag-orani-hesap-makinesi",
-    icon: "📊",
-  },
-  {
-    name: "Kalori Hesap Makinesi",
-    description: "Günlük kalori ihtiyacınızı hesaplayın. BMH, TDEE ve makro besin önerileri ile birlikte.",
-    slug: "kalori-hesap-makinesi",
-    icon: "🔥",
-  },
-  {
-    name: "Gebelik Hesap Makinesi",
-    description: "Doğum tarihi tahmini ve gebelik haftası hesaplama.",
-    slug: "gebelik-hesap-makinesi",
-    icon: "👶",
-  },
-];
-
 const categorySchema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  name: "Sağlık Hesap Makineleri",
+  name: TR_CATEGORY_PAGE_TITLES.saglik,
   description: "Ücretsiz sağlık hesap makineleri: BMI, kalori, ideal kilo hesaplama.",
   url: `${SITE_URL}/tr/hesap-makineleri/saglik`,
   inLanguage: "tr-TR",

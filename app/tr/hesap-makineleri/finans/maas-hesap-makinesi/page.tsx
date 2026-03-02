@@ -45,7 +45,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Maaş Hesaplama 2026 - Brüt Net Maaş Hesap Makinesi",
     description: "2026 güncel asgari ücret ve SGK oranları ile brütten nete, netten brüte maaş hesaplayın. AGİ ve işveren maliyeti dahil.",
+    url: `${SITE_URL}/tr/hesap-makineleri/finans/maas-hesap-makinesi`,
     locale: "tr_TR",
+    siteName: "Calculator360Pro",
     type: "website",
   },
 };

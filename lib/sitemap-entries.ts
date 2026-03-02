@@ -11,7 +11,8 @@ import {
 import { URL_MAPPINGS, REVERSE_URL_MAPPINGS } from "@/lib/seo/url-mappings";
 import { getTrBlogSlugForEn, getEnBlogSlugForTr } from "@/lib/blog/slug-mappings";
 
-const TURKISH_CALCULATORS = [
+/** Exported for image-sitemap so TR calculator URLs stay in sync with main sitemap. */
+export const TURKISH_CALCULATORS = [
   { category: "finans", slug: "vergi-hesap-makinesi", enCategory: "finance", enSlug: "tax-calculator" },
   { category: "finans", slug: "maas-hesap-makinesi", enCategory: "finance", enSlug: "salary-calculator" },
   { category: "finans", slug: "konut-kredisi-hesap-makinesi", enCategory: "finance", enSlug: "mortgage-calculator" },
@@ -22,7 +23,6 @@ const TURKISH_CALCULATORS = [
   { category: "finans", slug: "birikim-hesap-makinesi", enCategory: "finance", enSlug: "savings-calculator" },
   { category: "finans", slug: "butce-hesap-makinesi", enCategory: "finance", enSlug: "budget-calculator" },
   { category: "finans", slug: "tasit-kredisi-hesap-makinesi", enCategory: "finance", enSlug: "car-loan-calculator" },
-  { category: "finans", slug: "doviz-cevirici", enCategory: "finance", enSlug: "currency-converter" },
   { category: "egitim", slug: "not-ortalamasi-hesap-makinesi", enCategory: "education", enSlug: "gpa-calculator" },
   { category: "saglik", slug: "bmi-hesap-makinesi", enCategory: "health", enSlug: "bmi-calculator" },
   { category: "saglik", slug: "kalori-hesap-makinesi", enCategory: "health", enSlug: "calorie-calculator" },
@@ -43,9 +43,20 @@ const TURKISH_CALCULATORS = [
   { category: "finans", slug: "emlak-vergisi-hesap-makinesi", enCategory: "finance", enSlug: "tax-calculator" },
   { category: "finans", slug: "prim-gunu-hesap-makinesi", enCategory: "finance", enSlug: "retirement-calculator" },
   { category: "tarih-zaman", slug: "haftalik-calisma-saati-hesap-makinesi", enCategory: "date-time", enSlug: "hours-calculator" },
+  { category: "matematik", slug: "kesir-hesap-makinesi", enCategory: "math", enSlug: "fraction-calculator" },
+  { category: "saglik", slug: "bazal-metabolizma-hesap-makinesi", enCategory: "health", enSlug: "bmr-calculator" },
+  { category: "egitim", slug: "not-hesap-makinesi", enCategory: "education", enSlug: "grade-calculator" },
+  { category: "finans", slug: "yatirim-getirisi-hesap-makinesi", enCategory: "finance", enSlug: "roi-calculator" },
+  { category: "finans", slug: "geri-donus-suresi-hesap-makinesi", enCategory: "finance", enSlug: "payback-period-calculator" },
+  { category: "finans", slug: "gelir-gider-orani-hesap-makinesi", enCategory: "finance", enSlug: "debt-to-income-calculator" },
+  { category: "finans", slug: "kredi-erken-kapanis-hesap-makinesi", enCategory: "finance", enSlug: "loan-payoff-calculator" },
+  { category: "saglik", slug: "su-tuketimi-hesap-makinesi", enCategory: "health", enSlug: "water-intake-calculator" },
+  { category: "saglik", slug: "protein-ihtiyaci-hesap-makinesi", enCategory: "health", enSlug: "protein-calculator" },
+  { category: "finans", slug: "asgari-ucret-hesap-makinesi", trOnly: true },
+  { category: "finans", slug: "mtv-hesap-makinesi", trOnly: true },
 ];
 
-const TURKISH_CATEGORIES = [
+export const TURKISH_CATEGORIES = [
   { tr: "finans", en: "finance" },
   { tr: "egitim", en: "education" },
   { tr: "saglik", en: "health" },
@@ -82,7 +93,10 @@ function entry(
   return item;
 }
 
-/** Builds sitemap entries for /sitemap.xml (used by route handler only). */
+/**
+ * Builds sitemap entries for /sitemap.xml (used by route handler only).
+ * If GSC reports a 404 URL: remove it from getSitemapEntries (and from lib/indexing/get-all-urls.ts if present).
+ */
 export function getSitemapEntries(): MetadataRoute.Sitemap {
   const calculators = getAllCalculators();
   const blogPosts = getAllBlogPosts();

@@ -21,7 +21,7 @@ export const CATEGORY_CONTENT: Record<string, string> = {
     <p>Compound interest can significantly grow savings over time. Our <a href="/calculators/finance/savings-calculator">savings calculator</a> and <a href="/calculators/finance/compound-interest-calculator">compound interest calculator</a> let you project future balances. For retirement, our <a href="/calculators/finance/retirement-calculator">retirement calculator</a> and <a href="/calculators/finance/investment-calculator">investment calculator</a> help you set targets and see the impact of regular contributions and expected returns. These tools are for estimation only; actual results depend on market conditions and your situation.</p>
 
     <h3>Daily Financial Tools</h3>
-    <p>Smaller but useful tools include our <a href="/calculators/finance/tip-calculator">tip calculator</a> for splitting bills and tipping, and our <a href="/calculators/finance/discount-calculator">discount calculator</a> for sale prices and percentage-off deals. For multi-currency amounts, use our <a href="/calculators/finance/currency-converter">currency converter</a>. All calculators are free and designed to give you clear, immediate results for everyday financial questions.</p>
+    <p>Smaller but useful tools include our <a href="/calculators/finance/tip-calculator">tip calculator</a> for splitting bills and tipping, and our <a href="/calculators/finance/discount-calculator">discount calculator</a> for sale prices and percentage-off deals. All calculators are free and designed to give you clear, immediate results for everyday financial questions.</p>
   `,
 
   health: `

@@ -20,7 +20,10 @@ function percentToLetter(percent: number, scale: { A: number; B: number; C: numb
   return "F";
 }
 
-export function GradeCalculator() {
+type Locale = "en" | "tr";
+
+export function GradeCalculator({ locale: localeProp = "en" }: { locale?: Locale }) {
+  const isTr = localeProp === "tr";
   const [mode, setMode] = useState<"percent" | "points" | "final">("percent");
   const [percent, setPercent] = useState("");
   const [pointsEarned, setPointsEarned] = useState("");
@@ -59,7 +62,7 @@ export function GradeCalculator() {
       if (errTotal) newErrors.pointsTotal = errTotal;
       const e = parseFloat(pointsEarned);
       const t = parseFloat(pointsTotal);
-      if (!errEarned && !errTotal && t > 0 && e > t) newErrors.pointsEarned = "Earned cannot exceed total";
+      if (!errEarned && !errTotal && t > 0 && e > t) newErrors.pointsEarned = isTr ? "Kazanılan toplamı aşamaz" : "Earned cannot exceed total";
     }
     if (mode === "final") {
       const errCur = validateField(currentGrade, COMMON_RULES.percentage);
@@ -122,56 +125,56 @@ export function GradeCalculator() {
     <div className="w-full max-w-2xl mx-auto space-y-6">
       <div className="bg-white rounded-lg border-2 border-[#e2e8f0] p-6 space-y-6">
         <div className="flex flex-wrap gap-2">
-          <Button variant={mode === "percent" ? "primary" : "outline"} size="sm" onClick={() => { setMode("percent"); setResult(null); }}>% to letter</Button>
-          <Button variant={mode === "points" ? "primary" : "outline"} size="sm" onClick={() => { setMode("points"); setResult(null); }}>Points to grade</Button>
-          <Button variant={mode === "final" ? "primary" : "outline"} size="sm" onClick={() => { setMode("final"); setResult(null); }}>Grade needed on final</Button>
+          <Button variant={mode === "percent" ? "primary" : "outline"} size="sm" onClick={() => { setMode("percent"); setResult(null); }}>{isTr ? "% → harf" : "% to letter"}</Button>
+          <Button variant={mode === "points" ? "primary" : "outline"} size="sm" onClick={() => { setMode("points"); setResult(null); }}>{isTr ? "Puan → not" : "Points to grade"}</Button>
+          <Button variant={mode === "final" ? "primary" : "outline"} size="sm" onClick={() => { setMode("final"); setResult(null); }}>{isTr ? "Finalde gerekli not" : "Grade needed on final"}</Button>
         </div>
         <div className="space-y-2">
-          <label className="block text-sm font-medium text-[#334155]">Grading scale</label>
+          <label className="block text-sm font-medium text-[#334155]">{isTr ? "Notlama ölçeği" : "Grading scale"}</label>
           <select className="w-full rounded-md border border-[#e2e8f0] px-3 py-2 text-[#1e293b]" value={scalePreset} onChange={(e) => setScalePreset(e.target.value as ScalePreset)}>
-            <option value="standard">Standard (90/80/70/60)</option>
-            <option value="strict">Strict (93/85/77/70)</option>
-            <option value="custom">Custom</option>
+            <option value="standard">{isTr ? "Standart (90/80/70/60)" : "Standard (90/80/70/60)"}</option>
+            <option value="strict">{isTr ? "Katı (93/85/77/70)" : "Strict (93/85/77/70)"}</option>
+            <option value="custom">{isTr ? "Özel" : "Custom"}</option>
           </select>
           {scalePreset === "custom" && (
             <div className="grid grid-cols-4 gap-2 mt-2">
-              <Input label="A min %" type="number" value={customA} onChange={(e) => setCustomA(e.target.value)} min="0" max="100" />
-              <Input label="B min %" type="number" value={customB} onChange={(e) => setCustomB(e.target.value)} min="0" max="100" />
-              <Input label="C min %" type="number" value={customC} onChange={(e) => setCustomC(e.target.value)} min="0" max="100" />
-              <Input label="D min %" type="number" value={customD} onChange={(e) => setCustomD(e.target.value)} min="0" max="100" />
+              <Input label={isTr ? "A min %" : "A min %"} type="number" value={customA} onChange={(e) => setCustomA(e.target.value)} min="0" max="100" />
+              <Input label={isTr ? "B min %" : "B min %"} type="number" value={customB} onChange={(e) => setCustomB(e.target.value)} min="0" max="100" />
+              <Input label={isTr ? "C min %" : "C min %"} type="number" value={customC} onChange={(e) => setCustomC(e.target.value)} min="0" max="100" />
+              <Input label={isTr ? "D min %" : "D min %"} type="number" value={customD} onChange={(e) => setCustomD(e.target.value)} min="0" max="100" />
             </div>
           )}
         </div>
         {mode === "percent" && (
-          <Input label="Percentage" type="number" value={percent} onChange={(e) => { setPercent(e.target.value); clearError("percent"); }} placeholder="e.g. 85" error={errors.percent || undefined} step="0.1" min="0" max="100" />
+          <Input label={isTr ? "Yüzde" : "Percentage"} type="number" value={percent} onChange={(e) => { setPercent(e.target.value); clearError("percent"); }} placeholder={isTr ? "örn. 85" : "e.g. 85"} error={errors.percent || undefined} step="0.1" min="0" max="100" />
         )}
         {mode === "points" && (
           <>
-            <Input label="Points earned" type="number" value={pointsEarned} onChange={(e) => { setPointsEarned(e.target.value); clearError("pointsEarned"); }} placeholder="e.g. 42" error={errors.pointsEarned || undefined} min="0" />
-            <Input label="Total points" type="number" value={pointsTotal} onChange={(e) => { setPointsTotal(e.target.value); clearError("pointsTotal"); }} placeholder="e.g. 50" error={errors.pointsTotal || undefined} min="0" />
+            <Input label={isTr ? "Kazanılan puan" : "Points earned"} type="number" value={pointsEarned} onChange={(e) => { setPointsEarned(e.target.value); clearError("pointsEarned"); }} placeholder={isTr ? "örn. 42" : "e.g. 42"} error={errors.pointsEarned || undefined} min="0" />
+            <Input label={isTr ? "Toplam puan" : "Total points"} type="number" value={pointsTotal} onChange={(e) => { setPointsTotal(e.target.value); clearError("pointsTotal"); }} placeholder={isTr ? "örn. 50" : "e.g. 50"} error={errors.pointsTotal || undefined} min="0" />
           </>
         )}
         {mode === "final" && (
           <>
-            <Input label="Current grade (%)" type="number" value={currentGrade} onChange={(e) => { setCurrentGrade(e.target.value); clearError("currentGrade"); }} placeholder="e.g. 78" error={errors.currentGrade || undefined} step="0.1" min="0" max="100" />
-            <Input label="Final exam weight (%)" type="number" value={finalWeight} onChange={(e) => { setFinalWeight(e.target.value); clearError("finalWeight"); }} placeholder="e.g. 30" error={errors.finalWeight || undefined} step="0.1" min="0" max="100" />
-            <Input label="Desired course grade (%)" type="number" value={desiredGrade} onChange={(e) => { setDesiredGrade(e.target.value); clearError("desiredGrade"); }} placeholder="e.g. 80" error={errors.desiredGrade || undefined} step="0.1" min="0" max="100" />
+            <Input label={isTr ? "Mevcut not (%)" : "Current grade (%)"} type="number" value={currentGrade} onChange={(e) => { setCurrentGrade(e.target.value); clearError("currentGrade"); }} placeholder={isTr ? "örn. 78" : "e.g. 78"} error={errors.currentGrade || undefined} step="0.1" min="0" max="100" />
+            <Input label={isTr ? "Final sınav ağırlığı (%)" : "Final exam weight (%)"} type="number" value={finalWeight} onChange={(e) => { setFinalWeight(e.target.value); clearError("finalWeight"); }} placeholder={isTr ? "örn. 30" : "e.g. 30"} error={errors.finalWeight || undefined} step="0.1" min="0" max="100" />
+            <Input label={isTr ? "İstenen ders notu (%)" : "Desired course grade (%)"} type="number" value={desiredGrade} onChange={(e) => { setDesiredGrade(e.target.value); clearError("desiredGrade"); }} placeholder={isTr ? "örn. 80" : "e.g. 80"} error={errors.desiredGrade || undefined} step="0.1" min="0" max="100" />
           </>
         )}
         <div className="flex gap-3">
-          <Button onClick={calculate} className="flex-1">Calculate</Button>
-          <Button onClick={reset} variant="outline">Reset</Button>
+          <Button onClick={calculate} className="flex-1">{isTr ? "Hesapla" : "Calculate"}</Button>
+          <Button onClick={reset} variant="outline">{isTr ? "Sıfırla" : "Reset"}</Button>
         </div>
       </div>
       {result && (
         <div className="bg-[#f0fdf4] border-2 border-[#10b981] rounded-lg p-6 space-y-3" id="result-summary">
-          <h3 className="text-lg font-semibold text-[#1e293b]">Result</h3>
+          <h3 className="text-lg font-semibold text-[#1e293b]">{isTr ? "Sonuç" : "Result"}</h3>
           {"needed" in result ? (
-            <p className="text-2xl font-bold text-[#10b981] font-mono">Grade needed on final: {result.needed.toFixed(1)}%{result.needed > 100 && " (impossible)"}{result.needed < 0 && " (already above target)"}</p>
+            <p className="text-2xl font-bold text-[#10b981] font-mono">{isTr ? "Finalde gerekli not: " : "Grade needed on final: "}{result.needed.toFixed(1)}%{result.needed > 100 && (isTr ? " (imkansız)" : " (impossible)")}{result.needed < 0 && (isTr ? " (zaten hedefin üzerinde)" : " (already above target)")}</p>
           ) : (
             <p className="text-2xl font-bold text-[#10b981] font-mono">{result.letter} — {result.percent.toFixed(1)}%</p>
           )}
-          <Button onClick={copyResult} variant="outline" size="sm">{copied ? "Copied!" : "Copy result"}</Button>
+          <Button onClick={copyResult} variant="outline" size="sm">{copied ? (isTr ? "Kopyalandı!" : "Copied!") : (isTr ? "Sonucu kopyala" : "Copy result")}</Button>
         </div>
       )}
     </div>

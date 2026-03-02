@@ -24,14 +24,16 @@ import { DateCalculator } from "./DateCalculator";
 import { UnitConverter } from "./UnitConverter";
 import { PregnancyCalculator } from "./PregnancyCalculator";
 import { HoursCalculator } from "./HoursCalculator";
-import { CurrencyConverter } from "./CurrencyConverter";
 import { InflationPurchasingPowerCalculator } from "./InflationPurchasingPowerCalculator";
 import { FractionCalculator } from "./FractionCalculator";
 import { BMRCalculator } from "./BMRCalculator";
 import { GradeCalculator } from "./GradeCalculator";
 import { ROICalculator } from "./ROICalculator";
 import { PaybackPeriodCalculator } from "./PaybackPeriodCalculator";
-import { AdAboveFold, AdBelowContent } from "@/components/ads/AdSense";
+import { DebtToIncomeCalculator } from "./DebtToIncomeCalculator";
+import { LoanPayoffCalculator } from "./LoanPayoffCalculator";
+import { WaterIntakeCalculator } from "./WaterIntakeCalculator";
+import { ProteinCalculator } from "./ProteinCalculator";
 import { getRelatedCalculators } from "@/lib/calculators/related";
 import { getRelatedBlogPosts } from "@/lib/blog/related";
 import { Breadcrumbs } from "@/components/SEO/Breadcrumbs";
@@ -77,13 +79,16 @@ const calculatorComponents: Record<
   "unit-converter": UnitConverter,
   "pregnancy-calculator": PregnancyCalculator,
   "hours-calculator": HoursCalculator,
-  "currency-converter": CurrencyConverter,
   "inflation-purchasing-power-calculator": InflationPurchasingPowerCalculator,
   "fraction-calculator": FractionCalculator,
   "bmr-calculator": BMRCalculator,
   "grade-calculator": GradeCalculator,
   "roi-calculator": ROICalculator,
   "payback-period-calculator": PaybackPeriodCalculator,
+  "debt-to-income-calculator": DebtToIncomeCalculator,
+  "loan-payoff-calculator": LoanPayoffCalculator,
+  "water-intake-calculator": WaterIntakeCalculator,
+  "protein-calculator": ProteinCalculator,
 };
 
 export function CalculatorPage({ calculator }: CalculatorPageProps) {
@@ -111,8 +116,6 @@ export function CalculatorPage({ calculator }: CalculatorPageProps) {
           </p>
         </div>
 
-        <AdAboveFold />
-
         <CalculatorComponent />
 
         {(calculator.category === "health" || calculator.category === "finance") && (
@@ -124,8 +127,6 @@ export function CalculatorPage({ calculator }: CalculatorPageProps) {
 
         {/* Calculation History */}
         <CalculationHistory calculatorId={calculator.id} maxItems={3} />
-
-        <AdBelowContent />
 
         {calculator.content && (
           <div className="mt-12 bg-white rounded-lg border-2 border-[#e2e8f0] p-8">
