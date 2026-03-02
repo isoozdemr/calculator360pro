@@ -114,6 +114,22 @@ Bu durum **hata değildir**. Google, hreflang/canonical sayesinde bu URL'leri "d
 4. Manuel olarak indexing request yap
 5. 48-72 saat bekle
 
+### Dizine eklenememe – proje tarafı teyit (kaynak projede değilse)
+Aşağıdaki noktalar projede dizine eklenmeme sebebi olmadığını doğrular. Sorun devam ediyorsa GSC tarafı (ceza, crawl bütçesi, doğrulama) veya hosting/erişilebilirlik kontrol edilir.
+
+- **robots.txt** ([app/robots.ts](app/robots.ts)): Ana sayfa ve calculator sayfaları engelli değil. `User-agent: *` ile `/api/`, `/admin/`, `/_next/`, `/embed` disallow; `User-agent: Googlebot` ile `/_next/` yok (Googlebot sayfa içeriğini tarayabilir). Sitemap ve Host `SITE_URL` ile veriliyor.
+- **Meta robots:** Tüm public sayfalarda `index: true` (layout, calculator, blog, rehber, statik sayfalar). Sadece `/search`, `/embed` ve 404 sayfasında `index: false`.
+- **Sitemap:** [lib/sitemap-entries.ts](lib/sitemap-entries.ts) tek kaynak; EN URL’ler `getAllCalculators()` (definitions), TR URL’ler `TURKISH_CALCULATORS`. TR-only (asgari, MTV) için `trOnly: true`, EN URL üretilmiyor (404 riski yok).
+- **Canonical ve hreflang:** TR/EN calculator ve blog sayfalarında `alternates.canonical` ve `alternates.languages` tanımlı; TR-only sayfalarda `en` alternate yok.
+- **404 önleme:** EN calculator route’ta `dynamicParams = false`; sadece `generateStaticParams` ile üretilen path’ler serve edilir. `npx tsx scripts/validate-calculator-urls.ts` ile TR sayfa dosyaları ve EN definitions uyumu doğrulanır.
+- **Indexable URL listesi:** [lib/indexing/get-all-urls.ts](lib/indexing/get-all-urls.ts) sadece sitemap-entries ve definitions’dan URL üretir; yanlış veya hayali EN URL eklenmez.
+
+Tüm sayfaları Google’a göndermek için: `NEXT_PUBLIC_SITE_URL=https://calculator360pro.com npm run submit:urls` (production API’de Indexing API kimlik bilgileri tanımlı olmalı).
+
+### Sayfa kaynakları (yüklenemedi / robots.txt engellendi)
+- **Reklam ve analytics:** GSC'de `googleads.doubleclick.net`, `pagead2.googlesyndication.com`, `google-analytics.com` için "robots.txt tarafından engellendi" veya "yüklenemedi" görünebilir. Bu URL'ler üçüncü taraf alan adlarıdır; engelleme onların kendi politikasından kaynaklanır. **Sitemizin robots.txt'i bu alanları kontrol etmez;** bu uyarılar normaldir ve kod değişikliği gerektirmez.
+- **/og-image.png:** Sayfa kaynakları listesinde `/og-image.png` 200 dönmeli. Dosya yoksa GSC "Diğer hata" gösterebilir. Çözüm: `npm run generate:og-image` ile `public/og-image.png` üretin (script `public/og-image.svg` → 1200x630 PNG) ve deploy edin.
+
 ### GSC 5 sorgu + snippet (title 50–60, meta 150–160)
 Hedef sorgular: **kalori hesap makinesi**, **calculating your bmi**, **student loans monthly payment calculator**, **percentage made easy**, **2022 gelir vergisi hesaplama**. İlgili sayfalarda title 50–60 karakter, meta description 150–160 karakter; bu ifadelere yakın geçiş title/description ve (uygunsa) FAQ’te kullanıldı. Eksik kalan sayfa varsa tamamlanacak.
 

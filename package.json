@@ -21,7 +21,8 @@
     "check:freshness": "node scripts/check-content-freshness.js",
     "analyze:keywords": "node scripts/analyze-keywords-density.js",
     "submit:urls": "tsx scripts/submit-all-urls-to-google.ts",
-    "gsc:urls": "tsx scripts/print-sitemap-urls.ts"
+    "gsc:urls": "tsx scripts/print-sitemap-urls.ts",
+    "generate:og-image": "node scripts/convert-svg-to-png.js"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^16.1.1",
@@ -41,6 +42,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.1",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
     "typescript": "^5"
