@@ -1,6 +1,4 @@
 import { NextResponse } from "next/server";
-import { getSitemapEntries } from "@/lib/sitemap-entries";
-import { sitemapEntriesToXml } from "@/lib/sitemap-to-xml";
 import { SITE_URL } from "@/lib/constants";
 
 function escapeXml(unsafe: string): string {
@@ -40,6 +38,8 @@ const FALLBACK_CACHE = "public, max-age=60, s-maxage=60";
  */
 export async function GET() {
   try {
+    const { getSitemapEntries } = await import("@/lib/sitemap-entries");
+    const { sitemapEntriesToXml } = await import("@/lib/sitemap-to-xml");
     const entries = getSitemapEntries();
     const xml = sitemapEntriesToXml(entries);
     return new NextResponse(xml, {
@@ -58,3 +58,5 @@ export async function GET() {
     });
   }
 }
+
+export const dynamic = "force-dynamic";
