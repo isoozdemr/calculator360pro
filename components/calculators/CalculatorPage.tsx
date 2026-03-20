@@ -36,6 +36,18 @@ import { WaterIntakeCalculator } from "./WaterIntakeCalculator";
 import { ProteinCalculator } from "./ProteinCalculator";
 import { getRelatedCalculators } from "@/lib/calculators/related";
 import { getRelatedBlogPosts } from "@/lib/blog/related";
+import { RefinanceCalculator } from "./RefinanceCalculator";
+import { IncomeDrivenStudentLoanCalculator } from "./IncomeDrivenStudentLoanCalculator";
+import { CapitalGainsTaxCalculator } from "./CapitalGainsTaxCalculator";
+import { SelfEmployedTaxCalculator } from "./SelfEmployedTaxCalculator";
+import { NetWorthCalculator } from "./NetWorthCalculator";
+import { AprCalculator } from "./AprCalculator";
+import { DebtSnowballCalculator } from "./DebtSnowballCalculator";
+import { OvulationCalculator } from "./OvulationCalculator";
+import { IdealWeightCalculator } from "./IdealWeightCalculator";
+import { PercentagePointsCalculator } from "./PercentagePointsCalculator";
+import { WorkHoursTimesheetCalculator } from "./WorkHoursTimesheetCalculator";
+import { CurrencyConverterCalculator } from "./CurrencyConverterCalculator";
 import { Breadcrumbs } from "@/components/SEO/Breadcrumbs";
 import { SocialShare } from "@/components/SEO/SocialShare";
 import { StarRating } from "@/components/engagement/StarRating";
@@ -89,6 +101,18 @@ const calculatorComponents: Record<
   "loan-payoff-calculator": LoanPayoffCalculator,
   "water-intake-calculator": WaterIntakeCalculator,
   "protein-calculator": ProteinCalculator,
+  "refinance-calculator": RefinanceCalculator,
+  "income-driven-student-loan-calculator": IncomeDrivenStudentLoanCalculator,
+  "capital-gains-tax-calculator": CapitalGainsTaxCalculator,
+  "self-employed-tax-calculator": SelfEmployedTaxCalculator,
+  "net-worth-calculator": NetWorthCalculator,
+  "apr-calculator": AprCalculator,
+  "debt-snowball-calculator": DebtSnowballCalculator,
+  "ovulation-calculator": OvulationCalculator,
+  "ideal-weight-calculator": IdealWeightCalculator,
+  "percentage-points-calculator": PercentagePointsCalculator,
+  "work-hours-timesheet-calculator": WorkHoursTimesheetCalculator,
+  "currency-converter-calculator": CurrencyConverterCalculator,
 };
 
 export function CalculatorPage({ calculator }: CalculatorPageProps) {

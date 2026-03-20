@@ -205,14 +205,30 @@ export function getSitemapEntries(): MetadataRoute.Sitemap {
     tr: "/tr/rehberler/vergi-takvimi-2026",
     "x-default": "/guides/tax-calendar-2026-usa",
   };
+  const guideBestMortgageAlt = {
+    en: "/guides/best-mortgage-calculator-2026",
+    tr: "/tr/rehberler/en-iyi-konut-kredisi-hesap-makinesi-2026",
+    "x-default": "/guides/best-mortgage-calculator-2026",
+  };
+  const guideStudentLoansAlt = {
+    en: "/guides/student-loans-monthly-payment-calculator-how-to",
+    tr: "/tr/rehberler/ogrenim-kredisi-aylik-odeme-nasil-hesaplanir",
+    "x-default": "/guides/student-loans-monthly-payment-calculator-how-to",
+  };
   urls.push(entry("/tr/rehberler/finansal-terimler-sozlugu", now, "monthly", 0.6, guideGlossaryAlt));
   urls.push(entry("/tr/rehberler/vergi-takvimi-2026", now, "monthly", 0.6, guideTaxAlt));
   urls.push({ url: fullUrl("/tr/rehberler/sgk-emeklilik-tablosu"), lastModified: now, changeFrequency: "monthly", priority: 0.6 });
   urls.push({ url: fullUrl("/tr/rehberler/kredi-notu-nasil-yukseltilir"), lastModified: now, changeFrequency: "monthly", priority: 0.6 });
   urls.push({ url: fullUrl("/tr/rehberler/vergi-indirimleri-rehberi-2026"), lastModified: now, changeFrequency: "monthly", priority: 0.6 });
   urls.push({ url: fullUrl("/tr/rehberler/yatirim-baslangic-rehberi-2026"), lastModified: now, changeFrequency: "monthly", priority: 0.6 });
+  urls.push({ url: fullUrl("/tr/rehberler/gelir-vergisi-hesaplama-2022"), lastModified: now, changeFrequency: "monthly", priority: 0.6 });
+  urls.push({ url: fullUrl("/tr/rehberler/2026-veri-kaynaklari"), lastModified: now, changeFrequency: "monthly", priority: 0.6 });
   urls.push(entry("/guides/financial-terms-glossary", now, "monthly", 0.6, guideGlossaryAlt));
   urls.push(entry("/guides/tax-calendar-2026-usa", now, "monthly", 0.6, guideTaxAlt));
+  urls.push(entry("/guides/best-mortgage-calculator-2026", now, "monthly", 0.6, guideBestMortgageAlt));
+  urls.push(entry("/guides/student-loans-monthly-payment-calculator-how-to", now, "monthly", 0.6, guideStudentLoansAlt));
+  urls.push(entry("/tr/rehberler/en-iyi-konut-kredisi-hesap-makinesi-2026", now, "monthly", 0.6, guideBestMortgageAlt));
+  urls.push(entry("/tr/rehberler/ogrenim-kredisi-aylik-odeme-nasil-hesaplanir", now, "monthly", 0.6, guideStudentLoansAlt));
 
   const contactAlt = { en: "/contact", tr: "/tr/iletisim", "x-default": "/contact" };
   urls.push(entry("/contact", now, "monthly", 0.5, contactAlt));

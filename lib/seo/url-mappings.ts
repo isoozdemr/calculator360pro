@@ -90,6 +90,8 @@ export const URL_MAPPINGS: Record<string, string> = {
   // Guide pages (EN–TR pairs)
   "/guides/financial-terms-glossary": "/tr/rehberler/finansal-terimler-sozlugu",
   "/guides/tax-calendar-2026-usa": "/tr/rehberler/vergi-takvimi-2026",
+  "/guides/best-mortgage-calculator-2026": "/tr/rehberler/en-iyi-konut-kredisi-hesap-makinesi-2026",
+  "/guides/student-loans-monthly-payment-calculator-how-to": "/tr/rehberler/ogrenim-kredisi-aylik-odeme-nasil-hesaplanir",
 };
 
 /**
@@ -114,9 +116,11 @@ export const REVERSE_URL_MAPPINGS: Record<string, string> = Object.entries(URL_M
  */
 export function getAlternateUrl(path: string, currentLocale: "en" | "tr"): string {
   if (currentLocale === "en") {
-    return URL_MAPPINGS[path] || "/tr";
+    // If no translated route exists, stay on current page instead of redirecting to homepage.
+    return URL_MAPPINGS[path] || path;
   } else {
-    return REVERSE_URL_MAPPINGS[path] || "/";
+    // If no translated route exists, stay on current page instead of redirecting to homepage.
+    return REVERSE_URL_MAPPINGS[path] || path;
   }
 }
 

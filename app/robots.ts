@@ -13,7 +13,10 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "Googlebot",
         allow: "/",
-        disallow: ["/api/", "/admin/", "/_next/", "/embed"],
+        // Keep blocking only truly sensitive endpoints.
+        // Avoid disallowing "/_next/" to reduce any chance of crawler restrictions
+        // affecting how page resources are discovered.
+        disallow: ["/api/", "/admin/", "/embed"],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

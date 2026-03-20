@@ -44,6 +44,16 @@ const GUIDES = [
     href: "/guides/tax-calendar-2026-usa",
     description: "Important US tax deadlines and filing dates for 2026. Plan with our tax calculator.",
   },
+  {
+    title: "Best Mortgage Calculator 2026",
+    href: "/guides/best-mortgage-calculator-2026",
+    description: "Compare what makes a mortgage calculator “best” and how to evaluate total monthly cost assumptions.",
+  },
+  {
+    title: "Student Loans Monthly Payment (How to Calculate)",
+    href: "/guides/student-loans-monthly-payment-calculator-how-to",
+    description: "Step-by-step: inputs, amortization formula, standard vs extended terms, and payoff date.",
+  },
 ];
 
 const BREADCRUMB_ITEMS = [

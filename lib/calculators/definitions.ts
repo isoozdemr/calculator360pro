@@ -45,7 +45,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "free online percentage calculator",
     ],
     metaDescription:
-      "Percentage made easy: free online percentage calculator. Calculate percent, increase/decrease, and percentage of a number. No sign-up, instant results. Fast and accurate for everyone.",
+      "Percentage made easy: free online percentage calculator. Calculate percent, increase/decrease, and percentage of a number. No sign-up. Fast and accurate.",
     faqs: [
       {
         question: "How do I calculate a percentage?",
@@ -93,7 +93,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "free online BMI calculator 2026",
     ],
     metaDescription:
-      "Calculating your BMI is easy with our free online BMI calculator. Get instant Body Mass Index results (metric or imperial). Understand your BMI category and health status. No sign-up. Try now.",
+      "Calculating your BMI is easy with our free online BMI calculator. Get instant Body Mass Index results (metric or imperial), BMI category & health status. No sign-up.",
     faqs: [
       {
         question: "What is BMI?",
@@ -275,26 +275,61 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "free online mortgage calculator 2026",
     ],
     metaDescription:
-      "Free online mortgage calculator. Instant results for monthly payments, total interest, and amortization. No sign-up. Perfect for 2026 homebuyers. Try free.",
+      "Free online mortgage calculator with amortization schedule. Get P&I monthly payment plus estimated taxes, insurance & PMI (if eligible). No sign-up.",
     faqs: [
       {
         question: "How is monthly mortgage payment calculated?",
         answer:
-          "Monthly mortgage payment is calculated using the formula: M = P[r(1+r)^n]/[(1+r)^n-1], where P is principal, r is monthly interest rate, and n is number of payments. For example, a $300,000 loan at 4% annual interest for 30 years results in a monthly payment of approximately $1,432. This formula accounts for both principal and interest.",
+          "Monthly mortgage payment (principal + interest) is calculated using the formula: M = P[r(1+r)^n]/[(1+r)^n-1], where P is the loan amount, r is the monthly interest rate, and n is the number of payments. In our calculator, the total monthly payment then adds property taxes and homeowners insurance (from your annual amounts) plus PMI (if your down payment is under 20%).",
       },
       {
         question: "What is included in a mortgage payment?",
         answer:
-          "A mortgage payment typically includes principal (loan amount), interest, property taxes, homeowners insurance, and sometimes PMI (Private Mortgage Insurance). Principal and interest make up the core payment, while taxes and insurance are often escrowed. PMI is required when the down payment is less than 20% and protects the lender if you default on the loan.",
+          "A mortgage payment typically includes principal (loan amount), interest, property taxes, homeowners insurance, and sometimes PMI (Private Mortgage Insurance). In this calculator, you get the P&I payment plus a total monthly payment that includes estimated monthly taxes and insurance; PMI is added only when the down payment is below 20% (using your PMI monthly estimate).",
       },
       {
         question: "How does down payment affect mortgage payments?",
         answer:
-          "A larger down payment reduces the principal amount, which lowers monthly payments and total interest paid over the life of the loan. For example, a 20% down payment on a $300,000 home ($60,000) reduces the loan to $240,000, saving thousands in interest. Additionally, down payments of 20% or more eliminate PMI requirements, further reducing monthly costs.",
+          "A larger down payment reduces the loan principal (our calculator uses home value and down payment to determine the loan amount), which lowers the P&I payment and total interest. If your down payment is under 20%, PMI is typically required; in our calculator, PMI is included only for that case and increases your total monthly payment.",
       },
     ],
     relatedCalculators: ["loan-calculator", "compound-interest-calculator", "debt-to-income-calculator"],
     content: CALCULATOR_CONTENT["mortgage-calculator"],
+  },
+  "refinance-calculator": {
+    id: "refinance-calculator",
+    name: "Refinance Calculator",
+    slug: "refinance-calculator",
+    category: "finance",
+    description:
+      "Compare refinance options by monthly payment, estimated total interest, and break-even time based on refinance costs.",
+    keywords: [
+      "refinance calculator",
+      "mortgage refinance calculator",
+      "refinance savings calculator",
+      "mortgage payment comparison",
+      "break even calculator",
+      "loan refinance analysis",
+    ],
+    metaDescription:
+      "Refinance calculator: compare current vs new mortgage payments, estimated total interest, and break-even time. See if refinancing pays off. No sign-up.",
+    faqs: [
+      {
+        question: "How do I calculate refinance savings?",
+        answer:
+          "Refinance savings are estimated by comparing your current monthly principal & interest payment to the new payment. Then you estimate total interest over each option’s term and compute break-even as (refinance costs / monthly savings).",
+      },
+      {
+        question: "What costs should I include in a refinance?",
+        answer:
+          "Include estimated closing costs, lender fees, appraisal, points, and any one-time expenses required to complete the refinance. Enter an approximate total so the break-even estimate is realistic.",
+      },
+      {
+        question: "When is refinancing usually worth it?",
+        answer:
+          "Refinancing is usually worth considering when the new monthly payment meaningfully reduces costs and the estimated break-even period is shorter than your expected time to keep the loan. Also compare total interest, not only monthly savings.",
+      },
+    ],
   },
   "compound-interest-calculator": {
     id: "compound-interest-calculator",
@@ -553,7 +588,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "daily calorie calculator free",
     ],
     metaDescription:
-      "Free calorie calculator: daily calorie needs, BMR, and TDEE. How many calories to maintain, lose, or gain weight. Activity level and goals. No sign-up. Instant results.",
+      "Free calorie calculator for daily calorie needs, BMR and TDEE. Learn how many calories to maintain, lose or gain based on activity and goals. No sign-up.",
     faqs: [
       {
         question: "How do I calculate my daily calorie needs?",
@@ -696,7 +731,7 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
     slug: "student-loan-calculator",
     category: "finance",
     description:
-      "Calculate student loan payments, total interest, and repayment strategies. Compare different repayment plans and see how extra payments can save money.",
+      "Calculate student loan payments, total interest, payoff time, and compare standard vs extended repayment terms. See how interest rate and term affect your monthly payment.",
     keywords: [
       "student loan calculator",
       "student loans monthly payment calculator",
@@ -716,22 +751,22 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       "student loan calculator online",
     ],
     metaDescription:
-      "Student loans monthly payment calculator: free tool for monthly payments, total interest, and repayment strategies. Compare federal and private repayment plans. No sign-up.",
+      "Student loans monthly payment calculator: free tool for monthly payments, total interest, and payoff date. Compare standard vs extended repayment terms. No sign-up.",
     faqs: [
       {
         question: "How are student loan payments calculated?",
         answer:
-          "Student loan payments are calculated using the standard amortization formula, similar to other loans. For federal loans, payments are based on your loan balance, interest rate, and repayment plan. Standard repayment plans use a 10-year term, while income-driven plans base payments on your income and family size. Our calculator helps you estimate payments for different scenarios.",
+          "Student loan payments are calculated using the standard amortization formula, similar to other loans. This calculator uses your loan balance (principal), annual interest rate, and repayment term (standard or extended) to estimate your monthly payment and total interest.",
       },
       {
-        question: "What is the difference between federal and private student loans?",
+        question: "What repayment plans does this student loan calculator support?",
         answer:
-          "Federal student loans are issued by the government and offer benefits like income-driven repayment plans, loan forgiveness programs, and fixed interest rates. Private student loans are issued by banks and credit unions, typically have variable rates, and don't offer the same protections. Federal loans generally have lower interest rates and more flexible repayment options.",
+          "This calculator compares two fixed-term amortization options: Standard (5–10 years) and Extended (5–25 years). It does not model income-driven repayment, forgiveness programs, or payments based on income.",
       },
       {
-        question: "What are income-driven repayment plans?",
+        question: "How does the extended repayment plan affect my payment?",
         answer:
-          "Income-driven repayment plans base your monthly payment on your income and family size, typically 10-20% of discretionary income. These plans can lower monthly payments and offer loan forgiveness after 20-25 years of payments. Examples include Income-Based Repayment (IBR), Pay As You Earn (PAYE), and Revised Pay As You Earn (REPAYE). These plans are only available for federal loans.",
+          "An extended repayment term typically lowers your monthly payment because the same loan balance is spread over more months. However, because you pay interest for longer, your total interest usually increases compared to a shorter standard term.",
       },
       {
         question: "Should I pay off student loans early?",
@@ -741,11 +776,47 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
       {
         question: "How does student loan interest work?",
         answer:
-          "Student loan interest accrues daily based on your outstanding balance and interest rate. For federal loans, interest is typically fixed, while private loans may have variable rates. Unpaid interest can capitalize (be added to the principal), increasing your total balance. Making payments while in school or during grace periods can prevent interest capitalization and reduce total cost.",
+          "Student loan interest accrues based on your outstanding balance and interest rate. In this calculator, interest is applied via the amortization schedule driven by your annual rate and repayment term. Actual interest rules vary by lender and loan type, so consider your servicer's details for specifics.",
       },
     ],
     relatedCalculators: ["loan-calculator", "budget-calculator"],
     content: CALCULATOR_CONTENT["student-loan-calculator"],
+  },
+  "income-driven-student-loan-calculator": {
+    id: "income-driven-student-loan-calculator",
+    name: "Income-Driven Student Loan Calculator",
+    slug: "income-driven-student-loan-calculator",
+    category: "finance",
+    description:
+      "Estimate income-driven student loan monthly payments using simplified discretionary income rules, and simulate payoff with a fixed payment.",
+    keywords: [
+      "income-driven student loan calculator",
+      "student loan payment calculator",
+      "IBR payment calculator",
+      "PAYE payment calculator",
+      "SAVE payment calculator",
+      "discretionary income payment",
+      "student loan payoff estimate",
+    ],
+    metaDescription:
+      "Income-driven student loan calculator: estimate monthly payment from discretionary income using a simplified percentage rule. Simulate estimated payoff time. No sign-up.",
+    faqs: [
+      {
+        question: "How is the income-driven monthly payment estimated in this calculator?",
+        answer:
+          "This calculator uses a simplified rule: monthly payment = (discretionary income × plan percent) / 12. It then simulates amortization with your principal and interest rate to estimate payoff time.",
+      },
+      {
+        question: "What if my estimated payment doesn’t cover interest?",
+        answer:
+          "If the monthly payment is too low to cover accrued interest, the balance will not amortize. In that case, the payoff estimate is shown as unavailable (within the simulation cap).",
+      },
+      {
+        question: "Does this tool model official eligibility or forgiveness programs?",
+        answer:
+          "No. This tool only estimates payments and an amortization-style payoff under fixed payment assumptions. It does not compute eligibility or forgiveness outcomes.",
+      },
+    ],
   },
   "credit-card-payoff-calculator": {
     id: "credit-card-payoff-calculator",
@@ -1753,6 +1824,418 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
     ],
     relatedCalculators: ["calorie-calculator", "water-intake-calculator", "bmi-calculator"],
     content: CALCULATOR_CONTENT["protein-calculator"],
+  },
+  "capital-gains-tax-calculator": {
+    id: "capital-gains-tax-calculator",
+    name: "Capital Gains Tax Calculator",
+    slug: "capital-gains-tax-calculator",
+    category: "finance",
+    description:
+      "Estimate long-term and short-term capital gains tax using filing status, taxable income, basis, and sale amount.",
+    keywords: [
+      "capital gains tax calculator",
+      "long term capital gains tax calculator",
+      "short term capital gains tax",
+      "capital gains estimate",
+      "tax on stock sale calculator",
+      "capital gain tax rate",
+    ],
+    metaDescription:
+      "Free capital gains tax calculator for long-term and short-term gains. Enter filing status, taxable income, cost basis, and sale price to estimate tax fast.",
+    faqs: [
+      {
+        question: "What is the difference between long-term and short-term capital gains?",
+        answer:
+          "Short-term gains are from assets held one year or less and are typically taxed at ordinary income rates. Long-term gains are from assets held longer than one year and generally use lower preferential rates based on taxable income and filing status.",
+      },
+      {
+        question: "How does this calculator estimate capital gains tax?",
+        answer:
+          "The tool computes net gain as sale proceeds minus cost basis, then applies a selected tax treatment. For long-term gains, it uses filing status and taxable income to choose an estimated rate band. Results are educational estimates, not tax advice.",
+      },
+      {
+        question: "Can losses offset capital gains in this calculator?",
+        answer:
+          "This version focuses on a single gain estimate and does not fully model multi-asset netting rules. If you have capital losses, use this output as a baseline and confirm your final tax treatment with official guidance or a qualified tax professional.",
+      },
+      {
+        question: "Is the result final and ready to file?",
+        answer:
+          "No. The calculator provides a practical planning estimate, not a filing-ready tax return outcome. Final liability can change with deductions, additional income items, state treatment, carryovers, and current-year updates. Review official IRS guidance and confirm details with a qualified tax professional before filing.",
+      },
+    ],
+    relatedCalculators: ["tax-calculator", "investment-calculator", "roi-calculator", "compound-interest-calculator"],
+    content: CALCULATOR_CONTENT["capital-gains-tax-calculator"],
+  },
+  "self-employed-tax-calculator": {
+    id: "self-employed-tax-calculator",
+    name: "Self-Employed Tax Calculator",
+    slug: "self-employed-tax-calculator",
+    category: "finance",
+    description:
+      "Estimate self-employment tax using net earnings, filing status, Social Security wage base, and Additional Medicare thresholds.",
+    keywords: [
+      "self employed tax calculator",
+      "freelance tax calculator",
+      "self employment tax estimate",
+      "1099 tax calculator",
+      "schedule se calculator",
+      "quarterly estimated tax self employed",
+    ],
+    metaDescription:
+      "Free self-employed tax calculator. Estimate Social Security and Medicare self-employment tax from net earnings with filing-status thresholds and assumptions.",
+    faqs: [
+      {
+        question: "How is self-employment tax calculated?",
+        answer:
+          "A common estimate applies self-employment tax to 92.35% of net earnings. The Social Security portion is applied up to the annual wage base, while Medicare applies to eligible earnings and can include Additional Medicare above filing-status thresholds. This gives a practical planning estimate for budgeting.",
+      },
+      {
+        question: "Is self-employment tax the same as income tax?",
+        answer:
+          "No. Self-employment tax covers Social Security and Medicare contributions for earned business income. Income tax is separate and depends on total taxable income, filing status, deductions, credits, and other rules. This calculator focuses on payroll-equivalent self-employment tax estimation for planning and cash-flow decisions.",
+      },
+      {
+        question: "Does this include the deductible half of self-employment tax?",
+        answer:
+          "The tool can show estimated tax components and a planning view of the deductible half of self-employment tax. Your final deduction depends on full return context, interactions with other items, and filing details. Use this result for budgeting, then verify with official instructions before filing.",
+      },
+      {
+        question: "Can I use this for quarterly tax planning?",
+        answer:
+          "Yes, as an estimate. You can split annual projections into quarterly planning targets to avoid underpayment surprises. Actual payments should also account for household income, withholding, credits, prior-year safe-harbor rules, and seasonality, so final payment strategy may still require professional review.",
+      },
+    ],
+    relatedCalculators: ["tax-calculator", "salary-calculator", "budget-calculator", "debt-to-income-calculator"],
+    content: CALCULATOR_CONTENT["self-employed-tax-calculator"],
+  },
+  "net-worth-calculator": {
+    id: "net-worth-calculator",
+    name: "Net Worth Calculator",
+    slug: "net-worth-calculator",
+    category: "finance",
+    description:
+      "Calculate net worth by summing assets and liabilities to get a clear baseline for financial planning and tracking.",
+    keywords: [
+      "net worth calculator",
+      "personal net worth calculator",
+      "assets and liabilities calculator",
+      "how to calculate net worth",
+      "financial health calculator",
+    ],
+    metaDescription:
+      "Free net worth calculator. Add assets and liabilities to calculate your net worth instantly and track progress over time for smarter personal finance planning.",
+    faqs: [
+      {
+        question: "What is net worth?",
+        answer:
+          "Net worth is total assets minus total liabilities. Assets can include cash, investments, retirement accounts, vehicles, and property values. Liabilities include credit cards, student loans, auto loans, and mortgage balances. The difference gives a clear snapshot of your overall financial position at a point in time.",
+      },
+      {
+        question: "Is a negative net worth bad?",
+        answer:
+          "Negative net worth is common early in careers, after education debt, or after large financed purchases. It is not automatically failure, but a signal to improve debt structure, increase savings consistency, and build assets. Trend direction matters most: steady improvement over time is the planning objective.",
+      },
+      {
+        question: "How often should I update net worth?",
+        answer:
+          "Monthly or quarterly is usually enough for personal planning. Regular updates improve visibility into debt reduction, savings growth, and portfolio changes while reducing emotional reactions to short-term market noise. Use the same valuation method each time so your trend line stays comparable and decision-ready.",
+      },
+      {
+        question: "Should I use market value or purchase price for assets?",
+        answer:
+          "Use realistic current market value whenever possible. Purchase price can become outdated and distort your financial picture, especially for homes, vehicles, and investments. For planning accuracy, update major values periodically, document assumptions, and keep your method consistent across periods so trend comparisons remain meaningful.",
+      },
+    ],
+    relatedCalculators: ["budget-calculator", "savings-calculator", "investment-calculator", "debt-to-income-calculator"],
+    content: CALCULATOR_CONTENT["net-worth-calculator"],
+  },
+  "apr-calculator": {
+    id: "apr-calculator",
+    name: "APR Calculator",
+    slug: "apr-calculator",
+    category: "finance",
+    description:
+      "Estimate annual percentage rate (APR) from loan amount, payment, term, and fees using an iterative rate calculation.",
+    keywords: [
+      "apr calculator",
+      "loan apr calculator",
+      "effective apr calculator",
+      "interest rate vs apr",
+      "credit apr estimator",
+    ],
+    metaDescription:
+      "Free APR calculator to estimate annual percentage rate from principal, monthly payment, term, and fees. Compare loan offers with a clearer true-cost view.",
+    faqs: [
+      {
+        question: "What is APR and why is it important?",
+        answer:
+          "APR is a yearly borrowing-cost measure that includes interest and, in many cases, qualifying fees. It helps you compare loan offers beyond headline rate marketing and provides a more realistic cost view over time. This makes APR one of the most useful metrics for fair side-by-side comparisons.",
+      },
+      {
+        question: "How does this tool compute APR?",
+        answer:
+          "The calculator solves for the periodic rate that makes your payment stream equal the financed amount after fees, then annualizes that periodic rate into APR. Because this is a non-linear equation, iterative numerical methods are used. Small rounding differences are normal in practical estimation workflows.",
+      },
+      {
+        question: "Why can APR differ from the advertised interest rate?",
+        answer:
+          "APR can be higher because fees and financing costs are included in effective borrowing cost, while advertised rate often reflects interest only. Two loans with the same nominal rate can produce different APR values when fee structures, financed charges, or payment assumptions differ between offers.",
+      },
+      {
+        question: "Is this APR result exact for every lender?",
+        answer:
+          "It is a strong estimate for comparison and planning, but exact lender disclosures can vary by fee treatment, compounding assumptions, and regulatory method. Use this output to compare scenarios and shortlist options, then confirm final APR and finance charges with official lender disclosures before signing.",
+      },
+    ],
+    relatedCalculators: ["loan-calculator", "mortgage-calculator", "refinance-calculator", "car-loan-calculator"],
+    content: CALCULATOR_CONTENT["apr-calculator"],
+  },
+  "debt-snowball-calculator": {
+    id: "debt-snowball-calculator",
+    name: "Debt Snowball Calculator",
+    slug: "debt-snowball-calculator",
+    category: "finance",
+    description:
+      "Plan debt payoff using the snowball method with multiple balances, APRs, minimum payments, and extra monthly payment.",
+    keywords: [
+      "debt snowball calculator",
+      "snowball method calculator",
+      "debt payoff planner",
+      "pay off debt faster calculator",
+      "debt reduction strategy tool",
+    ],
+    metaDescription:
+      "Free debt snowball calculator. Enter balances, APR, minimum payments, and extra monthly amount to estimate payoff order, total time, and interest savings.",
+    faqs: [
+      {
+        question: "What is the debt snowball method?",
+        answer:
+          "Debt snowball means paying minimums on all debts while directing all extra payment to the smallest balance first. When one debt is cleared, its payment rolls into the next debt. This creates visible progress and momentum that helps many users stay consistent through long payoff plans.",
+      },
+      {
+        question: "How is snowball different from avalanche?",
+        answer:
+          "Snowball prioritizes the smallest balance for motivation and quick wins, while avalanche prioritizes the highest interest rate for mathematical efficiency. Avalanche can reduce interest cost faster, but snowball may improve adherence for users who need early progress signals to stay committed over time.",
+      },
+      {
+        question: "Can I include credit cards and loans together?",
+        answer:
+          "Yes. You can model mixed debt types as long as each line item includes current balance, APR, and minimum payment. The calculator then estimates monthly progression under a consistent strategy. Use realistic minimums and current rates to improve payoff timeline reliability and total-interest estimates.",
+      },
+      {
+        question: "Does extra monthly payment really matter?",
+        answer:
+          "Usually yes. Even modest extra payment reduces principal faster, which lowers future interest accrual and can shorten payoff time substantially. The effect compounds when extra payments are applied consistently for many months. Testing multiple extra-payment levels helps you pick a sustainable plan you can keep.",
+      },
+    ],
+    relatedCalculators: ["loan-payoff-calculator", "credit-card-payoff-calculator", "budget-calculator", "debt-to-income-calculator"],
+    content: CALCULATOR_CONTENT["debt-snowball-calculator"],
+  },
+  "ovulation-calculator": {
+    id: "ovulation-calculator",
+    name: "Ovulation Calculator",
+    slug: "ovulation-calculator",
+    category: "health",
+    description:
+      "Estimate ovulation day and fertile window from last period date and average cycle length for planning awareness.",
+    keywords: [
+      "ovulation calculator",
+      "fertile window calculator",
+      "ovulation date estimator",
+      "period cycle fertility calculator",
+      "when am i ovulating calculator",
+    ],
+    metaDescription:
+      "Free ovulation calculator to estimate ovulation date and fertile window using your last period date and cycle length. Educational tool; not medical advice.",
+    faqs: [
+      {
+        question: "How does this ovulation calculator estimate fertile days?",
+        answer:
+          "A common planning model estimates ovulation around 14 days before the next expected period. This tool combines your average cycle length with last period date, then marks an estimated fertile window around ovulation. Results support awareness and planning, not clinical diagnosis or treatment.",
+      },
+      {
+        question: "Is ovulation prediction always accurate?",
+        answer:
+          "No. Ovulation timing can shift due to cycle variability, stress, illness, travel, sleep changes, and medication factors. Use this calculator as an educational estimate rather than a diagnostic method. If cycles are irregular or outcomes are important, combine tracking with professional medical guidance.",
+      },
+      {
+        question: "Can this tool be used as birth control?",
+        answer:
+          "No. Calendar-based estimates have important limitations and should not be used as a standalone birth-control method. For contraception, fertility treatment, or reproductive-health decisions, consult a qualified healthcare provider. Personalized medical guidance is essential when consequences of timing errors are high.",
+      },
+      {
+        question: "What should I do if my cycle is irregular?",
+        answer:
+          "If cycle length changes substantially month to month, prediction ranges become less reliable. Track several cycles, note symptom patterns, and use this tool only for rough planning context. For persistent irregularity or fertility concerns, discuss findings with a clinician for individualized assessment and next steps.",
+      },
+    ],
+    relatedCalculators: ["pregnancy-calculator", "bmi-calculator", "water-intake-calculator", "calorie-calculator"],
+    content: CALCULATOR_CONTENT["ovulation-calculator"],
+  },
+  "ideal-weight-calculator": {
+    id: "ideal-weight-calculator",
+    name: "Ideal Weight Calculator",
+    slug: "ideal-weight-calculator",
+    category: "health",
+    description:
+      "Estimate healthy body weight range from height using BMI-based target intervals and optional current weight comparison.",
+    keywords: [
+      "ideal weight calculator",
+      "healthy weight calculator",
+      "ideal body weight by height",
+      "target weight calculator",
+      "weight range calculator",
+    ],
+    metaDescription:
+      "Free ideal weight calculator based on height and BMI range. See healthy weight interval and compare your current weight for practical planning guidance.",
+    faqs: [
+      {
+        question: "How does this calculator estimate ideal weight?",
+        answer:
+          "The tool applies BMI reference boundaries to your height to estimate a healthy weight interval. It is a practical screening method for planning lifestyle goals and tracking trends. Results are educational and should not replace individualized medical assessment, especially with complex health conditions.",
+      },
+      {
+        question: "Is BMI-based ideal weight accurate for everyone?",
+        answer:
+          "BMI-based estimates can be less representative for some people, including athletes with high lean mass, older adults, or individuals with certain medical conditions. Use this output as a baseline indicator, then combine it with waist measures, clinical context, and professional advice for personalized interpretation.",
+      },
+      {
+        question: "Should I target one exact weight or a range?",
+        answer:
+          "A range is usually more realistic and sustainable than one exact target. Day-to-day weight fluctuates with hydration, sodium intake, glycogen, and cycle effects, so trends matter more than single readings. Focus on consistent nutrition, activity, and sleep behaviors while monitoring progress across weeks.",
+      },
+      {
+        question: "Can this tool support weight-loss planning?",
+        answer:
+          "Yes, as a target-range reference. You can pair this result with calorie, protein, and activity planning tools to build a structured approach and monitor changes over time. For medical, rapid, or intensive goals, seek professional supervision to ensure safety and appropriateness.",
+      },
+    ],
+    relatedCalculators: ["bmi-calculator", "body-fat-calculator", "calorie-calculator", "protein-calculator"],
+    content: CALCULATOR_CONTENT["ideal-weight-calculator"],
+  },
+  "percentage-points-calculator": {
+    id: "percentage-points-calculator",
+    name: "Percentage Points Calculator",
+    slug: "percentage-points-calculator",
+    category: "math",
+    description:
+      "Calculate percentage-point change and optional percent change between old and new percentage values.",
+    keywords: [
+      "percentage points calculator",
+      "percent vs percentage points",
+      "percentage point change",
+      "percentage change from percent values",
+      "basis points and percentage points",
+    ],
+    metaDescription:
+      "Free percentage points calculator. Compare old and new percentages to get point difference and percent change without confusion between the two concepts.",
+    faqs: [
+      {
+        question: "What is a percentage-point change?",
+        answer:
+          "A percentage-point change is the arithmetic difference between two percentage values. If a rate moves from 5% to 7%, that is a 2 percentage-point increase. This metric describes absolute rate movement and should not be confused with relative percent growth between values.",
+      },
+      {
+        question: "How is percent change different from percentage points?",
+        answer:
+          "Percent change is relative: (new minus old) divided by old, then multiplied by 100. Using the same example, moving from 5% to 7% is a 40% relative increase but only 2 percentage points. Both can be correct, but they answer different communication questions.",
+      },
+      {
+        question: "Why does this distinction matter?",
+        answer:
+          "In finance, economics, product analytics, and media reporting, mixing these terms can overstate or understate movement. Clear separation improves interpretation for interest rates, conversion rates, and survey metrics. Accurate wording also prevents confusion when diverse stakeholders compare performance over time.",
+      },
+      {
+        question: "What happens if the old value is 0%?",
+        answer:
+          "Percentage-point change remains valid because it is simple subtraction of two percentages. Relative percent change is undefined when the baseline is zero because division by zero is not valid. This calculator flags that edge case clearly so users avoid misleading interpretations in reports.",
+      },
+    ],
+    relatedCalculators: ["percentage-calculator", "discount-calculator", "roi-calculator", "tip-calculator"],
+    content: CALCULATOR_CONTENT["percentage-points-calculator"],
+  },
+  "work-hours-timesheet-calculator": {
+    id: "work-hours-timesheet-calculator",
+    name: "Work Hours Timesheet Calculator",
+    slug: "work-hours-timesheet-calculator",
+    category: "dateTime",
+    description:
+      "Calculate daily and weekly work hours with breaks and overtime threshold for accurate timesheet planning.",
+    keywords: [
+      "work hours calculator",
+      "timesheet calculator",
+      "hours worked with lunch break",
+      "weekly overtime calculator",
+      "time card calculator",
+    ],
+    metaDescription:
+      "Free work hours timesheet calculator with break deduction and overtime threshold. Estimate totals, weekly hours, and overtime in minutes or decimal format.",
+    faqs: [
+      {
+        question: "How are daily work hours calculated?",
+        answer:
+          "Daily work hours are estimated as end time minus start time minus unpaid break minutes. The result is shown in decimal hours and hours-minutes format for timesheet convenience. Accurate start, end, and break entries are essential for reliable weekly totals and overtime checks.",
+      },
+      {
+        question: "How does overtime work in this calculator?",
+        answer:
+          "You set a weekly overtime threshold, such as 40 hours. Any estimated weekly total above that threshold is shown as overtime hours. This is a planning estimate for scheduling and forecasting, not payroll or legal advice. Final overtime treatment follows employer policy and jurisdiction rules.",
+      },
+      {
+        question: "Can I use this for rotating schedules?",
+        answer:
+          "Yes. Enter your actual shifts day by day and adjust break duration for each day. The tool is useful for variable schedules, part-time planning, and weekly workload checks. Reviewing totals before payroll cutoff helps catch entry mistakes and avoid unexpected overtime surprises.",
+      },
+      {
+        question: "Does this tool handle overnight shifts?",
+        answer:
+          "This version is optimized for same-day shifts. For overnight cases, split the shift into two segments or verify handling rules in your payroll system before relying on totals. Always confirm final payroll treatment with employer policy and local labor requirements when overnight work is common.",
+      },
+    ],
+    relatedCalculators: ["hours-calculator", "date-calculator", "salary-calculator", "budget-calculator"],
+    content: CALCULATOR_CONTENT["work-hours-timesheet-calculator"],
+  },
+  "currency-converter-calculator": {
+    id: "currency-converter-calculator",
+    name: "Currency Converter Calculator",
+    slug: "currency-converter-calculator",
+    category: "math",
+    description:
+      "Convert currencies using user-provided exchange rate and validate reverse-rate logic for quick planning scenarios.",
+    keywords: [
+      "currency converter calculator",
+      "exchange rate calculator",
+      "convert usd to eur calculator",
+      "manual forex converter",
+      "currency conversion tool",
+    ],
+    metaDescription:
+      "Free currency converter calculator using your exchange rate input. Convert amounts fast, check reverse-rate consistency, and estimate conversion outcomes.",
+    faqs: [
+      {
+        question: "How does this currency converter work?",
+        answer:
+          "The tool multiplies your source amount by the entered exchange rate to estimate converted value. Because rates are user-provided, output quality depends on your quoted source, timestamp, and update frequency. Recheck rates for volatile markets before making transaction or pricing decisions.",
+      },
+      {
+        question: "Does it use live market rates automatically?",
+        answer:
+          "No. This version is intentionally manual so you can run planning scenarios with your own quoted rate and assumptions. For real transactions, always verify live rates, provider spreads, and fee structures immediately before execution because market quotes can change quickly.",
+      },
+      {
+        question: "Why is my converted value different from bank or card charge?",
+        answer:
+          "Banks and card processors often add spread, markup, network conversion rules, and fixed fees to reference rates. This calculator estimates pure conversion from your entered rate and does not include institution-specific charges unless you manually adjust assumptions to reflect expected transaction costs.",
+      },
+      {
+        question: "Can I verify my exchange rate is consistent?",
+        answer:
+          "Yes. The reverse-rate check helps validate whether your two-way quote is mathematically coherent. Small differences can occur from rounding precision, while larger gaps often indicate spread assumptions, stale quotes, or entry errors. This check is useful before sharing estimates with clients or teams.",
+      },
+    ],
+    relatedCalculators: ["percentage-calculator", "percentage-points-calculator", "discount-calculator", "tip-calculator"],
+    content: CALCULATOR_CONTENT["currency-converter-calculator"],
   },
 };
 

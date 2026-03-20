@@ -16,19 +16,35 @@ export function generateCalculatorMetadata(
   const trPath = URL_MAPPINGS[enPath];
   const hasTranslation = !!trPath;
 
-  // Optimize title tag: Primary keyword at the beginning, 50-60 characters
+  // Optimize title tag (snippet/CTR): keep the most searched phrasing first
+  // and ensure it's short enough for SERP display.
+  const slug = calculator.slug;
+  let titleOverride: string | null = null;
+
+  if (slug === "mortgage-calculator") {
+    titleOverride = "Best Mortgage Calculator 2026 - P&I | Calculator360Pro";
+  } else if (slug === "bmi-calculator") {
+    titleOverride = "Calculating Your BMI - BMI Calculator | Calculator360Pro";
+  } else if (slug === "calorie-calculator") {
+    titleOverride = "Calorie Calculator - Daily Calories | Calculator360Pro";
+  } else if (slug === "percentage-calculator") {
+    titleOverride = "Percentage Made Easy - Percent Calculator | Calculator360Pro";
+  }
+
+  // Default behavior: Primary keyword at the beginning, 50-60 characters
   const secondaryKeyword = calculator.keywords[1] || "";
-  
-  // Build optimized title
-  let title = `Free ${calculator.name}`;
-  if (secondaryKeyword && title.length < 50) {
+  let title = titleOverride ?? `Free ${calculator.name}`;
+  if (!titleOverride && secondaryKeyword && title.length < 50) {
     // Add secondary keyword if there's space
     const withSecondary = `${title} - ${secondaryKeyword}`;
     if (withSecondary.length <= 60) {
       title = withSecondary;
     }
   }
-  title += " | Calculator360Pro";
+
+  if (!titleOverride) {
+    title += " | Calculator360Pro";
+  }
   
   // Ensure title is 50-60 characters
   if (title.length > 60) {

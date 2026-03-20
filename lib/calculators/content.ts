@@ -35,8 +35,118 @@ function generateCalculatorContent(): Record<string, string> {
   const previousYearStr = getPreviousYearString();
   const taxYear = getTaxYear(true); // Use current year for tax planning
   const taxYearStr = getTaxYearString(true);
+  const universalLongAppendix = `
+    <h3>Quick Answer</h3>
+    <p>This calculator gives you a practical estimate based on the numbers you enter and the assumptions shown on the page. It is designed for fast planning, scenario testing, and better decisions before you act. Use the result to compare options, then confirm important decisions with official documents and, when needed, a qualified professional.</p>
 
-  return {
+    <h3>Input Explanation (Simple but Important)</h3>
+    <p>Every result quality starts with input quality. If your inputs are outdated, incomplete, or inconsistent, your output will be less useful. Use current values, keep units consistent, and avoid mixing annual and monthly numbers unless the tool explicitly converts them for you. For financial tools, check whether values are pre-tax or post-tax. For health tools, use realistic personal data and avoid guessing when precision matters. For utility tools, verify your rate, time format, and baseline.</p>
+    <p>A practical method is to run three scenarios: conservative, expected, and optimistic. This quickly gives you a risk-aware range instead of a single point estimate. If the “conservative” result still works for your goal, your plan is usually more robust. If only the optimistic scenario works, you may need a safer strategy.</p>
+
+    <h3>Calculation Logic in Plain Language</h3>
+    <p>Most calculators on this site follow a clear pattern: normalize inputs, apply a formula, then present result with context. “Normalize” means turning values into the same unit and structure. Then the formula is applied. Finally, the result is shown with interpretation notes so users can understand what to do next. This three-step approach improves both speed and reliability.</p>
+    <p>When a formula requires iterative solving (for example in effective rate calculations), the page estimates a value that satisfies the payment relationship as closely as possible. That is why tiny rounding differences can appear. Those differences are expected in planning tools and generally acceptable for decision support.</p>
+
+    <h3>Worked Example 1 (Conservative Scenario)</h3>
+    <p>Start with a conservative input set that assumes less favorable conditions. For a finance case, you can use a slightly higher cost and lower benefit. For a health case, you can use a moderate target rather than an aggressive target. For a productivity case, you can use a realistic baseline schedule instead of best-case assumptions. The objective is to answer: “Does this still work if things are not perfect?”</p>
+    <p>If the conservative outcome still supports your goal, confidence rises. If it fails, you now know the gap and can choose targeted changes such as reducing cost, increasing contribution, extending timeline, or improving consistency.</p>
+
+    <h3>Worked Example 2 (Expected Scenario)</h3>
+    <p>Now enter your most realistic assumptions for the next period. This is the number set you believe is most probable if current behavior continues. Compare this expected result with your conservative result. The difference between the two usually shows where your risk is concentrated: input volatility, timing sensitivity, or baseline uncertainty.</p>
+    <p>For many users, this two-scenario method (conservative + expected) is enough to make better choices without overcomplicating the analysis. If you need deeper planning, add an optimistic scenario and track all three monthly.</p>
+
+    <h3>How to Interpret Results Without Misusing Them</h3>
+    <p>A calculator output is a decision aid, not a guarantee. Good interpretation means combining the output with constraints: budget limits, timeline, risk tolerance, policy rules, and human behavior. For example, a mathematically optimal strategy may fail if it is hard to maintain. A slightly less optimal strategy that you can consistently follow is often better in real life.</p>
+    <p>When the output is close to a threshold (for example eligibility lines, overtime limits, or risk boundaries), treat the result as a warning to gather more accurate data before acting. Small input errors can move threshold outcomes significantly.</p>
+
+    <h3>Common Mistakes and How to Avoid Them</h3>
+    <ul>
+      <li><strong>Mixing units:</strong> annual vs monthly confusion is one of the most frequent errors. Convert first, then compare.</li>
+      <li><strong>Ignoring assumptions:</strong> every model has boundaries. Read notes and disclaimers before taking action.</li>
+      <li><strong>Using stale rates:</strong> if your result depends on a rate, refresh the rate source and timestamp.</li>
+      <li><strong>Single-scenario thinking:</strong> run at least conservative and expected scenarios.</li>
+      <li><strong>No follow-up tracking:</strong> recalculate on a fixed schedule to detect drift early.</li>
+    </ul>
+
+    <h3>Quality Checklist Before You Trust the Number</h3>
+    <ol>
+      <li>Are all required inputs complete and realistic?</li>
+      <li>Are units and time periods consistent?</li>
+      <li>Did you run at least two scenarios?</li>
+      <li>Did you review assumptions and limits?</li>
+      <li>Do you have an execution step after the estimate?</li>
+    </ol>
+
+    <h3>Execution Playbook (From Estimate to Action)</h3>
+    <p>Step 1: Capture your baseline result and assumptions. Step 2: pick one lever to improve (cost, rate, timeline, consistency, or workload). Step 3: set a review date (weekly or monthly). Step 4: rerun the calculator and compare trend, not only single outcomes. Step 5: keep what works and replace what does not. This loop is simple, practical, and effective.</p>
+    <p>If your decisions carry legal, tax, medical, or contractual impact, add one external verification step before final action. This does not reduce the calculator’s value; it strengthens reliability where consequences are high.</p>
+
+    <h3>Internal Links for Better Planning</h3>
+    <p>Combine this tool with related pages to build a complete decision workflow. Useful next steps include <a href="/calculators">all calculators</a>, <a href="/calculators/finance">finance calculators</a>, <a href="/calculators/health">health calculators</a>, <a href="/calculators/math">math calculators</a>, and <a href="/calculators/date-time">date &amp; time calculators</a>. For finance workflows, common companion tools are <a href="/calculators/finance/budget-calculator">budget calculator</a>, <a href="/calculators/finance/loan-calculator">loan calculator</a>, <a href="/calculators/finance/tax-calculator">tax calculator</a>, and <a href="/calculators/finance/compound-interest-calculator">compound interest calculator</a>. For health workflows, use <a href="/calculators/health/bmi-calculator">BMI calculator</a>, <a href="/calculators/health/calorie-calculator">calorie calculator</a>, and <a href="/calculators/health/protein-calculator">protein calculator</a>. For utility workflows, include <a href="/calculators/math/percentage-calculator">percentage calculator</a> and <a href="/calculators/date-time/hours-calculator">hours calculator</a>.</p>
+
+    <h3>FAQ (Snippet-Friendly)</h3>
+    <div>
+      <h4>Is this result exact?</h4>
+      <p>It is an estimate designed for planning and comparison. Accuracy depends on your input quality, assumptions, and model scope. For high-stakes decisions, use this result as a strong starting point, then verify with official documents or a qualified professional before final action.</p>
+    </div>
+    <div>
+      <h4>How often should I recalculate?</h4>
+      <p>Monthly is a good default for most users. Recalculate sooner if a key input changes, such as income, rates, costs, cycle data, schedule, or thresholds. Regular updates keep your plan aligned with reality and reduce decision lag.</p>
+    </div>
+    <div>
+      <h4>What if my real-life result differs from the estimate?</h4>
+      <p>That is normal when assumptions shift. Compare your actual values with your input set, identify the biggest variance, and rerun with updated numbers. Use the gap as feedback, not failure; this is exactly how scenario tools improve decisions over time.</p>
+    </div>
+    <div>
+      <h4>Should I use one number or a range?</h4>
+      <p>Use a range whenever possible. A single estimate is useful, but conservative and expected scenarios provide better risk awareness. Ranges improve planning quality and reduce overconfidence, especially near thresholds or uncertain conditions.</p>
+    </div>
+
+    <h3>Sources and Update</h3>
+    <p><strong>Reviewed:</strong> ${currentYearStr}. <strong>Owner:</strong> Calculator360Pro Team. This content is educational and planning-oriented. Where policy thresholds or official rates are involved, users should validate current-year rules using official sources before filing, signing, prescribing, or otherwise finalizing decisions.</p>
+
+    <h3>Extended Guidance for Better Decisions</h3>
+    <p>People often ask whether calculators can replace professional advice. The practical answer is no, but they can dramatically improve the quality of questions you ask professionals. Instead of “What should I do?”, you can ask “I tested three scenarios; here are my assumptions and outputs; what am I missing?” This saves time, lowers cost, and leads to better outcomes.</p>
+    <p>Another useful habit is documenting assumptions near your result. A number without assumptions is hard to trust later. A number with assumptions becomes reusable. This also helps teams, partners, and families make aligned decisions because everyone sees the same input logic.</p>
+    <p>When comparing options, avoid changing multiple variables at once. If you change too many inputs, you lose cause-and-effect clarity. Change one variable, rerun, record the difference, and repeat. This method is simple and surprisingly powerful.</p>
+    <p>Finally, remember that your best result is not just mathematically strong; it is behaviorally sustainable. Plans that depend on perfect discipline often fail. Plans that tolerate normal life variation usually win over longer horizons.</p>
+
+    <h3>Advanced Scenario Framework (Practical Version)</h3>
+    <p>If you want higher confidence, move from two scenarios to five structured scenarios: baseline, stress, recovery, upside, and constraint case. Baseline is your expected condition. Stress assumes unfavorable movement in key variables. Recovery assumes temporary disruption followed by partial normalization. Upside assumes favorable outcomes. Constraint case assumes external limits such as policy thresholds, lower available time, lower cash flow, or stricter eligibility rules.</p>
+    <p>This framework improves decisions because it reveals which variable drives your outcome most. For example, if a small rate change causes a large result change, rate sensitivity is your priority. If timeline shifts dominate, scheduling and consistency are your priority. If output is stable across scenarios, your plan is robust and execution should become the focus.</p>
+    <p>Document each scenario with a short sentence and numeric assumptions. Keep the language simple: “I assumed X because Y.” This creates an audit trail for yourself or your team. Later, when results differ, you can identify whether assumptions were wrong or behavior changed. That feedback loop turns calculators into practical learning tools rather than one-time utilities.</p>
+
+    <h3>Decision Thresholds and Guardrails</h3>
+    <p>Many users get stuck because they only look at a single output number. A better approach is to define thresholds before you calculate. Example threshold patterns: minimum acceptable savings rate, maximum debt burden, maximum weekly overtime, minimum buffer around eligibility limits, or maximum variance tolerated from expected outcome. These guardrails prevent emotional decisions made from a single optimistic run.</p>
+    <p>When your output is near a threshold, create a guardrail buffer. For example, if a result suggests you are barely inside a safe zone, treat it as uncertain and gather better data before acting. Small rounding or timing effects can move threshold outcomes. A buffer of even 5% to 10% often improves real-world reliability.</p>
+    <p>For recurring decisions, write a one-line decision rule. Example: “I will only proceed if conservative scenario remains above my threshold and the expected scenario remains stable for two checks.” This simple rule reduces decision fatigue and improves consistency.</p>
+
+    <h3>Data Hygiene and Input Governance</h3>
+    <p>High-quality outputs require disciplined inputs. Build a small input governance routine: source, timestamp, unit, and owner. Source means where the value came from. Timestamp means when it was last verified. Unit means monthly, annual, percentage, minutes, kilograms, and so on. Owner means who is responsible for keeping it current. This sounds formal, but it takes less than two minutes and prevents most avoidable errors.</p>
+    <p>Normalize all values before entering them. If one value is monthly and another annual, convert first. If percentages are entered, ensure they are true percentages and not decimal fractions. If time values cross midnight, verify how the tool handles it. If tax or policy values change seasonally, refresh assumptions before each major decision cycle.</p>
+    <p>Keep one lightweight “assumption sheet” in plain text. Reuse it for monthly reviews. You will spend less time rebuilding context and make fewer mistakes. This is especially useful when multiple people contribute inputs across a household, team, or small business operation.</p>
+
+    <h3>Execution Cadence That Actually Works</h3>
+    <p>Most plans fail from inconsistent follow-through, not from weak formulas. A sustainable cadence is: weekly quick check, monthly full recalculation, and quarterly strategic review. Weekly check confirms that the plan is still on track. Monthly recalculation updates inputs and compares scenario deltas. Quarterly review asks whether goals, constraints, or methods should change.</p>
+    <p>During each cycle, focus on one controllable lever. Examples: reduce one cost category, increase one contribution amount, improve one routine, remove one bottleneck. Trying to optimize everything at once usually lowers adherence. Small, repeatable wins produce larger outcomes over time.</p>
+    <p>Record three values each period: result, key assumption, and next action. This creates continuity and keeps calculations tied to action. Without this link, users often run calculators repeatedly but never execute meaningful changes.</p>
+
+    <h3>Risk, Uncertainty, and Communication</h3>
+    <p>Uncertainty is normal. Instead of hiding it, communicate it clearly. Use words like estimate, range, assumption, and sensitivity. If you share results with stakeholders, include one short note about model limits and one short note about next verification step. This builds trust and prevents misinterpretation.</p>
+    <p>Avoid over-precision in communication. Showing too many decimal places can imply certainty that does not exist. Round to practical precision unless a domain requires fine granularity. For planning conversations, clarity beats precision theater.</p>
+    <p>When comparing options, include both numerical and behavioral feasibility. The mathematically best option may be fragile if it requires unrealistic discipline, perfect timing, or zero disruption. A slightly weaker numeric option with higher adherence probability often produces better real outcomes.</p>
+
+    <h3>Long-Horizon Improvement Model</h3>
+    <p>Good planning is compounding. Each cycle gives better inputs, better assumptions, and better decisions. Over months, variance reduces and confidence increases. Treat each recalculation as a step in a learning system. This mindset shifts calculators from “one-time answers” to “continuous decision support.”</p>
+    <p>Use milestone checkpoints for long goals: 30-day, 90-day, 180-day, and annual. At each checkpoint, compare planned vs actual, note top variance drivers, and reset assumptions. This prevents drift and helps you react early instead of waiting for major gaps.</p>
+    <p>If you cannot improve the result immediately, improve observability first. Better tracking, cleaner inputs, and clearer thresholds often create the next improvement opportunity naturally. In many cases, measurement quality is the hidden bottleneck.</p>
+
+    <h3>Educational and Compliance Reminder</h3>
+    <p>This site provides educational calculators for planning and scenario analysis. It does not provide legal, tax, accounting, medical, employment, or investment advice. For high-impact decisions, confirm with official documentation and licensed professionals. Always align your final decision with current regulations, contractual terms, and your specific context.</p>
+    <p>Where external rates, thresholds, and policy rules apply, they can change over time. Revalidate assumptions before filing, signing, prescribing, contracting, or otherwise finalizing decisions. Keep a dated record of key assumptions used in your calculations.</p>
+  `;
+
+  const contentMap: Record<string, string> = {
   "percentage-calculator": `
     <h2>Understanding Percentages: A Comprehensive Guide</h2>
     <p>Percentages are one of the most fundamental concepts in mathematics and everyday life. Whether you're calculating discounts, analyzing data, or understanding statistics, percentages play a crucial role. This comprehensive guide will help you understand how percentages work, how to calculate them, and how to use our percentage calculator effectively. Our free online percentage calculator is designed to handle all types of percentage calculations quickly and accurately, making it an essential tool for students, professionals, and anyone who needs to work with percentages regularly.</p>
@@ -596,15 +706,15 @@ function generateCalculatorContent(): Record<string, string> {
     <h3>Frequently Asked Questions About Mortgage Calculations</h3>
     <div>
       <h4>How is monthly mortgage payment calculated using the mortgage calculator?</h4>
-      <p>Monthly mortgage payment is calculated using the formula: M = P[r(1+r)^n]/[(1+r)^n-1], where P is principal, r is monthly interest rate, and n is number of payments. Our free mortgage calculator automates this complex calculation, making it quick and accurate for any mortgage scenario you need to evaluate.</p>
+      <p>Monthly mortgage payment (principal + interest) is calculated using the formula: M = P[r(1+r)^n]/[(1+r)^n-1], where P is the loan amount, r is the monthly interest rate, and n is the number of payments. In this calculator, the total monthly payment then adds estimated property taxes and homeowners insurance (from your annual amounts) plus PMI (only when your down payment is under 20%).</p>
     </div>
     <div>
       <h4>What is included in a mortgage payment when using the mortgage calculator?</h4>
-      <p>A mortgage payment typically includes principal (loan amount), interest, property taxes, homeowners insurance, and sometimes PMI (Private Mortgage Insurance). Our mortgage calculator shows principal and interest, while reminding you to factor in taxes, insurance, and PMI for your complete monthly payment.</p>
+      <p>A mortgage payment typically includes principal (loan amount), interest, property taxes, homeowners insurance, and sometimes PMI (Private Mortgage Insurance). This calculator shows P&I and also provides a total monthly payment that includes estimated monthly taxes and insurance; PMI is included only when the down payment is below 20% (using your PMI monthly estimate).</p>
     </div>
     <div>
       <h4>How does down payment affect mortgage payments in the mortgage calculator?</h4>
-      <p>A larger down payment reduces the principal amount, which lowers monthly payments and total interest paid over the life of the loan. Our mortgage calculator allows you to adjust down payment amounts to see how they affect your monthly payment and total interest cost, helping you make informed decisions about your home purchase.</p>
+      <p>A larger down payment reduces the loan principal (this calculator uses home value + down payment to determine the loan amount), lowering the P&I payment and total interest. If your down payment is under 20%, PMI is typically required and increases your total monthly payment; if it is 20% or more, PMI is set to 0 in this estimate.</p>
     </div>
     <div>
       <h4>Can I use the mortgage calculator to compare 15-year vs 30-year mortgages?</h4>
@@ -622,6 +732,8 @@ function generateCalculatorContent(): Record<string, string> {
       <li><strong><a href="/calculators/finance/compound-interest-calculator">Compound Interest Calculator</a></strong> - Calculate compound interest for investments and savings</li>
       <li><strong><a href="/calculators/finance/tax-calculator">Tax Calculator</a></strong> - Calculate your income tax liability and effective tax rate</li>
       <li><strong><a href="/calculators/finance/savings-calculator">Savings Calculator</a></strong> - Calculate how much you need to save for your down payment</li>
+      <li><strong><a href="/guides/best-mortgage-calculator-2026">Best Mortgage Calculator 2026</a></strong> - Compare and choose the best mortgage calculator tool</li>
+      <li><strong><a href="/calculators/finance/refinance-calculator">Refinance Calculator</a></strong> - Compare current vs new payments and estimate break-even</li>
     </ul>
 
     <h3>Conclusion</h3>
@@ -2607,15 +2719,14 @@ function generateCalculatorContent(): Record<string, string> {
     <p>Student loans are a reality for millions of Americans pursuing higher education, and understanding how to manage this debt effectively is crucial for long-term financial health. Whether you're planning to take out student loans, currently repaying them, or considering refinancing, understanding payment calculations, repayment options, and strategies for paying off debt faster can save thousands of dollars and years of payments. Our comprehensive student loan calculator guide will help you understand student loan payments, explore different repayment plans, calculate total costs, and develop strategies to manage your education debt effectively. Our free student loan calculator provides accurate payment calculations to help you plan your education debt strategy with confidence.</p>
 
     <h3>Understanding Student Loans: The Foundation of Education Financing</h3>
-    <p>Student loans are funds borrowed to pay for education expenses, including tuition, fees, room and board, books, and other educational costs. Unlike other types of debt, student loans are specifically designed for education and often offer benefits like deferred payments while in school, income-driven repayment options, and potential loan forgiveness programs. However, student loan debt can be substantial and long-lasting, making it essential to understand how these loans work and how to manage them effectively.</p>
+    <p>Student loans are funds borrowed to pay for education expenses, including tuition, fees, room and board, books, and other educational costs. Unlike other types of debt, student loans are specifically designed for education and often offer benefits like deferred payments while in school and flexible repayment terms. However, student loan debt can be substantial and long-lasting, making it essential to understand how these loans work and how to manage them effectively.</p>
 
     <h3>Types of Student Loans</h3>
     <h4>Federal Student Loans</h4>
     <p>Federal student loans are issued by the U.S. Department of Education and offer several advantages:</p>
     <ul>
       <li><strong>Fixed interest rates:</strong> Rates are set by Congress and don't change over the life of the loan</li>
-      <li><strong>Income-driven repayment:</strong> Payments based on income and family size</li>
-      <li><strong>Loan forgiveness:</strong> Potential forgiveness after 20-25 years of payments or through public service</li>
+      <li><strong>Flexible repayment terms:</strong> Different repayment durations may be available</li>
       <li><strong>Deferment and forbearance:</strong> Options to temporarily pause payments</li>
       <li><strong>No credit check:</strong> Available regardless of credit history (for most federal loans)</li>
     </ul>
@@ -2644,7 +2755,7 @@ function generateCalculatorContent(): Record<string, string> {
       <li><strong>n</strong> = Total number of payments (typically 120 for 10-year standard plan)</li>
     </ul>
 
-    <p>For example, a $30,000 loan at 5% interest on a 10-year standard plan would have a monthly payment of approximately $318.20. However, federal loans offer multiple repayment plans that can significantly alter payment amounts.</p>
+    <p>For example, a $30,000 loan at 5% interest on a 10-year standard plan would have a monthly payment of approximately $318.20. In general, repayment term length is what most strongly changes your monthly payment and total interest.</p>
 
     <h3>Federal Student Loan Repayment Plans</h3>
     <h4>Standard Repayment Plan</h4>
@@ -2656,22 +2767,16 @@ function generateCalculatorContent(): Record<string, string> {
     <h4>Extended Repayment Plan</h4>
     <p>Extended plans allow repayment over 25 years with fixed or graduated payments. This significantly lowers monthly payments but results in much more total interest paid over the life of the loan. Available for loans over $30,000.</p>
 
-    <h4>Income-Driven Repayment Plans</h4>
-    <p>Income-driven plans base payments on your income and family size, typically 10-20% of discretionary income. These plans can significantly lower monthly payments and offer loan forgiveness after 20-25 years:</p>
-    <ul>
-      <li><strong>Income-Based Repayment (IBR):</strong> 10-15% of discretionary income, 20-25 year forgiveness</li>
-      <li><strong>Pay As You Earn (PAYE):</strong> 10% of discretionary income, 20-year forgiveness</li>
-      <li><strong>Revised Pay As You Earn (REPAYE):</strong> 10% of discretionary income, 20-25 year forgiveness</li>
-      <li><strong>Income-Contingent Repayment (ICR):</strong> 20% of discretionary income or 12-year fixed payment, 25-year forgiveness</li>
-    </ul>
+    <h4>Income-Driven Repayment (Not Modeled Here)</h4>
+    <p>This calculator focuses on fixed-term amortization using your loan amount, interest rate, and a repayment term (standard or extended). It does not compute income-driven payments based on income and family size, and it does not model forgiveness programs.</p>
 
     <h3>Using Our Student Loan Calculator</h3>
     <p>Our student loan calculator helps you understand the true cost of your education debt. Here's how to use it:</p>
     <ul>
       <li><strong>Enter loan details:</strong> Input your total loan amount, interest rate, and repayment term</li>
       <li><strong>Calculate payments:</strong> See your monthly payment and total interest for different scenarios</li>
-      <li><strong>Compare repayment plans:</strong> Test standard vs. extended vs. income-driven plans</li>
-      <li><strong>See impact of extra payments:</strong> Calculate how additional payments can reduce total cost and payoff time</li>
+      <li><strong>Compare repayment plans:</strong> Test standard vs. extended repayment terms</li>
+      <li><strong>See impact of repayment term:</strong> Understand how standard vs. extended terms change your monthly payment, total interest, and payoff date</li>
       <li><strong>Plan your strategy:</strong> Determine the best repayment approach for your situation</li>
     </ul>
 
@@ -2680,36 +2785,36 @@ function generateCalculatorContent(): Record<string, string> {
     <p>Subsidized federal loans don't accrue interest while you're in school at least half-time, during the six-month grace period after graduation, or during deferment periods. The government pays the interest during these times. Unsubsidized loans accrue interest from the day they're disbursed, even while you're in school.</p>
 
     <h4>Interest Capitalization</h4>
-    <p>Unpaid interest can capitalize (be added to the principal balance), increasing your total loan amount. This happens when you enter repayment, leave an income-driven plan, or fail to recertify income. Capitalized interest increases your principal, which then accrues more interest, creating a compounding effect that increases your total debt.</p>
+    <p>Unpaid interest can capitalize (be added to the principal balance), increasing your total loan amount. Because capitalization rules vary by lender and loan type, always check your loan servicer's terms for specifics.</p>
 
     <h4>Daily Interest Accrual</h4>
     <p>Student loan interest accrues daily based on your outstanding balance and interest rate. The daily interest rate is your annual rate divided by 365. For example, a $30,000 loan at 5% interest accrues approximately $4.11 in interest per day ($30,000 × 0.05 ÷ 365).</p>
 
     <h3>Strategies to Pay Off Student Loans Faster</h3>
-    <h4>Make Extra Payments</h4>
-    <p>Making additional payments beyond your required monthly payment can significantly reduce your total interest and payoff time. Even an extra $50-100 per month can save thousands of dollars and years of payments. Apply extra payments directly to principal for maximum impact.</p>
+    <h4>Estimate Faster Payoff (Via Term)</h4>
+    <p>This calculator estimates payoff time based on a fixed monthly payment implied by your selected repayment term. To estimate a faster payoff, choose a shorter standard or extended term (rather than entering ad-hoc extra payments).</p>
 
     <h4>Pay During Grace Period</h4>
     <p>If you can afford it, start making payments during the six-month grace period after graduation. This prevents interest from capitalizing and reduces your total balance before regular payments begin.</p>
 
     <h4>Use the Debt Avalanche Method</h4>
-    <p>Focus extra payments on the loan with the highest interest rate first, while making minimum payments on others. Once the highest-rate loan is paid off, move to the next highest. This method saves the most money in interest.</p>
+    <p>Debt avalanche focuses on directing a larger portion of your payments to the loan with the highest interest rate first, while keeping payments on other loans at their required minimums. This method typically saves the most money in interest.</p>
 
     <h4>Bi-weekly Payments</h4>
     <p>Making half-payments every two weeks results in 26 half-payments per year, which equals 13 full payments. This strategy can reduce your loan term and save substantial interest without dramatically impacting your monthly budget.</p>
 
     <h4>Refinancing</h4>
-    <p>If you have good credit and stable income, refinancing to a lower interest rate can reduce your monthly payment and total interest. However, refinancing federal loans to private loans means losing federal benefits like income-driven repayment and loan forgiveness. Only refinance if you're confident you won't need these protections.</p>
+    <p>If you have good credit and stable income, refinancing to a lower interest rate can reduce your monthly payment and total interest. However, refinancing federal loans to private loans can reduce certain federal benefits and protections. Only refinance if you're confident you won't need those protections.</p>
 
     <h3>Student Loan Forgiveness Programs</h3>
     <h4>Public Service Loan Forgiveness (PSLF)</h4>
-    <p>PSLF forgives remaining federal loan balance after 120 qualifying monthly payments (10 years) while working full-time for a qualifying employer (government or nonprofit). You must be on an income-driven repayment plan and make all 120 payments on time.</p>
+    <p>PSLF may forgive remaining federal loan balance after qualifying payments, but this calculator only estimates amortized monthly payments. It does not compute or verify forgiveness eligibility.</p>
 
     <h4>Teacher Loan Forgiveness</h4>
     <p>Teachers who work in low-income schools for five consecutive years may qualify for up to $17,500 in loan forgiveness for certain federal loans.</p>
 
     <h4>Income-Driven Repayment Forgiveness</h4>
-    <p>After 20-25 years of payments on an income-driven plan, any remaining balance is forgiven. However, the forgiven amount is typically taxable as income, which can create a significant tax burden.</p>
+    <p>Forgiveness rules vary by program and eligibility requirements. This calculator does not model income-driven forgiveness outcomes.</p>
 
     <h3>Common Student Loan Mistakes to Avoid</h3>
     <p>Many borrowers make costly mistakes with student loans:</p>
@@ -2717,7 +2822,7 @@ function generateCalculatorContent(): Record<string, string> {
       <li><strong>Borrowing more than needed:</strong> Only borrow what's necessary for education expenses</li>
       <li><strong>Not understanding repayment options:</strong> Explore all federal repayment plans before choosing</li>
       <li><strong>Missing payments:</strong> Late or missed payments damage credit and can lead to default</li>
-      <li><strong>Not recertifying income:</strong> Income-driven plans require annual recertification—missing this can increase payments</li>
+      <li><strong>Not checking requirements:</strong> Repayment plan requirements can vary—always confirm details with your loan servicer</li>
       <li><strong>Ignoring loans:</strong> Loans don't go away—address them proactively</li>
       <li><strong>Refinancing federal loans too quickly:</strong> Consider whether you might need federal protections before refinancing</li>
       <li><strong>Not exploring forgiveness:</strong> If you work in public service, explore PSLF eligibility</li>
@@ -2730,27 +2835,27 @@ function generateCalculatorContent(): Record<string, string> {
     <p>Start by entering your total student loan balance, average interest rate (if you have multiple loans, calculate a weighted average), and your current repayment plan term. If you're not sure of your exact balance or rate, check your loan servicer's website or recent statements.</p>
 
     <h4>Step 2: Select Your Repayment Plan</h4>
-    <p>Choose your repayment plan (standard, extended, income-driven, etc.). The calculator will show you how different plans affect your monthly payment and total interest. If you're on an income-driven plan, you may need to enter your income separately to see estimated payments.</p>
+    <p>Choose your repayment plan (standard or extended). The calculator will show you how different terms affect your monthly payment and total interest. This tool is based on fixed-term amortization and does not compute income-driven payments based on income.</p>
 
     <h4>Step 3: Review Your Payment Breakdown</h4>
     <p>The calculator will show your monthly payment, total interest over the life of the loan, and total amount paid. This helps you understand the true cost of your education debt and see how different plans compare.</p>
 
-    <h4>Step 4: Explore Extra Payment Scenarios</h4>
-    <p>Try adding extra payments to see how they reduce your total interest and payoff time. Even small extra payments can save thousands of dollars. Use this to plan your payoff strategy and set realistic goals.</p>
+    <h4>Step 4: Explore Payoff Scenarios</h4>
+    <p>To estimate how payoff time changes, try different repayment terms (standard vs. extended) in the calculator. Shorter terms usually increase your monthly payment but reduce total interest and can shorten payoff time.</p>
 
     <h4>Step 5: Compare Different Strategies</h4>
-    <p>Compare standard repayment vs. extended plans vs. income-driven plans to see which works best for your situation. Consider both monthly payment affordability and total cost when making decisions.</p>
+    <p>Compare standard repayment vs. extended plans to see which works best for your situation. Consider both monthly payment affordability and total cost when making decisions.</p>
 
     <h3>Managing Multiple Student Loans</h3>
     <p>Many borrowers have multiple student loans from different years or sources. Managing them effectively requires strategy:</p>
 
     <h4>Loan Consolidation</h4>
-    <p>Federal loan consolidation combines multiple federal loans into one loan with a single monthly payment. The interest rate is the weighted average of your existing loans, rounded up to the nearest 1/8th of a percent. Consolidation can simplify repayment but may increase total interest if it extends your repayment term. It also resets the clock on income-driven repayment forgiveness, so consider this carefully if you're pursuing forgiveness.</p>
+    <p>Federal loan consolidation combines multiple loans into one with a single monthly payment. Consolidation can simplify repayment but may increase total interest if it extends your repayment term. Eligibility for specific programs depends on your servicer and loan details.</p>
 
     <p>Consolidation can be beneficial if you have multiple servicers and want to simplify management, or if you want to access certain repayment plans that require consolidation. However, it's not always the best choice, especially if you're close to loan forgiveness or have loans with different interest rates where you want to prioritize payoff.</p>
 
     <h4>Prioritizing Payments</h4>
-    <p>When you have multiple loans, prioritize extra payments on the highest interest rate loan first (debt avalanche method). This saves the most money in interest over time. For example, if you have a $20,000 loan at 6% and a $15,000 loan at 4.5%, focus extra payments on the 6% loan first, even if the 4.5% loan has a higher balance.</p>
+    <p>When you have multiple loans, prioritize paying more toward the highest interest rate loan first (debt avalanche method). This saves the most money in interest over time. For example, if you have a $20,000 loan at 6% and a $15,000 loan at 4.5%, focus higher payments on the 6% loan first, even if the 4.5% loan has a higher balance.</p>
 
     <p>Alternatively, some borrowers prefer the debt snowball method, paying off the smallest loan first for psychological motivation. While this doesn't save as much interest, the psychological boost can help maintain momentum. Choose the method that works best for your personality and financial situation.</p>
 
@@ -2758,18 +2863,18 @@ function generateCalculatorContent(): Record<string, string> {
     <h4>Example 1: Standard vs. Extended Repayment</h4>
     <p>Sarah has $50,000 in student loans at 5% interest. On the standard 10-year plan, her monthly payment is $530, and she'll pay $13,600 in total interest. On an extended 25-year plan, her monthly payment is $292, but she'll pay $37,600 in total interest—nearly triple. The extended plan saves $238 per month but costs $24,000 more in interest.</p>
 
-    <h4>Example 2: Impact of Extra Payments</h4>
-    <p>Mike has $30,000 in loans at 6% on a 10-year plan. His standard payment is $333, and he'll pay $9,967 in interest. If he adds just $50 per month in extra payments, he'll pay off the loan in 8.5 years and pay only $7,200 in interest—saving $2,767 and 1.5 years of payments.</p>
+    <h4>Example 2: Impact of Repayment Term</h4>
+    <p>For the same loan balance and interest rate, choosing a longer repayment term typically lowers your monthly payment but increases your total interest. To estimate payoff time, switch between Standard and Extended terms in this calculator.</p>
 
-    <h4>Example 3: Income-Driven Repayment</h4>
-    <p>Jennifer has $60,000 in loans and earns $40,000 annually. On the standard plan, her payment would be $636, which is unaffordable. On an income-driven plan (10% of discretionary income), her payment might be $200-300, making it manageable. However, she'll pay more in total interest over 20-25 years, and any forgiven balance will be taxable.</p>
+    <h4>Example 3: Standard vs. Extended Repayment</h4>
+    <p>Consider a $60,000 student loan at a fixed interest rate. With a shorter standard term, your monthly payment is higher but you pay less total interest. With a longer extended term, your monthly payment is lower but your total interest usually increases—so choose based on both affordability and total cost.</p>
 
     <h3>Student Loan Refinancing Considerations</h3>
     <p>Refinancing student loans can lower your interest rate and monthly payment, but it's not right for everyone:</p>
 
     <p><strong>When to Consider Refinancing:</strong> If you have good credit (typically 700+), stable income, and private loans or high-rate federal loans, refinancing might save money. You may also consider it if you have a mix of federal and private loans and want to consolidate them.</p>
 
-    <p><strong>When to Avoid Refinancing:</strong> Don't refinance federal loans if you might need income-driven repayment, loan forgiveness, deferment, or forbearance. Once you refinance federal loans to private loans, you lose all federal protections permanently. Also, avoid refinancing if you're close to loan forgiveness, as refinancing resets the clock.</p>
+    <p><strong>When to Avoid Refinancing:</strong> Don't refinance if you might need federal protections like deferment or forbearance. Also, avoid refinancing if you're close to any forgiveness milestone, as program rules and timelines can change.</p>
 
     <p><strong>Refinancing Process:</strong> Shop around with multiple lenders to compare rates. You'll need good credit, stable income, and may need a cosigner. Refinancing typically requires a hard credit check, which temporarily affects your credit score.</p>
 
@@ -2791,11 +2896,11 @@ function generateCalculatorContent(): Record<string, string> {
     </div>
     <div>
       <h4>Can I use the student loan calculator to compare different repayment plans?</h4>
-      <p>Yes, our student loan calculator is perfect for comparing different repayment plans. Enter different scenarios with varying loan terms or payment amounts to see how they affect your monthly payment and total interest. The student loan calculator helps you understand the trade-offs between standard repayment, extended repayment, and income-driven repayment plans, making it easier to choose the best option for your situation.</p>
+      <p>Yes, our student loan calculator is perfect for comparing different repayment terms. Enter different scenarios with varying loan terms to see how they affect your monthly payment and total interest. This helps you understand the trade-offs between standard and extended repayment, making it easier to choose the best option for your situation.</p>
     </div>
     <div>
-      <h4>How does the student loan calculator account for extra payments?</h4>
-      <p>Our student loan calculator can show you how extra payments affect your payoff timeline and total interest. When you enter additional payment amounts, the calculator shows you how much faster you'll pay off your loan and how much interest you'll save. The student loan calculator demonstrates how even small extra payments can significantly reduce your total interest and payoff time.</p>
+      <h4>Does the student loan calculator accept extra payments?</h4>
+      <p>This calculator does not accept ad-hoc extra payment amounts. It estimates your payoff time using the fixed monthly payment implied by your selected repayment term and interest rate. To estimate a faster payoff, try a shorter repayment term.</p>
     </div>
     <div>
       <h4>What interest rate should I use in the student loan calculator?</h4>
@@ -2809,10 +2914,12 @@ function generateCalculatorContent(): Record<string, string> {
       <li><strong><a href="/calculators/finance/credit-card-payoff-calculator">Credit Card Payoff Calculator</a></strong> - Calculate how to pay off credit card debt faster</li>
       <li><strong><a href="/calculators/finance/budget-calculator">Budget Calculator</a></strong> - Create a budget and track your spending</li>
       <li><strong><a href="/calculators/finance/car-loan-calculator">Car Loan Calculator</a></strong> - Calculate car loan payments and understand auto financing</li>
+      <li><strong><a href="/guides/student-loans-monthly-payment-calculator-how-to">Student Loans Monthly Payment Guide</a></strong> - Learn how monthly student loan payments are calculated</li>
+      <li><strong><a href="/calculators/finance/income-driven-student-loan-calculator">Income-Driven Student Loan Calculator</a></strong> - Estimate income-driven monthly payments and payoff</li>
     </ul>
 
     <h3>Conclusion</h3>
-    <p>Student loans are a significant financial commitment that requires careful planning and management. Our free student loan calculator helps you understand the true cost of your education debt, explore different repayment options, and develop strategies to pay off your loans efficiently. Remember that student loans are an investment in your future, but managing them effectively is crucial for long-term financial health. Explore all repayment options, especially income-driven plans if you're struggling with payments, and consider loan forgiveness programs if you qualify. Use our student loan calculator to understand different scenarios, but always consult with student loan counselors or financial advisors for personalized advice based on your specific situation and goals. With the right strategy and knowledge, you can manage your student loan debt effectively and move toward financial freedom.</p>
+    <p>Student loans are a significant financial commitment that requires careful planning and management. Our free student loan calculator helps you understand the true cost of your education debt, explore different repayment terms, and develop strategies to pay off your loans efficiently. Remember that student loans are an investment in your future, but managing them effectively is crucial for long-term financial health. Explore all repayment options (including any program-specific options offered by your servicer) and consider forgiveness only if you qualify. Use our student loan calculator to understand different scenarios, but always consult with student loan counselors or financial advisors for personalized advice based on your specific situation and goals. With the right strategy and knowledge, you can manage your student loan debt effectively and move toward financial freedom.</p>
 
     <p>Managing student loans effectively requires understanding your options, calculating the true costs, and choosing strategies that align with your financial situation and goals. Use our student loan calculator regularly to explore different scenarios, track your progress, and adjust your strategy as your situation changes. Remember that student loans are a tool that helped you invest in your education—now use the right tools and strategies to manage that investment wisely and move toward financial freedom. Our student loan calculator is trusted by thousands of users daily for accurate, instant student loan payment calculations.</p>
   `,
@@ -5000,7 +5107,188 @@ function generateCalculatorContent(): Record<string, string> {
     <h3>Conclusion</h3>
     <p>Daily protein need depends on weight and goal. Our free protein calculator gives a target in grams for maintenance, weight loss, or muscle gain. Use it with our calorie and water intake calculators for a simple nutrition baseline. This tool is for general information only; it is not medical or dietary advice. For personalized plans, consult a dietitian or healthcare provider.</p>
   `,
+  "capital-gains-tax-calculator": `
+    <h2>Capital Gains Tax Calculator: Estimate Long-Term and Short-Term Tax</h2>
+    <p>Our capital gains tax calculator helps you estimate tax on investment gains using filing status, taxable income, cost basis, and sale proceeds. It supports long-term and short-term gain scenarios so you can compare outcomes before selling assets. Use this as a planning estimate and verify final treatment with official guidance.</p>
+    <h3>How the calculation works</h3>
+    <p>First, net gain is calculated as sale proceeds minus cost basis. For long-term gains, a preferential 0%, 15%, or 20% rate is estimated from taxable income and filing status. For short-term gains, the calculator applies the selected ordinary-rate assumption. Formula: <strong>estimated tax = net gain x rate</strong>.</p>
+    <h3>Inputs explained</h3>
+    <p><strong>Taxable income</strong> is your income after deductions used for bracket context. <strong>Cost basis</strong> is what you paid for the asset (plus allowed adjustments). <strong>Sale proceeds</strong> is your gross sale amount. Long-term generally means held more than one year.</p>
+    <h3>Worked example 1 (long-term)</h3>
+    <p>Suppose cost basis is $20,000 and sale proceeds are $35,000. Net gain is $15,000. If your filing context places you in a 15% long-term band, estimated tax is $2,250.</p>
+    <h3>Worked example 2 (short-term)</h3>
+    <p>If the same gain is short-term and you model a 24% ordinary rate, estimated tax is $3,600. This illustrates why holding period can materially affect after-tax proceeds.</p>
+    <h3>What this tool does not model</h3>
+    <p>This estimator does not fully model all return-level interactions, multi-asset loss netting, state tax, NIIT, or special-case exclusions. Treat output as directional and validate final figures with official return instructions.</p>
+    <h3>Related Calculators and Tools</h3>
+    <p><a href="/calculators/finance/tax-calculator">Tax Calculator</a>, <a href="/calculators/finance/investment-calculator">Investment Calculator</a>, <a href="/calculators/finance/roi-calculator">ROI Calculator</a>, <a href="/calculators/finance/compound-interest-calculator">Compound Interest Calculator</a>.</p>
+  `,
+  "self-employed-tax-calculator": `
+    <h2>Self-Employed Tax Calculator: Estimate SE Tax with Current-Year Assumptions</h2>
+    <p>This self-employed tax calculator estimates Social Security and Medicare portions from net self-employment earnings. It applies the standard 92.35% earnings factor, Social Security wage-base cap behavior, and Additional Medicare thresholds by filing status.</p>
+    <h3>Core formula blocks</h3>
+    <p><strong>SE taxable earnings = net earnings x 0.9235</strong>. Social Security portion is estimated at 12.4% up to wage-base limits. Medicare portion is 2.9% on eligible earnings, with potential additional Medicare at 0.9% above filing-status thresholds.</p>
+    <h3>Worked example 1 (below wage base)</h3>
+    <p>Net earnings: $90,000. SE taxable earnings: $83,115. Social Security and Medicare are both applied in standard ranges. The tool returns each component plus total estimated SE tax and half-SE planning deduction.</p>
+    <h3>Worked example 2 (higher income)</h3>
+    <p>Net earnings: $300,000. Social Security reaches wage-base cap behavior, while Medicare continues. Additional Medicare may apply depending on filing status and threshold assumptions.</p>
+    <h3>How to use for quarterly planning</h3>
+    <p>Use annual output as a baseline, then divide into quarterly planning targets. Final payment strategy should include total household income, withholding, credits, and safe-harbor logic.</p>
+    <h3>Educational-only notice</h3>
+    <p>This calculator is a practical estimate tool, not legal or tax advice. Verify final values against current IRS instructions and consult a qualified professional before filing.</p>
+    <h3>Related Calculators and Tools</h3>
+    <p><a href="/calculators/finance/tax-calculator">Tax Calculator</a>, <a href="/calculators/finance/salary-calculator">Salary Calculator</a>, <a href="/calculators/finance/budget-calculator">Budget Calculator</a>, <a href="/calculators/finance/debt-to-income-calculator">Debt-to-Income Calculator</a>.</p>
+  `,
+  "net-worth-calculator": `
+    <h2>Net Worth Calculator: Track Assets vs Liabilities</h2>
+    <p>Your net worth is one of the clearest personal-finance health metrics. This calculator sums your assets and subtracts liabilities so you can monitor progress over time and make better planning decisions.</p>
+    <h3>Net worth formula</h3>
+    <p><strong>Net worth = total assets - total liabilities</strong>. Assets can include cash, investments, property value, and vehicles. Liabilities can include mortgage balances, student loans, credit cards, and other debt.</p>
+    <h3>Worked example 1 (positive net worth)</h3>
+    <p>Assets: $300,000. Liabilities: $180,000. Net worth: $120,000. This means your owned value exceeds outstanding obligations by $120,000.</p>
+    <h3>Worked example 2 (negative net worth)</h3>
+    <p>Assets: $20,000. Liabilities: $32,000. Net worth: -$12,000. Negative net worth is common early in careers; focus on debt structure, savings rate, and steady improvement trend.</p>
+    <h3>Valuation best practices</h3>
+    <p>Use realistic current values for major assets and update quarterly. Consistent valuation method matters more than perfect precision when tracking trajectory month to month.</p>
+    <h3>Planning ideas</h3>
+    <p>Use net worth with budgeting and debt-payoff tools. If liabilities dominate, prioritize high-interest debt and emergency savings. If assets are growing, monitor allocation risk and liquidity.</p>
+    <h3>Related Calculators and Tools</h3>
+    <p><a href="/calculators/finance/budget-calculator">Budget Calculator</a>, <a href="/calculators/finance/savings-calculator">Savings Calculator</a>, <a href="/calculators/finance/investment-calculator">Investment Calculator</a>, <a href="/calculators/finance/debt-to-income-calculator">Debt-to-Income Calculator</a>.</p>
+  `,
+  "apr-calculator": `
+    <h2>APR Calculator: Compare True Loan Cost</h2>
+    <p>Interest rate alone does not always reflect full borrowing cost. This APR calculator estimates annual percentage rate from principal, payment, term, and fees, helping you compare offers with a more complete cost lens.</p>
+    <h3>Why APR differs from rate</h3>
+    <p>Nominal rate reflects pure interest, while APR can include qualifying finance charges. Two loans with the same rate may have different APR if fee structures differ.</p>
+    <h3>How the APR estimate is solved</h3>
+    <p>The tool uses iterative numeric solving to find the monthly rate that matches payment stream to financed amount after fees. Estimated APR is then annualized from that periodic rate.</p>
+    <h3>Worked example 1</h3>
+    <p>Loan amount $20,000, payment $430, term 60 months, fees $0. The model finds a periodic rate and returns an APR estimate representing effective annual borrowing cost.</p>
+    <h3>Worked example 2 (with fees)</h3>
+    <p>Same loan but with $900 fees. Financed amount effectively changes relative to payment, typically lifting APR even if nominal rate input assumptions look similar.</p>
+    <h3>Interpretation tips</h3>
+    <p>Use APR for side-by-side shopping, then check lender disclosures and fee treatment details before signing. APR is powerful for ranking offers but still depends on complete fee transparency.</p>
+    <h3>Related Calculators and Tools</h3>
+    <p><a href="/calculators/finance/loan-calculator">Loan Calculator</a>, <a href="/calculators/finance/mortgage-calculator">Mortgage Calculator</a>, <a href="/calculators/finance/refinance-calculator">Refinance Calculator</a>, <a href="/calculators/finance/car-loan-calculator">Car Loan Calculator</a>.</p>
+  `,
+  "debt-snowball-calculator": `
+    <h2>Debt Snowball Calculator: Build a Clear Payoff Order</h2>
+    <p>The debt snowball method prioritizes smallest balances first to create momentum. This calculator estimates payoff order, timeline, and total interest based on balances, APRs, minimum payments, and extra monthly contribution.</p>
+    <h3>How snowball works</h3>
+    <p>Pay minimums on all debts. Send all extra payment to the smallest balance. Once that debt is cleared, roll its payment into the next smallest debt. The method favors behavioral consistency through quick wins.</p>
+    <h3>Worked example 1</h3>
+    <p>Three debts: $2,000, $4,500, and $9,000 with extra $150/month. Smallest debt closes first, then payment capacity rolls forward, shortening total payoff timeline.</p>
+    <h3>Worked example 2</h3>
+    <p>Increasing extra payment from $150 to $300 often reduces duration materially and lowers total interest. The calculator lets you compare scenarios quickly.</p>
+    <h3>Snowball vs avalanche</h3>
+    <p>Avalanche prioritizes highest APR first for mathematical interest minimization. Snowball prioritizes motivation and consistency. Pick the method you can sustain for years, not weeks.</p>
+    <h3>Practical notes</h3>
+    <p>Model realistic minimums, avoid adding new debt, and review progress monthly. If your cash flow changes, rerun the scenario and reset priorities.</p>
+    <h3>Related Calculators and Tools</h3>
+    <p><a href="/calculators/finance/loan-payoff-calculator">Loan Payoff Calculator</a>, <a href="/calculators/finance/credit-card-payoff-calculator">Credit Card Payoff Calculator</a>, <a href="/calculators/finance/budget-calculator">Budget Calculator</a>, <a href="/calculators/finance/debt-to-income-calculator">Debt-to-Income Calculator</a>.</p>
+  `,
+  "ovulation-calculator": `
+    <h2>Ovulation Calculator: Estimate Fertile Window</h2>
+    <p>This ovulation calculator estimates ovulation date and fertile window using last menstrual period date and average cycle length. It is designed for educational planning and awareness, not diagnosis or treatment decisions.</p>
+    <h3>How estimation works</h3>
+    <p>A common cycle model assumes ovulation around 14 days before the next expected period. The fertile window is typically estimated as about five days before ovulation through ovulation day (sometimes one additional day).</p>
+    <h3>Worked example 1 (28-day cycle)</h3>
+    <p>If cycle length is 28 days, estimated ovulation is around day 14, with fertile window roughly day 9 to day 15 depending on model and rounding.</p>
+    <h3>Worked example 2 (32-day cycle)</h3>
+    <p>For a 32-day cycle, estimated ovulation shifts later (around day 18), and fertile window shifts accordingly. This shows why cycle length matters in calendar-based planning.</p>
+    <h3>Reliability considerations</h3>
+    <p>Cycle variability, stress, travel, illness, and sleep changes can shift timing. This tool is best for rough planning and trend tracking over several cycles, not certainty.</p>
+    <h3>Educational only</h3>
+    <p>This calculator does not replace medical advice and is not a contraception method. For fertility treatment or birth-control decisions, consult a qualified healthcare professional.</p>
+    <h3>Related Calculators and Tools</h3>
+    <p><a href="/calculators/health/pregnancy-calculator">Pregnancy Calculator</a>, <a href="/calculators/health/calorie-calculator">Calorie Calculator</a>, <a href="/calculators/health/water-intake-calculator">Water Intake Calculator</a>, <a href="/calculators/health/bmi-calculator">BMI Calculator</a>.</p>
+  `,
+  "ideal-weight-calculator": `
+    <h2>Ideal Weight Calculator: Healthy Range by Height</h2>
+    <p>This ideal weight calculator estimates a healthy weight range using height and BMI reference limits. It can also compare current weight to the estimated range for quick planning context.</p>
+    <h3>Calculation basis</h3>
+    <p>The model derives target weight from BMI boundaries (commonly 18.5 to 24.9). Formula: <strong>weight = BMI x height^2</strong> where height is in meters and weight in kilograms.</p>
+    <h3>Worked example 1</h3>
+    <p>At 170 cm, healthy-range estimate is roughly 53.5 kg to 72.0 kg. If current weight is near upper range, gradual nutrition and activity optimization may improve comfort and health markers.</p>
+    <h3>Worked example 2</h3>
+    <p>At 160 cm, healthy-range estimate is roughly 47.4 kg to 63.7 kg. This demonstrates how target interval narrows as height decreases.</p>
+    <h3>Important context</h3>
+    <p>BMI-based screening has limits for high-muscle individuals and special clinical cases. Use this output as a baseline estimate, not a standalone diagnosis.</p>
+    <h3>How to use this result</h3>
+    <p>Treat the range as a planning corridor, then monitor trend data such as strength, sleep, waist metrics, and energy levels alongside weight.</p>
+    <h3>Related Calculators and Tools</h3>
+    <p><a href="/calculators/health/bmi-calculator">BMI Calculator</a>, <a href="/calculators/health/body-fat-calculator">Body Fat Calculator</a>, <a href="/calculators/health/calorie-calculator">Calorie Calculator</a>, <a href="/calculators/health/protein-calculator">Protein Calculator</a>.</p>
+  `,
+  "percentage-points-calculator": `
+    <h2>Percentage Points Calculator: Stop Mixing Points and Percent Change</h2>
+    <p>This calculator shows both percentage-point difference and relative percent change between two percentages. It helps avoid one of the most common reporting errors in finance, economics, analytics, and media summaries.</p>
+    <h3>Definitions</h3>
+    <p><strong>Percentage-point change</strong> is subtraction of two percentages: new% - old%. <strong>Percent change</strong> is relative: (new-old)/old x 100.</p>
+    <h3>Worked example 1</h3>
+    <p>Rate moves from 5% to 7%. Point change is +2 points. Relative change is +40%. Both are correct but answer different questions.</p>
+    <h3>Worked example 2</h3>
+    <p>Conversion rate moves from 2.0% to 2.6%. Point change is +0.6 points. Relative change is +30%. This framing is critical for growth reports and A/B test communication.</p>
+    <h3>Edge cases</h3>
+    <p>If old value is 0%, relative percent change is undefined while point change remains valid. The calculator explicitly flags this case to prevent misleading output.</p>
+    <h3>Usage tips</h3>
+    <p>Use point change for rate-level movement (APR, unemployment, CTR levels). Use relative change when discussing proportional growth versus a baseline.</p>
+    <h3>Related Calculators and Tools</h3>
+    <p><a href="/calculators/math/percentage-calculator">Percentage Calculator</a>, <a href="/calculators/finance/roi-calculator">ROI Calculator</a>, <a href="/calculators/finance/discount-calculator">Discount Calculator</a>, <a href="/calculators/finance/tip-calculator">Tip Calculator</a>.</p>
+  `,
+  "work-hours-timesheet-calculator": `
+    <h2>Work Hours Timesheet Calculator: Daily and Weekly Totals with Breaks</h2>
+    <p>This tool estimates worked hours from shift start/end times and unpaid break minutes. It also computes weekly overtime above a configurable threshold, helping with schedule planning and timesheet checks.</p>
+    <h3>Core formula</h3>
+    <p>Daily net minutes = (end - start) - break. Daily hours = net minutes / 60. Weekly total is the sum of daily hours. Overtime estimate = max(0, weekly total - threshold).</p>
+    <h3>Worked example 1</h3>
+    <p>Five shifts of 9:00 to 17:30 with 30-minute break produce 8.0 hours/day and 40.0 hours/week. At a 40-hour threshold, overtime is 0.</p>
+    <h3>Worked example 2</h3>
+    <p>If one shift extends to 19:00, weekly total can exceed threshold. The calculator surfaces overtime hours immediately so you can adjust schedules or forecast earnings impact.</p>
+    <h3>Practical notes</h3>
+    <p>Use actual shift data, keep break minutes accurate, and verify overnight-shift handling against your payroll policy. This is a planning estimate, not payroll/legal advice.</p>
+    <h3>Use cases</h3>
+    <p>Freelancers, part-time workers, operations managers, and students can use this to monitor workload, avoid accidental overtime, and estimate staffing needs.</p>
+    <h3>Related Calculators and Tools</h3>
+    <p><a href="/calculators/date-time/hours-calculator">Hours Calculator</a>, <a href="/calculators/date-time/date-calculator">Date Calculator</a>, <a href="/calculators/finance/salary-calculator">Salary Calculator</a>, <a href="/calculators/finance/budget-calculator">Budget Calculator</a>.</p>
+  `,
+  "currency-converter-calculator": `
+    <h2>Currency Converter Calculator: Manual-Rate Conversion for Fast Scenarios</h2>
+    <p>This currency converter calculator estimates converted amounts from a user-provided exchange rate. It is ideal for planning, quoting, and sensitivity checks when you want full control over rate assumptions without API dependency.</p>
+    <h3>How conversion works</h3>
+    <p>Formula: <strong>converted amount = source amount x exchange rate</strong>. The tool also shows reverse-rate consistency to help validate assumptions and detect obvious input mistakes.</p>
+    <h3>Worked example 1</h3>
+    <p>Convert 100 USD to TRY at 35.20. Result: 3,520 TRY. Reverse check gives about 0.0284 USD per TRY.</p>
+    <h3>Worked example 2</h3>
+    <p>Convert 250 EUR to USD at 1.08. Result: 270 USD. If provider adds spread/fees, actual settlement may differ from pure mathematical conversion.</p>
+    <h3>Why your bank result may differ</h3>
+    <p>Financial institutions can apply spread, markup, fixed fees, and network conversion logic. This tool returns pure rate-based math unless you manually include fee effects in the rate assumption.</p>
+    <h3>Best practices</h3>
+    <p>Always timestamp your rate source, rerun calculations when market moves, and compare at least two providers for high-value transactions.</p>
+    <h3>Related Calculators and Tools</h3>
+    <p><a href="/calculators/math/percentage-calculator">Percentage Calculator</a>, <a href="/calculators/math/unit-converter">Unit Converter</a>, <a href="/calculators/finance/investment-calculator">Investment Calculator</a>, <a href="/calculators/finance/compound-interest-calculator">Compound Interest Calculator</a>.</p>
+  `,
   };
+
+  const longFormTargets = [
+    "capital-gains-tax-calculator",
+    "self-employed-tax-calculator",
+    "net-worth-calculator",
+    "apr-calculator",
+    "debt-snowball-calculator",
+    "ovulation-calculator",
+    "ideal-weight-calculator",
+    "percentage-points-calculator",
+    "work-hours-timesheet-calculator",
+    "currency-converter-calculator",
+  ];
+
+  longFormTargets.forEach((slug) => {
+    if (contentMap[slug]) {
+      contentMap[slug] = `${contentMap[slug]}${universalLongAppendix}`;
+    }
+  });
+
+  return contentMap;
 }
 
 // Export the generated content

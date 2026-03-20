@@ -13,8 +13,6 @@ export const metadata: Metadata = {
   keywords: [
     "gelir vergisi hesaplama",
     "gelir vergisi hesaplama 2026",
-    "2022 gelir vergisi hesaplama",
-    "gelir vergisi hesaplama 2022",
     "vergi hesap makinesi",
     "2026 vergi dilimleri",
     "türkiye vergi hesaplama",
@@ -226,6 +224,18 @@ export default function TurkeyTaxCalculatorPage() {
           <div className="container mx-auto px-4 max-w-4xl">
             <TurkeyTaxCalculator />
             <CalculatorDisclaimer category="finance" locale="tr" />
+            <div className="mt-6 bg-white rounded-lg border border-[#e2e8f0] p-4">
+              <p className="text-[#64748b] text-sm leading-relaxed">
+                <strong className="text-[#1e293b]">2022</strong> gelir vergisi hesaplama rehberi için{" "}
+                <Link
+                  href="/tr/rehberler/gelir-vergisi-hesaplama-2022"
+                  className="text-[#2563eb] hover:underline font-medium"
+                >
+                  buraya tıklayın
+                </Link>
+                .
+              </p>
+            </div>
           </div>
         </section>
 
