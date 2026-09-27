@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { TurkeySalaryCalculator } from "@/components/calculators/tr/TurkeySalaryCalculator";
-import { DATA_VERSION, MINIMUM_WAGE_2026, SGK_RATES_2026, INCOME_TAX_BRACKETS_2026 } from "@/lib/data/turkey-2026-data";
+import { DATA_VERSION, MINIMUM_WAGE_2026, SGK_RATES_2026, WAGE_TAX_BRACKETS_2026 } from "@/lib/data/turkey-2026-data";
 import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { CalculatorDisclaimer } from "@/components/calculators/CalculatorDisclaimer";
 import { generateTurkishHowToSchema, generateTurkishBreadcrumbSchema } from "@/lib/seo/schema";
@@ -252,13 +252,13 @@ export default function TurkeySalaryCalculatorPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {INCOME_TAX_BRACKETS_2026.map((bracket, index) => (
+                  {WAGE_TAX_BRACKETS_2026.map((bracket, index) => (
                     <tr key={index} className="hover:bg-[#f8fafc]">
                       <td className="border border-[#e2e8f0] px-4 py-3 text-[#64748b]">
                         {formatCurrency(bracket.min)} - {bracket.max ? formatCurrency(bracket.max) : "∞"}
                       </td>
                       <td className="border border-[#e2e8f0] px-4 py-3 text-center font-semibold text-[#2563eb]">
-                        %{bracket.rate * 100}
+                        %{bracket.rate}
                       </td>
                       <td className="border border-[#e2e8f0] px-4 py-3 text-right text-sm text-[#64748b]">
                         {index === 0 && "En düşük dilim"}

@@ -17,35 +17,30 @@ export const MTV_2026_OTOMOBIL_PRE2018: Record<MTVAgeGroup, Partial<Record<MTVEn
     "1301-1600": 10044,
     "1601-1800": 15721,
     "1801-2000": 27931,
-    "2001-plus": 27931, // use same as 1801-2000 for simplicity; real tariff may have higher
   },
   "4-6": {
     "0-1300": 4013,
     "1301-1600": 7007,
     "1601-1800": 10998,
     "1801-2000": 19534,
-    "2001-plus": 19534,
   },
   "7-11": {
     "0-1300": 2240,
     "1301-1600": 3910,
     "1601-1800": 6138,
     "1801-2000": 10902,
-    "2001-plus": 10902,
   },
   "12-15": {
     "0-1300": 1120,
     "1301-1600": 1955,
     "1601-1800": 3069,
     "1801-2000": 5451,
-    "2001-plus": 5451,
   },
   "16-plus": {
     "0-1300": 560,
     "1301-1600": 978,
     "1601-1800": 1535,
     "1801-2000": 2726,
-    "2001-plus": 2726,
   },
 };
 
@@ -71,6 +66,7 @@ export function calculateMTV2026(engineCC: number, vehicleAgeYears: number): num
   const bracket = getMTVEngineBracket(engineCC);
   const ageGroup = getMTVAgeGroup(vehicleAgeYears);
   if (!bracket || !ageGroup) return null;
+  // 2000 cc üzeri dilimler (2001-2500, 2501-3000, ...) bu tabloda yok; yanlış tutar göstermemek için null döner
   const amount = MTV_2026_OTOMOBIL_PRE2018[ageGroup][bracket];
   return amount ?? null;
 }

@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import {
   calculateIncomeTax,
   INCOME_TAX_BRACKETS_2026,
+  WAGE_TAX_BRACKETS_2026,
   DATA_VERSION,
 } from "@/lib/data/turkey-2026-data";
 import { formatPercent } from "@/lib/format/locale-format";
@@ -31,7 +32,10 @@ export function TurkeyTaxCalculator() {
   const { register, handleSubmit, formState: { errors } } = useForm<TaxFormData>();
 
   const onSubmit = (data: TaxFormData) => {
-    const taxResult = calculateIncomeTax(data.annualIncome);
+    const taxResult = calculateIncomeTax(
+      data.annualIncome,
+      data.incomeType === "wage" ? WAGE_TAX_BRACKETS_2026 : INCOME_TAX_BRACKETS_2026
+    );
     
     setResult({
       grossIncome: data.annualIncome,
@@ -176,7 +180,7 @@ export function TurkeyTaxCalculator() {
       {/* 2026 Vergi Dilimleri Tablosu */}
       <div className="mt-8 bg-[#f8fafc] p-4 rounded-lg border border-[#e2e8f0]">
         <h4 className="font-semibold text-[#1e293b] mb-4">
-          2026 Yılı Gelir Vergisi Dilimleri
+          2026 Yılı Gelir Vergisi Dilimleri (Ücret; ücret dışı gelirlerde 3. dilim 1.000.000 TL)
         </h4>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
@@ -187,7 +191,7 @@ export function TurkeyTaxCalculator() {
               </tr>
             </thead>
             <tbody>
-              {INCOME_TAX_BRACKETS_2026.map((bracket, index) => (
+              {WAGE_TAX_BRACKETS_2026.map((bracket, index) => (
                 <tr key={index} className="border-b border-[#e2e8f0] last:border-0">
                   <td className="py-2 px-3 text-[#1e293b]">
                     {formatCurrency(bracket.min)} - {bracket.max ? formatCurrency(bracket.max) : "ve üzeri"}

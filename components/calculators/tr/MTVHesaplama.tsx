@@ -29,6 +29,10 @@ export function MTVHesaplama() {
       setError("Araç yaşını 1–30 arasında girin.");
       return;
     }
+    if (cc > 2000) {
+      setError("2000 cm³ üzeri araçlarda MTV tutarları çok daha yüksek dilimlerden hesaplanır; kesin tutar için GİB Dijital Vergi Dairesi MTV hesaplama ekranını kullanın.");
+      return;
+    }
     const mtv = calculateMTV2026(cc, age);
     if (mtv === null) {
       setError("Bu değerler için MTV bulunamadı.");

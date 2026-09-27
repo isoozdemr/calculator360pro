@@ -37,11 +37,12 @@ export interface TaxBracket {
   rate: number; // yüzde olarak (örn: 15 = %15)
 }
 
+// Ücret dışı gelirler (serbest meslek, kira, ticari vb.) için tarife - 3. dilim 1.000.000 TL
 export const INCOME_TAX_BRACKETS_2026: TaxBracket[] = [
   { min: 0, max: 190000, rate: 15 },
   { min: 190001, max: 400000, rate: 20 },
-  { min: 400001, max: 1500000, rate: 27 },
-  { min: 1500001, max: 5300000, rate: 35 },
+  { min: 400001, max: 1000000, rate: 27 },
+  { min: 1000001, max: 5300000, rate: 35 },
   { min: 5300001, max: null, rate: 40 },
 ];
 
@@ -357,7 +358,7 @@ export const BES_2026 = {
 /**
  * Verilen gelire göre vergi hesapla (kademeli)
  */
-export function calculateIncomeTax(income: number): {
+export function calculateIncomeTax(income: number, brackets: TaxBracket[] = INCOME_TAX_BRACKETS_2026): {
   totalTax: number;
   effectiveRate: number;
   breakdown: { bracket: TaxBracket; taxableAmount: number; tax: number }[];
@@ -366,11 +367,11 @@ export function calculateIncomeTax(income: number): {
   let totalTax = 0;
   const breakdown: { bracket: TaxBracket; taxableAmount: number; tax: number }[] = [];
 
-  for (const bracket of INCOME_TAX_BRACKETS_2026) {
+  for (const bracket of brackets) {
     if (remainingIncome <= 0) break;
 
     const bracketMax = bracket.max ?? Infinity;
-    const bracketRange = bracketMax - bracket.min + 1;
+    const bracketRange = bracketMax - (bracket.min === 0 ? 0 : bracket.min - 1);
     const taxableAmount = Math.min(remainingIncome, bracketRange);
     const tax = taxableAmount * (bracket.rate / 100);
 
@@ -412,7 +413,7 @@ export function calculateNetSalary(grossSalary: number, maritalStatus: "single" 
   // Gelir vergisi: 2022'den beri asgari ücrete isabet eden vergi tüm ücretlilerde istisna (AGİ kaldırıldı).
   // Yıl başı (kümülatif matrah 0) esas alınır.
   const minWageTaxable = MINIMUM_WAGE_2026.gross * (1 - (SGK_RATES_2026.worker.sgk + SGK_RATES_2026.worker.unemployment) / 100);
-  const incomeTax = Math.max(0, calculateIncomeTax(taxableIncome).totalTax - calculateIncomeTax(minWageTaxable).totalTax);
+  const incomeTax = Math.max(0, calculateIncomeTax(taxableIncome, WAGE_TAX_BRACKETS_2026).totalTax - calculateIncomeTax(minWageTaxable, WAGE_TAX_BRACKETS_2026).totalTax);
 
   // Damga vergisi: asgari ücreti aşan kısım üzerinden
   const stampTax = Math.max(0, grossSalary - MINIMUM_WAGE_2026.gross) * (STAMP_TAX_2026.rate / 1000);

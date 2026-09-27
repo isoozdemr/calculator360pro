@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { TurkeyTaxCalculator } from "@/components/calculators/tr/TurkeyTaxCalculator";
-import { DATA_VERSION, INCOME_TAX_BRACKETS_2026 } from "@/lib/data/turkey-2026-data";
+import { DATA_VERSION, WAGE_TAX_BRACKETS_2026 } from "@/lib/data/turkey-2026-data";
 import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { CalculatorDisclaimer } from "@/components/calculators/CalculatorDisclaimer";
 import { generateTurkishHowToSchema, generateTurkishBreadcrumbSchema } from "@/lib/seo/schema";
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 const faqs = [
   {
     question: "2026 yılı gelir vergisi dilimleri nedir?",
-    answer: "2026 yılı gelir vergisi dilimleri: 0-190.000 TL arası %15, 190.000-400.000 TL arası %20, 400.000-1.500.000 TL arası %27, 1.500.000-5.300.000 TL arası %35, 5.300.000 TL üzeri %40 oranında vergilendirilir.",
+    answer: "2026 yılı gelir vergisi dilimleri: 0-190.000 TL arası %15, 190.000-400.000 TL arası %20, 400.000-1.500.000 TL arası %27, 1.500.000-5.300.000 TL arası %35, 5.300.000 TL üzeri %40 oranında vergilendirilir. Bu tarife ücret gelirleri içindir; serbest meslek, kira ve ticari kazanç gibi ücret dışı gelirlerde 3. dilim 1.000.000 TL'de biter (400.000-1.000.000 TL %27, 1.000.000-5.300.000 TL %35).",
   },
   {
     question: "Kümülatif vergi matrahı nedir?",
@@ -204,13 +204,13 @@ export default function TurkeyTaxCalculatorPage() {
         <section className="py-4 bg-white border-b border-[#e2e8f0]">
           <div className="container mx-auto px-4 max-w-4xl">
             <div className="flex flex-wrap items-center justify-center gap-4 text-sm">
-              {INCOME_TAX_BRACKETS_2026.map((bracket, index) => (
+              {WAGE_TAX_BRACKETS_2026.map((bracket, index) => (
                 <div key={index} className="flex items-center gap-2">
                   <span className="text-[#64748b]">
-                    {index === 0 ? "0" : formatCurrency(INCOME_TAX_BRACKETS_2026[index - 1].max || 0)} - {bracket.max ? formatCurrency(bracket.max) : "∞"}
+                    {index === 0 ? "0" : formatCurrency(WAGE_TAX_BRACKETS_2026[index - 1].max || 0)} - {bracket.max ? formatCurrency(bracket.max) : "∞"}
                   </span>
-                  <span className="font-bold text-[#2563eb]">%{bracket.rate * 100}</span>
-                  {index < INCOME_TAX_BRACKETS_2026.length - 1 && (
+                  <span className="font-bold text-[#2563eb]">%{bracket.rate}</span>
+                  {index < WAGE_TAX_BRACKETS_2026.length - 1 && (
                     <span className="text-[#e2e8f0]">|</span>
                   )}
                 </div>
@@ -243,7 +243,7 @@ export default function TurkeyTaxCalculatorPage() {
         <section className="py-12 bg-white">
           <div className="container mx-auto px-4 max-w-4xl">
             <h2 className="text-2xl font-bold text-[#1e293b] mb-6">
-              2026 Yılı Gelir Vergisi Dilimleri Tablosu
+              2026 Yılı Gelir Vergisi Dilimleri Tablosu (Ücret Gelirleri)
             </h2>
             <div className="overflow-x-auto">
               <table className="w-full border-collapse">
@@ -256,10 +256,10 @@ export default function TurkeyTaxCalculatorPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {INCOME_TAX_BRACKETS_2026.map((bracket, index) => {
-                    const prevMax = index === 0 ? 0 : INCOME_TAX_BRACKETS_2026[index - 1].max || 0;
+                  {WAGE_TAX_BRACKETS_2026.map((bracket, index) => {
+                    const prevMax = index === 0 ? 0 : WAGE_TAX_BRACKETS_2026[index - 1].max || 0;
                     const bracketAmount = bracket.max ? bracket.max - prevMax : "∞";
-                    const maxTax = bracket.max ? bracketAmount as number * bracket.rate : "∞";
+                    const maxTax = bracket.max ? (bracketAmount as number) * bracket.rate / 100 : "∞";
                     
                     return (
                       <tr key={index} className="border-b border-[#e2e8f0] hover:bg-[#f8fafc]">
@@ -274,7 +274,7 @@ export default function TurkeyTaxCalculatorPage() {
                             index === 3 ? "bg-orange-100 text-orange-700" :
                             "bg-red-100 text-red-700"
                           }`}>
-                            %{bracket.rate * 100}
+                            %{bracket.rate}
                           </span>
                         </td>
                         <td className="px-4 py-4 text-right text-[#1e293b] font-medium">
