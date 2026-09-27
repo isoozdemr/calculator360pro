@@ -197,7 +197,7 @@ export default function TurkeyRetirementCalculatorPage() {
               2026 yılı için avantajları:
             </p>
             <ul>
-              <li><strong>Devlet Katkısı:</strong> %{BES_2026.stateContribution} (ödediğinizin %25&apos;i kadar)</li>
+              <li><strong>Devlet Katkısı:</strong> %{BES_2026.stateContribution} (ödediğinizin %20&apos;si kadar)</li>
               <li><strong>Yıllık Maksimum:</strong> {BES_2026.maxStateContributionPerYear.toLocaleString("tr-TR")} TL devlet katkısı</li>
               <li><strong>Emeklilik Yaşı:</strong> {BES_2026.minimumAge} yaş ve {BES_2026.minimumYears} yıl sistemde kalma</li>
             </ul>
@@ -222,7 +222,7 @@ export default function TurkeyRetirementCalculatorPage() {
               </li>
               <li>
                 <strong>BES&apos;e katılın:</strong> Devlet katkısı sayesinde paranız 
-                %25 daha hızlı büyür; vergi indirimi de ek avantajdır. <Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Vergi hesap makinesi</Link> ile BES indirimi sonrası vergi tasarrufunuzu hesaplayın.
+                %20 daha hızlı büyür. <Link href="/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">BES devlet katkısı hesap makinesi</Link> ile birikiminizi hesaplayın.
               </li>
               <li>
                 <strong>Sigorta açıklarını kapatın:</strong> Borçlanma ile geçmiş 

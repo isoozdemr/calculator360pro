@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/Button";
 import { FormattedNumberInput } from "@/components/ui/FormattedNumberInput";
 import { parseLocaleNumber, formatCurrency } from "@/lib/format/locale-format";
 
-const STATE_RATE = BES_2026.stateContribution / 100; // 0.25
-const STATE_CAP_PER_YEAR = BES_2026.maxStateContributionPerYear; // 20000
+const STATE_RATE = BES_2026.stateContribution / 100; // 0.20
+const STATE_CAP_PER_YEAR = BES_2026.maxStateContributionPerYear; // 79272
 
 function calculateStateContribution(yearlyContribution: number): number {
   const stateAdd = yearlyContribution * STATE_RATE;
@@ -104,7 +104,7 @@ export function BESStateContributionCalculator() {
               helperText={undefined}
             />
             <p className="text-xs text-[#64748b] mt-1">
-              Devlet %25 ekler (yıllık max {formatCurrency(STATE_CAP_PER_YEAR, locale)})
+              Devlet %20 ekler (yıllık max {formatCurrency(STATE_CAP_PER_YEAR, locale)})
             </p>
           </div>
           <div>
@@ -158,7 +158,7 @@ export function BESStateContributionCalculator() {
           </p>
           <ul className="space-y-1 text-[#94a3b8] text-sm">
             <li>Sizin katkınız: {formatCurrency(result.totalUser, locale)}</li>
-            <li>Devlet katkısı (%25): {formatCurrency(result.totalState, locale)}</li>
+            <li>Devlet katkısı (%20): {formatCurrency(result.totalState, locale)}</li>
           </ul>
         </div>
       )}

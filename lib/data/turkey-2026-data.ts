@@ -335,8 +335,8 @@ export const EYT_RULES = {
 
 // BES (Bireysel Emeklilik Sistemi) - 2026
 export const BES_2026 = {
-  stateContribution: 25, // %25 devlet katkısı
-  maxStateContributionPerYear: 20000, // Yıllık maksimum devlet katkısı (TL)
+  stateContribution: 20, // %20 devlet katkısı (1 Ocak 2026 itibarıyla, RG 07.01.2026)
+  maxStateContributionPerYear: 79272, // Yıllık brüt asgari ücretin (396.360 TL) %20'si
   vestingPeriod: 10, // 10 yıl kalma şartı (devlet katkısı için)
   minimumAge: 56, // Emeklilik için minimum yaş
   minimumYears: 10, // Minimum sistemde kalma süresi

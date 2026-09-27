@@ -10,7 +10,7 @@ import { BESStateContributionCalculator } from "@/components/calculators/tr/BESS
 export const metadata: Metadata = {
   title: "BES Devlet Katkısı Hesap Makinesi 2026 | Aylık Katkı ve Birikim",
   description:
-    "Bireysel Emeklilik Sistemi (BES) devlet katkısı %25 ile ne kadar birikim yaparsınız? Aylık katkı, 10 yıl ve 56 yaş senaryoları. Ücretsiz BES hesap makinesi 2026.",
+    "Bireysel Emeklilik Sistemi (BES) devlet katkısı %20 ile ne kadar birikim yaparsınız? Aylık katkı, 10 yıl ve 56 yaş senaryoları. Ücretsiz BES hesap makinesi 2026.",
   keywords: [
     "BES devlet katkısı hesaplama",
     "BES ne kadar yatırmalıyım",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "BES Devlet Katkısı Hesap Makinesi 2026 | Calculator360Pro",
     description:
-      "BES %25 devlet katkısı ile birikiminizi hesaplayın. Aylık katkı, getiri ve 10 yıl senaryosu.",
+      "BES %20 devlet katkısı ile birikiminizi hesaplayın. Aylık katkı, getiri ve 10 yıl senaryosu.",
     url: `${SITE_URL}/tr/hesap-makineleri/finans/bes-devlet-katkisi-hesap-makinesi`,
     type: "website",
     locale: "tr_TR",
@@ -37,12 +37,12 @@ const faqs = [
   {
     question: "BES devlet katkısı oranı nedir?",
     answer:
-      "Bireysel Emeklilik Sistemi'nde (BES) devlet, yaptığınız katkıların %25'ini hesabınıza ekler. 2026 yılında yıllık devlet katkısı üst limiti 20.000 TL'dir. Yani yıllık 80.000 TL'ye kadar yaptığınız katkının tamamı %25 devlet katkısı alır; bu tutarın üzerindeki kısım devlet katkısına tabi değildir.",
+      "Bireysel Emeklilik Sistemi'nde (BES) devlet, yaptığınız katkıların %20'ini hesabınıza ekler. 2026 yılında yıllık devlet katkısı üst limiti 79.272 TL'dir. Yani yıllık 396.360 TL'ye kadar yaptığınız katkının tamamı %20 devlet katkısı alır; bu tutarın üzerindeki kısım devlet katkısına tabi değildir.",
   },
   {
     question: "BES'e aylık ne kadar yatırmalıyım?",
     answer:
-      "Bütçenize göre değişir. Devlet katkısından tam yararlanmak için yıllık 80.000 TL katkı (ayda yaklaşık 6.667 TL) yeterlidir; bu durumda devlet 20.000 TL ekler. Daha düşük aylık katkılarda da %25 devlet katkısı alırsınız; örneğin ayda 1.000 TL (yıllık 12.000 TL) katkıda devlet 3.000 TL ekler.",
+      "Bütçenize göre değişir. Devlet katkısından tam yararlanmak için yıllık 396.360 TL katkı (ayda 33.030 TL, yani brüt asgari ücret kadar) gerekir; bu durumda devlet 79.272 TL ekler. Daha düşük aylık katkılarda da %20 devlet katkısı alırsınız; örneğin ayda 1.000 TL (yıllık 12.000 TL) katkıda devlet 2.400 TL ekler.",
   },
   {
     question: "BES 10 yıl ve 56 yaş kuralı nedir?",
@@ -50,19 +50,19 @@ const faqs = [
       "Devlet katkısının tamamını hak etmek için en az 10 yıl sistemde kalmanız ve 56 yaşını doldurmanız gerekir. Erken çekimlerde devlet katkısı oranı düşer (3 yıl sonra %15, 6 yıl sonra %35, 10 yıl sonra %60 gibi). Bu hesap makinesi 10 yıl ve sonrası birikim senaryosunu gösterir.",
   },
   {
-    question: "BES vergi indirimi nasıl uygulanır?",
+    question: "BES katkıları vergiden düşülür mü?",
     answer:
-      "BES katkıları, gelir vergisi matrahından düşülebilir. Yıllık belirli bir limite kadar (ör. 30.000 TL) yaptığınız katkı vergi matrahınızdan düşülür; böylece hem devlet katkısı hem vergi tasarrufu elde edersiniz. Detay için BES sözleşmenizi veya emeklilik şirketinizi kontrol edin.",
+      "Hayır. 2013'ten itibaren bireysel olarak ödenen BES katkıları için gelir vergisi matrahından indirim uygulanmıyor; bunun yerine devlet katkısı veriliyor. Yalnızca işverenin çalışan adına ödediği katkılar belirli sınırlar içinde işveren için gider yazılabilir.",
   },
   {
     question: "BES mi mevduat mı daha karlı?",
     answer:
-      "BES'te devlet katkısı (%25) ve vergi indirimi nedeniyle, aynı tutarı mevduata yatırmaktan genelde daha avantajlıdır. Mevduat faizi vergiye tabi olabilir; BES uzun vadeli birikim ve emeklilik amaçlıdır. Getiri oranı BES fon getirisine bağlıdır; bu hesap makinesinde beklenen getiri oranını kendiniz girebilirsiniz.",
+      "BES'te %20 devlet katkısı nedeniyle, aynı tutarı mevduata yatırmaktan genelde daha avantajlıdır. Mevduat faizi vergiye tabi olabilir; BES uzun vadeli birikim ve emeklilik amaçlıdır. Getiri oranı BES fon getirisine bağlıdır; bu hesap makinesinde beklenen getiri oranını kendiniz girebilirsiniz.",
   },
   {
     question: "BES devlet katkısı 2026 tavanı ne kadar?",
     answer:
-      "2026 yılında BES devlet katkısı üst limiti yıllık 20.000 TL'dir. Yani devletin ekleyeceği katkı en fazla 20.000 TL olur; buna karşılık sizin yıllık katkınız 80.000 TL'ye kadar %25 devlet katkısı alır (80.000 × 0,25 = 20.000 TL).",
+      "2026 yılında BES devlet katkısı üst limiti yıllık 79.272 TL'dir. Yani devletin ekleyeceği katkı en fazla 79.272 TL olur; buna karşılık sizin yıllık katkınız 396.360 TL'ye kadar %20 devlet katkısı alır (396.360 × 0,20 = 79.272 TL).",
   },
 ];
 
@@ -94,7 +94,7 @@ export default function BESDevletKatkisiHesapMakinesiPage() {
     <>
       <SchemaMarkupTR
         name="BES Devlet Katkısı ve Emeklilik Birikim Hesap Makinesi 2026"
-        description="BES %25 devlet katkısı ile aylık katkı ve birikim hesaplama. 10 yıl ve 56 yaş senaryoları."
+        description="BES %20 devlet katkısı ile aylık katkı ve birikim hesaplama. 10 yıl ve 56 yaş senaryoları."
         slug="bes-devlet-katkisi-hesap-makinesi"
         categorySlug="finans"
         categoryName="Finans"
@@ -138,7 +138,7 @@ export default function BESDevletKatkisiHesapMakinesiPage() {
                   BES Devlet Katkısı Hesap Makinesi 2026
                 </h1>
                 <p className="text-lg text-[#94a3b8] max-w-2xl">
-                  Bireysel Emeklilik Sistemi&apos;nde aylık katkınız ve %25 devlet katkısı ile ne kadar birikim yapacağınızı hesaplayın.
+                  Bireysel Emeklilik Sistemi&apos;nde aylık katkınız ve %20 devlet katkısı ile ne kadar birikim yapacağınızı hesaplayın.
                 </p>
               </div>
               <div className="flex items-center gap-2 bg-[#334155] px-4 py-2 rounded-full text-sm whitespace-nowrap">
@@ -192,7 +192,7 @@ export default function BESDevletKatkisiHesapMakinesiPage() {
                 BES Nedir ve Devlet Katkısı Nasıl Çalışır?
               </h2>
               <p className="text-[#64748b] mb-4 leading-relaxed">
-                Bireysel Emeklilik Sistemi (BES), çalışanların emeklilik için düzenli birikim yapmasını teşvik eden bir sistemdir. Katkılarınızın %25&apos;i devlet tarafından hesabınıza eklenir; 2026 yılında yıllık devlet katkısı üst limiti 20.000 TL&apos;dir. Yani yıllık 80.000 TL&apos;ye kadar yaptığınız katkının tamamı %25 devlet katkısı alır.
+                Bireysel Emeklilik Sistemi (BES), çalışanların emeklilik için düzenli birikim yapmasını teşvik eden bir sistemdir. Katkılarınızın %20&apos;i devlet tarafından hesabınıza eklenir; 2026 yılında yıllık devlet katkısı üst limiti 79.272 TL&apos;dir. Yani yıllık 396.360 TL&apos;ye kadar yaptığınız katkının tamamı %20 devlet katkısı alır.
               </p>
               <p className="text-[#64748b] mb-4 leading-relaxed">
                 BES&apos;ten tam fayda için en az 10 yıl sistemde kalmanız ve 56 yaşını doldurmanız gerekir. Erken çekimde devlet katkısının bir kısmı geri alınır. BES katkıları ayrıca gelir vergisi matrahından düşülebilir; bu da ek vergi tasarrufu sağlar.
@@ -202,13 +202,13 @@ export default function BESDevletKatkisiHesapMakinesiPage() {
                 Örnek Senaryolar
               </h3>
               <p className="text-[#64748b] mb-2">
-                <strong>Aylık 1.000 TL:</strong> Yıllık 12.000 TL katkı, devlet 3.000 TL ekler. 10 yılda (getiri hariç) 120.000 + 30.000 = 150.000 TL. Getiri ile birlikte hesap makinesinde görebilirsiniz.
+                <strong>Aylık 1.000 TL:</strong> Yıllık 12.000 TL katkı, devlet 2.400 TL ekler. 10 yılda (getiri hariç) 120.000 + 24.000 = 144.000 TL. Getiri ile birlikte hesap makinesinde görebilirsiniz.
               </p>
               <p className="text-[#64748b] mb-2">
                 <strong>Aylık 5.000 TL:</strong> Yıllık 60.000 TL katkı, devlet 15.000 TL ekler. 10 yılda katkılar 600.000 + 150.000 = 750.000 TL (getiri eklenmeden).
               </p>
               <p className="text-[#64748b] mb-4">
-                <strong>Aylık 7.000 TL:</strong> Yıllık 84.000 TL katkı; devlet en fazla 20.000 TL ekler (tavan). 84.000 TL&apos;lik katkının 80.000 TL&apos;si %25, kalan 4.000 TL devlet katkısız.
+                <strong>Aylık 7.000 TL:</strong> Yıllık 84.000 TL katkı; devlet %20 oranında 16.800 TL ekler. Tavan (79.272 TL) ancak yıllık 396.360 TL katkıda dolar.
               </p>
 
               <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">
@@ -222,16 +222,16 @@ export default function BESDevletKatkisiHesapMakinesiPage() {
                 BES mi Mevduat mı?
               </h3>
               <p className="text-[#64748b] mb-4 leading-relaxed">
-                Mevduat faizi vergiye tabidir ve devlet katkısı yoktur. BES&apos;te ise %25 devlet katkısı ve vergi indirimi vardır; getiri de fon performansına bağlıdır. Kısa vadeli ihtiyaçlar için mevduat, uzun vadeli emeklilik birikimi için BES genelde daha mantıklıdır. <Link href="/tr/hesap-makineleri/finans/birikim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Birikim hesap makinesi</Link> ile mevduat senaryolarını, bu araç ile BES senaryolarını karşılaştırabilirsiniz.
+                Mevduat faizi vergiye tabidir ve devlet katkısı yoktur. BES&apos;te ise %20 devlet katkısı vardır ve fon getirileri emeklilikte avantajlı stopajla vergilendirilir; getiri de fon performansına bağlıdır. Kısa vadeli ihtiyaçlar için mevduat, uzun vadeli emeklilik birikimi için BES genelde daha mantıklıdır. <Link href="/tr/hesap-makineleri/finans/birikim-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Birikim hesap makinesi</Link> ile mevduat senaryolarını, bu araç ile BES senaryolarını karşılaştırabilirsiniz.
               </p>
 
               <h2 className="text-2xl font-bold text-[#1e293b] mt-10 mb-4">
                 2026 BES Güncel Oranlar ve Limitler
               </h2>
               <p className="text-[#64748b] mb-4 leading-relaxed">
-                2026 yılında BES devlet katkısı oranı %25 olup, yıllık devlet katkısı üst limiti 20.000 TL&apos;dir. 
-                Yani yıllık 80.000 TL&apos;ye kadar yaptığınız katkının tamamı %25 devlet katkısı alır; 
-                80.000 TL üzeri katkılar devlet katkısına tabi değildir. Tam devlet katkısına hak kazanmak için 
+                2026 yılında BES devlet katkısı oranı %20 olup, yıllık devlet katkısı üst limiti 79.272 TL&apos;dir. 
+                Yani yıllık 396.360 TL&apos;ye kadar yaptığınız katkının tamamı %20 devlet katkısı alır; 
+                396.360 TL üzeri katkılar devlet katkısına tabi değildir. Tam devlet katkısına hak kazanmak için 
                 en az 10 yıl sistemde kalmanız ve 56 yaşını doldurmanız gerekir. Erken çekimlerde devlet katkısı 
                 kademeli olarak geri alınır (3 yıl %15, 6 yıl %35, 10 yıl %60 oranında hak ediş). Vergi indirimi 
                 limitleri her yıl bütçe kanunu ile güncellenebilir; güncel limitler için BES şirketiniz veya 
@@ -242,7 +242,7 @@ export default function BESDevletKatkisiHesapMakinesiPage() {
                 İpuçları ve Öneriler
               </h2>
               <ul className="list-disc list-inside text-[#64748b] space-y-2 mb-4">
-                <li><strong>Devlet katkısı tavanına yaklaşın:</strong> Bütçeniz elveriyorsa yıllık 80.000 TL katkı (ayda ~6.667 TL) ile tam devlet katkısı (20.000 TL) alırsınız. <Link href="/tr/hesap-makineleri/finans/vergi-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Vergi hesap makinesi</Link> ile BES indirimi sonrası vergi tasarrufunuzu tahmin edin.</li>
+                <li><strong>Devlet katkısı tavanına yaklaşın:</strong> Bütçeniz elveriyorsa yıllık 396.360 TL katkı (ayda 33.030 TL) ile tam devlet katkısı (79.272 TL) alırsınız.</li>
                 <li><strong>Uzun vade düşünün:</strong> BES en az 10 yıl kalındığında tam devlet katkısına hak kazandırır; kısa vadede ihtiyaç duyacağınız parayı BES&apos;e yatırmayın.</li>
                 <li><strong>SGK ile birlikte planlayın:</strong> SGK emeklilik yaşı ve prim günü bilgisi için <Link href="/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Emeklilik hesap makinesi</Link> ve <Link href="/tr/rehberler/sgk-emeklilik-tablosu" className="text-[#2563eb] hover:underline font-medium">SGK Emeklilik Tablosu</Link> rehberini kullanın.</li>
                 <li><strong>Getiri varsayımı:</strong> Bu hesap makinesinde beklenen yıllık getiri oranını kendiniz girebilirsiniz; geçmiş performans garanti değildir, makul bir oran (ör. %8–12) ile senaryo kurun.</li>
