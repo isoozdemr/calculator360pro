@@ -96,6 +96,7 @@ export const TR_CALCULATORS: TRCalculatorItem[] = [
   { category: "finans", slug: "fazla-mesai-hesap-makinesi", name: "Fazla Mesai Hesap Makinesi", description: "Fazla Mesai Hesaplama 2026", icon: "⏱️", badge: "Yeni" },
   { category: "finans", slug: "kira-artis-hesap-makinesi", name: "Kira Artış Hesap Makinesi", description: "Kira Artış Oranı Hesaplama 2026", icon: "🏠", badge: "Yeni" },
   { category: "finans", slug: "tapu-harci-hesap-makinesi", name: "Tapu Harcı Hesap Makinesi", description: "Tapu Harcı Hesaplama 2026", icon: "📜", badge: "Yeni" },
+  { category: "finans", slug: "netten-brute-maas-hesap-makinesi", name: "Netten Brüte Maaş Hesap Makinesi", description: "Net maaştan brüt maaş ve kesintiler 2026", icon: "🔁", badge: "Yeni" },
   { category: "finans", slug: "mtv-hesap-makinesi", name: "MTV Hesap Makinesi", description: "Motorlu taşıt vergisi 2026, motor hacmi ve araç yaşına göre", icon: "🚗", badge: "2026" },
 ];
 

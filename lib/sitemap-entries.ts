@@ -56,6 +56,7 @@ export const TURKISH_CALCULATORS = [
   { category: "finans", slug: "mtv-hesap-makinesi", trOnly: true },
   { category: "finans", slug: "kidem-tazminati-hesap-makinesi", trOnly: true },
   { category: "finans", slug: "issizlik-maasi-hesap-makinesi", trOnly: true },
+  { category: "finans", slug: "netten-brute-maas-hesap-makinesi", trOnly: true },
   { category: "finans", slug: "yillik-izin-hesap-makinesi", trOnly: true },
   { category: "finans", slug: "fazla-mesai-hesap-makinesi", trOnly: true },
   { category: "finans", slug: "kira-artis-hesap-makinesi", trOnly: true },
