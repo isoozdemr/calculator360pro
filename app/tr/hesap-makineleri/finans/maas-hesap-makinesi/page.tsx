@@ -12,7 +12,7 @@ const SGK_WORKER_TOTAL = SGK_RATES_2026.worker.total;
 const SGK_CEILING = SGK_RATES_2026.limits.ceiling;
 
 export const metadata: Metadata = {
-  title: "Maaş Hesaplama 2026 | Brüt Net Maaş Hesap Makinesi | SGK AGİ Hesaplama",
+  title: "Maaş Hesaplama 2026 | Brütten Nete, Netten Brüte Maaş Hesap Makinesi",
   description: "2026 güncel asgari ücret (33.030 TL brüt), SGK oranları ve vergi dilimleri ile brütten nete maaş hesaplayın. AGİ, damga vergisi, gelir vergisi, işveren maliyeti hesaplama. Ücretsiz online maaş hesap makinesi.",
   keywords: [
     "maaş hesaplama",
