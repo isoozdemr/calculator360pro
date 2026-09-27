@@ -21,30 +21,17 @@ export function generateCalculatorSchema(calculator: CalculatorDefinition) {
           ? HEALTH_APPLICATION_CATEGORY
           : "UtilityApplication",
     "operatingSystem": "Web",
+    "inLanguage": "en",
+    "publisher": { "@id": ORGANIZATION_ID },
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD",
     },
   };
-  if (calculator.category === "finance") {
-    schema.about = {
-      "@type": "FinancialProduct",
-      "name": calculator.name,
-      "description": calculator.description,
-      "url": url,
-    };
-  }
-
-  // Add softwareVersion (recommended by Google for better rich results)
-  // Version can be updated when calculator features change
-  schema.softwareVersion = "1.0";
-
-  // Add browserRequirements (recommended for Web applications)
+  // Browser requirements are meaningful for a web app; placeholder fields
+  // (softwareVersion, permissions, unrelated FinancialProduct "about") removed.
   schema.browserRequirements = "Requires JavaScript. Requires HTML5.";
-
-  // Add permissions (recommended for Web applications)
-  schema.permissions = "No special permissions required.";
 
   // Add featureList for better rich results
   schema.featureList = [
@@ -54,8 +41,6 @@ export function generateCalculatorSchema(calculator: CalculatorDefinition) {
     "Mobile-friendly",
     "Accurate results",
   ];
-
-  // aggregateRating omitted until real user reviews are collected (see generateAggregateRatingSchema)
 
   // Note: screenshot can be added in the future when we have screenshots
 
@@ -80,26 +65,6 @@ export function generateFAQSchema(calculator: CalculatorDefinition) {
         // For now, plain text is sufficient and recommended for featured snippets
       },
     })),
-  };
-}
-
-/**
- * Generate AggregateRating schema for calculators
- * This helps Google display star ratings in search results
- */
-export function generateAggregateRatingSchema(
-  ratingValue: number = 4.8,
-  reviewCount: number = 1250,
-  bestRating: number = 5,
-  worstRating: number = 1
-) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "AggregateRating",
-    "ratingValue": ratingValue.toString(),
-    "reviewCount": reviewCount.toString(),
-    "bestRating": bestRating.toString(),
-    "worstRating": worstRating.toString(),
   };
 }
 
@@ -184,29 +149,20 @@ export function generateBreadcrumbSchema(
   };
 }
 
-// Social media profile URLs for sameAs schema
-export const SOCIAL_MEDIA_PROFILES = {
-  twitter: "https://twitter.com/calculator360pro",
-  facebook: "https://www.facebook.com/calculator360pro",
-  linkedin: "https://www.linkedin.com/company/calculator360pro",
-  pinterest: "https://www.pinterest.com/calculator360pro",
-  youtube: "https://www.youtube.com/@calculator360pro",
-};
+export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+export const WEBSITE_ID = `${SITE_URL}/#website`;
+export const WEBSITE_TR_ID = `${SITE_URL}/tr#website`;
 
-export function generateOrganizationSchema() {
+export function generateOrganizationSchema(
+  description: string = "Calculator360Pro provides free, accurate online calculators for finance, health, education, math, and everyday needs."
+) {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": ORGANIZATION_ID,
     "name": "Calculator360Pro",
     "url": SITE_URL,
     "logo": `${SITE_URL}/logo.svg`,
-    "sameAs": [
-      SOCIAL_MEDIA_PROFILES.twitter,
-      SOCIAL_MEDIA_PROFILES.facebook,
-      SOCIAL_MEDIA_PROFILES.linkedin,
-      SOCIAL_MEDIA_PROFILES.pinterest,
-      SOCIAL_MEDIA_PROFILES.youtube,
-    ],
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "Customer Service",
@@ -214,24 +170,19 @@ export function generateOrganizationSchema() {
       "availableLanguage": ["English", "Turkish"],
     },
     "foundingDate": "2025",
-    "description": "Calculator360Pro provides free, accurate online calculators for finance, health, education, math, and everyday needs.",
+    "description": description,
   };
 }
 
-export function generateWebSiteSchema() {
+export function generateWebSiteSchema(language: "en" | "tr" = "en") {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": language === "tr" ? WEBSITE_TR_ID : WEBSITE_ID,
     "name": "Calculator360Pro",
-    "url": SITE_URL,
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": `${SITE_URL}/search?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
-    },
+    "url": language === "tr" ? `${SITE_URL}/tr` : SITE_URL,
+    "inLanguage": language,
+    "publisher": { "@id": ORGANIZATION_ID },
   };
 }
 
@@ -420,7 +371,7 @@ export function generateBlogListSchema(
 // ==========================================
 
 /**
- * Generate Turkish calculator schema (SoftwareApplication + optional FinancialProduct/health)
+ * Generate Turkish calculator schema (SoftwareApplication)
  */
 export function generateTurkishCalculatorSchema(
   name: string,
@@ -442,10 +393,9 @@ export function generateTurkishCalculatorSchema(
     "operatingSystem": "Web",
     "inLanguage": "tr",
     "dateModified": dateModified,
+    "publisher": { "@id": ORGANIZATION_ID },
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "TRY" },
-    "softwareVersion": "1.0",
     "browserRequirements": "Requires JavaScript. Requires HTML5.",
-    "permissions": "No special permissions required.",
     "featureList": [
       "Ücretsiz kullanım",
       "Kayıt gerekmez",
@@ -453,11 +403,6 @@ export function generateTurkishCalculatorSchema(
       "Mobil uyumlu",
       "Doğru sonuçlar",
     ],
-    "about": {
-      "@type": category === "finance" ? "FinancialProduct" : "Thing",
-      "name": name,
-      "description": description,
-    },
   };
   return schema;
 }

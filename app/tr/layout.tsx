@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/constants";
+import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: "Calculator360Pro - Ücretsiz Online Hesap Makineleri",
@@ -57,44 +58,10 @@ export const metadata: Metadata = {
 
 // Türkçe schema'ları head'e eklemek için script component
 function TurkishSchemaScripts() {
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Calculator360Pro",
-    "url": "https://calculator360pro.com",
-    "logo": "https://calculator360pro.com/logo.svg",
-    "sameAs": [
-      "https://twitter.com/calculator360pro",
-      "https://www.facebook.com/calculator360pro",
-      "https://www.linkedin.com/company/calculator360pro",
-      "https://www.pinterest.com/calculator360pro",
-      "https://www.youtube.com/@calculator360pro",
-    ],
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "Customer Service",
-      "email": "contact@calculator360pro.com",
-      "availableLanguage": ["English", "Turkish"],
-    },
-    "foundingDate": "2025",
-    "description": "Calculator360Pro finans, sağlık, eğitim, matematik ve günlük ihtiyaçlar için ücretsiz, doğru online hesap makineleri sunar.",
-  };
-
-  const websiteSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Calculator360Pro",
-    "url": "https://calculator360pro.com/tr",
-    "inLanguage": "tr",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://calculator360pro.com/search?q={search_term_string}",
-      },
-      "query-input": "required name=search_term_string",
-    },
-  };
+  const organizationSchema = generateOrganizationSchema(
+    "Calculator360Pro finans, sağlık, eğitim, matematik ve günlük ihtiyaçlar için ücretsiz, doğru online hesap makineleri sunar."
+  );
+  const websiteSchema = generateWebSiteSchema("tr");
 
   return (
     <>
