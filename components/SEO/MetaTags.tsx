@@ -22,13 +22,21 @@ export function generateCalculatorMetadata(
   let titleOverride: string | null = null;
 
   if (slug === "mortgage-calculator") {
-    titleOverride = "Best Mortgage Calculator 2026 - P&I | Calculator360Pro";
+    titleOverride = "Mortgage Calculator with Taxes & Insurance | Calculator360Pro";
   } else if (slug === "bmi-calculator") {
-    titleOverride = "Calculating Your BMI - BMI Calculator | Calculator360Pro";
+    titleOverride = "BMI Calculator - Body Mass Index for Adults | Calculator360Pro";
+  } else if (slug === "tip-calculator") {
+    titleOverride = "Tip Calculator - Split the Bill & Tip per Person | Calculator360Pro";
+  } else if (slug === "tax-calculator") {
+    titleOverride = "Income Tax Calculator 2026 - Free Tax Estimator | Calculator360Pro";
+  } else if (slug === "scientific-calculator") {
+    titleOverride = "Scientific Calculator - Free Online Sin, Cos, Log | Calculator360Pro";
+  } else if (slug === "salary-calculator") {
+    titleOverride = "Salary Calculator - Hourly to Annual Paycheck | Calculator360Pro";
   } else if (slug === "calorie-calculator") {
     titleOverride = "Calorie Calculator - Daily Calories | Calculator360Pro";
   } else if (slug === "percentage-calculator") {
-    titleOverride = "Percentage Made Easy - Percent Calculator | Calculator360Pro";
+    titleOverride = "Percentage Calculator - Percent Change & Off | Calculator360Pro";
   }
 
   // Default behavior: Primary keyword at the beginning, 50-60 characters

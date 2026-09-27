@@ -31,14 +31,14 @@ export function NetWorthCalculator() {
         <div>
           <h3 className="font-semibold text-[#1e293b] mb-2">Assets</h3>
           {[
-            ["Cash", cash, setCash],
-            ["Investments", investments, setInvestments],
-            ["Real Estate Value", realEstate, setRealEstate],
-            ["Vehicle Value", vehicles, setVehicles],
-            ["Other Assets", otherAssets, setOtherAssets],
+            ["Cash", cash, setCash] as const,
+            ["Investments", investments, setInvestments] as const,
+            ["Real Estate Value", realEstate, setRealEstate] as const,
+            ["Vehicle Value", vehicles, setVehicles] as const,
+            ["Other Assets", otherAssets, setOtherAssets] as const,
           ].map(([label, value, setter]) => (
             <label key={label as string} className="text-sm text-[#475569] block mb-2">
-              {label} ($)
+              {label as string} ($)
               <input className="w-full mt-1 border rounded p-2" type="number" min={0} value={value as number} onChange={(e) => (setter as (n: number) => void)(Number(e.target.value || 0))} />
             </label>
           ))}
@@ -46,13 +46,13 @@ export function NetWorthCalculator() {
         <div>
           <h3 className="font-semibold text-[#1e293b] mb-2">Liabilities</h3>
           {[
-            ["Mortgage Balance", mortgageDebt, setMortgageDebt],
-            ["Student Loans", studentDebt, setStudentDebt],
-            ["Credit Cards", creditCardDebt, setCreditCardDebt],
-            ["Other Debt", otherDebt, setOtherDebt],
+            ["Mortgage Balance", mortgageDebt, setMortgageDebt] as const,
+            ["Student Loans", studentDebt, setStudentDebt] as const,
+            ["Credit Cards", creditCardDebt, setCreditCardDebt] as const,
+            ["Other Debt", otherDebt, setOtherDebt] as const,
           ].map(([label, value, setter]) => (
             <label key={label as string} className="text-sm text-[#475569] block mb-2">
-              {label} ($)
+              {label as string} ($)
               <input className="w-full mt-1 border rounded p-2" type="number" min={0} value={value as number} onChange={(e) => (setter as (n: number) => void)(Number(e.target.value || 0))} />
             </label>
           ))}

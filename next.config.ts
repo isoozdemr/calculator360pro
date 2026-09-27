@@ -99,7 +99,15 @@ const nextConfig: NextConfig = {
   // 301 redirects: common fixes + GSC env vars (see .env.example)
   async redirects() {
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://calculator360pro.com";
-    const redirects: { source: string; destination: string; permanent: boolean }[] = [];
+    const redirects: { source: string; destination: string; permanent: boolean; has?: { type: "host"; value: string }[] }[] = [];
+
+    // Canonical host: www -> apex (GSC'de www ve non-www URL'ler ayrı indeksleniyordu)
+    redirects.push({
+      source: "/:path*",
+      has: [{ type: "host", value: "www.calculator360pro.com" }],
+      destination: "https://calculator360pro.com/:path*",
+      permanent: true,
+    });
 
     // Yaygın yanlış/eski linkler (GSC 404 / yönlendirmeli sayfa için)
     redirects.push({ source: "/guide", destination: "/guides", permanent: true });

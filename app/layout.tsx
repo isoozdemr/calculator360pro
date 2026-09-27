@@ -26,10 +26,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "Calculator360Pro - Free Online Calculators",
-    template: "%s | Calculator360Pro",
-  },
+  title: "Calculator360Pro - Free Online Calculators",
   description:
     "Calculate mortgage, BMI, taxes & more with free online tools. Trusted results in seconds. Try Calculator360Pro now!",
   keywords: [
@@ -45,14 +42,6 @@ export const metadata: Metadata = {
   creator: "Calculator360Pro",
   publisher: "Calculator360Pro",
   metadataBase: new URL(SITE_URL),
-  alternates: {
-    canonical: SITE_URL,
-    languages: {
-      en: SITE_URL,
-      tr: `${SITE_URL}/tr`,
-      "x-default": SITE_URL,
-    },
-  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -104,26 +93,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="overflow-x-hidden">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
         {/* Preconnect to Google services for faster script loading */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-        />
         {/* RSS Feed Auto-discovery */}
         <link rel="alternate" type="application/rss+xml" title="Calculator360Pro Blog RSS Feed" href={`${process.env.NEXT_PUBLIC_SITE_URL || "https://calculator360pro.com"}/feed.xml`} />
-        {/* Critical Resource Preload */}
-        <link rel="preload" href="/og-image.png" as="image" fetchPriority="high" />
-        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style" />
         <meta
           name="google-adsense-account"
           content={process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "ca-pub-2471021299627229"}

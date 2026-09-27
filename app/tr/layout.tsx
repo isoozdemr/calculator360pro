@@ -2,10 +2,7 @@ import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: {
-    default: "Calculator360Pro - Ücretsiz Online Hesap Makineleri",
-    template: "%s | Calculator360Pro",
-  },
+  title: "Calculator360Pro - Ücretsiz Online Hesap Makineleri",
   description:
     "Finans, sağlık, eğitim, matematik ve daha fazlası için ücretsiz, doğru online hesap makineleri. Vergi, maaş, kredi, BMI ve yüzlerce farklı hesaplama.",
   keywords: [
@@ -21,14 +18,6 @@ export const metadata: Metadata = {
   authors: [{ name: "Calculator360Pro" }],
   creator: "Calculator360Pro",
   publisher: "Calculator360Pro",
-  alternates: {
-    canonical: `${SITE_URL}/tr`,
-    languages: {
-      en: SITE_URL,
-      tr: `${SITE_URL}/tr`,
-      "x-default": SITE_URL,
-    },
-  },
   openGraph: {
     type: "website",
     locale: "tr_TR",
@@ -138,6 +127,8 @@ export default function TurkishLayout({
         {/* RSS Feed Auto-discovery */}
         <link rel="alternate" type="application/rss+xml" title="Calculator360Pro Blog RSS Feed (Türkçe)" href={`${process.env.NEXT_PUBLIC_SITE_URL || "https://calculator360pro.com"}/tr/feed.xml`} />
       </head>
+      {/* Kök layout html lang="en" basıyor; Türkçe sayfalarda dili düzelt */}
+      <script dangerouslySetInnerHTML={{ __html: 'document.documentElement.lang="tr"' }} />
       <TurkishSchemaScripts />
       {children}
     </>
