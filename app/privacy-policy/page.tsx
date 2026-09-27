@@ -5,7 +5,7 @@ import { generateSimpleBreadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Privacy Policy for Calculator360Pro",
+  description: "Learn how Calculator360Pro collects, uses, and protects your data, including cookies, analytics, and advertising practices.",
   keywords: ["privacy policy", "privacy", "data protection", "Calculator360Pro privacy", "cookie policy"],
   alternates: {
     canonical: `${SITE_URL}/privacy-policy`,
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Privacy Policy - Calculator360Pro",
-    description: "Privacy Policy for Calculator360Pro",
+    description: "Learn how Calculator360Pro collects, uses, and protects your data, including cookies, analytics, and advertising practices.",
     url: `${SITE_URL}/privacy-policy`,
     type: "website",
     siteName: "Calculator360Pro",

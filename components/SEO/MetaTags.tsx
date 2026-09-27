@@ -154,7 +154,7 @@ export function generateBlogPostMetadata(post: BlogPost): Metadata {
   }
 
   return {
-    title: `${post.title} | Calculator360Pro Blog`,
+    title: `${post.title} | Calculator360Pro`,
     description: post.description,
     keywords: post.tags.join(", "),
     authors: [{ name: post.author }],

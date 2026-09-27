@@ -5,7 +5,7 @@ import { generateSimpleBreadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "Terms of Service for Calculator360Pro",
+  description: "Read the terms of service for using Calculator360Pro's free calculators, including acceptable use, disclaimers, and liability limitations.",
   keywords: ["terms of service", "terms", "legal", "Calculator360Pro terms", "user agreement"],
   alternates: {
     canonical: `${SITE_URL}/terms-of-service`,
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Terms of Service - Calculator360Pro",
-    description: "Terms of Service for Calculator360Pro",
+    description: "Read the terms of service for using Calculator360Pro's free calculators, including acceptable use, disclaimers, and liability limitations.",
     url: `${SITE_URL}/terms-of-service`,
     type: "website",
     siteName: "Calculator360Pro",
