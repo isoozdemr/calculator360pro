@@ -971,7 +971,7 @@ Bu bilgiler genel bilgilendirme amaçlıdır. Prim günü hesaplaması ve emekli
     category: "Finans",
     tags: ["sgk prim günü", "emeklilik", "prim günü hesaplama", "sgk", "emeklilik şartları", "prim ödeme", "kaç gün prim", "finans"],
     faqs: [
-      { question: "Emeklilik için kaç gün prim gerekir?", answer: "Doğum yılı ve cinsiyete göre değişir; 1999 sonrası için en az 4500–7200 gün aralığında prim şartı vardır." },
+      { question: "Emeklilik için kaç gün prim gerekir?", answer: "İlk sigorta giriş tarihine göre değişir: 4/a (SSK) sigortalılarda EYT kapsamında 5.000–5.975 gün, 8.9.1999–30.4.2008 arası girişlerde 7.000 gün (veya 25 yıl sigortalılık ile 4.500 gün), 1.5.2008 sonrası girişlerde 7.200 gün prim gerekir." },
       { question: "Prim günü nasıl hesaplanır?", answer: "Sigortalı çalışılan her gün 1 prim günü sayılır; aylık tam gün çalışmada yaklaşık 30 gün prim yazılır." },
     ],
   },

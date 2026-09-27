@@ -52,7 +52,7 @@ const faqs = [
   {
     question: "Emeklilik için kaç gün prim gerekir?",
     answer:
-      "Emeklilik için gereken prim günü, doğum yılınıza ve sigorta giriş tarihinize göre değişir. Örneğin 7200 gün (20 yıl), 9000 gün (25 yıl) gibi şartlar uygulanabilir. Yaş şartı da aynı anda sağlanmalıdır. Güncel şartlar için SGK emeklilik yaşı tablosuna veya e-devlet üzerinden sorgulama yapın.",
+      "Emeklilik için gereken prim günü sigorta giriş tarihinize ve statünüze göre değişir: 4/a (SSK) için EYT kapsamında 5.000–5.975 gün, 1999–2008 arası girişlerde 7.000 gün, 2008 sonrası girişlerde 7.200 gün; Bağ-Kur (4/b) için 9.000 gün. Yaş şartı da aynı anda sağlanmalıdır. Güncel şartlar için SGK emeklilik yaşı tablosuna veya e-devlet üzerinden sorgulama yapın.",
   },
   {
     question: "Prim günü ile çalışma günü aynı mı?",
@@ -139,7 +139,7 @@ export default function PrimGunuHesapMakinesiPage() {
             <article className="prose prose-slate max-w-none">
               <h2 className="text-2xl font-bold text-[#1e293b] mb-6">SGK Prim Günü Nedir?</h2>
               <p className="text-[#64748b] mb-4 leading-relaxed">
-                SGK (Sosyal Güvenlik Kurumu) prim günü, sigortalı olarak çalıştığınız veya prim ödediğiniz her bir takvim gününü ifade eder. Emeklilik ve malullük aylığı gibi haklar, toplam prim günü sayısı ve yaş şartı ile birlikte değerlendirilir. Örneğin belirli doğum yılı grupları için 7200 gün (yaklaşık 20 yıl) veya 9000 gün (25 yıl) prim ödeme şartı aranabilir. Prim günü, işe giriş ve çıkış tarihleriniz, staj, askerlik borçlanması ve diğer özel süreler dahil SGK kayıtlarınızda biriken günlerin toplamıdır.
+                SGK (Sosyal Güvenlik Kurumu) prim günü, sigortalı olarak çalıştığınız veya prim ödediğiniz her bir takvim gününü ifade eder. Emeklilik ve malullük aylığı gibi haklar, toplam prim günü sayısı ve yaş şartı ile birlikte değerlendirilir. Örneğin 2008 sonrası SSK girişlilerde 7.200 gün (yaklaşık 20 yıl), Bağ-Kur'lularda 9.000 gün (25 yıl) prim şartı aranır. Prim günü, işe giriş ve çıkış tarihleriniz, staj, askerlik borçlanması ve diğer özel süreler dahil SGK kayıtlarınızda biriken günlerin toplamıdır.
               </p>
 
               <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">Prim Günü Nasıl Hesaplanır?</h3>
@@ -149,7 +149,7 @@ export default function PrimGunuHesapMakinesiPage() {
 
               <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">Emeklilik Şartları ve Prim Günü</h3>
               <p className="text-[#64748b] mb-4 leading-relaxed">
-                Emeklilik için hem yaş hem de prim günü şartı birlikte aranır. Doğum yılınıza ve sigorta giriş tarihinize göre gereken minimum prim günü (örneğin 7200, 9000) ve emeklilik yaşı kanunla belirlenir. Tablolar zaman zaman güncellendiği için güncel şartları SGK emeklilik yaşı tablosundan veya e-devlet üzerinden emeklilik sorgulama sayfasından öğrenmeniz gerekir. Bu araç yalnızca verdiğiniz tarih aralığındaki gün sayısını hesaplar; emeklilik yaşı veya özel düzenlemeleri (kadın/erkek, malullük, vazife malullüğü vb.) dikkate almaz. <Link href="/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Emeklilik hesap makinesi</Link> ile emeklilik yaşı ve prim özetini birlikte inceleyebilirsiniz.
+                Emeklilik için hem yaş hem de prim günü şartı birlikte aranır. Sigorta giriş tarihinize göre gereken minimum prim günü (örneğin 7.000, 7.200, 9.000) ve emeklilik yaşı kanunla belirlenir. Tablolar zaman zaman güncellendiği için güncel şartları SGK emeklilik yaşı tablosundan veya e-devlet üzerinden emeklilik sorgulama sayfasından öğrenmeniz gerekir. Bu araç yalnızca verdiğiniz tarih aralığındaki gün sayısını hesaplar; emeklilik yaşı veya özel düzenlemeleri (kadın/erkek, malullük, vazife malullüğü vb.) dikkate almaz. <Link href="/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi" className="text-[#2563eb] hover:underline font-medium">Emeklilik hesap makinesi</Link> ile emeklilik yaşı ve prim özetini birlikte inceleyebilirsiniz.
               </p>
 
               <h3 className="text-xl font-bold text-[#1e293b] mt-8 mb-4">Hangi Dönemler Prim Gününe Sayılır?</h3>

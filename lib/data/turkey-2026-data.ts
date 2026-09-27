@@ -229,24 +229,83 @@ export const GPA_INFO = {
 // EMEKLİLİK HESAPLAMA VERİLERİ (2026)
 // ==========================================
 
-// SGK Emeklilik Yaşı Tablosu (4/a - SSK)
-export interface RetirementAgeTable {
-  birthYearStart: number;
-  birthYearEnd: number;
-  retirementAgeMale: number;
-  retirementAgeFemale: number;
+// 1 Mayıs 2008 sonrası sigortalılar (4/a): emeklilik yaşı, şartların (prim günü) tamamlandığı yıla göre kademeli
+// 5510 sayılı Kanun geçici 28. madde / md. 28
+export interface RetirementAgeStep {
+  untilYear: number; // bu yıl sonuna kadar tamamlananlar
+  female: number;
+  male: number;
 }
 
-export const SGK_RETIREMENT_AGE_TABLE: RetirementAgeTable[] = [
-  { birthYearStart: 1956, birthYearEnd: 1959, retirementAgeMale: 60, retirementAgeFemale: 58 },
-  { birthYearStart: 1960, birthYearEnd: 1963, retirementAgeMale: 61, retirementAgeFemale: 59 },
-  { birthYearStart: 1964, birthYearEnd: 1967, retirementAgeMale: 62, retirementAgeFemale: 60 },
-  { birthYearStart: 1968, birthYearEnd: 1971, retirementAgeMale: 63, retirementAgeFemale: 61 },
-  { birthYearStart: 1972, birthYearEnd: 1975, retirementAgeMale: 64, retirementAgeFemale: 62 },
-  { birthYearStart: 1976, birthYearEnd: 1979, retirementAgeMale: 65, retirementAgeFemale: 63 },
-  { birthYearStart: 1980, birthYearEnd: 1983, retirementAgeMale: 65, retirementAgeFemale: 64 },
-  { birthYearStart: 1984, birthYearEnd: 2100, retirementAgeMale: 65, retirementAgeFemale: 65 },
+export const SGK_RETIREMENT_AGE_STEPS: RetirementAgeStep[] = [
+  { untilYear: 2035, female: 58, male: 60 },
+  { untilYear: 2037, female: 59, male: 61 },
+  { untilYear: 2039, female: 60, male: 62 },
+  { untilYear: 2041, female: 61, male: 63 },
+  { untilYear: 2043, female: 62, male: 64 },
+  { untilYear: 2045, female: 63, male: 65 },
+  { untilYear: 2047, female: 64, male: 65 },
+  { untilYear: 9999, female: 65, male: 65 },
 ];
+
+export type RetirementGroup = "eyt" | "1999-2008" | "2008+";
+
+export function getRetirementGroup(insuranceStart: Date): RetirementGroup {
+  if (insuranceStart < new Date(1999, 8, 8)) return "eyt";
+  if (insuranceStart < new Date(2008, 4, 1)) return "1999-2008";
+  return "2008+";
+}
+
+/**
+ * 4/a (SSK) emeklilik tarihi tahmini. Yılda 360 prim günü varsayılır.
+ * EYT grubunda prim şartı giriş tarihine göre 5.000–5.975 gün arasında değişir; ihtiyatlı olarak 5.975 kullanılır.
+ */
+export function estimateSgkRetirement(opts: {
+  birthYear: number;
+  birthMonth: number;
+  gender: "male" | "female";
+  insuranceStart: Date;
+  currentPremiumDays: number;
+  now?: Date;
+}) {
+  const now = opts.now ?? new Date();
+  const nowYear = now.getFullYear() + now.getMonth() / 12;
+  const group = getRetirementGroup(opts.insuranceStart);
+  const female = opts.gender === "female";
+  const requiredPremiumDays = group === "eyt" ? 5975 : group === "1999-2008" ? 7000 : 7200;
+  const remainingPremiumDays = Math.max(0, requiredPremiumDays - opts.currentPremiumDays);
+  const premiumDoneYear = nowYear + remainingPremiumDays / 360;
+  const birth = opts.birthYear + (opts.birthMonth - 1) / 12;
+
+  let ageRequirement: number | null;
+  let doneYear: number;
+  if (group === "eyt") {
+    ageRequirement = null;
+    const serviceDone = opts.insuranceStart.getFullYear() + opts.insuranceStart.getMonth() / 12 + (female ? 20 : 25);
+    doneYear = Math.max(premiumDoneYear, serviceDone);
+  } else if (group === "1999-2008") {
+    ageRequirement = female ? 58 : 60;
+    doneYear = Math.max(premiumDoneYear, birth + ageRequirement);
+  } else {
+    const step = SGK_RETIREMENT_AGE_STEPS.find((r) => Math.floor(premiumDoneYear) <= r.untilYear)!;
+    ageRequirement = female ? step.female : step.male;
+    doneYear = Math.max(premiumDoneYear, birth + ageRequirement);
+  }
+  doneYear = Math.max(doneYear, nowYear);
+  const retirementYear = Math.floor(doneYear);
+  const retirementMonth = Math.min(12, Math.floor((doneYear - retirementYear) * 12) + 1);
+  return {
+    group,
+    ageRequirement,
+    requiredPremiumDays,
+    remainingPremiumDays,
+    retirementYear,
+    retirementMonth,
+    retirementAge: Math.floor(doneYear - birth),
+    currentAge: Math.floor(nowYear - birth),
+    yearsUntilRetirement: Math.max(0, Math.round((doneYear - nowYear) * 10) / 10),
+  };
+}
 
 // SGK Prim Gün Sayısı Şartları
 export const SGK_PREMIUM_DAY_REQUIREMENTS = {
@@ -395,16 +454,6 @@ export function convertScoreToGPA(score: number): { gpa: number; letter: string;
 /**
  * Doğum yılına göre emeklilik yaşını hesapla
  */
-export function getRetirementAge(birthYear: number, gender: "male" | "female"): number {
-  for (const row of SGK_RETIREMENT_AGE_TABLE) {
-    if (birthYear >= row.birthYearStart && birthYear <= row.birthYearEnd) {
-      return gender === "male" ? row.retirementAgeMale : row.retirementAgeFemale;
-    }
-  }
-  // Varsayılan: 65 yaş
-  return 65;
-}
-
 /**
  * Kredi maliyeti hesapla (KKDF ve BSMV dahil)
  */

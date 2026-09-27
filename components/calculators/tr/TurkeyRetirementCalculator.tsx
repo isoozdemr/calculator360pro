@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
-  getRetirementAge,
-  SGK_RETIREMENT_AGE_TABLE,
+  estimateSgkRetirement,
+  SGK_RETIREMENT_AGE_STEPS,
   SGK_PREMIUM_DAY_REQUIREMENTS,
   EYT_RULES,
   BES_2026,
@@ -57,30 +57,15 @@ export function TurkeyRetirementCalculator() {
   const besEnabled = watch("besEnabled");
 
   const onSubmit = (data: RetirementFormData) => {
-    const currentYear = 2026;
-    const currentMonth = 1;
-
-    // Yaş hesaplama
-    const currentAge = currentYear - data.birthYear;
-    
-    // Emeklilik yaşı
-    const retirementAge = getRetirementAge(data.birthYear, data.gender);
-    
-    // Emeklilik yılı
-    const retirementYear = data.birthYear + retirementAge;
-    const retirementMonth = data.birthMonth;
-    
-    // Emekliliğe kalan yıl
-    const yearsUntilRetirement = Math.max(0, retirementYear - currentYear);
-    
-    // Prim gün şartı
-    const requiredPremiumDays = SGK_PREMIUM_DAY_REQUIREMENTS.normal.minDays;
-    const remainingPremiumDays = Math.max(0, requiredPremiumDays - data.currentPremiumDays);
-    
-    // EYT kontrolü
-    const insuranceStartDate = new Date(data.insuranceStartYear, data.insuranceStartMonth - 1);
-    const eytCutoffDate = new Date(1999, 8, 8); // 08.09.1999
-    const isEYTEligible = insuranceStartDate < eytCutoffDate;
+    const sgk = estimateSgkRetirement({
+      birthYear: data.birthYear,
+      birthMonth: data.birthMonth,
+      gender: data.gender,
+      insuranceStart: new Date(data.insuranceStartYear, data.insuranceStartMonth - 1),
+      currentPremiumDays: data.currentPremiumDays,
+    });
+    const { retirementAge, retirementYear, retirementMonth, yearsUntilRetirement, currentAge, requiredPremiumDays, remainingPremiumDays } = sgk;
+    const isEYTEligible = sgk.group === "eyt";
 
     // BES projeksiyonu
     let besProjection;
@@ -415,28 +400,28 @@ export function TurkeyRetirementCalculator() {
       {/* Emeklilik Yaşı Tablosu */}
       <div className="mt-8 bg-[#f8fafc] p-4 rounded-lg border border-[#e2e8f0]">
         <h4 className="font-semibold text-[#1e293b] mb-4">
-          SGK Emeklilik Yaşı Tablosu (4/a - SSK)
+          SGK Emeklilik Yaşı Tablosu (4/a - 1 Mayıs 2008 sonrası girişliler)
         </h4>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-[#e2e8f0]">
-                <th className="text-left py-2 px-3 text-[#64748b]">Doğum Yılı</th>
+                <th className="text-left py-2 px-3 text-[#64748b]">Prim şartının dolduğu yıl</th>
                 <th className="text-center py-2 px-3 text-[#64748b]">Erkek</th>
                 <th className="text-center py-2 px-3 text-[#64748b]">Kadın</th>
               </tr>
             </thead>
             <tbody>
-              {SGK_RETIREMENT_AGE_TABLE.map((row, index) => (
+              {SGK_RETIREMENT_AGE_STEPS.map((row, index) => (
                 <tr key={index} className="border-b border-[#e2e8f0] last:border-0">
                   <td className="py-2 px-3 text-[#1e293b]">
-                    {row.birthYearStart} - {row.birthYearEnd > 2050 ? "sonrası" : row.birthYearEnd}
+                    {index === 0 ? `${row.untilYear} ve öncesi` : row.untilYear > 3000 ? "2048 ve sonrası" : `${SGK_RETIREMENT_AGE_STEPS[index - 1].untilYear + 1} – ${row.untilYear}`}
                   </td>
                   <td className="py-2 px-3 text-center font-semibold text-blue-600">
-                    {row.retirementAgeMale}
+                    {row.male}
                   </td>
                   <td className="py-2 px-3 text-center font-semibold text-pink-600">
-                    {row.retirementAgeFemale}
+                    {row.female}
                   </td>
                 </tr>
               ))}

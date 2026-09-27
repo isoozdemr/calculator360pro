@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { TurkeyRetirementCalculator } from "@/components/calculators/tr/TurkeyRetirementCalculator";
-import { DATA_VERSION, SGK_PREMIUM_DAY_REQUIREMENTS, BES_2026 } from "@/lib/data/turkey-2026-data";
+import { DATA_VERSION, BES_2026 } from "@/lib/data/turkey-2026-data";
 import { RelatedCalculatorsTR } from "@/components/calculators/tr/RelatedCalculatorsTR";
 import { CalculatorDisclaimer } from "@/components/calculators/CalculatorDisclaimer";
 import { generateTurkishHowToSchema, generateTurkishBreadcrumbSchema } from "@/lib/seo/schema";
@@ -59,7 +59,7 @@ export default function TurkeyRetirementCalculatorPage() {
 
   const emeklilikUrl = `${SITE_URL}/tr/hesap-makineleri/finans/emeklilik-hesap-makinesi`;
   const howToSteps = [
-    { name: "Doğum yılınızı girin", text: "SGK emeklilik yaşı için doğum yılınızı seçin." },
+    { name: "Doğum yılınızı girin", text: "Doğum yılınızı ve ayınızı seçin; yaş şartı kontrolü için kullanılır." },
     { name: "Cinsiyet ve sigorta bilgilerini girin", text: "Cinsiyet ve sigorta başlangıç tarihi gibi alanları doldurun." },
     { name: "Hesapla butonuna tıklayın", text: "Emeklilik yaşı, prim günü ve BES projeksiyonunu görün." },
   ];
@@ -126,11 +126,11 @@ export default function TurkeyRetirementCalculatorPage() {
             <p className="text-[#64748b] leading-relaxed mb-4">
               SGK emekliliği, 4/a (işçi), 4/b (bağ-kur) veya 4/c (memur) kapsamında prim 
               ödeyerek çalışanların belirli yaş ve prim gün şartlarını tamamlaması sonucu 
-              aylık bağlanmasıdır. Emeklilik yaşı doğum yılınıza göre kademeli olarak artar; 
-              1984 ve sonrası doğumlular için 65 yaş (kadın ve erkek) uygulanır. Prim gün şartı 
-              en az 7.200 gün (20 yıl) olup, EYT kapsamındakiler 08.09.1999 öncesi sigorta girişi 
-              ile yaş şartı olmadan prim gününü tamamlayarak emekli olabilir. Bu sayfadaki 
-              <strong> emeklilik hesap makinesi</strong> ile doğum yılınız ve sigorta girişinize 
+              aylık bağlanmasıdır. Şartlar ilk sigorta giriş tarihinize göre değişir: 08.09.1999 öncesi girişliler (EYT) yaş şartı olmadan
+              5.000–5.975 gün prim ve 20/25 yıl sigortalılıkla; 1999–2008 arası girişliler kadın 58, erkek 60 yaş ve 7.000 gün
+              primle; 1 Mayıs 2008 sonrası girişliler ise 7.200 gün prim ve prim şartını tamamladıkları yıla göre kademeli
+              artan yaşla (58/60&apos;tan 2048 sonrası 65&apos;e) emekli olur. Bu sayfadaki 
+              <strong> emeklilik hesap makinesi</strong> ile sigorta girişiniz, prim gününüz ve doğum tarihinize 
               göre emeklilik yaşınızı ve prim gün şartınızı görebilirsiniz.
             </p>
             <p className="text-[#64748b] leading-relaxed mb-6">
@@ -153,26 +153,27 @@ export default function TurkeyRetirementCalculatorPage() {
             </p>
             <ol>
               <li>
-                <strong>Yaş Şartı:</strong> Doğum yılınıza göre belirlenen emeklilik yaşına 
-                ulaşmanız gerekir. Bu yaş kadın ve erkekler için farklıdır.
+                <strong>Yaş Şartı:</strong> Sigorta giriş tarihinize ve (2008 sonrası girişlilerde) prim şartını
+                tamamladığınız yıla göre belirlenen yaşa ulaşmanız gerekir. EYT kapsamında yaş şartı yoktur.
               </li>
               <li>
-                <strong>Prim Gün Şartı:</strong> En az {SGK_PREMIUM_DAY_REQUIREMENTS.normal.minDays.toLocaleString("tr-TR")} gün 
-                ({SGK_PREMIUM_DAY_REQUIREMENTS.normal.minYears} yıl) prim ödemiş olmanız gerekir.
+                <strong>Prim Gün Şartı:</strong> Giriş tarihine göre 5.000–5.975 gün (EYT), 7.000 gün (1999–2008) veya
+                7.200 gün (2008 sonrası) prim ödemiş olmanız gerekir.
               </li>
             </ol>
 
             <h3>EYT (Emeklilikte Yaşa Takılanlar) Nedir?</h3>
             <p>
               EYT, 08.09.1999 tarihinden önce sigortalı olanların yaş şartı aranmaksızın 
-              sadece prim gün sayısını tamamlayarak emekli olabilmelerini sağlayan düzenlemedir.
+              sigortalılık süresi ve prim gün şartını tamamlayarak emekli olabilmelerini sağlayan düzenlemedir.
             </p>
             <p>
               <strong>EYT Şartları:</strong>
             </p>
             <ul>
               <li>08.09.1999 öncesi sigorta girişi</li>
-              <li>7200 gün (20 yıl) prim ödenmesi</li>
+              <li>Giriş tarihine göre 5.000–5.975 gün prim</li>
+              <li>Kadınlarda 20, erkeklerde 25 yıl sigortalılık süresi</li>
             </ul>
             <p>
               EYT kapsamındaysanız, yaş şartı aranmadan emekli olabilirsiniz.
@@ -180,12 +181,14 @@ export default function TurkeyRetirementCalculatorPage() {
 
             <h3>Emeklilik Yaşı Tablosu</h3>
             <p>
-              Emeklilik yaşı doğum yılına göre kademeli olarak artmaktadır:
+              1 Mayıs 2008 sonrası girişlilerde emeklilik yaşı, prim şartının tamamlandığı yıla göre kademeli artar:
             </p>
             <ul>
-              <li>1956-1959 doğumlular: Erkek 60, Kadın 58</li>
-              <li>1960-1963 doğumlular: Erkek 61, Kadın 59</li>
-              <li>1984 ve sonrası doğumlular: Erkek 65, Kadın 65</li>
+              <li>2035 sonuna kadar: Kadın 58, Erkek 60</li>
+              <li>2036–2037: Kadın 59, Erkek 61</li>
+              <li>2040–2041: Kadın 61, Erkek 63</li>
+              <li>2044–2045: Kadın 63, Erkek 65</li>
+              <li>2048 ve sonrası: Kadın 65, Erkek 65</li>
             </ul>
 
             <h3>BES (Bireysel Emeklilik Sistemi)</h3>

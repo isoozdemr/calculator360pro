@@ -190,9 +190,9 @@ export default function FinanceCalculatorsPage() {
                 Emeklilik yaşı nasıl hesaplanır?
               </h3>
               <p className="text-[#64748b] text-sm leading-relaxed">
-                Emeklilik yaşı doğum yılınıza, cinsiyetinize ve işe başlama tarihinize göre değişiyor. 
-                1999 öncesi sigortalı olanlar EYT şartlarından yararlanıyor. 1999 sonrası sigortalı olanlar 
-                için farklı şartlar geçerli.
+                Emeklilik yaşı ilk sigorta giriş tarihinize ve cinsiyetinize göre değişir. 08.09.1999 öncesi
+                girişliler (EYT) yaş şartı olmadan, 1999–2008 arası girişliler kadın 58 / erkek 60 yaşında, 2008 sonrası
+                girişliler ise prim şartını tamamladıkları yıla göre kademeli artan yaşta (en fazla 65) emekli olur.
               </p>
             </div>
             <div>
