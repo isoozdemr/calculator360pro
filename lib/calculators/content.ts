@@ -5195,6 +5195,47 @@ function generateCalculatorContent(): Record<string, string> {
     </ul>
     <p>Budgeting for a vehicle? Combine fuel with loan payments using the <a href="/calculators/finance/car-loan-calculator">car loan calculator</a> and track totals in the <a href="/calculators/finance/budget-calculator">budget calculator</a>. Need kilometers or liters? Convert units with the <a href="/calculators/math/unit-converter">unit converter</a>.</p>
   `,
+  "pto-accrual-calculator": `
+    <h2>How PTO Accrual Works</h2>
+    <p>Most employers do not grant all paid time off (PTO) on January 1. Instead, you <strong>accrue</strong> it gradually, either each pay period or for every hour you work. This calculator converts your annual PTO allowance into an accrual rate and shows the balance you have available today.</p>
+    <h3>PTO accrual formulas</h3>
+    <p><strong>Annual PTO hours = PTO days x hours per day</strong><br/><strong>Accrual per pay period = annual PTO hours / pay periods per year</strong><br/><strong>Accrual per hour worked = annual PTO hours / 2,080</strong></p>
+    <h3>Worked example: biweekly pay</h3>
+    <p>You receive 15 PTO days per year at 8 hours per day, which is 120 hours. Paid biweekly (26 periods), you earn 4.62 hours per paycheck. After 10 pay periods you have accrued 46.2 hours; if you already used 16 hours, your balance is <strong>30.2 hours</strong>, or about 3.8 days.</p>
+    <h3>Worked example: hourly accrual</h3>
+    <p>A part-time employee earns 1 hour of PTO for every 30 hours worked (California's minimum paid sick leave rate). Working 25 hours per week for 12 weeks (300 hours) accrues <strong>10 hours</strong> of paid time.</p>
+    <h3>Pay periods per year</h3>
+    <ul>
+      <li>Weekly: 52 pay periods</li>
+      <li>Biweekly: 26 pay periods</li>
+      <li>Semi-monthly: 24 pay periods</li>
+      <li>Monthly: 12 pay periods</li>
+    </ul>
+    <h3>Tips for managing PTO</h3>
+    <p>Check whether your employer has a carryover limit or accrual cap so you do not stop earning time off. Plan long vacations around your projected balance, and remember that PTO paid out at separation is taxed like regular wages. Estimate the value of your PTO with the <a href="/calculators/finance/salary-calculator">salary calculator</a>, and track worked hours with the <a href="/calculators/date-time/work-hours-timesheet-calculator">timesheet calculator</a>.</p>
+  `,
+  "rent-affordability-calculator": `
+    <h2>How Much Rent Can I Afford?</h2>
+    <p>Choosing an apartment you can comfortably afford protects your savings and your credit. This calculator applies the three rules renters and landlords use most often and recommends the lowest, safest result.</p>
+    <h3>The rules this calculator uses</h3>
+    <ul>
+      <li><strong>30% rule:</strong> Rent should be no more than 30% of gross monthly income.</li>
+      <li><strong>40x rule:</strong> Landlords often require annual income of at least 40 times the monthly rent (rent = annual income / 40).</li>
+      <li><strong>36% debt-to-income limit:</strong> Rent plus all monthly debt payments should stay at or below 36% of gross monthly income.</li>
+    </ul>
+    <h3>Worked example</h3>
+    <p>You earn $60,000 per year ($5,000 per month) and pay $300 per month on a car loan. The 30% rule allows $1,500 in rent. The 40x rule also allows $1,500. The 36% debt limit allows $1,800 minus $300 = $1,500. Your recommended maximum rent is <strong>$1,500 per month</strong>.</p>
+    <h3>When debt changes the answer</h3>
+    <p>With $800 in monthly student loan and credit card payments on the same income, the debt-to-income limit drops to $1,800 - $800 = <strong>$1,000</strong>, well below the 30% rule. Paying down debt can meaningfully raise the rent you can safely afford.</p>
+    <h3>Rent affordability by income</h3>
+    <ul>
+      <li>$40,000 per year: about $1,000 per month</li>
+      <li>$60,000 per year: about $1,500 per month</li>
+      <li>$80,000 per year: about $2,000 per month</li>
+      <li>$100,000 per year: about $2,500 per month</li>
+    </ul>
+    <p>Build a full monthly plan with the <a href="/calculators/finance/budget-calculator">budget calculator</a>, check your ratio with the <a href="/calculators/finance/debt-to-income-calculator">debt-to-income calculator</a>, or compare renting with buying using the <a href="/calculators/finance/mortgage-calculator">mortgage calculator</a>.</p>
+  `,
   "net-worth-calculator": `
     <h2>Net Worth Calculator: Track Assets vs Liabilities</h2>
     <p>Your net worth is one of the clearest personal-finance health metrics. This calculator sums your assets and subtracts liabilities so you can monitor progress over time and make better planning decisions.</p>

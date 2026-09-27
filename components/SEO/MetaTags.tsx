@@ -39,6 +39,10 @@ export function generateCalculatorMetadata(
     titleOverride = "Sales Tax Calculator - Add or Reverse Sales Tax | Calculator360Pro";
   } else if (slug === "fuel-cost-calculator") {
     titleOverride = "Gas Cost Calculator - Road Trip Fuel Cost by MPG";
+  } else if (slug === "pto-accrual-calculator") {
+    titleOverride = "PTO Accrual Calculator - PTO Per Pay Period & Balance";
+  } else if (slug === "rent-affordability-calculator") {
+    titleOverride = "How Much Rent Can I Afford? Rent Calculator (30% & 40x)";
   } else if (slug === "calorie-calculator") {
     titleOverride = "Calorie Calculator - Daily Calories | Calculator360Pro";
   } else if (slug === "percentage-calculator") {

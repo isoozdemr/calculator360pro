@@ -44,6 +44,8 @@ import { NetWorthCalculator } from "./NetWorthCalculator";
 import { OvertimePayCalculator } from "./OvertimePayCalculator";
 import { SalesTaxCalculator } from "./SalesTaxCalculator";
 import { FuelCostCalculator } from "./FuelCostCalculator";
+import { PtoAccrualCalculator } from "./PtoAccrualCalculator";
+import { RentAffordabilityCalculator } from "./RentAffordabilityCalculator";
 import { AprCalculator } from "./AprCalculator";
 import { DebtSnowballCalculator } from "./DebtSnowballCalculator";
 import { OvulationCalculator } from "./OvulationCalculator";
@@ -112,6 +114,8 @@ const calculatorComponents: Record<
   "overtime-pay-calculator": OvertimePayCalculator,
   "sales-tax-calculator": SalesTaxCalculator,
   "fuel-cost-calculator": FuelCostCalculator,
+  "pto-accrual-calculator": PtoAccrualCalculator,
+  "rent-affordability-calculator": RentAffordabilityCalculator,
   "apr-calculator": AprCalculator,
   "debt-snowball-calculator": DebtSnowballCalculator,
   "ovulation-calculator": OvulationCalculator,

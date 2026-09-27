@@ -2014,6 +2014,76 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
     relatedCalculators: ["car-loan-calculator", "budget-calculator", "unit-converter", "percentage-calculator"],
     content: CALCULATOR_CONTENT["fuel-cost-calculator"],
   },
+  "pto-accrual-calculator": {
+    id: "pto-accrual-calculator",
+    name: "PTO Accrual Calculator",
+    slug: "pto-accrual-calculator",
+    category: "finance",
+    description:
+      "Calculate how much paid time off you earn per pay period or per hour worked and your current PTO balance.",
+    keywords: ["pto accrual calculator", "pto calculator", "how is pto accrued", "pto per pay period", "vacation accrual calculator"],
+    metaDescription:
+      "Free PTO accrual calculator. See how many PTO hours you earn per pay period or per hour worked, your hours accrued to date and your available time off balance.",
+    faqs: [
+      {
+        question: "How is PTO accrued per pay period?",
+        answer:
+          "Divide your annual PTO hours by the number of pay periods in a year. With 15 days (120 hours) of PTO and biweekly pay, you accrue 120 / 26 = 4.62 hours each pay period.",
+      },
+      {
+        question: "How do I calculate PTO per hour worked?",
+        answer:
+          "Divide annual PTO hours by 2,080, the standard number of work hours in a year. For 120 hours of PTO, the rate is 120 / 2,080 = 0.0577 hours of PTO per hour worked, or about 2.3 hours per 40-hour week.",
+      },
+      {
+        question: "What is a PTO accrual cap?",
+        answer:
+          "A cap is the maximum balance you can hold. Once you reach it, you stop earning PTO until you use some. Caps are common in states such as California that do not allow use-it-or-lose-it policies.",
+      },
+      {
+        question: "Is unused PTO paid out when I leave?",
+        answer:
+          "It depends on state law and company policy. California, Colorado, Montana, Nebraska and some other states treat earned vacation as wages that must be paid at separation; elsewhere the employer's written policy usually controls.",
+      },
+    ],
+    relatedCalculators: ["salary-calculator", "hours-calculator", "work-hours-timesheet-calculator", "overtime-pay-calculator"],
+    content: CALCULATOR_CONTENT["pto-accrual-calculator"],
+  },
+  "rent-affordability-calculator": {
+    id: "rent-affordability-calculator",
+    name: "Rent Affordability Calculator",
+    slug: "rent-affordability-calculator",
+    category: "finance",
+    description:
+      "Find out how much rent you can afford based on your income and monthly debts using the 30% rule, the 40x rule and debt-to-income limits.",
+    keywords: ["how much rent can i afford", "rent affordability calculator", "rent calculator", "30 percent rule rent", "40x rent rule calculator"],
+    metaDescription:
+      "How much rent can I afford? Enter income and monthly debts to see your max rent under the 30% rule, the landlord 40x rule and a 36% debt-to-income limit.",
+    faqs: [
+      {
+        question: "How much rent can I afford on $50,000 a year?",
+        answer:
+          "Using the 30% rule, $50,000 a year is about $4,167 per month, so rent of up to roughly $1,250 is considered affordable. Landlords using the 40x rule would approve rent of up to $1,250 as well.",
+      },
+      {
+        question: "What is the 30% rule for rent?",
+        answer:
+          "The 30% rule says housing costs should not exceed 30% of your gross monthly income. It comes from U.S. housing policy, where households paying more than 30% are considered cost-burdened.",
+      },
+      {
+        question: "What is the 40x rent rule?",
+        answer:
+          "Many landlords, especially in New York City, require your annual income to be at least 40 times the monthly rent. For a $2,000 apartment you would need $80,000 in annual income, or a guarantor.",
+      },
+      {
+        question: "Should I include utilities in my rent budget?",
+        answer:
+          "Yes. If utilities are not included, budget for electricity, gas, water, internet and renter's insurance. A common approach is to keep rent plus utilities under 30% to 35% of gross income.",
+      },
+    ],
+    relatedCalculators: ["budget-calculator", "debt-to-income-calculator", "salary-calculator", "mortgage-calculator"],
+    content: CALCULATOR_CONTENT["rent-affordability-calculator"],
+  },
   "net-worth-calculator": {
     id: "net-worth-calculator",
     name: "Net Worth Calculator",
