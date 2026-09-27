@@ -33,6 +33,12 @@ export function generateCalculatorMetadata(
     titleOverride = "Scientific Calculator - Free Online Sin, Cos, Log | Calculator360Pro";
   } else if (slug === "salary-calculator") {
     titleOverride = "Salary Calculator - Hourly to Annual Paycheck | Calculator360Pro";
+  } else if (slug === "overtime-pay-calculator") {
+    titleOverride = "Overtime Calculator - Time and a Half & Double Time Pay";
+  } else if (slug === "sales-tax-calculator") {
+    titleOverride = "Sales Tax Calculator - Add or Reverse Sales Tax | Calculator360Pro";
+  } else if (slug === "fuel-cost-calculator") {
+    titleOverride = "Gas Cost Calculator - Road Trip Fuel Cost by MPG";
   } else if (slug === "calorie-calculator") {
     titleOverride = "Calorie Calculator - Daily Calories | Calculator360Pro";
   } else if (slug === "percentage-calculator") {

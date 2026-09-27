@@ -5139,6 +5139,62 @@ function generateCalculatorContent(): Record<string, string> {
     <h3>Related Calculators and Tools</h3>
     <p><a href="/calculators/finance/tax-calculator">Tax Calculator</a>, <a href="/calculators/finance/salary-calculator">Salary Calculator</a>, <a href="/calculators/finance/budget-calculator">Budget Calculator</a>, <a href="/calculators/finance/debt-to-income-calculator">Debt-to-Income Calculator</a>.</p>
   `,
+  "overtime-pay-calculator": `
+    <h2>How to Calculate Overtime Pay</h2>
+    <p>Overtime pay rewards hours worked beyond a standard workweek. Under the federal Fair Labor Standards Act (FLSA), most hourly, non-exempt workers must be paid at least <strong>1.5 times their regular rate</strong> for every hour over 40 in a single workweek. This calculator splits your hours into regular and overtime, applies the multiplier you choose, and shows your total gross pay.</p>
+    <h3>Overtime formula</h3>
+    <p><strong>Overtime pay = overtime hours x hourly rate x overtime multiplier</strong><br/><strong>Total pay = (regular hours x hourly rate) + overtime pay</strong></p>
+    <h3>Worked example: time and a half</h3>
+    <p>You earn $25 per hour and work 48 hours. Regular pay is 40 x $25 = $1,000. Overtime is 8 hours x $37.50 = $300. Total gross pay for the week is <strong>$1,300</strong>.</p>
+    <h3>Worked example: double time</h3>
+    <p>A nurse earning $40 per hour works 4 double-time hours on a holiday shift. Double-time rate is $80, so the extra pay is 4 x $80 = <strong>$320</strong>.</p>
+    <h3>Overtime rules to know</h3>
+    <ul>
+      <li><strong>Workweek, not pay period:</strong> Federal overtime is calculated per fixed 7-day workweek. Hours cannot be averaged across two weeks.</li>
+      <li><strong>Daily overtime states:</strong> California requires 1.5x after 8 hours in a day and 2x after 12 hours; the 7th consecutive workday also has special rules.</li>
+      <li><strong>Regular rate includes some bonuses:</strong> Non-discretionary bonuses and shift differentials can raise the regular rate used for overtime.</li>
+      <li><strong>Exempt employees:</strong> Many salaried managers and professionals are exempt and do not earn overtime.</li>
+    </ul>
+    <h3>From gross to take-home pay</h3>
+    <p>Overtime is taxed as ordinary wages. Your employer withholds federal income tax, Social Security (6.2%) and Medicare (1.45%) from the higher paycheck, so take-home pay rises by less than the gross amount. Use the <a href="/calculators/finance/salary-calculator">salary calculator</a> to convert hourly pay to annual income and the <a href="/calculators/finance/tax-calculator">tax calculator</a> to estimate withholding. To total your weekly hours first, try the <a href="/calculators/date-time/work-hours-timesheet-calculator">timesheet calculator</a>.</p>
+  `,
+  "sales-tax-calculator": `
+    <h2>How to Calculate Sales Tax</h2>
+    <p>Sales tax is a percentage added to the price of goods and many services at checkout. In the United States it is set by states and local governments, so the combined rate depends on where you buy. This calculator works in two directions: add tax to a price, or remove tax from a receipt total to find the original price.</p>
+    <h3>Sales tax formulas</h3>
+    <p><strong>Sales tax = price x (rate / 100)</strong><br/><strong>Total = price x (1 + rate / 100)</strong><br/><strong>Price before tax = total / (1 + rate / 100)</strong></p>
+    <h3>Worked example: adding tax</h3>
+    <p>A $250 jacket in an area with a 9.5% combined rate: tax = 250 x 0.095 = $23.75, so you pay <strong>$273.75</strong>.</p>
+    <h3>Worked example: reverse sales tax</h3>
+    <p>Your receipt shows $64.80 including 8% tax. Pre-tax price = 64.80 / 1.08 = <strong>$60.00</strong>, and the tax paid was $4.80. This is useful for expense reports and bookkeeping.</p>
+    <h3>Why a simple subtraction is wrong</h3>
+    <p>Taking 8% off $64.80 gives $59.62, not $60.00, because the tax was calculated on the smaller pre-tax amount. Always divide by (1 + rate) when working backward.</p>
+    <h3>State sales tax facts</h3>
+    <ul>
+      <li>Five states have no statewide sales tax: Alaska, Delaware, Montana, New Hampshire and Oregon.</li>
+      <li>California has the highest statewide base rate at 7.25%; local add-ons push some areas above 10%.</li>
+      <li>Many states exempt or reduce tax on groceries and prescription drugs.</li>
+    </ul>
+    <p>Shopping a sale? Apply the discount first with the <a href="/calculators/finance/discount-calculator">discount calculator</a>, then add sales tax here. For percentage math, see the <a href="/calculators/math/percentage-calculator">percentage calculator</a>.</p>
+  `,
+  "fuel-cost-calculator": `
+    <h2>How to Calculate Fuel Cost for a Trip</h2>
+    <p>Planning a road trip or a daily commute? Fuel is usually the biggest variable cost of driving. This calculator estimates how many gallons your trip needs and what it will cost, then splits the total between passengers.</p>
+    <h3>Fuel cost formula</h3>
+    <p><strong>Gallons needed = distance / MPG</strong><br/><strong>Fuel cost = gallons needed x price per gallon</strong></p>
+    <h3>Worked example: weekend road trip</h3>
+    <p>A 240-mile drive each way (480 miles round trip) in an SUV averaging 24 MPG with gas at $3.40: 480 / 24 = 20 gallons, and 20 x $3.40 = <strong>$68</strong>. Split between four friends, that is $17 each.</p>
+    <h3>Worked example: monthly commute</h3>
+    <p>A 22-mile round-trip commute, 21 workdays a month, in a 32 MPG sedan with gas at $3.25: 462 miles / 32 = 14.4 gallons, costing about <strong>$46.92</strong> per month.</p>
+    <h3>Tips to lower fuel costs</h3>
+    <ul>
+      <li>Keep tires inflated to the recommended pressure; under-inflation increases rolling resistance.</li>
+      <li>Remove roof racks and heavy cargo you do not need.</li>
+      <li>Use cruise control on highways and avoid hard acceleration.</li>
+      <li>Compare gas prices along your route; prices can vary by 50 cents or more per gallon between stations.</li>
+    </ul>
+    <p>Budgeting for a vehicle? Combine fuel with loan payments using the <a href="/calculators/finance/car-loan-calculator">car loan calculator</a> and track totals in the <a href="/calculators/finance/budget-calculator">budget calculator</a>. Need kilometers or liters? Convert units with the <a href="/calculators/math/unit-converter">unit converter</a>.</p>
+  `,
   "net-worth-calculator": `
     <h2>Net Worth Calculator: Track Assets vs Liabilities</h2>
     <p>Your net worth is one of the clearest personal-finance health metrics. This calculator sums your assets and subtracts liabilities so you can monitor progress over time and make better planning decisions.</p>

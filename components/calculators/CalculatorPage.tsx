@@ -41,6 +41,9 @@ import { IncomeDrivenStudentLoanCalculator } from "./IncomeDrivenStudentLoanCalc
 import { CapitalGainsTaxCalculator } from "./CapitalGainsTaxCalculator";
 import { SelfEmployedTaxCalculator } from "./SelfEmployedTaxCalculator";
 import { NetWorthCalculator } from "./NetWorthCalculator";
+import { OvertimePayCalculator } from "./OvertimePayCalculator";
+import { SalesTaxCalculator } from "./SalesTaxCalculator";
+import { FuelCostCalculator } from "./FuelCostCalculator";
 import { AprCalculator } from "./AprCalculator";
 import { DebtSnowballCalculator } from "./DebtSnowballCalculator";
 import { OvulationCalculator } from "./OvulationCalculator";
@@ -106,6 +109,9 @@ const calculatorComponents: Record<
   "capital-gains-tax-calculator": CapitalGainsTaxCalculator,
   "self-employed-tax-calculator": SelfEmployedTaxCalculator,
   "net-worth-calculator": NetWorthCalculator,
+  "overtime-pay-calculator": OvertimePayCalculator,
+  "sales-tax-calculator": SalesTaxCalculator,
+  "fuel-cost-calculator": FuelCostCalculator,
   "apr-calculator": AprCalculator,
   "debt-snowball-calculator": DebtSnowballCalculator,
   "ovulation-calculator": OvulationCalculator,

@@ -1909,6 +1909,111 @@ export const CALCULATORS: Record<string, CalculatorDefinition> = {
     relatedCalculators: ["tax-calculator", "salary-calculator", "budget-calculator", "debt-to-income-calculator"],
     content: CALCULATOR_CONTENT["self-employed-tax-calculator"],
   },
+  "overtime-pay-calculator": {
+    id: "overtime-pay-calculator",
+    name: "Overtime Pay Calculator",
+    slug: "overtime-pay-calculator",
+    category: "finance",
+    description:
+      "Calculate overtime pay, time and a half or double time, and total weekly gross pay from your hourly rate and hours worked.",
+    keywords: ["overtime calculator", "overtime pay calculator", "time and a half calculator", "double time calculator", "how to calculate overtime pay"],
+    metaDescription:
+      "Free overtime pay calculator. Enter your hourly rate and hours worked to get time-and-a-half or double-time pay and total weekly gross pay instantly.",
+    faqs: [
+      {
+        question: "How is overtime pay calculated?",
+        answer:
+          "Under the federal Fair Labor Standards Act (FLSA), non-exempt employees earn at least 1.5 times their regular rate for hours worked over 40 in a workweek. Overtime pay equals overtime hours multiplied by the hourly rate multiplied by 1.5. For example, 8 overtime hours at $20 per hour pays 8 x $30 = $240.",
+      },
+      {
+        question: "What is time and a half for $20 an hour?",
+        answer:
+          "Time and a half for $20 per hour is $30 per hour. Double time would be $40 per hour. Multiply that overtime rate by the number of overtime hours to get your overtime earnings for the week.",
+      },
+      {
+        question: "Do states have different overtime rules?",
+        answer:
+          "Yes. Some states go beyond federal law. California, for example, requires daily overtime after 8 hours in a day and double time after 12 hours. Alaska and Nevada also have daily overtime rules. Check your state labor department for the rules that apply to you.",
+      },
+      {
+        question: "Are salaried employees eligible for overtime?",
+        answer:
+          "Salaried employees can be eligible if they are classified as non-exempt. Exempt status generally depends on meeting both a salary threshold and job duties tests. If you are unsure, review your classification with HR or your state labor office.",
+      },
+    ],
+    relatedCalculators: ["salary-calculator", "hours-calculator", "work-hours-timesheet-calculator", "tax-calculator"],
+    content: CALCULATOR_CONTENT["overtime-pay-calculator"],
+  },
+  "sales-tax-calculator": {
+    id: "sales-tax-calculator",
+    name: "Sales Tax Calculator",
+    slug: "sales-tax-calculator",
+    category: "finance",
+    description:
+      "Add sales tax to a price or reverse-calculate the pre-tax price and tax amount from a total using any state or local sales tax rate.",
+    keywords: ["sales tax calculator", "reverse sales tax calculator", "how to calculate sales tax", "sales tax formula", "price before tax calculator"],
+    metaDescription:
+      "Free sales tax calculator. Add tax to any price or reverse-calculate the pre-tax amount from a receipt total using your state and local sales tax rate.",
+    faqs: [
+      {
+        question: "How do I calculate sales tax?",
+        answer:
+          "Multiply the pre-tax price by the sales tax rate expressed as a decimal. For a $80 item at 7% tax, the tax is 80 x 0.07 = $5.60 and the total is $85.60.",
+      },
+      {
+        question: "How do I find the price before tax?",
+        answer:
+          "Divide the total by 1 plus the tax rate. If you paid $107.25 with an 8.25% rate, the pre-tax price is 107.25 / 1.0825 = $99.08 and the tax portion is $8.17.",
+      },
+      {
+        question: "Which states have no sales tax?",
+        answer:
+          "Alaska, Delaware, Montana, New Hampshire and Oregon have no statewide sales tax, although some Alaska localities charge local sales taxes.",
+      },
+      {
+        question: "Why is my sales tax rate higher than the state rate?",
+        answer:
+          "Most areas add county, city and special district taxes on top of the state rate. The combined rate at the point of sale is what you should enter in the calculator.",
+      },
+    ],
+    relatedCalculators: ["discount-calculator", "percentage-calculator", "tip-calculator", "tax-calculator"],
+    content: CALCULATOR_CONTENT["sales-tax-calculator"],
+  },
+  "fuel-cost-calculator": {
+    id: "fuel-cost-calculator",
+    name: "Fuel Cost Calculator",
+    slug: "fuel-cost-calculator",
+    category: "finance",
+    description:
+      "Estimate gas cost for a road trip from distance, MPG and gas price, including round trips and the cost per person.",
+    keywords: ["fuel cost calculator", "gas cost calculator", "trip gas calculator", "road trip cost calculator", "gas money calculator"],
+    metaDescription:
+      "Free fuel cost calculator. Enter trip distance, MPG and gas price to estimate total gas cost, gallons needed, round-trip cost and the split per person.",
+    faqs: [
+      {
+        question: "How do I calculate gas cost for a trip?",
+        answer:
+          "Divide the trip distance by your car's miles per gallon to get gallons needed, then multiply by the price per gallon. A 300-mile trip in a 30 MPG car at $3.50 per gallon uses 10 gallons and costs $35.",
+      },
+      {
+        question: "How do I find my car's real MPG?",
+        answer:
+          "Fill the tank, reset the trip meter, drive normally, then refill. Divide the miles driven by the gallons added. Real-world MPG is often lower than the EPA rating, especially on highways at high speed or in cold weather.",
+      },
+      {
+        question: "How much gas money should I give a driver?",
+        answer:
+          "A fair share is the total fuel cost divided by the number of people in the car. Some groups also add a small amount for tolls, parking or vehicle wear.",
+      },
+      {
+        question: "Does driving speed affect fuel cost?",
+        answer:
+          "Yes. Fuel economy usually drops quickly above about 50 to 60 mph. Driving 65 instead of 75 mph on a long trip can noticeably reduce the fuel you need.",
+      },
+    ],
+    relatedCalculators: ["car-loan-calculator", "budget-calculator", "unit-converter", "percentage-calculator"],
+    content: CALCULATOR_CONTENT["fuel-cost-calculator"],
+  },
   "net-worth-calculator": {
     id: "net-worth-calculator",
     name: "Net Worth Calculator",
