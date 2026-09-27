@@ -92,6 +92,10 @@ export const TR_CALCULATORS: TRCalculatorItem[] = [
   { category: "finans", slug: "asgari-ucret-hesap-makinesi", name: "Asgari Ücret Hesap Makinesi", description: "2026 net ve brüt asgari ücret, SGK ve vergi kesintileri", icon: "💰", badge: "2026" },
   { category: "finans", slug: "kidem-tazminati-hesap-makinesi", name: "Kıdem Tazminatı Hesap Makinesi", description: "2026 tavanıyla net kıdem ve ihbar tazminatı hesaplama", icon: "💼", badge: "Yeni" },
   { category: "finans", slug: "issizlik-maasi-hesap-makinesi", name: "İşsizlik Maaşı Hesap Makinesi", description: "2026 aylık net işsizlik ödeneği ve süresi", icon: "🧾", badge: "Yeni" },
+  { category: "finans", slug: "yillik-izin-hesap-makinesi", name: "Yıllık İzin Hesap Makinesi", description: "Yıllık İzin Hesaplama 2026", icon: "🏖️", badge: "Yeni" },
+  { category: "finans", slug: "fazla-mesai-hesap-makinesi", name: "Fazla Mesai Hesap Makinesi", description: "Fazla Mesai Hesaplama 2026", icon: "⏱️", badge: "Yeni" },
+  { category: "finans", slug: "kira-artis-hesap-makinesi", name: "Kira Artış Hesap Makinesi", description: "Kira Artış Oranı Hesaplama 2026", icon: "🏠", badge: "Yeni" },
+  { category: "finans", slug: "tapu-harci-hesap-makinesi", name: "Tapu Harcı Hesap Makinesi", description: "Tapu Harcı Hesaplama 2026", icon: "📜", badge: "Yeni" },
   { category: "finans", slug: "mtv-hesap-makinesi", name: "MTV Hesap Makinesi", description: "Motorlu taşıt vergisi 2026, motor hacmi ve araç yaşına göre", icon: "🚗", badge: "2026" },
 ];
 
