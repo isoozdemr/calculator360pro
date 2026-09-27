@@ -6,7 +6,6 @@ import {
   calculateNetSalary,
   MINIMUM_WAGE_2026,
   SGK_RATES_2026,
-  AGI_RATES_2026,
   DATA_VERSION,
 } from "@/lib/data/turkey-2026-data";
 
@@ -222,15 +221,12 @@ export function TurkeySalaryCalculator() {
             </div>
           </div>
 
-          {/* AGI Bilgisi */}
+          {/* Asgari ücret istisnası */}
           <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-            <h4 className="font-semibold text-green-800 mb-2">Asgari Geçim İndirimi (AGİ)</h4>
-            <div className="flex justify-between items-center">
-              <span className="text-green-600">Aylık AGİ Tutarı:</span>
-              <span className="text-xl font-bold text-green-700">
-                {formatCurrency(result.agi)}
-              </span>
-            </div>
+            <h4 className="font-semibold text-green-800 mb-2">Asgari Ücret Vergi İstisnası</h4>
+            <p className="text-sm text-green-700">
+              2022&apos;den itibaren AGİ uygulanmıyor; bunun yerine asgari ücrete isabet eden gelir vergisi ve damga vergisi tüm çalışanların maaşından düşülüyor. Hesaplama yıl başı (Ocak) matrahına göredir; yıl içinde vergi dilimi yükseldikçe net maaş azalabilir.
+            </p>
           </div>
         </div>
       )}

@@ -350,27 +350,19 @@ export function calculateNetSalary(grossSalary: number, maritalStatus: "single" 
   // Gelir vergisi matrahı
   const taxableIncome = grossSalary - sgkDeduction - unemploymentDeduction;
   
-  // Gelir vergisi hesaplama
-  const { totalTax: incomeTax } = calculateIncomeTax(taxableIncome);
-  
-  // Damga vergisi (asgari ücret muaf)
-  const stampTax = grossSalary <= MINIMUM_WAGE_2026.gross ? 0 : grossSalary * (STAMP_TAX_2026.rate / 1000);
-  
-  // AGI hesaplama
-  let agiRate = AGI_RATES_2026.single;
-  if (maritalStatus === "marriedSpouseNotWorking") {
-    agiRate = AGI_RATES_2026.marriedSpouseNotWorking;
-  }
-  
-  // Çocuk AGI ekleme
-  let childAgi = 0;
-  if (childCount >= 1) childAgi += AGI_RATES_2026.children.first;
-  if (childCount >= 2) childAgi += AGI_RATES_2026.children.second;
-  if (childCount >= 3) childAgi += AGI_RATES_2026.children.third;
-  if (childCount >= 4) childAgi += AGI_RATES_2026.children.fourthAndMore * (childCount - 3);
-  
-  const agi = (MINIMUM_WAGE_2026.gross * (agiRate + childAgi) / 100) * 0.15;
-  
+  // Gelir vergisi: 2022'den beri asgari ücrete isabet eden vergi tüm ücretlilerde istisna (AGİ kaldırıldı).
+  // Yıl başı (kümülatif matrah 0) esas alınır.
+  const minWageTaxable = MINIMUM_WAGE_2026.gross * (1 - (SGK_RATES_2026.worker.sgk + SGK_RATES_2026.worker.unemployment) / 100);
+  const incomeTax = Math.max(0, calculateIncomeTax(taxableIncome).totalTax - calculateIncomeTax(minWageTaxable).totalTax);
+
+  // Damga vergisi: asgari ücreti aşan kısım üzerinden
+  const stampTax = Math.max(0, grossSalary - MINIMUM_WAGE_2026.gross) * (STAMP_TAX_2026.rate / 1000);
+
+  // AGİ 2022'de kaldırıldı; parametreler geriye dönük uyumluluk için tutuluyor
+  void maritalStatus;
+  void childCount;
+  const agi = 0;
+
   const totalDeductions = sgkDeduction + unemploymentDeduction + incomeTax + stampTax;
   const netSalary = grossSalary - totalDeductions + agi;
   
