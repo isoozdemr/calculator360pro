@@ -21,11 +21,6 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: `${SITE_URL}/tr/hesap-makineleri/tarih-zaman/haftalik-calisma-saati-hesap-makinesi`,
-    languages: {
-      en: `${SITE_URL}/calculators/date-time/hours-calculator`,
-      tr: `${SITE_URL}/tr/hesap-makineleri/tarih-zaman/haftalik-calisma-saati-hesap-makinesi`,
-      "x-default": `${SITE_URL}/tr/hesap-makineleri/tarih-zaman/haftalik-calisma-saati-hesap-makinesi`,
-    },
   },
   openGraph: {
     title: "Haftalık Çalışma Saati Hesaplama | Calculator360Pro",

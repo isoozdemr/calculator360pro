@@ -9,18 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/api/", "/admin/", "/embed", "/search"],
       },
-      // Googlebot: same as * (no _next crawl; indexable pages stay allow /)
-      {
-        userAgent: "Googlebot",
-        allow: "/",
-        // Keep blocking only truly sensitive endpoints.
-        // Avoid disallowing "/_next/" to reduce any chance of crawler restrictions
-        // affecting how page resources are discovered.
-        disallow: ["/api/", "/admin/", "/embed", "/search"],
-      },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
-    host: SITE_URL,
   };
 }
-

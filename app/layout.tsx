@@ -7,12 +7,13 @@ import { LayoutWrapper } from "@/components/layout/LayoutWrapper";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { ConsentBanner } from "@/components/consent/ConsentBanner";
 import Script from "next/script";
-// SpeedInsights: uncomment after running `npm install` (requires @vercel/speed-insights)
-// import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
   variable: "--font-inter",
-  subsets: ["latin"],
+  // latin-ext: TR karakterleri (ş, ğ, ı, ö, ü, ç) latin alt kümesinde yok;
+  // eksik olunca tarayıcı sistem fontuna düşüyor ve düzen kayması (CLS) oluşuyordu.
+  subsets: ["latin", "latin-ext"],
   weight: ["400", "600", "700"],
   display: "swap",
   preload: true,
@@ -20,9 +21,11 @@ const inter = Inter({
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  subsets: ["latin", "latin-ext"],
+  // Yalnızca formül/sonuç metinlerinde kullanılıyor; ağırlık sayısı azaltıldı.
+  weight: ["400", "700"],
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -95,8 +98,9 @@ export default function RootLayout({
       <head>
         {/* Preconnect to Google services for faster script loading */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        {/* AdSense loads lazily well after paint, so a preconnect here just
+            competes with critical requests for the connection pool. */}
         <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
         {/* RSS Feed Auto-discovery */}
         <link rel="alternate" type="application/rss+xml" title="Calculator360Pro Blog RSS Feed" href={`${process.env.NEXT_PUBLIC_SITE_URL || "https://calculator360pro.com"}/feed.xml`} />
@@ -132,7 +136,7 @@ export default function RootLayout({
         <LayoutWrapper>
           {children}
         </LayoutWrapper>
-        {/* <SpeedInsights /> - enable after npm install */}
+        <SpeedInsights />
       </body>
     </html>
   );

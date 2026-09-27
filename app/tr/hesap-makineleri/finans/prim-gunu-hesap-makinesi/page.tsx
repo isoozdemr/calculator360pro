@@ -22,11 +22,6 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: `${SITE_URL}/tr/hesap-makineleri/finans/prim-gunu-hesap-makinesi`,
-    languages: {
-      en: `${SITE_URL}/calculators/finance/retirement-calculator`,
-      tr: `${SITE_URL}/tr/hesap-makineleri/finans/prim-gunu-hesap-makinesi`,
-      "x-default": `${SITE_URL}/tr/hesap-makineleri/finans/prim-gunu-hesap-makinesi`,
-    },
   },
   openGraph: {
     title: "Prim Günü Hesaplama | SGK Prim Günü Hesap Makinesi",

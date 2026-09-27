@@ -24,11 +24,6 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: `${SITE_URL}/tr/hesap-makineleri/finans/emlak-vergisi-hesap-makinesi`,
-    languages: {
-      en: `${SITE_URL}/calculators/finance/tax-calculator`,
-      tr: `${SITE_URL}/tr/hesap-makineleri/finans/emlak-vergisi-hesap-makinesi`,
-      "x-default": `${SITE_URL}/tr/hesap-makineleri/finans/emlak-vergisi-hesap-makinesi`,
-    },
   },
   openGraph: {
     title: "Emlak Vergisi Hesaplama 2026 | Calculator360Pro",

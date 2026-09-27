@@ -71,6 +71,8 @@ export const TURKISH_CATEGORIES = [
   { tr: "tarih-zaman", en: "date-time" },
 ];
 
+const CONTENT_LAST_MODIFIED = new Date("2026-09-27");
+
 function fullUrl(path: string): string {
   return path.startsWith("http") ? path : `${SITE_URL}${path}`;
 }
@@ -108,7 +110,9 @@ export function getSitemapEntries(): MetadataRoute.Sitemap {
   const calculators = getAllCalculators();
   const blogPosts = getAllBlogPosts();
   const blogPostsTR = getAllBlogPostsTR();
-  const now = new Date();
+  // Sabit bir tarih kullanılır; her istekte "bugün" dönmesi Google'ın lastmod'u
+  // yok saymasına yol açıyordu. Bu değeri yalnızca içerik gerçekten değiştiğinde güncelleyin.
+  const now = CONTENT_LAST_MODIFIED;
   const urls: MetadataRoute.Sitemap = [];
 
   const baseAlt = { en: "/", tr: "/tr", "x-default": "/" };
@@ -189,7 +193,6 @@ export function getSitemapEntries(): MetadataRoute.Sitemap {
   const blogAlt = { en: "/blog", tr: "/tr/blog", "x-default": "/blog" };
   urls.push(entry("/blog", now, "weekly", 0.6, blogAlt));
   urls.push(entry("/tr/blog", now, "weekly", 0.6, blogAlt));
-  urls.push({ url: fullUrl("/search"), lastModified: now, changeFrequency: "monthly", priority: 0.4 });
 
   const guidesAlt = { en: "/guides", tr: "/tr/rehberler", "x-default": "/guides" };
   urls.push(entry("/guides", now, "weekly", 0.6, guidesAlt));
