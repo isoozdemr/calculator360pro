@@ -31,7 +31,7 @@ export function NavigationTR() {
     hoverTimeoutRef.current = setTimeout(() => {
       setOpenCategory(null);
       hoverTimeoutRef.current = null;
-    }, 100);
+    }, 250);
   }, [clearHoverTimeout]);
 
   const handleDropdownMouseEnter = useCallback((categorySlug: string) => {
@@ -115,7 +115,7 @@ export function NavigationTR() {
             </Link>
 
             {/* Category Dropdowns */}
-            {TR_CATEGORIES.map((category) => {
+            {TR_CATEGORIES.map((category, catIndex) => {
               const isOpen = openCategory === category.slug;
               const hasCalculators = category.calculators.length > 0;
 
@@ -143,15 +143,15 @@ export function NavigationTR() {
                   </button>
                   {isOpen && hasCalculators && (
                     <div
-                      className={`absolute top-full left-0 mt-2 bg-white border-2 border-[#e2e8f0] rounded-lg shadow-xl overflow-hidden ${
+                      className={`bg-white border-2 border-[#e2e8f0] rounded-lg shadow-xl overflow-hidden ${
                         category.calculators.length >= 10
-                          ? "min-w-[720px] w-[90%] max-w-[1100px]"
-                          : "min-w-[280px]"
+                          ? "fixed top-16 left-1/2 -translate-x-1/2 w-[min(1100px,calc(100vw-2rem))]"
+                          : `absolute top-full mt-2 w-[min(420px,calc(100vw-2rem))] ${catIndex < TR_CATEGORIES.length / 2 ? "left-0" : "right-0"}`
                       }`}
                       onMouseEnter={() => handleDropdownMouseEnter(category.slug)}
                       onMouseLeave={handleDropdownMouseLeave}
                     >
-                      <div className={`p-3 ${category.calculators.length >= 10 ? "" : "max-h-[400px] overflow-y-auto"}`}>
+                      <div className="p-3 max-h-[calc(100vh-6rem)] overflow-y-auto">
                         <Link
                           href={`/tr/hesap-makineleri/${category.slug}`}
                           className="block font-bold text-sm text-[#1e293b] hover:text-[#2563eb] transition-colors mb-2 pb-1.5 border-b border-[#e2e8f0]"

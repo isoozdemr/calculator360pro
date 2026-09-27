@@ -55,7 +55,7 @@ export function Navigation() {
     hoverTimeoutRef.current = setTimeout(() => {
       setOpenCategory(null);
       hoverTimeoutRef.current = null;
-    }, 100);
+    }, 250);
   }, [clearHoverTimeout]);
 
   const handleDropdownMouseEnter = useCallback((categorySlug: string) => {
@@ -169,7 +169,7 @@ export function Navigation() {
             </Link>
 
             {/* Category Dropdowns */}
-            {categories.map((category) => {
+            {categories.map((category, catIndex) => {
               const categoryCalculators = getCategoryCalculators(category.slug);
               const isOpen = openCategory === category.slug;
               const isFinance = category.slug === "finance";
@@ -213,16 +213,16 @@ export function Navigation() {
                   {isOpen && categoryCalculators.length > 0 && (
                     <div
                       id={`category-menu-${category.slug}`}
-                      className={`absolute top-full left-0 mt-2 bg-white border-2 border-[#e2e8f0] rounded-lg shadow-xl overflow-hidden ${
+                      className={`bg-white border-2 border-[#e2e8f0] rounded-lg shadow-xl overflow-hidden ${
                         isFinance 
-                          ? "min-w-[720px] w-[90%] max-w-[1100px]" 
-                          : "min-w-[350px] w-[80%] max-w-[920px]"
+                          ? "fixed top-16 left-1/2 -translate-x-1/2 w-[min(1100px,calc(100vw-2rem))]" 
+                          : `absolute top-full mt-2 w-[min(420px,calc(100vw-2rem))] ${catIndex < categories.length / 2 ? "left-0" : "right-0"}`
                       }`}
                       onMouseEnter={() => handleDropdownMouseEnter(category.slug)}
                       onMouseLeave={handleDropdownMouseLeave}
                       role="menu"
                     >
-                      <div className={`overflow-y-auto p-3 ${isFinance ? "max-h-[500px]" : "max-h-[400px]"}`}>
+                      <div className="overflow-y-auto p-3 max-h-[calc(100vh-6rem)]">
                         <Link
                           href={`/calculators/${category.slug}`}
                           className="block font-bold text-base text-[#1e293b] hover:text-[#2563eb] transition-colors mb-2 pb-1.5 border-b border-[#e2e8f0]"
